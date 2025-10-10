@@ -557,5 +557,40 @@
     "resetImages": "Übungsbilder resetten",
     "confirm": "Fix bestätigen ({seconds})",
     "success": "Abgehakt"
+  },
+  "helpPage": {
+    "title": "Hilfe & Video-Guides",
+    "intro": "Hier gibt's 'ne Sammlung kurzer Clips, die dir die wichtigsten Features von Murmli zeigen.",
+    "openHelpCenter": "Hilfecenter aufmachen",
+    "sections": {
+      "overview": {
+        "title": "Kurzüberblick",
+        "description": "Kurzüberblick über Murmli und die wichtigsten Bereiche der App."
+      },
+      "firstStart": {
+        "title": "Erster App-Start",
+        "description": "So richtest du Murmli beim ersten Start ein und kommst direkt klar."
+      },
+      "shoppingList": {
+        "title": "Einkaufsliste",
+        "description": "Tipps & Tricks für die smarte Einkaufsliste – wie du Sachen hinzufügst, sortierst und teilst."
+      },
+      "planner": {
+        "title": "Der Planer",
+        "description": "Wie du Rezepte planst, deine Wünsche einstellst und automatische Vorschläge nutzt."
+      },
+      "calorieCounter": {
+        "title": "Der Kalorien-Tracker",
+        "description": "So checkst du deine Ernährung und Aktivitäten mit dem Kalorien-Tracker."
+      },
+      "training": {
+        "title": "Workouts & Log",
+        "description": "Erstelle Trainingspläne, dokumentiere deine Einheiten und tracke deinen Fortschritt."
+      },
+      "settings": {
+        "title": "Einstellungen & Abschluss",
+        "description": "Alles zu den Einstellungen plus ein kurzer Ausblick zum Schluss."
+      }
+    }
   }
 }

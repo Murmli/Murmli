@@ -557,5 +557,40 @@
     "resetImages": "Reset exercise images",
     "confirm": "Confirm ({seconds})",
     "success": "Action completed"
+  },
+  "helpPage": {
+    "title": "Help & Video Tutorials",
+    "intro": "Here you'll find a collection of short videos that show you Murmli's main features.",
+    "openHelpCenter": "Open Help Center",
+    "sections": {
+      "overview": {
+        "title": "Overview",
+        "description": "A quick overview of Murmli and all the main areas of the app."
+      },
+      "firstStart": {
+        "title": "First App Launch",
+        "description": "How to set up Murmli on first launch and get started right away."
+      },
+      "shoppingList": {
+        "title": "Shopping List",
+        "description": "Tips and tricks for the smart shopping list, including adding, sorting, and sharing items."
+      },
+      "planner": {
+        "title": "The Planner",
+        "description": "Learn how to plan recipes, set preferences, and use automatic suggestions."
+      },
+      "calorieCounter": {
+        "title": "The Calorie Counter",
+        "description": "How to keep track of your nutrition and activity using the calorie counter."
+      },
+      "training": {
+        "title": "Training Plans & Log",
+        "description": "Create training plans, log your sessions, and track your progress."
+      },
+      "settings": {
+        "title": "Settings & Closing Remarks",
+        "description": "Everything about settings, plus a final wrap-up."
+      }
+    }
   }
 }
