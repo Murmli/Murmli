@@ -557,5 +557,40 @@
     "resetImages": "Reset practice images",
     "confirm": "Confuhm ({seconds})",
     "success": "Action completed"
+  },
+  "helpPage": {
+    "title": "Help & Viddyoh Tuteeahls",
+    "intro": "Heah you'll find a collection o' short viddyohs that show ya the most impawtant featuahs o' Murmli.",
+    "openHelpCenter": "Open Help Centah",
+    "sections": {
+      "overview": {
+        "title": "Ovahview",
+        "description": "A quick ovahview o' Murmli an' all the main sections o' the app."
+      },
+      "firstStart": {
+        "title": "First App-Staht",
+        "description": "How ta set up Murmli on the fi'st staht an' find yahself right away."
+      },
+      "shoppingList": {
+        "title": "The Shoppin' List",
+        "description": "Tips an' tricks fo' a smaht shoppin' list — includin' addin', sortin' an' sharin'."
+      },
+      "planner": {
+        "title": "The Plannah",
+        "description": "Learn how ta plan recipes, set yer prefs an' use automatic suggestions."
+      },
+      "calorieCounter": {
+        "title": "The Calohree Countah",
+        "description": "Keep an eye on yer diet an' activities usin' the Calohree Countah."
+      },
+      "training": {
+        "title": "Trainin' Plahnz & Log",
+        "description": "Create trainin' plans, log yer sessions an' track yer progress."
+      },
+      "settings": {
+        "title": "Settin's & Final Wo'd",
+        "description": "All 'bout the settin's an' a final outlook."
+      }
+    }
   }
 }

@@ -557,5 +557,40 @@
     "resetImages": "Réinitialiser les images d'exercice",
     "confirm": "Confirmer ({seconds})",
     "success": "Action effectuée"
+  },
+  "helpPage": {
+    "title": "Aide et tutoriels vidéo",
+    "intro": "Tu trouveras ici une sélection de courtes vidéos qui te présentent les principales fonctionnalités de Murmli.",
+    "openHelpCenter": "Ouvrir le centre d'aide",
+    "sections": {
+      "overview": {
+        "title": "Aperçu",
+        "description": "Un aperçu rapide de Murmli et de toutes les principales sections de l'application."
+      },
+      "firstStart": {
+        "title": "Premier démarrage de l'application",
+        "description": "Comment configurer Murmli au premier lancement et t'y retrouver immédiatement."
+      },
+      "shoppingList": {
+        "title": "La liste de courses",
+        "description": "Conseils et astuces pour une liste de courses intelligente, et pour l'ajout, le tri et le partage."
+      },
+      "planner": {
+        "title": "Le planificateur",
+        "description": "Apprends à planifier des recettes, à indiquer tes préférences et à utiliser les suggestions automatiques."
+      },
+      "calorieCounter": {
+        "title": "Le compteur de calories",
+        "description": "Ainsi, tu gardes un œil sur ton alimentation et tes activités grâce au compteur de calories."
+      },
+      "training": {
+        "title": "Plans d'entraînement & journal",
+        "description": "Crée des plans d'entraînement, enregistre tes séances et suis tes progrès."
+      },
+      "settings": {
+        "title": "Paramètres & conclusion",
+        "description": "Tout ce qui concerne les paramètres, suivi d'un mot de conclusion."
+      }
+    }
   }
 }

@@ -557,5 +557,40 @@
     "resetImages": "Reset them practice images",
     "confirm": "Confirmin' ({seconds})",
     "success": "Action's done"
+  },
+  "helpPage": {
+    "title": "Help 'n Video Tutorials",
+    "intro": "Here y'all'll find a heap o' short videos that'll show ya Murmli's most important features.",
+    "openHelpCenter": "Open the Help Center",
+    "sections": {
+      "overview": {
+        "title": "A Lil' Overview",
+        "description": "A quick peek at Murmli an' all the main parts o' the app."
+      },
+      "firstStart": {
+        "title": "First Time Startin' the App",
+        "description": "How to set Murmli up on yer first run an' get yer bearings right away."
+      },
+      "shoppingList": {
+        "title": "The Shoppin' List",
+        "description": "Tips 'n tricks for makin' your shoppin' list smart — addin', sortin', an' sharin'."
+      },
+      "planner": {
+        "title": "The Planner",
+        "description": "Learn how to plan recipes, set yer preferences, an' use them automatic suggestions."
+      },
+      "calorieCounter": {
+        "title": "The Calorie Counter",
+        "description": "How to keep an eye on yer eatin' an' activities usin' the calorie counter."
+      },
+      "training": {
+        "title": "Trainin' Plans & Log",
+        "description": "Create trainin' plans, log yer sessions, an' track yer progress."
+      },
+      "settings": {
+        "title": "Settings & A Final Word",
+        "description": "All 'bout the settings an' a lil' final look ahead."
+      }
+    }
   }
 }

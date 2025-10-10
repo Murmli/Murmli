@@ -557,5 +557,40 @@
     "resetImages": "重置练习图片",
     "confirm": "确认（{seconds}）",
     "success": "操作已完成"
+  },
+  "helpPage": {
+    "title": "帮助与视频教程",
+    "intro": "这里有一系列简短视频，向你展示 Murmli 的主要功能。",
+    "openHelpCenter": "打开帮助中心",
+    "sections": {
+      "overview": {
+        "title": "概览",
+        "description": "快速了解 Murmli 及应用的所有主要功能。"
+      },
+      "firstStart": {
+        "title": "首次启动应用",
+        "description": "教你在首次启动时如何设置 Murmli 并快速上手。"
+      },
+      "shoppingList": {
+        "title": "购物清单",
+        "description": "关于智能购物清单的提示与技巧，以及如何添加、排序和共享。"
+      },
+      "planner": {
+        "title": "计划器",
+        "description": "学习如何规划食谱、设置偏好并使用自动建议。"
+      },
+      "calorieCounter": {
+        "title": "卡路里计数器",
+        "description": "使用卡路里计数器来监控你的饮食和活动。"
+      },
+      "training": {
+        "title": "训练计划与记录",
+        "description": "创建训练计划，记录你的训练课程并追踪进度。"
+      },
+      "settings": {
+        "title": "设置与结语",
+        "description": "关于设置的所有内容以及最后的总结与展望。"
+      }
+    }
   }
 }
