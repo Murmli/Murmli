@@ -1,0 +1,561 @@
+{
+  "greeting": "你好",
+  "goodbye": "再见",
+  "help": {
+    "shoppinglist": {
+      "languagePrompt": "首先请选择您的语言和您想要的主页，以便继续使用Murmli。",
+      "languageTitle": "语言选择",
+      "selectLanguage": "选择语言",
+      "welcome": "欢迎使用Murmli，您的智能食谱、购物和营养应用。\n\n此应用利用AI来帮助翻译、解释和选择食谱。您甚至可以创建自己的食谱，并直接将其添加到购物清单中，以提高日常效率。",
+      "welcomeTitle": "欢迎",
+      "quickGuide": "只需在输入框中输入您需要的内容，Murmli会通过AI将其添加到购物清单中。\n\n所有物品将按超市类别直接分类，以便您更容易找到。\n\n添加物品后，您可以点击它们以寻找替代品。",
+      "quickGuideTitle": "快速指南",
+      "options": "在菜单（右上角）中找到更多选项，如分享或排序您的清单。例如，与您的伴侣分享清单以便共同合作。您可以随时撤销分享。",
+      "optionsTitle": "选项",
+      "start": "开始吧！"
+    },
+    "planner": {
+      "welcomeTitle": "食谱计划",
+      "welcome": "在下方设置您想计划的用餐人数和食谱数量。此外，您可以在文本框中用自然语言输入您的需求，AI会在选择食谱时自动考虑这些需求（例如，适合运动员的素食）。",
+      "optionsTitle": "选择食谱",
+      "options": "现在将为您显示食谱。\n如果您喜欢某个食谱，请点赞，否则请点踩。\n\n系统会根据您的选择学习，以提供更好的建议。",
+      "shoppinglistTitle": "购物清单和食谱",
+      "shoppinglist": "一旦您选择了所需数量的食谱，您将自动进入购物清单。此清单包含所有食谱的食材。\n\n在“食谱”下，您可以找到您选择的食谱及其说明。在那里，您可以对食谱进行评分并提供反馈。",
+      "openFilter": "打开筛选器"
+    },
+    "recipes": {
+      "overview": "这是属于您的购物清单、您自己的食谱和收藏的食谱的概览。您可以从这里访问它们。",
+      "create": "在右上角的加号上，您可以创建自己的食谱。输入您的想法，AI会生成它，您还可以上传食材的图片。",
+      "addToList": "如果您想将自己的食谱或收藏食谱添加到购物清单中，请访问该食谱并通过右上角的菜单（三个点）添加。",
+      "overviewTitle": "食谱概览",
+      "createTitle": "创建食谱",
+      "addToListTitle": "将食谱添加到购物清单"
+    },
+    "tracker": {
+      "overviewTitle": "记录餐点",
+      "overview": "只需输入您吃了什么。\n\n您可以用自然语言描述一切，例如“一盘面条”，具体产品名称或准确的卡路里数——随您喜欢。",
+      "calorieGoalTitle": "您的卡路里目标",
+      "calorieGoal": "自行定义每日卡路里目标或让我们自动计算。\n\n只需输入您的身体数据一次——剩下的交给我们。",
+      "activityTrackingTitle": "记录活动",
+      "activityTracking": "此外，记录您的运动活动，例如“慢跑20分钟”。我们会自动计算出您可以额外摄入多少卡路里——为您量身定制。"
+    },
+    "setup": {
+      "aboutAppTitle": "关于此应用",
+      "aboutApp": "此应用是私人开发的，旨在简化生活中的购物清单和智能食谱规划。"
+    }
+  },
+  "general": {
+    "next": "下一步",
+    "back": "返回",
+    "error": "错误",
+    "errorMessage": "发生错误。请稍后重试或报告此错误。",
+    "loading": "加载中..",
+    "close": "关闭",
+    "save": "保存",
+    "send": "发送",
+    "cancel": "取消",
+    "report": "报告",
+    "confirm": "确认",
+    "start": "开始",
+    "generate": "生成",
+    "deleteRecipeDialog": {
+      "text": "删除食谱",
+      "dialogMsg": "您确定要删除所选食谱吗？"
+    },
+    "information": "信息",
+    "ask": "询问",
+    "help": "帮助",
+    "selected": "已选",
+    "discard": "放弃",
+    "resume": "继续",
+    "voiceRecording": "音频录制",
+    "details": "详情",
+    "name": "名称",
+    "goal": "目标",
+    "type": "类型",
+    "difficulty": "难度",
+    "weekdays": {
+      "1": "星期一",
+      "2": "星期二",
+      "3": "星期三",
+      "4": "星期四",
+      "5": "星期五",
+      "6": "星期六",
+      "7": "星期日"
+    },
+    "edit": "编辑",
+    "delete": "删除",
+    "activate": "激活",
+    "archive": "存档",
+    "finish": "完成",
+    "weeks": "周",
+    "progress": "进度",
+    "instructions": "说明",
+    "day": "天",
+    "days": "天",
+    "week": "周",
+    "selectPhoto": "选择照片",
+    "capturePhoto": "相机"
+  },
+  "shoppingList": {
+    "newItemLabel": "新项目",
+    "newItemPlaceholder": "输入项目名称",
+    "notesLabel": "备注",
+    "notesHint": "您的备注会自动保存",
+    "noItemsMessage": "购物清单中没有项目。",
+    "checkedHeader": "已勾选",
+    "nameLabel": "名称",
+    "amountLabel": "数量",
+    "unitLabel": "单位",
+    "findAlternative": "寻找替代品",
+    "editItem": "编辑项目",
+    "showRecipe": "显示食谱",
+    "saveAsFavorite": "添加到收藏",
+    "removeFavorite": "从收藏中移除",
+    "shoppingListLabel": "购物清单",
+    "sortList": "排序",
+    "help": "帮助",
+    "favorites": "收藏",
+    "shareList": "分享清单",
+    "inviteCode": "邀请码",
+    "inviteCodeExpires": "秒有效",
+    "createInvite": "创建邀请码",
+    "leaveList": "离开清单",
+    "joinedList": "您已加入他人的清单。",
+    "noSharedUsers": "该清单尚未分享。",
+    "joinList": "加入清单",
+    "sortCategoriesDialog": {
+      "title": "排序类别",
+      "text": "点击类别以设置位置，或使用箭头。",
+      "newPosition": "新位置",
+      "changePositon": "更改位置"
+    },
+    "removeRecipes": {
+      "text": "删除食谱",
+      "dialogMsg": "您确定要从购物清单中删除所有食谱吗？食材将继续保留在购物清单中，需单独删除。"
+    },
+    "removeIngredients": {
+      "text": "删除食材",
+      "dialogMsg": "您确定要从购物清单中删除所有食材相关条目吗？食谱仍会保留在食谱视图中。"
+    },
+    "clearAll": {
+      "text": "清空购物清单",
+      "dialogMsg": "您确定要从购物清单中删除所有项目吗？"
+    },
+    "deleteList": {
+      "text": "删除购物清单",
+      "dialogMsg": "您确定要删除整个购物清单吗？"
+    },
+    "deleteConfirmTooltip": "再次按下以确认。",
+    "recipeOwnership": "此食谱属于：",
+    "voiceRecordingInfo": "当前正在进行语音录制。您可以用自然语言说出您想要添加到购物清单的内容。您的请求将被处理并发送。如果您想放弃录音，可以删除它。只要您不发送录音，一切都会保留在您的设备上。",
+    "categoryLabel": "类别"
+  },
+  "planner": {
+    "title": "食谱计划",
+    "filter": {
+      "title": "筛选设置",
+      "servingsLabel": "用餐人数",
+      "recipesLabel": "食谱数量",
+      "promptLabel": "特别要求",
+      "promptPlaceholder": "描述您的需求"
+    },
+    "fetchingMessage": "您的食谱正在后台加载。请稍候。",
+    "resetSelectionDialog": {
+      "text": "重置选择",
+      "dialogMsg": "您确定要重置您的食谱选择吗？"
+    }
+  },
+  "recipes": {
+    "title": "食谱",
+    "shareDialog": "分享食谱",
+    "helpDialog": "食谱帮助",
+    "empty": "您尚未创建任何食谱。",
+    "noneSelected": "未选择任何食谱。",
+    "noFavorites": "您还没有收藏。",
+    "panels": {
+      "selectedRecipes": {
+        "title": "购物清单中的食谱"
+      },
+      "myRecipes": {
+        "title": "我的食谱"
+      },
+      "favoriteRecipes": {
+        "title": "收藏食谱"
+      }
+    },
+    "createRecipeDialog": {
+      "title": "生成食谱",
+      "text": "尽可能详细地描述您的食谱：必须包含什么，您想避免什么？您提供的信息越多，我们生成的个性化食谱就越好。\n\n生成过程后，大约需要2-3分钟，您的食谱会出现在“我的食谱”中。\n\n您可以选择添加一张照片——可以直接从您的图库中选择或拍摄新照片。这可以是您冰箱的照片、单个食材或让您想起您想要的食谱的东西。",
+      "generatingText": "您的食谱正在创建。这可能需要两分钟。随后，您可以在“我的食谱”中找到它。"
+    },
+    "addIngredients": "添加食材",
+    "addIngreditensInfo": "您确定要将食谱添加到当前购物清单中吗？所有食材将自动添加。",
+    "selectPortions": "选择份数",
+    "processingMessage": "您的食谱正在后台创建。完成后会通知您。",
+    "readyMessage": "您的食谱已创建。",
+    "downloadSelectedPdf": "将选定的食谱下载为PDF",
+    "tips": {
+      "swipeToRemove": "在食谱上向左或向右滑动以将其移除。",
+      "createOwn": "点击右上角的加号可创建自己的食谱。",
+      "printPdf": "想打印你的食谱？通过右下角的三点菜单可以导出为 PDF。",
+      "editOwn": "你可以随时编辑自己的食谱。打开食谱，使用三点菜单，就能找到所有选项。",
+      "feedbackPlanner": "计划中的某个食谱不符合你的预期？打开它，通过三点菜单提交反馈，我们会处理。"
+    }
+  },
+  "recipe": {
+    "title": "食谱",
+    "recipeFor": "食谱为",
+    "recipePerson": "人",
+    "recipePersons": "人",
+    "prepareIngredients": "准备食材",
+    "downloadPdf": "下载PDF",
+    "nutrition": {
+      "title": "每份营养成分",
+      "kilocalories": "千卡",
+      "carbohydrates": "碳水化合物",
+      "fat": "脂肪",
+      "protein": "蛋白质"
+    },
+    "information": {
+      "title": "信息",
+      "healthy": "健康",
+      "price": "价格",
+      "difficulty": "难度",
+      "sustainability": "可持续性",
+      "preparationTime": "准备时间",
+      "everyday": "日常"
+    },
+    "feedback": {
+      "title": "反馈",
+      "label": "您的反馈",
+      "success": "感谢您的反馈！\n我们会处理的。"
+    },
+    "editDialog": {
+      "title": "编辑食谱",
+      "instructions": "描述您的更改",
+      "preview": "预览",
+      "save": "保存更改",
+      "error": "编辑时出错",
+      "changes": "更改"
+    },
+    "menu": {
+      "addToList": "将食材添加到清单",
+      "addFavorite": "添加到收藏",
+      "removeRecipe": "删除食谱",
+      "removeFavorite": "移除收藏",
+      "deleteRecipe": "删除食谱",
+      "editRecipe": "编辑食谱",
+      "downloadPdf": "下载PDF",
+      "feedback": "反馈",
+      "trackRecipe": "跟踪食谱"
+    }
+  },
+  "units": {
+    "gram": "克",
+    "kilogram": "千克",
+    "can": "罐",
+    "liter": "升",
+    "milliliter": "毫升",
+    "cup": "杯",
+    "clove": "瓣",
+    "piece": "件",
+    "tablespoon": "汤匙",
+    "teaspoon": "茶匙",
+    "breeze": "少许"
+  },
+  "navigation": {
+    "shoppingList": "购物清单",
+    "planner": "计划",
+    "recipes": "食谱",
+    "calorieCounter": "卡路里计数器",
+    "settings": "设置",
+    "contact": "联系",
+    "testPage": "测试页面",
+    "rateApp": "评价应用",
+    "shareApp": "分享应用"
+  },
+  "settings": {
+    "account": "账户",
+    "title": "设置",
+    "export": "导出数据",
+    "import": "导入数据",
+    "deleteAccount": "删除账户",
+    "confirmDeleteTitle": "删除账户？",
+    "confirmDeleteText": "您确定要永久删除您的账户吗？此操作无法撤销。",
+    "confirmDelete": "是的，删除",
+    "cancel": "取消",
+    "accountDeleted": "您的账户已成功删除。",
+    "deleteError": "删除账户时出错。",
+    "importError": "导入数据时出错。",
+    "height": "身高（厘米）",
+    "gender": "性别",
+    "birthyear": "出生年份",
+    "dietType": "饮食类型",
+    "dietLevel": "饮食水平",
+    "baseCalories": "基础代谢（千卡）",
+    "recommendations": "推荐值",
+    "kcal": "卡路里（千卡）",
+    "protein": "蛋白质（克）",
+    "carbohydrates": "碳水化合物（克）",
+    "fat": "脂肪（克）",
+    "importWarningTitle": "注意：数据覆盖",
+    "importWarningText": "导入将覆盖所有当前用户数据，您将被注销。您想继续吗？",
+    "userId": "用户ID",
+    "copySuccess": "已复制到剪贴板！",
+    "selectStartpage": "选择主页"
+  },
+  "contact": {
+    "title": "联系",
+    "subtitle": "通过以下渠道联系我们",
+    "email": "发送电子邮件",
+    "discord": "Discord",
+    "footer": "我们期待您的消息！"
+  },
+  "tracker": {
+    "today": "今天",
+    "bodyData": "身体数据",
+    "trackNewItem": "跟踪新条目",
+    "noTargetDefined": "未定义卡路里目标",
+    "noItemsTracked": "尚未跟踪任何内容。",
+    "menu": {
+      "edit": "编辑",
+      "daily": "每日",
+      "addToShoppingList": "添加到购物清单",
+      "addToToday": "添加到今天",
+      "remove": "移除"
+    },
+    "dailyTracked": "（每日）",
+    "calorieGoal": "卡路里目标",
+    "calorieCalculator": "卡路里计算器",
+    "trackActivity": "跟踪活动",
+    "trackRecipe": "跟踪食谱",
+    "activityLabel": "活动",
+    "createActivity": "添加活动",
+    "createActivityInfo": "在此添加您的活动，应用会自动为您计算卡路里。",
+    "palOptions": {
+      "homeOffice": "居家办公——坐着，无体力活动",
+      "officeWorker": "办公室职员——坐着，活动少",
+      "teacher": "教师——中等步行，站立",
+      "salesperson": "销售人员——站立，步行，轻体力工作",
+      "waiter": "服务员——大量步行，端盘子",
+      "nurse": "护理人员——频繁步行，抬举病人",
+      "constructionWorker": "建筑工人——体力劳动，抬举，搬运",
+      "farmer": "农民——体力劳动，抬举，操作机器",
+      "sportsTeacher": "体育老师——活跃，示范练习",
+      "constructionSite": "建筑工地——重体力劳动，抬举，站立",
+      "mountainGuide": "山地向导——极限活动，长时间在野外行走"
+    },
+    "height": "身高（厘米）",
+    "weight": "体重（千克）",
+    "birthyear": "出生年份",
+    "gender": {
+      "text": "性别",
+      "male": "男性",
+      "female": "女性"
+    },
+    "workHoursWeek": "每周工作小时数",
+    "workDaysPAL": "工作日PAL值",
+    "dietType": {
+      "text": "饮食类型",
+      "balanced": "均衡",
+      "lowCarb": "低碳水",
+      "lowFat": "低脂肪"
+    },
+    "dietLevel": {
+      "text": "饮食水平",
+      "strongLose": "大幅减重 -25%",
+      "lose": "减重 -15%",
+      "maintain": "保持",
+      "gain": "增重 +10%",
+      "strongGain": "大幅增重 +20%"
+    },
+    "bodyDataInfo": "在此输入您的身体数据，以计算您的卡路里目标。这些数据将用于确定您的每日卡路里目标。",
+    "minutes": "分钟",
+    "burned": "燃烧",
+    "calories": "卡路里",
+    "kcal": "千卡",
+    "caloriesBurned": "燃烧的卡路里（千卡）",
+    "duration": "持续时间（分钟）",
+    "calculateCalories": "计算卡路里",
+    "errorNoBodydata": "如果您想使用卡路里计算器，您必须先输入您的身体数据。",
+    "errorBodydataActivity": "如果您想使用活动跟踪，您必须先输入您的身体数据。",
+    "selectRecipe": "选择食谱",
+    "portions": "份数",
+    "voiceRecordingInfo": "录音将保存在本地。如果您想发送音频文件，请点击发送。\n或者您可以点击放弃以不发送录音。",
+    "macronutrients": "宏量营养素",
+    "carbs": "碳水化合物",
+    "fat": "脂肪",
+    "protein": "蛋白质",
+    "noMacroTargetDefined": "未定义宏量营养素目标",
+    "enterQuestion": "在此输入您的问题...",
+    "askDialog": "在此您可以提出有关营养的问题。应用将尝试回答您的问题，并考虑到您的身体数据以及过去14天的卡路里计数器条目。请注意，答案基于您在应用中输入的信息。",
+    "addImage": "添加图片",
+    "uploadImage": "上传图片",
+    "captureImage": "拍摄图片",
+    "dietLevelChange": {
+      "dietLevelBefore": "之前的饮食水平",
+      "lastChanged": "最后更改"
+    },
+    "descriptionLabel": "补充说明",
+    "descriptionPlaceholder": "请描述图片中的餐食或活动"
+  },
+  "trainingPlans": {
+    "title": "训练计划",
+    "help": {
+      "step1": {
+        "title": "创建训练计划",
+        "content": "训练计划可以根据个人需求创建，您可以描述您想要的训练内容、目标、频率和强度。"
+      },
+      "step2": {
+        "title": "编辑训练计划",
+        "content": "如果有任何不合适的地方，您可以用自然语言编辑训练计划。只需写下您想要更改的内容，您将获得更新的版本。"
+      },
+      "step3": {
+        "title": "训练",
+        "content": "训练计划是按时间进行的，如果已激活。激活的训练计划可以进行训练和记录，每组单独记录——重量或重复次数或组的持续时间。最后，您可以选择将训练直接发送到卡路里计数器，以跟踪消耗的卡路里。"
+      }
+    },
+    "descriptionLabelCreate": "详细描述计划",
+    "createPlanInstructions": "尽可能详细地描述您的计划：您想训练什么？每周几次？在什么环境下？您喜欢哪种训练类型？\n\n您还可以指定强度：轻度、中度或强度。\n\n示例：\n“我想每周去四次健身房，专注于上半身。我训练有素。”\n\n“我左肩背部有背痛。为我制定一个每周一天的计划，提供针对性的练习，以改善我的姿势并减轻疼痛。”\n\n您提供的信息越多，您的训练计划就越合适。",
+    "subtitle": "在此您可以创建和管理您的训练计划。",
+    "editPlan": "编辑训练计划",
+    "editPlanDescription": "描述需要更改的内容",
+    "repetitionsShort": "重复",
+    "duration": "持续时间",
+    "restBetweenSets": "组间休息",
+    "restAfterExercise": "练习后休息",
+    "deletePlan": "删除训练计划",
+    "activePlan": "活动计划",
+    "confirmDeletePlan": "您确定要删除此训练计划吗？",
+    "noPlans": "您尚未创建任何训练计划。",
+    "trainingDaysPerWeek": "每周训练天数",
+    "addExercise": "添加练习",
+    "removeExercise": "移除练习",
+    "exerciseName": "练习名称",
+    "set": "组",
+    "sets": "组",
+    "reps": "重复",
+    "restTime": "休息时间（秒）",
+    "savePlan": "保存训练计划",
+    "createPlan": "创建训练计划",
+    "train": "训练",
+    "selectDay": "选择天",
+    "suggestedWeight": "建议总重量",
+    "weight": "重量（千克）",
+    "durationWeeks": "持续时间（周）",
+    "canceled": "上次训练已取消。",
+    "noPlansInfo": "尚未有训练计划。您可以通过右上角的加号按钮添加新的训练计划。",
+    "activateDialog": {
+      "title": "激活训练计划",
+      "msg": "如果您启动训练计划，将设置开始日期。随后您可以看到您处于训练计划的哪一周。\n您确定要启动训练计划吗？"
+    },
+    "deleteDialog": {
+      "title": "删除训练计划",
+      "msg": "您确定要删除此训练计划吗？"
+    },
+    "finishDialog": {
+      "title": "结束训练",
+      "msg": "如果您结束训练，将重置开始日期和所有进度。您确定要结束训练吗？"
+    },
+    "processingMessage": "您的训练计划正在后台创建。完成后会通知您。",
+    "readyMessage": "您的训练计划已创建。",
+    "editDialog": {
+      "preview": "预览",
+      "save": "保存更改",
+      "changes": "更改",
+      "error": "编辑时出错"
+    },
+    "statistics": "统计",
+    "totalWorkouts": "已完成的训练",
+    "lastWorkout": "上次训练",
+    "lastExercises": "最近5次练习",
+    "noWorkoutsYet": "还没有完成任何训练。",
+    "ask": "提问",
+    "enterQuestion": "就该计划提问",
+    "askDialog": "您可以就该训练计划提出问题。最近的训练日志（最多10条）将一并发送。",
+    "suggestedDuration": "建议时长",
+    "continuePlan": "创建后续计划",
+    "continuePlanTitle": "为{name}创建后续计划",
+    "continuePlanDescription": "基于此训练计划创建一个新计划。你可以选择性地添加附加要求。",
+    "continuePlanNotesLabel": "额外说明（可选）",
+    "continuePlanAction": "创建后续计划"
+  },
+  "training": {
+    "title": "训练日志",
+    "continue": "继续训练",
+    "discard": "放弃训练",
+    "exerciseListPlaceholder": "加载练习列表...",
+    "noPlan": "今天没有计划的训练或计划中没有练习。",
+    "estimatedTimePlaceholder": "大约X分钟",
+    "startTraining": "开始训练",
+    "setInfo": "第{current}组，共{total}组",
+    "finishSet": "完成组",
+    "noDescription": "无可用描述。",
+    "countdown": "下一组在{seconds}秒后...",
+    "noDaySelected": "未选择天",
+    "exercise": "练习",
+    "exercises": "练习",
+    "seconds": "秒",
+    "secondsShort": "秒",
+    "noPreviousLog": "尚无之前的日志。",
+    "noImageAvailable": "图片尚不可用。",
+    "skipRest": "跳过休息",
+    "completeSet": "完成组",
+    "timeSeconds": "时间（秒）",
+    "time": "时间",
+    "exerciseCompleted": "练习完成",
+    "nextExercise": "下一个练习",
+    "allExercisesDone": "所有练习完成",
+    "finishTraining": "结束训练",
+    "noCurrentLog": "没有当前训练。",
+    "loadingLog": "加载训练日志...",
+    "suggestedValues": "建议值",
+    "summaryTitle": "训练概览",
+    "backToPlans": "返回训练计划",
+    "lastLog": "最近记录：",
+    "actualLog": "当前记录：",
+    "description": "描述",
+    "getFeedback": "请求反馈",
+    "feedbackTitle": "反馈",
+    "startTimer": "开始计时",
+    "stopTimer": "停止计时",
+    "timer": "计时器",
+    "difficulty": "强度",
+    "statistics": "统计",
+    "totalMovedWeight": "总移动重量",
+    "totalDuration": "总时长",
+    "totalSets": "总组数",
+    "avgWeightPerExercise": "每项练习的平均重量",
+    "trackCalories": "跟踪卡路里",
+    "caloriesBurned": "已记录的卡路里：{calories} 千卡",
+    "cancelTraining": "取消训练",
+    "cancelTrainingConfirm": "你确定要取消训练吗？",
+    "useLastValue": "填入上次的值（{value}）"
+  },
+  "adminStats": {
+    "title": "统计",
+    "usersToday": "今日新用户",
+    "usersWeek": "本周新用户",
+    "activeToday": "今日活跃用户",
+    "activeWeek": "本周活跃用户",
+    "recipes24h": "创建的食谱（24小时）",
+    "trainingPlans24h": "创建的训练计划（24小时）",
+    "plannerUsersTotal": "计划用户总数",
+    "plannerToday": "今天使用计划器的用户",
+    "plannerWeek": "本周使用计划器的用户",
+    "shoppingUpdatedToday": "今天更新的购物清单",
+    "shoppingUpdatedWeek": "本周更新的购物清单",
+    "calorieTrackerTotal": "总共使用卡路里追踪器的用户",
+    "calorieTrackerToday": "今天使用卡路里追踪器的用户",
+    "calorieTrackerWeek": "本周使用卡路里追踪器的用户",
+    "trainingLogsWeek": "创建的训练日志（周）"
+  },
+  "adminTools": {
+    "title": "管理员工具",
+    "clearCache": "清除 LLM 缓存",
+    "resetImages": "重置练习图片",
+    "confirm": "确认（{seconds}）",
+    "success": "操作已完成"
+  }
+}

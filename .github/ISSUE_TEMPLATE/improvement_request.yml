@@ -1,0 +1,36 @@
+# File: ionic-murmli/.github/ISSUE_TEMPLATE/planned.yml
+name: 🔧 Verbesserungsvorschlag
+description: Schlage eine Verbesserung bestehender Funktionen oder Struktur vor
+title: "[Geplant] "
+labels: [planned]
+assignees:
+  - dein-github-name
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: Was soll verbessert werden?
+      description: Beschreibe klar, was verbessert werden soll (z. B. Code, UI, Struktur, etc.)
+      placeholder: |
+        Die Benennung der Variablen ist unklar ...
+    validations:
+      required: true
+
+  - type: input
+    id: where
+    attributes:
+      label: Wo soll es verbessert werden? (optional)
+      description: Dateiname oder Komponente, wenn bekannt.
+      placeholder: z. B. `components/LoginForm.vue`
+    validations:
+      required: false
+
+  - type: textarea
+    id: why
+    attributes:
+      label: Warum ist die Verbesserung sinnvoll? (optional)
+      description: Begründe, warum diese Verbesserung nötig oder hilfreich ist.
+      placeholder: |
+        Die aktuelle Implementierung ist schwer wartbar, weil ...
+    validations:
+      required: false

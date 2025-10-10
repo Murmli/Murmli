@@ -1,0 +1,561 @@
+{
+  "greeting": "Grüezi",
+  "goodbye": "Uf Wiederluege",
+  "help": {
+    "shoppinglist": {
+      "languagePrompt": "Zerscht wähl bitte dini Sprach und dini gwünschti Startsite, um mit Murmli witerzfaare.",
+      "languageTitle": "Sprachauswahl",
+      "selectLanguage": "Sprach uswahlä",
+      "welcome": "Willkomme bi Murmli, dinere schlauen App für Rezäpt, Iikaufe und Ernährig.\n\n Die App nutzt KI, um Üebersetzige, Interpretatiöne und d'Uswahl vo Rezäpt z erleichtere. Du chasch sogar eigeti Rezäpt erstelle und sie direkt in d'Iikauflischt übertrage, um din Alldag effizienter z gstalte.",
+      "welcomeTitle": "Willkomme",
+      "quickGuide": "Gib eifach ins Iigabefäld ii, was du bruchsch, und Murmli füegt es per KI zur Iikauflischt zue.\n\n Alli Gegestand wärde direkt nach Supermarkt-Kategorii sortiert, damit du sie leichter findsch.\n\n Sind d'Gegestand zuegfiegt, chasch druf chlicke, um Alternatiöne z finde.",
+      "quickGuideTitle": "Kurzanleitig",
+      "options": "Finde wiiteri Optione wie Teile oder Sortiere dinere Lischt im Menü (obe rächts). Teile d'Lischt zum Bispiel mit dim Partner, um zäme dra z schaffe. Du chasch s'Teile jederzyt widerufä.",
+      "optionsTitle": "Optione",
+      "start": "Los geit's!"
+    },
+    "planner": {
+      "welcomeTitle": "Rezäptplaner",
+      "welcome": "Leg unte fescht, für wie vill Lüüt und wie vill Rezäpt du plane wotsch. Im Textfäld chasch zuesätzlich in natürlicher Sprach dini Wünsch ii gä, e KI berücksichtigt die automatisch bi dr Uswahl vo de Rezäpt (z. B. vegetarisch für Sportler).",
+      "optionsTitle": "Rezäpt uswahlä",
+      "options": "Dir wärde jetzt Rezäpt azeigt. \nGib e Dume hoch, wenn dir es Rezäpt gfällt, oder e Dume abe, wenn nöd. \n\nS'System lernt us dine Entscheidige, um besseri Vorschläg z mache.",
+      "shoppinglistTitle": "Iikauflischt und Rezäpt",
+      "shoppinglist": "Sobal du d'gwünschti Aazahl a Rezäpt usgwählt hesch, chunsch automatisch zur Iikauflischt. Die enthält alli Zutatä für d'Rezäpt. \n\n Unter 'Rezäpt' findsch dini usgwählte Rezäpt inklusive Aaleitigä. Dört chasch d'Rezäpt bewärte und Feedback gä.",
+      "openFilter": "Filter öffne"
+    },
+    "recipes": {
+      "overview": "Da isch d'Übersicht über d'Rezäpt, wo zu dinere Iikauflischt ghöre, dini eigete Rezäpt und dini Favoritä. Vo dert chasch die ufgrüefe.",
+      "create": "Uf em Plus-Symbol rächts obe hesch d'Möglichkeit, eigeti Rezäpt z erstelle. Gib dini Ideä ii, d'KI generiert es, und du chasch no es Bild vo Zutatä ufelade.",
+      "addToList": "Falls du eis vo dine Rezäpt oder Favoritärezäpt zu dinere Iikauflischt zuefüege wetsch, ruf s'Rezäpt uf und füeg es über s'Menü (drei Punkt) rächts obe zue.",
+      "overviewTitle": "Rezäpt Übersicht",
+      "createTitle": "Rezäpt erstelle",
+      "addToListTitle": "Rezäpt zur Iikauflischt"
+    },
+    "tracker": {
+      "overviewTitle": "Mahlzite erfasse",
+      "overview": "Trag eifach ii, was du gässe hesch. \n\nDu chasch alles in natürlicher Sprach beschriibe, wie zum Bispiel „e Teller Nüdele“, expliziti Produkt näme oder genau Kalorieangabe mache – ganz wie du wetsch.",
+      "calorieGoalTitle": "Dini Kalorieziil",
+      "calorieGoal": "Definiere dini tägliche Kalorieziil sälber oder lass es automatisch vo üs berechne. \n\nGib derfür eifach einisch dini Körperdate ii – dr Rest übernähmed mir für di.",
+      "activityTrackingTitle": "Aktivitätä erfasse",
+      "activityTracking": "Erfasse zusätzlich dini sportlichi Aktivitätä, wie z.B. „20 Minute Jogge“. Mir berechne derus automatisch, wie vill Kalorie du extra zu dir nä chasch – ganz individuell für di."
+    },
+    "setup": {
+      "aboutAppTitle": "Über die App",
+      "aboutApp": "Die App isch privat entwickelt worde, um s'Läbe mit ere Iikauflischt und intelligentere Rezäptplanig z vereinfachä."
+    }
+  },
+  "general": {
+    "next": "Witer",
+    "back": "Zrugg",
+    "error": "Fähler",
+    "errorMessage": "Es isch e Fähler ufträtte. Bitte versuech s'spöter nomol oder meld üs dä Fähler.",
+    "loading": "Lädt..",
+    "close": "Schliesse",
+    "save": "Spichere",
+    "send": "Sände",
+    "cancel": "Abbräche",
+    "report": "Melde",
+    "confirm": "Bestätige",
+    "start": "Los geit's",
+    "generate": "Generiere",
+    "deleteRecipeDialog": {
+      "text": "Rezäpt entferne",
+      "dialogMsg": "Wotsch wirklich s'gwählte Rezäpt entferne?"
+    },
+    "information": "Information",
+    "ask": "Frage",
+    "help": "Hilf",
+    "selected": "Usgwählt",
+    "discard": "Verwürfe",
+    "resume": "Witerfahre",
+    "voiceRecording": "Audio-Ufnahm",
+    "details": "Detail",
+    "name": "Name",
+    "goal": "Ziil",
+    "type": "Typ",
+    "difficulty": "Schwierigkeit",
+    "weekdays": {
+      "1": "Määntig",
+      "2": "Ziischtig",
+      "3": "Mittwuch",
+      "4": "Dunschtig",
+      "5": "Friitig",
+      "6": "Samschtig",
+      "7": "Sunntig"
+    },
+    "edit": "Bearbeite",
+    "delete": "Lösche",
+    "activate": "Aktiviere",
+    "archive": "Archiv",
+    "finish": "Beände",
+    "weeks": "Wuche",
+    "progress": "Fortschritt",
+    "instructions": "Aaleitig",
+    "day": "Tag",
+    "days": "Täg",
+    "week": "Wuche",
+    "selectPhoto": "Foto uswahlä",
+    "capturePhoto": "Kamera"
+  },
+  "shoppingList": {
+    "newItemLabel": "Neuer Artikel",
+    "newItemPlaceholder": "Artikelname ii gä",
+    "notesLabel": "Notize",
+    "notesHint": "Dini Notize wärde automatisch gspicheret",
+    "noItemsMessage": "Es sind kei Artikel in dr Iikauflischt vorhande.",
+    "checkedHeader": "Abghakät",
+    "nameLabel": "Name",
+    "amountLabel": "Mängi",
+    "unitLabel": "Einheit",
+    "findAlternative": "Alternativä finde",
+    "editItem": "Eintrag ändere",
+    "showRecipe": "Rezäpt azeige",
+    "saveAsFavorite": "Zu Favoritä zuefüege",
+    "removeFavorite": "Us Favoritä entferne",
+    "shoppingListLabel": "Iikauflischt",
+    "sortList": "Sortierig",
+    "help": "Hilf",
+    "favorites": "Favoritä",
+    "shareList": "Lischt teile",
+    "inviteCode": "Iiladigscode",
+    "inviteCodeExpires": "Sekunde gültig",
+    "createInvite": "Code erstelle",
+    "leaveList": "Lischt verlah",
+    "joinedList": "Du bisch ener fremde Lischt beitrete.",
+    "noSharedUsers": "D'Lischt isch bisher nöd gteil worde.",
+    "joinList": "Lischt beitrete",
+    "sortCategoriesDialog": {
+      "title": "Kategorii sortiere",
+      "text": "Chlicke uf e Kategorii, um e Position feschtzlegge, oder nutz d'Pfeil.",
+      "newPosition": "Neui Position",
+      "changePositon": "Position ändere"
+    },
+    "removeRecipes": {
+      "text": "Rezäpt entferne",
+      "dialogMsg": "Wotsch wirklich alli Rezäpt us dinere Iikauflischt entferne? D'Zutatä blibe witerhin uf dr Iikauflischt und müend separat glöscht wärde."
+    },
+    "removeIngredients": {
+      "text": "Zutatä entferne",
+      "dialogMsg": "Wotsch wirklich alli zutatäbezogene Einträg us dinere Iikauflischt entferne? D'Rezäpt blibe witerhin in dr Rezäptansicht erhalte."
+    },
+    "clearAll": {
+      "text": "Iikauflischt leere",
+      "dialogMsg": "Wotsch wirklich alli Items us dinere Iikauflischt entferne?"
+    },
+    "deleteList": {
+      "text": "Iikauflischt lösche",
+      "dialogMsg": "Wotsch wirklich dini gesamti Iikauflischt lösche?"
+    },
+    "deleteConfirmTooltip": "Zur Bestätigig nomol drucke.",
+    "recipeOwnership": "Das Rezäpt ghört zu: ",
+    "voiceRecordingInfo": "D'Sprachufnahm lauft aktuell. Du chasch in natürlicher Sprach säge, was uf dini Iikauflischt söll. Dini Aafrog wird verarbeitet und gsendet. Wenn du d'Ufnahm verwürfe wetsch, chasch sie lösche. Solang du d'Ufnahm nöd sendisch, blibt alles lokal uf dim Gerät.",
+    "categoryLabel": "Kategorii"
+  },
+  "planner": {
+    "title": "Rezäptplaner",
+    "filter": {
+      "title": "Filtereinstellige",
+      "servingsLabel": "Aazahl vo de Lüüt",
+      "recipesLabel": "Aazahl vo de Rezäpt",
+      "promptLabel": "Spezialwünsch",
+      "promptPlaceholder": "Beschriib dini Wünsch"
+    },
+    "fetchingMessage": "Dini Rezäpt wärde im Hintergrund glade. Bitte warte.",
+    "resetSelectionDialog": {
+      "text": "Uswahl zruggsetze",
+      "dialogMsg": "Wotsch wirklich dini Rezäptuswahl zruggsetze?"
+    }
+  },
+  "recipes": {
+    "title": "Rezäpt",
+    "shareDialog": "Rezäpt teile",
+    "helpDialog": "Rezäpt Hilf",
+    "empty": "Du hesch no kei Rezäpt erstellt.",
+    "noneSelected": "Kei Rezäpt usgwählt.",
+    "noFavorites": "Du hesch no kei Favoritä.",
+    "panels": {
+      "selectedRecipes": {
+        "title": "Rezäpt us dr Iikauflischt"
+      },
+      "myRecipes": {
+        "title": "Eigeti Rezäpt"
+      },
+      "favoriteRecipes": {
+        "title": "Favoritä Rezäpt"
+      }
+    },
+    "createRecipeDialog": {
+      "title": "Rezäpt generiere",
+      "text": "Beschriib din Rezäpt so detailliert wie möglich: Was söll unbedingt enthalte si, was wetsch du vermeide? Je meh Informatione du gisch, desto besser chönd mir din individuelles Rezäpt generiere.\n\nNach em Erstelligsprozess dauert s'ca. 2–3 Minute, bis din Rezäpt unter 'Eigeti Rezäpt' erscheint.\n\nOptional chasch es Foto zuefüege – entweder direkt us dinere Galerie oder indem du es neus Bild ufnimmst. Das cha es Bild vo dim Chüelschrank, einzelni Zutatä oder öppis si, wo di an din Wünschrezäpt erinnere tuet.",
+      "generatingText": "Din Rezäpt wird jetz erstellt. Das cha bis zu zwei Minute daure. Anschliessend findsch es unter 'Eigeti Rezäpt'."
+    },
+    "addIngredients": "Zutatä zuefüege",
+    "addIngreditensInfo": "Bisch sicher, dass du s'Rezäpt zu dinere aktuelle Iikauflischt zuefüege wetsch? Alli Zutatä wärde automatisch mit zuegfiegt.",
+    "selectPortions": "Portione uswahlä",
+    "processingMessage": "Din Rezäpt wird im Hintergrund erstellt. Du wirsch benachrichtigt, sobald es fertig isch.",
+    "readyMessage": "Din Rezäpt isch erstellt worde.",
+    "downloadSelectedPdf": "Usgwählti Rezäpt als PDF",
+    "tips": {
+      "swipeToRemove": "Wisch e Rezäpt na links oder na rächts, zum lösche.",
+      "createOwn": "Uf s'Plus-Symbol obe rächts chasch du dini eigene Rezäpte aalege.",
+      "printPdf": "Wottsch dini Rezäpte usdrucke? Im Dreipunkt-Menü unte rächts chasch du e PDF erstelle.",
+      "editOwn": "Du chasch dini eigene Rezäpte jederzyt bearbeite. Mach s'Rezäpt uuf und nütz s'Dreipunkt-Menü, da findisch du alli Optione.",
+      "feedbackPlanner": "Es Rezäpt us em Planer überzügt di nöd? Mach s uuf und gib im Dreipunkt-Menü Feedback – mir kümmered üs drum."
+    }
+  },
+  "recipe": {
+    "title": "Rezäpt",
+    "recipeFor": "Rezäpt für",
+    "recipePerson": "Persön",
+    "recipePersons": "Persöne",
+    "prepareIngredients": "Zutatä vorbereite",
+    "downloadPdf": "PDF abelade",
+    "nutrition": {
+      "title": "Nährwert pro Portion",
+      "kilocalories": "kCal",
+      "carbohydrates": "Carbs",
+      "fat": "Fett",
+      "protein": "Protein"
+    },
+    "information": {
+      "title": "Informatione",
+      "healthy": "Gsund",
+      "price": "Pris",
+      "difficulty": "Schwierigkeit",
+      "sustainability": "Nachhaltigkeit",
+      "preparationTime": "Zubereitig",
+      "everyday": "Alltäglichkeit"
+    },
+    "feedback": {
+      "title": "Feedback",
+      "label": "Din Feedback",
+      "success": "Merci vielmal für din Feedback!\nMir kümmered üs drum."
+    },
+    "editDialog": {
+      "title": "Rezäpt bearbeite",
+      "instructions": "Beschriib dini Änderige",
+      "preview": "Vorschau",
+      "save": "Änderige spichere",
+      "error": "Fähler bim Bearbeite",
+      "changes": "Änderige"
+    },
+    "menu": {
+      "addToList": "Zutatä zur Lischt",
+      "addFavorite": "Favorit zuefüege",
+      "removeRecipe": "Rezäpt entferne",
+      "removeFavorite": "Favorit entferne",
+      "deleteRecipe": "Rezäpt lösche",
+      "editRecipe": "Rezäpt bearbeite",
+      "downloadPdf": "PDF abelade",
+      "feedback": "Feedback",
+      "trackRecipe": "Rezäpt tracke"
+    }
+  },
+  "units": {
+    "gram": "Gramm",
+    "kilogram": "kg",
+    "can": "Dose",
+    "liter": "L",
+    "milliliter": "ml",
+    "cup": "Tasse",
+    "clove": "Zehe",
+    "piece": "Stück",
+    "tablespoon": "El",
+    "teaspoon": "Tl",
+    "breeze": "Prise"
+  },
+  "navigation": {
+    "shoppingList": "Iikauflischt",
+    "planner": "Planer",
+    "recipes": "Rezäpt",
+    "calorieCounter": "Kalorienzähler",
+    "settings": "Einstellige",
+    "contact": "Kontakt",
+    "testPage": "Test Site",
+    "rateApp": "App Bewärte",
+    "shareApp": "App Teile"
+  },
+  "settings": {
+    "account": "Konto",
+    "title": "Einstellige",
+    "export": "Date exportiere",
+    "import": "Date importiere",
+    "deleteAccount": "Account lösche",
+    "confirmDeleteTitle": "Account lösche?",
+    "confirmDeleteText": "Bisch sicher, dass du din Account dauerhaft lösche wetsch? Die Aktioun cha nöd zruggmache wärde.",
+    "confirmDelete": "Ja, lösche",
+    "cancel": "Abbräche",
+    "accountDeleted": "Din Account isch erfolgrich glöscht worde.",
+    "deleteError": "Fähler bim Lösche vom Account.",
+    "importError": "Fähler bim Importiere vo de Date.",
+    "height": "Körpergrössi (cm)",
+    "gender": "Gschlächt",
+    "birthyear": "Geburtsjahr",
+    "dietType": "Ernährigswiis",
+    "dietLevel": "Diät-Stufä",
+    "baseCalories": "Grundumsatz (kcal)",
+    "recommendations": "Empfohläni Wärte",
+    "kcal": "Kalorie (kcal)",
+    "protein": "Proteine (g)",
+    "carbohydrates": "Kohlenhydrat (g)",
+    "fat": "Fett (g)",
+    "importWarningTitle": "Achtung: Date überschriibe",
+    "importWarningText": "Durch dr Import wärde alli aktuelle Nutzerdatä überschriibe und du wirsch usgeloggt. Wotsch witerfahre?",
+    "userId": "Benutzer-ID",
+    "copySuccess": "In d'Zwischeablage kopiert!",
+    "selectStartpage": "Startsite uswahlä"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Erreich üs über folgende Kanäle",
+    "email": "E-Mail sände",
+    "discord": "Discord",
+    "footer": "Mir freued üs uf dini Nachricht!"
+  },
+  "tracker": {
+    "today": "Hüt",
+    "bodyData": "Körperdate",
+    "trackNewItem": "Neui Eintrag tracke",
+    "noTargetDefined": "Kei Kalorieziil definiert",
+    "noItemsTracked": "Es isch no nüt trackt worde.",
+    "menu": {
+      "edit": "Bearbeite",
+      "daily": "Täglich",
+      "addToShoppingList": "Zur Iikauflischt zuefüege",
+      "addToToday": "Für hüt zuefüege",
+      "remove": "Entferne"
+    },
+    "dailyTracked": "(täglich)",
+    "calorieGoal": "Kalorieziil",
+    "calorieCalculator": "Kalorienrechner",
+    "trackActivity": "Aktivität tracke",
+    "trackRecipe": "Rezäpt tracke",
+    "activityLabel": "Aktivität",
+    "createActivity": "Aktivität zuefüege",
+    "createActivityInfo": "Füeg do dini Aktivitätä zue, d'App berechnet automatisch d'Kalorie für di.",
+    "palOptions": {
+      "homeOffice": "Home-Office – sitzig, kei körperligi Aktivität",
+      "officeWorker": "Büroangstellter – sitzig, geringi Bewegung",
+      "teacher": "Lehrer – moderats Laufe, Stah",
+      "salesperson": "Verkäufer – stahend, laufend, leicht körperligi Arbeit",
+      "waiter": "Kellner – viel Laufe, Trage vo Teller",
+      "nurse": "Pflegekraft – häufigs Laufe, Hebe vo Patienten",
+      "constructionWorker": "Bauarbeiter – körperlich anstrengend, Hebe, Trage",
+      "farmer": "Landwirt – körperligi Arbeit, Hebe, Maschinenbedienig",
+      "sportsTeacher": "Sportlehrer – aktiv, Vormache vo Üebige",
+      "constructionSite": "Baustell – schwär körperligi Arbeit, Hebe, Stah",
+      "mountainGuide": "Bergfüehrer – extrem Aktivität, langes Laufe im Gelände"
+    },
+    "height": "Körpergrössi (cm)",
+    "weight": "Gwicht (kg)",
+    "birthyear": "Geburtsjahr",
+    "gender": {
+      "text": "Gschlächt",
+      "male": "Männlich",
+      "female": "Wiblich"
+    },
+    "workHoursWeek": "Arbetsstunde pro Wuche",
+    "workDaysPAL": "PAL-Wärt bi dr Arbeit",
+    "dietType": {
+      "text": "Ernährigswiis",
+      "balanced": "Usgwoge",
+      "lowCarb": "Low Carb",
+      "lowFat": "Low Fat"
+    },
+    "dietLevel": {
+      "text": "Diät-Stufä",
+      "strongLose": "Starks Abnäh -25%",
+      "lose": "Abnäh -15%",
+      "maintain": "Haltä",
+      "gain": "Zunäh +10%",
+      "strongGain": "Starks Zunäh +20%"
+    },
+    "bodyDataInfo": "Do chasch dini Körperdate ii trage, um dini Kalorieziil z berechne. Die wärde verwendet, um dini tägliche Kalorieziil z bestimme.",
+    "minutes": "Minute",
+    "burned": "verbrannt",
+    "calories": "Kalorie",
+    "kcal": "kcal",
+    "caloriesBurned": "Verbrannte Kalorie (kcal)",
+    "duration": "Dauer (Minute)",
+    "calculateCalories": "Kalorie berechne",
+    "errorNoBodydata": "Wenn du dr Kalorienrechner nutze wetsch, muesch du vorher dini Körperdate ii gä.",
+    "errorBodydataActivity": "Wenn du s'Aktivitätetracking nutze wetsch, muesch du vorher dini Körperdate ii gä.",
+    "selectRecipe": "Rezäpt uswahlä",
+    "portions": "Portione",
+    "voiceRecordingInfo": "D'Ufnahm wird lokal bi di gspicheret. Wenn du d'Audiodatei absände wetsch, chlicke uf Sände. \nAlternativ chasch uf Verwürfe chlicke, um d'Ufnahm nöd z sände.",
+    "macronutrients": "Makronährstoff",
+    "carbs": "Carbs",
+    "fat": "Fett",
+    "protein": "Eiwiiss",
+    "noMacroTargetDefined": "Kei Makronährstoff-Ziil definiert",
+    "enterQuestion": "Stell do dini Frag...",
+    "askDialog": "Do chasch Fragä zur Ernährig stelle. D'App wird versueche, dini Frag z beantworte und bezieht dabe dini Körperdate sowie dini Kalorienzähleriträg vo de letschte 14 Täg mit ii. Bitte beachte, dass d'Antworte uf de Informatione basiere, wo du in dr App ii gä hesch.",
+    "addImage": "Bild zuefüege",
+    "uploadImage": "Bild ufelade",
+    "captureImage": "Bild ufneh",
+    "dietLevelChange": {
+      "dietLevelBefore": "Diätlevel vor",
+      "lastChanged": "zletscht gänderet"
+    },
+    "descriptionLabel": "Zusätzliche Beschrieb",
+    "descriptionPlaceholder": "Beschreib dini Mahlziit oder Aktivität im Bezug uf s'Bild"
+  },
+  "trainingPlans": {
+    "title": "Trainingsplän",
+    "help": {
+      "step1": {
+        "title": "Trainingsplan erstelle",
+        "content": "Trainingsplän chönd individuell erstellt wärde, me cha alles beschriibe was me genau wetsch, für was me trainiert, wo, wie oft in dr Wuche und wie intensiv/lang."
+      },
+      "step2": {
+        "title": "Trainingsplan bearbeite",
+        "content": "Wenn öppis nöd passe sött, cha me d'Trainingsplän bearbeite mit natürlicher Sprach. Schreib eifach ii, was gänderet söll, und du bechunnsch e aktualisierti Version."
+      },
+      "step3": {
+        "title": "Trainiere",
+        "content": "Trainingsplän gönd uf Ziit, falls die aktiviert sind. Aktivi Trainingsplän chönd trainiert und gloggt wärde, jede Satz einzeln – Gwichte bzw. Wiederholige oder Dauer vo de Sätz. Am Ändi het me d'Möglichkeit, s'Trainig direkt in dr Kalorienzähler z sände, um d'verbrannte Kalorie z tracke."
+      }
+    },
+    "descriptionLabelCreate": "Beschriib dr Plan usfüehrlich",
+    "createPlanInstructions": "Beschriib din Plan so genau wie möglich: Was wetsch du trainiere? Wie oft in dr Wuche? In welchem Umfäld ? Welche Trainingsart bevorzugsch du?\n\nDu chasch au d'Intensität aage: leicht, moderat oder intensiv.\n\nBispil:\n'Ich möcht viermal pro Wuche is Fitnessstudio, Fokus uf Oberkörper. Ich bi guet trainiert.'\n\n'Ich ha Rückeschmerze links hinde an dr Schuelter. Erstell mir e Plan mit gezielte Üebige für e Tag pro Wuche, um mini Haltig z verbessere und d'Schmerze z lindere.'\n\nJe meh Informatione du angisch, desto passender wird din Trainingsplan erstellt.",
+    "subtitle": "Do chasch dini Trainingsplän erstelle und verwalte.",
+    "editPlan": "Trainingsplan bearbeite",
+    "editPlanDescription": "Beschriib was gänderet söll",
+    "repetitionsShort": "Wdh.",
+    "duration": "Dauer",
+    "restBetweenSets": "Satzpause",
+    "restAfterExercise": "Pause nach dr Üebig",
+    "deletePlan": "Trainingsplan lösche",
+    "activePlan": "Aktiver Plan",
+    "confirmDeletePlan": "Wotsch dä Trainingsplan wirklich lösche?",
+    "noPlans": "Du hesch no kei Trainingsplän erstellt.",
+    "trainingDaysPerWeek": "Trainigstäg pro Wuche",
+    "addExercise": "Üebig zuefüege",
+    "removeExercise": "Üebig entferne",
+    "exerciseName": "Üebigsname",
+    "set": "Satz",
+    "sets": "Sätz",
+    "reps": "Wiederholige",
+    "restTime": "Pausenzyt (Sekunde)",
+    "savePlan": "Trainingsplan spichere",
+    "createPlan": "Trainingsplan erstelle",
+    "train": "Trainiere",
+    "selectDay": "Tag uswahlä",
+    "suggestedWeight": "Empfohle Gesamtgwicht",
+    "weight": "Gwicht (kg)",
+    "durationWeeks": "Dauer (Wuche)",
+    "canceled": "S'letscht Trainig isch abbroche worde.",
+    "noPlansInfo": "Es sind no kei Trainingsplän vorhande. Du chasch mit em Plus-Button obe rächts en neue Trainingsplan zuefüege.",
+    "activateDialog": {
+      "title": "Trainingsplan aktiviere",
+      "msg": "Wenn du din Trainingsplan startisch, wird s'Startdatum feschtglegt. Anschliessend gsehsch, in welcher Wuche vo dim Trainingsplan du di befindisch.\nWotsch dr Trainingsplan wirklich starte?"
+    },
+    "deleteDialog": {
+      "title": "Trainingsplan lösche",
+      "msg": "Wotsch dä Trainingsplan wirklich lösche?"
+    },
+    "finishDialog": {
+      "title": "Trainig beände",
+      "msg": "Wenn du s'Trainig beändisch, wird s'Startdatum und din gesamter Fortschritt zruggsetzt. Bisch sicher, dass du s'Trainig beände wetsch?"
+    },
+    "processingMessage": "Din Trainingsplan wird im Hintergrund erstellt. Du wirsch benachrichtigt, sobald er fertig isch.",
+    "readyMessage": "Din Trainingsplan isch erstellt worde.",
+    "editDialog": {
+      "preview": "Vorschau",
+      "save": "Änderige spichere",
+      "changes": "Änderige",
+      "error": "Fähler bim Bearbeite"
+    },
+    "statistics": "Statistike",
+    "totalWorkouts": "Abgschlosse Trainings",
+    "lastWorkout": "S'letscht Training",
+    "lastExercises": "Di letschte 5 Üebige",
+    "noWorkoutsYet": "No kei Training abgschlosse.",
+    "ask": "Froge stelle",
+    "enterQuestion": "Stell e Froog zu däm Plan",
+    "askDialog": "Du chasch Froge zum Trainingsplan stelle. Di letzti Trainingslogs (höchstens 10) werde mitgschickt.",
+    "suggestedDuration": "Empfohleni Duur",
+    "continuePlan": "Fortsetzig erstelle",
+    "continuePlanTitle": "Fortsetzig für {name}",
+    "continuePlanDescription": "Mach uf Basis vo däm Trainingsplan e neue Plan. Du chasch optional Wünsch dazuefüege.",
+    "continuePlanNotesLabel": "Zuesätzlechi Hinweise (optional)",
+    "continuePlanAction": "Fortsetzig erstelle"
+  },
+  "training": {
+    "title": "Trainig Log",
+    "continue": "Witer trainiere",
+    "discard": "Trainig verwürfe",
+    "exerciseListPlaceholder": "Üebigslischt wird glade...",
+    "noPlan": "Für hüt isch kei Trainig plant oder dr Plan enthält kei Üebige.",
+    "estimatedTimePlaceholder": "ca. X min",
+    "startTraining": "Trainig starte",
+    "setInfo": "Satz {current} vo {total}",
+    "finishSet": "Satz beände",
+    "noDescription": "Kei Beschriibig verfügbar.",
+    "countdown": "Nächster Satz in {seconds} Sekunde...",
+    "noDaySelected": "Kei Tag usgwählt",
+    "exercise": "Üebig",
+    "exercises": "Üebige",
+    "seconds": "Sekunde",
+    "secondsShort": "Sek.",
+    "noPreviousLog": "Es git no kei vorherigi Log.",
+    "noImageAvailable": "Bild isch no nöd verfügbar.",
+    "skipRest": "Pause überspringe",
+    "completeSet": "Satz beände",
+    "timeSeconds": "Zyt (Sek.)",
+    "time": "Zyt",
+    "exerciseCompleted": "Üebig abgeschlossen",
+    "nextExercise": "Nächsti Üebig",
+    "allExercisesDone": "Alli Üebige abgeschlossen",
+    "finishTraining": "Trainig beände",
+    "noCurrentLog": "Es git kei aktuells Trainig.",
+    "loadingLog": "Lade Trainig Log...",
+    "suggestedValues": "Vorgschlageni Wärte",
+    "summaryTitle": "Trainigsübersicht",
+    "backToPlans": "Zrugg zu de Trainingsplän",
+    "lastLog": "s'letscht Log:",
+    "actualLog": "aktuelli Log:",
+    "description": "Beschrieb",
+    "getFeedback": "Feedback aafroge",
+    "feedbackTitle": "Rückmäldig",
+    "startTimer": "Timer starte",
+    "stopTimer": "Timer stoppe",
+    "timer": "Timer",
+    "difficulty": "Schiwerigkeit",
+    "statistics": "Statistike",
+    "totalMovedWeight": "Total bewegt's Gwicht",
+    "totalDuration": "Gsamtdauer",
+    "totalSets": "Total Aazahl vo Sätz",
+    "avgWeightPerExercise": "Durschnitts-Gwicht pro Üebig",
+    "trackCalories": "Kalorie uufzeichne",
+    "caloriesBurned": "Ufzeichneti Kalorie: {calories} kcal",
+    "cancelTraining": "Trainig abbräche",
+    "cancelTrainingConfirm": "Wotsch s'Trainig würkli abbräche?",
+    "useLastValue": "Letschte Wärt iitrage ({value})"
+  },
+  "adminStats": {
+    "title": "Statistike",
+    "usersToday": "Neui Nutzer hüt",
+    "usersWeek": "Neui Nutzer die Wuche",
+    "activeToday": "Aktivi Nutzer hüt",
+    "activeWeek": "Aktivi Nutzer die Wuche",
+    "recipes24h": "Erstelltä Rezäpt (24h)",
+    "trainingPlans24h": "Erstelltä Trainingsplän (24h)",
+    "plannerUsersTotal": "Nutzer mit Planer insgsamt",
+    "plannerToday": "Nutzer mit Planer hüt",
+    "plannerWeek": "Nutzer mit Planer die Wuche",
+    "shoppingUpdatedToday": "Aktualisierti Einkaufslistä hüt",
+    "shoppingUpdatedWeek": "Aktualisierti Einkaufslistä die Wuche",
+    "calorieTrackerTotal": "Nutzer mit Kalorienzäller insgsamt",
+    "calorieTrackerToday": "Nutzer mit Kalorienzäller hüt",
+    "calorieTrackerWeek": "Nutzer mit Kalorienzäller die Wuche",
+    "trainingLogsWeek": "Erstellti Trainingslogs (Wuche)"
+  },
+  "adminTools": {
+    "title": "Admin-Tools",
+    "clearCache": "LLM-Cache läere",
+    "resetImages": "Üebigsbilde zrüggsetze",
+    "confirm": "Bestätige ({seconds})",
+    "success": "Aktion usgfüehrt"
+  }
+}
