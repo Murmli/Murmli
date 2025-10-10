@@ -557,5 +557,40 @@
     "resetImages": "Übungsbildle zruck setza",
     "confirm": "Bestätiga ({seconds})",
     "success": "Aktion isch gmacht"
+  },
+  "helpPage": {
+    "title": "Hilfe & Videoanleitunge",
+    "intro": "Hier findschd du a Sammlung kurze Videos, die dir die wichtigste Funktione vom Murmli zeiget.",
+    "openHelpCenter": "Hilfecenter uffmache",
+    "sections": {
+      "overview": {
+        "title": "Übersicht",
+        "description": "A kurzer Überblick über Murmli und alli Hauptbereicha von dr App."
+      },
+      "firstStart": {
+        "title": "Erschter App-Start",
+        "description": "So richtschd du Murmli beim erschte Start ei und findschd dich glei z'recht."
+      },
+      "shoppingList": {
+        "title": "D' Einkaufslischd",
+        "description": "Tipps und Tricks zur schlauen Einkaufslischd, wie ma Einträge hinzufüga, sorta und teilt."
+      },
+      "planner": {
+        "title": "Dr Planer",
+        "description": "Lern, wie du Rezepte planschd, Wünsch angibschd und automatische Vorschläg nutzt."
+      },
+      "calorieCounter": {
+        "title": "Dr Kalorienzähler",
+        "description": "So behaltschd du dei Ernährung und Aktivitäte mit em Kalorienzähler im Blick."
+      },
+      "training": {
+        "title": "Trainingsplän & Log",
+        "description": "Mach dir Trainingsplän, dokumentier dei Einheite und verfolg dei Fortschritt."
+      },
+      "settings": {
+        "title": "Einstellunge & Schlusswort",
+        "description": "Alles rund um d' Einstellunge sowie a abschließender Ausblick zum Schluss."
+      }
+    }
   }
 }

@@ -557,5 +557,40 @@
     "resetImages": "Üebigsbilde zrüggsetze",
     "confirm": "Bestätige ({seconds})",
     "success": "Aktion usgfüehrt"
+  },
+  "helpPage": {
+    "title": "Hilfe & Video-Aleitige",
+    "intro": "Da findscht du e Sammelig churzer Video, wo dir d'wichtigste Funktione vom Murmli zeigt.",
+    "openHelpCenter": "Hilfecenter öppne",
+    "sections": {
+      "overview": {
+        "title": "Übersicht",
+        "description": "E schnälli Ibersicht über s'Murmli und alli Hauptbereich vo de App."
+      },
+      "firstStart": {
+        "title": "Erschti App-Start",
+        "description": "So richtisch du s'Murmli bim erschte Start ii und findscht di glych z'recht."
+      },
+      "shoppingList": {
+        "title": "D'Einkaufslischt",
+        "description": "Tipps und Tricks zue de smartä Einkaufslischt sowie zum Hinzfüege, Sortiere und Teile."
+      },
+      "planner": {
+        "title": "Dr Planer",
+        "description": "Lern, wie du Rezäpte planisch, Wünsch angisch und automatischi Vorschläg nützt."
+      },
+      "calorieCounter": {
+        "title": "Dr Kaloriezähler",
+        "description": "So behaltsch du dini Ernährig und Aktivitäte mit em Kaloriezähler im Blick."
+      },
+      "training": {
+        "title": "Trainingsplän & Log",
+        "description": "Erstell Trainingsplän, dokumentier dini Einheitä und verfolg din Fortschritt."
+      },
+      "settings": {
+        "title": "Iistellige & Schlusswort",
+        "description": "Alles rund um d'Iistellige sowie e abschliessende Ussblick."
+      }
+    }
   }
 }

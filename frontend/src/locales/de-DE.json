@@ -44,6 +44,41 @@
       "aboutApp": "Diese App wurde privat entwickelt, um das Leben mit einer Einkaufsliste und intelligenter Rezeptplanung zu vereinfachen."
     }
   },
+  "helpPage": {
+    "title": "Hilfe & Videoanleitungen",
+    "intro": "Hier findest du eine Sammlung kurzer Videos, die dir die wichtigsten Funktionen von Murmli zeigen.",
+    "openHelpCenter": "Hilfecenter öffnen",
+    "sections": {
+      "overview": {
+        "title": "Übersicht",
+        "description": "Ein schneller Überblick über Murmli und alle Hauptbereiche der App."
+      },
+      "firstStart": {
+        "title": "Erster App-Start",
+        "description": "So richtest du Murmli beim ersten Start ein und findest dich direkt zurecht."
+      },
+      "shoppingList": {
+        "title": "Die Einkaufsliste",
+        "description": "Tipps und Tricks zur smarten Einkaufsliste sowie zum Hinzufügen, Sortieren und Teilen."
+      },
+      "planner": {
+        "title": "Der Planer",
+        "description": "Lerne, wie du Rezepte planst, Wünsche angibst und automatische Vorschläge nutzt."
+      },
+      "calorieCounter": {
+        "title": "Der Kalorienzähler",
+        "description": "So behältst du deine Ernährung und Aktivitäten mit dem Kalorienzähler im Blick."
+      },
+      "training": {
+        "title": "Trainingspläne & Log",
+        "description": "Erstelle Trainingspläne, dokumentiere deine Einheiten und verfolge deinen Fortschritt."
+      },
+      "settings": {
+        "title": "Einstellungen & Schlusswort",
+        "description": "Alles rund um die Einstellungen sowie ein abschließender Ausblick."
+      }
+    }
+  },
   "general": {
     "next": "Weiter",
     "back": "Zurück",

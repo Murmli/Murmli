@@ -1,12 +1,13 @@
 <template>
 
     <!-- Floating action for secondary actions (rate/share/links) -->
-    <v-btn icon elevation="8" class="position-fixed floating-more-btn" @click="moreOpen = true">
+    <v-btn v-if="hasBottomMenuItems" icon elevation="8" class="position-fixed floating-more-btn"
+        @click="moreOpen = true">
         <v-icon>mdi-dots-horizontal</v-icon>
     </v-btn>
 
     <!-- Bottom sheet: per-layout actions if provided, otherwise fallback actions -->
-    <v-bottom-sheet v-model="moreOpen" inset>
+    <v-bottom-sheet v-if="hasBottomMenuItems" v-model="moreOpen" inset>
         <v-card class="pa-2">
             <template v-if="bottomMenuStore.items.length">
                 <v-list>
@@ -15,6 +16,12 @@
                         <v-list-item-title>{{ item.title }}</v-list-item-title>
                     </v-list-item>
                     <v-divider class="my-1" />
+                    <v-list-item @click="goHelp(); moreOpen = false">
+                        <template #prepend>
+                            <v-icon>mdi-help-circle-outline</v-icon>
+                        </template>
+                        <v-list-item-title>{{ languageStore.t('general.help') }}</v-list-item-title>
+                    </v-list-item>
                     <v-list-item @click="goSettings(); moreOpen = false">
                         <template #prepend>
                             <v-icon>mdi-cog-outline</v-icon>
@@ -22,55 +29,6 @@
                         <v-list-item-title>{{ languageStore.t('settings.title') }}</v-list-item-title>
                     </v-list-item>
                 </v-list>
-            </template>
-            <template v-else>
-                <v-row class="d-flex justify-center mb-3">
-                    <v-chip class="px-4" color="primary" text-color="white" variant="elevated"
-                        prepend-icon="mdi-heart"
-                        @click="openLink('https://play.google.com/store/apps/details?id=de.murmli.twa')">
-                        {{ languageStore.t('navigation.rateApp') }}
-                    </v-chip>
-                </v-row>
-
-                <v-row class="d-flex justify-center">
-                    <v-btn icon variant="text" @click="shareApp">
-                        <v-tooltip :text="languageStore.t('navigation.shareApp')" location="top">
-                            <template #activator="{ props }">
-                                <v-icon v-bind="props">mdi-share-variant-outline</v-icon>
-                            </template>
-                        </v-tooltip>
-                    </v-btn>
-
-                    <v-btn icon variant="text"
-                        @click="openLink('mailto:prompt-engineered@protonmail.com?subject=Murmli%20App')">
-                        <v-tooltip :text="languageStore.t('navigation.email')" location="top">
-                            <template #activator="{ props }">
-                                <v-icon v-bind="props" color="cyan-darken-2">mdi-email-outline</v-icon>
-                            </template>
-                        </v-tooltip>
-                    </v-btn>
-
-                    <v-btn icon variant="text" @click="openLink('https://discord.com/invite/qkxjGEp3Tg')">
-                        <v-tooltip :text="'Discord'" location="top">
-                            <template #activator="{ props }">
-                                <v-icon v-bind="props" color="deep-purple-accent-2">mdi-chat</v-icon>
-                            </template>
-                        </v-tooltip>
-                    </v-btn>
-
-                    <v-btn icon variant="text" @click="openLink('https://www.reddit.com/r/Murmli/')">
-                        <v-tooltip :text="'Reddit'" location="top">
-                            <template #activator="{ props }">
-                                <v-icon v-bind="props" color="red">mdi-reddit</v-icon>
-                            </template>
-                        </v-tooltip>
-                    </v-btn>
-                </v-row>
-                <v-row class="d-flex justify-center mt-2">
-                    <v-btn variant="tonal" prepend-icon="mdi-cog-outline" @click="goSettings(); moreOpen = false">
-                        {{ languageStore.t('settings.title') }}
-                    </v-btn>
-                </v-row>
             </template>
         </v-card>
     </v-bottom-sheet>
@@ -103,6 +61,8 @@ const languageStore = useLanguageStore()
 const bottomMenuStore = useBottomMenuStore()
 const router = useRouter()
 const route = useRoute()
+
+const hasBottomMenuItems = computed(() => bottomMenuStore.items.length > 0)
 
 // Mirror the old navigation structure as bottom-nav items
 const items = computed(() => [
@@ -155,28 +115,20 @@ watch(
     { immediate: true }
 )
 
-
-// Helpers for fallback actions
-const openLink = url => {
-    window.open(url, '_blank')
-}
-
-const shareApp = () => {
-    const playStoreUrl = 'https://play.google.com/store/apps/details?id=de.murmli.twa'
-    if (navigator.share) {
-        navigator.share({ title: 'Murmli', url: playStoreUrl })
-    } else {
-        navigator.clipboard.writeText(playStoreUrl)
-        alert('Copied to the clipboard!')
-    }
-}
-
 // Controls the bottom sheet visibility
 const moreOpen = ref(false)
 
 const goSettings = () => {
     router.push('/settings')
 }
+
+const goHelp = () => {
+    router.push('/help')
+}
+
+watch(hasBottomMenuItems, value => {
+    if (!value) moreOpen.value = false
+})
 
 </script>
 

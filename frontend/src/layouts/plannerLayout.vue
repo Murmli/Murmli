@@ -26,7 +26,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, onUnmounted } from 'vue';
+import { computed, watch, onUnmounted } from 'vue';
 import { useLanguageStore } from '@/stores/languageStore';
 import { useDialogStore } from '@/stores/dialogStore';
 import { useBottomMenuStore } from '@/stores/bottomMenuStore';
@@ -41,15 +41,8 @@ const showFilterDialog = () => {
   dialogStore.openDialog('plannerFilterDialog');
 };
 
-// Help action for bottom sheet (no filter here)
-const showHelp = () => {
-  dialogStore.openDialog('plannerHelpWindow');
-};
-
-// Provide only the Help item to the global bottom menu
-const menuItems = computed(() => [
-  { title: languageStore.t('general.help'), action: () => showHelp() },
-]);
+// Provide no extra menu items - global help is available via the bottom sheet
+const menuItems = computed(() => []);
 
 watch(menuItems, (items) => bottomMenuStore.setItems(items, 'planner'), { immediate: true });
 onUnmounted(() => bottomMenuStore.clearItems('planner'));
