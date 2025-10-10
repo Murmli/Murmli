@@ -1,0 +1,561 @@
+{
+  "greeting": "Bonjour",
+  "goodbye": "Au revoir",
+  "help": {
+    "shoppinglist": {
+      "languagePrompt": "Tout d'abord, veuillez sélectionner votre langue et votre page d'accueil souhaitée pour continuer avec Murmli.",
+      "languageTitle": "Sélection de la langue",
+      "selectLanguage": "Choisir la langue",
+      "welcome": "Bienvenue chez Murmli, votre application intelligente pour les recettes, les courses et la nutrition.\n\n Cette application utilise l'IA pour faciliter les traductions, les interprétations et la sélection de recettes. Vous pouvez même créer vos propres recettes et les transférer directement dans la liste de courses pour rendre votre quotidien plus efficace.",
+      "welcomeTitle": "Bienvenue",
+      "quickGuide": "Saisissez simplement ce dont vous avez besoin dans le champ de saisie, et Murmli l'ajoutera à la liste de courses grâce à l'IA.\n\n Tous les articles sont triés directement par catégories de supermarché pour que vous puissiez les trouver plus facilement.\n\n Une fois les articles ajoutés, vous pouvez cliquer dessus pour trouver des alternatives.",
+      "quickGuideTitle": "Guide rapide",
+      "options": "Trouvez d'autres options comme partager ou trier votre liste dans le menu (en haut à droite). Par exemple, partagez la liste avec votre partenaire pour travailler ensemble dessus. Vous pouvez annuler le partage à tout moment.",
+      "optionsTitle": "Options",
+      "start": "C'est parti !"
+    },
+    "planner": {
+      "welcomeTitle": "Planificateur de recettes",
+      "welcome": "Définissez ci-dessous pour combien de personnes et combien de recettes vous souhaitez planifier. Dans le champ de texte, vous pouvez également entrer vos souhaits en langage naturel, une IA les prendra automatiquement en compte lors de la sélection des recettes (par exemple, végétarien pour les sportifs).",
+      "optionsTitle": "Sélectionner des recettes",
+      "options": "Des recettes vous seront maintenant proposées. \nDonnez un pouce en l'air si une recette vous plaît, ou un pouce en bas si ce n'est pas le cas. \n\nLe système apprend de vos décisions pour faire de meilleures suggestions.",
+      "shoppinglistTitle": "Liste de courses et recettes",
+      "shoppinglist": "Une fois le nombre souhaité de recettes sélectionné, vous accédez automatiquement à la liste de courses. Celle-ci contient tous les ingrédients des recettes. \n\n Sous 'Recettes', vous trouverez vos recettes sélectionnées avec des instructions. Vous pouvez y évaluer les recettes et donner votre avis.",
+      "openFilter": "Ouvrir le filtre"
+    },
+    "recipes": {
+      "overview": "Voici un aperçu des recettes qui appartiennent à votre liste de courses, de vos propres recettes et de vos favoris. De là, vous pouvez les consulter.",
+      "create": "En appuyant sur le symbole plus en haut à droite, vous avez la possibilité de créer vos propres recettes. Entrez votre idée, l'IA la génère, et vous pouvez encore télécharger une image des ingrédients.",
+      "addToList": "Si vous souhaitez ajouter l'une de vos recettes ou recettes favorites à votre liste de courses, consultez la recette et ajoutez-la via le menu (trois points) en haut à droite.",
+      "overviewTitle": "Aperçu des recettes",
+      "createTitle": "Créer des recettes",
+      "addToListTitle": "Ajouter des recettes à la liste de courses"
+    },
+    "tracker": {
+      "overviewTitle": "Enregistrer les repas",
+      "overview": "Notez simplement ce que vous avez mangé. \n\nVous pouvez tout décrire en langage naturel, comme par exemple « une assiette de pâtes », nommer des produits explicites ou donner des indications précises sur les calories – comme vous le souhaitez.",
+      "calorieGoalTitle": "Votre objectif calorique",
+      "calorieGoal": "Définissez vous-même votre objectif calorique quotidien ou laissez-nous le calculer automatiquement. \n\nEntrez simplement vos données corporelles une seule fois – nous nous occupons du reste.",
+      "activityTrackingTitle": "Enregistrer les activités",
+      "activityTracking": "Enregistrez également vos activités sportives, comme par exemple « 20 minutes de jogging ». Nous calculons automatiquement combien de calories supplémentaires vous pouvez consommer – de manière totalement individuelle pour vous."
+    },
+    "setup": {
+      "aboutAppTitle": "À propos de cette application",
+      "aboutApp": "Cette application a été développée en privé pour simplifier la vie avec une liste de courses et une planification intelligente des recettes."
+    }
+  },
+  "general": {
+    "next": "Suivant",
+    "back": "Retour",
+    "error": "Erreur",
+    "errorMessage": "Une erreur s'est produite. Veuillez réessayer dans un moment ou nous signaler cette erreur.",
+    "loading": "Chargement..",
+    "close": "Fermer",
+    "save": "Enregistrer",
+    "send": "Envoyer",
+    "cancel": "Annuler",
+    "report": "Signaler",
+    "confirm": "Confirmer",
+    "start": "C'est parti",
+    "generate": "Générer",
+    "deleteRecipeDialog": {
+      "text": "Supprimer la recette",
+      "dialogMsg": "Voulez-vous vraiment supprimer la recette sélectionnée ?"
+    },
+    "information": "Information",
+    "ask": "Questions",
+    "help": "Aide",
+    "selected": "Sélectionné",
+    "discard": "Jeter",
+    "resume": "Reprendre",
+    "voiceRecording": "Enregistrement audio",
+    "details": "Détails",
+    "name": "Nom",
+    "goal": "Objectif",
+    "type": "Type",
+    "difficulty": "Difficulté",
+    "weekdays": {
+      "1": "Lundi",
+      "2": "Mardi",
+      "3": "Mercredi",
+      "4": "Jeudi",
+      "5": "Vendredi",
+      "6": "Samedi",
+      "7": "Dimanche"
+    },
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "activate": "Activer",
+    "archive": "Archive",
+    "finish": "Terminer",
+    "weeks": "Semaines",
+    "progress": "Progrès",
+    "instructions": "Instructions",
+    "day": "Jour",
+    "days": "Jours",
+    "week": "Semaine",
+    "selectPhoto": "Choisir une photo",
+    "capturePhoto": "Caméra"
+  },
+  "shoppingList": {
+    "newItemLabel": "Nouvel article",
+    "newItemPlaceholder": "Entrez le nom de l'article",
+    "notesLabel": "Notes",
+    "notesHint": "Vos notes sont automatiquement enregistrées",
+    "noItemsMessage": "Aucun article dans la liste de courses.",
+    "checkedHeader": "Coché",
+    "nameLabel": "Nom",
+    "amountLabel": "Quantité",
+    "unitLabel": "Unité",
+    "findAlternative": "Trouver une alternative",
+    "editItem": "Modifier l'entrée",
+    "showRecipe": "Afficher la recette",
+    "saveAsFavorite": "Ajouter aux favoris",
+    "removeFavorite": "Retirer des favoris",
+    "shoppingListLabel": "Liste de courses",
+    "sortList": "Trier",
+    "help": "Aide",
+    "favorites": "Favoris",
+    "shareList": "Partager la liste",
+    "inviteCode": "Code d'invitation",
+    "inviteCodeExpires": "Secondes valides",
+    "createInvite": "Créer un code",
+    "leaveList": "Quitter la liste",
+    "joinedList": "Vous avez rejoint une liste étrangère.",
+    "noSharedUsers": "La liste n'a pas encore été partagée.",
+    "joinList": "Rejoindre la liste",
+    "sortCategoriesDialog": {
+      "title": "Trier les catégories",
+      "text": "Cliquez sur une catégorie pour définir une position ou utilisez les flèches.",
+      "newPosition": "Nouvelle position",
+      "changePositon": "Changer de position"
+    },
+    "removeRecipes": {
+      "text": "Supprimer les recettes",
+      "dialogMsg": "Voulez-vous vraiment supprimer toutes les recettes de votre liste de courses ? Les ingrédients resteront sur la liste de courses et devront être supprimés séparément."
+    },
+    "removeIngredients": {
+      "text": "Supprimer les ingrédients",
+      "dialogMsg": "Voulez-vous vraiment supprimer toutes les entrées liées aux ingrédients de votre liste de courses ? Les recettes resteront visibles dans la vue des recettes."
+    },
+    "clearAll": {
+      "text": "Vider la liste de courses",
+      "dialogMsg": "Voulez-vous vraiment supprimer tous les articles de votre liste de courses ?"
+    },
+    "deleteList": {
+      "text": "Supprimer la liste de courses",
+      "dialogMsg": "Voulez-vous vraiment supprimer toute votre liste de courses ?"
+    },
+    "deleteConfirmTooltip": "Appuyez à nouveau pour confirmer.",
+    "recipeOwnership": "Cette recette appartient à : ",
+    "voiceRecordingInfo": "L'enregistrement vocal est actuellement en cours. Vous pouvez dire en langage naturel ce que vous souhaitez ajouter à votre liste de courses. Votre demande sera traitée et envoyée. Si vous souhaitez annuler l'enregistrement, vous pouvez le supprimer. Tant que vous n'envoyez pas l'enregistrement, tout reste local sur votre appareil.",
+    "categoryLabel": "Catégorie"
+  },
+  "planner": {
+    "title": "Planificateur de recettes",
+    "filter": {
+      "title": "Paramètres du filtre",
+      "servingsLabel": "Nombre de personnes",
+      "recipesLabel": "Nombre de recettes",
+      "promptLabel": "Souhaits spéciaux",
+      "promptPlaceholder": "Décrivez vos souhaits"
+    },
+    "fetchingMessage": "Vos recettes sont en cours de chargement en arrière-plan. Veuillez patienter.",
+    "resetSelectionDialog": {
+      "text": "Réinitialiser la sélection",
+      "dialogMsg": "Voulez-vous vraiment réinitialiser votre sélection de recettes ?"
+    }
+  },
+  "recipes": {
+    "title": "Recettes",
+    "shareDialog": "Partager la recette",
+    "helpDialog": "Aide sur les recettes",
+    "empty": "Vous n'avez pas encore créé de recette.",
+    "noneSelected": "Aucune recette sélectionnée.",
+    "noFavorites": "Vous n'avez pas encore de favoris.",
+    "panels": {
+      "selectedRecipes": {
+        "title": "Recettes de la liste de courses"
+      },
+      "myRecipes": {
+        "title": "Mes recettes"
+      },
+      "favoriteRecipes": {
+        "title": "Recettes favorites"
+      }
+    },
+    "createRecipeDialog": {
+      "title": "Générer une recette",
+      "text": "Décrivez votre recette aussi en détail que possible : Que doit-elle absolument contenir, que souhaitez-vous éviter ? Plus vous fournissez d'informations, mieux nous pourrons générer votre recette individuelle.\n\nAprès le processus de création, il faut environ 2 à 3 minutes pour que votre recette apparaisse sous 'Mes recettes'.\n\nVous pouvez ajouter une photo en option – soit directement depuis votre galerie, soit en prenant une nouvelle image. Cela peut être une image de votre réfrigérateur, d'ingrédients individuels ou de quelque chose qui vous rappelle votre recette souhaitée.",
+      "generatingText": "Votre recette est en cours de création. Cela peut prendre jusqu'à deux minutes. Vous la trouverez ensuite sous 'Mes recettes'."
+    },
+    "addIngredients": "Ajouter des ingrédients",
+    "addIngreditensInfo": "Êtes-vous sûr de vouloir ajouter la recette à votre liste de courses actuelle ? Tous les ingrédients seront automatiquement ajoutés.",
+    "selectPortions": "Sélectionner les portions",
+    "processingMessage": "Votre recette est en cours de création en arrière-plan. Vous serez notifié dès qu'elle sera prête.",
+    "readyMessage": "Votre recette a été créée.",
+    "downloadSelectedPdf": "Recettes sélectionnées en PDF",
+    "tips": {
+      "swipeToRemove": "Fais glisser une recette vers la gauche ou vers la droite pour la supprimer.",
+      "createOwn": "Tu peux créer tes propres recettes en utilisant l'icône «+» en haut à droite.",
+      "printPdf": "Tu veux imprimer tes recettes ? Depuis le menu à trois points en bas à droite, tu peux générer un PDF.",
+      "editOwn": "Tu peux modifier tes propres recettes à tout moment. Ouvre la recette et utilise le menu à trois points ; tu y trouveras toutes les options.",
+      "feedbackPlanner": "Une recette dans le planificateur ne te convainc pas ? Ouvre-la et donne ton avis via le menu à trois points — nous nous en occupons."
+    }
+  },
+  "recipe": {
+    "title": "Recette",
+    "recipeFor": "Recettes pour",
+    "recipePerson": "Personne",
+    "recipePersons": "Personnes",
+    "prepareIngredients": "Préparer les ingrédients",
+    "downloadPdf": "Télécharger le PDF",
+    "nutrition": {
+      "title": "Valeurs nutritionnelles par portion",
+      "kilocalories": "kCal",
+      "carbohydrates": "Glucides",
+      "fat": "Graisse",
+      "protein": "Protéine"
+    },
+    "information": {
+      "title": "Informations",
+      "healthy": "Sain",
+      "price": "Prix",
+      "difficulty": "Difficulté",
+      "sustainability": "Durabilité",
+      "preparationTime": "Préparation",
+      "everyday": "Quotidien"
+    },
+    "feedback": {
+      "title": "Retour",
+      "label": "Votre retour",
+      "success": "Merci pour votre retour !\nNous nous en occupons."
+    },
+    "editDialog": {
+      "title": "Modifier la recette",
+      "instructions": "Décrivez vos modifications",
+      "preview": "Aperçu",
+      "save": "Enregistrer les modifications",
+      "error": "Erreur lors de la modification",
+      "changes": "Modifications"
+    },
+    "menu": {
+      "addToList": "Ajouter les ingrédients à la liste",
+      "addFavorite": "Ajouter aux favoris",
+      "removeRecipe": "Supprimer la recette",
+      "removeFavorite": "Retirer des favoris",
+      "deleteRecipe": "Supprimer la recette",
+      "editRecipe": "Modifier la recette",
+      "downloadPdf": "Télécharger le PDF",
+      "feedback": "Retour",
+      "trackRecipe": "Suivre la recette"
+    }
+  },
+  "units": {
+    "gram": "Gramme",
+    "kilogram": "kg",
+    "can": "Boîte",
+    "liter": "L",
+    "milliliter": "ml",
+    "cup": "Tasse",
+    "clove": "Gousse",
+    "piece": "Pièce",
+    "tablespoon": "Cuillère à soupe",
+    "teaspoon": "Cuillère à café",
+    "breeze": "Pincée"
+  },
+  "navigation": {
+    "shoppingList": "Liste de courses",
+    "planner": "Planificateur",
+    "recipes": "Recettes",
+    "calorieCounter": "Compteur de calories",
+    "settings": "Paramètres",
+    "contact": "Contact",
+    "testPage": "Page de test",
+    "rateApp": "Évaluer l'application",
+    "shareApp": "Partager l'application"
+  },
+  "settings": {
+    "account": "Compte",
+    "title": "Paramètres",
+    "export": "Exporter les données",
+    "import": "Importer les données",
+    "deleteAccount": "Supprimer le compte",
+    "confirmDeleteTitle": "Supprimer le compte ?",
+    "confirmDeleteText": "Êtes-vous sûr de vouloir supprimer définitivement votre compte ? Cette action est irréversible.",
+    "confirmDelete": "Oui, supprimer",
+    "cancel": "Annuler",
+    "accountDeleted": "Votre compte a été supprimé avec succès.",
+    "deleteError": "Erreur lors de la suppression du compte.",
+    "importError": "Erreur lors de l'importation des données.",
+    "height": "Taille (cm)",
+    "gender": "Genre",
+    "birthyear": "Année de naissance",
+    "dietType": "Type de régime",
+    "dietLevel": "Niveau de régime",
+    "baseCalories": "Métabolisme de base (kcal)",
+    "recommendations": "Valeurs recommandées",
+    "kcal": "Calories (kcal)",
+    "protein": "Protéines (g)",
+    "carbohydrates": "Glucides (g)",
+    "fat": "Graisse (g)",
+    "importWarningTitle": "Attention : Écrasement des données",
+    "importWarningText": "L'importation écrasera toutes les données actuelles de l'utilisateur et vous serez déconnecté. Voulez-vous continuer ?",
+    "userId": "ID utilisateur",
+    "copySuccess": "Copié dans le presse-papiers !",
+    "selectStartpage": "Sélectionner la page d'accueil"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Contactez-nous via les canaux suivants",
+    "email": "Envoyer un e-mail",
+    "discord": "Discord",
+    "footer": "Nous attendons votre message avec impatience !"
+  },
+  "tracker": {
+    "today": "Aujourd'hui",
+    "bodyData": "Données corporelles",
+    "trackNewItem": "Suivre un nouvel élément",
+    "noTargetDefined": "Aucun objectif calorique défini",
+    "noItemsTracked": "Rien n'a encore été suivi.",
+    "menu": {
+      "edit": "Modifier",
+      "daily": "Quotidien",
+      "addToShoppingList": "Ajouter à la liste de courses",
+      "addToToday": "Ajouter pour aujourd'hui",
+      "remove": "Supprimer"
+    },
+    "dailyTracked": "(quotidien)",
+    "calorieGoal": "Objectif calorique",
+    "calorieCalculator": "Calculateur de calories",
+    "trackActivity": "Suivre l'activité",
+    "trackRecipe": "Suivre la recette",
+    "activityLabel": "Activité",
+    "createActivity": "Ajouter une activité",
+    "createActivityInfo": "Ajoutez ici vos activités, l'application calcule automatiquement les calories pour vous.",
+    "palOptions": {
+      "homeOffice": "Télétravail – assis, pas d'activité physique",
+      "officeWorker": "Employé de bureau – assis, peu de mouvement",
+      "teacher": "Enseignant – marche modérée, debout",
+      "salesperson": "Vendeur – debout, marchant, travail physique léger",
+      "waiter": "Serveur – beaucoup de marche, port de plateaux",
+      "nurse": "Infirmier – marche fréquente, levée de patients",
+      "constructionWorker": "Ouvrier du bâtiment – travail physique intense, levée, port",
+      "farmer": "Agriculteur – travail physique, levée, utilisation de machines",
+      "sportsTeacher": "Professeur de sport – actif, démonstration d'exercices",
+      "constructionSite": "Chantier – travail physique lourd, levée, debout",
+      "mountainGuide": "Guide de montagne – activité extrême, marche prolongée en terrain"
+    },
+    "height": "Taille (cm)",
+    "weight": "Poids (kg)",
+    "birthyear": "Année de naissance",
+    "gender": {
+      "text": "Genre",
+      "male": "Masculin",
+      "female": "Féminin"
+    },
+    "workHoursWeek": "Heures de travail par semaine",
+    "workDaysPAL": "Valeur PAL au travail",
+    "dietType": {
+      "text": "Type de régime",
+      "balanced": "Équilibré",
+      "lowCarb": "Low Carb",
+      "lowFat": "Low Fat"
+    },
+    "dietLevel": {
+      "text": "Niveau de régime",
+      "strongLose": "Perte de poids importante -25%",
+      "lose": "Perte de poids -15%",
+      "maintain": "Maintien",
+      "gain": "Prise de poids +10%",
+      "strongGain": "Prise de poids importante +20%"
+    },
+    "bodyDataInfo": "Ici, vous pouvez entrer vos données corporelles pour calculer vos objectifs caloriques. Elles sont utilisées pour déterminer vos objectifs caloriques quotidiens.",
+    "minutes": "Minutes",
+    "burned": "brûlé",
+    "calories": "Calories",
+    "kcal": "kcal",
+    "caloriesBurned": "Calories brûlées (kcal)",
+    "duration": "Durée (minutes)",
+    "calculateCalories": "Calculer les calories",
+    "errorNoBodydata": "Pour utiliser le calculateur de calories, vous devez d'abord entrer vos données corporelles.",
+    "errorBodydataActivity": "Pour utiliser le suivi des activités, vous devez d'abord entrer vos données corporelles.",
+    "selectRecipe": "Sélectionner une recette",
+    "portions": "Portions",
+    "voiceRecordingInfo": "L'enregistrement est stocké localement sur votre appareil. Si vous souhaitez envoyer le fichier audio, cliquez sur Envoyer. \nAlternativement, vous pouvez cliquer sur Jeter pour ne pas envoyer l'enregistrement.",
+    "macronutrients": "Macronutriments",
+    "carbs": "Glucides",
+    "fat": "Graisse",
+    "protein": "Protéine",
+    "noMacroTargetDefined": "Aucun objectif de macronutriments défini",
+    "enterQuestion": "Posez votre question ici...",
+    "askDialog": "Ici, vous pouvez poser des questions sur la nutrition. L'application essaiera de répondre à votre question en tenant compte de vos données corporelles ainsi que de vos entrées de compteur de calories des 14 derniers jours. Veuillez noter que les réponses sont basées sur les informations que vous avez saisies dans l'application.",
+    "addImage": "Ajouter une image",
+    "uploadImage": "Télécharger une image",
+    "captureImage": "Prendre une photo",
+    "dietLevelChange": {
+      "dietLevelBefore": "Niveau de régime avant",
+      "lastChanged": "dernière modification"
+    },
+    "descriptionLabel": "Description supplémentaire",
+    "descriptionPlaceholder": "Décrivez votre repas ou activité en rapport avec l'image"
+  },
+  "trainingPlans": {
+    "title": "Plans d'entraînement",
+    "help": {
+      "step1": {
+        "title": "Créer un plan d'entraînement",
+        "content": "Les plans d'entraînement peuvent être créés individuellement, vous pouvez décrire tout ce que vous souhaitez, pour quoi vous vous entraînez, où, combien de fois par semaine et à quelle intensité/durée."
+      },
+      "step2": {
+        "title": "Modifier le plan d'entraînement",
+        "content": "Si quelque chose ne convient pas, vous pouvez modifier les plans d'entraînement avec un langage naturel. Écrivez simplement ce qui doit être changé, et vous obtiendrez une version mise à jour."
+      },
+      "step3": {
+        "title": "S'entraîner",
+        "content": "Les plans d'entraînement sont basés sur le temps, si ceux-ci sont activés. Les plans d'entraînement actifs peuvent être suivis et enregistrés, chaque série individuellement – poids ou répétitions ou durée des séries. À la fin, vous avez la possibilité d'envoyer l'entraînement directement au compteur de calories pour suivre les calories consommées."
+      }
+    },
+    "descriptionLabelCreate": "Décrivez le plan en détail",
+    "createPlanInstructions": "Décrivez votre plan aussi précisément que possible : Que souhaitez-vous entraîner ? Combien de fois par semaine ? Dans quel environnement ? Quel type d'entraînement préférez-vous ?\n\nVous pouvez également indiquer l'intensité : légère, modérée ou intense.\n\nExemples :\n'Je souhaite aller quatre fois par semaine à la salle de sport, avec un focus sur le haut du corps. Je suis bien entraîné.'\n\n'J'ai des douleurs au dos à gauche derrière l'épaule. Créez-moi un plan avec des exercices ciblés pour un jour par semaine, afin d'améliorer ma posture et de soulager la douleur.'\n\nPlus vous fournissez d'informations, plus votre plan d'entraînement sera adapté.",
+    "subtitle": "Ici, vous pouvez créer et gérer vos plans d'entraînement.",
+    "editPlan": "Modifier le plan d'entraînement",
+    "editPlanDescription": "Décrivez ce qui doit être modifié",
+    "repetitionsShort": "Rép.",
+    "duration": "Durée",
+    "restBetweenSets": "Pause entre les séries",
+    "restAfterExercise": "Pause après l'exercice",
+    "deletePlan": "Supprimer le plan d'entraînement",
+    "activePlan": "Plan actif",
+    "confirmDeletePlan": "Voulez-vous vraiment supprimer ce plan d'entraînement ?",
+    "noPlans": "Vous n'avez pas encore créé de plans d'entraînement.",
+    "trainingDaysPerWeek": "Jours d'entraînement par semaine",
+    "addExercise": "Ajouter un exercice",
+    "removeExercise": "Supprimer l'exercice",
+    "exerciseName": "Nom de l'exercice",
+    "set": "Série",
+    "sets": "Séries",
+    "reps": "Répétitions",
+    "restTime": "Temps de repos (secondes)",
+    "savePlan": "Enregistrer le plan d'entraînement",
+    "createPlan": "Créer un plan d'entraînement",
+    "train": "S'entraîner",
+    "selectDay": "Sélectionner un jour",
+    "suggestedWeight": "Poids total suggéré",
+    "weight": "Poids (kg)",
+    "durationWeeks": "Durée (semaines)",
+    "canceled": "Le dernier entraînement a été annulé.",
+    "noPlansInfo": "Il n'y a pas encore de plans d'entraînement disponibles. Vous pouvez ajouter un nouveau plan d'entraînement avec le bouton plus en haut à droite.",
+    "activateDialog": {
+      "title": "Activer le plan d'entraînement",
+      "msg": "Lorsque vous démarrez votre plan d'entraînement, la date de début est fixée. Ensuite, vous verrez dans quelle semaine de votre plan d'entraînement vous vous trouvez.\nVoulez-vous vraiment démarrer le plan d'entraînement ?"
+    },
+    "deleteDialog": {
+      "title": "Supprimer le plan d'entraînement",
+      "msg": "Voulez-vous vraiment supprimer ce plan d'entraînement ?"
+    },
+    "finishDialog": {
+      "title": "Terminer l'entraînement",
+      "msg": "Lorsque vous terminez l'entraînement, la date de début et tous vos progrès sont réinitialisés. Êtes-vous sûr de vouloir terminer l'entraînement ?"
+    },
+    "processingMessage": "Votre plan d'entraînement est en cours de création en arrière-plan. Vous serez notifié dès qu'il sera prêt.",
+    "readyMessage": "Votre plan d'entraînement a été créé.",
+    "editDialog": {
+      "preview": "Aperçu",
+      "save": "Enregistrer les modifications",
+      "changes": "Modifications",
+      "error": "Erreur lors de la modification"
+    },
+    "statistics": "Statistiques",
+    "totalWorkouts": "Séances terminées",
+    "lastWorkout": "Dernière séance",
+    "lastExercises": "5 derniers exercices",
+    "noWorkoutsYet": "Aucune séance terminée pour le moment.",
+    "ask": "Poser des questions",
+    "enterQuestion": "Posez une question sur ce plan",
+    "askDialog": "Vous pouvez poser des questions sur ce plan d'entraînement. Les derniers journaux d'entraînement (maximum 10) seront envoyés.",
+    "suggestedDuration": "Durée recommandée",
+    "continuePlan": "Créer la suite",
+    "continuePlanTitle": "Suite pour {name}",
+    "continuePlanDescription": "Créez un nouveau plan à partir de ce programme d'entraînement. Vous pouvez, si vous le souhaitez, ajouter des préférences.",
+    "continuePlanNotesLabel": "Remarques supplémentaires (optionnelles)",
+    "continuePlanAction": "Créer la suite"
+  },
+  "training": {
+    "title": "Journal d'entraînement",
+    "continue": "Continuer l'entraînement",
+    "discard": "Abandonner l'entraînement",
+    "exerciseListPlaceholder": "Liste des exercices en cours de chargement...",
+    "noPlan": "Aucun entraînement prévu pour aujourd'hui ou le plan ne contient aucun exercice.",
+    "estimatedTimePlaceholder": "environ X min",
+    "startTraining": "Commencer l'entraînement",
+    "setInfo": "Série {current} sur {total}",
+    "finishSet": "Terminer la série",
+    "noDescription": "Aucune description disponible.",
+    "countdown": "Prochaine série dans {seconds} secondes...",
+    "noDaySelected": "Aucun jour sélectionné",
+    "exercise": "Exercice",
+    "exercises": "Exercices",
+    "seconds": "Secondes",
+    "secondsShort": "Sec.",
+    "noPreviousLog": "Il n'y a pas encore de journal précédent.",
+    "noImageAvailable": "Image non disponible pour le moment.",
+    "skipRest": "Passer la pause",
+    "completeSet": "Terminer la série",
+    "timeSeconds": "Temps (sec.)",
+    "time": "Temps",
+    "exerciseCompleted": "Exercice terminé",
+    "nextExercise": "Exercice suivant",
+    "allExercisesDone": "Tous les exercices terminés",
+    "finishTraining": "Terminer l'entraînement",
+    "noCurrentLog": "Il n'y a pas d'entraînement en cours.",
+    "loadingLog": "Chargement du journal d'entraînement...",
+    "suggestedValues": "Valeurs suggérées",
+    "summaryTitle": "Résumé de l'entraînement",
+    "backToPlans": "Retour aux plans d'entraînement",
+    "lastLog": "Dernière entrée :",
+    "actualLog": "Entrée actuelle :",
+    "description": "Description",
+    "getFeedback": "Demander un retour",
+    "feedbackTitle": "Retour",
+    "startTimer": "Démarrer le minuteur",
+    "stopTimer": "Arrêter le minuteur",
+    "timer": "Minuteur",
+    "difficulty": "Effort",
+    "statistics": "Statistiques",
+    "totalMovedWeight": "Poids total soulevé",
+    "totalDuration": "Durée totale",
+    "totalSets": "Nombre total de séries",
+    "avgWeightPerExercise": "Poids moyen par exercice",
+    "trackCalories": "Suivre les calories",
+    "caloriesBurned": "Calories enregistrées : {calories} kcal",
+    "cancelTraining": "Annuler l'entraînement",
+    "cancelTrainingConfirm": "Veux-tu vraiment annuler l'entraînement ?",
+    "useLastValue": "Saisir la dernière valeur ({value})"
+  },
+  "adminStats": {
+    "title": "Statistiques",
+    "usersToday": "Nouveaux utilisateurs aujourd'hui",
+    "usersWeek": "Nouveaux utilisateurs cette semaine",
+    "activeToday": "Utilisateurs actifs aujourd'hui",
+    "activeWeek": "Utilisateurs actifs cette semaine",
+    "recipes24h": "Recettes créées (24h)",
+    "trainingPlans24h": "Plans d'entraînement créés (24h)",
+    "plannerUsersTotal": "Nombre total d'utilisateurs du planificateur",
+    "plannerToday": "Utilisateurs avec planificateur aujourd'hui",
+    "plannerWeek": "Utilisateurs avec planificateur cette semaine",
+    "shoppingUpdatedToday": "Listes de courses mises à jour aujourd'hui",
+    "shoppingUpdatedWeek": "Listes de courses mises à jour cette semaine",
+    "calorieTrackerTotal": "Utilisateurs avec compteur de calories au total",
+    "calorieTrackerToday": "Utilisateurs avec compteur de calories aujourd'hui",
+    "calorieTrackerWeek": "Utilisateurs avec compteur de calories cette semaine",
+    "trainingLogsWeek": "Journaux d'entraînement créés (semaine)"
+  },
+  "adminTools": {
+    "title": "Outils d'administration",
+    "clearCache": "Vider le cache LLM",
+    "resetImages": "Réinitialiser les images d'exercice",
+    "confirm": "Confirmer ({seconds})",
+    "success": "Action effectuée"
+  }
+}

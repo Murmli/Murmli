@@ -1,0 +1,21 @@
+name: ✨ Feature Request
+description: Schlage eine neue Funktion oder Verbesserung vor
+title: "[Feature] "
+labels: [enhancement]
+assignees:
+  - dein-github-name
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Danke für deinen Vorschlag! Bitte beschreibe kurz, was du dir wünschst.
+
+  - type: textarea
+    id: feature
+    attributes:
+      label: Gewünschte Funktion
+      description: Beschreibe, was du brauchst oder welche Idee du hast.
+      placeholder: |
+        Ich wünsche mir eine Funktion, die es ermöglicht, ...
+    validations:
+      required: true

@@ -1,0 +1,1154 @@
+/* General Styles */
+:root {
+  --primary-color: #ff9800;
+  /* Orange as primary */
+  --primary-dark: #e68a00;
+  /* Darker orange */
+  --secondary-color: #4CAF50;
+  /* Green for contrast (buttons) */
+  --secondary-dark: #45a049;
+  /* Darker green */
+  --light-gray: #f8f8f8;
+  --dark-gray: #333;
+  --text-color: #555;
+  --white: #fff;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--white);
+  color: var(--text-color);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+  /* Include padding in width calculation */
+}
+
+main {
+  flex-grow: 1;
+  /* Ensure footer stays at the bottom */
+  padding: 40px 0;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--dark-gray);
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.8em;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 2em;
+  margin-top: 2.5rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+}
+
+h3 {
+  font-size: 1.5em;
+  color: var(--primary-color);
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+/* Header */
+.main-header {
+  background-color: var(--primary-color);
+  /* Use orange */
+  color: var(--white);
+  padding: 20px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.main-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.main-header h1 {
+  margin: 0;
+  font-size: 2em;
+  color: var(--white);
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: var(--white);
+  margin: 2px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+.main-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.main-nav a {
+  color: var(--white);
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.main-nav a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+    z-index: 1001;
+  }
+
+  .main-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: var(--primary-color);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    padding: 80px 20px 20px;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .main-nav.active {
+    right: 0;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .main-nav li {
+    margin-bottom: 10px;
+  }
+
+  .main-nav a {
+    display: block;
+    padding: 16px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+  }
+
+  .main-nav a:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Hamburger Animation */
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+}
+
+
+/* Hero Section */
+.hero {
+  background-color: var(--light-gray);
+  padding: 60px 0;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3em;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 15px 35px;
+  background-color: var(--secondary-color);
+  /* Use green for button */
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: bold;
+  border-radius: var(--border-radius);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: var(--box-shadow);
+  border: none;
+  /* Remove default border */
+  cursor: pointer;
+  /* Indicate it's clickable */
+}
+
+.cta-button:hover {
+  background-color: var(--secondary-dark);
+  /* Darker green */
+  transform: translateY(-2px);
+  text-decoration: none;
+  /* Remove underline on hover */
+  color: var(--white);
+}
+
+/* Calorie Calculator Section */
+.calorie-calculator {
+  padding: 60px 0;
+  background-color: var(--light-gray);
+}
+
+.calorie-calculator__grid {
+  display: grid;
+  grid-template-areas:
+    "form info"
+    "result result";
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+  margin-top: 30px;
+}
+
+.calorie-calculator__form {
+  grid-area: form;
+}
+
+.calorie-calculator__info {
+  grid-area: info;
+}
+
+.calorie-calculator__result {
+  grid-area: result;
+  margin-top: 0;
+}
+
+/* Mobile Anpassung für die neue Struktur */
+@media (max-width: 768px) {
+  .calorie-calculator__grid {
+    grid-template-areas:
+      "form"
+      "result"
+      "info";
+    grid-template-columns: 1fr;
+  }
+}
+
+.calorie-calculator__form,
+.calorie-calculator__info {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 25px;
+}
+
+.calorie-calculator__form {
+  display: grid;
+  gap: 20px;
+}
+
+.calorie-calculator__form .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.calorie-calculator__form label,
+.calorie-calculator__form .form-label {
+  font-weight: 600;
+  color: var(--dark-gray);
+}
+
+.calorie-calculator__form input,
+.calorie-calculator__form select {
+  padding: 12px;
+  border-radius: var(--border-radius);
+  border: 1px solid #d9d9d9;
+  font-size: 1rem;
+  color: var(--dark-gray);
+  background-color: var(--white);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.calorie-calculator__form input:focus,
+.calorie-calculator__form select:focus {
+  outline: 2px solid var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.calorie-calculator__form .radio-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.calorie-calculator__form .radio-group label {
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.calorie-calculator__button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 20px;
+  background-color: var(--secondary-color);
+  color: var(--white);
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.calorie-calculator__button:hover {
+  background-color: var(--secondary-dark);
+  transform: translateY(-2px);
+}
+
+.calorie-calculator__hint {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.calorie-calculator__info {
+  line-height: 1.7;
+}
+
+.calorie-calculator__formula {
+  margin: 1.5rem 0;
+  padding: 18px 20px;
+  background-color: var(--white);
+  border-left: 4px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.calorie-calculator__formula strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--primary-dark);
+}
+
+
+.calorie-calculator__list {
+  margin: 0 0 1rem 1.2rem;
+  padding: 0;
+  list-style: disc;
+}
+
+.calorie-calculator__list li {
+  margin-bottom: 0.5rem;
+}
+
+.calorie-calculator__result {
+  margin-top: 30px;
+  background-color: #fff6e6;
+  border-radius: var(--border-radius);
+  padding: 25px;
+  box-shadow: var(--box-shadow);
+}
+
+.calorie-calculator__result h3 {
+  margin-top: 0;
+  color: var(--primary-color);
+}
+
+.calorie-calculator__result p {
+  margin-bottom: 0.8rem;
+}
+
+.calorie-calculator__summary {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--dark-gray);
+}
+
+.calorie-calculator__breakdown {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 1rem 0 1.5rem;
+  padding: 0;
+}
+
+.calorie-calculator__breakdown dt {
+  font-weight: 600;
+  color: var(--dark-gray);
+}
+
+.calorie-calculator__breakdown dd {
+  margin: 0.25rem 0 0;
+  font-size: 1.1rem;
+  color: var(--primary-dark);
+}
+
+.calorie-calculator__targets {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.calorie-calculator__targets th {
+  text-align: left;
+  font-size: 0.95rem;
+  color: var(--dark-gray);
+  padding-bottom: 0.5rem;
+}
+
+.calorie-calculator__targets td {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.calorie-calculator__targets tr:last-child td {
+  border-bottom: none;
+}
+
+.calorie-calculator__targets strong {
+  color: var(--primary-color);
+}
+
+.calorie-calculator__error {
+  color: #b00020;
+  font-weight: 600;
+}
+
+/* Mobile-optimierte Ergebnisanzeige */
+.calorie-calculator__mobile-breakdown {
+  display: grid;
+  gap: 12px;
+  margin: 1rem 0 1.5rem;
+}
+
+.breakdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: var(--light-gray);
+  border-radius: 12px;
+  border-left: 4px solid var(--primary-color);
+}
+
+.breakdown-label {
+  font-weight: 600;
+  color: var(--dark-gray);
+  font-size: 0.95rem;
+}
+
+.breakdown-value {
+  font-weight: 700;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+.calorie-calculator__mobile-hint {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+.calorie-calculator__mobile-targets {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.target-card {
+  background: var(--white);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+  border: 2px solid var(--light-gray);
+}
+
+.target-card h4 {
+  margin: 0 0 8px 0;
+  font-size: 0.95rem;
+  color: var(--dark-gray);
+  font-weight: 600;
+}
+
+.target-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.calorie-calculator__mobile-note {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--light-gray);
+}
+
+/* Responsive Anpassungen für mobile Ergebnisanzeige */
+@media (max-width: 360px) {
+  .breakdown-item {
+    padding: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .target-card {
+    padding: 16px;
+  }
+
+  .target-value {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .calorie-calculator__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .calorie-calculator__result {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .calorie-calculator {
+    padding: 40px 0;
+  }
+
+  .calorie-calculator__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  #calorie-calculator-form,
+  .calorie-calculator__info {
+    padding: 20px 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  #calorie-calculator-form .radio-group {
+    gap: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Mobile-Optimierungen für Kalorienrechner */
+@media (max-width: 480px) {
+  .calorie-calculator__form .form-field {
+    gap: 8px;
+  }
+
+  .calorie-calculator__form input,
+  .calorie-calculator__form select {
+    padding: 16px;
+    font-size: 1.1rem;
+    min-height: 52px;
+    border-radius: 12px;
+  }
+
+  .calorie-calculator__form .radio-group label {
+    font-size: 1.1rem;
+    padding: 12px 16px;
+    background: var(--light-gray);
+    border-radius: 12px;
+    margin-bottom: 8px;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+  .calorie-calculator__form .radio-group label:active {
+    background: var(--primary-color);
+    color: var(--white);
+  }
+
+  .calorie-calculator__form input[type="radio"] {
+    transform: scale(1.5);
+    margin-right: 12px;
+  }
+
+  .calorie-calculator__button {
+    padding: 18px 24px;
+    font-size: 1.2rem;
+    min-height: 60px;
+    border-radius: 12px;
+    font-weight: 700;
+  }
+
+  .calorie-calculator__result {
+    padding: 24px 20px;
+    border-radius: 16px;
+  }
+
+  .calorie-calculator__breakdown {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .calorie-calculator__targets {
+    font-size: 0.9rem;
+  }
+
+  .calorie-calculator__targets th,
+  .calorie-calculator__targets td {
+    padding: 12px 8px;
+  }
+}
+
+/* Touch-Optimierungen für alle interaktiven Elemente */
+@media (hover: none) and (pointer: coarse) {
+
+  .cta-button,
+  .calorie-calculator__button {
+    min-height: 44px;
+  }
+
+  .main-header nav a {
+    padding: 12px 16px;
+    display: block;
+  }
+
+  .feature-item {
+    padding: 20px;
+  }
+}
+
+/* Verbesserte Lesbarkeit auf kleinen Geräten */
+@media (max-width: 360px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .calorie-calculator__form,
+  .calorie-calculator__info {
+    padding: 16px 12px;
+  }
+
+  .calorie-calculator__formula {
+    padding: 16px;
+    font-size: 0.9rem;
+  }
+}
+
+
+/* Features Section */
+.features {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+  text-align: left;
+}
+
+.feature-item {
+  background-color: var(--white);
+  padding: 25px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+}
+
+.feature-item i {
+  /* Style for potential icons */
+  font-size: 2.5em;
+  color: var(--primary-color);
+  /* Use orange */
+
+
+  /* Placeholder for feature images */
+  .feature-image-placeholder {
+    background-color: #e0e0e0;
+    /* Light gray background */
+    height: 180px;
+    /* Adjust height as needed */
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-style: italic;
+    font-size: 0.9em;
+  }
+
+  margin-bottom: 15px;
+  display: block;
+  /* Center icon */
+  text-align: center;
+}
+
+/* About Section */
+
+
+/* Video Trailer Section */
+.trailer-section {
+  padding: 50px 0;
+  background-color: var(--light-gray);
+  text-align: center;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 800px;
+  /* Limit max width */
+  margin: 20px auto;
+  background-color: #000;
+  /* Black background while loading */
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.about {
+  background-color: var(--light-gray);
+  padding: 40px 0;
+}
+
+/* Footer */
+.main-footer {
+  background-color: var(--dark-gray);
+  color: var(--light-gray);
+  padding: 30px 0;
+  margin-top: auto;
+  /* Push footer to bottom */
+  font-size: 0.9em;
+}
+
+.main-footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  /* Allow wrapping on smaller screens */
+  gap: 15px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 15px;
+}
+
+.footer-links a {
+  color: var(--light-gray);
+}
+
+.footer-links a:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+.footer-copy {
+  text-align: right;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.2em;
+  }
+
+  .hero h1 {
+    font-size: 2.5em;
+  }
+
+  h2 {
+    font-size: 1.8em;
+  }
+
+  .hero p {
+    font-size: 1.1em;
+  }
+
+  .main-header .container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .main-header nav ul {
+    justify-content: center;
+  }
+
+  .main-footer .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-copy {
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-button {
+    padding: 16px 30px;
+    font-size: 1.1em;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .feature-item {
+    padding: 20px;
+    margin-bottom: 15px;
+  }
+
+  .feature-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  /* Verbesserte Typografie für Mobile */
+  h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    line-height: 1.4;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+}
+
+/* Noch kleinere Geräte */
+@media (max-width: 360px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .container {
+    padding: 0 12px;
+  }
+
+  .feature-item {
+    padding: 16px;
+  }
+}
+
+/* Verbesserte Lesbarkeit für lange Texte */
+.about p,
+.calorie-calculator__info p {
+  line-height: 1.7;
+  text-align: justify;
+}
+
+/* Smooth Scrolling für Anchor Links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Verbesserte Focus-States für Accessibility */
+a:focus,
+button:focus,
+input:focus,
+select:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Loading Animation für Buttons */
+.calorie-calculator__button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.calorie-calculator__button:disabled::after {
+  content: '...';
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+
+  0%,
+  20% {
+    content: '.';
+  }
+
+  40% {
+    content: '..';
+  }
+
+  60%,
+  100% {
+    content: '...';
+  }
+}
+
+/* Specific styles for datenschutz.html */
+.policy-page .main-header {
+  /* Ensure policy header also uses primary color */
+  background-color: var(--primary-color);
+}
+
+.policy-page .policy-page-header {
+  /* Specific header for policy content area */
+  background-color: var(--light-gray);
+  padding: 30px 0;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.policy-page .policy-page-header h1 {
+  color: var(--dark-gray);
+  font-size: 2.5em;
+  margin-bottom: 0.5rem;
+}
+
+.policy-page .policy-page-header p {
+  color: var(--text-color);
+  font-size: 1.1em;
+  margin-bottom: 0;
+}
+
+.policy-page .container {
+  background-color: var(--white);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  margin-bottom: 40px;
+}
+
+.policy-page h2 {
+  color: var(--primary-color);
+  /* Use orange */
+  border-bottom: none;
+  /* Remove border from index */
+  margin-top: 1.5rem;
+  padding-bottom: 0;
+}
+
+.policy-page ul {
+  list-style: disc;
+  margin-left: 20px;
+}
+
+.policy-page footer.main-footer {
+  /* Ensure policy footer matches */
+  background-color: var(--dark-gray);
+  color: var(--light-gray);
+  padding: 30px 0;
+  margin-top: auto;
+  font-size: 0.9em;
+}
+
+/* Image Modal (Lightbox) Styles */
+.image-modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1000;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.85);
+  /* Black w/ opacity */
+  padding-top: 60px;
+  /* Location of the box */
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  animation-name: zoom;
+  animation-duration: 0.4s;
+}
+
+/* Add Animation */
+@keyframes zoom {
+  from {
+    transform: scale(0)
+  }
+
+  to {
+    transform: scale(1)
+  }
+}
+
+/* The Close Button */
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  color: #bbb;
+  text-decoration: none;
+}
+
+/* Image Caption (optional) */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+  /* Adjust as needed */
+}
+
+/* Responsive adjustments */
+@media (max-width: 700px) {
+  .modal-content {
+    width: 95%;
+  }
+}

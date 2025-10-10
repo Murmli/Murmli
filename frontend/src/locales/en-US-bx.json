@@ -1,0 +1,561 @@
+{
+  "greeting": "Hahllo",
+  "goodbye": "Bye",
+  "help": {
+    "shoppinglist": {
+      "languagePrompt": "Fuhst, pick yah language 'nd yah stahtin' page, to continue with Murmli.",
+      "languageTitle": "Language Selection",
+      "selectLanguage": "Select Language",
+      "welcome": "Welcome to Murmli, yah smaht app fuh recipes, shoppin', 'nd nutrition.\n\n This app uses AI to make translations, interpretations, 'nd recipe selections a breeze. You can even create yah own recipes 'nd add 'em directly to the shoppin' list to make yah life moah efficient.",
+      "welcomeTitle": "Welcome",
+      "quickGuide": "Just type what yah need in the input field, 'nd Murmli adds it to the shoppin' list with AI.\n\n Ev'rything's sorted by supermarket categories so yah can find 'em easy.\n\n Once items ah added, yah can click on 'em to find alternatives.",
+      "quickGuideTitle": "Quick Guide",
+      "options": "Find moah options like sharin' or sortin' yah list in the menu (top right). Share the list with yah pahtnah to work togethah. Yah can revoke sharin' any time.",
+      "optionsTitle": "Options",
+      "start": "Let's go!"
+    },
+    "planner": {
+      "welcomeTitle": "Recipe Plannah",
+      "welcome": "Set how many folks 'nd recipes yah wanna plan for below. In the text field, yah can also add yah wishes in natural language, an AI will automatically consider 'em when choosin' recipes (e.g., vegetarian for athletes).",
+      "optionsTitle": "Select Recipes",
+      "options": "Yah'll see recipes now. \nGive a thumbs up if yah like a recipe, or a thumbs down if not. \n\nThe system learns from yah choices to make bettah suggestions.",
+      "shoppinglistTitle": "Shoppin' List 'nd Recipes",
+      "shoppinglist": "Once yah've picked the desired number of recipes, you'll automagically go to the shoppin' list. It includes all ingredients for the recipes. \n\n Under 'Recipes', yah'll find yah chosen recipes with instructions. There, yah can rate 'em 'nd give feedback.",
+      "openFilter": "Open Filter"
+    },
+    "recipes": {
+      "overview": "Here's an overview of recipes belongin' to yah shoppin' list, yah own recipes, 'nd favorites. From there, yah can access 'em.",
+      "create": "On the plus symbol top right, yah can create yah own recipes. Type yah idea, the AI generates it, 'nd yah can upload a pic of ingredients.",
+      "addToList": "If yah wanna add one of yah recipes or favorite recipes to yah shoppin' list, open the recipe 'nd add it through the menu (three dots) top right.",
+      "overviewTitle": "Recipes Overview",
+      "createTitle": "Create Recipes",
+      "addToListTitle": "Add Recipes to Shoppin' List"
+    },
+    "tracker": {
+      "overviewTitle": "Track Meals",
+      "overview": "Just jot down what yah ate. \n\nYah can describe it in natural language, like “a plate of pasta”, name specific products, or give exact calorie counts – up to yah.",
+      "calorieGoalTitle": "Yah Calorie Goal",
+      "calorieGoal": "Set yah daily calorie goal yahself or let us calculate it automagically. \n\nJust enter yah body data once – we'll handle the rest.",
+      "activityTrackingTitle": "Track Activities",
+      "activityTracking": "Track yah sporty activities too, like “20 minutes joggin'”. We'll automagically calculate how many extra calories yah can consume – just fuh yah."
+    },
+    "setup": {
+      "aboutAppTitle": "About This App",
+      "aboutApp": "This app was privately developed to simplify life with a shoppin' list 'nd intelligent recipe plannin'."
+    }
+  },
+  "general": {
+    "next": "Next",
+    "back": "Back",
+    "error": "Erroh",
+    "errorMessage": "An erroh occurred. Please try again soon or report this erroh.",
+    "loading": "Loadin'..",
+    "close": "Close",
+    "save": "Save",
+    "send": "Send",
+    "cancel": "Cancel",
+    "report": "Report",
+    "confirm": "Confirm",
+    "start": "Let's go",
+    "generate": "Generate",
+    "deleteRecipeDialog": {
+      "text": "Remove Recipe",
+      "dialogMsg": "Are yah sure yah wanna remove the selected recipe?"
+    },
+    "information": "Information",
+    "ask": "Ask",
+    "help": "Help",
+    "selected": "Selected",
+    "discard": "Discard",
+    "resume": "Resume",
+    "voiceRecording": "Audio Recordin'",
+    "details": "Details",
+    "name": "Name",
+    "goal": "Goal",
+    "type": "Type",
+    "difficulty": "Difficulty",
+    "weekdays": {
+      "1": "Monday",
+      "2": "Tuesday",
+      "3": "Wednesday",
+      "4": "Thursday",
+      "5": "Friday",
+      "6": "Saturday",
+      "7": "Sunday"
+    },
+    "edit": "Edit",
+    "delete": "Delete",
+    "activate": "Activate",
+    "archive": "Archive",
+    "finish": "Finish",
+    "weeks": "Weeks",
+    "progress": "Progress",
+    "instructions": "Instructions",
+    "day": "Day",
+    "days": "Days",
+    "week": "Week",
+    "selectPhoto": "Select Photo",
+    "capturePhoto": "Camera"
+  },
+  "shoppingList": {
+    "newItemLabel": "New Item",
+    "newItemPlaceholder": "Enter item name",
+    "notesLabel": "Notes",
+    "notesHint": "Yah notes ah saved automagically",
+    "noItemsMessage": "No items in the shoppin' list.",
+    "checkedHeader": "Checked Off",
+    "nameLabel": "Name",
+    "amountLabel": "Amount",
+    "unitLabel": "Unit",
+    "findAlternative": "Find Alternative",
+    "editItem": "Edit Entry",
+    "showRecipe": "Show Recipe",
+    "saveAsFavorite": "Add to Favorites",
+    "removeFavorite": "Remove from Favorites",
+    "shoppingListLabel": "Shoppin' List",
+    "sortList": "Sort",
+    "help": "Help",
+    "favorites": "Favorites",
+    "shareList": "Share List",
+    "inviteCode": "Invite Code",
+    "inviteCodeExpires": "Seconds valid",
+    "createInvite": "Create Code",
+    "leaveList": "Leave List",
+    "joinedList": "Yah've joined a foreign list.",
+    "noSharedUsers": "The list hasn't been shared yet.",
+    "joinList": "Join List",
+    "sortCategoriesDialog": {
+      "title": "Sort Categories",
+      "text": "Click on a category to set a position, or use the arrows.",
+      "newPosition": "New Position",
+      "changePositon": "Change Position"
+    },
+    "removeRecipes": {
+      "text": "Remove Recipes",
+      "dialogMsg": "Are yah sure yah wanna remove all recipes from yah shoppin' list? Ingredients stay on the list 'nd need to be deleted separately."
+    },
+    "removeIngredients": {
+      "text": "Remove Ingredients",
+      "dialogMsg": "Are yah sure yah wanna remove all ingredient-related entries from yah shoppin' list? Recipes stay in the recipe view."
+    },
+    "clearAll": {
+      "text": "Clear Shoppin' List",
+      "dialogMsg": "Are yah sure yah wanna remove all items from yah shoppin' list?"
+    },
+    "deleteList": {
+      "text": "Delete Shoppin' List",
+      "dialogMsg": "Are yah sure yah wanna delete yah entire shoppin' list?"
+    },
+    "deleteConfirmTooltip": "Press again to confirm.",
+    "recipeOwnership": "This recipe belongs to: ",
+    "voiceRecordingInfo": "Voice recordin' is currently runnin'. Yah can say in natural language what should be on yah shoppin' list. Yah request is processed 'nd sent. If yah wanna discard the recordin', yah can delete it. As long as yah don't send the recordin', it stays local on yah device.",
+    "categoryLabel": "Category"
+  },
+  "planner": {
+    "title": "Recipe Plannah",
+    "filter": {
+      "title": "Filter Settings",
+      "servingsLabel": "Number of People",
+      "recipesLabel": "Number of Recipes",
+      "promptLabel": "Special Requests",
+      "promptPlaceholder": "Describe yah requests"
+    },
+    "fetchingMessage": "Yah recipes ah loadin' in the background. Please wait.",
+    "resetSelectionDialog": {
+      "text": "Reset Selection",
+      "dialogMsg": "Are yah sure yah wanna reset yah recipe selection?"
+    }
+  },
+  "recipes": {
+    "title": "Recipes",
+    "shareDialog": "Share Recipe",
+    "helpDialog": "Recipes Help",
+    "empty": "Yah haven't created a recipe yet.",
+    "noneSelected": "No recipes selected.",
+    "noFavorites": "Yah don't have any favorites yet.",
+    "panels": {
+      "selectedRecipes": {
+        "title": "Recipes from the Shoppin' List"
+      },
+      "myRecipes": {
+        "title": "My Recipes"
+      },
+      "favoriteRecipes": {
+        "title": "Favorite Recipes"
+      }
+    },
+    "createRecipeDialog": {
+      "title": "Generate Recipe",
+      "text": "Describe yah recipe as detailed as possible: What must be included, what do yah wanna avoid? The more info yah give, the bettah we can generate yah individual recipe.\n\nAfter the creation process, it takes about 2–3 minutes fuh yah recipe to appear undah 'My Recipes'.\n\nOptionally, yah can add a photo – eithah from yah gallery or by takin' a new pic. It could be a pic of yah fridge, individual ingredients, or somethin' that reminds yah of yah desired recipe.",
+      "generatingText": "Yah recipe is bein' created. This can take up to two minutes. Then yah'll find it undah 'My Recipes'."
+    },
+    "addIngredients": "Add Ingredients",
+    "addIngreditensInfo": "Ah yah sure yah wanna add the recipe to yah current shoppin' list? All ingredients will be added automagically.",
+    "selectPortions": "Select Portions",
+    "processingMessage": "Yah recipe is bein' created in the background. Yah'll be notified when it's ready.",
+    "readyMessage": "Yah recipe has been created.",
+    "downloadSelectedPdf": "Download selected recipes as PDF",
+    "tips": {
+      "swipeToRemove": "Swipe ovah a recipe left o' right ta remove it.",
+      "createOwn": "Tap the plus icon up top on the right ta create ya own recipes.",
+      "printPdf": "Wanna print ya recipes? Open the three-dot menu down at the bottom right an' you can make a PDF.",
+      "editOwn": "You can edit ya own recipes any time. Open the recipe an' use the three-dot menu — you'll find all the options theah.",
+      "feedbackPlanner": "Not likin' a recipe from the planner? Open it an' gimme feedback through the three-dot menu — we'll take cah of it."
+    }
+  },
+  "recipe": {
+    "title": "Recipe",
+    "recipeFor": "Recipe fuh",
+    "recipePerson": "Person",
+    "recipePersons": "People",
+    "prepareIngredients": "Prepare Ingredients",
+    "downloadPdf": "Download PDF",
+    "nutrition": {
+      "title": "Nutrition per Portion",
+      "kilocalories": "kCal",
+      "carbohydrates": "Carbs",
+      "fat": "Fat",
+      "protein": "Protein"
+    },
+    "information": {
+      "title": "Information",
+      "healthy": "Healthy",
+      "price": "Price",
+      "difficulty": "Difficulty",
+      "sustainability": "Sustainability",
+      "preparationTime": "Preparation",
+      "everyday": "Everyday"
+    },
+    "feedback": {
+      "title": "Feedback",
+      "label": "Yah Feedback",
+      "success": "Thanks fuh yah feedback!\nWe'll take care of it."
+    },
+    "editDialog": {
+      "title": "Edit Recipe",
+      "instructions": "Describe yah changes",
+      "preview": "Preview",
+      "save": "Save Changes",
+      "error": "Erroh editin'",
+      "changes": "Changes"
+    },
+    "menu": {
+      "addToList": "Add Ingredients to List",
+      "addFavorite": "Add to Favorite",
+      "removeRecipe": "Remove Recipe",
+      "removeFavorite": "Remove Favorite",
+      "deleteRecipe": "Delete Recipe",
+      "editRecipe": "Edit Recipe",
+      "downloadPdf": "Download PDF",
+      "feedback": "Feedback",
+      "trackRecipe": "Track Recipe"
+    }
+  },
+  "units": {
+    "gram": "Gramm",
+    "kilogram": "kg",
+    "can": "Can",
+    "liter": "L",
+    "milliliter": "ml",
+    "cup": "Cup",
+    "clove": "Clove",
+    "piece": "Piece",
+    "tablespoon": "Tbsp",
+    "teaspoon": "Tsp",
+    "breeze": "Pinch"
+  },
+  "navigation": {
+    "shoppingList": "Shoppin' List",
+    "planner": "Plannah",
+    "recipes": "Recipes",
+    "calorieCounter": "Calorie Countah",
+    "settings": "Settings",
+    "contact": "Contact",
+    "testPage": "Test Page",
+    "rateApp": "Rate App",
+    "shareApp": "Share App"
+  },
+  "settings": {
+    "account": "Account",
+    "title": "Settings",
+    "export": "Export Data",
+    "import": "Import Data",
+    "deleteAccount": "Delete Account",
+    "confirmDeleteTitle": "Delete Account?",
+    "confirmDeleteText": "Ah yah sure yah wanna delete yah account permanently? This action can't be undone.",
+    "confirmDelete": "Yes, delete",
+    "cancel": "Cancel",
+    "accountDeleted": "Yah account has been successfully deleted.",
+    "deleteError": "Erroh deletin' account.",
+    "importError": "Erroh importin' data.",
+    "height": "Height (cm)",
+    "gender": "Gendah",
+    "birthyear": "Birth Year",
+    "dietType": "Diet Type",
+    "dietLevel": "Diet Level",
+    "baseCalories": "Base Metabolism (kcal)",
+    "recommendations": "Recommended Values",
+    "kcal": "Calories (kcal)",
+    "protein": "Protein (g)",
+    "carbohydrates": "Carbs (g)",
+    "fat": "Fat (g)",
+    "importWarningTitle": "Caution: Overwrite Data",
+    "importWarningText": "Importin' will overwrite all current user data 'nd yah'll be logged out. Wanna continue?",
+    "userId": "User ID",
+    "copySuccess": "Copied to clipboard!",
+    "selectStartpage": "Select Start Page"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Reach us through the followin' channels",
+    "email": "Send Email",
+    "discord": "Discord",
+    "footer": "We look forward to yah message!"
+  },
+  "tracker": {
+    "today": "Today",
+    "bodyData": "Body Data",
+    "trackNewItem": "Track New Entry",
+    "noTargetDefined": "No calorie goal defined",
+    "noItemsTracked": "Nothin' tracked yet.",
+    "menu": {
+      "edit": "Edit",
+      "daily": "Daily",
+      "addToShoppingList": "Add to Shoppin' List",
+      "addToToday": "Add fuh today",
+      "remove": "Remove"
+    },
+    "dailyTracked": "(daily)",
+    "calorieGoal": "Calorie Goal",
+    "calorieCalculator": "Calorie Calculatah",
+    "trackActivity": "Track Activity",
+    "trackRecipe": "Track Recipe",
+    "activityLabel": "Activity",
+    "createActivity": "Add Activity",
+    "createActivityInfo": "Add yah activities here, the app calculates the calories fuh yah automagically.",
+    "palOptions": {
+      "homeOffice": "Home Office – sittin', no physical activity",
+      "officeWorker": "Office Workah – sittin', low movement",
+      "teacher": "Teachah – moderate walkin', standin'",
+      "salesperson": "Salesperson – standin', walkin', light physical work",
+      "waiter": "Waitah – lots of walkin', carryin' plates",
+      "nurse": "Nurse – frequent walkin', liftin' patients",
+      "constructionWorker": "Construction Workah – physically demandin', liftin', carryin'",
+      "farmer": "Farmah – physical work, liftin', operatin' machines",
+      "sportsTeacher": "Sports Teachah – active, demonstratin' exercises",
+      "constructionSite": "Construction Site – heavy physical work, liftin', standin'",
+      "mountainGuide": "Mountain Guide – extreme activity, long walkin' in terrain"
+    },
+    "height": "Height (cm)",
+    "weight": "Weight (kg)",
+    "birthyear": "Birth Year",
+    "gender": {
+      "text": "Gendah",
+      "male": "Male",
+      "female": "Female"
+    },
+    "workHoursWeek": "Work Hours per Week",
+    "workDaysPAL": "PAL Value at Work",
+    "dietType": {
+      "text": "Diet Type",
+      "balanced": "Balanced",
+      "lowCarb": "Low Carb",
+      "lowFat": "Low Fat"
+    },
+    "dietLevel": {
+      "text": "Diet Level",
+      "strongLose": "Strong Loss -25%",
+      "lose": "Loss -15%",
+      "maintain": "Maintain",
+      "gain": "Gain +10%",
+      "strongGain": "Strong Gain +20%"
+    },
+    "bodyDataInfo": "Here yah can enter yah body data to calculate yah calorie goals. These ah used to determine yah daily calorie goals.",
+    "minutes": "Minutes",
+    "burned": "burned",
+    "calories": "Calories",
+    "kcal": "kcal",
+    "caloriesBurned": "Burned Calories (kcal)",
+    "duration": "Duration (Minutes)",
+    "calculateCalories": "Calculate Calories",
+    "errorNoBodydata": "If yah wanna use the calorie calculatah, yah need to enter yah body data first.",
+    "errorBodydataActivity": "If yah wanna use activity trackin', yah need to enter yah body data first.",
+    "selectRecipe": "Select Recipe",
+    "portions": "Portions",
+    "voiceRecordingInfo": "The recordin' is saved locally. If yah wanna send the audio file, click Send. \nAlternatively, yah can click Discard to not send the recordin'.",
+    "macronutrients": "Macronutrients",
+    "carbs": "Carbs",
+    "fat": "Fat",
+    "protein": "Protein",
+    "noMacroTargetDefined": "No macronutrient goals defined",
+    "enterQuestion": "Ask yah question here...",
+    "askDialog": "Here yah can ask questions about nutrition. The app will try to answer yah question 'nd includes yah body data 'nd yah calorie countah entries from the last 14 days. Please note that the answers ah based on the information yah entered in the app.",
+    "addImage": "Add Image",
+    "uploadImage": "Upload Image",
+    "captureImage": "Capture Image",
+    "dietLevelChange": {
+      "dietLevelBefore": "Diet Level Before",
+      "lastChanged": "last changed"
+    },
+    "descriptionLabel": "Additional Desciption",
+    "descriptionPlaceholder": "Descibe yah meal or activity 'bout the pictuah"
+  },
+  "trainingPlans": {
+    "title": "Trainin' Plans",
+    "help": {
+      "step1": {
+        "title": "Create Trainin' Plan",
+        "content": "Trainin' plans can be created individually, yah can describe exactly what yah want, what yah train for, where, how often a week, 'nd how intense/long."
+      },
+      "step2": {
+        "title": "Edit Trainin' Plan",
+        "content": "If somethin' ain't right, yah can edit the trainin' plans with natural language. Just write what should be changed, 'nd yah'll get an updated version."
+      },
+      "step3": {
+        "title": "Train",
+        "content": "Trainin' plans go by time if activated. Active trainin' plans can be trained 'nd logged, each set individually – weights or reps or duration of sets. At the end, yah have the option to send the trainin' directly to the calorie countah to track the calories burned."
+      }
+    },
+    "descriptionLabelCreate": "Describe the plan in detail",
+    "createPlanInstructions": "Describe yah plan as precisely as possible: What do yah wanna train? How often a week? In what environment? What type of trainin' do yah prefer?\n\nYah can also specify the intensity: light, moderate, or intense.\n\nExamples:\n'I wanna go to the gym four times a week, focus on upper body. I'm well-trained.'\n\n'I have back pain on the left back of the shouldah. Create a plan with targeted exercises for one day a week to improve my posture 'nd relieve the pain.'\n\nThe more info yah give, the more suitable yah trainin' plan will be created.",
+    "subtitle": "Here yah can create 'nd manage yah trainin' plans.",
+    "editPlan": "Edit Trainin' Plan",
+    "editPlanDescription": "Describe what should be changed",
+    "repetitionsShort": "Reps",
+    "duration": "Duration",
+    "restBetweenSets": "Rest Between Sets",
+    "restAfterExercise": "Rest After Exercise",
+    "deletePlan": "Delete Trainin' Plan",
+    "activePlan": "Active Plan",
+    "confirmDeletePlan": "Ah yah sure yah wanna delete this trainin' plan?",
+    "noPlans": "Yah haven't created any trainin' plans yet.",
+    "trainingDaysPerWeek": "Trainin' Days per Week",
+    "addExercise": "Add Exercise",
+    "removeExercise": "Remove Exercise",
+    "exerciseName": "Exercise Name",
+    "set": "Set",
+    "sets": "Sets",
+    "reps": "Reps",
+    "restTime": "Rest Time (Seconds)",
+    "savePlan": "Save Trainin' Plan",
+    "createPlan": "Create Trainin' Plan",
+    "train": "Train",
+    "selectDay": "Select Day",
+    "suggestedWeight": "Suggested Total Weight",
+    "weight": "Weight (kg)",
+    "durationWeeks": "Duration (Weeks)",
+    "canceled": "The last trainin' was canceled.",
+    "noPlansInfo": "No trainin' plans available yet. Yah can add a new trainin' plan with the plus button top right.",
+    "activateDialog": {
+      "title": "Activate Trainin' Plan",
+      "msg": "When yah staht yah trainin' plan, the staht date is set. Then yah'll see which week of yah trainin' plan yah're in.\nAh yah sure yah wanna staht the trainin' plan?"
+    },
+    "deleteDialog": {
+      "title": "Delete Trainin' Plan",
+      "msg": "Ah yah sure yah wanna delete this trainin' plan?"
+    },
+    "finishDialog": {
+      "title": "Finish Trainin'",
+      "msg": "When yah finish the trainin', the staht date 'nd yah entire progress will be reset. Ah yah sure yah wanna finish the trainin'?"
+    },
+    "processingMessage": "Yah trainin' plan is bein' created in the background. Yah'll be notified when it's ready.",
+    "readyMessage": "Yah trainin' plan has been created.",
+    "editDialog": {
+      "preview": "Preview",
+      "save": "Save Changes",
+      "changes": "Changes",
+      "error": "Erroh editin'"
+    },
+    "statistics": "Statistics",
+    "totalWorkouts": "Completed wokouts",
+    "lastWorkout": "Last wokout",
+    "lastExercises": "Last 5 execises",
+    "noWorkoutsYet": "No wokouts yet.",
+    "ask": "Ask questions",
+    "enterQuestion": "Ask a question 'bout this plan",
+    "askDialog": "You can ask questions about this tainin' plan. The last tainin' logs (up to 10) will be sent along.",
+    "suggestedDuration": "Suggested Duation",
+    "continuePlan": "Create a continuashun",
+    "continuePlanTitle": "Continuashun fah {name}",
+    "continuePlanDescription": "Create a new plan based on this trainin' plan. Ya can optionally add requests.",
+    "continuePlanNotesLabel": "Addishunal notes (optional)",
+    "continuePlanAction": "Create a continuashun"
+  },
+  "training": {
+    "title": "Trainin' Log",
+    "continue": "Continue Trainin'",
+    "discard": "Discard Trainin'",
+    "exerciseListPlaceholder": "Loadin' exercise list...",
+    "noPlan": "No trainin' planned fuh today or the plan contains no exercises.",
+    "estimatedTimePlaceholder": "approx. X min",
+    "startTraining": "Staht Trainin'",
+    "setInfo": "Set {current} of {total}",
+    "finishSet": "Finish Set",
+    "noDescription": "No description available.",
+    "countdown": "Next set in {seconds} seconds...",
+    "noDaySelected": "No day selected",
+    "exercise": "Exercise",
+    "exercises": "Exercises",
+    "seconds": "Seconds",
+    "secondsShort": "Sec.",
+    "noPreviousLog": "No previous log available.",
+    "noImageAvailable": "Image not available yet.",
+    "skipRest": "Skip Rest",
+    "completeSet": "Complete Set",
+    "timeSeconds": "Time (Sec.)",
+    "time": "Time",
+    "exerciseCompleted": "Exercise Completed",
+    "nextExercise": "Next Exercise",
+    "allExercisesDone": "All Exercises Completed",
+    "finishTraining": "Finish Trainin'",
+    "noCurrentLog": "No current trainin'.",
+    "loadingLog": "Loadin' Trainin' Log...",
+    "suggestedValues": "Suggested Values",
+    "summaryTitle": "Trainin' Summary",
+    "backToPlans": "Back to Trainin' Plans",
+    "lastLog": "last log:",
+    "actualLog": "cuent log:",
+    "description": "Desciption",
+    "getFeedback": "Ask fo' feedback",
+    "feedbackTitle": "Feedback",
+    "startTimer": "Stat the Time",
+    "stopTimer": "Stop the Time",
+    "timer": "Time",
+    "difficulty": "Effah",
+    "statistics": "Stattistics",
+    "totalMovedWeight": "Total weight moved",
+    "totalDuration": "Total duation",
+    "totalSets": "Total sets",
+    "avgWeightPerExercise": "Av'age weight pah exercise",
+    "trackCalories": "Tack cahluhs",
+    "caloriesBurned": "Tacked cahluhs: {calories} kcal",
+    "cancelTraining": "Cahncel the tainin'",
+    "cancelTrainingConfirm": "Do ya eally wanna cahncel the tainin'?",
+    "useLastValue": "Entah the last value ({value})"
+  },
+  "adminStats": {
+    "title": "Statistics",
+    "usersToday": "New usahs today",
+    "usersWeek": "New usahs this week",
+    "activeToday": "Active usahs today",
+    "activeWeek": "Active usahs this week",
+    "recipes24h": "Created recipes (24h)",
+    "trainingPlans24h": "Created trainin' plans (24h)",
+    "plannerUsersTotal": "Usahs with plannahs total",
+    "plannerToday": "Usahs with plannah today",
+    "plannerWeek": "Usahs with plannah this week",
+    "shoppingUpdatedToday": "Updated shoppin' lists today",
+    "shoppingUpdatedWeek": "Updated shoppin' lists this week",
+    "calorieTrackerTotal": "Usahs with calahrie trackah total",
+    "calorieTrackerToday": "Usahs with calahrie trackah today",
+    "calorieTrackerWeek": "Usahs with calahrie trackah this week",
+    "trainingLogsWeek": "Ceated tainin' logs (week)"
+  },
+  "adminTools": {
+    "title": "Admin Tools",
+    "clearCache": "Cleah LLM cahsh",
+    "resetImages": "Reset practice images",
+    "confirm": "Confuhm ({seconds})",
+    "success": "Action completed"
+  }
+}
