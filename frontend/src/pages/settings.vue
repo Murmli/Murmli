@@ -8,6 +8,11 @@
           <!-- Sprache -->
           <LanguageSelect />
           <StartpageSelect />
+          <v-row class="justify-center text-center mt-4 mb-6">
+            <v-btn color="primary" variant="tonal" prepend-icon="mdi-help-circle-outline" @click="goHelp">
+              {{ languageStore.t('helpPage.openHelpCenter') }}
+            </v-btn>
+          </v-row>
           <div class="justify-center text-center">
             <UserIdDisplay class="pb-5" />
 
@@ -107,6 +112,7 @@
 
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import { useLanguageStore } from "@/stores/languageStore";
 import { useUserStore } from "@/stores/userStore";
 import AdminStats from "@/components/general/AdminStats.vue";
@@ -114,6 +120,7 @@ import AdminTools from "@/components/general/AdminTools.vue";
 
 const languageStore = useLanguageStore();
 const userStore = useUserStore();
+const router = useRouter();
 userStore.fetchRole();
 
 const panel = ref(0);
@@ -132,5 +139,9 @@ const shareApp = () => {
     navigator.clipboard.writeText(playStoreUrl)
     alert('Copied to the clipboard!')
   }
+}
+
+const goHelp = () => {
+  router.push('/help')
 }
 </script>

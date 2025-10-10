@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, onUnmounted } from "vue";
+import { computed, watch, onUnmounted } from "vue";
 import { useLanguageStore } from "@/stores/languageStore";
 import { useDialogStore } from "@/stores/dialogStore";
 import { useTrainingStore } from "@/stores/trainingStore";
@@ -49,12 +49,7 @@ const isGenerating = computed(
 // No drawer
 
 // Menu items as a computed property
-const menuItems = computed(() => [
-  {
-    title: languageStore.t("shoppingList.help"),
-    action: () => showHelp(),
-  },
-]);
+const menuItems = computed(() => []);
 
 // Expose actions to the global bottom-sheet menu
 watch(menuItems, (items) => bottomMenuStore.setItems(items, 'trainingPlans'), { immediate: true });
@@ -66,10 +61,6 @@ const createPlan = () => {
     return;
   }
   dialogStore.openDialog("createTrainingPlanDialog");
-};
-
-const showHelp = () => {
-  dialogStore.openDialog("trainingPlansHelpWindow");
 };
 
 // No navigation drawer
