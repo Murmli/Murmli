@@ -557,5 +557,40 @@
     "resetImages": "Reset the practice pics, brah",
     "confirm": "Confirm ({seconds})",
     "success": "All set — action's done, stoked"
+  },
+  "helpPage": {
+    "title": "Help & Video How-tos — chill vibes",
+    "intro": "Here’s a stash of short vids that show the main Murmli features, nice and easy, dude.",
+    "openHelpCenter": "Open Help Center, bro",
+    "sections": {
+      "overview": {
+        "title": "Quick Rundown",
+        "description": "A speedy rundown of Murmli and all the main spots in the app, super chill."
+      },
+      "firstStart": {
+        "title": "First Launch",
+        "description": "How to set up Murmli on your first launch so you’re comfy and ready to catch the wave."
+      },
+      "shoppingList": {
+        "title": "Shopping List",
+        "description": "Tips & tricks for the smart shopping list — adding, sorting and sharing made easy-breezy."
+      },
+      "planner": {
+        "title": "Planner",
+        "description": "Learn how to plan recipes, drop your preferences and ride the automatic suggestions."
+      },
+      "calorieCounter": {
+        "title": "Calorie Counter",
+        "description": "Keep tabs on your eats and moves with the calorie counter, stay stoked and balanced."
+      },
+      "training": {
+        "title": "Training Plans & Log",
+        "description": "Create training plans, log your sessions and track your progress like a chilled pro."
+      },
+      "settings": {
+        "title": "Settings & Final Word",
+        "description": "Everything about settings plus a little closing outlook to send you off mellow."
+      }
+    }
   }
 }

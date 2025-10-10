@@ -49,7 +49,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, onUnmounted } from 'vue';
+import { computed, watch, onUnmounted } from 'vue';
 import { useLanguageStore } from '@/stores/languageStore';
 import { useDialogStore } from '@/stores/dialogStore';
 import { useShoppingListStore } from '@/stores/shoppingListStore';
@@ -67,7 +67,6 @@ const menuItems = computed(() => [
   { title: languageStore.t('tracker.trackActivity'), action: () => trackActivity() },
   { title: languageStore.t('tracker.trackRecipe'), action: () => trackRecipe() },
   { title: languageStore.t('general.ask'), action: () => askQuestion() },
-  { title: languageStore.t('general.help'), action: () => showHelp() },
 ]);
 
 // Expose actions to the global bottom-sheet menu
@@ -96,10 +95,6 @@ const calorieGoal = () => {
 
 const askQuestion = () => {
   dialogStore.openDialog("askDialog");
-};
-
-const showHelp = () => {
-  dialogStore.openDialog("trackerHelpWindow");
 };
 
 // No navigation drawer
