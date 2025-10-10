@@ -49,7 +49,6 @@ const menuItems = computed(() => [
   { title: languageStore.t('shoppingList.removeIngredients.text'), action: () => removeIngredients() },
   { title: languageStore.t('shoppingList.clearAll.text'), action: () => clearAll() },
   { title: languageStore.t('shoppingList.deleteList.text'), action: () => deleteList() },
-  { title: languageStore.t('shoppingList.help'), action: () => showHelp() },
 ]);
 
 // Expose actions to the global bottom-sheet menu
@@ -114,34 +113,7 @@ const deleteList = () => {
   );
 };
 
-const showHelp = () => {
-  dialogStore.openDialog("welcomeWindow");
-};
-
 // No navigation drawer
-
-// Open a new window with a given URL
-const openLink = url => {
-  window.open(url, '_blank')
-}
-
-// Share functionality
-const shareApp = () => {
-  const playStoreUrl = 'https://play.google.com/store/apps/details?id=de.murmli.twa'
-
-  if (navigator.share) {
-    navigator.share({
-      title: 'Murmli',
-      url: playStoreUrl
-    })
-  } else {
-    navigator.clipboard.writeText(playStoreUrl)
-    alert('Copied to the clipboard!')
-  }
-}
-
-// Controls the bottom sheet for secondary actions
-const moreOpen = ref(false)
 </script>
 
 <style scoped>

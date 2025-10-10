@@ -15,6 +15,12 @@
                         <v-list-item-title>{{ item.title }}</v-list-item-title>
                     </v-list-item>
                     <v-divider class="my-1" />
+                    <v-list-item @click="goHelp(); moreOpen = false">
+                        <template #prepend>
+                            <v-icon>mdi-help-circle-outline</v-icon>
+                        </template>
+                        <v-list-item-title>{{ languageStore.t('general.help') }}</v-list-item-title>
+                    </v-list-item>
                     <v-list-item @click="goSettings(); moreOpen = false">
                         <template #prepend>
                             <v-icon>mdi-cog-outline</v-icon>
@@ -64,6 +70,11 @@
                                 <v-icon v-bind="props" color="red">mdi-reddit</v-icon>
                             </template>
                         </v-tooltip>
+                    </v-btn>
+                </v-row>
+                <v-row class="d-flex justify-center mt-2">
+                    <v-btn variant="tonal" prepend-icon="mdi-help-circle-outline" @click="goHelp(); moreOpen = false">
+                        {{ languageStore.t('general.help') }}
                     </v-btn>
                 </v-row>
                 <v-row class="d-flex justify-center mt-2">
@@ -176,6 +187,10 @@ const moreOpen = ref(false)
 
 const goSettings = () => {
     router.push('/settings')
+}
+
+const goHelp = () => {
+    router.push('/help')
 }
 
 </script>
