@@ -20,15 +20,13 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, onUnmounted } from 'vue';
+import { computed, watch, onUnmounted } from 'vue';
 import { useLanguageStore } from '@/stores/languageStore';
-import { useDialogStore } from '@/stores/dialogStore';
 import { useTrainingStore } from '@/stores/trainingStore';
 import router from '@/router';
 import { useBottomMenuStore } from '@/stores/bottomMenuStore';
 
 const languageStore = useLanguageStore();
-const dialogStore = useDialogStore();
 const trainingStore = useTrainingStore();
 const bottomMenuStore = useBottomMenuStore();
 
@@ -36,9 +34,7 @@ const bottomMenuStore = useBottomMenuStore();
 
 // Menu items as a computed property
 const menuItems = computed(() => {
-  const items = [
-    { title: languageStore.t('shoppingList.help'), action: () => showHelp() },
-  ];
+  const items = [];
   if (trainingStore.currentLog?.status === 'in-progress') {
     items.push({ title: languageStore.t('training.cancelTraining'), action: () => cancelTraining() });
   }
@@ -48,10 +44,6 @@ const menuItems = computed(() => {
 // Expose actions to the global bottom-sheet menu
 watch(menuItems, (items) => bottomMenuStore.setItems(items, 'training'), { immediate: true });
 onUnmounted(() => bottomMenuStore.clearItems('training'));
-
-const showHelp = () => {
-  dialogStore.openDialog('trainingPlansHelpWindow');
-};
 
 const cancelTraining = async () => {
   if (confirm(languageStore.t('training.cancelTrainingConfirm'))) {
