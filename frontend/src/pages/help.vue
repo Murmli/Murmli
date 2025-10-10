@@ -7,12 +7,9 @@
             {{ languageStore.t('helpPage.title') }}
           </v-card-title>
           <v-card-text>
-            <p class="mb-4">
+            <p class="mb-0">
               {{ languageStore.t('helpPage.intro') }}
             </p>
-            <v-btn color="primary" prepend-icon="mdi-open-in-new" @click="openPlaylist">
-              {{ languageStore.t('helpPage.openPlaylist') }}
-            </v-btn>
           </v-card-text>
         </v-card>
 
@@ -64,9 +61,6 @@ const sections = [
   { key: 'settings', videoId: 'HlO8hwXMVrc' },
 ];
 
-const openPlaylist = () => {
-  window.open('https://www.youtube.com/playlist?list=PLnXJlvINNzTVc-Itv7WkWRf5uBZnNwxXA', '_blank', 'noopener');
-};
 </script>
 
 <style scoped>
