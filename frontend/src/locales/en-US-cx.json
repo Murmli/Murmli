@@ -1,0 +1,561 @@
+{
+  "greeting": "Hey Dude",
+  "goodbye": "Catch ya later, bro",
+  "help": {
+    "shoppinglist": {
+      "languagePrompt": "Yo, first up, pick your lingo and your rad homepage to cruise on with Murmli.",
+      "languageTitle": "Lingo Selection",
+      "selectLanguage": "Pick Your Lingo",
+      "welcome": "Welcome to Murmli, your gnarly app for recipes, shopping, and grub.\n\n This app's got AI to make translations, interpretations, and recipe pickin' a breeze. You can even whip up your own recipes and zap 'em straight to your shopping list to keep your day chill.",
+      "welcomeTitle": "Welcome",
+      "quickGuide": "Just type what you need in the input box, and Murmli's AI will add it to your list, dude.\n\n All items get sorted by supermarket categories, so they're easy to find.\n\n Once stuff's added, you can tap on it to find some alternatives.",
+      "quickGuideTitle": "Quick Guide",
+      "options": "Find more options like sharing or sorting your list in the menu (top right). Share the list with your partner to work on it together. You can bail on sharing anytime.",
+      "optionsTitle": "Options",
+      "start": "Let's roll!"
+    },
+    "planner": {
+      "welcomeTitle": "Recipe Planner",
+      "welcome": "Set how many peeps and recipes you wanna plan for below. In the text field, you can also drop your wishes in natural lingo, and the AI will totally factor them in when picking recipes (like, vegetarian for athletes).",
+      "optionsTitle": "Pick Recipes",
+      "options": "You'll see some recipes now. \nGive a thumbs up if you dig a recipe, or a thumbs down if you don't. \n\nThe system learns from your calls to make even cooler suggestions.",
+      "shoppinglistTitle": "Shopping List and Recipes",
+      "shoppinglist": "Once you've picked the number of recipes you want, you'll cruise to the shopping list. It's got all the ingredients for the recipes. \n\n Under 'Recipes', you'll find your chosen recipes with instructions. You can rate and drop some feedback there.",
+      "openFilter": "Open Filter"
+    },
+    "recipes": {
+      "overview": "Here's the lowdown on the recipes linked to your shopping list, your own creations, and your faves. You can check 'em out from here.",
+      "create": "Hit the plus icon up top to whip up your own recipes. Type your idea, the AI cooks it up, and you can upload a pic of the ingredients.",
+      "addToList": "If you wanna add one of your recipes or faves to your shopping list, just open it and add it through the menu (three dots) up top.",
+      "overviewTitle": "Recipe Rundown",
+      "createTitle": "Create Recipes",
+      "addToListTitle": "Add Recipes to Shopping List"
+    },
+    "tracker": {
+      "overviewTitle": "Track Meals",
+      "overview": "Just jot down what you've munched on. \n\nYou can describe it in natural lingo, like \"a plate of pasta\", name specific products, or drop exact calorie counts – whatever floats your board.",
+      "calorieGoalTitle": "Your Calorie Goal",
+      "calorieGoal": "Set your daily calorie goal yourself or let us auto-calculate it for ya. \n\nJust drop your body data once – we'll handle the rest.",
+      "activityTrackingTitle": "Track Activities",
+      "activityTracking": "Track your sporty moves too, like \"20 minutes jogging\". We'll auto-calculate how many extra calories you can chow down – just for you."
+    },
+    "setup": {
+      "aboutAppTitle": "About This App",
+      "aboutApp": "This app was crafted privately to make life with a shopping list and smart recipe planning a breeze."
+    }
+  },
+  "general": {
+    "next": "Next Wave",
+    "back": "Backtrack",
+    "error": "Bummer",
+    "errorMessage": "Whoa, something went off course. Try again soon or give us a shout about this wipeout.",
+    "loading": "Loading up..",
+    "close": "Wrap it up",
+    "save": "Save it",
+    "send": "Send it",
+    "cancel": "Bail",
+    "report": "Shout Out",
+    "confirm": "Lock it in",
+    "start": "Let's roll",
+    "generate": "Cook it up",
+    "deleteRecipeDialog": {
+      "text": "Nix the Recipe",
+      "dialogMsg": "You sure you wanna ditch the selected recipe?"
+    },
+    "information": "Info",
+    "ask": "Ask Away",
+    "help": "Help Out",
+    "selected": "Picked",
+    "discard": "Toss",
+    "resume": "Keep Rolling",
+    "voiceRecording": "Audio Jam",
+    "details": "Deets",
+    "name": "Name",
+    "goal": "Target",
+    "type": "Style",
+    "difficulty": "Gnarliness",
+    "weekdays": {
+      "1": "Monday",
+      "2": "Tuesday",
+      "3": "Wednesday",
+      "4": "Thursday",
+      "5": "Friday",
+      "6": "Saturday",
+      "7": "Sunday"
+    },
+    "edit": "Tweak",
+    "delete": "Nix",
+    "activate": "Fire Up",
+    "archive": "Stash",
+    "finish": "Wrap Up",
+    "weeks": "Weeks",
+    "progress": "Progress",
+    "instructions": "How-To",
+    "day": "Day",
+    "days": "Days",
+    "week": "Week",
+    "selectPhoto": "Pick a Pic",
+    "capturePhoto": "Snap It"
+  },
+  "shoppingList": {
+    "newItemLabel": "Fresh Item",
+    "newItemPlaceholder": "Name that item",
+    "notesLabel": "Notes",
+    "notesHint": "Your notes auto-save, dude",
+    "noItemsMessage": "No items on the shopping list, bro.",
+    "checkedHeader": "Checked Off",
+    "nameLabel": "Name",
+    "amountLabel": "Amount",
+    "unitLabel": "Unit",
+    "findAlternative": "Find a Swap",
+    "editItem": "Tweak Entry",
+    "showRecipe": "Show Recipe",
+    "saveAsFavorite": "Make it a Fave",
+    "removeFavorite": "Ditch from Faves",
+    "shoppingListLabel": "Shopping List",
+    "sortList": "Sort It",
+    "help": "Help Out",
+    "favorites": "Faves",
+    "shareList": "Share the List",
+    "inviteCode": "Invite Code",
+    "inviteCodeExpires": "Seconds left, dude",
+    "createInvite": "Create a Code",
+    "leaveList": "Bail on List",
+    "joinedList": "You've joined a rad list.",
+    "noSharedUsers": "List ain't shared yet.",
+    "joinList": "Join the List",
+    "sortCategoriesDialog": {
+      "title": "Sort Categories",
+      "text": "Tap a category to set a spot, or use the arrows.",
+      "newPosition": "New Spot",
+      "changePositon": "Shift Spot"
+    },
+    "removeRecipes": {
+      "text": "Nix Recipes",
+      "dialogMsg": "You sure you wanna ditch all recipes from your list? Ingredients stay on the list and gotta be deleted separately."
+    },
+    "removeIngredients": {
+      "text": "Nix Ingredients",
+      "dialogMsg": "You sure you wanna ditch all ingredient-related entries from your list? Recipes stay in the recipe view."
+    },
+    "clearAll": {
+      "text": "Wipe the List",
+      "dialogMsg": "You sure you wanna clear all items from your list?"
+    },
+    "deleteList": {
+      "text": "Nix the List",
+      "dialogMsg": "You sure you wanna ditch your whole shopping list?"
+    },
+    "deleteConfirmTooltip": "Press again to lock it in.",
+    "recipeOwnership": "This recipe belongs to: ",
+    "voiceRecordingInfo": "Voice recording's live. You can say what you want on your list in natural lingo. Your request gets processed and sent. If you wanna ditch the recording, you can delete it. Until you send it, everything stays local on your device.",
+    "categoryLabel": "Category"
+  },
+  "planner": {
+    "title": "Recipe Planner",
+    "filter": {
+      "title": "Filter Settings",
+      "servingsLabel": "Number of Peeps",
+      "recipesLabel": "Number of Recipes",
+      "promptLabel": "Special Requests",
+      "promptPlaceholder": "Describe your wishes"
+    },
+    "fetchingMessage": "Your recipes are loading in the background. Hang tight.",
+    "resetSelectionDialog": {
+      "text": "Reset Selection",
+      "dialogMsg": "You sure you wanna reset your recipe picks?"
+    }
+  },
+  "recipes": {
+    "title": "Recipes",
+    "shareDialog": "Share Recipe",
+    "helpDialog": "Recipe Help",
+    "empty": "You haven't whipped up a recipe yet.",
+    "noneSelected": "No recipes picked.",
+    "noFavorites": "No faves yet, dude.",
+    "panels": {
+      "selectedRecipes": {
+        "title": "Recipes from the Shopping List"
+      },
+      "myRecipes": {
+        "title": "My Creations"
+      },
+      "favoriteRecipes": {
+        "title": "Fave Recipes"
+      }
+    },
+    "createRecipeDialog": {
+      "title": "Cook Up a Recipe",
+      "text": "Describe your recipe as detailed as possible: What must be in it, what do you wanna avoid? The more info you drop, the better we can whip up your custom recipe.\n\nAfter the creation process, it'll take about 2–3 minutes for your recipe to pop up under 'My Creations'.\n\nOptionally, you can add a pic – either from your gallery or snap a new one. Could be a pic of your fridge, individual ingredients, or something that vibes with your dream recipe.",
+      "generatingText": "Your recipe's cooking up. This might take up to two minutes. You'll find it under 'My Creations' once it's ready."
+    },
+    "addIngredients": "Add Ingredients",
+    "addIngreditensInfo": "You sure you wanna add the recipe to your current shopping list? All ingredients will be auto-added.",
+    "selectPortions": "Pick Portions",
+    "processingMessage": "Your recipe's cooking up in the background. You'll get a ping when it's ready.",
+    "readyMessage": "Your recipe's ready, dude.",
+    "downloadSelectedPdf": "Grab those rad recipes as a PDF, dude!",
+    "tips": {
+      "swipeToRemove": "Just swipe a recipe left or right to toss it, dude.",
+      "createOwn": "Hit the little plus up top on the right to whip up your own recipes, man.",
+      "printPdf": "Wanna print your recipes? Tap the three-dot menu down on the right to crank out a PDF, bro.",
+      "editOwn": "You can tweak your own recipes anytime. Open the recipe and hit the three-dot menu — all the options are chillin' there, man.",
+      "feedbackPlanner": "Not vibing with a recipe in the planner? Open it and drop feedback through the three-dot menu — we got you, bro."
+    }
+  },
+  "recipe": {
+    "title": "Recipe",
+    "recipeFor": "Recipe for",
+    "recipePerson": "Person",
+    "recipePersons": "Peeps",
+    "prepareIngredients": "Prep Ingredients",
+    "downloadPdf": "Download PDF",
+    "nutrition": {
+      "title": "Nutrition per Portion",
+      "kilocalories": "kCal",
+      "carbohydrates": "Carbs",
+      "fat": "Fat",
+      "protein": "Protein"
+    },
+    "information": {
+      "title": "Info",
+      "healthy": "Healthy",
+      "price": "Price",
+      "difficulty": "Gnarliness",
+      "sustainability": "Sustainability",
+      "preparationTime": "Prep Time",
+      "everyday": "Everyday"
+    },
+    "feedback": {
+      "title": "Feedback",
+      "label": "Your Feedback",
+      "success": "Thanks for your feedback!\nWe're on it."
+    },
+    "editDialog": {
+      "title": "Edit Recipe",
+      "instructions": "Describe your tweaks",
+      "preview": "Preview",
+      "save": "Save Changes",
+      "error": "Error Editing",
+      "changes": "Changes"
+    },
+    "menu": {
+      "addToList": "Add Ingredients to List",
+      "addFavorite": "Add to Faves",
+      "removeRecipe": "Nix Recipe",
+      "removeFavorite": "Nix from Faves",
+      "deleteRecipe": "Nix Recipe",
+      "editRecipe": "Tweak Recipe",
+      "downloadPdf": "Download PDF",
+      "feedback": "Feedback",
+      "trackRecipe": "Track Recipe"
+    }
+  },
+  "units": {
+    "gram": "Gram",
+    "kilogram": "kg",
+    "can": "Can",
+    "liter": "L",
+    "milliliter": "ml",
+    "cup": "Cup",
+    "clove": "Clove",
+    "piece": "Piece",
+    "tablespoon": "Tbsp",
+    "teaspoon": "Tsp",
+    "breeze": "Pinch"
+  },
+  "navigation": {
+    "shoppingList": "Shopping List",
+    "planner": "Planner",
+    "recipes": "Recipes",
+    "calorieCounter": "Calorie Counter",
+    "settings": "Settings",
+    "contact": "Contact",
+    "testPage": "Test Page",
+    "rateApp": "Rate the App",
+    "shareApp": "Share the App"
+  },
+  "settings": {
+    "account": "Account",
+    "title": "Settings",
+    "export": "Export Data",
+    "import": "Import Data",
+    "deleteAccount": "Nix Account",
+    "confirmDeleteTitle": "Nix Account?",
+    "confirmDeleteText": "You sure you wanna permanently nix your account? This can't be undone.",
+    "confirmDelete": "Yeah, nix it",
+    "cancel": "Bail",
+    "accountDeleted": "Your account's been successfully nixed.",
+    "deleteError": "Error nixing the account.",
+    "importError": "Error importing data.",
+    "height": "Height (cm)",
+    "gender": "Gender",
+    "birthyear": "Birth Year",
+    "dietType": "Diet Type",
+    "dietLevel": "Diet Level",
+    "baseCalories": "Base Metabolism (kcal)",
+    "recommendations": "Recommended Values",
+    "kcal": "Calories (kcal)",
+    "protein": "Protein (g)",
+    "carbohydrates": "Carbs (g)",
+    "fat": "Fat (g)",
+    "importWarningTitle": "Heads Up: Data Overwrite",
+    "importWarningText": "Importing will overwrite all current user data and log you out. Wanna proceed?",
+    "userId": "User ID",
+    "copySuccess": "Copied to clipboard!",
+    "selectStartpage": "Pick Start Page"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Reach us through these channels",
+    "email": "Send Email",
+    "discord": "Discord",
+    "footer": "We can't wait to hear from ya!"
+  },
+  "tracker": {
+    "today": "Today",
+    "bodyData": "Body Data",
+    "trackNewItem": "Track New Entry",
+    "noTargetDefined": "No calorie goal set",
+    "noItemsTracked": "Nothing tracked yet.",
+    "menu": {
+      "edit": "Tweak",
+      "daily": "Daily",
+      "addToShoppingList": "Add to Shopping List",
+      "addToToday": "Add for Today",
+      "remove": "Nix"
+    },
+    "dailyTracked": "(daily)",
+    "calorieGoal": "Calorie Goal",
+    "calorieCalculator": "Calorie Calculator",
+    "trackActivity": "Track Activity",
+    "trackRecipe": "Track Recipe",
+    "activityLabel": "Activity",
+    "createActivity": "Add Activity",
+    "createActivityInfo": "Add your activities here, the app auto-calculates the calories for ya.",
+    "palOptions": {
+      "homeOffice": "Home Office – chillin', no physical activity",
+      "officeWorker": "Office Worker – sittin', light movement",
+      "teacher": "Teacher – moderate walkin', standin'",
+      "salesperson": "Salesperson – standin', walkin', light work",
+      "waiter": "Waiter – lotsa walkin', carryin' plates",
+      "nurse": "Nurse – frequent walkin', liftin' patients",
+      "constructionWorker": "Construction Worker – heavy duty, liftin', carryin'",
+      "farmer": "Farmer – physical work, liftin', operatin' machines",
+      "sportsTeacher": "Sports Teacher – active, showin' exercises",
+      "constructionSite": "Construction Site – heavy duty, liftin', standin'",
+      "mountainGuide": "Mountain Guide – extreme activity, long walkin' in terrain"
+    },
+    "height": "Height (cm)",
+    "weight": "Weight (kg)",
+    "birthyear": "Birth Year",
+    "gender": {
+      "text": "Gender",
+      "male": "Male",
+      "female": "Female"
+    },
+    "workHoursWeek": "Work Hours per Week",
+    "workDaysPAL": "PAL Value at Work",
+    "dietType": {
+      "text": "Diet Type",
+      "balanced": "Balanced",
+      "lowCarb": "Low Carb",
+      "lowFat": "Low Fat"
+    },
+    "dietLevel": {
+      "text": "Diet Level",
+      "strongLose": "Strong Loss -25%",
+      "lose": "Loss -15%",
+      "maintain": "Maintain",
+      "gain": "Gain +10%",
+      "strongGain": "Strong Gain +20%"
+    },
+    "bodyDataInfo": "Enter your body data here to calculate your calorie goals. These are used to determine your daily calorie targets.",
+    "minutes": "Minutes",
+    "burned": "burned",
+    "calories": "Calories",
+    "kcal": "kcal",
+    "caloriesBurned": "Burned Calories (kcal)",
+    "duration": "Duration (Minutes)",
+    "calculateCalories": "Calculate Calories",
+    "errorNoBodydata": "To use the calorie calculator, you gotta enter your body data first.",
+    "errorBodydataActivity": "To use activity tracking, you gotta enter your body data first.",
+    "selectRecipe": "Pick a Recipe",
+    "portions": "Portions",
+    "voiceRecordingInfo": "The recording is saved locally. If you wanna send the audio file, hit Send. \nAlternatively, you can hit Discard to not send the recording.",
+    "macronutrients": "Macros",
+    "carbs": "Carbs",
+    "fat": "Fat",
+    "protein": "Protein",
+    "noMacroTargetDefined": "No macro targets set",
+    "enterQuestion": "Drop your question here...",
+    "askDialog": "You can ask nutrition questions here. The app will try to answer based on your body data and calorie counter entries from the last 14 days. Remember, answers are based on the info you've entered in the app.",
+    "addImage": "Add Image",
+    "uploadImage": "Upload Image",
+    "captureImage": "Snap Image",
+    "dietLevelChange": {
+      "dietLevelBefore": "Diet Level Before",
+      "lastChanged": "last changed"
+    },
+    "descriptionLabel": "Extra description, dude",
+    "descriptionPlaceholder": "Describe your meal or activity in relation to the pic, dude"
+  },
+  "trainingPlans": {
+    "title": "Training Plans",
+    "help": {
+      "step1": {
+        "title": "Create a Training Plan",
+        "content": "Training plans can be crafted individually, describing exactly what you wanna train for, where, how often in the week, and how intense/long."
+      },
+      "step2": {
+        "title": "Edit Training Plan",
+        "content": "If something's off, you can tweak the training plans with natural lingo. Just write what needs changing, and you'll get an updated version."
+      },
+      "step3": {
+        "title": "Train",
+        "content": "Training plans go by time if activated. Active training plans can be trained and logged, each set individually – weights or reps or set duration. At the end, you can send the training directly to the calorie counter to track the burned calories."
+      }
+    },
+    "descriptionLabelCreate": "Describe the plan in detail",
+    "createPlanInstructions": "Describe your plan as detailed as possible: What do you wanna train? How often in the week? In what environment? What type of training do you prefer?\n\nYou can also specify the intensity: light, moderate, or intense.\n\nExamples:\n'I wanna hit the gym four times a week, focus on upper body. I'm well-trained.'\n\n'I have back pain on the left shoulder. Create a plan with targeted exercises for one day a week to improve my posture and ease the pain.'\n\nThe more info you drop, the more fitting your training plan will be.",
+    "subtitle": "Here you can create and manage your training plans.",
+    "editPlan": "Edit Training Plan",
+    "editPlanDescription": "Describe what needs changing",
+    "repetitionsShort": "Reps",
+    "duration": "Duration",
+    "restBetweenSets": "Rest Between Sets",
+    "restAfterExercise": "Rest After Exercise",
+    "deletePlan": "Nix Training Plan",
+    "activePlan": "Active Plan",
+    "confirmDeletePlan": "You sure you wanna nix this training plan?",
+    "noPlans": "You haven't crafted any training plans yet.",
+    "trainingDaysPerWeek": "Training Days per Week",
+    "addExercise": "Add Exercise",
+    "removeExercise": "Nix Exercise",
+    "exerciseName": "Exercise Name",
+    "set": "Set",
+    "sets": "Sets",
+    "reps": "Reps",
+    "restTime": "Rest Time (Seconds)",
+    "savePlan": "Save Training Plan",
+    "createPlan": "Craft Training Plan",
+    "train": "Train",
+    "selectDay": "Pick a Day",
+    "suggestedWeight": "Suggested Total Weight",
+    "weight": "Weight (kg)",
+    "durationWeeks": "Duration (Weeks)",
+    "canceled": "The last training was canceled.",
+    "noPlansInfo": "No training plans yet. You can add a new one with the plus button up top.",
+    "activateDialog": {
+      "title": "Activate Training Plan",
+      "msg": "When you start your training plan, the start date is set. You'll see what week of your plan you're in.\nYou wanna start the training plan?"
+    },
+    "deleteDialog": {
+      "title": "Nix Training Plan",
+      "msg": "You sure you wanna nix this training plan?"
+    },
+    "finishDialog": {
+      "title": "Finish Training",
+      "msg": "If you finish the training, the start date and your whole progress resets. You sure you wanna wrap up the training?"
+    },
+    "processingMessage": "Your training plan's cooking up in the background. You'll get a ping when it's ready.",
+    "readyMessage": "Your training plan's ready, dude.",
+    "editDialog": {
+      "preview": "Preview",
+      "save": "Save Changes",
+      "changes": "Changes",
+      "error": "Error Editing"
+    },
+    "statistics": "Stats, brah",
+    "totalWorkouts": "Workouts completed, dude",
+    "lastWorkout": "Last sesh",
+    "lastExercises": "Last 5 moves",
+    "noWorkoutsYet": "No workouts completed yet, dude.",
+    "ask": "Ask away, dude",
+    "enterQuestion": "Drop a question about this plan, dude",
+    "askDialog": "Feel free to ask about this training plan. I'll send the latest training logs (up to 10) with it, dude.",
+    "suggestedDuration": "Suggested chill time, dude",
+    "continuePlan": "Whip up a follow-up, bro",
+    "continuePlanTitle": "Next Ride for {name}",
+    "continuePlanDescription": "Spin up a fresh plan based on this one. Toss in any extra wishes if ya want — keep it chill.",
+    "continuePlanNotesLabel": "Extra notes (optional) — drop 'em in if ya like",
+    "continuePlanAction": "Whip up the follow-up, dude"
+  },
+  "training": {
+    "title": "Training Log",
+    "continue": "Keep Training",
+    "discard": "Toss Training",
+    "exerciseListPlaceholder": "Loading exercise list...",
+    "noPlan": "No training planned for today or the plan's got no exercises.",
+    "estimatedTimePlaceholder": "about X min",
+    "startTraining": "Start Training",
+    "setInfo": "Set {current} of {total}",
+    "finishSet": "Wrap Set",
+    "noDescription": "No description available.",
+    "countdown": "Next set in {seconds} seconds...",
+    "noDaySelected": "No day picked",
+    "exercise": "Exercise",
+    "exercises": "Exercises",
+    "seconds": "Seconds",
+    "secondsShort": "Sec.",
+    "noPreviousLog": "No previous log yet.",
+    "noImageAvailable": "Image not available yet.",
+    "skipRest": "Skip Rest",
+    "completeSet": "Wrap Set",
+    "timeSeconds": "Time (Sec.)",
+    "time": "Time",
+    "exerciseCompleted": "Exercise Done",
+    "nextExercise": "Next Exercise",
+    "allExercisesDone": "All Exercises Done",
+    "finishTraining": "Wrap Training",
+    "noCurrentLog": "No current training.",
+    "loadingLog": "Loading Training Log...",
+    "suggestedValues": "Suggested Values",
+    "summaryTitle": "Training Overview",
+    "backToPlans": "Back to Training Plans",
+    "lastLog": "last log, dude:",
+    "actualLog": "current log, dude:",
+    "description": "The lowdown",
+    "getFeedback": "Ask for feedback, dude",
+    "feedbackTitle": "Feedback, dude",
+    "startTimer": "get the timer rollin', brah",
+    "stopTimer": "call it on the timer, brah",
+    "timer": "timer, brah",
+    "difficulty": "How gnarly the effort was, dude",
+    "statistics": "The stats, bro",
+    "totalMovedWeight": "Total weight moved, man",
+    "totalDuration": "Total time cruised",
+    "totalSets": "Total sets, brah",
+    "avgWeightPerExercise": "Avg weight per exercise, dude",
+    "trackCalories": "Track calories, brah",
+    "caloriesBurned": "Logged calories: {calories} kcal — stoked",
+    "cancelTraining": "Wanna bail on the training sesh?",
+    "cancelTrainingConfirm": "You sure you wanna bail on the training sesh, bro?",
+    "useLastValue": "Pop in the last value ({value}), bro"
+  },
+  "adminStats": {
+    "title": "Stats, dude",
+    "usersToday": "New shredders today",
+    "usersWeek": "New shredders this week",
+    "activeToday": "Active shredders today",
+    "activeWeek": "Active shredders this week",
+    "recipes24h": "Recipes whipped up (24h)",
+    "trainingPlans24h": "Training plans cooked up (24h)",
+    "plannerUsersTotal": "Total shredder dudes and dudettes using the planner",
+    "plannerToday": "Dudes hangin' with the planner today",
+    "plannerWeek": "Dudes cruisin' with the planner this week",
+    "shoppingUpdatedToday": "Shopping lists updated today, bro",
+    "shoppingUpdatedWeek": "Shopping lists updated this week, dude",
+    "calorieTrackerTotal": "Total dudes tracking calories, man",
+    "calorieTrackerToday": "Dudes tracking calories today, bro",
+    "calorieTrackerWeek": "Dudes tracking calories this week, dude",
+    "trainingLogsWeek": "Training logs made (this week, dude)"
+  },
+  "adminTools": {
+    "title": "Admin Tools — chill zone, bro",
+    "clearCache": "Wipe the LLM cache, dude",
+    "resetImages": "Reset the practice pics, brah",
+    "confirm": "Confirm ({seconds})",
+    "success": "All set — action's done, stoked"
+  }
+}

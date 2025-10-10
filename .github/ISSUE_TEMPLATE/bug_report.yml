@@ -1,0 +1,28 @@
+name: 🐞 Einfacher Bug Report
+description: Melde einen einfachen Fehler
+title: "[Bug] "
+labels: [bug]
+assignees:
+  - dein-github-name
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Was ist das Problem?
+      description: Beschreibe kurz den Fehler oder das unerwartete Verhalten.
+      placeholder: |
+        Beim Klicken auf ..., passiert ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Schritte zur Reproduktion (optional)
+      description: Wie kann man den Fehler nachstellen?
+      placeholder: |
+        1. Gehe zu ...
+        2. Klicke auf ...
+        3. Fehler tritt auf
+    validations:
+      required: false

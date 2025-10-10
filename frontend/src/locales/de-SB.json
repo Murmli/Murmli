@@ -1,0 +1,561 @@
+{
+  "greeting": "Hällo",
+  "goodbye": "Auf Wiedersehe",
+  "help": {
+    "shoppinglist": {
+      "languagePrompt": "Als erscht wähl bitte dei Sprach ond dei gwünschte Startseit, um mit Murmli fortzfahrä.",
+      "languageTitle": "Sprachauswahl",
+      "selectLanguage": "Sprach auswählä",
+      "welcome": "Willkommä bei Murmli, deiner gscheiten App für Rezept, Eikaufä ond Ernährong.\n\n Die App nutzt KI, um Übersetzonga, Interpretationa ond d' Auswah von Rezepta z' erleichtera. Du kansch sogar eigena Rezept macha ond se direkt in d' Eikaufslischd übertraga, um dei Alltag effizienter z' g'schtalta.",
+      "welcomeTitle": "Willkommä",
+      "quickGuide": "Gib eifach in des Eingabefeld ei, was du brauchsch, ond Murmli fügt's per KI zur Eikaufslischd dazu.\n\n Alle Gega schbärd nach Supermarkt-Kategorie gsortiert, damit du se leichter findsch.\n\n Sind d' Gega dazugefügt, kansch darauf klicka, um Alternativa z' finda.",
+      "quickGuideTitle": "Kurzanleitong",
+      "options": "Finde meh Optiona wie Teilä oder Sortierä deiner Lischd im Menü (obä rechts). Teil die Lischd zum Beispil mit deinem Partner, um gemeinsam daran z' arbeitä. Du kansch des Teilä jederzi widerrufä.",
+      "optionsTitle": "Optiona",
+      "start": "Los geht's!"
+    },
+    "planner": {
+      "welcomeTitle": "Rezeptplaner",
+      "welcome": "Leg unta fest, für wieviel Leut ond wieviel Rezepta du planä möchtä. Im Textfeld kansch zusätzlich in natürlicher Sprach dei Wünsche ei gäba, a KI berücksichtigt die automatisch bei dr Auswah von Rezepta (z. B. vegetarisch für Sportler).",
+      "optionsTitle": "Rezept auswählä",
+      "options": "Dir werdet jetz Rezepta angezeigt. \nGib e Dauma hoch, wenn dir e Rezept gfällt, oder e Dauma runter, wenn ned. \n\nS System lernt aus deine Entscheidunga, um besser Vorschläg z' macha.",
+      "shoppinglistTitle": "Eikaufslischd ond Rezepta",
+      "shoppinglist": "Sobald du d' gwünschte Anzahl an Rezepta ausgewählt hosch, gelangsch automatisch zur Eikaufslischd. Die enthält alle Zutatä für d' Rezepta. \n\n Unner 'Rezept' findsch dei ausgewählte Rezepta inklusive Anleitonga. Dort kansch d' Rezepta bewerta ond Feedback gäba.",
+      "openFilter": "Filter öffna"
+    },
+    "recipes": {
+      "overview": "Hier isch d' Übersicht über d' Rezepta, die zu deiner Eikaufslischd ghöra, deine eigena Rezepta ond deine Favorita. Von dort aus kansch die aufrufa.",
+      "create": "Aufm Plus-Symbol rechts obä hosch d' Möglichkeit, eigena Rezepta z' erstella. Gib dei Idee ei, die KI generiert's, ond du kansch no e Bild von Zutatä hochladä.",
+      "addToList": "Falls du e von deine Rezepta oder Favoriterezepta zu deiner Eikaufslischd hinzugefügt möchtä, ruf s Rezept auf ond fügs über s Menü (drei Punkt) rechts obä dazu.",
+      "overviewTitle": "Rezept Übersicht",
+      "createTitle": "Rezepta erstella",
+      "addToListTitle": "Rezepta zur Eikaufslischd"
+    },
+    "tracker": {
+      "overviewTitle": "Mahlzeitä erfassä",
+      "overview": "Trag eifach ei, was du g'essä hosch. \n\nDu kansch alles in natürlicher Sprach beschreibä, wie zum Beispil „e Teller Nudla“, explizite Produktä nennä oder genaue Kalorienangabä machä – ganz wie du möchtä.",
+      "calorieGoalTitle": "Dei Kalorienziel",
+      "calorieGoal": "Definier dein tägliches Kalorienziel selber oder lass es automatisch von uns berechnen. \n\nGib dafür eifach einmalig deine Körperdatä ei – dr Rest übernehmät mir für dich.",
+      "activityTrackingTitle": "Aktivitätä erfassä",
+      "activityTracking": "Erfass zusätzlich deine sportliche Aktivitätä, wie z.B. „20 Minuta Jogga“. Mir berechnät daraus automatisch, wieviel Kalorien du extra zu dir nehmä kansch – ganz individuell für dich."
+    },
+    "setup": {
+      "aboutAppTitle": "Über die App",
+      "aboutApp": "Die App wurde privat entwickelt, um s Leba mit einer Eikaufslischd ond intelligenter Rezeptplanung z' vereinfacha."
+    }
+  },
+  "general": {
+    "next": "Weiter",
+    "back": "Zurück",
+    "error": "Fehler",
+    "errorMessage": "E Fehler isch aufgetreta. Bitte versuch es in Kürze erneut oder meld uns den Fehler.",
+    "loading": "Lädt..",
+    "close": "Schließä",
+    "save": "Speicherä",
+    "send": "Sendä",
+    "cancel": "Abbrechä",
+    "report": "Meldä",
+    "confirm": "Bestätiga",
+    "start": "Los geht's",
+    "generate": "Generierä",
+    "deleteRecipeDialog": {
+      "text": "Rezept entfernä",
+      "dialogMsg": "Möchtä du wirklich des ausgewählte Rezept entfernä?"
+    },
+    "information": "Information",
+    "ask": "Frogä",
+    "help": "Hilfe",
+    "selected": "Ausgewählt",
+    "discard": "Verwerfä",
+    "resume": "Fortsetzä",
+    "voiceRecording": "Audio-Aufnahm",
+    "details": "Details",
+    "name": "Name",
+    "goal": "Ziel",
+    "type": "Typ",
+    "difficulty": "Schwierigkeit",
+    "weekdays": {
+      "1": "Montag",
+      "2": "Dienstag",
+      "3": "Mittwoch",
+      "4": "Donnerstag",
+      "5": "Freitag",
+      "6": "Samstag",
+      "7": "Sonntag"
+    },
+    "edit": "Bearbeitä",
+    "delete": "Löschä",
+    "activate": "Aktivierä",
+    "archive": "Archiv",
+    "finish": "Beendä",
+    "weeks": "Woche",
+    "progress": "Fortschritt",
+    "instructions": "Anleitong",
+    "day": "Tag",
+    "days": "Tage",
+    "week": "Woche",
+    "selectPhoto": "Foto auswählä",
+    "capturePhoto": "Kamera"
+  },
+  "shoppingList": {
+    "newItemLabel": "Neuer Artikel",
+    "newItemPlaceholder": "Artikelname eingäba",
+    "notesLabel": "Notizä",
+    "notesHint": "Deine Notizä werdä automatisch gespeichert",
+    "noItemsMessage": "Es sind keine Artikel in dr Eikaufslischd vorhanden.",
+    "checkedHeader": "Abgehakt",
+    "nameLabel": "Name",
+    "amountLabel": "Menge",
+    "unitLabel": "Einheit",
+    "findAlternative": "Alternative findä",
+    "editItem": "Eintrag änderä",
+    "showRecipe": "Rezept anzeigen",
+    "saveAsFavorite": "Zu Favoritä hinzufüga",
+    "removeFavorite": "Aus Favoritä entfernä",
+    "shoppingListLabel": "Eikaufslischd",
+    "sortList": "Sortierung",
+    "help": "Hilfe",
+    "favorites": "Favoritä",
+    "shareList": "Lischd teilä",
+    "inviteCode": "Einladungscode",
+    "inviteCodeExpires": "Sekunda gültig",
+    "createInvite": "Code erstella",
+    "leaveList": "Lischd verlassä",
+    "joinedList": "Du bisch einer fremda Lischd beigetretä.",
+    "noSharedUsers": "D' Lischd wurde bisher ned geteilt.",
+    "joinList": "Lischd beitretä",
+    "sortCategoriesDialog": {
+      "title": "Kategorien sortierä",
+      "text": "Klick auf e Kategorie, um e Position festzulegä, oder nutz d' Pfeilä.",
+      "newPosition": "Neue Position",
+      "changePositon": "Position änderä"
+    },
+    "removeRecipes": {
+      "text": "Rezept entfernä",
+      "dialogMsg": "Möchtä du wirklich alle Rezept aus deiner Eikaufslischd entfernä? D' Zutatä bleibet weiterhin auf dr Eikaufslischd ond müsse separat gelöscht werda."
+    },
+    "removeIngredients": {
+      "text": "Zutatä entfernä",
+      "dialogMsg": "Möchtä du wirklich alle zutatenbezogene Einträgä aus deiner Eikaufslischd entfernä? D' Rezepta bleibet weiterhin in dr Rezeptansicht erhaltä."
+    },
+    "clearAll": {
+      "text": "Eikaufslischd leerä",
+      "dialogMsg": "Möchtä du wirklich alle Items aus deiner Eikaufslischd entfernä?"
+    },
+    "deleteList": {
+      "text": "Eikaufslischd löschä",
+      "dialogMsg": "Möchtä du wirklich deine gesamte Eikaufslischd löschä?"
+    },
+    "deleteConfirmTooltip": "Zur Bestätigung erneut drucka.",
+    "recipeOwnership": "Des Rezept ghört zu: ",
+    "voiceRecordingInfo": "D' Sprachaufnahm läuft aktuell. Du kansch in natürlicher Sprach saga, was auf deine Eikaufslischd soll. Dei Anfrag wird verarbeitet ond gsendet. Wenn du d' Aufnahm verwerfä möchtä, kansch se löschä. Solang du d' Aufnahm ned sendesch, bleibt alles lokal auf deinem Gerät.",
+    "categoryLabel": "Kategorie"
+  },
+  "planner": {
+    "title": "Rezeptplaner",
+    "filter": {
+      "title": "Filtereinstellunga",
+      "servingsLabel": "Anzahl der Leut",
+      "recipesLabel": "Anzahl der Rezepta",
+      "promptLabel": "Spezialwünsch",
+      "promptPlaceholder": "Beschreib dei Wünsch"
+    },
+    "fetchingMessage": "Deine Rezepta werdät im Hintergrund gladä. Bitte wartä.",
+    "resetSelectionDialog": {
+      "text": "Auswahl zurücksetzä",
+      "dialogMsg": "Möchtä du wirklich deine Rezeptauswahl zurücksetzä?"
+    }
+  },
+  "recipes": {
+    "title": "Rezept",
+    "shareDialog": "Rezept teilä",
+    "helpDialog": "Rezept Hilfe",
+    "empty": "Du hosch no kein Rezept erstellt.",
+    "noneSelected": "Kein Rezept ausgewählt.",
+    "noFavorites": "Du hosch no keine Favorit.",
+    "panels": {
+      "selectedRecipes": {
+        "title": "Rezept aus dr Eikaufslischd"
+      },
+      "myRecipes": {
+        "title": "Eigene Rezept"
+      },
+      "favoriteRecipes": {
+        "title": "Favorit Rezept"
+      }
+    },
+    "createRecipeDialog": {
+      "title": "Rezept generierä",
+      "text": "Beschreib dei Rezept so detailliert wie möglich: Was soll unbedingt enthalten sei, was möchtä du vermeidä? Je meh Informationa du gibsch, desto besser könnä mir dein individuelles Rezept generierä.\n\nNachm Erstellungsprozess dauert's etwa 2–3 Minuta, bis dei Rezept unner 'Eigene Rezept' erscheint.\n\nOptional kansch e Foto hinzufüga – entweder direkt aus deiner Galerie oder indem du e neues Bild aufnimmst. Des kann e Bild von deinem Kühlschrank, einzlna Zutatä oder ebbes sei, was dich an dei Wunschrezept erinnert.",
+      "generatingText": "Dei Rezept wird jetz erstellt. Des kann bis zu zwei Minuta dauera. Anschließend findsch es unner 'Eigene Rezept'."
+    },
+    "addIngredients": "Zutatä hinzufüga",
+    "addIngreditensInfo": "Bisch du sicher, dass du des Rezept zu deiner aktuellen Eikaufslischd hinzufüga möchtä? Alle Zutatä werdät automatisch mit hinzugfügt.",
+    "selectPortions": "Portiona auswählä",
+    "processingMessage": "Dei Rezept wird im Hintergrund erstellt. Du wirsch benachrichtigt, sobald es fertig isch.",
+    "readyMessage": "Dei Rezept wurde erstellt.",
+    "downloadSelectedPdf": "Ausgwehlte Rezepte als PDF, gell",
+    "tips": {
+      "swipeToRemove": "Wisch über a Rezept no links oder rechts, zum's löscha.",
+      "createOwn": "Mit em Plus-Symbol obba rechts kensch du dei eigne Rezepte aalegga.",
+      "printPdf": "Willsch dei Rezepte drucka? Im Dreipunkt-Menü unta rechts kensch du a PDF macha.",
+      "editOwn": "Du kensch dei eigne Rezepte jederzit bearbeita. Mach s' Rezept uff und nimm s' Dreipunkt-Menü, do findsch du alle Optiona.",
+      "feedbackPlanner": "A Rezept aus'm Planer überzeugt di net? Mach's uff und gib im Dreipunkt-Menü a Rückmeldung – mir kümmerat uns drum."
+    }
+  },
+  "recipe": {
+    "title": "Rezept",
+    "recipeFor": "Rezept für",
+    "recipePerson": "Perso",
+    "recipePersons": "Leut",
+    "prepareIngredients": "Zutatä vorbereitä",
+    "downloadPdf": "PDF herunterladä",
+    "nutrition": {
+      "title": "Nährwert pro Portion",
+      "kilocalories": "kCal",
+      "carbohydrates": "Carbs",
+      "fat": "Fett",
+      "protein": "Protein"
+    },
+    "information": {
+      "title": "Information",
+      "healthy": "Gsund",
+      "price": "Preis",
+      "difficulty": "Schwierigkeit",
+      "sustainability": "Nachhaltigkeit",
+      "preparationTime": "Zubereitung",
+      "everyday": "Alltäglichkeit"
+    },
+    "feedback": {
+      "title": "Feedback",
+      "label": "Dei Feedback",
+      "success": "Vielen Dank für dei Feedback!\nMir kümmerät uns darum."
+    },
+    "editDialog": {
+      "title": "Rezept bearbeitä",
+      "instructions": "Beschreib dei Änderunga",
+      "preview": "Vorschau",
+      "save": "Änderunga speicherä",
+      "error": "Fehler beim Bearbeitä",
+      "changes": "Änderunga"
+    },
+    "menu": {
+      "addToList": "Zutatä zur Lischd",
+      "addFavorite": "Favorit hinzufüga",
+      "removeRecipe": "Rezept entfernä",
+      "removeFavorite": "Favorit entfernä",
+      "deleteRecipe": "Rezept löschä",
+      "editRecipe": "Rezept bearbeitä",
+      "downloadPdf": "PDF herunterladä",
+      "feedback": "Feedback",
+      "trackRecipe": "Rezept trackä"
+    }
+  },
+  "units": {
+    "gram": "Gramm",
+    "kilogram": "kg",
+    "can": "Dose",
+    "liter": "L",
+    "milliliter": "ml",
+    "cup": "Tasse",
+    "clove": "Zehe",
+    "piece": "Stück",
+    "tablespoon": "El",
+    "teaspoon": "Tl",
+    "breeze": "Prise"
+  },
+  "navigation": {
+    "shoppingList": "Eikaufslischd",
+    "planner": "Planer",
+    "recipes": "Rezept",
+    "calorieCounter": "Kalorienzähler",
+    "settings": "Einstellunga",
+    "contact": "Kontakt",
+    "testPage": "Test Seit",
+    "rateApp": "App Bewertä",
+    "shareApp": "App Teilä"
+  },
+  "settings": {
+    "account": "Konto",
+    "title": "Einstellunga",
+    "export": "Daten exportierä",
+    "import": "Daten importierä",
+    "deleteAccount": "Account löschä",
+    "confirmDeleteTitle": "Account löschä?",
+    "confirmDeleteText": "Bisch du sicher, dass du dein Account dauerhaft löschä möchtä? Die Aktion kann ned rückgängig gmacht werda.",
+    "confirmDelete": "Ja, löschä",
+    "cancel": "Abbrechä",
+    "accountDeleted": "Dei Account wurde erfolgreich gelöscht.",
+    "deleteError": "Fehler beim Löscha vom Account.",
+    "importError": "Fehler beim Importiera von de Daten.",
+    "height": "Körpergröß (cm)",
+    "gender": "Geschlecht",
+    "birthyear": "Geburtsjohr",
+    "dietType": "Ernährungsweis",
+    "dietLevel": "Diät-Stuf",
+    "baseCalories": "Grundumsatz (kcal)",
+    "recommendations": "Empfohlene Wert",
+    "kcal": "Kalorien (kcal)",
+    "protein": "Proteine (g)",
+    "carbohydrates": "Kohlenhydrate (g)",
+    "fat": "Fett (g)",
+    "importWarningTitle": "Achtung: Daten überschreibä",
+    "importWarningText": "Durch dr Import werdet alle aktuelle Nutzerdaten überschrieben ond du wirsch ausgeloggt. Möchtä du fortfahrä?",
+    "userId": "Benutzer-ID",
+    "copySuccess": "In d' Zwischenablage kopiert!",
+    "selectStartpage": "Startseit auswählä"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Erreich uns über folgende Kanäle",
+    "email": "E-Mail sendä",
+    "discord": "Discord",
+    "footer": "Mir freuet uns auf dei Nachricht!"
+  },
+  "tracker": {
+    "today": "Heut",
+    "bodyData": "Körperdatä",
+    "trackNewItem": "Neuen Eintrag trackä",
+    "noTargetDefined": "Kein Kalorienziel definiert",
+    "noItemsTracked": "Es wurde no nix getrackt.",
+    "menu": {
+      "edit": "Bearbeitä",
+      "daily": "Täglich",
+      "addToShoppingList": "Zur Eikaufslischd hinzufüga",
+      "addToToday": "Für heut hinzufüga",
+      "remove": "Entfernä"
+    },
+    "dailyTracked": "(täglich)",
+    "calorieGoal": "Kalorienziel",
+    "calorieCalculator": "Kalorienrechner",
+    "trackActivity": "Aktivität trackä",
+    "trackRecipe": "Rezept trackä",
+    "activityLabel": "Aktivität",
+    "createActivity": "Aktivität hinzufüga",
+    "createActivityInfo": "Füg hier deine Aktivitätä hinzu, die App berechnet automatisch d' Kalorien für dich.",
+    "palOptions": {
+      "homeOffice": "Home-Office – sitzend, keine körperliche Aktivität",
+      "officeWorker": "Büroangestellter – sitzend, geringe Bewegung",
+      "teacher": "Lehrer – moderates Gehen, Stehen",
+      "salesperson": "Verkäufer – stehend, gehend, leichte körperliche Arbeit",
+      "waiter": "Kellner – viel Gehen, Tragen von Tellern",
+      "nurse": "Pflegekraft – häufiges Gehen, Heben von Patienten",
+      "constructionWorker": "Bauarbeiter – körperlich anstrengend, Heben, Tragen",
+      "farmer": "Landwirt – körperliche Arbeit, Heben, Maschinenbedienung",
+      "sportsTeacher": "Sportlehrer – aktiv, Vormachen von Übungen",
+      "constructionSite": "Baustelle – schwere körperliche Arbeit, Heben, Stehen",
+      "mountainGuide": "Bergführer – extreme Aktivität, langes Gehen im Gelände"
+    },
+    "height": "Körpergröß (cm)",
+    "weight": "Gewicht (kg)",
+    "birthyear": "Geburtsjohr",
+    "gender": {
+      "text": "Geschlecht",
+      "male": "Männlich",
+      "female": "Weiblich"
+    },
+    "workHoursWeek": "Arbeitsstundä pro Woche",
+    "workDaysPAL": "PAL-Wert bei Arbeit",
+    "dietType": {
+      "text": "Ernährungsweis",
+      "balanced": "Ausgewogen",
+      "lowCarb": "Low Carb",
+      "lowFat": "Low Fat"
+    },
+    "dietLevel": {
+      "text": "Diät-Stuf",
+      "strongLose": "Starkes Abnehmä -25%",
+      "lose": "Abnehmä -15%",
+      "maintain": "Haltä",
+      "gain": "Zunehmä +10%",
+      "strongGain": "Starkes Zunehmä +20%"
+    },
+    "bodyDataInfo": "Hier kansch deine Körperdatä eintraga, um deine Kalorienziel z' berechna. Die werdät verwendet, um deine tägliche Kalorienziel z' bestimmä.",
+    "minutes": "Minuta",
+    "burned": "verbrannt",
+    "calories": "Kalorien",
+    "kcal": "kcal",
+    "caloriesBurned": "Verbannte Kalorien (kcal)",
+    "duration": "Dauer (Minuta)",
+    "calculateCalories": "Kalorien berechnen",
+    "errorNoBodydata": "Wenn du den Kalorienrechner nutza möchtä, musst du vorher deine Körperdatä eingäba.",
+    "errorBodydataActivity": "Wenn du s Aktivitätentracking nutza möchtä, musst du vorher deine Körperdatä eingäba.",
+    "selectRecipe": "Rezept auswählä",
+    "portions": "Portiona",
+    "voiceRecordingInfo": "D' Aufnahm wird lokal bei dir gespeichert. Wenn du d' Audiodatei absenda möchtä, klick auf Sendä. \nAlternativ kansch auf Verwerfä klicka, um d' Aufnahm ned z' sendä.",
+    "macronutrients": "Makronährstoff",
+    "carbs": "Carbs",
+    "fat": "Fett",
+    "protein": "Eiweiß",
+    "noMacroTargetDefined": "Keine Makronährstoff-Ziel definiert",
+    "enterQuestion": "Stell hier dei Frog...",
+    "askDialog": "Hier kansch Frogä zur Ernährong stellä. Die App wird versuchä, dei Frog z' beantwortä ond bezieht dabei deine Körperdatä sowie deine Kalorienzählereinträge der letzte 14 Tage mit ei. Bitte beachte, dass d' Antworta auf den Informationa basierät, die du in dr App eingäba hosch.",
+    "addImage": "Bild hinzufüga",
+    "uploadImage": "Bild hochladä",
+    "captureImage": "Bild aufnehmä",
+    "dietLevelChange": {
+      "dietLevelBefore": "Diätlevel vor",
+      "lastChanged": "zuletzt geändert"
+    },
+    "descriptionLabel": "Z'sätzliche Beschriebung",
+    "descriptionPlaceholder": "Beschreib dei' Mahlzeit oder Aktivität im Bezug auf's Bild"
+  },
+  "trainingPlans": {
+    "title": "Trainingsplänä",
+    "help": {
+      "step1": {
+        "title": "Trainingsplan erstella",
+        "content": "Trainingsplänä könnä individuell erstellt werda, man kann alles beschreibä was man genau möchtä, für was man trainiert, wo, wie oft in dr Woche ond wie intensiv/lang."
+      },
+      "step2": {
+        "title": "Trainingsplan bearbeitä",
+        "content": "Wenn ebbes ned passä sollt, kann man d' Trainingsplänä bearbeitä mit natürlicher Sprach. Schreib eifach rei, was geändert werda soll, ond du bekommsch e aktualisierte Version."
+      },
+      "step3": {
+        "title": "Trainierä",
+        "content": "Trainingsplänä ganget auf Zeit, falls die aktiviert sind. Aktive Trainingsplänä könnä trainiert ond gloggt werda, jeder Satz einzeln – Gewichte bzw. Wiederholungä oder Dauer der Sätz. Am End hat man d' Möglichkeit, s Training direkt in dr Kalorienzähler z' sendä, um d' verbrauchte Kalorien z' trackä."
+      }
+    },
+    "descriptionLabelCreate": "Beschreib dr Plan ausführlich",
+    "createPlanInstructions": "Beschreib dein Plan so genau wie möglich: Was möchtä du trainierä? Wie oft in dr Woche? In welchem Umfeld? Welche Trainingsart bevorzugsch du?\n\nDu kansch auch d' Intensität angebä: leicht, moderat oder intensiv.\n\nBeispiel:\n'Ich möcht viermal pro Woche ins Fitnessstudio, Fokus auf Oberkörper. Ich bin gut trainiert.'\n\n'Ich hab Rückeschmerza links hinten an dr Schulter. Erstell mir e Plan mit gezielte Übunga für e Tag pro Woche, um mei Haltung z' verbesserä ond d' Schmerza z' lindern.'\n\nJe meh Informationa du angibsch, desto passender wird dein Trainingsplan erstellt.",
+    "subtitle": "Hier kansch deine Trainingsplänä erstella ond verwaltä.",
+    "editPlan": "Trainingsplan bearbeitä",
+    "editPlanDescription": "Beschreib was geändert werda soll",
+    "repetitionsShort": "Wdh.",
+    "duration": "Dauer",
+    "restBetweenSets": "Satzpause",
+    "restAfterExercise": "Pause nach dr Übung",
+    "deletePlan": "Trainingsplan löschä",
+    "activePlan": "Aktiver Plan",
+    "confirmDeletePlan": "Möchtä du den Trainingsplan wirklich löschä?",
+    "noPlans": "Du hosch no keine Trainingsplänä erstellt.",
+    "trainingDaysPerWeek": "Trainingstag pro Woche",
+    "addExercise": "Übung hinzufüga",
+    "removeExercise": "Übung entfernä",
+    "exerciseName": "Übungsname",
+    "set": "Satz",
+    "sets": "Sätz",
+    "reps": "Wiederholungä",
+    "restTime": "Pausenzeit (Sekunda)",
+    "savePlan": "Trainingsplan speicherä",
+    "createPlan": "Trainingsplan erstella",
+    "train": "Trainierä",
+    "selectDay": "Tag auswählä",
+    "suggestedWeight": "Empfohlenes Gesamtgewicht",
+    "weight": "Gewicht (kg)",
+    "durationWeeks": "Dauer (Woche)",
+    "canceled": "Des letzte Training wurde abbrocha.",
+    "noPlansInfo": "Es sind no keine Trainingsplänä vorhanden. Du kansch mitm Plus-Button obä rechts e neuen Trainingsplan hinzufüga.",
+    "activateDialog": {
+      "title": "Trainingsplan aktivierä",
+      "msg": "Wenn du dein Trainingsplan startesch, wird s Startdatum festgelegt. Anschließend siehsch, in welcher Woche von deinem Trainingsplan du dich befindesch.\nMöchtä du den Trainingsplan wirklich startä?"
+    },
+    "deleteDialog": {
+      "title": "Trainingsplan löschä",
+      "msg": "Möchtä du den Trainingsplan wirklich löschä?"
+    },
+    "finishDialog": {
+      "title": "Training beendä",
+      "msg": "Wenn du s Training beendesch, wird s Startdatum ond dein gesamter Fortschritt zurückgesetzt. Bisch du sicher, dass du s Training beendä möchtä?"
+    },
+    "processingMessage": "Dein Trainingsplan wird im Hintergrund erstellt. Du wirsch benachrichtigt, sobald er fertig isch.",
+    "readyMessage": "Dein Trainingsplan wurde erstellt.",
+    "editDialog": {
+      "preview": "Vorschau",
+      "save": "Änderunga speicherä",
+      "changes": "Änderunga",
+      "error": "Fehler beim Bearbeitä"
+    },
+    "statistics": "Statistika",
+    "totalWorkouts": "Abg'schlosse Trainings",
+    "lastWorkout": "Letztas Training",
+    "lastExercises": "Letztä 5 Übungä",
+    "noWorkoutsYet": "Noch koi Training abg'schlosse.",
+    "ask": "Froga stelle",
+    "enterQuestion": "Stell a Fraga zu dem Plan",
+    "askDialog": "Du kansch Froga zum Trainingsplan stella. Die letzde Trainingslogs (höchschd 10) send ma mit.",
+    "suggestedDuration": "Empfohle Dauer",
+    "continuePlan": "Fortsetzunga erstella",
+    "continuePlanTitle": "Fortsetzunga fir {name}",
+    "continuePlanDescription": "Mach aus dem Trainingsplan a neie Plan. Du kansch optional Wünsch dazua sage.",
+    "continuePlanNotesLabel": "No meh Hinweise (optional)",
+    "continuePlanAction": "Fortsetzunga erstella"
+  },
+  "training": {
+    "title": "Training Log",
+    "continue": "Weiter trainierä",
+    "discard": "Training verwerfä",
+    "exerciseListPlaceholder": "Übungslischd wird gladä...",
+    "noPlan": "Für heut isch kein Training geplant oder dr Plan enthält keine Übungä.",
+    "estimatedTimePlaceholder": "ca. X min",
+    "startTraining": "Training startä",
+    "setInfo": "Satz {current} von {total}",
+    "finishSet": "Satz beendä",
+    "noDescription": "Keine Beschreibung verfügbar.",
+    "countdown": "Nächster Satz in {seconds} Sekunda...",
+    "noDaySelected": "Kein Tag ausgewählt",
+    "exercise": "Übung",
+    "exercises": "Übungä",
+    "seconds": "Sekunda",
+    "secondsShort": "Sek.",
+    "noPreviousLog": "Es gibt no keine vorherige Log.",
+    "noImageAvailable": "Bild isch no ned verfübar.",
+    "skipRest": "Pause überspringä",
+    "completeSet": "Satz beendä",
+    "timeSeconds": "Zeit (Sek.)",
+    "time": "Zeit",
+    "exerciseCompleted": "Übung abgeschlossen",
+    "nextExercise": "Nächste Übung",
+    "allExercisesDone": "Alle Übungä abgeschlossen",
+    "finishTraining": "Training beendä",
+    "noCurrentLog": "Es gibt kein aktuelles Training.",
+    "loadingLog": "Lade Training Log...",
+    "suggestedValues": "Vorgeschlagene Wert",
+    "summaryTitle": "Trainingsübersicht",
+    "backToPlans": "Zurück zu de Trainingsplänä",
+    "lastLog": "lettschde Log:",
+    "actualLog": "aktuelle Log:",
+    "description": "Beschriebung",
+    "getFeedback": "Feedback anfroga",
+    "feedbackTitle": "Rückmeldig",
+    "startTimer": "Tima starte",
+    "stopTimer": "Tima stoppa",
+    "timer": "Tima",
+    "difficulty": "Aasträngung",
+    "statistics": "Statistike",
+    "totalMovedWeight": "Gsamtbewegts Gwicht",
+    "totalDuration": "Gsamtdauer",
+    "totalSets": "Gsamtzohl vo dr Sätz",
+    "avgWeightPerExercise": "Durschnittsgwicht pro Üebig",
+    "trackCalories": "Kaloriä tracka",
+    "caloriesBurned": "Getrackta Kaloriä: {calories} kcal",
+    "cancelTraining": "Training abbreche",
+    "cancelTrainingConfirm": "Willsch du des Training wirkli abbreche?",
+    "useLastValue": "Letzda Wert eintraga ({value})"
+  },
+  "adminStats": {
+    "title": "Statistike",
+    "usersToday": "Neie Nutzer heut",
+    "usersWeek": "Neie Nutzer die Woche",
+    "activeToday": "Aktive Nutzer heut",
+    "activeWeek": "Aktive Nutzer die Woche",
+    "recipes24h": "Erstellte Rezepte (24 Stund)",
+    "trainingPlans24h": "Erstellte Trainingspläne (24 Stund)",
+    "plannerUsersTotal": "Nutzer mit Planer insgsamt",
+    "plannerToday": "Nutzer mit Planer heut",
+    "plannerWeek": "Nutzer mit Planer die Woche",
+    "shoppingUpdatedToday": "Aktualisierte Einkaufslisten heut",
+    "shoppingUpdatedWeek": "Aktualisierte Einkaufslisten die Woche",
+    "calorieTrackerTotal": "Nutzer mit Kalorienzähler insgsamt",
+    "calorieTrackerToday": "Nutzer mit Kalorienzähler heut",
+    "calorieTrackerWeek": "Nutzer mit Kalorienzähler die Woche",
+    "trainingLogsWeek": "Erstellte Trainingslogs (Woch')"
+  },
+  "adminTools": {
+    "title": "Admin-Toolz",
+    "clearCache": "LLM-Cache ausleare",
+    "resetImages": "Übungsbildle zruck setza",
+    "confirm": "Bestätiga ({seconds})",
+    "success": "Aktion isch gmacht"
+  }
+}

@@ -1,0 +1,8 @@
+/*
+ * layouts.css
+ *
+ * Shared overrides for layout-level components.
+ */
+.v-app-bar .v-toolbar-title {
+  font-weight: 500;
+}
