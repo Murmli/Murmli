@@ -35,6 +35,10 @@
             </v-expansion-panel-text>
           </v-expansion-panel>
         </v-expansion-panels>
+
+        <v-divider class="my-6"></v-divider>
+
+        <AppPromotionActions />
       </v-col>
     </v-row>
   </v-container>
@@ -48,6 +52,7 @@ meta:
 
 <script setup>
 import { useLanguageStore } from '@/stores/languageStore';
+import AppPromotionActions from '@/components/general/AppPromotionActions.vue';
 
 const languageStore = useLanguageStore();
 
