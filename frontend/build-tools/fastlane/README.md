@@ -31,10 +31,23 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
-### ios buildAndDeployToTestflight
+----
+
+
+## Android
+
+### android build
 
 ```sh
-[bundle exec] fastlane ios buildAndDeployToTestflight
+[bundle exec] fastlane android build
+```
+
+
+
+### android beta
+
+```sh
+[bundle exec] fastlane android beta
 ```
 
 
