@@ -1,0 +1,88 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+frontend_dir = File.expand_path('../..')
+
+platform :ios do
+  lane :build do
+    increment_build_number(
+        xcodeproj: File.join(frontend_dir, 'ios/App/App.xcodeproj'),
+        build_number: ENV['BUILD_NUMBER']
+    )
+
+    build_app(
+      workspace: File.join(frontend_dir, 'ios/App/App.xcworkspace'),
+      export_method: 'app-store',
+      export_options: {
+        provisioningProfiles: {
+          'com.boundfoxstudios.murmli' => 'Murmli Distribution'
+        }
+      },
+      output_directory: File.join(frontend_dir, 'dist/iOS'),
+      output_name: 'Murmli.ipa'
+    )
+  end
+
+  lane :beta do
+    app_store_connect_api_key(
+      key_id: ENV['APPLE_APP_STORE_KEY_ID'],
+      issuer_id: ENV['APPLE_APP_STORE_KEY_ISSUER_ID'],
+      key_content: ENV['APPLE_APP_STORE_CONNECT_KEY'],
+      is_key_content_base64: true
+    )
+
+    upload_to_testflight(
+      ipa: File.join(frontend_dir, 'dist/iOS/Murmli.ipa')
+    )
+  end
+end
+
+platform :android do
+  lane :build do
+    keyStorePath = ENV['ANDROID_KEY_STORE_PATH']
+    keyStorePassword = ENV['ANDROID_KEY_STORE_PASSWORD']
+    keyStoreKeyPassword = ENV['ANDROID_KEY_PASSWORD']
+
+    # we need to offset due to previous deployments.
+    versionCode = ENV['BUILD_NUMBER'].to_i + 100
+
+    gradle(
+      task: 'bundle',
+      build_type: 'release',
+      project_dir: File.join(frontend_dir, 'android'),
+      gradle_path: File.join(frontend_dir, 'android/gradlew'),
+      properties: {
+        'android.injected.signing.store.file' => "#{keyStorePath}",
+        'android.injected.signing.store.password' => "#{keyStorePassword}",
+        'android.injected.signing.key.alias' => 'my-key-alias',
+        'android.injected.signing.key.password' => "#{keyStoreKeyPassword}",
+        'customVersionCode' => versionCode
+      }
+    )
+  end
+
+  lane :beta do
+    supply(
+        track: 'internal',
+        json_key_data: Base64.decode64(ENV['GOOGLE_PLAY_STORE_CREDENTIALS']),
+        aab: File.join(frontend_dir, 'dist/android/Murmli.aab'),
+        skip_upload_apk: true,
+        skip_upload_metadata: true,
+        skip_upload_changelogs: true,
+        skip_upload_images: true,
+        skip_upload_screenshots: true
+    )
+  end
+end

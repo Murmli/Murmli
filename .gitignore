@@ -1,7 +1,6 @@
 .DS_Store
 node_modules
 dist
-ios
 backup
 
 # local env files
@@ -27,3 +26,4 @@ pnpm-debug.log*
 
 resources/android/**/*
 *test-result*
+/frontend/build-tools/fastlane/report.xml
