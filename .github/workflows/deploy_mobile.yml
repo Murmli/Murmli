@@ -12,8 +12,7 @@ permissions:
 on:
   push:
     branches:
-      - main
-      - feature/mobile-build
+      - develop
   workflow_dispatch:
     inputs:
       environment:
