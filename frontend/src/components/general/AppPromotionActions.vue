@@ -1,14 +1,8 @@
 <template>
   <div>
     <v-row class="d-flex justify-center mb-3">
-      <v-chip
-        class="px-4"
-        color="primary"
-        text-color="white"
-        variant="elevated"
-        prepend-icon="mdi-heart"
-        @click="openLink('https://play.google.com/store/apps/details?id=de.murmli.twa')"
-      >
+      <v-chip class="px-4" color="primary" text-color="white" variant="elevated" prepend-icon="mdi-heart"
+        append-icon="mdi-heart" @click="openLink('https://play.google.com/store/apps/details?id=de.murmli.twa')">
         {{ languageStore.t('navigation.rateApp') }}
       </v-chip>
     </v-row>
@@ -42,6 +36,14 @@
         <v-tooltip :text="'Reddit'" location="top">
           <template #activator="{ props }">
             <v-icon v-bind="props" color="red">mdi-reddit</v-icon>
+          </template>
+        </v-tooltip>
+      </v-btn>
+
+      <v-btn icon variant="text" @click="openLink('https://github.com/Murmli/Murmli/')">
+        <v-tooltip :text="'GitHub'" location="top">
+          <template #activator="{ props }">
+            <v-icon v-bind="props">mdi-github</v-icon>
           </template>
         </v-tooltip>
       </v-btn>
