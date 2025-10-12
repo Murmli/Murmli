@@ -1,0 +1,194 @@
+{
+  "app": {
+    "name": "Murmli",
+    "description": "Your daily planning app"
+  },
+  "settings": {
+    "title": "Settings",
+    "connecting_to_backend": "Connecting to backend...",
+    "please_wait": "Please wait a moment",
+    "session_validated": "Session validated",
+    "session_validated_message": "Your session has been successfully validated",
+    "session_info": "Session Information",
+    "user_info": "User Information",
+    "user_id": "User ID",
+    "user_id_not_available": "User ID not available",
+    "copy_user_id": "Copy User ID",
+    "user_id_copied": "User ID copied to clipboard",
+    "account_deletion_failed": "Account deletion failed",
+    "data_management": "Data Management",
+    "export_data": "Export Data",
+    "import_data": "Import Data",
+    "export_started": "Data export started",
+    "import_started": "Data import started",
+    "export_error": "Error during export: {error}",
+    "import_error": "Error during import: {error}",
+    "export_ready": "Export Ready",
+    "export_ready_description": "Your data has been successfully exported and is ready for download.",
+    "export_download_info": "The file will be saved in your Documents folder in the Murmli folder.",
+    "download_export": "Download Export",
+    "downloading_export": "Downloading export...",
+    "export_downloaded": "Export successfully downloaded: {path}",
+    "open_file": "Open File",
+    "export_download_error": "Download error: {error}",
+    "importing_data": "Importing data...",
+    "import_success": "Import successful! {count} items imported.",
+    "invalid_json_format": "Invalid JSON format",
+    "missing_user_data": "Missing user data in import file",
+    "import_confirm_title": "Import Data",
+    "import_confirm_description": "Do you want to import the selected file?",
+    "import_confirm": "Import",
+    "import_warning": "Warning: Import may overwrite existing data.",
+    "file_location": "File Location",
+    "file_saved_at": "The file has been saved at:",
+    "file_location_help": "Copy the path to manually open the file.",
+    "copy_path": "Copy Path",
+    "path_copied": "Path copied to clipboard",
+    "murmli_folder": "Murmli Folder",
+    "loading_folder_path": "Loading folder path...",
+    "folder_path_error": "Error loading folder path: {error}",
+    "copy_path_tooltip": "Copy path",
+    "folder_path_help": "Click on the path or the copy button to copy it to the clipboard",
+    "path_copied_success": "Path copied to clipboard",
+    "export_shared_success": "Export shared successfully!",
+    "export_saved_locally": "Export saved locally",
+    "export_share_error": "Error sharing: {error}",
+    "unknown_folder_path": "Unknown",
+    "monospace_font": "monospace",
+    "murmli_export_text": "Murmli Data Export - {fileName}",
+    "murmli_export_subject": "Murmli Data Export",
+    "no_download_link": "No download link received",
+    "failed_to_download": "Failed to download file",
+    "no_server_response": "No response from server",
+    "language": {
+      "title": "Language",
+      "select": "Select language"
+    },
+    "search_languages": "Search languages...",
+    "loading_languages": "Loading languages...",
+    "no_languages_found": "No languages found",
+    "shopping_list_settings": "Shopping List Settings",
+    "shopping_list_categories": "Categories",
+    "shopping_list_sorting": "Sorting",
+    "no_categories_available": "No categories available",
+    "no_sorting_available": "No sorting available",
+    "save_sorting": "Save sorting",
+    "sorting_saved": "Sorting saved successfully",
+    "sorting_save_error": "Error saving sorting: {error}",
+    "danger_zone": {
+      "title": "Danger Zone",
+      "delete_all_data": "Delete All Data",
+      "delete_confirm": "Are you sure you want to delete all data? This action cannot be undone.",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    },
+    "bottom_navigation": "Navigation",
+    "bottomNav": {
+      "title": "Bottom Navigation",
+      "description": "Configure navigation and change the order of menu items",
+      "reset": "Reset",
+      "dashboardDesc": "Main overview with all important information",
+      "shoppingListDesc": "Manage shopping list and get AI suggestions",
+      "recipesDesc": "Browse and manage recipes",
+      "plannerDesc": "Plan and organize meals",
+      "trackerDesc": "Track calories and nutrients",
+      "trainingPlanDesc": "Create and manage training plans",
+      "trainingLogDesc": "Log training sessions",
+      "settingsDesc": "App settings and configuration"
+    }
+  },
+  "languages": {
+    "de": "Deutsch",
+    "en": "English"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "load": "Load",
+    "refresh": "Refresh"
+  },
+  "home": {
+    "title": "Home",
+    "welcome": "Welcome to Murmli",
+    "welcome_subtitle": "Your daily planning app for shopping lists, recipes and more",
+    "go_to_settings": "Go to Settings",
+    "session_info": "Session Information",
+    "logged_in": "Logged in ✓",
+    "ensure_session": "Ensure Session",
+    "reset": "Reset",
+    "language_settings": "Language Settings",
+    "local": "Local:",
+    "backend": "Backend:",
+    "not_set": "not set",
+    "not_loaded": "not loaded"
+  },
+  "onboarding": {
+    "title": "Choose Language",
+    "choose_language": "Please choose your language:",
+    "german": "Deutsch",
+    "english": "English"
+  },
+  "errors": {
+    "no_valid_session": "No valid session",
+    "connection_error": "Connection error: No connection to server. Please check internet connection and server status.",
+    "unauthorized": "Unauthorized: Please log in again.",
+    "forbidden": "Access denied: You don't have permission for this action.",
+    "not_found": "Not found: The requested resource doesn't exist.",
+    "server_error": "Server error: An internal error occurred. Please try again later.",
+    "timeout": "Timeout: The request took too long. Please try again.",
+    "unknown": "Unknown error: {message}",
+    "error_loading_language_setting": "Error loading language setting: {error}",
+    "error_deleting_data": "Error deleting data: {error}"
+  },
+  "messages": {
+    "language_changed": "Language changed to {language}",
+    "error_changing_language": "Error changing language: {error}",
+    "error_deleting_data": "Error deleting data: {error}"
+  },
+  "user_profile": {
+    "title": "User Profile",
+    "not_loaded": "User profile not loaded",
+    "edit_profile": "Edit Profile",
+    "profile_updated": "Profile updated successfully",
+    "profile_update_error": "Error updating profile: {error}",
+    "email": "Email",
+    "name": "Name",
+    "timezone": "Timezone",
+    "language": "Language",
+    "coming_soon": "Coming Soon",
+    "coming_soon_description": "Profile management will be available in a future version."
+  },
+  "dashboard": {
+    "title": "Dashboard"
+  },
+  "shoppingList": {
+    "title": "Shopping List",
+    "quickActions": "Quick Actions",
+    "addItem": "Add",
+    "viewList": "View",
+    "aiSuggest": "AI Suggestion",
+    "aiPromptHint": "Tip: Write 'ingredients for lasagna' to automatically create a list!"
+  },
+  "recipes": {
+    "title": "Recipes"
+  },
+  "planner": {
+    "title": "Planner"
+  },
+  "tracker": {
+    "title": "Tracker"
+  },
+  "trainingPlan": {
+    "title": "Training Plan"
+  },
+  "trainingLog": {
+    "title": "Training Log"
+  }
+}

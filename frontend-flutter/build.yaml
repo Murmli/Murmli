@@ -1,0 +1,50 @@
+global_options:
+  json_serializable:
+    options:
+      explicit_to_json: true
+      any_map: false
+      checked: false
+  freezed:
+    options:
+      # Generate copyWith methods
+      copyWith: true
+      # Generate equality methods
+      equal: true
+      # Generate toString methods
+      toString: true
+
+targets:
+  $default:
+    builders:
+      slang_build_runner:
+        options:
+          base_locale: de
+          fallback_strategy: base_locale
+          input_directory: lib/i18n
+          input_file_pattern: .i18n.json
+          output_directory: lib/i18n
+          output_file_name: translations.g.dart
+          lazy: true
+          locale_handling: true
+          flutter_integration: true
+          namespaces: false
+          translate_var: t
+          enum_name: AppLocale
+          class_name: Translations
+          translation_class_visibility: private
+          key_case: snake
+          key_map_case: camel
+          param_case: pascal
+          sanitization:
+            enabled: true
+            prefix: k
+            case: camel
+          string_interpolation: double_braces
+          flat_map: false
+          translation_overrides: false
+          timestamp: true
+          statistics: true
+          format:
+            enabled: true
+            width: 150
+          generate_enum: true

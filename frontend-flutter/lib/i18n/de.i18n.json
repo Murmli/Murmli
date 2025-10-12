@@ -1,0 +1,194 @@
+{
+  "app": {
+    "name": "Murmli",
+    "description": "Deine tägliche Planungs-App"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "connecting_to_backend": "Verbindung zum Backend wird hergestellt...",
+    "please_wait": "Bitte warten Sie einen Moment",
+    "session_validated": "Session validiert",
+    "session_validated_message": "Ihre Session wurde erfolgreich validiert",
+    "session_info": "Session-Informationen",
+    "user_info": "Benutzer-Informationen",
+    "user_id": "Benutzer-ID",
+    "user_id_not_available": "Benutzer-ID nicht verfügbar",
+    "copy_user_id": "Benutzer-ID kopieren",
+    "user_id_copied": "Benutzer-ID in die Zwischenablage kopiert",
+    "account_deletion_failed": "Account-Löschung fehlgeschlagen",
+    "data_management": "Datenverwaltung",
+    "export_data": "Daten exportieren",
+    "import_data": "Daten importieren",
+    "export_started": "Datenexport gestartet",
+    "import_started": "Datenimport gestartet",
+    "export_error": "Fehler beim Export: {error}",
+    "import_error": "Fehler beim Import: {error}",
+    "export_ready": "Export bereit",
+    "export_ready_description": "Ihre Daten wurden erfolgreich exportiert und sind zum Download bereit.",
+    "export_download_info": "Die Datei wird in Ihrem Documents-Ordner im Murmli-Ordner gespeichert.",
+    "download_export": "Export herunterladen",
+    "downloading_export": "Export wird heruntergeladen...",
+    "export_downloaded": "Export erfolgreich heruntergeladen: {path}",
+    "open_file": "Datei öffnen",
+    "export_download_error": "Fehler beim Download: {error}",
+    "importing_data": "Daten werden importiert...",
+    "import_success": "Import erfolgreich! {count} Elemente importiert.",
+    "invalid_json_format": "Ungültiges JSON-Format",
+    "missing_user_data": "Benutzerdaten in Import-Datei fehlen",
+    "import_confirm_title": "Daten importieren",
+    "import_confirm_description": "Möchten Sie die ausgewählte Datei importieren?",
+    "import_confirm": "Importieren",
+    "import_warning": "Warnung: Der Import überschreibt möglicherweise vorhandene Daten.",
+    "file_location": "Dateispeicherort",
+    "file_saved_at": "Die Datei wurde gespeichert unter:",
+    "file_location_help": "Kopieren Sie den Pfad, um die Datei manuell zu öffnen.",
+    "copy_path": "Pfad kopieren",
+    "path_copied": "Pfad in die Zwischenablage kopiert",
+    "murmli_folder": "Murmli Ordner",
+    "loading_folder_path": "Lade Ordnerpfad...",
+    "folder_path_error": "Fehler beim Laden des Ordnerpfads: {error}",
+    "copy_path_tooltip": "Pfad kopieren",
+    "folder_path_help": "Klicken Sie auf den Pfad oder den Kopieren-Button, um ihn in die Zwischenablage zu kopieren",
+    "path_copied_success": "Pfad in die Zwischenablage kopiert",
+    "export_shared_success": "Export erfolgreich geteilt!",
+    "export_saved_locally": "Export lokal gespeichert",
+    "export_share_error": "Fehler beim Teilen: {error}",
+    "unknown_folder_path": "Unbekannt",
+    "monospace_font": "monospace",
+    "murmli_export_text": "Murmli Datenexport - {fileName}",
+    "murmli_export_subject": "Murmli Datenexport",
+    "no_download_link": "No download link received",
+    "failed_to_download": "Failed to download file",
+    "no_server_response": "No response from server",
+    "language": {
+      "title": "Sprache",
+      "select": "Sprache auswählen"
+    },
+    "search_languages": "Sprachen durchsuchen...",
+    "loading_languages": "Sprachen werden geladen...",
+    "no_languages_found": "Keine Sprachen gefunden",
+    "shopping_list_settings": "Einkaufsliste-Einstellungen",
+    "shopping_list_categories": "Kategorien",
+    "shopping_list_sorting": "Sortierung",
+    "no_categories_available": "Keine Kategorien verfügbar",
+    "no_sorting_available": "Keine Sortierung verfügbar",
+    "save_sorting": "Sortierung speichern",
+    "sorting_saved": "Sortierung erfolgreich gespeichert",
+    "sorting_save_error": "Fehler beim Speichern der Sortierung: {error}",
+    "danger_zone": {
+      "title": "Gefährlicher Bereich",
+      "delete_all_data": "Alle Daten löschen",
+      "delete_confirm": "Sind Sie sicher, dass Sie alle Daten löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+      "cancel": "Abbrechen",
+      "delete": "Löschen"
+    },
+    "bottom_navigation": "Navigation",
+    "bottomNav": {
+      "title": "Bottom Navigation",
+      "description": "Konfiguriere die Navigation und ändere die Reihenfolge der Menüpunkte",
+      "reset": "Zurücksetzen",
+      "dashboardDesc": "Hauptübersicht mit allen wichtigen Informationen",
+      "shoppingListDesc": "Einkaufsliste verwalten und AI-Vorschläge erhalten",
+      "recipesDesc": "Rezepte durchsuchen und verwalten",
+      "plannerDesc": "Mahlzeiten planen und organisieren",
+      "trackerDesc": "Kalorien und Nährwerte verfolgen",
+      "trainingPlanDesc": "Trainingspläne erstellen und verwalten",
+      "trainingLogDesc": "Trainingseinheiten protokollieren",
+      "settingsDesc": "App-Einstellungen und Konfiguration"
+    }
+  },
+  "languages": {
+    "de": "Deutsch",
+    "en": "English"
+  },
+  "common": {
+    "loading": "Laden...",
+    "error": "Fehler",
+    "retry": "Erneut versuchen",
+    "success": "Erfolgreich",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "close": "Schließen",
+    "load": "Laden",
+    "refresh": "Aktualisieren"
+  },
+  "home": {
+    "title": "Home",
+    "welcome": "Willkommen bei Murmli",
+    "welcome_subtitle": "Deine tägliche Planungs-App für Einkaufslisten, Rezepte und mehr",
+    "go_to_settings": "Zu den Einstellungen",
+    "session_info": "Session-Informationen",
+    "logged_in": "Angemeldet ✓",
+    "ensure_session": "Session sicherstellen",
+    "reset": "Zurücksetzen",
+    "language_settings": "Spracheinstellungen",
+    "local": "Lokal:",
+    "backend": "Backend:",
+    "not_set": "nicht gesetzt",
+    "not_loaded": "nicht geladen"
+  },
+  "onboarding": {
+    "title": "Sprache wählen",
+    "choose_language": "Bitte wähle deine Sprache:",
+    "german": "Deutsch",
+    "english": "English"
+  },
+  "errors": {
+    "no_valid_session": "Keine gültige Session",
+    "connection_error": "Verbindungsfehler: Keine Verbindung zum Server. Bitte Internetverbindung und Server-Status prüfen.",
+    "unauthorized": "Nicht autorisiert: Bitte melden Sie sich erneut an.",
+    "forbidden": "Zugriff verweigert: Sie haben keine Berechtigung für diese Aktion.",
+    "not_found": "Nicht gefunden: Die angeforderte Ressource existiert nicht.",
+    "server_error": "Server-Fehler: Ein interner Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.",
+    "timeout": "Zeitüberschreitung: Die Anfrage dauerte zu lange. Bitte versuchen Sie es erneut.",
+    "unknown": "Unbekannter Fehler: {message}",
+    "error_loading_language_setting": "Fehler beim Laden der Spracheinstellung: {error}",
+    "error_deleting_data": "Fehler beim Löschen der Daten: {error}"
+  },
+  "messages": {
+    "language_changed": "Sprache auf {language} geändert",
+    "error_changing_language": "Fehler beim Ändern der Sprache: {error}",
+    "error_deleting_data": "Fehler beim Löschen der Daten: {error}"
+  },
+  "user_profile": {
+    "title": "Benutzerprofil",
+    "not_loaded": "Benutzerprofil nicht geladen",
+    "edit_profile": "Profil bearbeiten",
+    "profile_updated": "Profil erfolgreich aktualisiert",
+    "profile_update_error": "Fehler beim Aktualisieren des Profils: {error}",
+    "email": "E-Mail",
+    "name": "Name",
+    "timezone": "Zeitzone",
+    "language": "Sprache",
+    "coming_soon": "Coming Soon",
+    "coming_soon_description": "Die Profilverwaltung wird in einer zukünftigen Version verfügbar sein."
+  },
+  "dashboard": {
+    "title": "Dashboard"
+  },
+  "shoppingList": {
+    "title": "Einkaufsliste",
+    "quickActions": "Schnellaktionen",
+    "addItem": "Hinzufügen",
+    "viewList": "Anzeigen",
+    "aiSuggest": "AI Vorschlag",
+    "aiPromptHint": "Tipp: Schreibe 'Zutaten für Lasagne' um automatisch eine Liste zu erstellen!"
+  },
+  "recipes": {
+    "title": "Rezepte"
+  },
+  "planner": {
+    "title": "Planer"
+  },
+  "tracker": {
+    "title": "Tracker"
+  },
+  "trainingPlan": {
+    "title": "Trainingsplan"
+  },
+  "trainingLog": {
+    "title": "Trainingslog"
+  }
+}
