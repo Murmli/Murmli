@@ -273,7 +273,8 @@
     "contact": "联系",
     "testPage": "测试页面",
     "rateApp": "评价应用",
-    "shareApp": "分享应用"
+    "shareApp": "分享应用",
+    "email": "通过电子邮件分享"
   },
   "settings": {
     "account": "账户",

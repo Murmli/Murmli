@@ -273,7 +273,8 @@
     "contact": "Contact",
     "testPage": "Page de test",
     "rateApp": "Évaluer l'application",
-    "shareApp": "Partager l'application"
+    "shareApp": "Partager l'application",
+    "email": "Partager par e-mail"
   },
   "settings": {
     "account": "Compte",
