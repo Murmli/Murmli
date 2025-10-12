@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:murmli/core/routes/app_router.gr.dart';
-import 'package:murmli/features/shopping_list/presentation/shopping_card.dart';
 import 'package:murmli/features/shopping_list/presentation/shopping_list_page.dart';
 import 'package:murmli/features/recipes/presentation/recipes_page.dart';
 import 'package:murmli/features/planner/presentation/planner_page.dart';
@@ -20,32 +19,43 @@ class DashboardPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final bottomNavConfigAsync = ref.watch(bottomNavConfigProvider);
     final activeIndexAsync = ref.watch(bottomNavActiveIndexProvider);
-    
+
     return bottomNavConfigAsync.when(
       data: (bottomNavConfig) => activeIndexAsync.when(
         data: (activeIndex) {
-          final enabledItems = bottomNavConfig.where((BottomNavItem item) => item.enabled).toList();
-          
+          final enabledItems = bottomNavConfig
+              .where((BottomNavItem item) => item.enabled)
+              .toList();
+
           // Finde den aktuellen Index basierend auf den aktivierten Items
-          final currentIndex = _findCurrentIndex(activeIndex, bottomNavConfig, enabledItems);
-          
+          final currentIndex = _findCurrentIndex(
+            activeIndex,
+            bottomNavConfig,
+            enabledItems,
+          );
+
           // Bestimme die aktuelle Route
-          final currentItem = enabledItems[currentIndex.clamp(0, enabledItems.length - 1)];
+          final currentItem =
+              enabledItems[currentIndex.clamp(0, enabledItems.length - 1)];
           final isDashboard = currentItem.route == BottomNavRoute.dashboard;
-          
+
           return Scaffold(
-            appBar: isDashboard ? AppBar(
-              title: Text(context.t.dashboard.title),
-              backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-              actions: [
-                IconButton(
-                  icon: const Icon(Icons.settings),
-                  onPressed: () {
-                    context.router.push(const SettingsRoute());
-                  },
-                ),
-              ],
-            ) : null,
+            appBar: isDashboard
+                ? AppBar(
+                    title: Text(context.t.dashboard.title),
+                    backgroundColor: Theme.of(
+                      context,
+                    ).colorScheme.inversePrimary,
+                    actions: [
+                      IconButton(
+                        icon: const Icon(Icons.settings),
+                        onPressed: () {
+                          context.router.push(const SettingsRoute());
+                        },
+                      ),
+                    ],
+                  )
+                : null,
             body: IndexedStack(
               index: currentIndex.clamp(0, enabledItems.length - 1),
               children: _buildPages(context, bottomNavConfig),
@@ -54,8 +64,13 @@ class DashboardPage extends ConsumerWidget {
               currentIndex: currentIndex.clamp(0, enabledItems.length - 1),
               onTap: (int index) {
                 // Konvertiere den UI-Index zurück zum ursprünglichen Index
-                final originalIndex = _convertUIToOriginalIndex(index, bottomNavConfig);
-                ref.read(bottomNavActiveIndexProvider.notifier).setIndex(originalIndex);
+                final originalIndex = _convertUIToOriginalIndex(
+                  index,
+                  bottomNavConfig,
+                );
+                ref
+                    .read(bottomNavActiveIndexProvider.notifier)
+                    .setIndex(originalIndex);
               },
               type: BottomNavigationBarType.fixed,
               items: _buildBottomNavItems(context, bottomNavConfig),
@@ -80,21 +95,24 @@ class DashboardPage extends ConsumerWidget {
 
   List<Widget> _buildPages(BuildContext context, List<BottomNavItem> config) {
     final pages = <Widget>[];
-    
-    for (final BottomNavItem item in config.where((BottomNavItem item) => item.enabled)) {
+
+    for (final BottomNavItem item in config.where(
+      (BottomNavItem item) => item.enabled,
+    )) {
       switch (item.route) {
         case BottomNavRoute.dashboard:
-          pages.add(const SingleChildScrollView(
-            child: Column(
-              children: [
-                ShoppingCard(),
-                // TODO: Weitere Dashboard-Komponenten hinzufügen
-                // RecipeCard(),
-                // PlannerCard(),
-                // TrackerCard(),
-              ],
+          pages.add(
+            const SingleChildScrollView(
+              child: Column(
+                children: [
+                  // TODO: Weitere Dashboard-Komponenten hinzufügen
+                  // RecipeCard(),
+                  // PlannerCard(),
+                  // TrackerCard(),
+                ],
+              ),
             ),
-          ));
+          );
           break;
         case BottomNavRoute.shoppingList:
           pages.add(const ShoppingListPage());
@@ -116,15 +134,17 @@ class DashboardPage extends ConsumerWidget {
           break;
       }
     }
-    
+
     return pages;
   }
 
   List<BottomNavigationBarItem> _buildBottomNavItems(
-    BuildContext context, 
+    BuildContext context,
     List<BottomNavItem> config,
   ) {
-    return config.where((BottomNavItem item) => item.enabled).map((BottomNavItem item) {
+    return config.where((BottomNavItem item) => item.enabled).map((
+      BottomNavItem item,
+    ) {
       return BottomNavigationBarItem(
         icon: Icon(item.icon),
         activeIcon: Icon(item.activeIcon),
@@ -153,17 +173,23 @@ class DashboardPage extends ConsumerWidget {
   }
 
   /// Findet den aktuellen Index basierend auf dem gespeicherten Index und den aktivierten Items
-  int _findCurrentIndex(int savedIndex, List<BottomNavItem> config, List<BottomNavItem> enabledItems) {
+  int _findCurrentIndex(
+    int savedIndex,
+    List<BottomNavItem> config,
+    List<BottomNavItem> enabledItems,
+  ) {
     if (enabledItems.isEmpty) return 0;
-    
+
     // Wenn der gespeicherte Index noch gültig ist (Item ist aktiviert), verwende ihn
     if (savedIndex < config.length && config[savedIndex].enabled) {
       // Finde die Position in den aktivierten Items
       final targetItem = config[savedIndex];
-      final foundIndex = enabledItems.indexWhere((item) => item.route == targetItem.route);
+      final foundIndex = enabledItems.indexWhere(
+        (item) => item.route == targetItem.route,
+      );
       return foundIndex >= 0 ? foundIndex : 0;
     }
-    
+
     // Fallback: Verwende den ersten aktivierten Index
     return 0;
   }
@@ -172,7 +198,7 @@ class DashboardPage extends ConsumerWidget {
   int _convertUIToOriginalIndex(int uiIndex, List<BottomNavItem> config) {
     final enabledItems = config.where((item) => item.enabled).toList();
     if (uiIndex >= enabledItems.length) return 0;
-    
+
     final targetItem = enabledItems[uiIndex];
     return config.indexWhere((item) => item.route == targetItem.route);
   }
@@ -282,4 +308,3 @@ final defaultBottomNavConfig = [
     activeIcon: Icons.list_alt,
   ),
 ];
-
