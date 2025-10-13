@@ -174,7 +174,12 @@
     "addItem": "Hinzufügen",
     "viewList": "Anzeigen",
     "aiSuggest": "AI Vorschlag",
-    "aiPromptHint": "Tipp: Schreibe 'Zutaten für Lasagne' um automatisch eine Liste zu erstellen!"
+    "aiPromptHint": "Tipp: Schreibe 'Zutaten für Lasagne' um automatisch eine Liste zu erstellen!",
+    "activeItems": "Einkaufsliste",
+    "checkedItems": "Erledigt",
+    "itemsCount": "{count} Artikel",
+    "addItemHint": "Artikel hinzufügen...",
+    "addButton": "Hinzufügen"
   },
   "recipes": {
     "title": "Rezepte"

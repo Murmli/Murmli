@@ -174,7 +174,12 @@
     "addItem": "Add",
     "viewList": "View",
     "aiSuggest": "AI Suggestion",
-    "aiPromptHint": "Tip: Write 'ingredients for lasagna' to automatically create a list!"
+    "aiPromptHint": "Tip: Write 'ingredients for lasagna' to automatically create a list!",
+    "activeItems": "Shopping List",
+    "checkedItems": "Completed",
+    "itemsCount": "{count} items",
+    "addItemHint": "Add item...",
+    "addButton": "Add"
   },
   "recipes": {
     "title": "Recipes"

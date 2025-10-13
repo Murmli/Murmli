@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:murmli/api/models/shopping_list_models.dart';
 import 'package:murmli/api/shopping_list_api.dart';
@@ -11,7 +11,8 @@ import 'package:uuid/uuid.dart';
 
 part 'shopping_list_event.dart';
 
-class ShoppingListBloc extends Bloc<ShoppingListEvent, ShoppingListState> {
+class ShoppingListBloc
+    extends HydratedBloc<ShoppingListEvent, ShoppingListState> {
   final ShoppingListApi _apiService;
   final RetryQueueBloc _retryQueueBloc;
 
@@ -206,14 +207,32 @@ class ShoppingListBloc extends Bloc<ShoppingListEvent, ShoppingListState> {
     ShoppingListToggleItemActiveEvent event,
     Emitter<ShoppingListState> emit,
   ) async {
-    final sessionToken = await AppSecureStorage().getSessionToken();
     final shoppingListId = await AppSecureStorage().getShoppingListId();
     if (shoppingListId == null) {
       emit(ShoppingListState.error('Shopping list id not found'));
       return;
     }
+
+    // Optimistically update UI
+    state.maybeWhen(
+      loaded: (shoppingList) {
+        final updatedItems = shoppingList.items.map((item) {
+          if (item.id == event.itemId) {
+            return item.copyWith(active: !event.active);
+          }
+          return item;
+        }).toList();
+
+        final newList = shoppingList.copyWith(items: updatedItems);
+        emit(ShoppingListState.loaded(newList));
+      },
+      orElse: () => state,
+    );
+
+    // Try to update on server
     try {
-      final response = await _apiService.updateShoppingListItemActive(
+      final sessionToken = await AppSecureStorage().getSessionToken();
+      await _apiService.updateShoppingListItemActive(
         Env.secretKey,
         'Bearer $sessionToken',
         shoppingListId,
@@ -224,9 +243,10 @@ class ShoppingListBloc extends Bloc<ShoppingListEvent, ShoppingListState> {
         event.category ?? 0,
         !event.active,
       );
-      emit(ShoppingListState.loaded(response.list));
+      print('Successfully toggled item: ${event.itemId}');
     } catch (e) {
-      print('Failed to toggle item active: $e');
+      print('Failed to toggle item, adding to retry queue: $e');
+
       // Add to retry queue if immediate toggle fails
       final operation = RetryOperation(
         id: const Uuid().v4(),
@@ -244,5 +264,15 @@ class ShoppingListBloc extends Bloc<ShoppingListEvent, ShoppingListState> {
       );
       _retryQueueBloc.add(RetryQueueAddOperationEvent(operation: operation));
     }
+  }
+
+  @override
+  ShoppingListState? fromJson(Map<String, dynamic> json) {
+    return ShoppingListState.fromJson(json);
+  }
+
+  @override
+  Map<String, dynamic>? toJson(ShoppingListState state) {
+    return state.toJson();
   }
 }
