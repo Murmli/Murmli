@@ -1,7 +1,10 @@
+import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:murmli/core/retry/bloc/retry_queue_bloc.dart';
+import 'package:murmli/core/retry/retry_operation.dart';
 import 'package:murmli/core/routes/app_router.gr.dart';
 import 'package:murmli/features/shopping_list/bloc/shopping_list_bloc.dart';
 import 'package:murmli/features/shopping_list/bloc/shopping_list_state.dart';
@@ -16,28 +19,55 @@ class ShoppingListPage extends StatefulWidget {
 }
 
 class _ShoppingListPageState extends State<ShoppingListPage> {
+  StreamSubscription<RetryOperationType>? _retrySuccessSubscription;
+
   @override
   void initState() {
-    context.read<ShoppingListBloc>().add(ShoppingListInitEvent());
     super.initState();
+    context.read<ShoppingListBloc>().add(ShoppingListInitEvent());
+    
+    // Listen to retry queue success stream for shopping list operations
+    final retryQueueBloc = context.read<RetryQueueBloc>();
+    _retrySuccessSubscription = retryQueueBloc.operationSuccessStream.listen((operationType) {
+      // Only refresh list for operations that need server data
+      final shouldRefreshList = 
+          operationType == RetryOperationType.createShoppingListItem ||  // New item added
+          operationType == RetryOperationType.readShoppingList ||        // List was fetched
+          operationType == RetryOperationType.createShoppingList;        // New list created
+      
+      // Don't refresh for delete operations - UI is already updated optimistically
+      
+      if (shouldRefreshList && mounted) {
+        print('Shopping list operation succeeded (${operationType.name}), refreshing list');
+        context.read<ShoppingListBloc>().add(ShoppingListInitEvent());
+      } else if (mounted) {
+        print('Shopping list operation succeeded (${operationType.name}), no refresh needed');
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _retrySuccessSubscription?.cancel();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(context.t.shopping_list.title),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {
-              context.router.push(const SettingsRoute());
-            },
-          ),
-        ],
-      ),
-      body: Column(
+        appBar: AppBar(
+          title: Text(context.t.shopping_list.title),
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.settings),
+              onPressed: () {
+                context.router.push(const SettingsRoute());
+              },
+            ),
+          ],
+        ),
+        body: Column(
         children: [
           BlocBuilder<ShoppingListBloc, ShoppingListState>(
             builder: (context, state) {

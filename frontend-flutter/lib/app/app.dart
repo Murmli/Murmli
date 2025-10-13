@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:murmli/api/shopping_list_api.dart';
+import 'package:murmli/core/retry/bloc/retry_queue_bloc.dart';
+import 'package:murmli/core/retry/retry_queue_provider.dart';
 import 'package:murmli/core/routes/app_router.dart';
 import 'package:murmli/core/routes/guards/startup_guard.dart';
 import 'package:murmli/core/routes/router_reeval_listenable.dart';
@@ -21,6 +23,21 @@ class MurmliApp extends StatefulWidget {
 class _MurmliAppState extends State<MurmliApp> {
   AppRouter? _appRouter;
   RouterReevalListenable? _reeval;
+  
+  // BLoC instances
+  late final ShoppingListApi _shoppingListApi;
+  late final RetryQueueBloc _retryQueueBloc;
+  late final ShoppingListBloc _shoppingListBloc;
+
+  @override
+  void initState() {
+    super.initState();
+    
+    // Initialize API and BLoCs
+    _shoppingListApi = ShoppingListApi(Dio());
+    _retryQueueBloc = createRetryQueueBloc(_shoppingListApi);
+    _shoppingListBloc = ShoppingListBloc(_shoppingListApi, _retryQueueBloc);
+  }
 
   @override
   void didChangeDependencies() {
@@ -34,6 +51,8 @@ class _MurmliAppState extends State<MurmliApp> {
   @override
   void dispose() {
     _reeval?.dispose();
+    _retryQueueBloc.close();
+    _shoppingListBloc.close();
     super.dispose();
   }
 
@@ -41,9 +60,11 @@ class _MurmliAppState extends State<MurmliApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) =>
-              ShoppingListBloc(ShoppingListApi(Dio())),
+        BlocProvider<RetryQueueBloc>.value(
+          value: _retryQueueBloc,
+        ),
+        BlocProvider<ShoppingListBloc>.value(
+          value: _shoppingListBloc,
         ),
       ],
       child: TranslationProvider(
