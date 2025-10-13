@@ -26,10 +26,3 @@ class RetryQueueRemoveOperationEvent extends RetryQueueEvent {
 /// Clear all operations from the queue
 class RetryQueueClearEvent extends RetryQueueEvent {}
 
-/// Event emitted when an operation succeeds (for external listeners)
-class RetryQueueOperationSucceededEvent extends RetryQueueEvent {
-  final RetryOperationType operationType;
-
-  RetryQueueOperationSucceededEvent({required this.operationType});
-}
-

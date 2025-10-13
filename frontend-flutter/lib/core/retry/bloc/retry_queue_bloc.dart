@@ -26,11 +26,23 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
 
   static const int maxRetries = 5;
   static const Duration initialBackoff = Duration(seconds: 2);
-  
-  // Different processing intervals based on connectivity
-  static const Duration processingIntervalWifi = Duration(seconds: 5);
-  static const Duration processingIntervalMobile = Duration(seconds: 10);
   static const Duration processingIntervalOffline = Duration(seconds: 30);
+  
+  // Configuration maps for cleaner lookups
+  static const _intervalsByConnection = {
+    ConnectivityResult.wifi: Duration(seconds: 5),
+    ConnectivityResult.ethernet: Duration(seconds: 5),
+    ConnectivityResult.mobile: Duration(seconds: 10),
+  };
+
+  static const _multipliersByConnection = {
+    ConnectivityResult.wifi: 0.7,
+    ConnectivityResult.ethernet: 0.7,
+    ConnectivityResult.mobile: 1.0,
+    ConnectivityResult.vpn: 1.5,
+    ConnectivityResult.bluetooth: 1.5,
+    ConnectivityResult.other: 1.5,
+  };
 
   RetryQueueBloc(
     this._storage,
@@ -43,7 +55,6 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
     on<RetryQueueProcessEvent>(_onProcess);
     on<RetryQueueRemoveOperationEvent>(_onRemoveOperation);
     on<RetryQueueClearEvent>(_onClear);
-    on<RetryQueueOperationSucceededEvent>(_onOperationSucceeded);
 
     // Initialize connectivity monitoring first, then start processing
     _initConnectivityMonitoring().then((_) {
@@ -62,20 +73,8 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
     print('Retry queue processing interval set to: ${processingInterval.inSeconds}s');
   }
 
-  Duration _getProcessingInterval() {
-    switch (_connectionType) {
-      case ConnectivityResult.wifi:
-      case ConnectivityResult.ethernet:
-        return processingIntervalWifi;
-      case ConnectivityResult.mobile:
-        return processingIntervalMobile;
-      case ConnectivityResult.none:
-      case ConnectivityResult.bluetooth:
-      case ConnectivityResult.vpn:
-      case ConnectivityResult.other:
-        return processingIntervalOffline;
-    }
-  }
+  Duration _getProcessingInterval() =>
+      _intervalsByConnection[_connectionType] ?? processingIntervalOffline;
 
   Future<void> _initConnectivityMonitoring() async {
     // Check initial connectivity synchronously
@@ -125,43 +124,23 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
 
   ConnectivityResult _getBestConnectionType(List<ConnectivityResult> results) {
     // Priority: WiFi/Ethernet > Mobile > Others > None
-    if (results.contains(ConnectivityResult.wifi)) {
-      return ConnectivityResult.wifi;
-    }
-    if (results.contains(ConnectivityResult.ethernet)) {
-      return ConnectivityResult.ethernet;
-    }
-    if (results.contains(ConnectivityResult.mobile)) {
-      return ConnectivityResult.mobile;
-    }
-    if (results.contains(ConnectivityResult.vpn)) {
-      return ConnectivityResult.vpn;
-    }
-    if (results.contains(ConnectivityResult.bluetooth)) {
-      return ConnectivityResult.bluetooth;
-    }
-    if (results.contains(ConnectivityResult.other)) {
-      return ConnectivityResult.other;
-    }
-    return ConnectivityResult.none;
+    const priority = [
+      ConnectivityResult.wifi,
+      ConnectivityResult.ethernet,
+      ConnectivityResult.mobile,
+      ConnectivityResult.vpn,
+      ConnectivityResult.bluetooth,
+      ConnectivityResult.other,
+    ];
+    
+    return priority.firstWhere(
+      results.contains,
+      orElse: () => ConnectivityResult.none,
+    );
   }
 
-  double _getConnectivityBackoffMultiplier() {
-    // Adjust retry backoff based on connection quality
-    switch (_connectionType) {
-      case ConnectivityResult.wifi:
-      case ConnectivityResult.ethernet:
-        return 0.7; // Faster retries on good connections (30% faster)
-      case ConnectivityResult.mobile:
-        return 1.0; // Normal retries on mobile
-      case ConnectivityResult.vpn:
-      case ConnectivityResult.bluetooth:
-      case ConnectivityResult.other:
-        return 1.5; // Slower retries on unstable connections (50% slower)
-      case ConnectivityResult.none:
-        return 2.0; // Much slower when offline (2x slower)
-    }
-  }
+  double _getConnectivityBackoffMultiplier() =>
+      _multipliersByConnection[_connectionType] ?? 2.0; // Default for offline
 
   Future<void> _onInit(
     RetryQueueInitEvent event,
@@ -188,34 +167,31 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
     RetryQueueAddOperationEvent event,
     Emitter<RetryQueueState> emit,
   ) async {
-    await state.maybeWhen(
-      loaded: (operations, isProcessing) async {
-        final updatedOperations = [...operations, event.operation];
-        emit(RetryQueueState.loaded(
-          operations: updatedOperations,
-          isProcessing: isProcessing,
-        ));
-        await _storage.saveOperations(updatedOperations);
-        
-        // Only trigger immediate processing if we have internet
-        if (_hasInternet) {
-          print('New operation added to retry queue, triggering immediate processing');
-          add(RetryQueueProcessEvent());
-        } else {
-          print('New operation added to retry queue, but no internet. Will process when connection is available.');
-        }
-      },
-      orElse: () async {
-        emit(RetryQueueState.loaded(operations: [event.operation]));
-        await _storage.saveOperations([event.operation]);
-        
-        if (_hasInternet) {
-          add(RetryQueueProcessEvent());
-        } else {
-          print('Operation queued, waiting for internet connection');
-        }
-      },
+    final currentOperations = state.maybeWhen(
+      loaded: (ops, _) => ops,
+      orElse: () => <RetryOperation>[],
     );
+    
+    final currentProcessing = state.maybeWhen(
+      loaded: (_, isProcessing) => isProcessing,
+      orElse: () => false,
+    );
+    
+    final updatedOperations = [...currentOperations, event.operation];
+    
+    emit(RetryQueueState.loaded(
+      operations: updatedOperations,
+      isProcessing: currentProcessing,
+    ));
+    
+    await _storage.saveOperations(updatedOperations);
+    
+    if (_hasInternet) {
+      print('New operation added, triggering immediate processing');
+      add(RetryQueueProcessEvent());
+    } else {
+      print('Operation queued, waiting for internet connection');
+    }
   }
 
   Future<void> _onProcess(
@@ -224,82 +200,16 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
   ) async {
     await state.maybeWhen(
       loaded: (operations, isProcessing) async {
-        if (isProcessing || operations.isEmpty) return;
-
-        // Check internet connectivity before processing
-        if (!_hasInternet) {
-          print('No internet connection, skipping retry queue processing');
+        if (isProcessing || operations.isEmpty || !_hasInternet) {
+          if (!_hasInternet && operations.isNotEmpty) {
+            print('No internet connection, skipping retry queue processing');
+          }
           return;
         }
 
-        emit(RetryQueueState.loaded(
-          operations: operations,
-          isProcessing: true,
-        ));
+        emit(RetryQueueState.loaded(operations: operations, isProcessing: true));
 
-        final updatedOperations = <RetryOperation>[];
-        
-        for (final operation in operations) {
-          if (operation.isRetrying) {
-            updatedOperations.add(operation);
-            continue;
-          }
-
-          // Check if we should retry this operation
-          if (operation.retryCount >= maxRetries) {
-            // Max retries reached, remove from queue
-            print('Max retries reached for operation ${operation.id}, removing from queue');
-            continue;
-          }
-
-          // Calculate backoff delay with connectivity-aware adjustment
-          final baseBackoffMultiplier = operation.retryCount == 0 ? 1 : (1 << operation.retryCount);
-          final connectivityMultiplier = _getConnectivityBackoffMultiplier();
-          final backoffDelay = initialBackoff * baseBackoffMultiplier * connectivityMultiplier;
-          
-          // Check if enough time has passed since last retry
-          if (operation.lastRetryAt != null) {
-            final timeSinceLastRetry = DateTime.now().difference(operation.lastRetryAt!);
-            if (timeSinceLastRetry < backoffDelay) {
-              updatedOperations.add(operation);
-              continue;
-            }
-          }
-
-          // Mark as retrying
-          final retryingOperation = operation.copyWith(isRetrying: true);
-          updatedOperations.add(retryingOperation);
-          
-          // Update state immediately to show retrying status
-          emit(RetryQueueState.loaded(
-            operations: updatedOperations,
-            isProcessing: true,
-          ));
-
-          // Execute the operation
-          final success = await _executeOperation(retryingOperation);
-
-          if (success) {
-            // Remove from queue if successful
-            updatedOperations.removeWhere((op) => op.id == operation.id);
-            
-            // Notify external listeners via stream
-            _operationSuccessController.add(operation.type);
-            
-            // Also emit event for any internal handlers
-            add(RetryQueueOperationSucceededEvent(operationType: operation.type));
-          } else {
-            // Update retry count and timestamp
-            final index = updatedOperations.indexWhere((op) => op.id == operation.id);
-            if (index != -1) {
-              updatedOperations[index] = operation.copyWith(
-                retryCount: operation.retryCount + 1,
-                lastRetryAt: DateTime.now(),
-                isRetrying: false,
-              );
-            }
-          }
-        }
+        final updatedOperations = await _processOperations(operations);
 
         emit(RetryQueueState.loaded(
           operations: updatedOperations,
@@ -311,75 +221,124 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
     );
   }
 
+  Future<List<RetryOperation>> _processOperations(
+    List<RetryOperation> operations,
+  ) async {
+    final results = <RetryOperation>[];
+    
+    for (final operation in operations) {
+      final processed = await _processOperation(operation);
+      if (processed != null) {
+        results.add(processed);
+      }
+    }
+    
+    return results;
+  }
+
+  Future<RetryOperation?> _processOperation(RetryOperation operation) async {
+    // Skip if already retrying
+    if (operation.isRetrying) return operation;
+    
+    // Remove if max retries reached
+    if (operation.retryCount >= maxRetries) {
+      print('Max retries reached for operation ${operation.id}, removing');
+      return null;
+    }
+
+    // Check if enough time has passed
+    if (!_shouldRetryNow(operation)) return operation;
+
+    // Execute the operation
+    final success = await _executeOperation(operation.copyWith(isRetrying: true));
+    
+    if (success) {
+      // Notify external listeners via stream
+      _operationSuccessController.add(operation.type);
+      return null; // Remove from queue
+    }
+    
+    // Update retry count and schedule next retry
+    return operation.copyWith(
+      retryCount: operation.retryCount + 1,
+      lastRetryAt: DateTime.now(),
+      isRetrying: false,
+    );
+  }
+
+  bool _shouldRetryNow(RetryOperation operation) {
+    if (operation.lastRetryAt == null) return true;
+    
+    final backoffDelay = _calculateBackoff(operation.retryCount);
+    final timeSinceLastRetry = DateTime.now().difference(operation.lastRetryAt!);
+    
+    return timeSinceLastRetry >= backoffDelay;
+  }
+
+  Duration _calculateBackoff(int retryCount) {
+    final baseMultiplier = retryCount == 0 ? 1 : (1 << retryCount);
+    final connectivityMultiplier = _getConnectivityBackoffMultiplier();
+    return initialBackoff * baseMultiplier * connectivityMultiplier;
+  }
+
   Future<bool> _executeOperation(RetryOperation operation) async {
     try {
       final sessionToken = await AppSecureStorage().getSessionToken();
+      final authHeader = 'Bearer $sessionToken';
       
-      switch (operation.type) {
-        case RetryOperationType.deleteShoppingListItem:
-          final listId = operation.data['listId'] as String;
-          final itemId = operation.data['itemId'] as String;
-          
-          await _shoppingListApi.deleteShoppingListItem(
-            Env.secretKey,
-            'Bearer $sessionToken',
-            listId,
-            itemId,
-          );
-          print('Successfully deleted shopping list item: $itemId');
-          return true;
-
-        case RetryOperationType.deleteShoppingList:
-          final listId = operation.data['listId'] as String;
-          
-          await _shoppingListApi.deleteShoppingList(
-            Env.secretKey,
-            'Bearer $sessionToken',
-            listId,
-          );
-          print('Successfully deleted shopping list: $listId');
-          return true;
-
-        case RetryOperationType.createShoppingListItem:
-          final listId = operation.data['listId'] as String;
-          final text = operation.data['text'] as String;
-          
-          await _shoppingListApi.createShoppingListItem(
-            Env.secretKey,
-            'Bearer $sessionToken',
-            listId,
-            text,
-          );
-          print('Successfully created shopping list item: $text');
-          return true;
-
-        case RetryOperationType.readShoppingList:
-          final listId = operation.data['listId'] as String;
-          
-          await _shoppingListApi.readShoppingList(
-            Env.secretKey,
-            'Bearer $sessionToken',
-            listId,
-          );
-          print('Successfully read shopping list: $listId');
-          return true;
-
-        case RetryOperationType.createShoppingList:
-          final response = await _shoppingListApi.createShoppingList(
-            Env.secretKey,
-            'Bearer $sessionToken',
-          );
-          
-          // Save the list ID if we created a new one
-          if (response.list.id != null) {
-            await AppSecureStorage().setShoppingListId(response.list.id!);
-            print('Successfully created shopping list: ${response.list.id}');
-          }
-          return true;
-      }
+      await _executeOperationWithAuth(operation, authHeader);
+      print('Successfully executed ${operation.type.name}');
+      return true;
     } catch (e) {
       print('Failed to execute operation ${operation.id}: $e');
       return false;
+    }
+  }
+
+  Future<void> _executeOperationWithAuth(
+    RetryOperation operation,
+    String authHeader,
+  ) async {
+    switch (operation.type) {
+      case RetryOperationType.deleteShoppingListItem:
+        await _shoppingListApi.deleteShoppingListItem(
+          Env.secretKey,
+          authHeader,
+          operation.data['listId'] as String,
+          operation.data['itemId'] as String,
+        );
+
+      case RetryOperationType.deleteShoppingList:
+        await _shoppingListApi.deleteShoppingList(
+          Env.secretKey,
+          authHeader,
+          operation.data['listId'] as String,
+        );
+
+      case RetryOperationType.createShoppingListItem:
+        await _shoppingListApi.createShoppingListItem(
+          Env.secretKey,
+          authHeader,
+          operation.data['listId'] as String,
+          operation.data['text'] as String,
+        );
+
+      case RetryOperationType.readShoppingList:
+        await _shoppingListApi.readShoppingList(
+          Env.secretKey,
+          authHeader,
+          operation.data['listId'] as String,
+        );
+
+      case RetryOperationType.createShoppingList:
+        final response = await _shoppingListApi.createShoppingList(
+          Env.secretKey,
+          authHeader,
+        );
+        
+        if (response.list.id != null) {
+          await AppSecureStorage().setShoppingListId(response.list.id!);
+        }
     }
   }
 
@@ -408,15 +367,6 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
   ) async {
     emit(const RetryQueueState.loaded(operations: []));
     await _storage.clearOperations();
-  }
-
-  void _onOperationSucceeded(
-    RetryQueueOperationSucceededEvent event,
-    Emitter<RetryQueueState> emit,
-  ) {
-    // This event is mainly for external listeners (like shopping list page)
-    // No state changes needed here
-    print('Operation succeeded event emitted: ${event.operationType}');
   }
 
   @override
