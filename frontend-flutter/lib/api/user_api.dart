@@ -4,9 +4,9 @@ import 'models/user_models.dart';
 
 part 'user_api.g.dart';
 
-@RestApi()
+@RestApi(baseUrl: "https://murmli.de/api/v2/")
 abstract class UserApi {
-  factory UserApi(Dio dio, {String baseUrl}) = _UserApi;
+  factory UserApi(Dio dio) = _UserApi;
 
   @PUT('user/language/set')
   Future<HttpResponse<MessageResponse>> setLanguage(

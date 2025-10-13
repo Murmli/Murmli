@@ -3,6 +3,7 @@ import 'package:native_dio_adapter/native_dio_adapter.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:murmli/api/api_client.dart';
 import 'package:murmli/api/session_api.dart';
+import 'package:murmli/api/shopping_list_api.dart';
 import 'package:murmli/api/user_api.dart';
 import 'package:murmli/core/config/config_provider.dart';
 
@@ -18,10 +19,15 @@ Dio dio(Ref ref) {
 
 @Riverpod(keepAlive: true)
 SessionApi sessionApi(Ref ref) {
-  return SessionApi(ref.watch(dioProvider), baseUrl: apiConfig.baseUrl);
+  return SessionApi(ref.watch(dioProvider));
 }
 
 @Riverpod(keepAlive: true)
 UserApi userApi(Ref ref) {
-  return UserApi(ref.watch(dioProvider), baseUrl: apiConfig.baseUrl);
+  return UserApi(ref.watch(dioProvider));
+}
+
+@Riverpod(keepAlive: true)
+ShoppingListApi shoppingListApi(Ref ref) {
+  return ShoppingListApi(ref.watch(dioProvider));
 }

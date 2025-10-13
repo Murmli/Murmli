@@ -3,9 +3,9 @@ import 'package:retrofit/retrofit.dart';
 
 part 'session_api.g.dart';
 
-@RestApi()
+@RestApi(baseUrl: "https://murmli.de/api/v2/")
 abstract class SessionApi {
-  factory SessionApi(Dio dio, {String baseUrl}) = _SessionApi;
+  factory SessionApi(Dio dio) = _SessionApi;
 
   @POST('session/create')
   Future<HttpResponse<dynamic>> createSession(
