@@ -25,23 +25,32 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
   void initState() {
     super.initState();
     context.read<ShoppingListBloc>().add(ShoppingListInitEvent());
-    
+
     // Listen to retry queue success stream for shopping list operations
     final retryQueueBloc = context.read<RetryQueueBloc>();
-    _retrySuccessSubscription = retryQueueBloc.operationSuccessStream.listen((operationType) {
+    _retrySuccessSubscription = retryQueueBloc.operationSuccessStream.listen((
+      operationType,
+    ) {
       // Only refresh list for operations that need server data
-      final shouldRefreshList = 
-          operationType == RetryOperationType.createShoppingListItem ||  // New item added
-          operationType == RetryOperationType.readShoppingList ||        // List was fetched
-          operationType == RetryOperationType.createShoppingList;        // New list created
-      
+      final shouldRefreshList =
+          operationType ==
+              RetryOperationType.createShoppingListItem || // New item added
+          operationType ==
+              RetryOperationType.readShoppingList || // List was fetched
+          operationType ==
+              RetryOperationType.createShoppingList; // New list created
+
       // Don't refresh for delete operations - UI is already updated optimistically
-      
+
       if (shouldRefreshList && mounted) {
-        print('Shopping list operation succeeded (${operationType.name}), refreshing list');
+        print(
+          'Shopping list operation succeeded (${operationType.name}), refreshing list',
+        );
         context.read<ShoppingListBloc>().add(ShoppingListInitEvent());
       } else if (mounted) {
-        print('Shopping list operation succeeded (${operationType.name}), no refresh needed');
+        print(
+          'Shopping list operation succeeded (${operationType.name}), no refresh needed',
+        );
       }
     });
   }
@@ -55,19 +64,19 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(context.t.shopping_list.title),
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.settings),
-              onPressed: () {
-                context.router.push(const SettingsRoute());
-              },
-            ),
-          ],
-        ),
-        body: Column(
+      appBar: AppBar(
+        title: Text(context.t.shopping_list.title),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              context.router.push(const SettingsRoute());
+            },
+          ),
+        ],
+      ),
+      body: Column(
         children: [
           BlocBuilder<ShoppingListBloc, ShoppingListState>(
             builder: (context, state) {
@@ -88,11 +97,30 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
                     itemCount: state.shoppingList.items.length,
                     itemBuilder: (context, index) {
                       return ListTile(
+                        leading: Checkbox(
+                          value: !state.shoppingList.items[index].active,
+                          onChanged: (value) {
+                            context.read<ShoppingListBloc>().add(
+                              ShoppingListToggleItemActiveEvent(
+                                itemId: state.shoppingList.items[index].id!,
+                                name: state.shoppingList.items[index].name,
+                                quantity:
+                                    state.shoppingList.items[index].quantity,
+                                unit: state.shoppingList.items[index].unit?.id,
+                                category:
+                                    state.shoppingList.items[index].category.id,
+                                active: state.shoppingList.items[index].active,
+                              ),
+                            );
+                          },
+                        ),
                         title: Text(state.shoppingList.items[index].name),
                         trailing: IconButton(
                           onPressed: () {
                             context.read<ShoppingListBloc>().add(
-                              ShoppingListDeleteItemEvent(itemId: state.shoppingList.items[index].id!),
+                              ShoppingListDeleteItemEvent(
+                                itemId: state.shoppingList.items[index].id!,
+                              ),
                             );
                           },
                           icon: const Icon(Icons.delete),

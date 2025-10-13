@@ -10,6 +10,7 @@ enum RetryOperationType {
   createShoppingListItem,
   readShoppingList,
   createShoppingList,
+  toggleShoppingListItem,
   // Add more operation types as needed
 }
 

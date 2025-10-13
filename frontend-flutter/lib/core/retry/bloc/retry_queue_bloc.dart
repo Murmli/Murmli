@@ -17,17 +17,20 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
   final Connectivity _connectivity;
   Timer? _processingTimer;
   StreamSubscription<List<ConnectivityResult>>? _connectivitySubscription;
-  bool _hasInternet = false; // Start pessimistic, check connectivity before processing
+  bool _hasInternet =
+      false; // Start pessimistic, check connectivity before processing
   ConnectivityResult _connectionType = ConnectivityResult.none;
-  
+
   // Stream for notifying external listeners about successful operations
-  final _operationSuccessController = StreamController<RetryOperationType>.broadcast();
-  Stream<RetryOperationType> get operationSuccessStream => _operationSuccessController.stream;
+  final _operationSuccessController =
+      StreamController<RetryOperationType>.broadcast();
+  Stream<RetryOperationType> get operationSuccessStream =>
+      _operationSuccessController.stream;
 
   static const int maxRetries = 5;
   static const Duration initialBackoff = Duration(seconds: 2);
   static const Duration processingIntervalOffline = Duration(seconds: 30);
-  
+
   // Configuration maps for cleaner lookups
   static const _intervalsByConnection = {
     ConnectivityResult.wifi: Duration(seconds: 5),
@@ -48,8 +51,8 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
     this._storage,
     this._shoppingListApi, [
     Connectivity? connectivity,
-  ])  : _connectivity = connectivity ?? Connectivity(),
-        super(const RetryQueueState.initial()) {
+  ]) : _connectivity = connectivity ?? Connectivity(),
+       super(const RetryQueueState.initial()) {
     on<RetryQueueInitEvent>(_onInit);
     on<RetryQueueAddOperationEvent>(_onAddOperation);
     on<RetryQueueProcessEvent>(_onProcess);
@@ -64,13 +67,15 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
 
   void _startPeriodicProcessing([Duration? interval]) {
     _processingTimer?.cancel();
-    
+
     final processingInterval = interval ?? _getProcessingInterval();
     _processingTimer = Timer.periodic(processingInterval, (timer) {
       add(RetryQueueProcessEvent());
     });
-    
-    print('Retry queue processing interval set to: ${processingInterval.inSeconds}s');
+
+    print(
+      'Retry queue processing interval set to: ${processingInterval.inSeconds}s',
+    );
   }
 
   Duration _getProcessingInterval() =>
@@ -98,21 +103,25 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
   void _updateConnectivity(List<ConnectivityResult> results) {
     final hadInternet = _hasInternet;
     final previousConnectionType = _connectionType;
-    
+
     _hasInternet = _hasInternetConnection(results);
     _connectionType = _getBestConnectionType(results);
-    
+
     // Connection state changed
     if (!hadInternet && _hasInternet) {
-      print('Internet connection restored ($_connectionType), processing retry queue immediately');
+      print(
+        'Internet connection restored ($_connectionType), processing retry queue immediately',
+      );
       add(RetryQueueProcessEvent());
     } else if (hadInternet && !_hasInternet) {
       print('Internet connection lost, slowing down retry queue');
     }
-    
+
     // Connection type changed (e.g., WiFi to mobile or vice versa)
     if (_connectionType != previousConnectionType) {
-      print('Connection type changed: $previousConnectionType -> $_connectionType');
+      print(
+        'Connection type changed: $previousConnectionType -> $_connectionType',
+      );
       _startPeriodicProcessing(); // Restart timer with new interval
     }
   }
@@ -132,7 +141,7 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
       ConnectivityResult.bluetooth,
       ConnectivityResult.other,
     ];
-    
+
     return priority.firstWhere(
       results.contains,
       orElse: () => ConnectivityResult.none,
@@ -149,13 +158,17 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
     try {
       final operations = await _storage.loadOperations();
       emit(RetryQueueState.loaded(operations: operations));
-      
+
       // Only process immediately if we have internet
       if (_hasInternet && operations.isNotEmpty) {
-        print('Retry queue initialized with ${operations.length} pending operations, processing...');
+        print(
+          'Retry queue initialized with ${operations.length} pending operations, processing...',
+        );
         add(RetryQueueProcessEvent());
       } else if (operations.isNotEmpty) {
-        print('Retry queue initialized with ${operations.length} pending operations, but no internet. Will process when connection is available.');
+        print(
+          'Retry queue initialized with ${operations.length} pending operations, but no internet. Will process when connection is available.',
+        );
       }
     } catch (e) {
       print('Failed to initialize retry queue: $e');
@@ -171,21 +184,23 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
       loaded: (ops, _) => ops,
       orElse: () => <RetryOperation>[],
     );
-    
+
     final currentProcessing = state.maybeWhen(
       loaded: (_, isProcessing) => isProcessing,
       orElse: () => false,
     );
-    
+
     final updatedOperations = [...currentOperations, event.operation];
-    
-    emit(RetryQueueState.loaded(
-      operations: updatedOperations,
-      isProcessing: currentProcessing,
-    ));
-    
+
+    emit(
+      RetryQueueState.loaded(
+        operations: updatedOperations,
+        isProcessing: currentProcessing,
+      ),
+    );
+
     await _storage.saveOperations(updatedOperations);
-    
+
     if (_hasInternet) {
       print('New operation added, triggering immediate processing');
       add(RetryQueueProcessEvent());
@@ -207,14 +222,18 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
           return;
         }
 
-        emit(RetryQueueState.loaded(operations: operations, isProcessing: true));
+        emit(
+          RetryQueueState.loaded(operations: operations, isProcessing: true),
+        );
 
         final updatedOperations = await _processOperations(operations);
 
-        emit(RetryQueueState.loaded(
-          operations: updatedOperations,
-          isProcessing: false,
-        ));
+        emit(
+          RetryQueueState.loaded(
+            operations: updatedOperations,
+            isProcessing: false,
+          ),
+        );
         await _storage.saveOperations(updatedOperations);
       },
       orElse: () {},
@@ -225,21 +244,21 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
     List<RetryOperation> operations,
   ) async {
     final results = <RetryOperation>[];
-    
+
     for (final operation in operations) {
       final processed = await _processOperation(operation);
       if (processed != null) {
         results.add(processed);
       }
     }
-    
+
     return results;
   }
 
   Future<RetryOperation?> _processOperation(RetryOperation operation) async {
     // Skip if already retrying
     if (operation.isRetrying) return operation;
-    
+
     // Remove if max retries reached
     if (operation.retryCount >= maxRetries) {
       print('Max retries reached for operation ${operation.id}, removing');
@@ -250,14 +269,16 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
     if (!_shouldRetryNow(operation)) return operation;
 
     // Execute the operation
-    final success = await _executeOperation(operation.copyWith(isRetrying: true));
-    
+    final success = await _executeOperation(
+      operation.copyWith(isRetrying: true),
+    );
+
     if (success) {
       // Notify external listeners via stream
       _operationSuccessController.add(operation.type);
       return null; // Remove from queue
     }
-    
+
     // Update retry count and schedule next retry
     return operation.copyWith(
       retryCount: operation.retryCount + 1,
@@ -268,10 +289,12 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
 
   bool _shouldRetryNow(RetryOperation operation) {
     if (operation.lastRetryAt == null) return true;
-    
+
     final backoffDelay = _calculateBackoff(operation.retryCount);
-    final timeSinceLastRetry = DateTime.now().difference(operation.lastRetryAt!);
-    
+    final timeSinceLastRetry = DateTime.now().difference(
+      operation.lastRetryAt!,
+    );
+
     return timeSinceLastRetry >= backoffDelay;
   }
 
@@ -285,7 +308,7 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
     try {
       final sessionToken = await AppSecureStorage().getSessionToken();
       final authHeader = 'Bearer $sessionToken';
-      
+
       await _executeOperationWithAuth(operation, authHeader);
       print('Successfully executed ${operation.type.name}');
       return true;
@@ -335,10 +358,22 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
           Env.secretKey,
           authHeader,
         );
-        
+
         if (response.list.id != null) {
           await AppSecureStorage().setShoppingListId(response.list.id!);
         }
+      case RetryOperationType.toggleShoppingListItem:
+        await _shoppingListApi.updateShoppingListItemActive(
+          Env.secretKey,
+          authHeader,
+          operation.data['listId'] as String,
+          operation.data['itemId'] as String,
+          operation.data['name'] as String,
+          operation.data['quantity'] as double,
+          operation.data['unit'] as int,
+          operation.data['category'] as int,
+          operation.data['active'] as bool,
+        );
     }
   }
 
@@ -351,10 +386,12 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
         final updatedOperations = operations
             .where((op) => op.id != event.operationId)
             .toList();
-        emit(RetryQueueState.loaded(
-          operations: updatedOperations,
-          isProcessing: isProcessing,
-        ));
+        emit(
+          RetryQueueState.loaded(
+            operations: updatedOperations,
+            isProcessing: isProcessing,
+          ),
+        );
         await _storage.saveOperations(updatedOperations);
       },
       orElse: () {},
@@ -377,4 +414,3 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
     return super.close();
   }
 }
-

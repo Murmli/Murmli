@@ -22,3 +22,21 @@ class ShoppingListDeleteItemEvent extends ShoppingListEvent {
 
   ShoppingListDeleteItemEvent({required this.itemId}) : super();
 }
+
+class ShoppingListToggleItemActiveEvent extends ShoppingListEvent {
+  final String itemId;
+  final String name;
+  final double? quantity;
+  final int? unit;
+  final int? category;
+  final bool active;
+
+  ShoppingListToggleItemActiveEvent({
+    required this.itemId,
+    required this.name,
+    this.quantity,
+    this.unit,
+    this.category,
+    required this.active,
+  }) : super();
+}

@@ -43,4 +43,17 @@ abstract class ShoppingListApi {
     @BodyExtra("listId") String listId,
     @BodyExtra("itemId") String itemId,
   );
+
+  @PUT('shoppingList/item/update')
+  Future<ShoppingListResponse> updateShoppingListItemActive(
+    @Header('X-Header-Secret-Key') String secretKey,
+    @Header('Authorization') String authorization,
+    @BodyExtra("listId") String listId,
+    @BodyExtra("itemId") String itemId,
+    @BodyExtra("name") String name,
+    @BodyExtra("quantity") double quantity,
+    @BodyExtra("unit") int unit,
+    @BodyExtra("category") int category,
+    @BodyExtra("active") bool active,
+  );
 }

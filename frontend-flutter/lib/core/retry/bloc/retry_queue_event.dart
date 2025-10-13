@@ -25,4 +25,3 @@ class RetryQueueRemoveOperationEvent extends RetryQueueEvent {
 
 /// Clear all operations from the queue
 class RetryQueueClearEvent extends RetryQueueEvent {}
-

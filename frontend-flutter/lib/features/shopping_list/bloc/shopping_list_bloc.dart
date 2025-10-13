@@ -14,9 +14,9 @@ part 'shopping_list_event.dart';
 class ShoppingListBloc extends Bloc<ShoppingListEvent, ShoppingListState> {
   final ShoppingListApi _apiService;
   final RetryQueueBloc _retryQueueBloc;
-  
-  ShoppingListBloc(this._apiService, this._retryQueueBloc) 
-      : super(ShoppingListState.loading()) {
+
+  ShoppingListBloc(this._apiService, this._retryQueueBloc)
+    : super(ShoppingListState.loading()) {
     on<ShoppingListInitEvent>((event, emit) async {
       await _init(event, emit);
     });
@@ -25,6 +25,9 @@ class ShoppingListBloc extends Bloc<ShoppingListEvent, ShoppingListState> {
     });
     on<ShoppingListDeleteItemEvent>((event, emit) async {
       await _deleteItem(event, emit);
+    });
+    on<ShoppingListToggleItemActiveEvent>((event, emit) async {
+      await _toggleItemActive(event, emit);
     });
   }
 
@@ -35,7 +38,7 @@ class ShoppingListBloc extends Bloc<ShoppingListEvent, ShoppingListState> {
     try {
       final sessionToken = await AppSecureStorage().getSessionToken();
       var shoppingListId = await AppSecureStorage().getShoppingListId();
-      
+
       if (shoppingListId == null) {
         emit(ShoppingListState.loading());
         final response = await _apiService.createShoppingList(
@@ -65,19 +68,23 @@ class ShoppingListBloc extends Bloc<ShoppingListEvent, ShoppingListState> {
       }
     } catch (e) {
       print('Failed to initialize shopping list: $e');
-      emit(ShoppingListState.error('Unable to load shopping list. Please check your internet connection.'));
-      
+      emit(
+        ShoppingListState.error(
+          'Unable to load shopping list. Please check your internet connection.',
+        ),
+      );
+
       // Queue the init operation for retry
       final shoppingListId = await AppSecureStorage().getShoppingListId();
       final operation = RetryOperation(
         id: const Uuid().v4(),
-        type: shoppingListId == null 
-            ? RetryOperationType.createShoppingList 
+        type: shoppingListId == null
+            ? RetryOperationType.createShoppingList
             : RetryOperationType.readShoppingList,
         data: shoppingListId != null ? {'listId': shoppingListId} : {},
         createdAt: DateTime.now(),
       );
-      
+
       _retryQueueBloc.add(RetryQueueAddOperationEvent(operation: operation));
     }
   }
@@ -94,7 +101,7 @@ class ShoppingListBloc extends Bloc<ShoppingListEvent, ShoppingListState> {
         return;
       }
       print(event.text);
-      
+
       final response = await _apiService.createShoppingListItem(
         Env.secretKey,
         'Bearer $sessionToken',
@@ -104,7 +111,7 @@ class ShoppingListBloc extends Bloc<ShoppingListEvent, ShoppingListState> {
       emit(ShoppingListState.loaded(response.list));
     } catch (e) {
       print('Failed to create item: $e');
-      
+
       // Add to retry queue if creation fails
       final shoppingListId = await AppSecureStorage().getShoppingListId();
       if (shoppingListId != null) {
@@ -117,7 +124,7 @@ class ShoppingListBloc extends Bloc<ShoppingListEvent, ShoppingListState> {
           },
           createdAt: DateTime.now(),
         );
-        
+
         _retryQueueBloc.add(RetryQueueAddOperationEvent(operation: operation));
       }
     }
@@ -132,7 +139,7 @@ class ShoppingListBloc extends Bloc<ShoppingListEvent, ShoppingListState> {
       emit(ShoppingListState.error('Shopping list id not found'));
       return;
     }
-    
+
     // Optimistically update UI
     state.maybeWhen(
       loaded: (shoppingList) {
@@ -158,7 +165,7 @@ class ShoppingListBloc extends Bloc<ShoppingListEvent, ShoppingListState> {
       print('Successfully deleted item: ${event.itemId}');
     } catch (e) {
       print('Failed to delete item immediately, adding to retry queue: $e');
-      
+
       // Add to retry queue if immediate deletion fails
       final operation = RetryOperation(
         id: const Uuid().v4(),
@@ -169,7 +176,7 @@ class ShoppingListBloc extends Bloc<ShoppingListEvent, ShoppingListState> {
         },
         createdAt: DateTime.now(),
       );
-      
+
       _retryQueueBloc.add(RetryQueueAddOperationEvent(operation: operation));
     }
   }
@@ -192,6 +199,50 @@ class ShoppingListBloc extends Bloc<ShoppingListEvent, ShoppingListState> {
     if (shouldNotify) {
       print(change);
       super.onChange(change);
+    }
+  }
+
+  Future<void> _toggleItemActive(
+    ShoppingListToggleItemActiveEvent event,
+    Emitter<ShoppingListState> emit,
+  ) async {
+    final sessionToken = await AppSecureStorage().getSessionToken();
+    final shoppingListId = await AppSecureStorage().getShoppingListId();
+    if (shoppingListId == null) {
+      emit(ShoppingListState.error('Shopping list id not found'));
+      return;
+    }
+    try {
+      final response = await _apiService.updateShoppingListItemActive(
+        Env.secretKey,
+        'Bearer $sessionToken',
+        shoppingListId,
+        event.itemId,
+        event.name,
+        event.quantity ?? 0,
+        event.unit ?? 0,
+        event.category ?? 0,
+        !event.active,
+      );
+      emit(ShoppingListState.loaded(response.list));
+    } catch (e) {
+      print('Failed to toggle item active: $e');
+      // Add to retry queue if immediate toggle fails
+      final operation = RetryOperation(
+        id: const Uuid().v4(),
+        type: RetryOperationType.toggleShoppingListItem,
+        data: {
+          'listId': shoppingListId,
+          'itemId': event.itemId,
+          'name': event.name,
+          'quantity': event.quantity ?? 0,
+          'unit': event.unit ?? 0,
+          'category': event.category ?? 0,
+          'active': !event.active,
+        },
+        createdAt: DateTime.now(),
+      );
+      _retryQueueBloc.add(RetryQueueAddOperationEvent(operation: operation));
     }
   }
 }
