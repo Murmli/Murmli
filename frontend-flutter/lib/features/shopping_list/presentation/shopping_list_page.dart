@@ -1,15 +1,29 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:murmli/core/routes/app_router.gr.dart';
+import 'package:murmli/features/shopping_list/bloc/shopping_list_bloc.dart';
+import 'package:murmli/features/shopping_list/bloc/shopping_list_state.dart';
 import 'package:murmli/i18n/translations.g.dart';
 
 @RoutePage()
-class ShoppingListPage extends ConsumerWidget {
+class ShoppingListPage extends StatefulWidget {
   const ShoppingListPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  State<ShoppingListPage> createState() => _ShoppingListPageState();
+}
+
+class _ShoppingListPageState extends State<ShoppingListPage> {
+  @override
+  void initState() {
+    context.read<ShoppingListBloc>().add(ShoppingListInitEvent());
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(context.t.shopping_list.title),
@@ -23,33 +37,83 @@ class ShoppingListPage extends ConsumerWidget {
           ),
         ],
       ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.shopping_cart,
-              size: 64,
-              color: Colors.grey,
+      body: Column(
+        children: [
+          BlocBuilder<ShoppingListBloc, ShoppingListState>(
+            builder: (context, state) {
+              if (state is ShoppingListLoadingState) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              return const SizedBox.shrink();
+            },
+          ),
+          Expanded(
+            child: BlocBuilder<ShoppingListBloc, ShoppingListState>(
+              builder: (context, state) {
+                // print(state);
+                if (state is ShoppingListLoadedState) {
+                  return ListView.builder(
+                    itemCount: state.shoppingList.items.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(state.shoppingList.items[index].name),
+                        trailing: IconButton(
+                          onPressed: () {
+                            context.read<ShoppingListBloc>().add(
+                              ShoppingListDeleteItemEvent(itemId: state.shoppingList.items[index].id!),
+                            );
+                          },
+                          icon: const Icon(Icons.delete),
+                        ),
+                      );
+                    },
+                  );
+                }
+                return const SizedBox.shrink();
+              },
             ),
-            SizedBox(height: 16),
-            Text(
-              'Shopping List Page',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.grey,
+          ),
+          BottomInput(),
+        ],
+      ),
+    );
+  }
+}
+
+class BottomInput extends HookWidget {
+  const BottomInput({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final textController = useTextEditingController();
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: [
+          Expanded(
+            child: TextField(
+              controller: textController,
+              decoration: const InputDecoration(
+                hintText: 'Add item...',
+                border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 8),
-            Text(
-              'Coming Soon...',
-              style: TextStyle(
-                color: Colors.grey,
-              ),
-            ),
-          ],
-        ),
+          ),
+          const SizedBox(width: 8),
+          ElevatedButton(
+            onPressed: () {
+              context.read<ShoppingListBloc>().add(
+                ShoppingListCreateItemEvent(text: textController.text),
+              );
+              textController.clear();
+            },
+            child: const Text('Add'),
+          ),
+        ],
       ),
     );
   }

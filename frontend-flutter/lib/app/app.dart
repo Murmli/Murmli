@@ -1,8 +1,12 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:murmli/api/shopping_list_api.dart';
 import 'package:murmli/core/routes/app_router.dart';
 import 'package:murmli/core/routes/guards/startup_guard.dart';
 import 'package:murmli/core/routes/router_reeval_listenable.dart';
+import 'package:murmli/features/shopping_list/bloc/shopping_list_bloc.dart';
 import 'package:murmli/i18n/translations.g.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:toastification/toastification.dart';
@@ -35,20 +39,28 @@ class _MurmliAppState extends State<MurmliApp> {
 
   @override
   Widget build(BuildContext context) {
-    return TranslationProvider(
-      child: Builder(
-        builder: (context) => ToastificationWrapper(
-          child: MaterialApp.router(
-            debugShowCheckedModeBanner: false,
-            routerConfig: _appRouter!.config(
-              reevaluateListenable: _reeval,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              ShoppingListBloc(ShoppingListApi(Dio())),
+        ),
+      ],
+      child: TranslationProvider(
+        child: Builder(
+          builder: (context) => ToastificationWrapper(
+            child: MaterialApp.router(
+              debugShowCheckedModeBanner: false,
+              routerConfig: _appRouter!.config(
+                reevaluateListenable: _reeval,
+              ),
+              locale: TranslationProvider.of(context).flutterLocale,
+              supportedLocales: AppLocaleUtils.supportedLocales,
+              localizationsDelegates: GlobalMaterialLocalizations.delegates,
+              themeMode: ThemeMode.system,
+              darkTheme: ThemeData.dark(),
+              theme: ThemeData.light(),
             ),
-            locale: TranslationProvider.of(context).flutterLocale,
-            supportedLocales: AppLocaleUtils.supportedLocales,
-            localizationsDelegates: GlobalMaterialLocalizations.delegates,
-            themeMode: ThemeMode.system,
-            darkTheme: ThemeData.dark(),
-            theme: ThemeData.light(),
           ),
         ),
       ),
