@@ -3,7 +3,7 @@ import 'package:retrofit/retrofit.dart';
 
 part 'session_api.g.dart';
 
-@RestApi(baseUrl: "https://murmli.de/api/v2/")
+@RestApi(baseUrl: "https://murmli.donodrop.de/api/v2/") 
 abstract class SessionApi {
   factory SessionApi(Dio dio) = _SessionApi;
 

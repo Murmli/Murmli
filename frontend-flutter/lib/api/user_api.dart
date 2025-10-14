@@ -4,7 +4,7 @@ import 'models/user_models.dart';
 
 part 'user_api.g.dart';
 
-@RestApi(baseUrl: "https://murmli.de/api/v2/")
+@RestApi(baseUrl: "https://murmli.donodrop.de/api/v2/")
 abstract class UserApi {
   factory UserApi(Dio dio) = _UserApi;
 
