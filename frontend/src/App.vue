@@ -14,10 +14,12 @@ import { ref, onMounted } from 'vue';
 import { useApiStore } from '@/stores/apiStore';
 import { usePlannerStore } from '@/stores/plannerStore';
 import { useUserStore } from '@/stores/userStore';
+import { useLanguageStore } from '@/stores/languageStore';
 
 const apiStore = useApiStore();
 const plannerStore = usePlannerStore();
 const userStore = useUserStore();
+const languageStore = useLanguageStore();
 const sessionReady = ref(false);
 const MIN_RECIPE_SUGGESTIONS =
   parseInt(import.meta.env.VITE_MIN_RECIPE_SUGGESTIONS) || 5;
@@ -41,9 +43,11 @@ onMounted(async () => {
     return await apiStore.createSession();
   };
 
-  const sessionEstablished = await ensureSession();
+  const [sessionEstablished] = await Promise.all([
+    ensureSession(),
+    languageStore.initLocale(),
+  ]);
 
-  // Mark session ready immediately to render the app UI
   sessionReady.value = true;
 
   // Fetch suggestions in the background to avoid blocking initial render
