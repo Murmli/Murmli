@@ -31,7 +31,9 @@ class Session extends _$Session {
   /// - Wenn kein Token vorhanden, wird eines erstellt.
   /// - Wenn ein Token vorhanden ist, wird es via /login validiert.
   ///   Bei 401/404 wird automatisch neu erstellt.
-  Future<String?> ensureValidSession({String? language}) async {
+  /// 
+  /// [showToast] - Zeigt einen Success-Toast, wenn die Session validiert wurde (nur bei manuellem Aufruf)
+  Future<String?> ensureValidSession({String? language, bool showToast = false}) async {
     final lang =
         language ??
         await ref.read(preferredLanguageProvider.future) ??
@@ -46,10 +48,12 @@ class Session extends _$Session {
     // Vorhandene Session → validieren (nur wenn nötig)
     try {
       await _api.login(apiConfig.secretKey, 'Bearer $current');
-      showToastSuccess(
-        t.settings.session_validated,
-        t.settings.session_validated_message,
-      );
+      if (showToast) {
+        showToastSuccess(
+          t.settings.session_validated,
+          t.settings.session_validated_message,
+        );
+      }
       // 200 OK → gültig
       return current;
     } on DioException catch (e) {

@@ -14,9 +14,10 @@ class UserPreferences extends _$UserPreferences {
     // Automatisch die User Preferences laden
     try {
       final userApi = ref.read(userApiProvider);
+      final token = await _getAuthToken();
       final response = await userApi.getUserPreferences(
         apiConfig.secretKey,
-        'Bearer ${ref.read(sessionProvider).value ?? ''}',
+        'Bearer $token',
       );
 
       return response.data;
@@ -25,13 +26,24 @@ class UserPreferences extends _$UserPreferences {
     }
   }
 
+  /// Holt die aktuelle Session für API-Aufrufe
+  Future<String> _getAuthToken() async {
+    // Stelle sicher, dass eine gültige Session vorhanden ist
+    final token = await ref.read(sessionProvider.notifier).ensureValidSession();
+    if (token == null || token.isEmpty) {
+      throw StateError('No valid session');
+    }
+    return token;
+  }
+
   /// Lädt die User Preferences vom Backend
   Future<UserPreferencesResponse?> loadPreferences() async {
     try {
       final userApi = ref.read(userApiProvider);
+      final token = await _getAuthToken();
       final response = await userApi.getUserPreferences(
         apiConfig.secretKey,
-        'Bearer ${ref.read(sessionProvider).value ?? ''}',
+        'Bearer $token',
       );
 
       state = AsyncValue.data(response.data);
@@ -48,9 +60,10 @@ class UserPreferences extends _$UserPreferences {
   ) async {
     try {
       final userApi = ref.read(userApiProvider);
+      final token = await _getAuthToken();
       final response = await userApi.updateUserPreferences(
         apiConfig.secretKey,
-        'Bearer ${ref.read(sessionProvider).value ?? ''}',
+        'Bearer $token',
         request,
       );
 

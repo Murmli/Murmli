@@ -31,8 +31,12 @@ class UserId extends _$UserId {
 
   /// Holt die aktuelle Session für API-Aufrufe
   Future<String> _getAuthToken() async {
-    final session = ref.read(sessionProvider.future);
-    return await session ?? (throw StateError('No valid session'));
+    // Stelle sicher, dass eine gültige Session vorhanden ist
+    final token = await ref.read(sessionProvider.notifier).ensureValidSession();
+    if (token == null || token.isEmpty) {
+      throw StateError('No valid session');
+    }
+    return token;
   }
 
   /// Lädt die ID des Users

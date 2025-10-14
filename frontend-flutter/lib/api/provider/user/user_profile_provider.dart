@@ -14,9 +14,10 @@ class UserProfile extends _$UserProfile {
     // Automatisch das User Profile laden
     try {
       final userApi = ref.read(userApiProvider);
+      final token = await _getAuthToken();
       final response = await userApi.getUserProfile(
         apiConfig.secretKey,
-        'Bearer ${ref.read(sessionProvider).value ?? ''}',
+        'Bearer $token',
       );
 
       return response.data;
@@ -25,13 +26,24 @@ class UserProfile extends _$UserProfile {
     }
   }
 
+  /// Holt die aktuelle Session für API-Aufrufe
+  Future<String> _getAuthToken() async {
+    // Stelle sicher, dass eine gültige Session vorhanden ist
+    final token = await ref.read(sessionProvider.notifier).ensureValidSession();
+    if (token == null || token.isEmpty) {
+      throw StateError('No valid session');
+    }
+    return token;
+  }
+
   /// Lädt das User Profile vom Backend
   Future<UserProfileResponse?> loadProfile() async {
     try {
       final userApi = ref.read(userApiProvider);
+      final token = await _getAuthToken();
       final response = await userApi.getUserProfile(
         apiConfig.secretKey,
-        'Bearer ${ref.read(sessionProvider).value ?? ''}',
+        'Bearer $token',
       );
 
       state = AsyncValue.data(response.data);
@@ -48,9 +60,10 @@ class UserProfile extends _$UserProfile {
   ) async {
     try {
       final userApi = ref.read(userApiProvider);
+      final token = await _getAuthToken();
       final response = await userApi.updateUserProfile(
         apiConfig.secretKey,
-        'Bearer ${ref.read(sessionProvider).value ?? ''}',
+        'Bearer $token',
         request,
       );
 
@@ -67,9 +80,10 @@ class UserProfile extends _$UserProfile {
   Future<bool> deleteProfile() async {
     try {
       final userApi = ref.read(userApiProvider);
+      final token = await _getAuthToken();
       await userApi.deleteUser(
         apiConfig.secretKey,
-        'Bearer ${ref.read(sessionProvider).value ?? ''}',
+        'Bearer $token',
       );
 
       // State zurücksetzen

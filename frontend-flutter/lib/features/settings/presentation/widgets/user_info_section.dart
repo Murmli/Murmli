@@ -160,7 +160,7 @@ class UserInfoSection extends ConsumerWidget {
           children: [
             ElevatedButton.icon(
               onPressed: () async {
-                await ref.read(sessionProvider.notifier).ensureValidSession();
+                await ref.read(sessionProvider.notifier).ensureValidSession(showToast: true);
                 // await ref.read(userLanguageProvider.notifier).loadLanguage();
               },
               icon: const Icon(Icons.security, size: 18),
