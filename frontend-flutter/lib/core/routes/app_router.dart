@@ -13,6 +13,7 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: DashboardRoute.page, initial: true, guards: [startupGuard]),
     AutoRoute(page: HomeRoute.page, guards: [startupGuard]),
     AutoRoute(page: OnboardingRoute.page),
+    AutoRoute(page: OnboardingNavigationRoute.page),
     // Optional weitere Views schützen, falls sie Sprache voraussetzen
     AutoRoute(page: SettingsRoute.page, guards: [startupGuard]),
     AutoRoute(page: ShoppingListRoute.page, guards: [startupGuard]),

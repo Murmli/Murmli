@@ -133,7 +133,13 @@
     "title": "Sprache wählen",
     "choose_language": "Bitte wähle deine Sprache:",
     "german": "Deutsch",
-    "english": "English"
+    "english": "English",
+    "navigation_setup": {
+      "title": "Navigation anpassen",
+      "description": "Wähle aus, welche Bereiche in deiner unteren Navigation erscheinen sollen. Du kannst sie auch per Drag & Drop neu anordnen.",
+      "reset": "Zurücksetzen",
+      "continue_button": "Weiter"
+    }
   },
   "errors": {
     "no_valid_session": "Keine gültige Session",

@@ -39,9 +39,9 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage> {
         // Session-Fehler nicht blockierend - User kann App trotzdem nutzen
       }
       
-      // Nach Sprachwahl direkt zur Dashboard-Seite mit Bottom Navigation
+      // Nach Sprachwahl zur Navigation-Setup-Seite
       if (mounted) {
-        context.router.replaceAll([const DashboardRoute()]);
+        context.router.push(const OnboardingNavigationRoute());
       }
     } finally {
       if (mounted) {

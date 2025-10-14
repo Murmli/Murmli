@@ -133,7 +133,13 @@
     "title": "Choose Language",
     "choose_language": "Please choose your language:",
     "german": "Deutsch",
-    "english": "English"
+    "english": "English",
+    "navigation_setup": {
+      "title": "Customize Navigation",
+      "description": "Choose which sections should appear in your bottom navigation. You can also reorder them via drag & drop.",
+      "reset": "Reset",
+      "continue_button": "Continue"
+    }
   },
   "errors": {
     "no_valid_session": "No valid session",
