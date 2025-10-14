@@ -6,6 +6,7 @@ import 'package:murmli/api/provider/user/user_providers.dart';
 import 'package:murmli/core/routes/app_router.gr.dart';
 import 'package:murmli/core/storage/preferences_provider.dart';
 import 'package:murmli/core/storage/secure_storage_provider.dart';
+import 'package:murmli/features/dashboard/provider/bottom_nav_provider.dart';
 import 'package:murmli/i18n/translations.g.dart';
 import '../dialogs/settings_dialogs.dart';
 
@@ -54,16 +55,21 @@ class DangerZoneActions {
       // 2) SharedPreferences leeren (Sprache)
       await ref.read(preferredLanguageProvider.notifier).clear();
 
-      // 3) Secure Storage leeren (Session Token etc.)
+      // 3) Bottom Navigation Konfiguration zurücksetzen
+      await ref.read(bottomNavConfigProvider.notifier).resetToDefault();
+
+      // 4) Secure Storage leeren (Session Token etc.)
       final storage = ref.read(secureStorageProvider);
       await storage.deleteAll();
 
-      // 4) Provider-States zurücksetzen
+      // 5) Provider-States zurücksetzen
       ref.invalidate(sessionProvider);
       ref.invalidate(userIdProvider);
       ref.invalidate(userLanguageProvider);
+      ref.invalidate(bottomNavConfigProvider);
+      ref.invalidate(bottomNavActiveIndexProvider);
 
-      // 5) Zur Onboarding-Route wechseln
+      // 6) Zur Onboarding-Route wechseln
       if (context.mounted) {
         try {
           // Verwende replaceAll um alle Routen zu ersetzen
