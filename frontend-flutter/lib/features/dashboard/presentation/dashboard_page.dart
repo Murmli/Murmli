@@ -217,27 +217,59 @@ enum BottomNavRoute {
 
 class BottomNavItem {
   final BottomNavRoute route;
-  final IconData icon;
-  final IconData activeIcon;
   final bool enabled;
 
   const BottomNavItem({
     required this.route,
-    required this.icon,
-    required this.activeIcon,
     this.enabled = true,
   });
 
+  // Get icon based on route - always uses constant icons
+  IconData get icon {
+    switch (route) {
+      case BottomNavRoute.dashboard:
+        return Icons.home_outlined;
+      case BottomNavRoute.shoppingList:
+        return Icons.shopping_cart_outlined;
+      case BottomNavRoute.recipes:
+        return Icons.restaurant_outlined;
+      case BottomNavRoute.planner:
+        return Icons.calendar_today_outlined;
+      case BottomNavRoute.tracker:
+        return Icons.track_changes_outlined;
+      case BottomNavRoute.trainingPlan:
+        return Icons.fitness_center_outlined;
+      case BottomNavRoute.trainingLog:
+        return Icons.list_alt_outlined;
+    }
+  }
+
+  // Get active icon based on route - always uses constant icons
+  IconData get activeIcon {
+    switch (route) {
+      case BottomNavRoute.dashboard:
+        return Icons.home;
+      case BottomNavRoute.shoppingList:
+        return Icons.shopping_cart;
+      case BottomNavRoute.recipes:
+        return Icons.restaurant;
+      case BottomNavRoute.planner:
+        return Icons.calendar_today;
+      case BottomNavRoute.tracker:
+        return Icons.track_changes;
+      case BottomNavRoute.trainingPlan:
+        return Icons.fitness_center;
+      case BottomNavRoute.trainingLog:
+        return Icons.list_alt;
+    }
+  }
+
   BottomNavItem copyWith({
     BottomNavRoute? route,
-    IconData? icon,
-    IconData? activeIcon,
     bool? enabled,
   }) {
     return BottomNavItem(
       route: route ?? this.route,
-      icon: icon ?? this.icon,
-      activeIcon: activeIcon ?? this.activeIcon,
       enabled: enabled ?? this.enabled,
     );
   }
@@ -245,8 +277,6 @@ class BottomNavItem {
   Map<String, dynamic> toJson() {
     return {
       'route': route.name,
-      'icon': icon.codePoint,
-      'activeIcon': activeIcon.codePoint,
       'enabled': enabled,
     };
   }
@@ -257,14 +287,6 @@ class BottomNavItem {
         (e) => e.name == json['route'],
         orElse: () => BottomNavRoute.dashboard,
       ),
-      icon: IconData(
-        json['icon'] as int,
-        fontFamily: 'MaterialIcons',
-      ),
-      activeIcon: IconData(
-        json['activeIcon'] as int,
-        fontFamily: 'MaterialIcons',
-      ),
       enabled: (json['enabled'] as bool?) ?? true,
     );
   }
@@ -272,39 +294,11 @@ class BottomNavItem {
 
 // Default Bottom Navigation Configuration
 final defaultBottomNavConfig = [
-  const BottomNavItem(
-    route: BottomNavRoute.dashboard,
-    icon: Icons.home_outlined,
-    activeIcon: Icons.home,
-  ),
-  const BottomNavItem(
-    route: BottomNavRoute.shoppingList,
-    icon: Icons.shopping_cart_outlined,
-    activeIcon: Icons.shopping_cart,
-  ),
-  const BottomNavItem(
-    route: BottomNavRoute.recipes,
-    icon: Icons.restaurant_outlined,
-    activeIcon: Icons.restaurant,
-  ),
-  const BottomNavItem(
-    route: BottomNavRoute.planner,
-    icon: Icons.calendar_today_outlined,
-    activeIcon: Icons.calendar_today,
-  ),
-  const BottomNavItem(
-    route: BottomNavRoute.tracker,
-    icon: Icons.track_changes_outlined,
-    activeIcon: Icons.track_changes,
-  ),
-  const BottomNavItem(
-    route: BottomNavRoute.trainingPlan,
-    icon: Icons.fitness_center_outlined,
-    activeIcon: Icons.fitness_center,
-  ),
-  const BottomNavItem(
-    route: BottomNavRoute.trainingLog,
-    icon: Icons.list_alt_outlined,
-    activeIcon: Icons.list_alt,
-  ),
+  const BottomNavItem(route: BottomNavRoute.dashboard),
+  const BottomNavItem(route: BottomNavRoute.shoppingList),
+  const BottomNavItem(route: BottomNavRoute.recipes),
+  const BottomNavItem(route: BottomNavRoute.planner),
+  const BottomNavItem(route: BottomNavRoute.tracker),
+  const BottomNavItem(route: BottomNavRoute.trainingPlan),
+  const BottomNavItem(route: BottomNavRoute.trainingLog),
 ];
