@@ -2,7 +2,7 @@
     <!-- Network access is required for API calls (Dio/HTTP). -->
     <uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:label="murmli"
+        android:label="Murmli-Testing"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

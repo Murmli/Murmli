@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "de.murmli" "\0"
-            VALUE "FileDescription", "murmli" "\0"
+            VALUE "FileDescription", "Murmli-Testing" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "murmli" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2025 de.murmli. All rights reserved." "\0"
-            VALUE "OriginalFilename", "murmli.exe" "\0"
-            VALUE "ProductName", "murmli" "\0"
+            VALUE "InternalName", "Murmli-Testing" "\0"
+            VALUE "LegalCopyright", "Copyright © 2025 de.murmli. All rights reserved." "\0"
+            VALUE "OriginalFilename", "Murmli_Testing.exe" "\0"
+            VALUE "ProductName", "Murmli-Testing" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

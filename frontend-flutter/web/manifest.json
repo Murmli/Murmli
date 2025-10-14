@@ -1,6 +1,6 @@
 {
-    "name": "murmli",
-    "short_name": "murmli",
+    "name": "Murmli-Testing",
+    "short_name": "murmli-testing",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

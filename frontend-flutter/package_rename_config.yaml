@@ -1,0 +1,33 @@
+package_rename_config:
+  android:
+    app_name: Murmli-Testing
+    package_name: de.murmli.murmli.testing 
+    override_old_package: de.murmli.murmli # (Optional) (String) Use this to delete the old folder structure of MainActivity or to use the existing code with the new package name
+    
+
+  ios:
+    app_name: Murmli-Testing # (String) The display name of the ios app
+    bundle_name: Murmli-Testing # (String) The bundle name of the ios app
+    override_old_package: de.murmli.murmli # (String) Use this to replace the old bundle identifier with the new bundle identifier
+    package_name: de.murmli.murmli.testing # (String) The product bundle identifier of the ios app
+
+  linux:
+    app_name: Murmli-Testing # (String) The window title of the linux app
+    package_name: de.murmli.murmli.testing # (String) The application id of the linux app
+    exe_name: Murmli-Testing # (String) The executable name (binary name) of the linux app
+
+  macos:
+    app_name: Murmli-Testing # (String) The product name of the macos app
+    package_name: de.murmli.murmli.testing # (String) The product bundle identifier of the macos app
+    copyright_notice: Copyright © 2025 de.murmli. All rights reserved. # (String) The product copyright of the macos app
+
+  web:
+    app_name: Murmli-Testing # (String) The title of the web app and PWA
+    short_app_name: murmli-testing # (String) The short display name of the PWA (Optional, defaults to app_name if not set)
+    description: # (String) The description of the web app and PWA
+
+  windows:
+    app_name: Murmli-Testing # (String) The window title & software name of the windows app
+    organization: de.murmli # (String) The organization name (company name) of the windows app
+    copyright_notice: Copyright © 2025 de.murmli. All rights reserved. # (String) The legal copyright of the windows app
+    exe_name: Murmli_Testing # (String) The executable name (binary name) of the windows app
