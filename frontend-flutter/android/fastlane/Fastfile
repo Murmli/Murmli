@@ -1,0 +1,198 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+# Helper methods
+def get_flutter_root
+  File.expand_path("../..", Dir.pwd)
+end
+
+def get_version
+  require 'yaml'
+  pubspec = YAML.load_file(File.join(get_flutter_root, 'pubspec.yaml'))
+  pubspec['version']
+end
+
+def get_nextcloud_config
+  {
+    base: "***REMOVED***",
+    auth: "***REMOVED***"
+  }
+end
+
+def get_discord_webhook
+  "***REMOVED***"
+end
+
+def folder_exists?(url, auth)
+  result = sh("curl", "-u", auth, "-X", "PROPFIND", "-s", "-o", "/dev/null", "-w", "%{http_code}", url, error_callback: ->(result) { result })
+  result.to_i == 207 || result.to_i == 200
+end
+
+platform :android do
+  desc "Runs all the tests"
+  lane :test do
+    gradle(task: "test")
+  end
+
+  desc "Check and create version folders on Nextcloud"
+  lane :check_version do
+    version = get_version
+    nc = get_nextcloud_config
+    version_folder_url = "#{nc[:base]}#{version}/"
+    android_folder_url = "#{version_folder_url}Android/"
+    
+    UI.message("Checking version: #{version}")
+    
+    # Check if version folder exists
+    if !folder_exists?(version_folder_url, nc[:auth])
+      UI.message("Creating version folder: #{version}")
+      sh("curl", "-u", nc[:auth], "-X", "MKCOL", version_folder_url)
+      UI.success("✅ Version folder created")
+    else
+      UI.message("Version folder already exists")
+    end
+    
+    # Check if Android folder exists
+    if folder_exists?(android_folder_url, nc[:auth])
+      UI.user_error!("❌ Android build for version #{version} already exists! Please update the version in pubspec.yaml before building.")
+    else
+      UI.message("Android folder does not exist - ready to build")
+    end
+  end
+
+  desc "Get dependencies and prepare project"
+  lane :prepare do
+    flutter_root = get_flutter_root
+    
+    Dir.chdir(flutter_root) do
+      UI.message("Getting dependencies...")
+      sh("flutter", "pub", "get")
+      
+      UI.message("Building slang translations...")
+      sh("dart", "run", "slang")
+      
+      UI.message("Running build_runner...")
+      sh("dart", "run", "build_runner", "build", "--delete-conflicting-outputs")
+    end
+    
+    UI.success("✅ Project prepared")
+  end
+
+  desc "Build Android app (appbundle and APKs)"
+  lane :build_android do
+    flutter_root = get_flutter_root
+    
+    Dir.chdir(flutter_root) do
+      UI.message("Building Android app bundle...")
+      sh("flutter", "build", "appbundle", "--release")
+      
+      UI.message("Building split APKs...")
+      sh("flutter", "build", "apk", "--release", "--split-per-abi")
+    end
+    
+    UI.success("✅ Android build completed")
+  end
+
+  desc "Upload builds to Nextcloud"
+  lane :upload do
+    version = get_version
+    nc = get_nextcloud_config
+    flutter_root = get_flutter_root
+    android_folder_url = "#{nc[:base]}#{version}/Android/"
+    
+    Dir.chdir(flutter_root) do
+      # Create Android folder on Nextcloud
+      UI.message("Creating Android folder on Nextcloud...")
+      sh("curl", "-u", nc[:auth], "-X", "MKCOL", android_folder_url)
+      
+      # Upload app bundle
+      UI.message("Uploading app bundle...")
+      sh("curl", "-u", nc[:auth], "-T", "build/app/outputs/bundle/release/app-release.aab", "#{android_folder_url}app-release.aab")
+      
+      # Upload split APKs
+      UI.message("Uploading split APKs...")
+      sh("curl", "-u", nc[:auth], "-T", "build/app/outputs/flutter-apk/app-arm64-v8a-release.apk", "#{android_folder_url}app-arm64-v8a-release.apk")
+      sh("curl", "-u", nc[:auth], "-T", "build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk", "#{android_folder_url}app-armeabi-v7a-release.apk")
+      sh("curl", "-u", nc[:auth], "-T", "build/app/outputs/flutter-apk/app-x86_64-release.apk", "#{android_folder_url}app-x86_64-release.apk")
+    end
+    
+    UI.success("✅ Uploaded to: #{android_folder_url}")
+  end
+
+  desc "Announce new build on Discord"
+  lane :announce do
+    require 'json'
+    
+    version = get_version
+    nc = get_nextcloud_config
+    webhook_url = get_discord_webhook
+    download_url = "***REMOVED***" # Update with your actual share link
+    
+    # Create Discord message payload
+    payload = {
+      content: "<@&***REMOVED***>",
+      embeds: [
+        {
+          title: "🚀 New Murmli Android Build Available!",
+          description: "A new Android build has been uploaded to Nextcloud.",
+          color: 5814783, # Blue color
+          fields: [
+            {
+              name: "Version",
+              value: version,
+              inline: true
+            },
+            {
+              name: "Platform",
+              value: "Android",
+              inline: true
+            },
+            {
+              name: "Files",
+              value: "• App Bundle (.aab)\n• ARM64 APK\n• ARMv7 APK\n• x86_64 APK",
+              inline: false
+            },
+            {
+              name: "Download",
+              value: "[View on Nextcloud](#{download_url})",
+              inline: false
+            }
+          ],
+          timestamp: Time.now.utc.iso8601
+        }
+      ]
+    }.to_json
+    
+    # Send to Discord
+    UI.message("Sending Discord announcement...")
+    sh("curl", "-H", "Content-Type: application/json", "-d", payload, webhook_url)
+    
+    UI.success("✅ Discord announcement sent!")
+  end
+
+  desc "Complete build process: check version, prepare, build, and upload"
+  lane :build do
+    check_version
+    prepare
+    build_android
+    upload
+    
+    version = get_version
+    nc = get_nextcloud_config
+    UI.success("🎉 Complete! Version #{version} uploaded to #{nc[:base]}#{version}/Android/")
+  end
+end
