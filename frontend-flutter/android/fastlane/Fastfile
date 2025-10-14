@@ -190,6 +190,7 @@ platform :android do
     prepare
     build_android
     upload
+    announce
     
     version = get_version
     nc = get_nextcloud_config
