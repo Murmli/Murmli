@@ -1,13 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:murmli/api/shopping_list_api.dart';
 import 'package:murmli/core/retry/bloc/retry_queue_bloc.dart';
 import 'package:murmli/core/retry/retry_queue_provider.dart';
 import 'package:murmli/core/routes/app_router.dart';
 import 'package:murmli/core/routes/guards/startup_guard.dart';
-import 'package:murmli/core/routes/router_reeval_listenable.dart';
 import 'package:murmli/features/shopping_list/bloc/shopping_list_bloc.dart';
 import 'package:murmli/i18n/translations.g.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -22,8 +20,7 @@ class MurmliApp extends StatefulWidget {
 
 class _MurmliAppState extends State<MurmliApp> {
   AppRouter? _appRouter;
-  RouterReevalListenable? _reeval;
-  
+
   // BLoC instances
   late final ShoppingListApi _shoppingListApi;
   late final RetryQueueBloc _retryQueueBloc;
@@ -32,7 +29,7 @@ class _MurmliAppState extends State<MurmliApp> {
   @override
   void initState() {
     super.initState();
-    
+
     // Initialize API and BLoCs
     _shoppingListApi = ShoppingListApi(Dio());
     _retryQueueBloc = createRetryQueueBloc(_shoppingListApi);
@@ -43,14 +40,11 @@ class _MurmliAppState extends State<MurmliApp> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     // Container aus dem aktuellen ProviderScope beziehen
-    final container = ProviderScope.containerOf(context, listen: false);
-    _reeval ??= RouterReevalListenable(container);
-    _appRouter ??= AppRouter(startupGuard: StartupGuard(container));
+    _appRouter ??= AppRouter(startupGuard: StartupGuard());
   }
 
   @override
   void dispose() {
-    _reeval?.dispose();
     _retryQueueBloc.close();
     _shoppingListBloc.close();
     super.dispose();
@@ -72,9 +66,7 @@ class _MurmliAppState extends State<MurmliApp> {
           builder: (context) => ToastificationWrapper(
             child: MaterialApp.router(
               debugShowCheckedModeBanner: false,
-              routerConfig: _appRouter!.config(
-                reevaluateListenable: _reeval,
-              ),
+              routerConfig: _appRouter!.config(),
               locale: TranslationProvider.of(context).flutterLocale,
               supportedLocales: AppLocaleUtils.supportedLocales,
               localizationsDelegates: GlobalMaterialLocalizations.delegates,

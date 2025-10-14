@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:murmli/core/storage/preferences_provider.dart';
+import 'package:murmli/core/storage/app_preferences.dart';
 import 'package:murmli/components/language_selector.dart';
 import 'package:murmli/core/i18n/current_locale_provider.dart';
 import 'package:murmli/i18n/translations.g.dart';
@@ -27,7 +27,7 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage> {
     });
 
     try {
-      await ref.read(preferredLanguageProvider.notifier).set(lang);
+      await AppPreferences().setLanguage(lang);
       // Aktualisiere die aktuelle Locale sofort für UI-Update
       ref.read(currentLocaleProvider.notifier).updateLocaleFromString(lang);
       

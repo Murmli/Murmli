@@ -1,3 +1,4 @@
+import 'package:murmli/core/storage/app_secure_storage.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:murmli/api/provider/api_providers.dart';
 import 'package:murmli/api/provider/session_provider.dart';
@@ -6,7 +7,6 @@ import 'package:murmli/api/provider/user/shopping_list_sorting_provider.dart';
 import 'package:murmli/api/provider/user/user_profile_provider.dart';
 import 'package:murmli/core/config/config_provider.dart';
 import 'package:murmli/api/models/user_models.dart';
-import 'package:murmli/core/storage/secure_storage_provider.dart';
 
 part 'user_data_export_provider.g.dart';
 
@@ -73,8 +73,7 @@ class UserDataExport extends _$UserDataExport {
       final importResponse = response.data;
       // Update session token if provided
       if (importResponse.token != null) {
-        final storage = ref.read(secureStorageProvider);
-        await storage.write(key: sessionTokenKey, value: importResponse.token!);
+        await AppSecureStorage().setImportToken(importResponse.token!);
       }
 
       // Update language if provided

@@ -3,9 +3,9 @@ import 'package:murmli/api/provider/api_providers.dart';
 import 'package:murmli/api/provider/session_provider.dart';
 import 'package:murmli/api/user_api.dart';
 import 'package:murmli/api/models/user_models.dart';
+import 'package:murmli/core/storage/app_preferences.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:murmli/core/config/config_provider.dart';
-import 'package:murmli/core/storage/preferences_provider.dart';
 
 part 'user_language_provider.g.dart';
 
@@ -94,10 +94,7 @@ class UserLanguage extends _$UserLanguage {
   /// Synchronisiert die lokale Sprache mit der Server-Sprache
   Future<void> _syncLocalLanguage(String serverLanguage) async {
     try {
-      final localLanguageProvider = ref.read(
-        preferredLanguageProvider.notifier,
-      );
-      await localLanguageProvider.set(serverLanguage);
+      await AppPreferences().setLanguage(serverLanguage);
     } catch (e) {
       // Fehler bei der lokalen Synchronisation ignorieren
       // da dies nicht kritisch ist

@@ -4,9 +4,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:murmli/api/provider/session_provider.dart';
 import 'package:murmli/api/provider/user/user_providers.dart';
 import 'package:murmli/core/routes/app_router.gr.dart';
-import 'package:murmli/core/storage/preferences_provider.dart';
-import 'package:murmli/core/storage/secure_storage_provider.dart';
-import 'package:murmli/core/storage/onboarding_provider.dart';
+import 'package:murmli/core/storage/app_preferences.dart';
+import 'package:murmli/core/storage/app_secure_storage.dart';
 import 'package:murmli/features/dashboard/provider/bottom_nav_provider.dart';
 import 'package:murmli/i18n/translations.g.dart';
 import '../dialogs/settings_dialogs.dart';
@@ -53,28 +52,20 @@ class DangerZoneActions {
         return;
       }
 
-      // 2) SharedPreferences leeren (Sprache)
-      await ref.read(preferredLanguageProvider.notifier).clear();
+      // 2) SharedPreferences leeren (Sprache, Onboarding, Bottom Nav)
+      AppPreferences().clearAll();
 
-      // 3) Onboarding-Status zurücksetzen
-      await ref.read(onboardingCompletedProvider.notifier).clear();
+      // 3) Secure Storage leeren (Session Token etc.)
+      await AppSecureStorage().clear();
 
-      // 4) Bottom Navigation Konfiguration zurücksetzen
-      await ref.read(bottomNavConfigProvider.notifier).resetToDefault();
-
-      // 5) Secure Storage leeren (Session Token etc.)
-      final storage = ref.read(secureStorageProvider);
-      await storage.deleteAll();
-
-      // 6) Provider-States zurücksetzen
+      // 4) Provider-States zurücksetzen
       ref.invalidate(sessionProvider);
       ref.invalidate(userIdProvider);
       ref.invalidate(userLanguageProvider);
-      ref.invalidate(onboardingCompletedProvider);
       ref.invalidate(bottomNavConfigProvider);
       ref.invalidate(bottomNavActiveIndexProvider);
 
-      // 7) Zur Onboarding-Route wechseln
+      // 5) Zur Onboarding-Route wechseln
       if (context.mounted) {
         try {
           // Verwende replaceAll um alle Routen zu ersetzen

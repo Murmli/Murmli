@@ -1,11 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:murmli/core/storage/app_preferences.dart';
 import 'package:murmli/features/dashboard/provider/bottom_nav_provider.dart';
 import 'package:murmli/components/bottom_nav_reorderable_list.dart';
 import 'package:murmli/i18n/translations.g.dart';
 import 'package:murmli/core/routes/app_router.gr.dart';
-import 'package:murmli/core/storage/onboarding_provider.dart';
 
 @RoutePage()
 class OnboardingNavigationPage extends ConsumerWidget {
@@ -70,7 +70,7 @@ class OnboardingNavigationPage extends ConsumerWidget {
                     child: FilledButton(
                       onPressed: () async {
                         // Markiere Onboarding als abgeschlossen
-                        await ref.read(onboardingCompletedProvider.notifier).setCompleted();
+                        await AppPreferences().setOnboardingCompleted(true);
                         // Weiter zur Dashboard-Seite
                         if (context.mounted) {
                           context.router.replaceAll([const DashboardRoute()]);

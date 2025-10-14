@@ -3,11 +3,11 @@ import 'package:dio/dio.dart';
 import 'package:murmli/api/provider/api_providers.dart';
 import 'package:murmli/api/session_api.dart';
 import 'package:murmli/core/provider/toast_provider.dart';
+import 'package:murmli/core/storage/app_preferences.dart';
+import 'package:murmli/core/storage/app_secure_storage.dart';
 import 'package:murmli/i18n/translations.g.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:murmli/core/config/config_provider.dart';
-import 'package:murmli/core/storage/preferences_provider.dart';
-import 'package:murmli/core/storage/secure_storage_provider.dart';
 
 part 'session_provider.g.dart';
 
@@ -17,8 +17,7 @@ class Session extends _$Session {
   @override
   FutureOr<String?> build() async {
     // Token aus Secure Storage laden
-    final storage = ref.read(secureStorageProvider);
-    final existing = await storage.read(key: sessionTokenKey);
+    final existing = await AppSecureStorage().getSessionToken();
     if (existing != null && existing.isNotEmpty) {
       return existing;
     }
@@ -31,12 +30,15 @@ class Session extends _$Session {
   /// - Wenn kein Token vorhanden, wird eines erstellt.
   /// - Wenn ein Token vorhanden ist, wird es via /login validiert.
   ///   Bei 401/404 wird automatisch neu erstellt.
-  /// 
+  ///
   /// [showToast] - Zeigt einen Success-Toast, wenn die Session validiert wurde (nur bei manuellem Aufruf)
-  Future<String?> ensureValidSession({String? language, bool showToast = false}) async {
+  Future<String?> ensureValidSession({
+    String? language,
+    bool showToast = false,
+  }) async {
     final lang =
         language ??
-        await ref.read(preferredLanguageProvider.future) ??
+        await AppPreferences().getLanguage() ??
         apiConfig.defaultLanguage;
     final current = state.value;
 
@@ -87,8 +89,7 @@ class Session extends _$Session {
         throw StateError('Kein Token in der Antwort erhalten');
       }
       // Token persistieren
-      final storage = ref.read(secureStorageProvider);
-      await storage.write(key: sessionTokenKey, value: newToken);
+      AppSecureStorage().setSessionToken(newToken);
       state = AsyncData(newToken);
       return newToken;
     } catch (err, st) {
