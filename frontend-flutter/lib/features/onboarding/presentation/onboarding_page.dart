@@ -58,7 +58,10 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage> {
     ref.watch(currentLocaleProvider);
 
     return Scaffold(
-      appBar: AppBar(title: Text(t.onboarding.title)),
+      appBar: AppBar(
+        title: Text(t.onboarding.title),
+        automaticallyImplyLeading: false, // Kein Zurück-Button
+      ),
       body: Stack(
         children: [
           Padding(

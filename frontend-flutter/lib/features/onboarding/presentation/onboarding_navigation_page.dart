@@ -5,6 +5,7 @@ import 'package:murmli/features/dashboard/provider/bottom_nav_provider.dart';
 import 'package:murmli/components/bottom_nav_reorderable_list.dart';
 import 'package:murmli/i18n/translations.g.dart';
 import 'package:murmli/core/routes/app_router.gr.dart';
+import 'package:murmli/core/storage/onboarding_provider.dart';
 
 @RoutePage()
 class OnboardingNavigationPage extends ConsumerWidget {
@@ -67,9 +68,13 @@ class OnboardingNavigationPage extends ConsumerWidget {
                   Expanded(
                     flex: 2,
                     child: FilledButton(
-                      onPressed: () {
+                      onPressed: () async {
+                        // Markiere Onboarding als abgeschlossen
+                        await ref.read(onboardingCompletedProvider.notifier).setCompleted();
                         // Weiter zur Dashboard-Seite
-                        context.router.replaceAll([const DashboardRoute()]);
+                        if (context.mounted) {
+                          context.router.replaceAll([const DashboardRoute()]);
+                        }
                       },
                       child: Text(t.onboarding.navigation_setup.continue_button),
                     ),
