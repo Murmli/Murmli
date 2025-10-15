@@ -30,6 +30,8 @@ export const useLanguageStore = defineStore("language", () => {
   const locale = ref(savedLocale);
   const timezone = ref(savedTimezone);
   const messages = ref({}); // holds translation messages
+  const isLocaleReady = ref(false);
+  let initPromise;
 
   // Define available languages centrally
   const languages = [
@@ -87,14 +89,27 @@ export const useLanguageStore = defineStore("language", () => {
   const setLocale = async (newLocale) => {
     locale.value = newLocale;
     localStorage.setItem("appLocale", newLocale); // Save language in localStorage
+    isLocaleReady.value = false;
     messages.value = await loadLocaleMessages(newLocale);
+    isLocaleReady.value = true;
   };
 
   const initLocale = async () => {
-    messages.value = await loadLocaleMessages(locale.value);
-  }
+    if (isLocaleReady.value) {
+      return;
+    }
 
-  initLocale();
+    if (!initPromise) {
+      initPromise = (async () => {
+        messages.value = await loadLocaleMessages(locale.value);
+        isLocaleReady.value = true;
+      })().finally(() => {
+        initPromise = undefined;
+      });
+    }
+
+    await initPromise;
+  };
 
   // Helper function for accessing translations
   const t = (key) => {
@@ -115,6 +130,8 @@ export const useLanguageStore = defineStore("language", () => {
     timezone,
     setLocale,
     setTimezone,
+    initLocale,
+    isLocaleReady,
     t,
   };
 });
