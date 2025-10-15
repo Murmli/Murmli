@@ -6,6 +6,7 @@ import 'package:murmli/api/models/shopping_list_models.dart';
 import 'package:murmli/core/retry/bloc/retry_queue_bloc.dart';
 import 'package:murmli/core/retry/retry_operation.dart';
 import 'package:murmli/core/routes/app_router.gr.dart';
+import 'package:murmli/core/utils/string_utils.dart';
 import 'package:murmli/features/shopping_list/bloc/shopping_list_bloc.dart';
 import 'package:murmli/features/shopping_list/bloc/shopping_list_state.dart';
 import 'package:murmli/i18n/translations.g.dart';
@@ -96,9 +97,11 @@ class AnimatedShoppingList extends StatefulHookWidget {
 }
 
 class _AnimatedShoppingListState extends State<AnimatedShoppingList> {
-  final GlobalKey<AnimatedListState> _activeListKey = GlobalKey<AnimatedListState>();
-  final GlobalKey<AnimatedListState> _inactiveListKey = GlobalKey<AnimatedListState>();
-  
+  final GlobalKey<AnimatedListState> _activeListKey =
+      GlobalKey<AnimatedListState>();
+  final GlobalKey<AnimatedListState> _inactiveListKey =
+      GlobalKey<AnimatedListState>();
+
   List<ShoppingListItem> _activeItems = [];
   List<ShoppingListItem> _inactiveItems = [];
   bool _isInitialized = false;
@@ -165,7 +168,8 @@ class _AnimatedShoppingListState extends State<AnimatedShoppingList> {
                 title: context.t.shopping_list.active_items,
                 itemCount: currentActiveItems.length,
                 isExpanded: isActiveExpanded.value,
-                onToggle: () => isActiveExpanded.value = !isActiveExpanded.value,
+                onToggle: () =>
+                    isActiveExpanded.value = !isActiveExpanded.value,
               ),
               if (isActiveExpanded.value)
                 AnimatedList(
@@ -180,7 +184,7 @@ class _AnimatedShoppingListState extends State<AnimatedShoppingList> {
                     return _buildItem(_activeItems[index], animation, false);
                   },
                 ),
-              
+
               // Checked items section
               if (currentInactiveItems.isNotEmpty) ...[
                 const Divider(height: 1),
@@ -188,7 +192,8 @@ class _AnimatedShoppingListState extends State<AnimatedShoppingList> {
                   title: context.t.shopping_list.checked_items,
                   itemCount: currentInactiveItems.length,
                   isExpanded: isInactiveExpanded.value,
-                  onToggle: () => isInactiveExpanded.value = !isInactiveExpanded.value,
+                  onToggle: () =>
+                      isInactiveExpanded.value = !isInactiveExpanded.value,
                   isChecked: true,
                 ),
                 if (isInactiveExpanded.value)
@@ -227,13 +232,15 @@ class _AnimatedShoppingListState extends State<AnimatedShoppingList> {
           (context, animation) => _buildItem(removedItem, animation, false),
           duration: const Duration(milliseconds: 250),
         );
-        
+
         // Wait for removal animation to complete before adding
         await Future<void>.delayed(const Duration(milliseconds: 150));
-        
+
         // Add to END of inactive list with animation
         if (mounted) {
-          final newItem = newInactiveItems.firstWhere((item) => item.id == oldItem.id);
+          final newItem = newInactiveItems.firstWhere(
+            (item) => item.id == oldItem.id,
+          );
           _inactiveItems.add(newItem);
           _inactiveListKey.currentState?.insertItem(
             _inactiveItems.length - 1,
@@ -254,13 +261,15 @@ class _AnimatedShoppingListState extends State<AnimatedShoppingList> {
           (context, animation) => _buildItem(removedItem, animation, true),
           duration: const Duration(milliseconds: 250),
         );
-        
+
         // Wait for removal animation to complete before adding
         await Future<void>.delayed(const Duration(milliseconds: 150));
-        
+
         // Add to END of active list with animation
         if (mounted) {
-          final newItem = newActiveItems.firstWhere((item) => item.id == oldItem.id);
+          final newItem = newActiveItems.firstWhere(
+            (item) => item.id == oldItem.id,
+          );
           _activeItems.add(newItem);
           _activeListKey.currentState?.insertItem(
             _activeItems.length - 1,
@@ -357,16 +366,16 @@ class _CollapsibleSection extends StatelessWidget {
             Text(
               title,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: isChecked ? Colors.grey : null,
-                    fontWeight: FontWeight.bold,
-                  ),
+                color: isChecked ? Colors.grey : null,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const SizedBox(width: 8),
             Text(
               '($itemCount)',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Colors.grey,
-                  ),
+                color: Colors.grey,
+              ),
             ),
           ],
         ),
@@ -387,44 +396,60 @@ class _ShoppingListItemTile extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Checkbox(
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            item.name,
+            style: isChecked
+                ? TextStyle(
+                    decoration: TextDecoration.lineThrough,
+                    color: Colors.grey.shade600,
+                  )
+                : null,
+          ),
+          if (item.quantity != null && item.quantity != 0)
+            Text(
+              '${stringWithout0(item.quantity.toString())} ${item.unit?.name}',
+              style: isChecked
+                  ? TextStyle(
+                      decoration: TextDecoration.lineThrough,
+                      color: Colors.grey.shade600,
+                    )
+                  : null,
+            ),
+        ],
+      ),
+      trailing: Checkbox(
         value: !item.active,
         onChanged: (value) {
           context.read<ShoppingListBloc>().add(
-                ShoppingListToggleItemActiveEvent(
-                  itemId: item.id!,
-                  name: item.name,
-                  quantity: item.quantity,
-                  unit: item.unit?.id,
-                  category: item.category.id,
-                  active: item.active,
-                ),
-              );
+            ShoppingListToggleItemActiveEvent(
+              itemId: item.id!,
+              name: item.name,
+              quantity: item.quantity,
+              unit: item.unit?.id,
+              category: item.category.id,
+              active: item.active,
+            ),
+          );
         },
-      ),
-      title: Text(
-        item.name,
-        style: isChecked
-            ? TextStyle(
-                decoration: TextDecoration.lineThrough,
-                color: Colors.grey.shade600,
-              )
-            : null,
-      ),
-      trailing: IconButton(
-        onPressed: () {
-          context.read<ShoppingListBloc>().add(
-                ShoppingListDeleteItemEvent(
-                  itemId: item.id!,
-                ),
-              );
-        },
-        icon: Icon(
-          Icons.delete,
-          color: isChecked ? Colors.grey : null,
-        ),
       ),
     );
+    //   IconButton(
+    //     onPressed: () {
+    //       context.read<ShoppingListBloc>().add(
+    //         ShoppingListDeleteItemEvent(
+    //           itemId: item.id!,
+    //         ),
+    //       );
+    //     },
+    //     icon: Icon(
+    //       Icons.delete,
+    //       color: isChecked ? Colors.grey : null,
+    //     ),
+    //   ),
+    // );
   }
 }
 
