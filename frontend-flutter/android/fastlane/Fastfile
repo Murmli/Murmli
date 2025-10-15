@@ -28,13 +28,13 @@ end
 
 def get_nextcloud_config
   {
-    base: "***REMOVED***",
-    auth: "***REMOVED***"
+    base: ENV['NEXTCLOUD_BASE_URL'],
+    auth: "#{ENV['NEXTCLOUD_USERNAME']}:#{ENV['NEXTCLOUD_PASSWORD']}"
   }
 end
 
 def get_discord_webhook
-  "***REMOVED***"
+  ENV['DISCORD_WEBHOOK_URL']
 end
 
 def folder_exists?(url, auth)
@@ -140,11 +140,11 @@ platform :android do
     version = get_version
     nc = get_nextcloud_config
     webhook_url = get_discord_webhook
-    download_url = "***REMOVED***" # Update with your actual share link
+    download_url = ENV['NEXTCLOUD_SHARE_LINK']
     
     # Create Discord message payload
     payload = {
-      content: "<@&***REMOVED***>",
+      content: "<@&#{ENV['DISCORD_ROLE_ID']}>",
       embeds: [
         {
           title: "🚀 New Murmli Android Build Available!",
