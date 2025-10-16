@@ -94,5 +94,16 @@ class ShoppingListRepositoryImpl implements ShoppingListRepository {
       active,
     );
   }
+
+  @override
+  Future<void> deleteAllCheckedItems(String listId) async {
+    final sessionToken = await _storage.getSessionToken();
+    
+    await _apiService.deleteAllCheckedShoppingListItems(
+      Env.secretKey,
+      'Bearer $sessionToken',
+      listId,
+    );
+  }
 }
 

@@ -374,6 +374,12 @@ class RetryQueueBloc extends Bloc<RetryQueueEvent, RetryQueueState> {
           operation.data['category'] as int,
           operation.data['active'] as bool,
         );
+      case RetryOperationType.deleteAllCheckedShoppingListItems:
+        await _shoppingListApi.deleteAllCheckedShoppingListItems(
+          Env.secretKey,
+          authHeader,
+          operation.data['listId'] as String,
+        );
     }
   }
 

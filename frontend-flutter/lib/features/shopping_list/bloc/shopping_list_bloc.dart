@@ -19,6 +19,7 @@ class ShoppingListBloc
   late final ShoppingListCreateItemHandler _createItemHandler;
   late final ShoppingListDeleteItemHandler _deleteItemHandler;
   late final ShoppingListToggleItemHandler _toggleItemHandler;
+  late final ShoppingListDeleteCheckedItemsHandler _deleteAllCheckedItemsHandler;
 
   ShoppingListBloc(this._repository, this._retryQueueBloc)
     : super(ShoppingListState.loading()) {
@@ -26,6 +27,7 @@ class ShoppingListBloc
     _createItemHandler = ShoppingListCreateItemHandler(_repository, _retryQueueBloc);
     _deleteItemHandler = ShoppingListDeleteItemHandler(_repository, _retryQueueBloc);
     _toggleItemHandler = ShoppingListToggleItemHandler(_repository, _retryQueueBloc);
+    _deleteAllCheckedItemsHandler = ShoppingListDeleteCheckedItemsHandler(_repository, _retryQueueBloc);
 
     on<ShoppingListInitEvent>((event, emit) async {
       await _initHandler.handle(emit);
@@ -47,6 +49,9 @@ class ShoppingListBloc
         state,
         emit,
       );
+    });
+    on<ShoppingListDeleteAllCheckedItemsEvent>((event, emit) async {
+      await _deleteAllCheckedItemsHandler.handle(state, emit);
     });
   }
 

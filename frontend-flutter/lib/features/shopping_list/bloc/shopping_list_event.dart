@@ -40,3 +40,7 @@ class ShoppingListToggleItemActiveEvent extends ShoppingListEvent {
     required this.active,
   }) : super();
 }
+
+class ShoppingListDeleteAllCheckedItemsEvent extends ShoppingListEvent {
+  ShoppingListDeleteAllCheckedItemsEvent() : super();
+}

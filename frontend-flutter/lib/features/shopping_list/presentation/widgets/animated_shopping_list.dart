@@ -89,6 +89,7 @@ class _AnimatedShoppingListState extends State<AnimatedShoppingList> {
                 isExpanded: isActiveExpanded.value,
                 onToggle: () =>
                     isActiveExpanded.value = !isActiveExpanded.value,
+                sectionType: SectionType.activeItems,
               ),
               if (isActiveExpanded.value)
                 AnimatedList(
@@ -114,6 +115,7 @@ class _AnimatedShoppingListState extends State<AnimatedShoppingList> {
                   onToggle: () =>
                       isInactiveExpanded.value = !isInactiveExpanded.value,
                   isChecked: true,
+                  sectionType: SectionType.checkedItems,
                 ),
                 if (isInactiveExpanded.value)
                   AnimatedList(

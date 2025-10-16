@@ -52,5 +52,11 @@ abstract class ShoppingListRepository {
     int category,
     bool active,
   );
+
+  /// Deletes all checked (inactive) items from the shopping list
+  /// 
+  /// [listId] The ID of the shopping list
+  /// Throws an exception if deletion fails
+  Future<void> deleteAllCheckedItems(String listId);
 }
 
