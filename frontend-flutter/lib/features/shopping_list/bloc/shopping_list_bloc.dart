@@ -1,18 +1,18 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:murmli/api/shopping_list_api.dart';
 import 'package:murmli/core/retry/bloc/retry_queue_bloc.dart';
 import 'package:murmli/features/shopping_list/bloc/event_handlers/shopping_list_create_item_handler.dart';
 import 'package:murmli/features/shopping_list/bloc/event_handlers/shopping_list_delete_item_handler.dart';
 import 'package:murmli/features/shopping_list/bloc/event_handlers/shopping_list_init_handler.dart';
 import 'package:murmli/features/shopping_list/bloc/event_handlers/shopping_list_toggle_item_handler.dart';
 import 'package:murmli/features/shopping_list/bloc/shopping_list_state.dart';
+import 'package:murmli/data/repositories/shopping_list/shopping_list_repository.dart';
 
 part 'shopping_list_event.dart';
 
 class ShoppingListBloc
     extends HydratedBloc<ShoppingListEvent, ShoppingListState> {
-  final ShoppingListApi _apiService;
+  final ShoppingListRepository _repository;
   final RetryQueueBloc _retryQueueBloc;
 
   late final ShoppingListInitHandler _initHandler;
@@ -20,12 +20,12 @@ class ShoppingListBloc
   late final ShoppingListDeleteItemHandler _deleteItemHandler;
   late final ShoppingListToggleItemHandler _toggleItemHandler;
 
-  ShoppingListBloc(this._apiService, this._retryQueueBloc)
+  ShoppingListBloc(this._repository, this._retryQueueBloc)
     : super(ShoppingListState.loading()) {
-    _initHandler = ShoppingListInitHandler(_apiService, _retryQueueBloc);
-    _createItemHandler = ShoppingListCreateItemHandler(_apiService, _retryQueueBloc);
-    _deleteItemHandler = ShoppingListDeleteItemHandler(_apiService, _retryQueueBloc);
-    _toggleItemHandler = ShoppingListToggleItemHandler(_apiService, _retryQueueBloc);
+    _initHandler = ShoppingListInitHandler(_repository, _retryQueueBloc);
+    _createItemHandler = ShoppingListCreateItemHandler(_repository, _retryQueueBloc);
+    _deleteItemHandler = ShoppingListDeleteItemHandler(_repository, _retryQueueBloc);
+    _toggleItemHandler = ShoppingListToggleItemHandler(_repository, _retryQueueBloc);
 
     on<ShoppingListInitEvent>((event, emit) async {
       await _initHandler.handle(emit);

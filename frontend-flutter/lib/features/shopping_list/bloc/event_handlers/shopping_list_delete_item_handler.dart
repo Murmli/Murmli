@@ -1,17 +1,16 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:murmli/api/shopping_list_api.dart';
-import 'package:murmli/core/env/env.dart';
 import 'package:murmli/core/retry/bloc/retry_queue_bloc.dart';
 import 'package:murmli/core/retry/retry_operation.dart';
 import 'package:murmli/core/storage/app_secure_storage.dart';
 import 'package:murmli/features/shopping_list/bloc/shopping_list_state.dart';
+import 'package:murmli/data/repositories/shopping_list/shopping_list_repository.dart';
 import 'package:uuid/uuid.dart';
 
 class ShoppingListDeleteItemHandler {
-  final ShoppingListApi apiService;
+  final ShoppingListRepository repository;
   final RetryQueueBloc retryQueueBloc;
 
-  ShoppingListDeleteItemHandler(this.apiService, this.retryQueueBloc);
+  ShoppingListDeleteItemHandler(this.repository, this.retryQueueBloc);
 
   Future<void> handle(
     String itemId,
@@ -39,13 +38,7 @@ class ShoppingListDeleteItemHandler {
 
     // Try to delete immediately
     try {
-      final sessionToken = await AppSecureStorage().getSessionToken();
-      await apiService.deleteShoppingListItem(
-        Env.secretKey,
-        'Bearer $sessionToken',
-        shoppingListId,
-        itemId,
-      );
+      await repository.deleteShoppingListItem(shoppingListId, itemId);
       print('Successfully deleted item: $itemId');
     } catch (e) {
       print('Failed to delete item immediately, adding to retry queue: $e');

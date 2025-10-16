@@ -1,17 +1,16 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:murmli/api/shopping_list_api.dart';
-import 'package:murmli/core/env/env.dart';
 import 'package:murmli/core/retry/bloc/retry_queue_bloc.dart';
 import 'package:murmli/core/retry/retry_operation.dart';
 import 'package:murmli/core/storage/app_secure_storage.dart';
 import 'package:murmli/features/shopping_list/bloc/shopping_list_state.dart';
+import 'package:murmli/data/repositories/shopping_list/shopping_list_repository.dart';
 import 'package:uuid/uuid.dart';
 
 class ShoppingListToggleItemHandler {
-  final ShoppingListApi apiService;
+  final ShoppingListRepository repository;
   final RetryQueueBloc retryQueueBloc;
 
-  ShoppingListToggleItemHandler(this.apiService, this.retryQueueBloc);
+  ShoppingListToggleItemHandler(this.repository, this.retryQueueBloc);
 
   Future<void> handle(
     String itemId,
@@ -47,10 +46,7 @@ class ShoppingListToggleItemHandler {
 
     // Try to update on server
     try {
-      final sessionToken = await AppSecureStorage().getSessionToken();
-      await apiService.updateShoppingListItemActive(
-        Env.secretKey,
-        'Bearer $sessionToken',
+      await repository.updateShoppingListItemActive(
         shoppingListId,
         itemId,
         name,

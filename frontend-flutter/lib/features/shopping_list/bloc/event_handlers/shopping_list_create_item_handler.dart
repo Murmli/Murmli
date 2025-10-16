@@ -1,24 +1,22 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:murmli/api/shopping_list_api.dart';
-import 'package:murmli/core/env/env.dart';
 import 'package:murmli/core/retry/bloc/retry_queue_bloc.dart';
 import 'package:murmli/core/retry/retry_operation.dart';
 import 'package:murmli/core/storage/app_secure_storage.dart';
 import 'package:murmli/features/shopping_list/bloc/shopping_list_state.dart';
+import 'package:murmli/data/repositories/shopping_list/shopping_list_repository.dart';
 import 'package:uuid/uuid.dart';
 
 class ShoppingListCreateItemHandler {
-  final ShoppingListApi apiService;
+  final ShoppingListRepository repository;
   final RetryQueueBloc retryQueueBloc;
 
-  ShoppingListCreateItemHandler(this.apiService, this.retryQueueBloc);
+  ShoppingListCreateItemHandler(this.repository, this.retryQueueBloc);
 
   Future<void> handle(
     String text,
     Emitter<ShoppingListState> emit,
   ) async {
     try {
-      final sessionToken = await AppSecureStorage().getSessionToken();
       final shoppingListId = await AppSecureStorage().getShoppingListId();
       if (shoppingListId == null) {
         emit(ShoppingListState.error('Shopping list id not found'));
@@ -26,13 +24,11 @@ class ShoppingListCreateItemHandler {
       }
       print(text);
 
-      final response = await apiService.createShoppingListItem(
-        Env.secretKey,
-        'Bearer $sessionToken',
+      final shoppingList = await repository.createShoppingListItem(
         shoppingListId,
         text,
       );
-      emit(ShoppingListState.loaded(response.list));
+      emit(ShoppingListState.loaded(shoppingList));
     } catch (e) {
       print('Failed to create item: $e');
 

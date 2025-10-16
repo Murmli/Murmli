@@ -6,7 +6,9 @@ import 'package:murmli/core/retry/bloc/retry_queue_bloc.dart';
 import 'package:murmli/core/retry/retry_queue_provider.dart';
 import 'package:murmli/core/routes/app_router.dart';
 import 'package:murmli/core/routes/guards/startup_guard.dart';
+import 'package:murmli/core/storage/app_secure_storage.dart';
 import 'package:murmli/features/shopping_list/bloc/shopping_list_bloc.dart';
+import 'package:murmli/data/repositories/shopping_list/shopping_list_repository_impl.dart';
 import 'package:murmli/i18n/translations.g.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:toastification/toastification.dart';
@@ -30,10 +32,17 @@ class _MurmliAppState extends State<MurmliApp> {
   void initState() {
     super.initState();
 
-    // Initialize API and BLoCs
+    // Initialize API, repository, and BLoCs
     _shoppingListApi = ShoppingListApi(Dio());
+    final shoppingListRepository = ShoppingListRepositoryImpl(
+      _shoppingListApi,
+      AppSecureStorage(),
+    );
     _retryQueueBloc = createRetryQueueBloc(_shoppingListApi);
-    _shoppingListBloc = ShoppingListBloc(_shoppingListApi, _retryQueueBloc);
+    _shoppingListBloc = ShoppingListBloc(
+      shoppingListRepository,
+      _retryQueueBloc,
+    );
   }
 
   @override
