@@ -2,6 +2,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:murmli/core/retry/bloc/retry_queue_bloc.dart';
 import 'package:murmli/features/shopping_list/bloc/event_handlers/shopping_list_create_item_handler.dart';
+import 'package:murmli/features/shopping_list/bloc/event_handlers/shopping_list_delete_checked_items_handler.dart';
 import 'package:murmli/features/shopping_list/bloc/event_handlers/shopping_list_delete_item_handler.dart';
 import 'package:murmli/features/shopping_list/bloc/event_handlers/shopping_list_init_handler.dart';
 import 'package:murmli/features/shopping_list/bloc/event_handlers/shopping_list_toggle_item_handler.dart';
@@ -33,7 +34,10 @@ class ShoppingListBloc
       await _initHandler.handle(emit);
     });
     on<ShoppingListCreateItemEvent>((event, emit) async {
-      await _createItemHandler.handle(event.text, emit);
+      await _createItemHandler.handle(event.text, event.tempId, state, emit);
+    });
+    on<ShoppingListRetryCreateItemEvent>((event, emit) async {
+      await _createItemHandler.handle(event.text, event.tempId, state, emit);
     });
     on<ShoppingListDeleteItemEvent>((event, emit) async {
       await _deleteItemHandler.handle(event.itemId, state, emit);
@@ -60,9 +64,9 @@ class ShoppingListBloc
   void onChange(Change<ShoppingListState> change) {
     // Only trigger onChange if the shopping list has actually changed (excluding timestamps)
     final shouldNotify = change.currentState.maybeWhen(
-      loaded: (currentList) {
+      loaded: (currentList, _) {
         return change.nextState.maybeWhen(
-          loaded: (nextList) {
+          loaded: (nextList, __) {
             return !currentList.equalsIgnoreUpdatedAt(nextList);
           },
           orElse: () => true,

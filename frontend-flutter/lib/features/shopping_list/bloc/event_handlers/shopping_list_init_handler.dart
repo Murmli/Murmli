@@ -26,7 +26,7 @@ class ShoppingListInitHandler {
           emit(ShoppingListState.error('Shopping list id not found'));
           return;
         }
-        emit(ShoppingListState.loaded(shoppingList));
+        emit(ShoppingListState.loaded(shoppingList, itemStatuses: {}));
       } else {
         final shoppingList = await repository.getShoppingList(shoppingListId);
         
@@ -34,7 +34,7 @@ class ShoppingListInitHandler {
           emit(ShoppingListState.error('Shopping list id not found'));
           return;
         }
-        emit(ShoppingListState.loaded(shoppingList));
+        emit(ShoppingListState.loaded(shoppingList, itemStatuses: {}));
       }
     } catch (e) {
       print('Failed to initialize shopping list: $e');

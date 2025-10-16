@@ -13,8 +13,22 @@ class ShoppingListDeleteListEvent extends ShoppingListEvent {}
 
 class ShoppingListCreateItemEvent extends ShoppingListEvent {
   final String text;
+  final String? tempId; // Temporary ID for optimistic updates
 
-  ShoppingListCreateItemEvent({required this.text}) : super();
+  ShoppingListCreateItemEvent({
+    required this.text,
+    this.tempId,
+  }) : super();
+}
+
+class ShoppingListRetryCreateItemEvent extends ShoppingListEvent {
+  final String tempId;
+  final String text;
+
+  ShoppingListRetryCreateItemEvent({
+    required this.tempId,
+    required this.text,
+  }) : super();
 }
 
 class ShoppingListDeleteItemEvent extends ShoppingListEvent {

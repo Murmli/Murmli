@@ -30,7 +30,7 @@ class ShoppingListToggleItemHandler {
 
     // Optimistically update UI
     currentState.maybeWhen(
-      loaded: (shoppingList) {
+      loaded: (shoppingList, itemStatuses) {
         final updatedItems = shoppingList.items.map((item) {
           if (item.id == itemId) {
             return item.copyWith(active: !active);
@@ -39,7 +39,7 @@ class ShoppingListToggleItemHandler {
         }).toList();
 
         final newList = shoppingList.copyWith(items: updatedItems);
-        emit(ShoppingListState.loaded(newList));
+        emit(ShoppingListState.loaded(newList, itemStatuses: itemStatuses));
       },
       orElse: () => currentState,
     );

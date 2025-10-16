@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:murmli/api/models/shopping_list_models.dart';
+import 'package:murmli/features/shopping_list/bloc/models/shopping_list_item_ui.dart';
 import 'package:murmli/features/shopping_list/bloc/shopping_list_bloc.dart';
 import 'package:murmli/features/shopping_list/bloc/shopping_list_state.dart';
 import 'package:murmli/features/shopping_list/presentation/widgets/collapsible_section.dart';
@@ -58,6 +59,7 @@ class _AnimatedShoppingListState extends State<AnimatedShoppingList> {
             return const SizedBox.shrink();
           }
 
+          final itemStatuses = state.itemStatuses;
           final currentActiveItems = state.shoppingList.items
               .where((item) => item.active)
               .toList();
@@ -101,7 +103,12 @@ class _AnimatedShoppingListState extends State<AnimatedShoppingList> {
                     if (index >= _activeItems.length) {
                       return const SizedBox.shrink();
                     }
-                    return _buildItem(_activeItems[index], animation, false);
+                    return _buildItem(
+                      _activeItems[index],
+                      animation,
+                      false,
+                      itemStatuses,
+                    );
                   },
                 ),
 
@@ -127,7 +134,12 @@ class _AnimatedShoppingListState extends State<AnimatedShoppingList> {
                       if (index >= _inactiveItems.length) {
                         return const SizedBox.shrink();
                       }
-                      return _buildItem(_inactiveItems[index], animation, true);
+                      return _buildItem(
+                        _inactiveItems[index],
+                        animation,
+                        true,
+                        itemStatuses,
+                      );
                     },
                   ),
               ],
@@ -150,7 +162,7 @@ class _AnimatedShoppingListState extends State<AnimatedShoppingList> {
         final removedItem = _activeItems.removeAt(i);
         _activeListKey.currentState?.removeItem(
           i,
-          (context, animation) => _buildItem(removedItem, animation, false),
+          (context, animation) => _buildItem(removedItem, animation, false, {}),
           duration: const Duration(milliseconds: 250),
         );
 
@@ -179,7 +191,7 @@ class _AnimatedShoppingListState extends State<AnimatedShoppingList> {
         final removedItem = _inactiveItems.removeAt(i);
         _inactiveListKey.currentState?.removeItem(
           i,
-          (context, animation) => _buildItem(removedItem, animation, true),
+          (context, animation) => _buildItem(removedItem, animation, true, {}),
           duration: const Duration(milliseconds: 250),
         );
 
@@ -218,7 +230,7 @@ class _AnimatedShoppingListState extends State<AnimatedShoppingList> {
         final removedItem = _activeItems.removeAt(i);
         _activeListKey.currentState?.removeItem(
           i,
-          (context, animation) => _buildItem(removedItem, animation, false),
+          (context, animation) => _buildItem(removedItem, animation, false, {}),
           duration: const Duration(milliseconds: 300),
         );
       }
@@ -231,7 +243,7 @@ class _AnimatedShoppingListState extends State<AnimatedShoppingList> {
         final removedItem = _inactiveItems.removeAt(i);
         _inactiveListKey.currentState?.removeItem(
           i,
-          (context, animation) => _buildItem(removedItem, animation, true),
+          (context, animation) => _buildItem(removedItem, animation, true, {}),
           duration: const Duration(milliseconds: 300),
         );
       }
@@ -242,6 +254,7 @@ class _AnimatedShoppingListState extends State<AnimatedShoppingList> {
     ShoppingListItem item,
     Animation<double> animation,
     bool isChecked,
+    Map<String, ShoppingListItemStatus> itemStatuses,
   ) {
     return SizeTransition(
       sizeFactor: animation,
@@ -250,6 +263,7 @@ class _AnimatedShoppingListState extends State<AnimatedShoppingList> {
         child: ShoppingListItemTile(
           item: item,
           isChecked: isChecked,
+          itemStatus: item.id != null ? itemStatuses[item.id] : null,
         ),
       ),
     );

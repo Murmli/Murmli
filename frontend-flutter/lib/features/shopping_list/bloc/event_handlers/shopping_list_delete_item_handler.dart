@@ -25,13 +25,18 @@ class ShoppingListDeleteItemHandler {
 
     // Optimistically update UI
     currentState.maybeWhen(
-      loaded: (shoppingList) {
+      loaded: (shoppingList, itemStatuses) {
         final newList = shoppingList.copyWith(
           items: shoppingList.items
               .where((item) => item.id != itemId)
               .toList(),
         );
-        emit(ShoppingListState.loaded(newList));
+        
+        // Remove item status
+        final updatedStatuses = {...itemStatuses};
+        updatedStatuses.remove(itemId);
+        
+        emit(ShoppingListState.loaded(newList, itemStatuses: updatedStatuses));
       },
       orElse: () => currentState,
     );
