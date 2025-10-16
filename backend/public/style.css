@@ -236,14 +236,26 @@ img {
   margin-right: auto;
 }
 
+.store-links {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.store-links .cta-button {
+  min-width: 180px;
+  text-align: center;
+}
+
 .cta-button {
   display: inline-block;
-  padding: 15px 35px;
+  padding: 12px 28px;
   background-color: var(--secondary-color);
   /* Use green for button */
   color: var(--white);
   text-decoration: none;
-  font-size: 1.1em;
+  font-size: 1em;
   font-weight: bold;
   border-radius: var(--border-radius);
   transition: background-color 0.3s ease, transform 0.2s ease;
@@ -890,12 +902,18 @@ img {
 
 @media (max-width: 480px) {
   .cta-button {
-    padding: 16px 30px;
-    font-size: 1.1em;
-    min-height: 50px;
+    padding: 14px 26px;
+    font-size: 1em;
+    min-height: 46px;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .store-links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
   }
 
   .feature-grid {
