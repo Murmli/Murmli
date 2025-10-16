@@ -243,36 +243,40 @@ img {
   flex-wrap: wrap;
 }
 
-.store-links .cta-button {
-  min-width: 180px;
-  text-align: center;
-}
-
-.cta-button {
-  display: inline-block;
-  padding: 12px 28px;
-  background-color: var(--secondary-color);
-  /* Use green for button */
-  color: var(--white);
-  text-decoration: none;
-  font-size: 1em;
-  font-weight: bold;
+.store-links .store-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: var(--border-radius);
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: var(--box-shadow);
-  border: none;
-  /* Remove default border */
-  cursor: pointer;
-  /* Indicate it's clickable */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin: 0 auto;
 }
 
-.cta-button:hover {
-  background-color: var(--secondary-dark);
-  /* Darker green */
+.store-link {
+  padding: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.store-link:hover,
+.store-link:focus-visible {
   transform: translateY(-2px);
-  text-decoration: none;
-  /* Remove underline on hover */
-  color: var(--white);
+  box-shadow: var(--box-shadow);
+}
+
+.store-link:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 4px;
+}
+
+.store-badge {
+  width: 220px;
+  height: 68px;
+  display: block;
+  object-fit: contain;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 /* Calorie Calculator Section */
@@ -695,7 +699,7 @@ img {
 /* Touch-Optimierungen für alle interaktiven Elemente */
 @media (hover: none) and (pointer: coarse) {
 
-  .cta-button,
+  .store-link,
   .calorie-calculator__button {
     min-height: 44px;
   }
@@ -901,19 +905,19 @@ img {
 }
 
 @media (max-width: 480px) {
-  .cta-button {
-    padding: 14px 26px;
-    font-size: 1em;
-    min-height: 46px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
   .store-links {
     flex-direction: column;
     align-items: stretch;
     gap: 12px;
+  }
+
+  .store-links .store-link {
+    justify-content: center;
+  }
+
+  .store-badge {
+    width: 220px;
+    height: 58px;
   }
 
   .feature-grid {
