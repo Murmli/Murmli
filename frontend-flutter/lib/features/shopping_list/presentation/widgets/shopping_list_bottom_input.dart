@@ -26,7 +26,7 @@ class ShoppingListBottomInput extends HookWidget {
             ),
           ),
           const SizedBox(width: 8),
-          ElevatedButton(
+          IconButton.filled(
             onPressed: () {
               if (textController.text.trim().isEmpty) return;
               context.read<ShoppingListBloc>().add(
@@ -34,11 +34,10 @@ class ShoppingListBottomInput extends HookWidget {
               );
               textController.clear();
             },
-            child: Text(context.t.shopping_list.add_button),
+            icon: const Icon(Icons.add),
           ),
         ],
       ),
     );
   }
 }
-
