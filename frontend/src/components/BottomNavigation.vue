@@ -34,7 +34,7 @@
     </v-bottom-sheet>
 
     <!-- New bottom navigation that mirrors the routes from the old list -->
-    <v-bottom-navigation v-model="current" grow height="60" class="position-fixed bottom-0 w-100">
+    <v-bottom-navigation v-model="current" grow height="60" class="position-fixed bottom-0 w-100 px-5">
         <template v-for="item in items" :key="item.value">
             <v-tooltip :text="item.label" location="top">
                 <template #activator="{ props }">
