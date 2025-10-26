@@ -104,6 +104,7 @@
     "discard": "Verwerfen",
     "resume": "Fortsetzen",
     "voiceRecording": "Audio-Aufnahme",
+    "voiceDialogInfo": "Die Sprachaufnahme läuft gerade. Du kannst sie jederzeit verwerfen. Wenn du sie sendest, wird sie automatisch weiterverarbeitet.",
     "details": "Details",
     "name": "Name",
     "goal": "Ziel",
@@ -229,6 +230,7 @@
     "createRecipeDialog": {
       "title": "Rezept generieren",
       "text": "Beschreibe dein Rezept so detailliert wie möglich: Was soll unbedingt enthalten sein, was möchtest du vermeiden? Je mehr Informationen du gibst, desto besser können wir dein individuelles Rezept generieren.\n\nNach dem Erstellungsprozess dauert es etwa 2–3 Minuten, bis dein Rezept unter 'Eigene Rezepte' erscheint.\n\nOptional kannst du ein Foto hinzufügen – entweder direkt aus deiner Galerie oder indem du ein neues Bild aufnimmst. Das kann ein Bild deines Kühlschranks, einzelner Zutaten oder etwas sein, das dich an dein Wunschrezept erinnert.",
+      "label": "Rezeptbeschreibung",
       "generatingText": "Dein Rezept wird nun erstellt. Dies kann bis zu zwei Minuten dauern. Anschließend findest du es unter 'Eigene Rezepte'."
     },
     "addIngredients": "Zutaten hinzufügen",
@@ -478,6 +480,7 @@
       }
     },
     "descriptionLabelCreate": "Beschreibe den Plan ausführlich",
+    "voiceRecordingInfo": "Sprich deine Beschreibung für den Trainingsplan ein. Die Aufnahme bleibt lokal gespeichert und wird erst nach dem Senden in Text umgewandelt. Wenn du die Aufnahme nicht verwenden möchtest, kannst du sie verwerfen.",
     "createPlanInstructions": "Beschreibe deinen Plan so genau wie möglich: Was möchtest du trainieren? Wie oft in der Woche? In welchem Umfeld ? Welche Trainingsart bevorzugst du?\n\nDu kannst auch die Intensität angeben: leicht, moderat oder intensiv.\n\nBeispiele:\n'Ich möchte viermal pro Woche ins Fitnessstudio, Fokus auf Oberkörper. Ich bin gut trainiert.'\n\n'Ich habe Rückenschmerzen links hinten an der Schulter. Erstelle mir einen Plan mit gezielten Übungen für einen Tag pro Woche, um meine Haltung zu verbessern und die Schmerzen zu lindern.'\n\nJe mehr Informationen du angibst, desto passender wird dein Trainingsplan erstellt.",
     "subtitle": "Hier kannst du deine Trainingspläne erstellen und verwalten.",
     "editPlan": "Trainingsplan bearbeiten",

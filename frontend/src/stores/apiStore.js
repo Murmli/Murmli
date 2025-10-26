@@ -152,7 +152,7 @@ export const useApiStore = defineStore("apiStore", {
     async transcribeAudio(audioBlob) {
       try {
         const formData = new FormData();
-        formData.append('file', audioBlob);
+        formData.append('audio', audioBlob);
 
         const response = await this.apiRequest("post", "/system/transcribe", formData, false);
         if (response.status === 200) {

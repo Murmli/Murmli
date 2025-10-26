@@ -76,7 +76,7 @@ const openFilter = () => {
 const closeWelcomeWindow = async () => {
     dialogStore.closeDialog('plannerHelpWindow');
     localStorage.setItem('showPlannerHelpWindow', 'false');
-    await plannerStore.fetchRecipeSuggestions();
+    await plannerStore.fetchRecipeSuggestions(false);
 };
 
 onMounted(() => {

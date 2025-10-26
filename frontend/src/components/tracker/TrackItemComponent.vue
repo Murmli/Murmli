@@ -1,5 +1,6 @@
 <template>
-    <TrackVoiceDialog />
+    <VoiceInputDialog dialog-key="trackVoiceDialog" mode="audio"
+        @completed="handleVoiceRecording" />
     <TrackImageDialog />
     <div class="w-100 mx-5 mt-5">
         <v-form @submit.prevent="addItem()">
@@ -19,6 +20,8 @@ import { ref } from 'vue';
 import { useTrackerStore } from '@/stores/trackerStore';
 import { useLanguageStore } from '@/stores/languageStore';
 import { useDialogStore } from '@/stores/dialogStore';
+import VoiceInputDialog from '@/components/dialogs/VoiceInputDialog.vue';
+import TrackImageDialog from '@/components/dialogs/TrackImageDialog.vue';
 
 const trackerStore = useTrackerStore();
 const languageStore = useLanguageStore();
@@ -41,5 +44,11 @@ const openVoiceDialog = () => {
 
 const openImageDialog = () => {
     dialogStore.openDialog('trackImageDialog');
+};
+
+const handleVoiceRecording = ({ audioBlob }) => {
+    if (audioBlob) {
+        trackerStore.trackFoodByAudio(audioBlob);
+    }
 };
 </script>
