@@ -95,7 +95,8 @@
     "days": "Days",
     "week": "Week",
     "selectPhoto": "Select Photo",
-    "capturePhoto": "Camera"
+    "capturePhoto": "Camera",
+    "voiceDialogInfo": "The voice recording is in progress. You can discard it at any time. When you send it, it will be processed automatically."
   },
   "shoppingList": {
     "newItemLabel": "New Item",
@@ -187,7 +188,8 @@
     "createRecipeDialog": {
       "title": "Generate Recipe",
       "text": "Describe your recipe as detailed as possible: What must be included, what do you want to avoid? The more information you provide, the better we can generate your individual recipe.\n\nAfter the creation process, it takes about 2–3 minutes for your recipe to appear under 'My Recipes'.\n\nOptionally, you can add a photo – either directly from your gallery or by taking a new picture. This can be a picture of your fridge, individual ingredients, or something that reminds you of your desired recipe.",
-      "generatingText": "Your recipe is now being created. This can take up to two minutes. You will then find it under 'My Recipes'."
+      "generatingText": "Your recipe is now being created. This can take up to two minutes. You will then find it under 'My Recipes'.",
+      "label": "Recipe description"
     },
     "addIngredients": "Add Ingredients",
     "addIngreditensInfo": "Are you sure you want to add the recipe to your current shopping list? All ingredients will be added automatically.",
@@ -480,7 +482,8 @@
     "continuePlanTitle": "Continuation for {name}",
     "continuePlanDescription": "Create a new plan based on this training plan. You can optionally add any preferences.",
     "continuePlanNotesLabel": "Additional notes (optional)",
-    "continuePlanAction": "Create continuation"
+    "continuePlanAction": "Create continuation",
+    "voiceRecordingInfo": "Record your description for the training plan. The recording is stored locally and will only be converted to text after you send it. If you don't want to use the recording, you can discard it."
   },
   "training": {
     "title": "Training Log",

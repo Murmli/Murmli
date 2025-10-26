@@ -95,7 +95,8 @@
     "days": "Days",
     "week": "Week",
     "selectPhoto": "Select Photo",
-    "capturePhoto": "Camera"
+    "capturePhoto": "Camera",
+    "voiceDialogInfo": "The voice recordin' is goin' on right now. You can toss it anytime. If ya send it, it'll be processed automatically."
   },
   "shoppingList": {
     "newItemLabel": "New Item",
@@ -187,7 +188,8 @@
     "createRecipeDialog": {
       "title": "Generate Recipe",
       "text": "Describe yer recipe as detailed as possible: What must be included, what do ya wanna avoid? The more info ya give, the better we can whip up yer custom recipe.\n\nAfter the creation process, it takes about 2–3 minutes for yer recipe to appear under 'My Own Recipes'.\n\nOptionally, ya can add a photo – either from yer gallery or by takin' a new picture. Could be a picture of yer fridge, individual ingredients, or somethin' that reminds ya of yer desired recipe.",
-      "generatingText": "Yer recipe is bein' created. This might take up to two minutes. Afterward, you'll find it under 'My Own Recipes'."
+      "generatingText": "Yer recipe is bein' created. This might take up to two minutes. Afterward, you'll find it under 'My Own Recipes'.",
+      "label": "Recipe description"
     },
     "addIngredients": "Add Ingredients",
     "addIngreditensInfo": "Are ya sure ya wanna add the recipe to yer current shoppin' list? All ingredients will be added automatically.",
@@ -480,7 +482,8 @@
     "continuePlanTitle": "A follow-up fer {name}",
     "continuePlanDescription": "Go on an' make a new plan based on this here trainin' plan. You can, if y'all like, add any optional wishes.",
     "continuePlanNotesLabel": "Extra notes (optional)",
-    "continuePlanAction": "C'reate a follow-up"
+    "continuePlanAction": "C'reate a follow-up",
+    "voiceRecordingInfo": "Go on and speak yer description for the trainin' plan. The recordin' stays saved locally and won't be turned into text 'til after ya send it. If ya don't wanna use the recordin', you can toss it."
   },
   "training": {
     "title": "Trainin' Log",

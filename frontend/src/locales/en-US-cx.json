@@ -95,7 +95,8 @@
     "days": "Days",
     "week": "Week",
     "selectPhoto": "Pick a Pic",
-    "capturePhoto": "Snap It"
+    "capturePhoto": "Snap It",
+    "voiceDialogInfo": "Yo, the voice recording's rolling right now — you can ditch it anytime. Send it and it'll get processed automatically, no stress."
   },
   "shoppingList": {
     "newItemLabel": "Fresh Item",
@@ -187,7 +188,8 @@
     "createRecipeDialog": {
       "title": "Cook Up a Recipe",
       "text": "Describe your recipe as detailed as possible: What must be in it, what do you wanna avoid? The more info you drop, the better we can whip up your custom recipe.\n\nAfter the creation process, it'll take about 2–3 minutes for your recipe to pop up under 'My Creations'.\n\nOptionally, you can add a pic – either from your gallery or snap a new one. Could be a pic of your fridge, individual ingredients, or something that vibes with your dream recipe.",
-      "generatingText": "Your recipe's cooking up. This might take up to two minutes. You'll find it under 'My Creations' once it's ready."
+      "generatingText": "Your recipe's cooking up. This might take up to two minutes. You'll find it under 'My Creations' once it's ready.",
+      "label": "Recipe rundown"
     },
     "addIngredients": "Add Ingredients",
     "addIngreditensInfo": "You sure you wanna add the recipe to your current shopping list? All ingredients will be auto-added.",
@@ -480,7 +482,8 @@
     "continuePlanTitle": "Next Ride for {name}",
     "continuePlanDescription": "Spin up a fresh plan based on this one. Toss in any extra wishes if ya want — keep it chill.",
     "continuePlanNotesLabel": "Extra notes (optional) — drop 'em in if ya like",
-    "continuePlanAction": "Whip up the follow-up, dude"
+    "continuePlanAction": "Whip up the follow-up, dude",
+    "voiceRecordingInfo": "Lay down your training-plan description, dude. The clip stays on your device and only gets turned into text after you send it. If you don't wanna use it, just toss it."
   },
   "training": {
     "title": "Training Log",

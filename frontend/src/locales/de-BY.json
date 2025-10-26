@@ -95,7 +95,8 @@
     "days": "Tagn",
     "week": "Woche",
     "selectPhoto": "Foto auswähln",
-    "capturePhoto": "Kamera"
+    "capturePhoto": "Kamera",
+    "voiceDialogInfo": "D' Sprachaufnahme laaft grod. Du kannst's jederzeit verwerf'n. Wennst's losschickst, werd's automatisch weida verarbeitet."
   },
   "shoppingList": {
     "newItemLabel": "Neier Artikel",
@@ -187,7 +188,8 @@
     "createRecipeDialog": {
       "title": "Rezept generiern",
       "text": "Beschreib dein Rezept so detailliert wie möglich: Wos soll unbedingt enthalten sein, wos möchtest vermeiden? Je mehr Informationen du gibst, desto besser kenna wir dein individuelles Rezept generiern.\n\nNach dem Erstellungsprozess dauert's etwa 2–3 Minuten, bis dein Rezept unter 'Eigene Rezepte' erscheint.\n\nOptional kannst a Foto hinzufügen – entweder direkt aus deiner Galerie oder indem du a neies Bild aufnimmst. Des kann a Bild deines Kühlschranks, einzelner Zutaten oder etwas sein, des dich an dein Wunschrezept erinnert.",
-      "generatingText": "Dein Rezept wird nun erstellt. Dies kann bis zu zwei Minuten dauern. Anschließend findest es unter 'Eigene Rezepte'."
+      "generatingText": "Dein Rezept wird nun erstellt. Dies kann bis zu zwei Minuten dauern. Anschließend findest es unter 'Eigene Rezepte'.",
+      "label": "Rezeptbeschreibng"
     },
     "addIngredients": "Zutaten hinzufügen",
     "addIngreditensInfo": "Bist sicher, dass du das Rezept zu deiner aktuellen Einkaufsliste hinzufügen möchtest? Alle Zutaten werdn automatisch mit hinzugefügt.",
@@ -480,7 +482,8 @@
     "continuePlanTitle": "Fortsetzung fia {name}",
     "continuePlanDescription": "Mach aus dem Trainingsplan an neien Plan. Wennst magst, koanst no Wünsche dazuagebn.",
     "continuePlanNotesLabel": "Zusaetzliche Hinweise (wennst magst)",
-    "continuePlanAction": "A Fortsetzung mochn"
+    "continuePlanAction": "A Fortsetzung mochn",
+    "voiceRecordingInfo": "Sprich dei Beschreibng fia'n Trainingsplaan ein. D' Aufnahme bleibt lokal g'speichert und werd erst nach'm Schickn in Text umgwandelt. Wennst d' Aufnahme ned verwenden magst, kannst's verwerf'n."
   },
   "training": {
     "title": "Training Log",

@@ -95,7 +95,8 @@
     "days": "Jours",
     "week": "Semaine",
     "selectPhoto": "Choisir une photo",
-    "capturePhoto": "Caméra"
+    "capturePhoto": "Caméra",
+    "voiceDialogInfo": "L'enregistrement vocal est en cours. Tu peux le supprimer à tout moment. Si tu l'envoies, il sera automatiquement traité."
   },
   "shoppingList": {
     "newItemLabel": "Nouvel article",
@@ -187,7 +188,8 @@
     "createRecipeDialog": {
       "title": "Générer une recette",
       "text": "Décrivez votre recette aussi en détail que possible : Que doit-elle absolument contenir, que souhaitez-vous éviter ? Plus vous fournissez d'informations, mieux nous pourrons générer votre recette individuelle.\n\nAprès le processus de création, il faut environ 2 à 3 minutes pour que votre recette apparaisse sous 'Mes recettes'.\n\nVous pouvez ajouter une photo en option – soit directement depuis votre galerie, soit en prenant une nouvelle image. Cela peut être une image de votre réfrigérateur, d'ingrédients individuels ou de quelque chose qui vous rappelle votre recette souhaitée.",
-      "generatingText": "Votre recette est en cours de création. Cela peut prendre jusqu'à deux minutes. Vous la trouverez ensuite sous 'Mes recettes'."
+      "generatingText": "Votre recette est en cours de création. Cela peut prendre jusqu'à deux minutes. Vous la trouverez ensuite sous 'Mes recettes'.",
+      "label": "Description de la recette"
     },
     "addIngredients": "Ajouter des ingrédients",
     "addIngreditensInfo": "Êtes-vous sûr de vouloir ajouter la recette à votre liste de courses actuelle ? Tous les ingrédients seront automatiquement ajoutés.",
@@ -480,7 +482,8 @@
     "continuePlanTitle": "Suite pour {name}",
     "continuePlanDescription": "Créez un nouveau plan à partir de ce programme d'entraînement. Vous pouvez, si vous le souhaitez, ajouter des préférences.",
     "continuePlanNotesLabel": "Remarques supplémentaires (optionnelles)",
-    "continuePlanAction": "Créer la suite"
+    "continuePlanAction": "Créer la suite",
+    "voiceRecordingInfo": "Enregistre ta description pour le plan d'entraînement. L'enregistrement reste stocké localement et n'est converti en texte qu'après l'envoi. Si tu ne veux pas utiliser l'enregistrement, tu peux le supprimer."
   },
   "training": {
     "title": "Journal d'entraînement",

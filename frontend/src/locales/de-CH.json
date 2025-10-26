@@ -95,7 +95,8 @@
     "days": "Täg",
     "week": "Wuche",
     "selectPhoto": "Foto uswahlä",
-    "capturePhoto": "Kamera"
+    "capturePhoto": "Kamera",
+    "voiceDialogInfo": "D'Sprachufnahm lauft grad. Du chasch sie jederzyt verwärfe. Wenn du sie abschicksch, wird sie automatisch wiiterverarbeitet."
   },
   "shoppingList": {
     "newItemLabel": "Neuer Artikel",
@@ -187,7 +188,8 @@
     "createRecipeDialog": {
       "title": "Rezäpt generiere",
       "text": "Beschriib din Rezäpt so detailliert wie möglich: Was söll unbedingt enthalte si, was wetsch du vermeide? Je meh Informatione du gisch, desto besser chönd mir din individuelles Rezäpt generiere.\n\nNach em Erstelligsprozess dauert s'ca. 2–3 Minute, bis din Rezäpt unter 'Eigeti Rezäpt' erscheint.\n\nOptional chasch es Foto zuefüege – entweder direkt us dinere Galerie oder indem du es neus Bild ufnimmst. Das cha es Bild vo dim Chüelschrank, einzelni Zutatä oder öppis si, wo di an din Wünschrezäpt erinnere tuet.",
-      "generatingText": "Din Rezäpt wird jetz erstellt. Das cha bis zu zwei Minute daure. Anschliessend findsch es unter 'Eigeti Rezäpt'."
+      "generatingText": "Din Rezäpt wird jetz erstellt. Das cha bis zu zwei Minute daure. Anschliessend findsch es unter 'Eigeti Rezäpt'.",
+      "label": "Rezeptbeschrieb"
     },
     "addIngredients": "Zutatä zuefüege",
     "addIngreditensInfo": "Bisch sicher, dass du s'Rezäpt zu dinere aktuelle Iikauflischt zuefüege wetsch? Alli Zutatä wärde automatisch mit zuegfiegt.",
@@ -480,7 +482,8 @@
     "continuePlanTitle": "Fortsetzig für {name}",
     "continuePlanDescription": "Mach uf Basis vo däm Trainingsplan e neue Plan. Du chasch optional Wünsch dazuefüege.",
     "continuePlanNotesLabel": "Zuesätzlechi Hinweise (optional)",
-    "continuePlanAction": "Fortsetzig erstelle"
+    "continuePlanAction": "Fortsetzig erstelle",
+    "voiceRecordingInfo": "Sprich dini Beschrieb für dä Trainingsplan i. D'Ufnahm bleibt lokal gspeichert und wird erscht nach em Schicke in Text umgwandlet. Wenn du d'Ufnahm nöd verwände wotsch, chasch sie verwärfe."
   },
   "training": {
     "title": "Trainig Log",

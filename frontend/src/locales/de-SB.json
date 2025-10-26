@@ -95,7 +95,8 @@
     "days": "Tage",
     "week": "Woche",
     "selectPhoto": "Foto auswählä",
-    "capturePhoto": "Kamera"
+    "capturePhoto": "Kamera",
+    "voiceDialogInfo": "D' Sprachaufnahm' lauft grad. Du kannsch sie jederzit verwerfa. Wenn'd se schicksch, wird se automatisch weiterverarbeitet."
   },
   "shoppingList": {
     "newItemLabel": "Neuer Artikel",
@@ -187,7 +188,8 @@
     "createRecipeDialog": {
       "title": "Rezept generierä",
       "text": "Beschreib dei Rezept so detailliert wie möglich: Was soll unbedingt enthalten sei, was möchtä du vermeidä? Je meh Informationa du gibsch, desto besser könnä mir dein individuelles Rezept generierä.\n\nNachm Erstellungsprozess dauert's etwa 2–3 Minuta, bis dei Rezept unner 'Eigene Rezept' erscheint.\n\nOptional kansch e Foto hinzufüga – entweder direkt aus deiner Galerie oder indem du e neues Bild aufnimmst. Des kann e Bild von deinem Kühlschrank, einzlna Zutatä oder ebbes sei, was dich an dei Wunschrezept erinnert.",
-      "generatingText": "Dei Rezept wird jetz erstellt. Des kann bis zu zwei Minuta dauera. Anschließend findsch es unner 'Eigene Rezept'."
+      "generatingText": "Dei Rezept wird jetz erstellt. Des kann bis zu zwei Minuta dauera. Anschließend findsch es unner 'Eigene Rezept'.",
+      "label": "Rezäptbeschreiba"
     },
     "addIngredients": "Zutatä hinzufüga",
     "addIngreditensInfo": "Bisch du sicher, dass du des Rezept zu deiner aktuellen Eikaufslischd hinzufüga möchtä? Alle Zutatä werdät automatisch mit hinzugfügt.",
@@ -480,7 +482,8 @@
     "continuePlanTitle": "Fortsetzunga fir {name}",
     "continuePlanDescription": "Mach aus dem Trainingsplan a neie Plan. Du kansch optional Wünsch dazua sage.",
     "continuePlanNotesLabel": "No meh Hinweise (optional)",
-    "continuePlanAction": "Fortsetzunga erstella"
+    "continuePlanAction": "Fortsetzunga erstella",
+    "voiceRecordingInfo": "Sproch dei Beschreiba für'n Trainingsplan ei. D' Aufnahm bleibt lokal gspeichert und wird erst nach'm Schicke in Text umgwandlet. Wenn'd d' Aufnahm net verwenden willscht, kannsch sie verwerfa."
   },
   "training": {
     "title": "Training Log",

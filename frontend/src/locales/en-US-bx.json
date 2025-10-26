@@ -95,7 +95,8 @@
     "days": "Days",
     "week": "Week",
     "selectPhoto": "Select Photo",
-    "capturePhoto": "Camera"
+    "capturePhoto": "Camera",
+    "voiceDialogInfo": "The voice recordin' is goin' on right now. Ya can chuck it anytime. If ya send it, it'll be processed automatically."
   },
   "shoppingList": {
     "newItemLabel": "New Item",
@@ -187,7 +188,8 @@
     "createRecipeDialog": {
       "title": "Generate Recipe",
       "text": "Describe yah recipe as detailed as possible: What must be included, what do yah wanna avoid? The more info yah give, the bettah we can generate yah individual recipe.\n\nAfter the creation process, it takes about 2–3 minutes fuh yah recipe to appear undah 'My Recipes'.\n\nOptionally, yah can add a photo – eithah from yah gallery or by takin' a new pic. It could be a pic of yah fridge, individual ingredients, or somethin' that reminds yah of yah desired recipe.",
-      "generatingText": "Yah recipe is bein' created. This can take up to two minutes. Then yah'll find it undah 'My Recipes'."
+      "generatingText": "Yah recipe is bein' created. This can take up to two minutes. Then yah'll find it undah 'My Recipes'.",
+      "label": "Recipe descripshun"
     },
     "addIngredients": "Add Ingredients",
     "addIngreditensInfo": "Ah yah sure yah wanna add the recipe to yah current shoppin' list? All ingredients will be added automagically.",
@@ -480,7 +482,8 @@
     "continuePlanTitle": "Continuashun fah {name}",
     "continuePlanDescription": "Create a new plan based on this trainin' plan. Ya can optionally add requests.",
     "continuePlanNotesLabel": "Addishunal notes (optional)",
-    "continuePlanAction": "Create a continuashun"
+    "continuePlanAction": "Create a continuashun",
+    "voiceRecordingInfo": "Speak ya descripshun fo' the trainin' plan inta the mic. The recordin' stays stored locally an' won't be turned inta text 'til ya send it. If ya don't wanna use the recordin', ya can chuck it."
   },
   "training": {
     "title": "Trainin' Log",

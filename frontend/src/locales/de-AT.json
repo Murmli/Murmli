@@ -95,7 +95,8 @@
     "days": "Tagen",
     "week": "Woche",
     "selectPhoto": "Foto auswählen",
-    "capturePhoto": "Kamera"
+    "capturePhoto": "Kamera",
+    "voiceDialogInfo": "Die Sprachaufnahme is' grad am Laufen. Du kannst sie jederzeit verwerfen. Wenn du sie abschickst, wird sie automatisch weiterverarbeitet."
   },
   "shoppingList": {
     "newItemLabel": "Neuer Artikel",
@@ -187,7 +188,8 @@
     "createRecipeDialog": {
       "title": "Rezept generieren",
       "text": "Beschreib dein Rezept so detailliert wie möglich: Wos soll unbedingt enthalten sein, wos möchtest du vermeiden? Je mehr Informationen du gibst, desto besser können wir dein individuelles Rezept generieren.\n\nNach dem Erstellungsprozess dauert es etwa 2–3 Minuten, bis dein Rezept unter 'Eigene Rezepte' erscheint.\n\nOptional kannst du ein Foto hinzufügen – entweder direkt aus deiner Galerie oder indem du ein neues Bild aufnimmst. Das kann ein Bild deines Kühlschranks, einzelner Zutaten oder etwas sein, das dich an dein Wunschrezept erinnert.",
-      "generatingText": "Dein Rezept wird nun erstellt. Dies kann bis zu zwei Minuten dauern. Anschließend findest du es unter 'Eigene Rezepte'."
+      "generatingText": "Dein Rezept wird nun erstellt. Dies kann bis zu zwei Minuten dauern. Anschließend findest du es unter 'Eigene Rezepte'.",
+      "label": "Rezeptbeschreibung"
     },
     "addIngredients": "Zutaten hinzufügen",
     "addIngreditensInfo": "Bist du sicher, dass du das Rezept zu deiner aktuellen Einkaufsliste hinzufügen möchtest? Alle Zutaten werden automatisch mit hinzugefügt.",
@@ -480,7 +482,8 @@
     "continuePlanTitle": "Fortsetzung für {name}",
     "continuePlanDescription": "Leg auf Basis dieses Trainingsplans a neuen Plan an. Du kannst optional noch Wünsche dazuschreiben.",
     "continuePlanNotesLabel": "Zusätzliche Hinweise (optional)",
-    "continuePlanAction": "Fortsetzung anleg'n"
+    "continuePlanAction": "Fortsetzung anleg'n",
+    "voiceRecordingInfo": "Sprich deine Beschreibung für'n Trainingsplan ein. Die Aufnahme bleibt lokal gespeichert und wird erst nach'm Absenden in Text umgewandelt. Wenn du die Aufnahme nicht verwenden willst, kannst du sie verwerfen."
   },
   "training": {
     "title": "Training Log",

@@ -95,7 +95,8 @@
     "days": "Tagen",
     "week": "Woche",
     "selectPhoto": "Foto auswählen",
-    "capturePhoto": "Kamera"
+    "capturePhoto": "Kamera",
+    "voiceDialogInfo": "Die Aufnahme läuft grad. Du kannst sie jederzeit löschen. Sobald du sie abschickst, wird sie automatisch weiterverarbeitet."
   },
   "shoppingList": {
     "newItemLabel": "Neuer Artikel",
@@ -187,7 +188,8 @@
     "createRecipeDialog": {
       "title": "Rezept generieren",
       "text": "Beschreibe dein Rezept so detailliert wie möglich: Was soll unbedingt enthalten sein, was möchtest du vermeiden? Je mehr Infos du gibst, desto besser können wir dein individuelles Rezept generieren.\n\nNach dem Erstellungsprozess dauert es etwa 2–3 Minuten, bis dein Rezept unter 'Eigene Rezepte' am Start ist.\n\nOptional kannst du ein Foto hinzufügen – entweder direkt aus deiner Galerie oder indem du ein neues Bild aufnimmst. Das kann ein Bild deines Kühlschranks, einzelner Zutaten oder etwas sein, das dich an dein Wunschrezept erinnert.",
-      "generatingText": "Dein Rezept wird jetzt erstellt. Dies kann bis zu zwei Minuten dauern. Anschließend findest du es unter 'Eigene Rezepte'."
+      "generatingText": "Dein Rezept wird jetzt erstellt. Dies kann bis zu zwei Minuten dauern. Anschließend findest du es unter 'Eigene Rezepte'.",
+      "label": "Rezept-Info"
     },
     "addIngredients": "Zutaten hinzufügen",
     "addIngreditensInfo": "Bist du sicher, dass du das Rezept zu deiner aktuellen Einkaufsliste hinzufügen willst? Alle Zutaten werden automatisch mit hinzugefügt.",
@@ -480,7 +482,8 @@
     "continuePlanTitle": "Neuer Plan für {name}",
     "continuePlanDescription": "Mach aus diesem Trainingsplan 'nen neuen Plan. Wenn du Bock hast, kannst du noch Wünsche reinhauen.",
     "continuePlanNotesLabel": "Noch was? (optional)",
-    "continuePlanAction": "Neuen Plan machen"
+    "continuePlanAction": "Neuen Plan machen",
+    "voiceRecordingInfo": "Nimm kurz 'ne Beschreibung für deinen Trainingsplan auf. Die Aufnahme bleibt nur auf deinem Gerät und wird erst nach Abschicken in Text umgewandelt. Wenn du sie nicht nutzen willst, kannst du sie einfach löschen."
   },
   "training": {
     "title": "Training Log",

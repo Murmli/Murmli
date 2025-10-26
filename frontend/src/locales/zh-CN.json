@@ -95,7 +95,8 @@
     "days": "天",
     "week": "周",
     "selectPhoto": "选择照片",
-    "capturePhoto": "相机"
+    "capturePhoto": "相机",
+    "voiceDialogInfo": "语音录制正在进行。你可以随时放弃。发送后会自动进行后续处理。"
   },
   "shoppingList": {
     "newItemLabel": "新项目",
@@ -187,7 +188,8 @@
     "createRecipeDialog": {
       "title": "生成食谱",
       "text": "尽可能详细地描述您的食谱：必须包含什么，您想避免什么？您提供的信息越多，我们生成的个性化食谱就越好。\n\n生成过程后，大约需要2-3分钟，您的食谱会出现在“我的食谱”中。\n\n您可以选择添加一张照片——可以直接从您的图库中选择或拍摄新照片。这可以是您冰箱的照片、单个食材或让您想起您想要的食谱的东西。",
-      "generatingText": "您的食谱正在创建。这可能需要两分钟。随后，您可以在“我的食谱”中找到它。"
+      "generatingText": "您的食谱正在创建。这可能需要两分钟。随后，您可以在“我的食谱”中找到它。",
+      "label": "食谱描述"
     },
     "addIngredients": "添加食材",
     "addIngreditensInfo": "您确定要将食谱添加到当前购物清单中吗？所有食材将自动添加。",
@@ -480,7 +482,8 @@
     "continuePlanTitle": "为{name}创建后续计划",
     "continuePlanDescription": "基于此训练计划创建一个新计划。你可以选择性地添加附加要求。",
     "continuePlanNotesLabel": "额外说明（可选）",
-    "continuePlanAction": "创建后续计划"
+    "continuePlanAction": "创建后续计划",
+    "voiceRecordingInfo": "请口述你的训练计划说明。录音将保存在本地，只有在发送后才会转换为文字。如果你不想使用该录音，可以将其放弃。"
   },
   "training": {
     "title": "训练日志",
