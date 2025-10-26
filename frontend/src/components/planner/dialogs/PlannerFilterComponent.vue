@@ -1,4 +1,5 @@
 <template>
+    <VoiceInputDialog dialog-key="plannerPromptVoiceDialog" mode="transcribe" @completed="applyVoiceInput" />
     <v-dialog v-model="dialogStore.dialogs.plannerFilterDialog">
         <v-card>
             <v-card-title>{{ languageStore.t('planner.filter.title') }}</v-card-title>
@@ -28,8 +29,11 @@
                 <!-- Prompt Textarea -->
                 <div class="mt-4">
                     <p>{{ languageStore.t('planner.filter.promptLabel') }}</p>
-                    <v-textarea v-model="plannerStore.filters.prompt" :label="promptPlaceholder" auto-grow rows="2"
-                        clearable />
+                    <v-textarea v-model="plannerStore.filters.prompt" :label="promptPlaceholder" auto-grow rows="2">
+                        <template #append-inner>
+                            <v-icon @click="openVoiceDialog">mdi-microphone</v-icon>
+                        </template>
+                    </v-textarea>
                 </div>
             </v-card-text>
             <v-card-actions>
@@ -46,12 +50,27 @@ import { onMounted } from 'vue';
 import { useLanguageStore } from '@/stores/languageStore';
 import { usePlannerStore } from '@/stores/plannerStore';
 import { useDialogStore } from '@/stores/dialogStore';
+import VoiceInputDialog from '@/components/dialogs/VoiceInputDialog.vue';
 
 const dialogStore = useDialogStore();
 const languageStore = useLanguageStore();
 const plannerStore = usePlannerStore();
 
 const promptPlaceholder = languageStore.t('planner.filter.promptPlaceholder');
+
+const openVoiceDialog = () => {
+    dialogStore.openDialog('plannerPromptVoiceDialog');
+};
+
+const applyVoiceInput = ({ text }) => {
+    if (!text) {
+        return;
+    }
+    const current = plannerStore.filters.prompt || '';
+    plannerStore.filters.prompt = current
+        ? `${current.trimEnd()}\n${text}`
+        : text;
+};
 
 // Load initial filters
 onMounted(async () => {
@@ -60,12 +79,12 @@ onMounted(async () => {
 
 // Save filters and (conditionally) fetch recipe suggestions
 const saveFilters = async () => {
+    closeSheet();
     await plannerStore.setFilters(plannerStore.filters); // Use store filters directly
     // Only fetch recipe suggestions if the help window is not open
     if (!dialogStore.dialogs.plannerHelpWindow) {
-        await plannerStore.fetchRecipeSuggestions();
+        await plannerStore.fetchRecipeSuggestions(false);
     }
-    closeSheet();
 };
 
 // Close the filter dialog

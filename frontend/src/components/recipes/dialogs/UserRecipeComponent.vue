@@ -1,24 +1,29 @@
 <template>
+    <VoiceInputDialog dialog-key="recipeVoiceDialog" mode="transcribe" @completed="applyVoiceInput" />
     <v-dialog v-model="dialogStore.dialogs.userRecipeDialog">
         <v-card>
             <v-card-title>{{ languageStore.t('recipes.createRecipeDialog.title') }}</v-card-title>
             <v-card-text>
-    <v-textarea v-model="prompt" label="Prompt eingeben" auto-grow rows="3"
-                    class="mt-4" clearable></v-textarea>
+                <v-textarea v-model="prompt" :label="languageStore.t('recipes.createRecipeDialog.label')" auto-grow
+                    rows="3" class="mt-4" clearable>
+                    <template #append-inner>
+                        <v-icon @click="openVoiceDialog">mdi-microphone</v-icon>
+                    </template>
+                </v-textarea>
                 <div class="text-center">
                     <v-img v-if="image" :src="image" class="my-4" max-height="200"></v-img>
 
                     <p class="pb-3">
                         <v-btn color="primary" @click="triggerCapture">{{
                             languageStore.t('general.capturePhoto')
-                            }}</v-btn>
+                        }}</v-btn>
                         <input type="file" accept="image/*" ref="fileCapture" class="d-none" capture="environment"
                             @change="handleFileInput" />
                     </p>
                     <p>
                         <v-btn color="primary" @click="triggerFileInput">{{
                             languageStore.t('general.selectPhoto')
-                            }}</v-btn>
+                        }}</v-btn>
                         <input type="file" accept="image/*" ref="fileInput" class="d-none" @change="handleFileInput" />
                     </p>
                 </div>
@@ -49,6 +54,7 @@ import { ref, computed } from 'vue';
 import { useLanguageStore } from '@/stores/languageStore';
 import { useRecipeStore } from '@/stores/recipeStore';
 import { useDialogStore } from '@/stores/dialogStore';
+import VoiceInputDialog from '@/components/dialogs/VoiceInputDialog.vue';
 
 const dialogStore = useDialogStore();
 const languageStore = useLanguageStore();
@@ -60,6 +66,19 @@ const prompt = ref('');
 const image = ref(null);
 const fileInput = ref(null);
 const fileCapture = ref(null);
+
+const openVoiceDialog = () => {
+    dialogStore.openDialog('recipeVoiceDialog');
+};
+
+const applyVoiceInput = ({ text }) => {
+    if (!text) {
+        return;
+    }
+    prompt.value = prompt.value
+        ? `${prompt.value.trimEnd()}\n${text}`
+        : text;
+};
 
 // Trigger the file input for camera or gallery selection
 const triggerFileInput = () => {

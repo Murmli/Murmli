@@ -1,10 +1,16 @@
 <template>
+        <VoiceInputDialog dialog-key="trainingPlanVoiceDialog" mode="transcribe"
+            @completed="applyVoiceInput" />
     <v-dialog v-model="dialogStore.dialogs.createTrainingPlanDialog">
         <v-card>
             <v-card-title>{{ languageStore.t('trainingPlans.help.step1.title') }}</v-card-title>
             <v-card-text>
                 <v-textarea v-model="planDescription" clearable
-                    :label="languageStore.t('trainingPlans.descriptionLabelCreate')"></v-textarea>
+                    :label="languageStore.t('trainingPlans.descriptionLabelCreate')">
+                    <template #append-inner>
+                        <v-icon @click="openVoiceDialog">mdi-microphone</v-icon>
+                    </template>
+                </v-textarea>
                 <div>
                     <v-expansion-panels>
                         <v-expansion-panel :title="languageStore.t('general.instructions')">
@@ -29,6 +35,7 @@ import { ref, computed } from 'vue';
 import { useTrainingStore } from '@/stores/trainingStore';
 import { useDialogStore } from '@/stores/dialogStore';
 import { useLanguageStore } from '@/stores/languageStore';
+import VoiceInputDialog from '@/components/dialogs/VoiceInputDialog.vue';
 
 const dialogStore = useDialogStore();
 const trainingStore = useTrainingStore();
@@ -55,5 +62,18 @@ const confirm = async () => {
 
 const closeDialog = () => {
     dialogStore.closeDialog('createTrainingPlanDialog');
+};
+
+const openVoiceDialog = () => {
+    dialogStore.openDialog('trainingPlanVoiceDialog');
+};
+
+const applyVoiceInput = ({ text }) => {
+    if (!text) {
+        return;
+    }
+    planDescription.value = planDescription.value
+        ? `${planDescription.value.trimEnd()}\n${text}`
+        : text;
 };
 </script>
