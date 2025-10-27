@@ -101,6 +101,12 @@ const items = computed(() => [
 // Keep the bottom navigation in sync with the current route
 const current = ref(route.path)
 
+const scrollToTop = () => {
+    if (typeof window !== 'undefined') {
+        window.scrollTo({ top: 0, behavior: 'auto' })
+    }
+}
+
 // When the user taps a nav item, navigate to that route
 watch(current, val => {
     if (val && val !== route.path) router.push(val)
@@ -109,8 +115,9 @@ watch(current, val => {
 // When the route changes (programmatic or via other UI), update the nav
 watch(
     () => route.path,
-    path => {
+    (path, previousPath) => {
         if (path !== current.value) current.value = path
+        if (previousPath && path !== previousPath) scrollToTop()
     },
     { immediate: true }
 )
