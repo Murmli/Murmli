@@ -34,18 +34,14 @@
     </v-bottom-sheet>
 
     <!-- New bottom navigation that mirrors the routes from the old list -->
-    <v-bottom-navigation v-model="current" grow height="60" class="position-fixed bottom-0 w-100 px-5">
+    <v-bottom-navigation v-model="current" grow height="60" class="px-7">
         <template v-for="item in items" :key="item.value">
-            <v-tooltip :text="item.label" location="top">
-                <template #activator="{ props }">
-                    <v-btn v-bind="props" :value="item.value" variant="text" :aria-label="item.label"
-                        :aria-current="current === item.value ? 'page' : undefined">
-                        <v-icon size="large" :color="current === item.value ? item.color : 'grey-darken-1'">
-                            {{ item.icon }}
-                        </v-icon>
-                    </v-btn>
-                </template>
-            </v-tooltip>
+            <v-btn :value="item.value" variant="text" :aria-label="item.label"
+                :aria-current="current === item.value ? 'page' : undefined">
+                <v-icon size="large" :color="current === item.value ? item.color : 'grey-darken-1'">
+                    {{ item.icon }}
+                </v-icon>
+            </v-btn>
         </template>
     </v-bottom-navigation>
 </template>
