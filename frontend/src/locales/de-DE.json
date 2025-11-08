@@ -396,6 +396,7 @@
     "trackActivity": "Aktivität tracken",
     "trackRecipe": "Rezept tracken",
     "activityLabel": "Aktivität",
+    "activityRequired": "Bitte gib eine Aktivität ein, bevor du fortfährst.",
     "createActivity": "Aktivität hinzufügen",
     "createActivityInfo": "Füge hier deine Aktivitäten hinzu, die App berechnet automatisch die Kalorien für dich.",
     "palOptions": {

@@ -401,7 +401,8 @@
       "lastChanged": "最后更改"
     },
     "descriptionLabel": "补充说明",
-    "descriptionPlaceholder": "请描述图片中的餐食或活动"
+    "descriptionPlaceholder": "请描述图片中的餐食或活动",
+    "activityRequired": "请在继续之前输入一项活动。"
   },
   "trainingPlans": {
     "title": "训练计划",

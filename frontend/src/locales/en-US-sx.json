@@ -401,7 +401,8 @@
       "lastChanged": "last changed"
     },
     "descriptionLabel": "A lil' extra description",
-    "descriptionPlaceholder": "Describe yer meal or activity 'bout the picture"
+    "descriptionPlaceholder": "Describe yer meal or activity 'bout the picture",
+    "activityRequired": "Please go on and enter an activity before ya mosey on, now."
   },
   "trainingPlans": {
     "title": "Trainin' Plans",

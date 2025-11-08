@@ -401,7 +401,8 @@
       "lastChanged": "zuletzt geändert"
     },
     "descriptionLabel": "No a Beschreibung dazua",
-    "descriptionPlaceholder": "Beschreib, wos'd gessn host oder wos'd gmacht host zum Bild"
+    "descriptionPlaceholder": "Beschreib, wos'd gessn host oder wos'd gmacht host zum Bild",
+    "activityRequired": "Gib bitt' a Aktivität ei, bevor'd du weida machst."
   },
   "trainingPlans": {
     "title": "Trainingspläne",

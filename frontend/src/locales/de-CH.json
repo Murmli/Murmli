@@ -401,7 +401,8 @@
       "lastChanged": "zletscht gänderet"
     },
     "descriptionLabel": "Zusätzliche Beschrieb",
-    "descriptionPlaceholder": "Beschreib dini Mahlziit oder Aktivität im Bezug uf s'Bild"
+    "descriptionPlaceholder": "Beschreib dini Mahlziit oder Aktivität im Bezug uf s'Bild",
+    "activityRequired": "Bitte gib e Aktivität ii, bevor du witerfährsch."
   },
   "trainingPlans": {
     "title": "Trainingsplän",

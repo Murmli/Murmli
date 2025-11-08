@@ -401,7 +401,8 @@
       "lastChanged": "zuletzt geändert"
     },
     "descriptionLabel": "Extra-Infos",
-    "descriptionPlaceholder": "Beschreib kurz, was auf dem Bild abgeht — Mahlzeit oder Aktivität"
+    "descriptionPlaceholder": "Beschreib kurz, was auf dem Bild abgeht — Mahlzeit oder Aktivität",
+    "activityRequired": "Gib erstmal 'ne Aktivität ein, sonst geht's nicht weiter."
   },
   "trainingPlans": {
     "title": "Trainingspläne",

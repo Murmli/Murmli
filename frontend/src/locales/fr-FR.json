@@ -401,7 +401,8 @@
       "lastChanged": "dernière modification"
     },
     "descriptionLabel": "Description supplémentaire",
-    "descriptionPlaceholder": "Décrivez votre repas ou activité en rapport avec l'image"
+    "descriptionPlaceholder": "Décrivez votre repas ou activité en rapport avec l'image",
+    "activityRequired": "Veuillez saisir une activité avant de continuer."
   },
   "trainingPlans": {
     "title": "Plans d'entraînement",

@@ -401,7 +401,8 @@
       "lastChanged": "last changed"
     },
     "descriptionLabel": "Additional Desciption",
-    "descriptionPlaceholder": "Descibe yah meal or activity 'bout the pictuah"
+    "descriptionPlaceholder": "Descibe yah meal or activity 'bout the pictuah",
+    "activityRequired": "Please entah an activity befaw ya move on."
   },
   "trainingPlans": {
     "title": "Trainin' Plans",

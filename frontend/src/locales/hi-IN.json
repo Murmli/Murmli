@@ -401,7 +401,8 @@
       "lastChanged": "अंतिम बार बदला गया"
     },
     "descriptionLabel": "अतिरिक्त विवरण",
-    "descriptionPlaceholder": "इस छवि के संदर्भ में अपने भोजन या गतिविधि का वर्णन करें"
+    "descriptionPlaceholder": "इस छवि के संदर्भ में अपने भोजन या गतिविधि का वर्णन करें",
+    "activityRequired": "कृपया आगे बढ़ने से पहले एक गतिविधि दर्ज करें।"
   },
   "trainingPlans": {
     "title": "प्रशिक्षण योजनाएं",

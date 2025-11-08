@@ -401,7 +401,8 @@
       "lastChanged": "zuletzt geändert"
     },
     "descriptionLabel": "Z'sätzliche Beschriebung",
-    "descriptionPlaceholder": "Beschreib dei' Mahlzeit oder Aktivität im Bezug auf's Bild"
+    "descriptionPlaceholder": "Beschreib dei' Mahlzeit oder Aktivität im Bezug auf's Bild",
+    "activityRequired": "Bitte gib erscht a Aktivität ei, bevor du weitermachsch."
   },
   "trainingPlans": {
     "title": "Trainingsplänä",

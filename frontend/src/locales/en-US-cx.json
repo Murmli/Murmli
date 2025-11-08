@@ -401,7 +401,8 @@
       "lastChanged": "last changed"
     },
     "descriptionLabel": "Extra description, dude",
-    "descriptionPlaceholder": "Describe your meal or activity in relation to the pic, dude"
+    "descriptionPlaceholder": "Describe your meal or activity in relation to the pic, dude",
+    "activityRequired": "Yo, drop an activity in before you paddle out, alright?"
   },
   "trainingPlans": {
     "title": "Training Plans",
