@@ -36,7 +36,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted, watch, computed } from 'vue';
 import { useLanguageStore } from '@/stores/languageStore';
 import { useTrackerStore } from '@/stores/trackerStore';
 import { useDialogStore } from '@/stores/dialogStore';
@@ -64,6 +64,13 @@ const recommendations = ref({
     fat: 0
 });
 
+const syncRecommendationsFromStore = () => {
+    recommendations.value = {
+        ...recommendations.value,
+        ...(trackerStore.tracker.recommendations || {})
+    };
+};
+
 
 // Check if required fields are missing
 const missingRequiredData = computed(() => {
@@ -83,13 +90,21 @@ onMounted(async () => {
     } else {
         Object.assign(localBodyData.value, fetchedData);
     }
-    recommendations.value.kcal = trackerStore.tracker.recommendations.kcal || 0;
+    syncRecommendationsFromStore();
 });
 
 const calculateCalories = async () => {
     try {
-        const response = await trackerStore.calculateRecommendations(localBodyData.workHoursWeek, localBodyData.workDaysPAL);
-        recommendations.value = response;
+        const response = await trackerStore.calculateRecommendations(
+            localBodyData.value.workHoursWeek,
+            localBodyData.value.workDaysPAL
+        );
+        if (response) {
+            recommendations.value = {
+                ...recommendations.value,
+                ...response
+            };
+        }
     } catch (error) {
         console.error('Fehler beim Berechnen:', error);
     }
@@ -98,7 +113,7 @@ const calculateCalories = async () => {
 const saveCalorieGoal = async () => {
     try {
         await trackerStore.updateRecommendations(recommendations.value);
-        recommendations.kcal = trackerStore.tracker.recommendations.kcal || 0;
+        syncRecommendationsFromStore();
     } catch (error) {
         console.error('Fehler beim Speichern:', error);
     }
@@ -107,6 +122,15 @@ const saveCalorieGoal = async () => {
 const closeDialog = () => {
     dialogStore.closeDialog('calorieGoalDialog');
 };
+
+watch(
+    () => dialogStore.dialogs.calorieGoalDialog,
+    (isOpen) => {
+        if (isOpen) {
+            syncRecommendationsFromStore();
+        }
+    }
+);
 
 // Watcher für dietType
 watch(

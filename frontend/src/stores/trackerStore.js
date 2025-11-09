@@ -428,9 +428,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           { workDays, workDaysPAL }
         );
 
-        if (response.status == 200) {
-          this.tracker.recommendations = response.data.recommendations;
-          this.saveCache();
+        if (response.status === 200) {
           return response.data.recommendations;
         }
       } catch (error) {
