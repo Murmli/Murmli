@@ -225,6 +225,9 @@ const restTimerProgress = ref(100);
 const timer = ref(null);
 const timerRunning = ref(false);
 const timerElapsed = ref(0);
+const hasPlayedTargetBeep = ref(false);
+const timerTargetDuration = ref(null);
+let audioContext;
 
 const openImageDialog = (src) => {
     dialogStore.imageSrc = src;
@@ -340,6 +343,7 @@ const currentMeasurementType = computed(() => {
 });
 const isWeightBased = computed(() => currentMeasurementType.value === 'weight');
 const isDurationBased = computed(() => currentMeasurementType.value === 'duration');
+const targetDuration = computed(() => timerTargetDuration.value);
 
 
 // Computed Property, um zu prüfen, ob alle Sätze für die aktuelle Übung abgeschlossen sind
@@ -403,8 +407,62 @@ watch(currentSet, (newSet) => {
         clearInterval(timer.value);
         timerRunning.value = false;
         timerElapsed.value = 0;
+        timerTargetDuration.value = null;
+        hasPlayedTargetBeep.value = false;
     }
 }, { immediate: true });
+
+const ensureAudioContext = () => {
+    if (typeof window === 'undefined') return null;
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextClass) return null;
+    if (!audioContext) {
+        audioContext = new AudioContextClass();
+    }
+    if (audioContext.state === 'suspended') {
+        audioContext.resume();
+    }
+    return audioContext;
+};
+
+const playBeep = () => {
+    const ctx = ensureAudioContext();
+    if (!ctx) return;
+    const oscillator = ctx.createOscillator();
+    const gainNode = ctx.createGain();
+    oscillator.type = 'sine';
+    oscillator.frequency.value = 880;
+    gainNode.gain.setValueAtTime(0.001, ctx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.2, ctx.currentTime + 0.01);
+    gainNode.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.25);
+    oscillator.connect(gainNode);
+    gainNode.connect(ctx.destination);
+    oscillator.start();
+    oscillator.stop(ctx.currentTime + 0.3);
+};
+
+const maybePlayTargetBeep = () => {
+    if (hasPlayedTargetBeep.value) return;
+    if (!timerRunning.value) return;
+    const target = targetDuration.value;
+    if (!target) return;
+    if (timerElapsed.value >= target) {
+        playBeep();
+        hasPlayedTargetBeep.value = true;
+    }
+};
+
+const captureTargetDuration = () => {
+    const parsePositiveNumber = (value) => {
+        const numberValue = Number(value);
+        return Number.isFinite(numberValue) && numberValue > 0 ? numberValue : null;
+    };
+    const fromInput = parsePositiveNumber(currentWeightOrTime.value);
+    if (fromInput) return fromInput;
+    const fromSet = parsePositiveNumber(currentSet.value?.duration);
+    if (fromSet) return fromSet;
+    return null;
+};
 
 const formattedTimer = computed(() => {
     const absTime = Math.abs(timerElapsed.value);
@@ -433,12 +491,17 @@ const toggleTimer = () => {
             currentWeightOrTime.value = timerElapsed.value;
         }
         timerElapsed.value = 0;
+        timerTargetDuration.value = null;
+        hasPlayedTargetBeep.value = false;
     } else {
+        timerTargetDuration.value = captureTargetDuration();
         timerElapsed.value = -3;
         currentWeightOrTime.value = 0;
         timerRunning.value = true;
+        hasPlayedTargetBeep.value = false;
         timer.value = setInterval(() => {
             timerElapsed.value++;
+            maybePlayTargetBeep();
         }, 1000);
     }
 };
@@ -450,6 +513,9 @@ const completeSet = async () => {
 
     clearInterval(timer.value);
     timerRunning.value = false;
+    timerElapsed.value = 0;
+    timerTargetDuration.value = null;
+    hasPlayedTargetBeep.value = false;
 
     // Daten für das Update vorbereiten
     const updateData = { completed: true };
