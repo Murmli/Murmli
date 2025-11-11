@@ -225,21 +225,21 @@ exports.textToTrackerArraySystemPrompt = (text) => {
     ## Beispiel 2
 
     ### Eingabe
-    "Teller Nudeln mit Tomtn Linsen Sauce"
+    "500 Gramm Nudeln mit Tomten Linsen Sauce"
 
     ### Begründung
     - Gericht wird in Zutaten aufgeteilt; Gewichtsanpassung für gekochte Mengen.
 
     ### Ausgabe
-    [     
+    [
       {
         "name": "Nudeln (gekocht)",
-        "amount": 200,
+        "amount": 300,
         "unit": "g",
-        "kcal": 300,
-        "protein": 10,
-        "carbohydrates": 62,
-        "fat": 1.2,
+        "kcal": 474,
+        "protein": 17.4,
+        "carbohydrates": 92.7,
+        "fat": 2.7,
         "healthyRating": 3
       },
       {
@@ -247,29 +247,29 @@ exports.textToTrackerArraySystemPrompt = (text) => {
         "amount": 150,
         "unit": "g",
         "kcal": 27,
-        "protein": 1.3,
-        "carbohydrates": 5.4,
+        "protein": 1.4,
+        "carbohydrates": 5.9,
         "fat": 0.3,
         "healthyRating": 4
       },
       {
         "name": "Linsen (gekocht)",
-        "amount": 100,
+        "amount": 45,
         "unit": "g",
-        "kcal": 116,
-        "protein": 9,
-        "carbohydrates": 20,
-        "fat": 0.4,
+        "kcal": 52,
+        "protein": 4.1,
+        "carbohydrates": 9.0,
+        "fat": 0.2,
         "healthyRating": 4
       },
       {
         "name": "Olivenöl",
-        "amount": 10,
+        "amount": 5,
         "unit": "g",
-        "kcal": 88,
+        "kcal": 45,
         "protein": 0,
         "carbohydrates": 0,
-        "fat": 10,
+        "fat": 5.0,
         "healthyRating": 3
       }
     ]
