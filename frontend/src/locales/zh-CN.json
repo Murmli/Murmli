@@ -250,8 +250,11 @@
       "editRecipe": "编辑食谱",
       "downloadPdf": "下载PDF",
       "feedback": "反馈",
-      "trackRecipe": "跟踪食谱"
-    }
+      "trackRecipe": "跟踪食谱",
+      "addToDatabase": "将食谱添加到数据库"
+    },
+    "promoteStarted": "该食谱现在正在后台添加到数据库中。",
+    "promoteInfo": "该用户的食谱已是官方数据库的一部分。"
   },
   "units": {
     "gram": "克",

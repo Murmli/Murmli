@@ -250,8 +250,11 @@
       "editRecipe": "Modifier la recette",
       "downloadPdf": "Télécharger le PDF",
       "feedback": "Retour",
-      "trackRecipe": "Suivre la recette"
-    }
+      "trackRecipe": "Suivre la recette",
+      "addToDatabase": "Ajouter la recette à la base de données"
+    },
+    "promoteStarted": "La recette est en cours d'ajout à la base de données en arrière-plan.",
+    "promoteInfo": "Cette recette d'utilisateur fait déjà partie de la base de données officielle."
   },
   "units": {
     "gram": "Gramme",

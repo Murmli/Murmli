@@ -250,8 +250,11 @@
       "editRecipe": "Edit Recipe",
       "downloadPdf": "Download PDF",
       "feedback": "Feedback",
-      "trackRecipe": "Track Recipe"
-    }
+      "trackRecipe": "Track Recipe",
+      "addToDatabase": "Add recipe t' the daytabase"
+    },
+    "promoteStarted": "The recipe's now bein' added t' the daytabase in the backgound.",
+    "promoteInfo": "This user recipe's alre'ady paht of the official daytabase."
   },
   "units": {
     "gram": "Gramm",

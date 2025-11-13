@@ -250,8 +250,11 @@
       "editRecipe": "Rezept bearbeitä",
       "downloadPdf": "PDF herunterladä",
       "feedback": "Feedback",
-      "trackRecipe": "Rezept trackä"
-    }
+      "trackRecipe": "Rezept trackä",
+      "addToDatabase": "Rezept in d'Datenbank eintraga"
+    },
+    "promoteStarted": "Des Rezept werd jetz im Hintergrund in d'Datenbank eintraga.",
+    "promoteInfo": "Des Benutzerrezept isch scho a Teil vo dr offiziella Datenbank."
   },
   "units": {
     "gram": "Gramm",
