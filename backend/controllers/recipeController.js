@@ -4,6 +4,8 @@ const Feedback = require("../models/feedbackModel.js");
 const { translateRecipes, translateString } = require(`../utils/translator.js`);
 const { createRecipe, scaleRecipe } = require(`../utils/recipeUtils.js`);
 const { editRecipeWithLLM } = require("../utils/llm.js");
+const recipeImagePromptAgent = require("../utils/agents/recipeImagePromptAgent.js");
+const { generateImage, uploadImageToStorage } = require("../utils/imageUtils.js");
 
 const fs = require("fs");
 const PDFDocument = require("pdfkit");
@@ -217,6 +219,7 @@ exports.promoteUserRecipe = async (req, res) => {
 
     (async () => {
       try {
+        await ensurePromotionRecipeImage(recipePayload);
         const createdRecipe = await Recipe.create(recipePayload);
 
         await UserRecipe.findByIdAndUpdate(
@@ -225,6 +228,7 @@ exports.promoteUserRecipe = async (req, res) => {
             addedToDatabase: true,
             addedRecipeId: createdRecipe._id,
             addedToDatabaseAt: new Date(),
+            image: recipePayload.image,
           },
           { new: false }
         );
@@ -731,6 +735,42 @@ exports.downloadSelectedRecipesPDF = async (req, res) => {
     return res.status(500).json({ error: "Server Error" });
   }
 };
+
+async function ensurePromotionRecipeImage(recipe) {
+  if (recipe.image && recipe.image !== "dummy") {
+    return recipe.image;
+  }
+
+  try {
+    const imagePrompt = await recipeImagePromptAgent(recipe);
+    if (!imagePrompt) {
+      return recipe.image || "dummy";
+    }
+
+    const generatedImageUrl = await generateImage(imagePrompt);
+    if (!generatedImageUrl) {
+      return recipe.image || "dummy";
+    }
+
+    const baseName =
+      (recipe.seoImageTitle || recipe.title || "recipe")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "")
+        .slice(0, 80) || `recipe-${Date.now()}`;
+
+    const uploadedUrl = await uploadImageToStorage(generatedImageUrl, `${baseName}-${Date.now()}`);
+    if (uploadedUrl) {
+      recipe.image = uploadedUrl;
+      return uploadedUrl;
+    }
+  } catch (error) {
+    console.error("Error generating image for promoted recipe:", error);
+  }
+
+  recipe.image = recipe.image || "dummy";
+  return recipe.image;
+}
 
 function sanitizeUserRecipeForPromotion(recipeDoc) {
   const {
