@@ -236,6 +236,41 @@ export const useRecipeStore = defineStore("recipeStore", {
       return false;
     },
 
+    async promoteUserRecipe(recipeId) {
+      const apiStore = useApiStore();
+      try {
+        const response = await apiStore.apiRequest(
+          "post",
+          "/recipe/user/promote",
+          { recipeId }
+        );
+
+        if (response.status === 202) {
+          const promotedAt = new Date().toISOString();
+          this.userRecipes = this.userRecipes.map((recipe) =>
+            recipe._id === recipeId
+              ? { ...recipe, addedToDatabase: true, addedToDatabaseAt: promotedAt }
+              : recipe
+          );
+
+          if (this.currentRecipe && this.currentRecipe._id === recipeId) {
+            this.currentRecipe = {
+              ...this.currentRecipe,
+              addedToDatabase: true,
+              addedToDatabaseAt: promotedAt,
+            };
+          }
+
+          this.saveCache();
+          return true;
+        }
+      } catch (error) {
+        this.error = error;
+      }
+
+      return false;
+    },
+
     // Get a specific recipe created by the user
     async fetchUserRecipe(recipeId) {
       const apiStore = useApiStore();

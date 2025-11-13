@@ -250,8 +250,11 @@
       "editRecipe": "Edit Recipe",
       "downloadPdf": "Download PDF",
       "feedback": "Feedback",
-      "trackRecipe": "Track Recipe"
-    }
+      "trackRecipe": "Track Recipe",
+      "addToDatabase": "Add this here recipe t' the database"
+    },
+    "promoteStarted": "Now this here recipe's bein' added t' the database in th' background.",
+    "promoteInfo": "This here user recipe's already a part o' the official database."
   },
   "units": {
     "gram": "Gram",

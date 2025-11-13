@@ -4,6 +4,8 @@ const Feedback = require("../models/feedbackModel.js");
 const { translateRecipes, translateString } = require(`../utils/translator.js`);
 const { createRecipe, scaleRecipe } = require(`../utils/recipeUtils.js`);
 const { editRecipeWithLLM } = require("../utils/llm.js");
+const recipeImagePromptAgent = require("../utils/agents/recipeImagePromptAgent.js");
+const { generateImage, uploadImageToStorage } = require("../utils/imageUtils.js");
 
 const fs = require("fs");
 const PDFDocument = require("pdfkit");
@@ -183,6 +185,59 @@ exports.deleteUserRecipe = async (req, res) => {
     }
 
     return res.status(200).json({ message: "Recipe successfully deleted" });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Server Error" });
+  }
+};
+
+exports.promoteUserRecipe = async (req, res) => {
+  try {
+    if (req.user.role !== "administrator") {
+      return res.status(403).json({ error: "Forbidden" });
+    }
+
+    const recipeId = req.body.recipeId;
+
+    if (!recipeId) {
+      return res.status(400).json({ error: "Recipe ID is required" });
+    }
+
+    const userRecipe = await UserRecipe.findOne({ _id: recipeId, userId: req.user._id });
+
+    if (!userRecipe) {
+      return res.status(404).json({ error: "Recipe not found for this user" });
+    }
+
+    if (userRecipe.addedToDatabase) {
+      return res.status(409).json({ error: "Recipe already added to database" });
+    }
+
+    const recipePayload = sanitizeUserRecipeForPromotion(userRecipe.toObject());
+
+    res.status(202).json({ message: "Recipe promotion started", status: "processing" });
+
+    (async () => {
+      try {
+        await ensurePromotionRecipeImage(recipePayload);
+        const createdRecipe = await Recipe.create(recipePayload);
+
+        await UserRecipe.findByIdAndUpdate(
+          recipeId,
+          {
+            addedToDatabase: true,
+            addedRecipeId: createdRecipe._id,
+            addedToDatabaseAt: new Date(),
+            image: recipePayload.image,
+          },
+          { new: false }
+        );
+
+        console.log(`User recipe ${recipeId} promoted to official recipe ${createdRecipe._id}`);
+      } catch (promotionError) {
+        console.error(`Error promoting user recipe ${recipeId}:`, promotionError);
+      }
+    })();
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: "Server Error" });
@@ -680,3 +735,61 @@ exports.downloadSelectedRecipesPDF = async (req, res) => {
     return res.status(500).json({ error: "Server Error" });
   }
 };
+
+async function ensurePromotionRecipeImage(recipe) {
+  if (recipe.image && recipe.image !== "dummy") {
+    return recipe.image;
+  }
+
+  try {
+    const imagePrompt = await recipeImagePromptAgent(recipe);
+    if (!imagePrompt) {
+      return recipe.image || "dummy";
+    }
+
+    const generatedImageUrl = await generateImage(imagePrompt);
+    if (!generatedImageUrl) {
+      return recipe.image || "dummy";
+    }
+
+    const baseName =
+      (recipe.seoImageTitle || recipe.title || "recipe")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "")
+        .slice(0, 80) || `recipe-${Date.now()}`;
+
+    const uploadedUrl = await uploadImageToStorage(generatedImageUrl, `${baseName}-${Date.now()}`);
+    if (uploadedUrl) {
+      recipe.image = uploadedUrl;
+      return uploadedUrl;
+    }
+  } catch (error) {
+    console.error("Error generating image for promoted recipe:", error);
+  }
+
+  recipe.image = recipe.image || "dummy";
+  return recipe.image;
+}
+
+function sanitizeUserRecipeForPromotion(recipeDoc) {
+  const {
+    _id,
+    id,
+    userId,
+    addedToDatabase,
+    addedRecipeId,
+    addedToDatabaseAt,
+    createdAt,
+    updatedAt,
+    __v,
+    ...rest
+  } = recipeDoc;
+
+  return {
+    ...rest,
+    active: typeof rest.active === "boolean" ? rest.active : true,
+    provider: rest.provider || "user-promotion",
+    type: rest.type || "recipe",
+  };
+}

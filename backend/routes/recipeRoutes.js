@@ -192,6 +192,44 @@ router.delete("/user/delete", secretKeyMiddleware, sessionMiddleware, reciperCon
 
 /**
  * @swagger
+ * /api/v2/recipe/user/promote:
+ *   post:
+ *     tags:
+ *       - Recipes
+ *     title: Promote User Recipe
+ *     summary: Add a user recipe to the official database
+ *     description: Allows administrators to asynchronously copy their own user-generated recipes into the main recipe collection.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             title: Promote User Recipe Request
+ *             properties:
+ *               recipeId:
+ *                 type: string
+ *                 description: The ID of the user recipe to promote.
+ *             required:
+ *               - recipeId
+ *     responses:
+ *       202:
+ *         description: Promotion process started.
+ *       400:
+ *         description: Missing recipe ID.
+ *       403:
+ *         description: Only administrators can promote recipes.
+ *       404:
+ *         description: Recipe not found.
+ *       409:
+ *         description: Recipe already promoted.
+ *       500:
+ *         description: Server error.
+ */
+router.post("/user/promote", secretKeyMiddleware, sessionMiddleware, reciperController.promoteUserRecipe);
+
+/**
+ * @swagger
  * /api/v2/recipe/user/{id}/edit-text:
  *   post:
  *     tags:

@@ -73,6 +73,9 @@ const menuItems = computed(() => {
     case 2:
       baseItems.push({ title: languageStore.t('recipe.menu.editRecipe'), action: () => editRecipe() });
       baseItems.push({ title: languageStore.t('recipe.menu.deleteRecipe'), action: () => deleteUserRecipe() });
+      if (userStore.isAdmin && !recipeStore.currentRecipe?.addedToDatabase) {
+        baseItems.push({ title: languageStore.t('recipe.menu.addToDatabase'), action: () => promoteUserRecipe() });
+      }
       break;
   }
 
@@ -127,6 +130,16 @@ const removeRecipe = () => {
 const deleteUserRecipe = () => {
   recipeStore.deleteUserRecipe(recipeStore.currentRecipe._id);
   return;
+};
+
+const promoteUserRecipe = async () => {
+  if (!recipeStore.currentRecipe) {
+    return;
+  }
+  const success = await recipeStore.promoteUserRecipe(recipeStore.currentRecipe._id);
+  if (success) {
+    alert(languageStore.t('recipe.promoteStarted'));
+  }
 };
 
 const editRecipe = () => {
