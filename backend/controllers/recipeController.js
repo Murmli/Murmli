@@ -189,6 +189,57 @@ exports.deleteUserRecipe = async (req, res) => {
   }
 };
 
+exports.promoteUserRecipe = async (req, res) => {
+  try {
+    if (req.user.role !== "administrator") {
+      return res.status(403).json({ error: "Forbidden" });
+    }
+
+    const recipeId = req.body.recipeId;
+
+    if (!recipeId) {
+      return res.status(400).json({ error: "Recipe ID is required" });
+    }
+
+    const userRecipe = await UserRecipe.findOne({ _id: recipeId, userId: req.user._id });
+
+    if (!userRecipe) {
+      return res.status(404).json({ error: "Recipe not found for this user" });
+    }
+
+    if (userRecipe.addedToDatabase) {
+      return res.status(409).json({ error: "Recipe already added to database" });
+    }
+
+    const recipePayload = sanitizeUserRecipeForPromotion(userRecipe.toObject());
+
+    res.status(202).json({ message: "Recipe promotion started", status: "processing" });
+
+    (async () => {
+      try {
+        const createdRecipe = await Recipe.create(recipePayload);
+
+        await UserRecipe.findByIdAndUpdate(
+          recipeId,
+          {
+            addedToDatabase: true,
+            addedRecipeId: createdRecipe._id,
+            addedToDatabaseAt: new Date(),
+          },
+          { new: false }
+        );
+
+        console.log(`User recipe ${recipeId} promoted to official recipe ${createdRecipe._id}`);
+      } catch (promotionError) {
+        console.error(`Error promoting user recipe ${recipeId}:`, promotionError);
+      }
+    })();
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Server Error" });
+  }
+};
+
 exports.createFeedback = async (req, res) => {
   try {
     const user = req.user;
@@ -680,3 +731,25 @@ exports.downloadSelectedRecipesPDF = async (req, res) => {
     return res.status(500).json({ error: "Server Error" });
   }
 };
+
+function sanitizeUserRecipeForPromotion(recipeDoc) {
+  const {
+    _id,
+    id,
+    userId,
+    addedToDatabase,
+    addedRecipeId,
+    addedToDatabaseAt,
+    createdAt,
+    updatedAt,
+    __v,
+    ...rest
+  } = recipeDoc;
+
+  return {
+    ...rest,
+    active: typeof rest.active === "boolean" ? rest.active : true,
+    provider: rest.provider || "user-promotion",
+    type: rest.type || "recipe",
+  };
+}

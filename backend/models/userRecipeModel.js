@@ -9,6 +9,19 @@ const userRecipeSchema = new mongoose.Schema(
       ref: "users",
       required: true,
     },
+    addedToDatabase: {
+      type: Boolean,
+      default: false,
+    },
+    addedRecipeId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Recipe",
+      default: null,
+    },
+    addedToDatabaseAt: {
+      type: Date,
+      default: null,
+    },
   },
   {
     collection: "userRecipes",

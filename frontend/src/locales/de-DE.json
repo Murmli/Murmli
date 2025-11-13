@@ -283,10 +283,13 @@
       "removeFavorite": "Favorit entfernen",
       "deleteRecipe": "Rezept löschen",
       "editRecipe": "Rezept bearbeiten",
+      "addToDatabase": "Rezept zur Datenbank hinzufügen",
       "downloadPdf": "PDF herunterladen",
       "feedback": "Feedback",
       "trackRecipe": "Rezept tracken"
-    }
+    },
+    "promoteStarted": "Das Rezept wird nun im Hintergrund zur Datenbank hinzugefügt.",
+    "promoteInfo": "Dieses Benutzerrezept ist bereits Teil der offiziellen Datenbank."
   },
   "units": {
     "gram": "Gramm",
