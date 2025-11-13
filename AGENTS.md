@@ -247,7 +247,7 @@ module.exports = mongoose.model("NewModel", newSchema);
 *   **Reusability:** Use the helper functions in the `utils` directory to avoid code duplication.
 *   **Documentation:** Carefully document all new API endpoints with Swagger annotations.
 *   **Error Handling:** Implement robust error handling in all controller functions.
-*   **Simplicity Over Cleverness:** Prefer clear, maintainable logic over clever tricks. Break complex flows into small helpers, rely on built-in Node.js/Express patterns, and avoid unnecessary abstractions so that the next agent can understand and debug the code quickly.
+*   **Simplicity Over Complexness:** Prefer clear, maintainable logic over complex code.
 
 ---
 
