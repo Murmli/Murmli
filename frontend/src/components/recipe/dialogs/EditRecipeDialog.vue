@@ -1,4 +1,9 @@
 <template>
+  <VoiceInputDialog
+    dialog-key="editRecipeVoiceDialog"
+    mode="transcribe"
+    @completed="applyVoiceInput"
+  />
   <v-dialog v-model="dialogStore.dialogs.editRecipeDialog" fullscreen>
     <v-card>
       <v-toolbar color="primary" class="pt-5">
@@ -16,7 +21,11 @@
           outlined
           rows="5"
           auto-grow
-        />
+        >
+          <template #append-inner>
+            <v-icon @click="openVoiceDialog">mdi-microphone</v-icon>
+          </template>
+        </v-textarea>
         <v-alert v-if="errorMessage" type="error" class="mt-2">
           {{ errorMessage }}
         </v-alert>
@@ -59,6 +68,7 @@ import { ref } from 'vue';
 import { useDialogStore } from '@/stores/dialogStore';
 import { useLanguageStore } from '@/stores/languageStore';
 import { useRecipeStore } from '@/stores/recipeStore';
+import VoiceInputDialog from '@/components/dialogs/VoiceInputDialog.vue';
 
 const dialogStore = useDialogStore();
 const languageStore = useLanguageStore();
@@ -68,6 +78,19 @@ const text = ref('');
 const previewData = ref(null);
 const loading = ref(false);
 const errorMessage = ref('');
+
+const openVoiceDialog = () => {
+  dialogStore.openDialog('editRecipeVoiceDialog');
+};
+
+const applyVoiceInput = ({ text: newText }) => {
+  if (!newText) {
+    return;
+  }
+  text.value = text.value
+    ? `${text.value.trimEnd()}\n${newText}`
+    : newText;
+};
 
 const generatePreview = async () => {
   loading.value = true;

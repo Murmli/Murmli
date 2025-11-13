@@ -29,6 +29,7 @@ export const useDialogStore = defineStore("dialogStore", () => {
     shoppingVoiceDialog: false,
     trainingPlanVoiceDialog: false,
     recipeVoiceDialog: false,
+    editRecipeVoiceDialog: false,
     plannerPromptVoiceDialog: false,
     askDialog: false,
     trackImageDialog: false,
