@@ -54,7 +54,11 @@ exports.generateImage = async (prompt) => {
     }
 
     const data = await response.json();
-    const imageUrl = data?.choices?.[0]?.message?.images?.[0]?.image_url?.url;
+    const message = data?.choices?.[0]?.message;
+    const outputImageEntry = Array.isArray(message?.content)
+      ? message.content.find((contentItem) => contentItem?.type === "output_image")
+      : null;
+    const imageUrl = outputImageEntry?.image_url?.url || outputImageEntry?.image_url;
 
     if (!imageUrl) {
       throw new Error("OpenRouter response did not include an image URL");
