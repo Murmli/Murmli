@@ -6,7 +6,7 @@ Node.js (Express) service that powers the Murmli platform. Handles REST APIs, Mo
 
 - Node.js 18+ and npm
 - MongoDB instance
-- API keys for any LLM providers you plan to use (Google, OpenAI, DeepSeek, OpenRouter, Ideogram)
+- API keys for any LLM providers you plan to use (Google, OpenAI, DeepSeek, OpenRouter)
 
 ## Install
 
@@ -33,6 +33,8 @@ LLM_CACHE_MAX_AGE_DAYS=
 OPENROUTER_API_KEY=
 OPENROUTER_LOW_MODEL=
 OPENROUTER_HIGH_MODEL=
+OPENROUTER_RECIPE_IMAGE_MODEL=
+RECIPE_IMAGE_ASPECT_RATIO=
 GOOGLE_API_KEY=
 GOOGLE_LOW_MODEL=
 GOOGLE_HIGH_MODEL=
@@ -43,9 +45,6 @@ OPENAI_TRANSCRIBE_MODEL=
 DEEPSEEK_API_KEY=
 DEEPSEEK_LOW_MODEL=
 DEEPSEEK_HIGH_MODEL=
-IDEOGRAM_API_KEY=
-IDEOGRAM_MODEL=
-IDEOGRAM_RECIPE_ASPECT=
 RECIPE_SUGGESTIONS_PER_REQUEST=
 AZURE_STORAGE_CONTAINER_NAME=
 AZURE_STORAGE_CONNECTION_STRING=
@@ -57,6 +56,8 @@ GMAIL_SMTP_PASSWORD=
 - `SECRET_KEY` must be sent as `x-header-secret-key` with authenticated requests.
 - Adjust `RECIPE_SUGGESTIONS_PER_REQUEST` to control how many recipe ideas are generated per request.
 - Keep `APP_URL` and `PORT` in sync with the frontend configuration.
+- Recipe images are generated with OpenRouter Nanobanana using the `google/gemini-2.5-flash-image` model by default. Override the model with `OPENROUTER_RECIPE_IMAGE_MODEL` if needed.
+- `RECIPE_IMAGE_ASPECT_RATIO` controls the Gemini image aspect ratio (default `3:2`). Supported values: `1:1`, `2:3`, `3:2`, `3:4`, `4:3`, `4:5`, `5:4`, `9:16`, `16:9`, `21:9`.
 
 ## Run
 

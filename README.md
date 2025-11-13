@@ -47,6 +47,8 @@ LLM_CACHE_MAX_AGE_DAYS=
 OPENROUTER_API_KEY=
 OPENROUTER_LOW_MODEL=
 OPENROUTER_HIGH_MODEL=
+OPENROUTER_RECIPE_IMAGE_MODEL=
+RECIPE_IMAGE_ASPECT_RATIO=
 GOOGLE_API_KEY=
 GOOGLE_LOW_MODEL=
 GOOGLE_HIGH_MODEL=
@@ -57,9 +59,6 @@ OPENAI_TRANSCRIBE_MODEL=
 DEEPSEEK_API_KEY=
 DEEPSEEK_LOW_MODEL=
 DEEPSEEK_HIGH_MODEL=
-IDEOGRAM_API_KEY=
-IDEOGRAM_MODEL=
-IDEOGRAM_RECIPE_ASPECT=
 RECIPE_SUGGESTIONS_PER_REQUEST=
 AZURE_STORAGE_CONTAINER_NAME=
 AZURE_STORAGE_CONNECTION_STRING=
@@ -84,6 +83,12 @@ OPENAI_TRANSLATION_MODEL=
 - Provide production-ready values in `frontend/.env.production` before building with `npm run build`.
 - Ensure the backend `.env` is configured with production database and provider credentials.
 - Regenerate tokens or rotate secrets periodically according to provider policies.
+
+### Recipe Image Generation
+
+- Recipe images are generated with the OpenRouter Nanobanana pipeline using the `google/gemini-2.5-flash-image` model by default.
+- Set `OPENROUTER_RECIPE_IMAGE_MODEL` if you want to pin a different OpenRouter model for images.
+- Control the output format with `RECIPE_IMAGE_ASPECT_RATIO` (default `3:2`). Supported values are `1:1`, `2:3`, `3:2`, `3:4`, `4:3`, `4:5`, `5:4`, `9:16`, `16:9`, and `21:9`.
 
 ## Additional Resources
 

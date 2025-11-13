@@ -247,6 +247,7 @@ module.exports = mongoose.model("NewModel", newSchema);
 *   **Reusability:** Use the helper functions in the `utils` directory to avoid code duplication.
 *   **Documentation:** Carefully document all new API endpoints with Swagger annotations.
 *   **Error Handling:** Implement robust error handling in all controller functions.
+*   **Simplicity Over Cleverness:** Prefer clear, maintainable logic over clever tricks. Break complex flows into small helpers, rely on built-in Node.js/Express patterns, and avoid unnecessary abstractions so that the next agent can understand and debug the code quickly.
 
 ---
 
@@ -424,5 +425,12 @@ The frontend communicates with the backend via a RESTful API. When fetching or s
 ### 3.5. Code Style and Linting
 
 The project is set up with ESLint and Prettier to enforce a consistent code style. Please ensure that your code adheres to the configured rules. It's recommended to have the ESLint and Prettier extensions installed in your editor to get real-time feedback.
+
+### 3.6. Keep the UI Code Simple
+
+*   Favor straightforward Ionic/Vue patterns and avoid deeply nested abstractions or excessive reactive magic.
+*   Small, focused components with obvious props are better than highly generic ones.
+*   When in doubt, choose the solution that is easiest to read and reason about, even if it produces a few extra lines.
+*   Robustness beats cleverness: handle loading/error states explicitly, and write defensive code instead of relying on implicit behavior.
 
 By following these guidelines, you will help us maintain a clean, scalable, and maintainable codebase. Thank you for your contribution
