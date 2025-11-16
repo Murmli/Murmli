@@ -4,6 +4,7 @@
     <v-app-bar color="primary" prominent app class="pt-5 mb-3">
       <v-toolbar-title>{{ languageStore.t('recipes.title') }}</v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-btn icon="mdi-share-variant" variant="text" color="white" @click="shareRecipe"></v-btn>
       <v-btn icon="mdi-arrow-left" @click="goBack"></v-btn>
       <!-- Actions moved to BottomNavigation bottom sheet via bottomMenuStore -->
     </v-app-bar>
@@ -35,6 +36,49 @@ import { useRecipeStore } from '@/stores/recipeStore';
 import { useShoppingListStore } from '@/stores/shoppingListStore';
 import { useUserStore } from '@/stores/userStore';
 import { useBottomMenuStore } from '@/stores/bottomMenuStore';
+
+const shareRecipe = async () => {
+  const recipeId = recipeStore.currentRecipe._id
+  const recipeTitle = recipeStore.currentRecipe.title
+
+  // Create SEO-friendly slug from title
+  const slug = recipeTitle
+    .toLowerCase()
+    .replace(/[^a-z0-9äöüß\s-]/g, '') // Remove special chars except German umlauts
+    .replace(/[ä]/g, 'ae')
+    .replace(/[ö]/g, 'oe')
+    .replace(/[ü]/g, 'ue')
+    .replace(/[ß]/g, 'ss')
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/-+/g, '-') // Replace multiple hyphens with single
+    .replace(/^-|-$/g, '') // Remove leading/trailing hyphens
+
+  // Use backend URL for the public recipe page
+  const backendUrl = import.meta.env.VITE_BACKEND_BASE_URL || 'http://localhost:8080'
+  const userLanguage = languageStore.locale
+  const shareUrl = `${backendUrl}/recipe/${slug}-${recipeId}?lang=${userLanguage}`
+
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: recipeStore.currentRecipe.title,
+        text: languageStore.t('recipe.shareText'),
+        url: shareUrl
+      })
+    } catch (error) {
+      console.log('Error sharing:', error)
+    }
+  } else {
+    // Fallback: Copy to clipboard
+    try {
+      await navigator.clipboard.writeText(shareUrl)
+      // You might want to show a toast notification here
+      console.log('Link copied to clipboard')
+    } catch (error) {
+      console.log('Error copying to clipboard:', error)
+    }
+  }
+}
 
 const languageStore = useLanguageStore();
 const dialogStore = useDialogStore();
@@ -152,4 +196,3 @@ const goBack = () => {
   router.back();
 };
 </script>
-

@@ -500,6 +500,39 @@ router.post(
   reciperController.downloadSelectedRecipesPDF
 );
 
+/**
+ * @swagger
+ * /api/v2/recipe/public/{id}:
+ *   get:
+ *     tags:
+ *       - Recipes
+ *     title: Get Public Recipe By ID
+ *     summary: Get a recipe by ID for public sharing
+ *     description: Returns a recipe by its ID without authentication, scaled to servings and translated to German.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The ID of the recipe to fetch.
+ *       - in: query
+ *         name: servings
+ *         schema:
+ *           type: integer
+ *         description: Number of servings to scale the recipe to (default 4).
+ *     responses:
+ *       200:
+ *         description: The recipe object.
+ *       400:
+ *         description: Missing recipe ID.
+ *       404:
+ *         description: Recipe not found.
+ *       500:
+ *         description: Server error.
+ */
+router.get("/public/:id", reciperController.readPublicRecipe);
+
 
 // router.post("/read/all", reciperController.readUserRecipes);
 // router.post("/read/shoppinglist", reciperController.readUserRecipes);

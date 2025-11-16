@@ -105,6 +105,11 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
+// Route to serve public recipe pages
+app.get("/recipe/:slug-:id", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "recipe.html"));
+});
+
 // Routes
 app.get("/api/v2/ping", (req, res) => {
   res.status(200).send({ message: "pong" });

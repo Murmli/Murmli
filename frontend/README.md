@@ -10,6 +10,7 @@ Create your env files inside the `frontend` directory. Vite loads `.env` for dev
 
 ```ini
 VITE_API_BASE_URL=
+VITE_BACKEND_BASE_URL=
 VITE_HEADER_SECRET_KEY=
 VITE_MIN_RECIPE_SUGGESTIONS=
 VITE_RECIPE_FETCH_COUNT=
@@ -21,6 +22,7 @@ OPENAI_TRANSLATION_MODEL=
 
 ```ini
 VITE_API_BASE_URL=
+VITE_BACKEND_BASE_URL=
 VITE_HEADER_SECRET_KEY=
 VITE_MIN_RECIPE_SUGGESTIONS=
 VITE_RECIPE_FETCH_COUNT=
@@ -30,7 +32,8 @@ OPENAI_TRANSLATION_MODEL=
 
 Guidelines:
 
-- `VITE_API_BASE_URL`: Base URL of the backend (`https://…/api/v2` in production).
+- `VITE_API_BASE_URL`: Base URL of the backend API (`https://…/api/v2` in production).
+- `VITE_BACKEND_BASE_URL`: Base URL of the backend for static pages (`https://…` in production, used for recipe sharing).
 - `VITE_HEADER_SECRET_KEY`: Must match `SECRET_KEY` from the backend.
 - `VITE_MIN_RECIPE_SUGGESTIONS` / `VITE_RECIPE_FETCH_COUNT`: Control recipe pagination in the UI.
 - `OPENAI_API_KEY` and `OPENAI_TRANSLATION_MODEL`: Required for the automated locale generation used during builds.
