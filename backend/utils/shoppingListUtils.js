@@ -263,10 +263,13 @@ exports.readCategoriesTranslated = async (language) => {
  */
 exports.saveRecipeIngredients = async (shoppingList) => {
   try {
-    // 1) Collect all ingredient items from ALL recipes currently attached
+    // 1) Collect ingredient items only from recipes where ingredientsAdded === false
     const ingredientItems = [];
+    const processedIds = new Set();
 
     for (const recipeEntry of shoppingList.recipes) {
+      if (recipeEntry.ingredientsAdded) continue;
+      processedIds.add(recipeEntry._id.toString());
       const [recipe, userRecipe] = await Promise.all([
         Recipe.findById(recipeEntry._id).lean(),
         UserRecipe.findById(recipeEntry._id).lean(),
@@ -289,17 +292,22 @@ exports.saveRecipeIngredients = async (shoppingList) => {
       ingredientItems.push(...formattedIngredients);
     }
 
-    // 2) Start with all manual items (non-recipe) and merge the rebuilt recipe ingredients
-    const manualItems = shoppingList.items.filter((item) => !item.recipe);
-    let mergedItems = [...manualItems];
+    // 2) Start with ALL current items (manual + existing recipe items) and merge only new recipe ingredients
+    const currentItems = shoppingList.items;
+    let mergedItems = [...currentItems];
     ingredientItems.forEach((ingredient) => {
       mergedItems = exports.mergeItemArrays(mergedItems, [ingredient]);
     });
 
     shoppingList.items = mergedItems;
 
-    // 3) Mark all recipes as having their ingredients added (recomputed)
-    shoppingList.recipes = shoppingList.recipes.map((r) => ({ ...r, ingredientsAdded: true }));
+    // 3) Mark ONLY processed recipes as having their ingredients added
+    shoppingList.recipes = shoppingList.recipes.map((r) => {
+      if (processedIds.has(r._id.toString())) {
+        return { ...r, ingredientsAdded: true };
+      }
+      return r;
+    });
 
     // 4) Persist changes
     const saved = await shoppingList.save();
