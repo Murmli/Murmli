@@ -263,24 +263,6 @@ exports.readCategoriesTranslated = async (language) => {
  */
 exports.saveRecipeIngredients = async (shoppingList) => {
   try {
-    // Preserve the active/checked state of recipe items before rebuilding them
-    const buildItemKey = (item) => {
-      const normalizedName = (item.name || "").trim().toLowerCase();
-      const numericUnit = item.unit == null ? null : Number(item.unit);
-      const normalizedUnit = Number.isNaN(numericUnit)
-        ? String(item.unit)
-        : numericUnit;
-      const normalizedRecipe = item.recipe ? "1" : "0";
-      return `${normalizedRecipe}|${normalizedUnit}|${normalizedName}`;
-    };
-
-    const previousRecipeState = new Map();
-    shoppingList.items
-      .filter((item) => item.recipe)
-      .forEach((item) => {
-        previousRecipeState.set(buildItemKey(item), item.active);
-      });
-
     // 1) Collect all ingredient items from ALL recipes currently attached
     const ingredientItems = [];
 
@@ -294,24 +276,15 @@ exports.saveRecipeIngredients = async (shoppingList) => {
       if (!finalRecipe) continue;
 
       const scaledRecipe = scaleRecipe(finalRecipe, recipeEntry.servings);
-      const formattedIngredients = scaledRecipe.ingredients.map((ingredient) => {
-        const baseItem = {
-          name: ingredient.name,
-          quantity: ingredient.quantity,
-          unit: ingredient.unit,
-          category: ingredient.category,
-          recipe: true,
-          recipeId: finalRecipe._id,
-          active: true,
-        };
-
-        const existingActiveState = previousRecipeState.get(buildItemKey(baseItem));
-        if (typeof existingActiveState === "boolean") {
-          baseItem.active = existingActiveState;
-        }
-
-        return baseItem;
-      });
+      const formattedIngredients = scaledRecipe.ingredients.map((ingredient) => ({
+        name: ingredient.name,
+        quantity: ingredient.quantity,
+        unit: ingredient.unit,
+        category: ingredient.category,
+        recipe: true,
+        recipeId: finalRecipe._id,
+        active: true,
+      }));
 
       ingredientItems.push(...formattedIngredients);
     }
