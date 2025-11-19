@@ -6,30 +6,31 @@ const captionText = document.getElementById("caption");
 // Get all images with the class 'feature-image-clickable'
 const images = document.querySelectorAll('.feature-image-clickable');
 
-// Loop through all images and add click event listener
-images.forEach(img => {
-  img.onclick = function () {
-    modal.style.display = "block";
-    modalImg.src = this.src; // Use the clicked image's source
-    captionText.innerHTML = this.alt; // Use the image's alt text as caption
-  }
-});
+if (modal && modalImg && captionText && images.length) {
+  images.forEach(img => {
+    img.onclick = function () {
+      modal.style.display = "block";
+      modalImg.src = this.src; // Use the clicked image's source
+      captionText.innerHTML = this.alt; // Use the image's alt text as caption
+    }
+  });
 
-// Get the <span> element that closes the modal
-const span = document.getElementsByClassName("close-modal")[0];
+  // Get the <span> element that closes the modal
+  const span = document.getElementsByClassName("close-modal")[0];
 
-// When the user clicks on <span> (x), close the modal
-if (span) {
-  span.onclick = function () {
-    modal.style.display = "none";
+  // When the user clicks on <span> (x), close the modal
+  if (span) {
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
   }
-}
 
-// Optional: Close the modal if the user clicks anywhere outside the image
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+  // Optional: Close the modal if the user clicks anywhere outside the image
+  window.addEventListener('click', function (event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  });
 }
 
 // Calorie calculator logic
@@ -298,9 +299,10 @@ const mainNav = document.querySelector('.main-nav');
 
 if (menuToggle && mainNav) {
   menuToggle.addEventListener('click', function () {
-    this.classList.toggle('active');
-    mainNav.classList.toggle('active');
-    document.body.classList.toggle('nav-open');
+    const isActive = this.classList.toggle('active');
+    mainNav.classList.toggle('active', isActive);
+    document.body.classList.toggle('nav-open', isActive);
+    this.setAttribute('aria-expanded', isActive ? 'true' : 'false');
   });
 
   // Schließe Menü beim Klick auf Links
@@ -310,6 +312,7 @@ if (menuToggle && mainNav) {
       menuToggle.classList.remove('active');
       mainNav.classList.remove('active');
       document.body.classList.remove('nav-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
     });
   });
 
@@ -321,6 +324,7 @@ if (menuToggle && mainNav) {
       menuToggle.classList.remove('active');
       mainNav.classList.remove('active');
       document.body.classList.remove('nav-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
     }
   });
 }

@@ -43,6 +43,41 @@ exports.readRecipe = async (req, res) => {
   }
 };
 
+exports.readPublicRecipe = async (req, res) => {
+  try {
+    const recipeId = req.params.id;
+    const servings = req.query.servings || 4;
+    const language = req.query.lang || 'de-DE'; // Default to German if no language specified
+
+    if (!recipeId) {
+      return res.status(400).json({ error: "Recipe ID is required" });
+    }
+
+    const [systemRecipe, userRecipe] = await Promise.all([
+      Recipe.findById(recipeId).lean(),
+      UserRecipe.findById(recipeId).lean()
+    ]);
+
+    const recipe = systemRecipe || userRecipe;
+
+    if (!recipe) {
+      return res.status(404).json({ error: "Recipe not found" });
+    }
+
+    // Verwende die Sprache aus dem Query-Parameter oder Standard (Deutsch)
+    const translatedRecipe = await translateRecipes([recipe], language);
+
+    const scaledRecipe = scaleRecipe(translatedRecipe[0], servings);
+
+    scaledRecipe.scaled = !!servings;
+
+    return res.status(200).json(scaledRecipe);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Server Error" });
+  }
+};
+
 exports.createUserRecipe = async (req, res) => {
   try {
     const user = req.user;

@@ -11,6 +11,7 @@ const userRoutes = require("./routes/userRoutes.js");
 const trackerRoutes = require("./routes/trackerRoutes.js");
 const trainingPlanRoutes = require("./routes/trainingPlanRoutes.js");
 const trainingLogRoutes = require("./routes/trainingLogRoutes.js");
+const { generateRecipeSitemap } = require("./utils/sitemapUtils.js");
 const app = express();
 const cors = require("cors");
 const path = require("path");
@@ -100,9 +101,26 @@ app.use(
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, "public")));
 
+app.get("/sitemap.xml", async (req, res) => {
+  try {
+    const fallbackUrl = `${req.protocol}://${req.get("host")}`;
+    const baseUrl = process.env.PUBLIC_BASE_URL || process.env.APP_URL || fallbackUrl;
+    const sitemap = await generateRecipeSitemap(baseUrl);
+    res.type("application/xml").send(sitemap);
+  } catch (error) {
+    console.error("Failed to generate sitemap", error);
+    res.status(500).send("Sitemap wird gerade aktualisiert.");
+  }
+});
+
 // Route to serve the landing page
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+// Route to serve public recipe pages
+app.get("/recipe/:slug-:id", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "recipe.html"));
 });
 
 // Routes

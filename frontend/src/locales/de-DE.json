@@ -289,7 +289,8 @@
       "trackRecipe": "Rezept tracken"
     },
     "promoteStarted": "Das Rezept wird nun im Hintergrund zur Datenbank hinzugefügt.",
-    "promoteInfo": "Dieses Benutzerrezept ist bereits Teil der offiziellen Datenbank."
+    "promoteInfo": "Dieses Benutzerrezept ist bereits Teil der offiziellen Datenbank.",
+    "shareText": "Schau dir dieses Rezept an!"
   },
   "units": {
     "gram": "Gramm",
@@ -548,6 +549,11 @@
     "lastWorkout": "Letztes Training",
     "lastExercises": "Letzte 5 Übungen",
     "noWorkoutsYet": "Noch kein Training abgeschlossen."
+  },
+  "publicRecipe": {
+    "downloadTitle": "Lade Murmli herunter",
+    "downloadDescription": "Erstelle und teile deine eigenen Rezepte mit der Murmli App!",
+    "loading": "Rezept wird geladen..."
   },
   "training": {
     "title": "Training Log",

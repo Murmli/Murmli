@@ -4,12 +4,7 @@
     <!-- Image & Title -->
     <h4 class="text-center">{{ recipeStore.currentRecipe.title }}</h4>
 
-    <v-alert
-      v-if="showPromotionInfo"
-      type="success"
-      variant="tonal"
-      class="ma-4"
-    >
+    <v-alert v-if="showPromotionInfo" type="success" variant="tonal" class="ma-4">
       {{ languageStore.t('recipe.promoteInfo') }}
     </v-alert>
     <v-card class="mx-auto ma-4" width="100%" max-width="400" height="110" :image="recipeStore.currentRecipe.image"
