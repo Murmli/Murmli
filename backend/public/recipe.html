@@ -2,661 +2,115 @@
 <html lang="de">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO Meta Tags - werden dynamisch gesetzt -->
-    <title id="page-title">Rezept - Murmli</title>
-    <meta name="description" id="page-description" content="Entdecke dieses leckere Rezept mit Murmli!">
-    <meta name="keywords" content="Rezept, Kochen, Murmli, KI-Rezepte">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Rezept - Murmli</title>
+  <meta name="description" id="page-description" content="Entdecke dieses leckere Rezept mit Murmli!">
+  <meta name="keywords" content="Rezept, Kochen, Murmli, KI-Rezepte">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" id="canonical-link" href="https://www.murmli.de/">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
-    <!-- Open Graph / Facebook - werden dynamisch gesetzt -->
-    <meta property="og:type" content="article">
-    <meta property="og:url" id="og-url" content="">
-    <meta property="og:title" id="og-title" content="">
-    <meta property="og:description" id="og-description" content="">
-    <meta property="og:image" id="og-image" content="">
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" id="og-url" content="">
+  <meta property="og:title" id="og-title" content="">
+  <meta property="og:description" id="og-description" content="">
+  <meta property="og:image" id="og-image" content="">
+  <meta property="og:image:alt" id="og-image-alt" content="">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" id="twitter-url" content="">
-    <meta property="twitter:title" id="twitter-title" content="">
-    <meta property="twitter:description" id="twitter-description" content="">
-    <meta property="twitter:image" id="twitter-image" content="">
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" id="twitter-url" content="">
+  <meta property="twitter:title" id="twitter-title" content="">
+  <meta property="twitter:description" id="twitter-description" content="">
+  <meta property="twitter:image" id="twitter-image" content="">
+  <meta property="twitter:image:alt" id="twitter-image-alt" content="">
 
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#ff9800">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="/favicon.png" type="image/png">
+  <meta name="theme-color" content="#ff9800">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="/favicon.png" type="image/png">
 </head>
 
-<body>
-    <!-- Download Banner -->
-    <div class="download-banner">
-        <div class="container">
-            <h2>Lade Murmli herunter</h2>
-            <p>Erstelle und teile deine eigenen Rezepte mit der Murmli App!</p>
-            <div class="store-links">
-                <a class="store-link" href="https://play.google.com/store/apps/details?id=de.murmli.twa" target="_blank"
-                    rel="noopener noreferrer">
-                    <img class="store-badge" src="/logos/play_store.svg" alt="Jetzt bei Google Play herunterladen">
-                </a>
-                <a class="store-link" href="https://apps.apple.com/us/app/murmli/id6753867833" target="_blank"
-                    rel="noopener noreferrer">
-                    <img class="store-badge" src="/logos/app_store.svg" alt="Jetzt im Apple App Store herunterladen">
-                </a>
-            </div>
-        </div>
+<body class="recipe-page">
+  <header class="main-header">
+    <div class="container">
+      <a class="site-logo" href="/" aria-label="Zur Murmli Startseite">Murmli</a>
+      <button class="menu-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="primary-navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="main-nav" id="primary-navigation" aria-label="Hauptnavigation">
+        <ul>
+          <li><a href="/#features">Funktionen</a></li>
+          <li><a href="/#calorie-calculator">Kalorienrechner</a></li>
+          <li><a href="/#trailer">Trailer</a></li>
+          <li><a href="/#about">Über</a></li>
+          <li><a href="/datenschutz.html">Datenschutz</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <!-- Recipe Content Container -->
-    <div class="recipe-container">
-        <div class="container">
-            <div id="recipe-content">
-                <!-- Recipe content will be loaded here -->
-                <div class="loading">
-                    <p>Rezept wird geladen...</p>
-                </div>
-            </div>
+  <main>
+    <section class="recipe-hero">
+      <div class="container recipe-hero__grid">
+        <div class="recipe-hero__text">
+          <p class="eyebrow">Geteiltes Rezept aus Murmli</p>
+          <h1 id="recipe-title">Rezept wird geladen...</h1>
+          <p id="recipe-description">Sobald die Details geladen sind, zeigen wir dir hier alle Zutaten und Schritte.</p>
+          <div class="recipe-meta-chips" id="recipe-meta">
+            <span class="chip chip--muted">Lade Rezeptdaten...</span>
+          </div>
+          <div class="recipe-tags" id="recipe-diet-tags" aria-live="polite"></div>
+          <div class="store-links recipe-store-links">
+            <a class="store-link" href="https://play.google.com/store/apps/details?id=de.murmli.twa" target="_blank"
+              rel="noopener noreferrer">
+              <img class="store-badge" src="/logos/play_store.svg" alt="Jetzt bei Google Play herunterladen">
+            </a>
+            <a class="store-link" href="https://apps.apple.com/us/app/murmli/id6753867833" target="_blank"
+              rel="noopener noreferrer">
+              <img class="store-badge" src="/logos/app_store.svg" alt="Jetzt im Apple App Store herunterladen">
+            </a>
+          </div>
         </div>
+        <div class="recipe-hero__media">
+          <img id="recipe-image" src="/logos/murmli_logo_256.png" alt="Platzhalter für Rezeptbild"
+            loading="lazy" width="640" height="360">
+        </div>
+      </div>
+    </section>
+
+    <section class="recipe-body">
+      <div class="container">
+        <div id="recipe-content" class="recipe-layout" aria-live="polite" aria-busy="true">
+          <div class="recipe-card recipe-card--loading">
+            <p>Rezept wird geladen...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-links">
+        <ul>
+          <li><a href="/">Startseite</a></li>
+          <li><a href="/sitemap.xml">Sitemap</a></li>
+          <li><a href="/datenschutz.html">Datenschutz</a></li>
+        </ul>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2025 Murmli – Dein smarter, persönlicher Alltagshelfer.</p>
+        <p>Privatprojekt von Manuel Gaschler</p>
+      </div>
     </div>
+  </footer>
 
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>Murmli</h3>
-                    <p>Dein smarter, persönlicher Alltagshelfer</p>
-                </div>
-                <div class="footer-links">
-                    <a href="/" class="footer-link">🏠 Startseite</a>
-                    <a href="datenschutz.html" class="footer-link">📋 Datenschutz</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Murmli – Privatprojekt von Manuel Gaschler</p>
-            </div>
-        </div>
-    </footer>
-
+  <script src="/script.js"></script>
+  <script src="/recipe.js"></script>
 </body>
 
 </html>
-<script>
-    // Get recipe ID from URL (format: /recipe/slug-id)
-    const urlParams = new URLSearchParams(window.location.search);
-    const pathParts = window.location.pathname.split('/');
-    const slugAndId = pathParts[pathParts.length - 1];
-    const recipeId = slugAndId.split('-').pop(); // Get the last part after the last hyphen
-    const language = urlParams.get('lang') || 'de-DE'; // Get language from query param
-
-    if (!recipeId) {
-        document.getElementById('recipe-content').innerHTML = '<p>Rezept-ID nicht gefunden.</p>';
-    } else {
-        loadRecipe(recipeId);
-    }
-
-    async function loadRecipe(recipeId) {
-        try {
-            const servings = urlParams.get('servings') || 4;
-            const response = await fetch(`/api/v2/recipe/public/${recipeId}?servings=${servings}&lang=${language}`);
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const recipe = await response.json();
-
-            // Update page title and meta tags
-            document.title = `${recipe.title} - Murmli`;
-            document.getElementById('page-title').textContent = `${recipe.title} - Murmli`;
-            document.getElementById('page-description').content = `Entdecke das Rezept für ${recipe.title} mit Murmli! ${recipe.servings} Portionen.`;
-
-            // Update Open Graph
-            const currentUrl = window.location.href;
-            document.getElementById('og-url').content = currentUrl;
-            document.getElementById('og-title').content = recipe.title;
-            document.getElementById('og-description').content = `Entdecke das Rezept für ${recipe.title} mit Murmli!`;
-            document.getElementById('og-image').content = recipe.image || 'https://www.murmli.de/logos/murmli_logo_256.png';
-
-            // Update Twitter
-            document.getElementById('twitter-url').content = currentUrl;
-            document.getElementById('twitter-title').content = recipe.title;
-            document.getElementById('twitter-description').content = `Entdecke das Rezept für ${recipe.title} mit Murmli!`;
-            document.getElementById('twitter-image').content = recipe.image || 'https://www.murmli.de/logos/murmli_logo_256.png';
-
-            // Render recipe content
-            renderRecipe(recipe);
-
-        } catch (error) {
-            console.error('Error loading recipe:', error);
-            document.getElementById('recipe-content').innerHTML = '<p>Fehler beim Laden des Rezepts. Bitte versuche es später erneut.</p>';
-        }
-    }
-
-    function renderRecipe(recipe) {
-        const content = document.getElementById('recipe-content');
-
-        let html = `
-      <div class="recipe-header">
-        <h1>${recipe.title}</h1>
-        <div class="recipe-image">
-          <img src="${recipe.image || 'https://via.placeholder.com/400x200?text=Kein+Bild'}" alt="${recipe.title}" style="max-width: 100%; height: auto;">
-        </div>
-      </div>
-
-      <div class="recipe-meta">
-        <p><strong>Portionen:</strong> ${recipe.servings}</p>
-        <p><strong>Zubereitungszeit:</strong> ${recipe.preparationTime} Minuten</p>
-      </div>
-
-      <div class="recipe-section">
-        <h2>Zutaten</h2>
-        <ul class="ingredients-list">
-    `;
-
-        recipe.ingredients.forEach(ingredient => {
-            const unitText = ingredient.unit && ingredient.unit.id !== 11 ? ` ${ingredient.quantity} ${ingredient.unit.name}` : '';
-            html += `<li>${ingredient.name}${unitText}</li>`;
-        });
-
-        html += `
-        </ul>
-      </div>
-
-      <div class="recipe-section">
-        <h2>Zubereitung</h2>
-    `;
-
-        recipe.steps.forEach((step, index) => {
-            html += `
-        <div class="step">
-          <h3>Schritt ${index + 1}: ${step.name}</h3>
-      `;
-
-            if (step.head && step.head.length > 0) {
-                html += '<ul class="step-ingredients">';
-                step.head.forEach(item => {
-                    const unitText = item.unit && item.unit.id !== 11 ? ` ${item.quantity} ${item.unit.name}` : '';
-                    html += `<li>${item.name}${unitText}</li>`;
-                });
-                html += '</ul>';
-            }
-
-            html += `<p>${step.content}</p></div>`;
-        });
-
-        html += `
-      </div>
-
-      <div class="recipe-section">
-        <h2>Nährwertangaben pro Portion</h2>
-        <div class="nutrition-grid">
-          <div class="nutrition-item">
-            <span class="nutrition-label">Kalorien:</span>
-            <span class="nutrition-value">${recipe.nutrients.kilocalories} kcal</span>
-          </div>
-          <div class="nutrition-item">
-            <span class="nutrition-label">Kohlenhydrate:</span>
-            <span class="nutrition-value">${recipe.nutrients.carbohydrates} g</span>
-          </div>
-          <div class="nutrition-item">
-            <span class="nutrition-label">Fett:</span>
-            <span class="nutrition-value">${recipe.nutrients.fat} g</span>
-          </div>
-          <div class="nutrition-item">
-            <span class="nutrition-label">Eiweiß:</span>
-            <span class="nutrition-value">${recipe.nutrients.protein} g</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="recipe-section">
-        <h2>Bewertungen</h2>
-        <div class="ratings-grid">
-          <div class="rating-item">
-            <span class="rating-label">Alltäglichkeit:</span>
-            <span class="rating-value">${recipe.everydayRating}/10</span>
-          </div>
-          <div class="rating-item">
-            <span class="rating-label">Gesundheit:</span>
-            <span class="rating-value">${recipe.healthRating}/10</span>
-          </div>
-          <div class="rating-item">
-            <span class="rating-label">Preis:</span>
-            <span class="rating-value">${recipe.priceRating}/10</span>
-          </div>
-          <div class="rating-item">
-            <span class="rating-label">Schwierigkeit:</span>
-            <span class="rating-value">${recipe.difficultyRating}/10</span>
-          </div>
-          <div class="rating-item">
-            <span class="rating-label">Nachhaltigkeit:</span>
-            <span class="rating-value">${recipe.sustainabilityRating}/10</span>
-          </div>
-        </div>
-      </div>
-    `;
-
-        content.innerHTML = html;
-    }
-</script>
-
-<style>
-    /* Modern CSS Reset */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        line-height: 1.6;
-        color: #333;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        min-height: 100vh;
-    }
-
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-
-    /* Download Banner */
-    .download-banner {
-        background: linear-gradient(135deg, #ff9800 0%, #ff5722 100%);
-        color: white;
-        padding: 40px 0;
-        text-align: center;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .download-banner h2 {
-        font-size: 2.2rem;
-        margin-bottom: 15px;
-        font-weight: 700;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    .download-banner p {
-        font-size: 1.2rem;
-        margin-bottom: 30px;
-        opacity: 0.95;
-    }
-
-    .store-links {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        flex-wrap: wrap;
-    }
-
-    .store-link {
-        display: inline-block;
-        transition: all 0.3s ease;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    .store-link:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
-    }
-
-    .store-badge {
-        height: 65px;
-        width: auto;
-        border-radius: 12px;
-    }
-
-    /* Recipe Container */
-    .recipe-container {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 50px 20px;
-        background: white;
-        border-radius: 20px;
-        margin-top: -30px;
-        margin-bottom: 50px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        position: relative;
-        z-index: 10;
-    }
-
-    .recipe-header {
-        text-align: center;
-        margin-bottom: 40px;
-        padding-bottom: 30px;
-        border-bottom: 2px solid #f0f0f0;
-    }
-
-    .recipe-header h1 {
-        font-size: 2.8rem;
-        margin-bottom: 25px;
-        color: #2c3e50;
-        font-weight: 800;
-        line-height: 1.2;
-    }
-
-    .recipe-image {
-        margin: 30px 0;
-    }
-
-    .recipe-image img {
-        width: 100%;
-        max-width: 600px;
-        height: auto;
-        border-radius: 16px;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-        transition: transform 0.3s ease;
-    }
-
-    .recipe-image img:hover {
-        transform: scale(1.02);
-    }
-
-    .recipe-meta {
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        padding: 30px;
-        border-radius: 16px;
-        margin-bottom: 40px;
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        gap: 20px;
-        box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
-    }
-
-    .recipe-meta p {
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: #495057;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .recipe-section {
-        margin-bottom: 50px;
-        background: #f8f9fa;
-        padding: 35px;
-        border-radius: 16px;
-        border-left: 5px solid #ff9800;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    }
-
-    .recipe-section h2 {
-        color: #ff9800;
-        font-size: 1.8rem;
-        margin-bottom: 25px;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .recipe-section h2:before {
-        content: "🍽️";
-        font-size: 1.5rem;
-    }
-
-    .ingredients-list {
-        background: white;
-        padding: 25px;
-        border-radius: 12px;
-        list-style: none;
-        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-    }
-
-    .ingredients-list li {
-        padding: 12px 0;
-        border-bottom: 1px solid #f0f0f0;
-        font-size: 1.1rem;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .ingredients-list li:before {
-        content: "🥕";
-        font-size: 1.2rem;
-    }
-
-    .ingredients-list li:last-child {
-        border-bottom: none;
-    }
-
-    .step {
-        background: white;
-        padding: 30px;
-        border-radius: 12px;
-        margin-bottom: 25px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        border-left: 5px solid #4caf50;
-        transition: transform 0.2s ease;
-    }
-
-    .step:hover {
-        transform: translateX(5px);
-    }
-
-    .step h3 {
-        color: #4caf50;
-        margin-bottom: 15px;
-        font-size: 1.3rem;
-        font-weight: 600;
-    }
-
-    .step p {
-        color: #555;
-        line-height: 1.7;
-        font-size: 1.05rem;
-    }
-
-    .step-ingredients {
-        background: #f8f9fa;
-        padding: 15px;
-        border-radius: 8px;
-        margin-bottom: 20px;
-        list-style: none;
-    }
-
-    .step-ingredients li {
-        font-style: italic;
-        color: #666;
-        padding: 5px 0;
-    }
-
-    .nutrition-grid,
-    .ratings-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-    }
-
-    .nutrition-item,
-    .rating-item {
-        background: white;
-        padding: 25px;
-        border-radius: 12px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        transition: transform 0.2s ease;
-    }
-
-    .nutrition-item:hover,
-    .rating-item:hover {
-        transform: translateY(-3px);
-    }
-
-    .nutrition-label,
-    .rating-label {
-        font-weight: 600;
-        color: #495057;
-        font-size: 1.1rem;
-    }
-
-    .nutrition-value,
-    .rating-value {
-        color: #ff9800;
-        font-weight: 800;
-        font-size: 1.2rem;
-    }
-
-    .loading {
-        text-align: center;
-        padding: 80px 20px;
-        font-size: 1.3rem;
-        color: #666;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .loading:before {
-        content: "⏳";
-        font-size: 3rem;
-        animation: spin 2s linear infinite;
-    }
-
-    @keyframes spin {
-        0% {
-            transform: rotate(0deg);
-        }
-
-        100% {
-            transform: rotate(360deg);
-        }
-    }
-
-    /* Footer */
-    .main-footer {
-        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-        color: white;
-        padding: 50px 0 30px;
-        margin-top: 50px;
-    }
-
-    .footer-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 30px;
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-
-    .footer-brand h3 {
-        font-size: 2rem;
-        margin-bottom: 5px;
-        font-weight: 700;
-    }
-
-    .footer-brand p {
-        opacity: 0.8;
-        font-size: 1rem;
-    }
-
-    .footer-links {
-        display: flex;
-        gap: 25px;
-    }
-
-    .footer-link {
-        color: white;
-        text-decoration: none;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        padding: 10px 15px;
-        border-radius: 8px;
-    }
-
-    .footer-link:hover {
-        background: rgba(255, 255, 255, 0.1);
-        transform: translateY(-2px);
-    }
-
-    .footer-bottom {
-        text-align: center;
-        padding-top: 30px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .footer-bottom p {
-        opacity: 0.7;
-        font-size: 0.9rem;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        .recipe-header h1 {
-            font-size: 2.2rem;
-        }
-
-        .download-banner {
-            padding: 30px 0;
-        }
-
-        .download-banner h2 {
-            font-size: 1.8rem;
-        }
-
-        .store-links {
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .store-badge {
-            height: 55px;
-        }
-
-        .recipe-container {
-            margin-top: -20px;
-            padding: 30px 15px;
-        }
-
-        .recipe-section {
-            padding: 25px;
-        }
-
-        .recipe-meta {
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .nutrition-grid,
-        .ratings-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .footer-content {
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .footer-links {
-            justify-content: center;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .recipe-header h1 {
-            font-size: 1.8rem;
-        }
-
-        .recipe-section h2 {
-            font-size: 1.5rem;
-        }
-
-        .step {
-            padding: 20px;
-        }
-    }
-</style>

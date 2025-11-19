@@ -11,8 +11,13 @@
   <meta name="keywords"
     content="Rezepte App, Kalorienzähler, Trainingsplan App, Essensplaner, Wochenplaner, Einkaufsliste, KI Rezepte, Personalisierte KI, Fitness, Ernährung, Murmli">
   <meta name="author" content="Murmli">
+  <meta name="application-name" content="Murmli">
+  <meta name="format-detection" content="telephone=no">
   <!-- SEO & Crawler Control -->
   <link rel="canonical" href="https://www.murmli.de/">
+  <link rel="alternate" hreflang="de-DE" href="https://www.murmli.de/">
+  <link rel="alternate" hreflang="x-default" href="https://www.murmli.de/">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
   <meta name="robots" content="index, follow">
 
   <!-- Open Graph / Facebook -->
@@ -24,6 +29,8 @@
   <meta property="og:image" content="https://www.murmli.de/logos/murmli_logo_256.png">
   <!-- BITTE ANPASSEN -->
   <meta property="og:site_name" content="Murmli">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:image:alt" content="Murmli Logo">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
@@ -32,6 +39,8 @@
   <meta property="twitter:description"
     content="Murmli ist deine persönliche All-in-One App: Individuelle Essensplanung, Rezeptverwaltung, Kalorienzählung und Trainingspläne, unterstützt durch eine KI, die auf dich eingeht!">
   <meta property="twitter:image" content="https://www.murmli.de/logos/murmli_logo_256.png">
+  <meta property="twitter:image:alt" content="Murmli Logo">
+  <meta name="apple-itunes-app" content="app-id=6753867833">
 
   <!-- Schema.org Markup (JSON-LD) -->
   <script type="application/ld+json">
@@ -41,6 +50,29 @@
     "name": "Murmli",
     "url": "https://www.murmli.de/",
     "description": "Murmli ist deine persönliche All-in-One App: Individuelle Essensplanung, Rezeptverwaltung, Kalorienzählung und Trainingspläne, unterstützt durch eine KI, die auf dich eingeht!"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Murmli",
+    "operatingSystem": "Android,iOS",
+    "applicationCategory": "HealthApplication",
+    "downloadUrl": "https://www.murmli.de/",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Murmli"
+    },
+    "installUrl": [
+      "https://play.google.com/store/apps/details?id=de.murmli.twa",
+      "https://apps.apple.com/us/app/murmli/id6753867833"
+    ]
   }
   </script>
 
@@ -54,19 +86,19 @@
 <body>
   <header class="main-header">
     <div class="container">
-      <h1>Murmli</h1>
-      <button class="menu-toggle" aria-label="Menü öffnen">
+      <a class="site-logo" href="/" aria-label="Zur Murmli Startseite">Murmli</a>
+      <button class="menu-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="primary-navigation">
         <span></span>
         <span></span>
         <span></span>
       </button>
-      <nav class="main-nav">
+      <nav class="main-nav" id="primary-navigation" aria-label="Hauptnavigation">
         <ul>
-          <li><a href="#features">Funktionen</a></li>
-          <li><a href="#calorie-calculator">Kalorienrechner</a></li>
-          <li><a href="#trailer">Trailer</a></li>
-          <li><a href="#about">Über</a></li>
-          <li><a href="datenschutz.html">Datenschutz</a></li>
+          <li><a href="/#features">Funktionen</a></li>
+          <li><a href="/#calorie-calculator">Kalorienrechner</a></li>
+          <li><a href="/#trailer">Trailer</a></li>
+          <li><a href="/#about">Über</a></li>
+          <li><a href="/datenschutz.html">Datenschutz</a></li>
         </ul>
       </nav>
     </div>
@@ -102,7 +134,7 @@
         <div class="video-container">
           <iframe src="https://www.youtube.com/embed/RJfGFYFyhtY" title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
+            referrerpolicy="strict-origin-when-cross-origin" loading="lazy" allowfullscreen>
           </iframe>
         </div>
       </div>
@@ -115,42 +147,42 @@
         <div class="feature-grid">
           <div class="feature-item">
             <img src="images/rezeptverwaltung-vorschau.jpg" alt="Vorschau der individuellen Rezeptverwaltung in Murmli"
-              width="300" height="200" class="feature-image feature-image-clickable">
+              width="300" height="200" class="feature-image feature-image-clickable" loading="lazy" decoding="async">
             <h3>Individuelle Rezeptverwaltung</h3>
             <p>Verwalte deine Lieblingsrezepte und lass dir von der KI helfen, sie an deine Bedürfnisse (z.B. Allergien,
               Vorlieben) anzupassen. Importiere Rezepte oder entdecke Neues.</p>
           </div>
           <div class="feature-item">
             <img src="images/ki-rezeptideen-vorschau.jpg" alt="Vorschau der persönlichen KI-Rezeptideen in Murmli"
-              width="300" height="200" class="feature-image feature-image-clickable">
+              width="300" height="200" class="feature-image feature-image-clickable" loading="lazy" decoding="async">
             <h3>Persönliche KI-Rezept-Ideen</h3>
             <p>Keine Ahnung, was kochen? Unsere KI lernt deinen Geschmack und schlägt dir Rezepte vor, die wirklich zu
               dir passen – basierend auf Vorlieben oder vorhandenen Zutaten.</p>
           </div>
           <div class="feature-item">
             <img src="images/kalorienzaehler-vorschau.jpg" alt="Vorschau des präzisen Kalorienzählers in Murmli"
-              width="300" height="200" class="feature-image feature-image-clickable">
+              width="300" height="200" class="feature-image feature-image-clickable" loading="lazy" decoding="async">
             <h3>Präziser Kalorienzähler</h3>
             <p>Behalte deine Energiebilanz im Blick. Tracke Mahlzeiten und Aktivitäten einfach und schnell. Die KI hilft
               dir, deine Ziele zu erreichen.</p>
           </div>
           <div class="feature-item">
             <img src="images/trainingsplaene-vorschau.jpg" alt="Vorschau der adaptiven Trainingspläne in Murmli"
-              width="300" height="200" class="feature-image feature-image-clickable">
+              width="300" height="200" class="feature-image feature-image-clickable" loading="lazy" decoding="async">
             <h3>Adaptive Trainingspläne</h3>
             <p>Erstelle deine Trainingspläne oder lass dir von der KI personalisierte Vorschläge machen, die sich an
               deinen Fortschritt und deine Ziele anpassen.</p>
           </div>
           <div class="feature-item">
             <img src="images/wochenplan-vorschau.jpg" alt="Vorschau der integrierten Wochenplanung in Murmli"
-              width="300" height="200" class="feature-image feature-image-clickable">
+              width="300" height="200" class="feature-image feature-image-clickable" loading="lazy" decoding="async">
             <h3>Integrierte Wochenplanung</h3>
             <p>Kombiniere deine persönlichen Mahlzeiten- und Trainingspläne in einer übersichtlichen Woche. Die KI
               unterstützt dich bei der optimalen Abstimmung.</p>
           </div>
           <div class="feature-item">
             <img src="images/einkaufsliste-vorschau.jpg" alt="Vorschau der smarten Einkaufslisten in Murmli" width="300"
-              height="200" class="feature-image feature-image-clickable">
+              height="200" class="feature-image feature-image-clickable" loading="lazy" decoding="async">
             <h3>Smarte Einkaufslisten</h3>
             <p>Nie wieder etwas vergessen! Murmli erstellt automatisch Einkaufslisten basierend auf deinem individuellen
               Wochenplan – intelligent sortiert.</p>
@@ -298,7 +330,9 @@
     <div class="container">
       <div class="footer-links">
         <ul>
-          <li><a href="datenschutz.html">Datenschutz</a></li>
+          <li><a href="/">Startseite</a></li>
+          <li><a href="/sitemap.xml">Sitemap</a></li>
+          <li><a href="/datenschutz.html">Datenschutz</a></li>
           <!-- Optional: Add Impressum link if needed -->
           <!-- <li><a href="impressum.html">Impressum</a></li> -->
         </ul>
