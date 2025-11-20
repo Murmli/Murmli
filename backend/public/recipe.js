@@ -325,6 +325,136 @@
     return rounded.toLocaleString('de-DE');
   }
 
+  function toIsoDuration(value) {
+    const minutes = parseNumber(value);
+    if (!Number.isFinite(minutes) || minutes <= 0) {
+      return undefined;
+    }
+    const totalMinutes = Math.max(1, Math.round(minutes));
+    const hours = Math.floor(totalMinutes / 60);
+    const mins = totalMinutes % 60;
+    let isoString = 'PT';
+    if (hours) {
+      isoString += `${hours}H`;
+    }
+    if (mins || !hours) {
+      isoString += `${mins}M`;
+    }
+    return isoString;
+  }
+
+  function toIsoDate(value) {
+    if (!value) {
+      return undefined;
+    }
+    try {
+      const date = value instanceof Date ? value : new Date(value);
+      if (Number.isNaN(date.getTime())) {
+        return undefined;
+      }
+      return date.toISOString();
+    } catch (error) {
+      return undefined;
+    }
+  }
+
+  function ensureAbsoluteUrl(value, referenceUrl) {
+    if (value === null || value === undefined) {
+      return undefined;
+    }
+    const stringValue = String(value).trim();
+    if (!stringValue) {
+      return undefined;
+    }
+    try {
+      const base = referenceUrl || window.location.origin;
+      const url = new URL(stringValue, base);
+      if (url.protocol === 'http:' || url.protocol === 'https:') {
+        return url.href;
+      }
+      return undefined;
+    } catch (error) {
+      return undefined;
+    }
+  }
+
+  function buildInstructionAnchor(baseUrl, index) {
+    if (!baseUrl) {
+      return undefined;
+    }
+    try {
+      const url = new URL(baseUrl);
+      url.hash = `schritt-${index + 1}`;
+      return url.href;
+    } catch (error) {
+      return `${baseUrl}#schritt-${index + 1}`;
+    }
+  }
+
+  function mapSeasonLabel(value) {
+    if (value === null || value === undefined) {
+      return undefined;
+    }
+    if (typeof value === 'string' && value.trim()) {
+      return value;
+    }
+    const mapping = {
+      1: 'Frühling',
+      2: 'Sommer',
+      3: 'Herbst',
+      4: 'Winter'
+    };
+    return mapping[value] || undefined;
+  }
+
+  function buildKeywordList(recipe) {
+    const keywords = new Set();
+    if (recipe.title) {
+      keywords.add(recipe.title);
+    }
+    if (recipe.type) {
+      keywords.add(recipe.type);
+    }
+    if (recipe.originCountry) {
+      keywords.add(recipe.originCountry);
+    }
+    const seasonLabel = mapSeasonLabel(recipe.season);
+    if (seasonLabel) {
+      keywords.add(`${seasonLabel} Rezept`);
+    }
+    if (recipe.vegetarian) keywords.add('vegetarisch');
+    if (recipe.vegan) keywords.add('vegan');
+    if (recipe.glutenfree) keywords.add('glutenfrei');
+    if (recipe.lactosefree) keywords.add('laktosefrei');
+    (recipe.ingredients || [])
+      .map((ingredient) => ingredient?.name)
+      .filter(Boolean)
+      .slice(0, 8)
+      .forEach((name) => keywords.add(name));
+    return Array.from(keywords).filter(Boolean);
+  }
+
+  function computeAggregateRating(ratings) {
+    if (!Array.isArray(ratings)) {
+      return undefined;
+    }
+    const validRatings = ratings
+      .map((entry) => parseNumber(entry?.stars))
+      .filter((value) => Number.isFinite(value) && value > 0);
+    if (!validRatings.length) {
+      return undefined;
+    }
+    const sum = validRatings.reduce((acc, value) => acc + value, 0);
+    const average = sum / validRatings.length;
+    return {
+      "@type": "AggregateRating",
+      "ratingValue": Number(average.toFixed(2)),
+      "ratingCount": validRatings.length,
+      "bestRating": 5,
+      "worstRating": 1
+    };
+  }
+
   function updateMetaTags(recipe, currentUrl) {
     const title = `${recipe.title} - Murmli`;
     const description = recipe.descriptionShort || recipe.description || `Entdecke das Rezept für ${recipe.title} mit Murmli!`;
@@ -363,6 +493,16 @@
       existing.remove();
     }
 
+    let canonicalUrl = currentUrl;
+    try {
+      const parsed = new URL(currentUrl);
+      parsed.hash = '';
+      parsed.search = '';
+      canonicalUrl = parsed.href;
+    } catch (error) {
+      canonicalUrl = currentUrl;
+    }
+
     const recipeIngredients = (recipe.ingredients || []).map((ingredient) => {
       const unitData = ingredient.unit && typeof ingredient.unit === 'object' ? ingredient.unit : null;
       const unitId = unitData?.id;
@@ -376,38 +516,76 @@
         parts.push(unitName);
       }
       return `${parts.join(' ')} ${ingredient.name}`.trim();
-    });
+    }).filter(Boolean);
 
-    const recipeInstructions = (recipe.steps || []).map((step, index) => ({
-      "@type": "HowToStep",
-      "position": index + 1,
-      "name": step.name || `Schritt ${index + 1}`,
-      "text": step.content
-    }));
+    let absoluteImage = ensureAbsoluteUrl(recipe.image, canonicalUrl)
+      || ensureAbsoluteUrl(placeholderImage, canonicalUrl);
+    if (!absoluteImage) {
+      try {
+        const origin = new URL(canonicalUrl).origin;
+        absoluteImage = `${origin}${placeholderImage}`;
+      } catch (error) {
+        absoluteImage = placeholderImage;
+      }
+    }
+
+    const servingsValue = parseNumber(recipe.servings);
+    const recipeYield = Number.isFinite(servingsValue)
+      ? pluralizePortions(servingsValue)
+      : (recipe.servings ? String(recipe.servings) : undefined);
+
+    const prepDuration = toIsoDuration(recipe.preparationTime);
+    const cookDuration = toIsoDuration(recipe.cookTime ?? recipe.preparationTime);
+    const totalDuration = toIsoDuration(recipe.totalTime ?? recipe.preparationTime) || cookDuration || prepDuration;
+    const keywordsList = buildKeywordList(recipe);
+    const aggregateRating = computeAggregateRating(recipe.ratings);
+
+    const recipeInstructions = (recipe.steps || []).map((step, index) => {
+      const rawText = step?.content || step?.description || step?.name || `Schritt ${index + 1}`;
+      const instruction = {
+        "@type": "HowToStep",
+        "position": index + 1,
+        "name": step?.name || `Schritt ${index + 1}`,
+        "text": typeof rawText === 'string' ? rawText : String(rawText),
+        "url": buildInstructionAnchor(canonicalUrl, index)
+      };
+      if (absoluteImage) {
+        instruction.image = absoluteImage;
+      }
+      return instruction;
+    });
 
     const schema = {
       "@context": "https://schema.org",
       "@type": "Recipe",
+      "@id": canonicalUrl,
+      "url": canonicalUrl,
       "name": recipe.title,
       "description": recipe.descriptionShort || recipe.description,
-      "image": recipe.image || placeholderImage,
-      "recipeYield": Number.isFinite(recipe.servings) ? pluralizePortions(recipe.servings) : undefined,
-      "prepTime": Number.isFinite(recipe.preparationTime) ? `PT${Math.round(recipe.preparationTime)}M` : undefined,
+      "image": absoluteImage,
+      "recipeYield": recipeYield,
+      "prepTime": prepDuration,
+      "cookTime": cookDuration,
+      "totalTime": totalDuration,
       "recipeIngredient": recipeIngredients,
       "recipeInstructions": recipeInstructions,
+      "recipeCategory": recipe.type || undefined,
+      "recipeCuisine": recipe.originCountry || undefined,
+      "keywords": keywordsList.length ? keywordsList.join(', ') : undefined,
       "author": {
         "@type": "Organization",
         "name": recipe.provider || 'Murmli'
       },
-      "mainEntityOfPage": currentUrl,
-      "datePublished": recipe.createdAt || undefined,
-      "dateModified": recipe.updatedAt || undefined,
+      "mainEntityOfPage": canonicalUrl,
+      "datePublished": toIsoDate(recipe.createdAt),
+      "dateModified": toIsoDate(recipe.updatedAt),
+      "aggregateRating": aggregateRating,
       "nutrition": recipe.nutrients ? {
         "@type": "NutritionInformation",
-        "calories": recipe.nutrients.kilocalories ? `${recipe.nutrients.kilocalories} kcal` : undefined,
-        "carbohydrateContent": recipe.nutrients.carbohydrates ? `${recipe.nutrients.carbohydrates} g` : undefined,
-        "fatContent": recipe.nutrients.fat ? `${recipe.nutrients.fat} g` : undefined,
-        "proteinContent": recipe.nutrients.protein ? `${recipe.nutrients.protein} g` : undefined
+        "calories": Number.isFinite(recipe.nutrients.kilocalories) ? `${formatNumber(recipe.nutrients.kilocalories)} kcal` : undefined,
+        "carbohydrateContent": Number.isFinite(recipe.nutrients.carbohydrates) ? `${formatNumber(recipe.nutrients.carbohydrates)} g` : undefined,
+        "fatContent": Number.isFinite(recipe.nutrients.fat) ? `${formatNumber(recipe.nutrients.fat)} g` : undefined,
+        "proteinContent": Number.isFinite(recipe.nutrients.protein) ? `${formatNumber(recipe.nutrients.protein)} g` : undefined
       } : undefined
     };
 
