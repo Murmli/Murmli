@@ -68,7 +68,7 @@
 
         const result = await sendToAPI('/track', {
             sessionId: state.sessionId,
-            pageUrl: window.location.pathname,
+            pageUrl: window.location.pathname + window.location.search,
             referrer: document.referrer,
         });
 
