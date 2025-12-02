@@ -104,6 +104,11 @@ app.use((req, res, next) => {
   const host = req.headers.host;
   const path = req.url;
 
+  // Exclude API routes from redirects
+  if (path.startsWith('/api')) {
+    return next();
+  }
+
   // 1. Redirect non-www to www (Production only or if host matches murmli.de)
   if (host === 'murmli.de') {
     return res.redirect(301, `https://www.murmli.de${path}`);
