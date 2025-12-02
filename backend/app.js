@@ -99,6 +99,25 @@ app.use(
 //   setTimeout(next, 5000);
 // });
 
+// SEO Redirect Middleware
+app.use((req, res, next) => {
+  const host = req.headers.host;
+  const path = req.url;
+
+  // 1. Redirect non-www to www (Production only or if host matches murmli.de)
+  if (host === 'murmli.de') {
+    return res.redirect(301, `https://www.murmli.de${path}`);
+  }
+
+  // 2. Redirect /index.html to /
+  if (path === '/index.html' || path.endsWith('/index.html')) {
+    const newPath = path.replace(/\/index\.html$/, '/');
+    return res.redirect(301, newPath || '/');
+  }
+
+  next();
+});
+
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, "public")));
 
