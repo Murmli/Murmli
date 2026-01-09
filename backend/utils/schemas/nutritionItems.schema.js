@@ -19,9 +19,9 @@ module.exports = {
             fat: { type: "number", description: "Fett in Gramm" },
             healthyRating: {
               type: "number",
-              description: "Bewertung 1 sehr ungesund bis 10 sehr gesund",
+              description: "Bewertung 1 sehr ungesund bis 5 sehr gesund",
               minimum: 1,
-              maximum: 10
+              maximum: 5
             }
           },
           required: [

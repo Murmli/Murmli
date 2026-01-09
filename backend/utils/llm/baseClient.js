@@ -129,7 +129,13 @@ class BaseLLMClient {
         console.log("\x1b[33m%s\x1b[0m", "API Response:", answer);
       }
 
-      return json || jsonSchema ? JSON.parse(answer) : answer;
+      let cleanAnswer = answer;
+      // Strip markdown code blocks if present
+      if (typeof cleanAnswer === 'string') {
+        cleanAnswer = cleanAnswer.replace(/^```json\s*/, "").replace(/^```\s*/, "").replace(/\s*```$/, "");
+      }
+
+      return json || jsonSchema ? JSON.parse(cleanAnswer) : cleanAnswer;
     } catch (error) {
       console.error(`Error with ${this.provider} API:`, error.response ? error.response.data : error.message);
       if (error.response && error.response.data && error.response.data.error) {
