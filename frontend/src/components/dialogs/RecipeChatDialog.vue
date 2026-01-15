@@ -1,54 +1,19 @@
 <template>
-  <v-dialog v-model="show" fullscreen transition="dialog-bottom-transition">
-    <v-card>
-      <v-toolbar color="primary">
-        <v-btn icon @click="close">
-          <v-icon>mdi-close</v-icon>
-        </v-btn>
-        <v-toolbar-title>{{ languageStore.t('recipe.chat.title') || 'Recipe Chat' }}</v-toolbar-title>
-      </v-toolbar>
-
-      <v-card-text class="pa-0 d-flex flex-column" style="height: 100vh;">
-        <div class="flex-grow-1 overflow-y-auto pa-4" ref="chatContainer">
-          <div v-if="messages.length === 0" class="text-center mt-10 text-grey">
-            <v-icon size="64" class="mb-4">mdi-message-text-outline</v-icon>
-            <p>{{ languageStore.t('recipe.chat.emptyState') || 'Ask a question about this recipe!' }}</p>
-          </div>
-
-          <div v-for="(msg, index) in messages" :key="index" class="d-flex mb-4"
-            :class="msg.role === 'user' ? 'justify-end' : 'justify-start'">
-            <v-sheet :color="msg.role === 'user' ? 'primary' : 'surface-variant'" class="pa-3 rounded-lg"
-              max-width="80%">
-              <div v-if="msg.role === 'user'" class="mb-0 text-pre-wrap">{{ msg.content }}</div>
-              <div v-else class="mb-0 markdown-body" v-html="renderMarkdown(msg.content)"></div>
-            </v-sheet>
-          </div>
-
-          <div v-if="loading" class="d-flex justify-start mb-4">
-            <v-sheet color="surface-variant" class="pa-3 rounded-lg">
-              <v-progress-circular indeterminate size="20" width="2"></v-progress-circular>
-            </v-sheet>
-          </div>
-        </div>
-
-        <v-divider></v-divider>
-
-        <div class="pa-2 d-flex align-center">
-          <v-textarea v-model="input" :placeholder="languageStore.t('recipe.chat.placeholder') || 'Type your question...'"
-            variant="solo" hide-details rows="1" auto-grow max-rows="4" class="mr-2"
-            @keydown.enter.prevent="sendMessage"></v-textarea>
-          <v-btn icon="mdi-send" color="primary" @click="sendMessage" :disabled="!input.trim() || loading"></v-btn>
-        </div>
-      </v-card-text>
-    </v-card>
-  </v-dialog>
+  <ChatDialog
+    v-model="show"
+    :title="languageStore.t('recipe.chat.title') || 'Recipe Chat'"
+    :placeholder="languageStore.t('recipe.chat.placeholder') || 'Ask a question about this recipe...'"
+    :empty-state="languageStore.t('recipe.chat.emptyState') || 'Ask me anything about this recipe!'"
+    :welcome-message="languageStore.t('recipe.chat.welcomeMessage') || 'Hello! I am your recipe assistant. You can ask me questions about this recipe, for example about ingredients, preparation, or alternatives. I have the recipe data available.'"
+    :on-send="handleSend"
+  />
 </template>
 
 <script setup>
-import { ref, watch, nextTick } from 'vue';
+import { computed } from 'vue';
 import { useRecipeStore } from '@/stores/recipeStore';
 import { useLanguageStore } from '@/stores/languageStore';
-import { marked } from 'marked';
+import ChatDialog from './ChatDialog.vue';
 
 const props = defineProps({
   modelValue: Boolean,
@@ -60,96 +25,19 @@ const emit = defineEmits(['update:modelValue']);
 const recipeStore = useRecipeStore();
 const languageStore = useLanguageStore();
 
-const show = ref(props.modelValue);
-const input = ref('');
-const messages = ref([]);
-const loading = ref(false);
-const chatContainer = ref(null);
-
-watch(() => props.modelValue, (val) => {
-  show.value = val;
+const show = computed({
+  get: () => props.modelValue,
+  set: (val) => emit('update:modelValue', val),
 });
 
-watch(show, (val) => {
-  emit('update:modelValue', val);
-  if (val && messages.value.length === 0) {
-    messages.value.push({
-      role: 'assistant',
-      content: languageStore.t('recipe.chat.welcomeMessage') || 'Hello! Ask me anything about this recipe.'
-    });
-  }
-});
-
-const scrollToBottom = async () => {
-  await nextTick();
-  if (chatContainer.value) {
-    chatContainer.value.scrollTop = chatContainer.value.scrollHeight;
-  }
-};
-
-const close = () => {
-  show.value = false;
-};
-
-const renderMarkdown = (content) => {
-  try {
-    return marked(content);
-  } catch (e) {
-    console.error("Markdown parsing error:", e);
-    return content;
-  }
-};
-
-const sendMessage = async () => {
-  if (!input.value.trim() || loading.value) return;
-
-  const userMsg = input.value.trim();
-  messages.value.push({ role: 'user', content: userMsg });
-  input.value = '';
-  loading.value = true;
-  await scrollToBottom();
-
-  try {
-    const response = await recipeStore.chatWithRecipe(props.recipeId, messages.value);
-    if (response) {
-      messages.value.push({ role: 'assistant', content: response.answer });
-    } else {
-       messages.value.push({ role: 'assistant', content: languageStore.t('error.general') || 'An error occurred.' });
-    }
-  } catch (error) {
-    console.error(error);
-    messages.value.push({ role: 'assistant', content: languageStore.t('error.general') || 'An error occurred.' });
-  } finally {
-    loading.value = false;
-    await scrollToBottom();
-  }
+const handleSend = async (message, history) => {
+  // history in ChatDialog includes the new user message at the end.
+  // The store action likely expects the history array.
+  
+  const response = await recipeStore.chatWithRecipe(props.recipeId, history);
+  // Expecting response to be an object with { answer: '...' }
+  // If the store returns just the answer string/object, adjust accordingly.
+  // Based on previous code: `response.answer` was used.
+  return response;
 };
 </script>
-
-<style scoped>
-.text-pre-wrap {
-  white-space: pre-wrap;
-}
-
-:deep(.markdown-body p) {
-  margin-bottom: 8px;
-}
-
-:deep(.markdown-body ul),
-:deep(.markdown-body ol) {
-  margin-left: 20px;
-  margin-bottom: 8px;
-}
-
-:deep(.markdown-body h1),
-:deep(.markdown-body h2),
-:deep(.markdown-body h3) {
-  margin-top: 12px;
-  margin-bottom: 8px;
-  font-weight: bold;
-}
-
-:deep(.markdown-body strong) {
-  font-weight: bold;
-}
-</style>

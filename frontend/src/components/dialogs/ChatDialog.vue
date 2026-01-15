@@ -12,7 +12,7 @@
         <div class="flex-grow-1 overflow-y-auto pa-4" ref="chatContainer">
           <div v-if="messages.length === 0" class="text-center mt-10 text-grey">
             <v-icon size="64" class="mb-4">mdi-message-text-outline</v-icon>
-            <p>{{ emptyState }}</p>
+            <p>{{ welcomeMessage || emptyState }}</p>
           </div>
 
           <div v-for="(msg, index) in messages" :key="index" class="d-flex mb-4"
@@ -71,12 +71,6 @@ watch(() => props.modelValue, (val) => {
 
 watch(show, (val) => {
   emit('update:modelValue', val);
-  if (val && messages.value.length === 0 && props.welcomeMessage) {
-    messages.value.push({
-      role: 'assistant',
-      content: props.welcomeMessage
-    });
-  }
 });
 
 const scrollToBottom = async () => {
