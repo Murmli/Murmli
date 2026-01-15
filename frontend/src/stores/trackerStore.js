@@ -182,6 +182,7 @@ export const useTrackerStore = defineStore("trackerStore", {
 
     // Track a food item by image upload
     async trackFoodByImage(file, comment = null) {
+      this.isAddingItem = true;
       const apiStore = useApiStore();
       const formData = new FormData();
       formData.append("trackerId", this.tracker._id);
@@ -193,16 +194,16 @@ export const useTrackerStore = defineStore("trackerStore", {
           "post",
           "/calorietracker/track/image",
           formData,
-          {
-            headers: { "Content-Type": "multipart/form-data" },
-          }
+          false
         );
         if (response.status === 200) {
           this.tracker = response.data.tracker;
+          this.isAddingItem = false;
           this.saveCache();
           return true
         }
       } catch (error) {
+        this.isAddingItem = false;
         this.error = error;
       }
       return null;

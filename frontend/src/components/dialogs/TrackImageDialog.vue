@@ -82,7 +82,7 @@ function closeDialog() {
     description.value = '';
 }
 
-async function submitImage() {
+function submitImage() {
     if (!selectedFileObject.value) {
         // Optional: Fehlermeldung anzeigen
         console.warn('Kein Bild ausgewählt');
@@ -92,13 +92,13 @@ async function submitImage() {
     const file = selectedFileObject.value;
     const desc = description.value.trim();
 
-    try {
-        await trackerStore.trackFoodByImage(file, desc);
-        closeDialog();
-    } catch (error) {
+    // Dialog sofort schließen
+    closeDialog();
+
+    // Request im Hintergrund starten
+    trackerStore.trackFoodByImage(file, desc).catch(error => {
         console.error('Fehler beim Hochladen des Bildes:', error);
-        // Optional: Fehlermeldung für den Benutzer anzeigen
-    }
+    });
 }
 </script>
 
