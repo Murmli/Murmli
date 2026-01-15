@@ -534,8 +534,46 @@ router.post(
 router.get("/public/:id", reciperController.readPublicRecipe);
 
 
-// router.post("/read/all", reciperController.readUserRecipes);
-// router.post("/read/shoppinglist", reciperController.readUserRecipes);
+/**
+ * @swagger
+ * /api/v2/recipe/chat:
+ *   post:
+ *     tags:
+ *       - Recipes
+ *     title: Chat with Recipe
+ *     summary: Chat with an LLM about a specific recipe
+ *     description: Sends a message history and recipe ID to get an answer from the LLM based on the recipe context.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             title: Chat Request
+ *             properties:
+ *               recipeId:
+ *                 type: string
+ *               messages:
+ *                 type: array
+ *                 items:
+ *                   type: object
+ *                   properties:
+ *                     role:
+ *                       type: string
+ *                     content:
+ *                       type: string
+ *             required:
+ *               - recipeId
+ *               - messages
+ *     responses:
+ *       200:
+ *         description: LLM answer.
+ *       400:
+ *         description: Missing parameters.
+ *       500:
+ *         description: Server error.
+ */
+router.post("/chat", secretKeyMiddleware, sessionMiddleware, reciperController.chat);
 
 
 module.exports = router;

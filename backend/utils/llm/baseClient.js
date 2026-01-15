@@ -72,7 +72,9 @@ class BaseLLMClient {
 
     if (history.length > 0) {
       messages = messages.concat(history);
-    } else if (files.length === 0) {
+    }
+
+    if (files.length === 0) {
       messages.push({ role: "user", content: cleanedPrompt });
     }
 

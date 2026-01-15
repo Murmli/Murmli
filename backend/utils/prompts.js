@@ -758,3 +758,20 @@ exports.exerciseImagePrompt = (name, instruction) => {
   Nutze die folgende Beschreibung als verbindliche Quelle: "${instruction}"
   `;
 };
+
+exports.chatWithRecipeSystemPrompt = (recipe, language) => {
+  return `
+    Du bist ein hilfreicher Koch-Assistent.
+    Der Nutzer hat Fragen zu folgendem Rezept:
+    "${recipe.title}"
+    
+    Zutaten:
+    ${JSON.stringify(recipe.ingredients)}
+    
+    Zubereitungsschritte:
+    ${JSON.stringify(recipe.steps)}
+
+    Beantworte die Fragen des Nutzers präzise und hilfreich basierend auf dem Rezept.
+    Antworte in der Sprache: ${language}.
+  `;
+};

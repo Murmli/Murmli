@@ -3,7 +3,7 @@ const UserRecipe = require("../models/userRecipeModel.js");
 const Feedback = require("../models/feedbackModel.js");
 const { translateRecipes, translateString } = require(`../utils/translator.js`);
 const { createRecipe, scaleRecipe } = require(`../utils/recipeUtils.js`);
-const { editRecipeWithLLM } = require("../utils/llm.js");
+const { editRecipeWithLLM, chatWithRecipe } = require("../utils/llm.js");
 const recipeImagePromptAgent = require("../utils/agents/recipeImagePromptAgent.js");
 const { generateImage, uploadImageToStorage } = require("../utils/imageUtils.js");
 
@@ -273,6 +273,47 @@ exports.promoteUserRecipe = async (req, res) => {
         console.error(`Error promoting user recipe ${recipeId}:`, promotionError);
       }
     })();
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Server Error" });
+  }
+};
+
+exports.chat = async (req, res) => {
+  try {
+    const { recipeId, messages } = req.body;
+    const user = req.user;
+
+    if (!recipeId || !messages || !Array.isArray(messages)) {
+      return res.status(400).json({ error: "Recipe ID and messages array are required" });
+    }
+
+    const [systemRecipe, userRecipe] = await Promise.all([
+      Recipe.findById(recipeId).lean(),
+      UserRecipe.findById(recipeId).lean()
+    ]);
+
+    const recipe = systemRecipe || userRecipe;
+
+    if (!recipe) {
+      return res.status(404).json({ error: "Recipe not found" });
+    }
+
+    // Translate recipe if necessary (optional, but good for context if user speaks different language)
+    // However, the system prompt is generated based on recipe content. 
+    // If the recipe is in DB language (likely German or mixed), and user language is different,
+    // we might want to translate it first. But 'translateRecipes' is heavy.
+    // Let's assume the LLM can handle the recipe content in original language and user prompts in their language.
+    // But passing correct 'language' to chatWithRecipe is crucial for the output.
+
+    const answer = await chatWithRecipe(messages, recipe, user.language);
+
+    if (!answer) {
+      return res.status(500).json({ error: "LLM Error" });
+    }
+
+    return res.status(200).json({ answer });
+
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: "Server Error" });

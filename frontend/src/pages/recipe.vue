@@ -121,6 +121,16 @@
         </v-col>
       </v-row>
     </div>
+
+    <!-- Chat Dialog -->
+    <RecipeChatDialog v-model="showChatDialog" :recipeId="recipeStore.currentRecipe._id" />
+    
+    <!-- Floating Action Button for Chat -->
+    <v-layout-item model-value position="bottom" class="text-end pointer-events-none pa-4 mb-3">
+      <v-btn style="pointer-events: auto;" icon="mdi-chat" elevation="8" size="large" color="primary"
+        @click="showChatDialog = true"></v-btn>
+    </v-layout-item>
+
   </div>
 </template>
 
@@ -133,12 +143,15 @@
 import { useLanguageStore } from '@/stores/languageStore'
 import { useRecipeStore } from '@/stores/recipeStore'
 import { useRouter } from 'vue-router'
-import { onMounted, onUnmounted, computed } from 'vue'
+import { onMounted, onUnmounted, computed, ref } from 'vue'
 import { KeepAwake } from '@capacitor-community/keep-awake'
+import RecipeChatDialog from '@/components/dialogs/RecipeChatDialog.vue'
 
 const languageStore = useLanguageStore()
 const recipeStore = useRecipeStore()
 const router = useRouter()
+
+const showChatDialog = ref(false)
 
 const personText = computed(() => {
   return recipeStore.currentRecipe.servings === 1

@@ -433,6 +433,24 @@ export const useRecipeStore = defineStore("recipeStore", {
       return false;
     },
 
+    async chatWithRecipe(recipeId, messages) {
+      const apiStore = useApiStore();
+      try {
+        const response = await apiStore.apiRequest(
+          "post",
+          "/recipe/chat",
+          { recipeId, messages },
+          false // Don't show global loader, we handle loading state in component
+        );
+        if (response && response.status === 200) {
+          return response.data;
+        }
+      } catch (error) {
+        this.error = error;
+      }
+      return null;
+    },
+
     async downloadSelectedRecipesPdf(recipes) {
       const apiStore = useApiStore();
       try {
