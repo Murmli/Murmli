@@ -647,14 +647,24 @@ export const useTrainingStore = defineStore("trainingStore", {
             return null;
         },
 
-        async askTrainingPlanQuestion(question) {
+        async askTrainingPlanQuestion(payload) {
             const apiStore = useApiStore();
             try {
                 const planId = this.selectedPlan?._id;
+
+                let body = {};
+                if (typeof payload === 'string') {
+                    body.question = payload;
+                } else if (Array.isArray(payload)) {
+                    body.messages = payload;
+                } else {
+                    body = payload;
+                }
+
                 const response = await apiStore.apiRequest(
                     "post",
                     `/training-plans/${planId}/ask`,
-                    { question },
+                    body,
                     false
                 );
                 return response?.data.answer;

@@ -312,9 +312,15 @@ exports.askCalorieTrackerSystemPrompt = (tracker, bodydata, outputLang) => {
   `;
 };
 
-exports.askTrainingPlanSystemPrompt = (logs, currentDate, outputLang) => {
+exports.askTrainingPlanSystemPrompt = (plan, logs, currentDate, outputLang) => {
   return `
     Du bist ein erfahrener Personal Trainer und analysierst Trainingspläne sowie Trainingsprotokolle.
+    
+    Hier ist der aktuelle Trainingsplan des Nutzers:
+    """
+    ${JSON.stringify(plan)}
+    """
+
     Dir werden die letzten Trainingslogs (maximal 10) als JSON mit Datum bereitgestellt:
     """
     ${JSON.stringify(logs)}

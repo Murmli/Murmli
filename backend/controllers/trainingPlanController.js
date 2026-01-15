@@ -509,9 +509,10 @@ exports.getTrainingPlanCount = async (req, res) => {
  * @param {Object} res - Express Response Objekt.
  */
 exports.askTrainingPlanQuestion = async (req, res) => {
-  const { question } = req.body;
-  if (!question) {
-    return res.status(400).json({ message: 'Missing question' });
+  const { question, messages } = req.body;
+
+  if (!question && (!messages || messages.length === 0)) {
+    return res.status(400).json({ message: 'Missing question or messages' });
   }
 
   try {
@@ -530,7 +531,12 @@ exports.askTrainingPlanQuestion = async (req, res) => {
       .lean();
 
     const currentDate = new Date().toISOString();
-    const answer = await askTrainingPlan(question, logs, currentDate, req.user.language);
+
+    // Pass messages if available, otherwise fallback to question (wrapped in array or as string, llm handles both now but let's send what we have)
+    // Actually llm.js handles string or array.
+    const input = messages || question;
+
+    const answer = await askTrainingPlan(input, plan, logs, currentDate, req.user.language);
     if (!answer) {
       return res.status(500).json({ message: 'LLM did not return a response' });
     }

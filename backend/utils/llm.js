@@ -553,19 +553,32 @@ exports.askCalorieTracker = async (question, tracker, bodydata, outputLang) => {
   }
 };
 
-exports.askTrainingPlan = async (question, logs, currentDate, outputLang) => {
+exports.askTrainingPlan = async (messages, plan, logs, currentDate, outputLang) => {
   try {
     const { askTrainingPlanSystemPrompt } = require("./prompts.js");
 
-    const systemPrompt = askTrainingPlanSystemPrompt(logs, currentDate, outputLang);
+    const systemPrompt = askTrainingPlanSystemPrompt(plan, logs, currentDate, outputLang);
+
+    // If messages is an array (chat mode), take the last one as prompt and others as history
+    // If it is a string (legacy/single question), treat it as prompt without history
+    let prompt;
+    let history = [];
+
+    if (Array.isArray(messages)) {
+      prompt = messages[messages.length - 1].content;
+      history = messages.slice(0, -1);
+    } else {
+      prompt = messages;
+    }
 
     const apiOptions = {
       systemPrompt,
       cache: false,
       json: false,
+      history
     };
 
-    const answer = await apiCall(question, apiOptions);
+    const answer = await apiCall(prompt, apiOptions);
     return answer ? answer : false;
   } catch (error) {
     console.error("Error:", error.message);
