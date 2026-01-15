@@ -740,4 +740,47 @@ router.delete("/activity/remove", secretKeyMiddleware, sessionMiddleware, tracke
  */
 router.put("/activity/update", secretKeyMiddleware, sessionMiddleware, trackerController.updateActivity);
 
+/**
+ * @swagger
+ * /api/v2/calorietracker/chat:
+ *   post:
+ *     tags: [Tracker]
+ *     title: Chat with Tracker
+ *     summary: Chat with AI about your tracker data
+ *     description: Sends a message history and tracker context to AI and receives a response.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - messages
+ *               - trackerId
+ *             properties:
+ *               messages:
+ *                 type: array
+ *                 items:
+ *                   type: object
+ *                   properties:
+ *                     role: { type: string }
+ *                     content: { type: string }
+ *               trackerId:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: AI response returned successfully
+ *       400:
+ *         description: Invalid input
+ *       401:
+ *         description: Unauthorized
+ *       403:
+ *         description: Forbidden
+ *       404:
+ *         description: Tracker not found
+ *       500:
+ *         description: Server error
+ */
+router.post("/chat", secretKeyMiddleware, sessionMiddleware, trackerController.chat);
+
 module.exports = router;

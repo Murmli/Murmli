@@ -413,7 +413,14 @@
     },
     "descriptionLabel": "补充说明",
     "descriptionPlaceholder": "请描述图片中的餐食或活动",
-    "activityRequired": "请在继续之前输入一项活动。"
+    "activityRequired": "请在继续之前输入一项活动。",
+    "chat": {
+      "title": "追踪器助手",
+      "placeholder": "询问有关你卡路里的问题...",
+      "emptyState": "向我提问有关你的饮食！",
+      "welcomeMessage": "你好！我是你的追踪器助手。我可以回答有关你的卡路里、营养成分和饮食习惯的问题。",
+      "openButton": "打开助手"
+    }
   },
   "trainingPlans": {
     "title": "训练计划",

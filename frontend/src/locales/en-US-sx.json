@@ -413,7 +413,14 @@
     },
     "descriptionLabel": "A lil' extra description",
     "descriptionPlaceholder": "Describe yer meal or activity 'bout the picture",
-    "activityRequired": "Please go on and enter an activity before ya mosey on, now."
+    "activityRequired": "Please go on and enter an activity before ya mosey on, now.",
+    "chat": {
+      "title": "Tracker Assistant, y'all",
+      "placeholder": "Go on and ask 'bout yer calories...",
+      "emptyState": "Go on, ask me somethin' 'bout yer eatin'!",
+      "welcomeMessage": "Well howdy! I'm yer tracker assistant. I can answer questions 'bout yer calories, nutrients, and eatin' habits.",
+      "openButton": "Open up the assistant"
+    }
   },
   "trainingPlans": {
     "title": "Trainin' Plans",

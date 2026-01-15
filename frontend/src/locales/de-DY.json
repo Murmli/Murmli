@@ -413,7 +413,14 @@
     },
     "descriptionLabel": "Extra-Infos",
     "descriptionPlaceholder": "Beschreib kurz, was auf dem Bild abgeht — Mahlzeit oder Aktivität",
-    "activityRequired": "Gib erstmal 'ne Aktivität ein, sonst geht's nicht weiter."
+    "activityRequired": "Gib erstmal 'ne Aktivität ein, sonst geht's nicht weiter.",
+    "chat": {
+      "title": "Tracker-Assi",
+      "placeholder": "Frag mich was zu deinen Kalorien...",
+      "emptyState": "Schieß los — frag mich was zu deiner Ernährung!",
+      "welcomeMessage": "Yo! Ich bin dein Tracker-Assi. Ich geb dir Antworten zu Kalorien, Nährwerten und deinem Essverhalten – frag einfach.",
+      "openButton": "Assi starten"
+    }
   },
   "trainingPlans": {
     "title": "Trainingspläne",

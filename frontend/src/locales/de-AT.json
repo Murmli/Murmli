@@ -413,7 +413,14 @@
     },
     "descriptionLabel": "Zuaetzliche Beschreib'n",
     "descriptionPlaceholder": "Beschreib' dei Mahlzeit oda Aktivität im Bezug auf's Bild",
-    "activityRequired": "Bitte gib a Aktivität ein, bevorst weiterfährst."
+    "activityRequired": "Bitte gib a Aktivität ein, bevorst weiterfährst.",
+    "chat": {
+      "title": "Tracker-Assistent",
+      "placeholder": "Frag mi wos zu deinen Kalorien...",
+      "emptyState": "Frag mi wos über deine Ernährung!",
+      "welcomeMessage": "Servus! I bin dein Tracker-Assistent. I kann dir Frogn zu deinen Kalorien, Nährwert'n und Essgewohnheiten beantworten.",
+      "openButton": "Assistent aufmachen"
+    }
   },
   "trainingPlans": {
     "title": "Trainingspläne",

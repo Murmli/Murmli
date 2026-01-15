@@ -413,7 +413,14 @@
     },
     "descriptionLabel": "Additional Desciption",
     "descriptionPlaceholder": "Descibe yah meal or activity 'bout the pictuah",
-    "activityRequired": "Please entah an activity befaw ya move on."
+    "activityRequired": "Please entah an activity befaw ya move on.",
+    "chat": {
+      "title": "Trackah Assistint",
+      "placeholder": "Ask a question 'bout yah cahlories...",
+      "emptyState": "Ask me somethin' 'bout yah diet!",
+      "welcomeMessage": "Hey! I'm yah Trackah Assistint. I can answah questions 'bout yah cahlories, nutrition facts, and eatin' habits.",
+      "openButton": "Open Assistint"
+    }
   },
   "trainingPlans": {
     "title": "Trainin' Plans",

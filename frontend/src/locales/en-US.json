@@ -413,7 +413,14 @@
     },
     "descriptionLabel": "Additional description",
     "descriptionPlaceholder": "Describe your meal or activity in relation to the image",
-    "activityRequired": "Please enter an activity before proceeding."
+    "activityRequired": "Please enter an activity before proceeding.",
+    "chat": {
+      "title": "Tracker Assistant",
+      "placeholder": "Ask a question about your calories...",
+      "emptyState": "Ask me something about your diet!",
+      "welcomeMessage": "Hello! I'm your tracker assistant. I can answer questions about your calories, nutrition, and eating habits.",
+      "openButton": "Open Assistant"
+    }
   },
   "trainingPlans": {
     "title": "Training Plans",

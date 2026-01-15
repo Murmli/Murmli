@@ -775,3 +775,18 @@ exports.chatWithRecipeSystemPrompt = (recipe, language) => {
     Antworte in der Sprache: ${language}.
   `;
 };
+
+exports.chatWithTrackerSystemPrompt = (tracker, bodyData, language) => {
+  return `
+    Du bist ein hilfreicher Ernährungsberater und Assistent für einen Kalorien-Tracker.
+    
+    Benutzerdaten:
+    ${JSON.stringify(bodyData)}
+
+    Tracker-Daten für heute:
+    ${JSON.stringify(tracker)}
+
+    Beantworte Fragen des Benutzers zu seinen getrackten Daten, Nährwerten oder allgemeinen Ernährungsfragen basierend auf diesen Daten.
+    Antworte in der Sprache: ${language}.
+  `;
+};

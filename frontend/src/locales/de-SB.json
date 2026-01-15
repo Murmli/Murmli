@@ -413,7 +413,14 @@
     },
     "descriptionLabel": "Z'sätzliche Beschriebung",
     "descriptionPlaceholder": "Beschreib dei' Mahlzeit oder Aktivität im Bezug auf's Bild",
-    "activityRequired": "Bitte gib erscht a Aktivität ei, bevor du weitermachsch."
+    "activityRequired": "Bitte gib erscht a Aktivität ei, bevor du weitermachsch.",
+    "chat": {
+      "title": "Tracker-Assischdent",
+      "placeholder": "Stell a Frog zu deina Kalorie...",
+      "emptyState": "Frag mi ebbes über dei Ernährig!",
+      "welcomeMessage": "Grüaß di! I ben dei Tracker-Assischdent. I kann dir Froga zu deina Kalorie, Nährwerta und Essgewohnheita beantworta.",
+      "openButton": "Assischdent aufmacha"
+    }
   },
   "trainingPlans": {
     "title": "Trainingsplänä",

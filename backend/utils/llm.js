@@ -792,3 +792,25 @@ exports.chatWithRecipe = async (messages, recipe, language) => {
     return false;
   }
 };
+
+exports.chatWithTracker = async (messages, tracker, bodyData, language) => {
+  try {
+    const { chatWithTrackerSystemPrompt } = require("./prompts.js");
+    const systemPrompt = chatWithTrackerSystemPrompt(tracker, bodyData, language);
+
+    const lastMessage = messages[messages.length - 1].content;
+    const history = messages.slice(0, -1);
+
+    const answer = await apiCall(lastMessage, {
+      systemPrompt,
+      cache: false,
+      json: false,
+      history: history
+    });
+
+    return answer;
+  } catch (error) {
+    console.error("Error in chatWithTracker:", error.message);
+    return false;
+  }
+};

@@ -413,7 +413,14 @@
     },
     "descriptionLabel": "Description supplémentaire",
     "descriptionPlaceholder": "Décrivez votre repas ou activité en rapport avec l'image",
-    "activityRequired": "Veuillez saisir une activité avant de continuer."
+    "activityRequired": "Veuillez saisir une activité avant de continuer.",
+    "chat": {
+      "title": "Assistant de suivi",
+      "placeholder": "Pose une question sur tes calories...",
+      "emptyState": "Demande-moi quelque chose sur ton alimentation !",
+      "welcomeMessage": "Bonjour ! Je suis ton assistant de suivi. Je peux répondre à tes questions concernant tes calories, les valeurs nutritionnelles et tes habitudes alimentaires.",
+      "openButton": "Ouvrir l'assistant"
+    }
   },
   "trainingPlans": {
     "title": "Plans d'entraînement",

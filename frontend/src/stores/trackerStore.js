@@ -104,6 +104,24 @@ export const useTrackerStore = defineStore("trackerStore", {
       return null;
     },
 
+    // Chat with the tracker
+    async chatWithTracker(messages) {
+      const apiStore = useApiStore();
+      try {
+        const response = await apiStore.apiRequest(
+          "post",
+          "/calorietracker/chat",
+          { messages, trackerId: this.tracker._id }
+        );
+        if (response.status === 200) {
+          return response.data;
+        }
+      } catch (error) {
+        this.error = error;
+      }
+      return null;
+    },
+
     // Track a food item by text input
     async trackFoodByText(text) {
       this.isAddingItem = true;

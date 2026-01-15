@@ -6,7 +6,7 @@ const User = require("../models/userModel.js");
 const UserRecipe = require("../models/userRecipeModel.js");
 const { calculateAge, calculateCalories, calculateNutrientDistribution, calculateDietCalories, calculateFoodItemsTotals } = require(`../utils/trackerUtils.js`);
 
-const { textToTrack, audioToTrack, imageToTrack, textToActivity, askCalorieTracker } = require(`../utils/llm.js`);
+const { textToTrack, audioToTrack, imageToTrack, textToActivity, askCalorieTracker, chatWithTracker } = require(`../utils/llm.js`);
 const fs = require("fs");
 
 const bodyDataFields = ["height", "weight", "birthyear", "gender", "dietType", "dietLevel", "dietStartedAt", "baseCalories", "recommendations", "workHoursWeek", "workDaysPAL"];
@@ -802,23 +802,83 @@ exports.addItemToToday = async (req, res) => {
 
     const foodItem = sourceTracker.foodItems.id(foodItemId);
     if (!foodItem) {
-      return res.status(404).json({ error: "Food item not found" });
+      return res.status(404).json({ error: "Food item not found in source tracker" });
     }
 
+    // Erstelle ein neues FoodItem-Objekt für den heutigen Tracker
+    // Wichtig: Neue _id generieren, damit es ein eigenständiges Objekt ist
+    const newFoodItem = {
+      name: foodItem.name,
+      amount: foodItem.amount,
+      unit: foodItem.unit,
+      kcal: foodItem.kcal,
+      protein: foodItem.protein,
+      carbohydrates: foodItem.carbohydrates,
+      fat: foodItem.fat,
+      healthyRating: foodItem.healthyRating,
+      daily: 0 // Beim Kopieren standardmäßig nicht als daily markieren
+    };
+
+    // Tracker für heute abrufen oder erstellen
     const today = new Date();
-    today.setUTCHours(0, 0, 0, 0);
+    // getOrCreateTracker erwartet ein Datum-Objekt oder String
+    let tracker = await getOrCreateTracker(user._id, today, user.recommendations);
 
-    const todayTracker = await getOrCreateTracker(user._id, today, user.recommendations);
+    tracker.foodItems.push(newFoodItem);
 
-    todayTracker.foodItems.push(foodItem.toObject());
-    const totals = calculateFoodItemsTotals(todayTracker.foodItems);
-    todayTracker.totals = totals;
+    const totals = calculateFoodItemsTotals(tracker.foodItems);
+    tracker.totals = totals;
 
-    await todayTracker.save();
+    await tracker.save();
 
-    return res.status(200).json({ message: "Item added to today's tracker", tracker: todayTracker });
+    return res.status(200).json({ message: "Food item added to today's tracker successfully", tracker });
+
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: "Server Error" });
   }
 };
+
+exports.chat = async (req, res) => {
+  try {
+    const user = req.user;
+    const { messages, trackerId } = req.body;
+
+    if (!messages || !Array.isArray(messages) || messages.length === 0) {
+      return res.status(400).json({ error: "Messages array is required." });
+    }
+
+    if (!trackerId) {
+      return res.status(400).json({ error: "Tracker ID is required." });
+    }
+
+    let tracker = await Tracker.findOne({ _id: trackerId, user: user._id });
+
+    if (!tracker) {
+      return res.status(404).json({ error: "Tracker not found." });
+    }
+
+    const bodyData = {
+      height: user.height,
+      weight: user.weight,
+      birthyear: user.birthyear,
+      gender: user.gender,
+      dietType: user.dietType,
+      dietLevel: user.dietLevel,
+      recommendations: user.recommendations
+    };
+
+    const response = await chatWithTracker(messages, tracker, bodyData, user.language);
+
+    if (response) {
+      return res.status(200).json({ answer: response });
+    } else {
+      return res.status(500).json({ error: "Failed to generate response." });
+    }
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Server Error" });
+  }
+};
+

@@ -43,9 +43,6 @@
 
   <!-- ListSort Dialog -->
   <ListSortComponent v-if="dialogStore.dialogs.listSortDialog" v-model="dialogStore.dialogs.listSortDialog" />
-
-  <!-- Ask Dialog -->
-  <AskDialog v-if="dialogStore.dialogs.askDialog" v-model="dialogStore.dialogs.askDialog" />
 </template>
 
 <script setup>
@@ -66,7 +63,6 @@ const menuItems = computed(() => [
   { title: languageStore.t('tracker.calorieGoal'), action: () => calorieGoal() },
   { title: languageStore.t('tracker.trackActivity'), action: () => trackActivity() },
   { title: languageStore.t('tracker.trackRecipe'), action: () => trackRecipe() },
-  { title: languageStore.t('general.ask'), action: () => askQuestion() },
 ]);
 
 // Expose actions to the global bottom-sheet menu

@@ -413,7 +413,14 @@
     },
     "descriptionLabel": "Extra description, dude",
     "descriptionPlaceholder": "Describe your meal or activity in relation to the pic, dude",
-    "activityRequired": "Yo, drop an activity in before you paddle out, alright?"
+    "activityRequired": "Yo, drop an activity in before you paddle out, alright?",
+    "chat": {
+      "title": "Tracker Assistant, brah",
+      "placeholder": "Shoot me a question about your calories, dude...",
+      "emptyState": "Hit me up with something about your eats, bro!",
+      "welcomeMessage": "Hey, brah! I'm your tracker assistant — stoked to help with your calories, nutrients, and what you chow down.",
+      "openButton": "Open Assistant, dude"
+    }
   },
   "trainingPlans": {
     "title": "Training Plans",

@@ -413,7 +413,14 @@
     },
     "descriptionLabel": "No a Beschreibung dazua",
     "descriptionPlaceholder": "Beschreib, wos'd gessn host oder wos'd gmacht host zum Bild",
-    "activityRequired": "Gib bitt' a Aktivität ei, bevor'd du weida machst."
+    "activityRequired": "Gib bitt' a Aktivität ei, bevor'd du weida machst.",
+    "chat": {
+      "title": "Tracker-Assistent",
+      "placeholder": "Frag mi wos zu dei'n Kalorien...",
+      "emptyState": "Frag mi wos über dei Ernährong!",
+      "welcomeMessage": "Servus! I bin da Tracker-Assistent. I ko da Frogn zu dei'n Kalorien, Nährwertn und Essgewohnheiten beantworten.",
+      "openButton": "Assistent aufmacha"
+    }
   },
   "trainingPlans": {
     "title": "Trainingspläne",

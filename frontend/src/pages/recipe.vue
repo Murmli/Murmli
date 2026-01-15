@@ -129,7 +129,14 @@
     </div>
 
     <!-- Chat Dialog -->
-    <RecipeChatDialog v-model="showChatDialog" :recipeId="recipeStore.currentRecipe._id" />
+    <ChatDialog 
+      v-model="showChatDialog" 
+      :title="languageStore.t('recipe.chat.title') || 'Recipe Chat'"
+      :placeholder="languageStore.t('recipe.chat.placeholder') || 'Type your question...'"
+      :empty-state="languageStore.t('recipe.chat.emptyState') || 'Ask a question about this recipe!'"
+      :welcome-message="languageStore.t('recipe.chat.welcomeMessage')"
+      :on-send="handleChatSend"
+    />
 
   </div>
 </template>
@@ -145,13 +152,17 @@ import { useRecipeStore } from '@/stores/recipeStore'
 import { useRouter } from 'vue-router'
 import { onMounted, onUnmounted, computed, ref } from 'vue'
 import { KeepAwake } from '@capacitor-community/keep-awake'
-import RecipeChatDialog from '@/components/dialogs/RecipeChatDialog.vue'
+import ChatDialog from '@/components/dialogs/ChatDialog.vue'
 
 const languageStore = useLanguageStore()
 const recipeStore = useRecipeStore()
 const router = useRouter()
 
 const showChatDialog = ref(false)
+
+const handleChatSend = async (message, history) => {
+  return await recipeStore.chatWithRecipe(recipeStore.currentRecipe._id, history);
+};
 
 const personText = computed(() => {
   return recipeStore.currentRecipe.servings === 1
