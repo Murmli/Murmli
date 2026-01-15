@@ -572,7 +572,19 @@
     "calorieTrackerTotal": "User mit Kalorienzähler insgesamt",
     "calorieTrackerToday": "User mit Kalorienzähler heute am Start",
     "calorieTrackerWeek": "User mit Kalorienzähler diese Woche am Start",
-    "trainingLogsWeek": "Erstellte Trainings-Logs (Woche)"
+    "trainingLogsWeek": "Erstellte Trainings-Logs (Woche)",
+    "usersLast7Days": "Neue User (7 Tage)",
+    "usersLast30Days": "Neue User (30 Tage)",
+    "usersLast90Days": "Neue User (90 Tage)",
+    "growth": "Zuwachs",
+    "activity": "Aktivität",
+    "content": "Content",
+    "details": "Details",
+    "smartInsights": "Smarte Insights",
+    "aiCacheSaved": "Gescachte AI-Anfragen (Cache)",
+    "stickiness": "Nutzer-Bindung (Stickiness)",
+    "unreadFeedback": "Ungelesenes Feedback",
+    "stickinessHint": "Ratio von Daily- zu Monthly-Usern. Ist der Wert hoch (>20%), sind die Leute richtig hooked."
   },
   "adminTools": {
     "title": "Admin-Kram",

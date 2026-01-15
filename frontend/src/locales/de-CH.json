@@ -572,7 +572,19 @@
     "calorieTrackerTotal": "Nutzer mit Kalorienzäller insgsamt",
     "calorieTrackerToday": "Nutzer mit Kalorienzäller hüt",
     "calorieTrackerWeek": "Nutzer mit Kalorienzäller die Wuche",
-    "trainingLogsWeek": "Erstellti Trainingslogs (Wuche)"
+    "trainingLogsWeek": "Erstellti Trainingslogs (Wuche)",
+    "usersLast7Days": "Neui Nutzer (7 Täg)",
+    "usersLast30Days": "Neui Nutzer (30 Täg)",
+    "usersLast90Days": "Neui Nutzer (90 Täg)",
+    "growth": "Wachstum",
+    "activity": "Aktivität",
+    "content": "Ihalt",
+    "details": "Details",
+    "smartInsights": "Smarte Einblicke",
+    "aiCacheSaved": "Gsparte KI-Anfräge (Cache)",
+    "stickiness": "Nutzer-Bindig (Stickiness)",
+    "unreadFeedback": "Ungeläsens Feedback",
+    "stickinessHint": "Verhältnis vo tägliche zu monatliche Nutzer. En hoher Wert (>20%) zeigt e starchi Gwöhnig."
   },
   "adminTools": {
     "title": "Admin-Tools",

@@ -572,7 +572,19 @@
     "calorieTrackerTotal": "Utilisateurs avec compteur de calories au total",
     "calorieTrackerToday": "Utilisateurs avec compteur de calories aujourd'hui",
     "calorieTrackerWeek": "Utilisateurs avec compteur de calories cette semaine",
-    "trainingLogsWeek": "Journaux d'entraînement créés (semaine)"
+    "trainingLogsWeek": "Journaux d'entraînement créés (semaine)",
+    "usersLast7Days": "Nouveaux utilisateurs (7 jours)",
+    "usersLast30Days": "Nouveaux utilisateurs (30 jours)",
+    "usersLast90Days": "Nouveaux utilisateurs (90 jours)",
+    "growth": "Croissance",
+    "activity": "Activité",
+    "content": "Contenu",
+    "details": "Détails",
+    "smartInsights": "Aperçus intelligents",
+    "aiCacheSaved": "Requêtes IA économisées (cache)",
+    "stickiness": "Taux de fidélisation (stickiness)",
+    "unreadFeedback": "Commentaires non lus",
+    "stickinessHint": "Rapport entre les utilisateurs quotidiens et mensuels. Une valeur élevée (>20 %) indique une forte habitude d'utilisation."
   },
   "adminTools": {
     "title": "Outils d'administration",

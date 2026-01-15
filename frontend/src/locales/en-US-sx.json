@@ -572,7 +572,19 @@
     "calorieTrackerTotal": "Total users with calorie tracker, y'all",
     "calorieTrackerToday": "Users with calorie tracker today, darlin'",
     "calorieTrackerWeek": "Users with calorie tracker this week, sugar",
-    "trainingLogsWeek": "Created trainin' logs (week)"
+    "trainingLogsWeek": "Created trainin' logs (week)",
+    "usersLast7Days": "New users (past 7 days)",
+    "usersLast30Days": "New users (past 30 days)",
+    "usersLast90Days": "New users (past 90 days)",
+    "growth": "Growin'",
+    "activity": "Activity",
+    "content": "Content",
+    "details": "Details",
+    "smartInsights": "Smart insights",
+    "aiCacheSaved": "Saved AI requests (cache)",
+    "stickiness": "User stickiness",
+    "unreadFeedback": "Unread feedback",
+    "stickinessHint": "That's the ratio of daily to monthly users. If it's high — 'round twenty percent or more — it usually means folks are gettin' into the habit and comin' back regular-like."
   },
   "adminTools": {
     "title": "Admin Tools",

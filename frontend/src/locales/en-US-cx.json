@@ -572,7 +572,19 @@
     "calorieTrackerTotal": "Total dudes tracking calories, man",
     "calorieTrackerToday": "Dudes tracking calories today, bro",
     "calorieTrackerWeek": "Dudes tracking calories this week, dude",
-    "trainingLogsWeek": "Training logs made (this week, dude)"
+    "trainingLogsWeek": "Training logs made (this week, dude)",
+    "usersLast7Days": "New riders (last 7 days), brah",
+    "usersLast30Days": "New riders (last 30 days), dude",
+    "usersLast90Days": "New riders (last 90 days), bro",
+    "growth": "Growth — catchin' the swell",
+    "activity": "Activity — how the crew's movin'",
+    "content": "Content — stuff we're puttin' out",
+    "details": "Deets",
+    "smartInsights": "Smart insights — brainy waves",
+    "aiCacheSaved": "Saved AI requests (cache) — stashed",
+    "stickiness": "Stickiness — how hooked the crew is",
+    "unreadFeedback": "Unread feedback — messages waitin' in the lineup",
+    "stickinessHint": "Ratio of daily to monthly users. If it's high (>20%), folks are gettin' hooked, man."
   },
   "adminTools": {
     "title": "Admin Tools — chill zone, bro",

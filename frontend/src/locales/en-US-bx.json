@@ -572,7 +572,19 @@
     "calorieTrackerTotal": "Usahs with calahrie trackah total",
     "calorieTrackerToday": "Usahs with calahrie trackah today",
     "calorieTrackerWeek": "Usahs with calahrie trackah this week",
-    "trainingLogsWeek": "Ceated tainin' logs (week)"
+    "trainingLogsWeek": "Ceated tainin' logs (week)",
+    "usersLast7Days": "New usehs (7 days)",
+    "usersLast30Days": "New usehs (30 days)",
+    "usersLast90Days": "New usehs (90 days)",
+    "growth": "Gowth",
+    "activity": "Activity",
+    "content": "Content",
+    "details": "Details",
+    "smartInsights": "Smat insights",
+    "aiCacheSaved": "Saved AI equests (cache)",
+    "stickiness": "Useh etention (Stickiness)",
+    "unreadFeedback": "Unseen feedback",
+    "stickinessHint": "Daily vs monthly usehs. A high value (>20%) shows stong habit fomation."
   },
   "adminTools": {
     "title": "Admin Tools",

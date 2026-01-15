@@ -572,7 +572,19 @@
     "calorieTrackerTotal": "कुल कैलोरी ट्रैकर वाले उपयोगकर्ता",
     "calorieTrackerToday": "आज कैलोरी ट्रैकर वाले उपयोगकर्ता",
     "calorieTrackerWeek": "इस सप्ताह कैलोरी ट्रैकर वाले उपयोगकर्ता",
-    "trainingLogsWeek": "बनाए गए प्रशिक्षण लॉग (सप्ताह)"
+    "trainingLogsWeek": "बनाए गए प्रशिक्षण लॉग (सप्ताह)",
+    "usersLast7Days": "नए उपयोगकर्ता (7 दिनों)",
+    "usersLast30Days": "नए उपयोगकर्ता (30 दिनों)",
+    "usersLast90Days": "नए उपयोगकर्ता (90 दिनों)",
+    "growth": "वृद्धि",
+    "activity": "गतिविधि",
+    "content": "सामग्री",
+    "details": "विवरण",
+    "smartInsights": "स्मार्ट अंतर्दृष्टि",
+    "aiCacheSaved": "सहेजे गए AI अनुरोध (कैश)",
+    "stickiness": "उपयोगकर्ता बंधन (स्टिकिनेस)",
+    "unreadFeedback": "अनपढ़ी प्रतिक्रिया",
+    "stickinessHint": "दैनिक और मासिक उपयोगकर्ताओं का अनुपात। एक उच्च मान (>20%) मजबूत आदत बनने का संकेत देता है।"
   },
   "adminTools": {
     "title": "प्रशासनिक उपकरण",

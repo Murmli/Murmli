@@ -572,7 +572,19 @@
     "calorieTrackerTotal": "总共使用卡路里追踪器的用户",
     "calorieTrackerToday": "今天使用卡路里追踪器的用户",
     "calorieTrackerWeek": "本周使用卡路里追踪器的用户",
-    "trainingLogsWeek": "创建的训练日志（周）"
+    "trainingLogsWeek": "创建的训练日志（周）",
+    "usersLast7Days": "新用户（7天）",
+    "usersLast30Days": "新用户（30天）",
+    "usersLast90Days": "新用户（90天）",
+    "growth": "增长",
+    "activity": "活跃度",
+    "content": "内容",
+    "details": "详情",
+    "smartInsights": "智能洞察",
+    "aiCacheSaved": "节省的 AI 请求（缓存）",
+    "stickiness": "用户粘性",
+    "unreadFeedback": "未读反馈",
+    "stickinessHint": "日活跃用户与月活跃用户之比。较高的值（>20%）表明用户形成了较强的使用习惯。"
   },
   "adminTools": {
     "title": "管理员工具",

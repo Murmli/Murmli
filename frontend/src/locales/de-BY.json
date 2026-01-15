@@ -572,7 +572,19 @@
     "calorieTrackerTotal": "Nutzas mit Kalorienzähler insgsamt",
     "calorieTrackerToday": "Nutzas mit Kalorienzähler heit",
     "calorieTrackerWeek": "Nutzas mit Kalorienzähler de Woch",
-    "trainingLogsWeek": "Erstellte Trainingslogs (Woch')"
+    "trainingLogsWeek": "Erstellte Trainingslogs (Woch')",
+    "usersLast7Days": "Neie Nutzar (7 Tog)",
+    "usersLast30Days": "Neie Nutzar (30 Tog)",
+    "usersLast90Days": "Neie Nutzar (90 Tog)",
+    "growth": "Wachstoa",
+    "activity": "Aktivitäd",
+    "content": "Inhoit",
+    "details": "Deatails",
+    "smartInsights": "Smarte Einblicka",
+    "aiCacheSaved": "Gspart AI-Anfrogn (Cache)",
+    "stickiness": "Nutzar-Bindung (Stickiness)",
+    "unreadFeedback": "Ungelesns Feedback",
+    "stickinessHint": "Des Verhältnis vo de täglichen zua de monatlichen Nutzar. A hoher Wert (>20%) zeigt, dass's a rechte Gewohnheit werdn."
   },
   "adminTools": {
     "title": "Admin-Werkzeig",
