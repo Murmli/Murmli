@@ -224,6 +224,8 @@ exports.getStatistics = async (req, res) => {
     const TrainingLog = require("../models/trainingLogModel.js");
     const ShoppingList = require("../models/shoppingListModel.js");
     const CalorieTracker = require("../models/trackerModel.js");
+    const LlmCache = require("../models/llmCacheModel.js");
+    const Feedback = require("../models/feedbackModel.js");
 
     const now = new Date();
     const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -236,6 +238,15 @@ exports.getStatistics = async (req, res) => {
     startOfYesterday.setDate(startOfYesterday.getDate() - 1);
     const startOfLastWeek = new Date(startOfWeek);
     startOfLastWeek.setDate(startOfLastWeek.getDate() - 7);
+
+    const startOfLast7Days = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+    const startOfPrevious7Days = new Date(now.getTime() - 14 * 24 * 60 * 60 * 1000);
+
+    const usersLast7Days = await User.countDocuments({ createdAt: { $gte: startOfLast7Days } });
+    const usersPrevious7Days = await User.countDocuments({
+      createdAt: { $gte: startOfPrevious7Days, $lt: startOfLast7Days },
+    });
+    const usersLast7DaysDiff = usersLast7Days - usersPrevious7Days;
 
     const usersToday = await User.countDocuments({ createdAt: { $gte: startOfDay } });
     const usersYesterday = await User.countDocuments({
@@ -415,9 +426,40 @@ exports.getStatistics = async (req, res) => {
     });
     const trainingLogsThisWeekDiff = trainingLogsThisWeek - trainingLogsLastWeek;
 
+    // Smart Stats
+    // 1. AI Efficiency
+    const cacheSavedTotal = await LlmCache.countDocuments({});
+
+    // 2. Feedback
+    const unreadFeedback = await Feedback.countDocuments({ readed: false });
+
+    // 3. Stickiness (DAU/MAU)
+    // MAU = Active users in last 30 days
+    const startOfLast30Days = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+    const activeMonthly = new Set();
+
+    for (const { model, field } of models) {
+      const monthlyIds = await model.distinct(field, { updatedAt: { $gte: startOfLast30Days } });
+      monthlyIds.forEach((id) => activeMonthly.add(String(id)));
+    }
+    const activeUsersMonthly = activeMonthly.size;
+
+    let stickiness = 0;
+    if (activeUsersMonthly > 0) {
+      stickiness = Math.round((activeUsersToday / activeUsersMonthly) * 100);
+    }
+
     return res.status(200).json({
+      cacheSavedTotal,
+      unreadFeedback,
+      activeUsersMonthly,
+      stickiness,
       usersToday,
       usersThisWeek,
+      usersLast7Days,
+      usersLast7DaysDiff,
+      usersLast30Days: await User.countDocuments({ createdAt: { $gte: startOfLast30Days } }),
+      usersLast90Days: await User.countDocuments({ createdAt: { $gte: new Date(now.getTime() - 90 * 24 * 60 * 60 * 1000) } }),
       activeUsersToday,
       activeUsersThisWeek,
       recipesLast24h,

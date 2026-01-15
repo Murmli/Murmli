@@ -572,7 +572,19 @@
     "calorieTrackerTotal": "Total users with calorie tracker",
     "calorieTrackerToday": "Users with calorie tracker today",
     "calorieTrackerWeek": "Users with calorie tracker this week",
-    "trainingLogsWeek": "Training logs created (week)"
+    "trainingLogsWeek": "Training logs created (week)",
+    "usersLast7Days": "New Users (7 Days)",
+    "usersLast30Days": "New Users (30 Days)",
+    "usersLast90Days": "New Users (90 Days)",
+    "growth": "Growth",
+    "activity": "Activity",
+    "content": "Content",
+    "details": "Details",
+    "smartInsights": "Smart Insights",
+    "aiCacheSaved": "Saved AI Requests (Cache)",
+    "stickiness": "User Stickiness",
+    "unreadFeedback": "Unread Feedback",
+    "stickinessHint": "Ratio of daily to monthly users. A high value (>20%) indicates strong habit formation."
   },
   "adminTools": {
     "title": "Admin Tools",

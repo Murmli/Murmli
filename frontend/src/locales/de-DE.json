@@ -370,7 +370,19 @@
     "shoppingUpdatedWeek": "Aktualisierte Einkaufslisten diese Woche",
     "calorieTrackerTotal": "Nutzer mit Kalorienzähler insgesamt",
     "calorieTrackerToday": "Nutzer mit Kalorienzähler heute",
-    "calorieTrackerWeek": "Nutzer mit Kalorienzähler diese Woche"
+    "calorieTrackerWeek": "Nutzer mit Kalorienzähler diese Woche",
+    "usersLast7Days": "Neue Nutzer (7 Tage)",
+    "usersLast30Days": "Neue Nutzer (30 Tage)",
+    "usersLast90Days": "Neue Nutzer (90 Tage)",
+    "growth": "Wachstum",
+    "activity": "Aktivität",
+    "content": "Inhalt",
+    "details": "Details",
+    "smartInsights": "Smarte Einblicke",
+    "aiCacheSaved": "Gesparte AI-Anfragen (Cache)",
+    "stickiness": "Nutzer-Bindung (Stickiness)",
+    "unreadFeedback": "Ungelesenes Feedback",
+    "stickinessHint": "Verhältnis von täglichen zu monatlichen Nutzern. Ein hoher Wert (>20%) zeigt eine starke Gewohnheitsbildung."
   },
   "adminTools": {
     "title": "Admin-Tools",
