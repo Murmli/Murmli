@@ -678,3 +678,60 @@ exports.trainingLogToActivity = async ({ currentLog, user }) => {
     return false;
   }
 };
+
+exports.audioToItemArray = async (file) => {
+  try {
+    const { itemToArraySystemPrompt } = require("./prompts.js");
+    const systemPrompt = itemToArraySystemPrompt();
+    const prompt = "Listen to the audio and extract the shopping list items.";
+
+    const answer = await apiCall(prompt, {
+      jsonSchema: shoppingListItemsSchema,
+      systemPrompt,
+      files: [file],
+      cache: false
+    });
+
+    if (!answer || answer === "") {
+      return false;
+    } else {
+      if (!validateItemArray(answer.items)) {
+        return false;
+      } else {
+        return answer.items;
+      }
+    }
+  } catch (error) {
+    console.error("Error in audioToItemArray:", error.message);
+    return false;
+  }
+};
+
+exports.audioToTrack = async (file, comment) => {
+  try {
+    const { textToTrackerArraySystemPrompt } = require("./prompts.js");
+    const systemPrompt = textToTrackerArraySystemPrompt();
+    const prompt = comment || "Listen to the audio/video and extract the food items/meals for tracking.";
+
+    const answer = await apiCall(prompt, {
+      jsonSchema: nutritionItemsSchema,
+      systemPrompt,
+      files: [file],
+      cache: false
+    });
+
+    if (!answer) {
+      return false;
+    } else {
+      // Immer ein Array zurückgeben, auch wenn nur ein einzelnes Objekt vorhanden ist
+      if (answer.items === undefined || answer.items === null) {
+        return false;
+      }
+      const items = Array.isArray(answer.items) ? answer.items : [answer.items];
+      return items;
+    }
+  } catch (error) {
+    console.error("Error in audioToTrack:", error.message);
+    return false;
+  }
+};

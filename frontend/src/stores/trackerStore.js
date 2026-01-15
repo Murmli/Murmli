@@ -143,11 +143,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           "post",
           "/calorietracker/track/audio",
           formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data"
-            }
-          }
+          false
         );
         if (response.status === 200) {
           this.tracker = response.data.tracker;

@@ -76,27 +76,70 @@ class BaseLLMClient {
       messages.push({ role: "user", content: cleanedPrompt });
     }
 
-    // Attach images (if provided)
+    // Attach images or audio (if provided)
     if (files.length > 0) {
-      const imageContent = await Promise.all(
+      const fileContent = await Promise.all(
         files.map(async (file) => {
           const base64Data = await this.encodeFileToBase64(file.path);
-          return {
-            type: "image_url",
-            image_url: { url: `data:${file.mimetype};base64,${base64Data}` },
-          };
+
+          if (file.mimetype.startsWith("audio/")) {
+            // Determine format from mimetype or filename extension
+            let format = "mp3"; // default fallback
+
+            // Map common mimetypes to OpenRouter supported formats
+            const mimeMap = {
+              "audio/wav": "wav",
+              "audio/x-wav": "wav",
+              "audio/mp3": "mp3",
+              "audio/mpeg": "mp3",
+              "audio/ogg": "ogg",
+              "audio/flac": "flac",
+              "audio/aac": "aac",
+              "audio/m4a": "m4a",
+              "audio/mp4": "m4a", // often m4a is in mp4 container
+              "audio/x-m4a": "m4a",
+            };
+
+            if (mimeMap[file.mimetype]) {
+              format = mimeMap[file.mimetype];
+            } else if (file.originalname) {
+              // Try to get extension from filename if mimetype mapping failed
+              const ext = file.originalname.split('.').pop().toLowerCase();
+              const supportedFormats = ["wav", "mp3", "aiff", "aac", "ogg", "flac", "m4a"];
+              if (supportedFormats.includes(ext)) {
+                format = ext;
+              }
+            }
+
+            // Explicitly handle "blob" or other invalid formats by defaulting to mp3 if not found above
+            // (Note: The user should ideally send 'audio/wav' or similar in the Blob)
+
+            return {
+              type: "input_audio",
+              input_audio: {
+                data: base64Data,
+                format: format
+              }
+            };
+          } else {
+            // Default to image handling
+            return {
+              type: "image_url",
+              image_url: { url: `data:${file.mimetype};base64,${base64Data}` },
+            };
+          }
         })
       );
 
-      const userContent = [{ type: "text", text: cleanedPrompt }, ...imageContent];
+      const userContent = [{ type: "text", text: cleanedPrompt }, ...fileContent];
       const lastMessage = messages.length > 0 ? messages[messages.length - 1] : null;
       if (lastMessage && lastMessage.role === "user" && !Array.isArray(lastMessage.content)) {
         messages[messages.length - 1] = {
           role: "user",
-          content: [{ type: "text", text: lastMessage.content }, ...imageContent],
+          content: [{ type: "text", text: lastMessage.content }, ...fileContent],
         };
       } else if (lastMessage && lastMessage.role === "user" && Array.isArray(lastMessage.content)) {
-        lastMessage.content.push(...imageContent);
+        lastMessage.content.push(...fileContent);
       } else {
         messages.push({ role: "user", content: userContent });
       }

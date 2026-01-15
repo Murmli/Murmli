@@ -5,8 +5,8 @@ const Recipe = require("../models/recipeModel.js");
 const User = require("../models/userModel.js");
 const UserRecipe = require("../models/userRecipeModel.js");
 const { calculateAge, calculateCalories, calculateNutrientDistribution, calculateDietCalories, calculateFoodItemsTotals } = require(`../utils/trackerUtils.js`);
-const AudioTranscriber = require('../utils/audioTranscriber.js');
-const { textToTrack, imageToTrack, textToActivity, askCalorieTracker } = require(`../utils/llm.js`);
+
+const { textToTrack, audioToTrack, imageToTrack, textToActivity, askCalorieTracker } = require(`../utils/llm.js`);
 const fs = require("fs");
 
 const bodyDataFields = ["height", "weight", "birthyear", "gender", "dietType", "dietLevel", "dietStartedAt", "baseCalories", "recommendations", "workHoursWeek", "workDaysPAL"];
@@ -203,6 +203,28 @@ exports.calculateCalories = async (req, res) => {
   }
 };
 
+async function trackItems(user, trackerId, foodItems) {
+  try {
+    let tracker = await Tracker.findOne({ _id: trackerId, user: user._id });
+
+    if (!tracker) {
+      throw new Error("Tracker not found");
+    }
+
+    tracker.foodItems.push(...foodItems);
+
+    const totals = calculateFoodItemsTotals(tracker.foodItems);
+    tracker.totals = totals;
+
+    await tracker.save();
+    return tracker;
+  }
+  catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
 exports.trackText = async (req, res) => {
   try {
     const user = req.user;
@@ -221,14 +243,7 @@ exports.trackText = async (req, res) => {
       return res.status(400).json({ error: "No valid food items found in the text." });
     }
 
-    let tracker = await Tracker.findOne({ _id: trackerId, user: user._id });
-
-    tracker.foodItems.push(...foodItems);
-
-    const totals = calculateFoodItemsTotals(tracker.foodItems);
-    tracker.totals = totals;
-
-    await tracker.save();
+    const tracker = await trackItems(user, trackerId, foodItems);
 
     return res.status(200).json({ message: "Food items tracked and totals updated successfully", tracker });
   } catch (err) {
@@ -735,23 +750,35 @@ exports.updateItem = async (req, res) => {
 
 exports.trackItemAudio = async (req, res) => {
   try {
-    const audioTranscriber = new AudioTranscriber();
+    const user = req.user;
+    const { trackerId } = req.body;
     const file = req.file;
 
     if (!file) {
       return res.status(400).json({ error: "Audio file is required." });
     }
 
-    const text = await audioTranscriber.transcribeFromBuffer(file);
-
-    if (!text) {
-      return res.status(400).json({ error: "No text could be transcribed from the audio." });
+    if (!trackerId) {
+      return res.status(400).json({ error: "Tracker ID is required." });
     }
 
-    req.body.mode = "audio";
-    req.body.text = text;
+    const foodItems = await audioToTrack(file, req.body.comment || "");
 
-    return this.trackText(req, res);
+    if (!foodItems || foodItems.length === 0) {
+      return res.status(400).json({ error: "No food items could be identified from the audio." });
+    }
+
+    const tracker = await trackItems(user, trackerId, foodItems);
+
+    // Clean up temp file
+    if (file && file.path && fs.existsSync(file.path)) {
+      fs.unlink(file.path, (err) => {
+        if (err) console.error("Error deleting temp file:", err);
+      });
+    }
+
+    return res.status(200).json({ message: "Food items tracked from audio/video successfully", tracker });
+
   } catch (err) {
     console.log(`Error in trackItemAudio: ${JSON.stringify(req.body)}`);
     console.error(err);

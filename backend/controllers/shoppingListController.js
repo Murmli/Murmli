@@ -3,9 +3,9 @@ const Recipe = require("../models/recipeModel.js");
 const UserRecipe = require("../models/userRecipeModel.js");
 const InviteCode = require("../models/inviteCodeModel.js");
 const { mergeItemArrays, validateItemArray, sortItemById, deleteExpiredInvites, generateInviteCode, saveRecipeIngredients } = require("../utils/shoppingListUtils.js");
-const { textToItemArray, findAlternativeItems } = require(`../utils/llm.js`);
+const { textToItemArray, audioToItemArray, findAlternativeItems } = require(`../utils/llm.js`);
 const { translateItems, translateString } = require(`../utils/translator.js`);
-const AudioTranscriber = require("../utils/audioTranscriber");
+
 const streamManager = require("../utils/streamManager.js");
 
 function broadcastUpdate(list) {
@@ -17,12 +17,10 @@ function broadcastUpdate(list) {
   }
 }
 
-async function addItemsFromText(shoppingListId, text) {
+async function addItems(shoppingListId, newItemsArray) {
   try {
-    const newItemsArray = await textToItemArray(text);
-
     if (!newItemsArray || newItemsArray.length === 0 || !validateItemArray(newItemsArray)) {
-      throw new Error("Invalid item array from text");
+      throw new Error("Invalid item array");
     }
 
     const shoppingList = await ShoppingList.findById(shoppingListId);
@@ -47,6 +45,16 @@ async function addItemsFromText(shoppingListId, text) {
     }
 
     throw new Error("Database Error");
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+async function addItemsFromText(shoppingListId, text) {
+  try {
+    const newItemsArray = await textToItemArray(text);
+    return await addItems(shoppingListId, newItemsArray);
   } catch (error) {
     console.error(error);
     throw error;
@@ -171,22 +179,21 @@ exports.createItemText = async (req, res) => {
 
 exports.createItemAudio = async (req, res) => {
   try {
-    const audioTranscriber = new AudioTranscriber();
     const file = req.file;
 
     if (!file) {
       return res.status(400).json({ error: "Audio file is required." });
     }
 
-    const text = await audioTranscriber.transcribeFromBuffer(file);
+    const items = await audioToItemArray(file);
 
-    if (!text) {
-      return res.status(400).json({ error: "No text could be transcribed from the audio." });
+    if (!items) {
+      return res.status(400).json({ error: "No items could be identified from the audio." });
     }
 
     const shoppingListId = req.shoppingList._id;
 
-    const updatedShoppingList = await addItemsFromText(shoppingListId, text);
+    const updatedShoppingList = await addItems(shoppingListId, items);
 
     if (!updatedShoppingList) {
       throw new Error("Database Error");
