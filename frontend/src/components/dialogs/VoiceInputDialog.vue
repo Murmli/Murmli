@@ -6,8 +6,9 @@
             </v-card-title>
             <v-card-text>
                 <div class="text-center py-4">
-                    <v-progress-circular indeterminate color="primary" v-if="isRecording || isProcessing" />
-                    <p class="mt-4" v-html="displayText"></p>
+                    <v-progress-circular indeterminate color="primary"
+                        v-if="isInitializing || isRecording || isProcessing" />
+                    <p class="mt-4" v-if="isRecording" v-html="displayText"></p>
                     <v-alert v-if="errorMessage" type="error" class="mt-3">
                         {{ errorMessage }}
                     </v-alert>
@@ -59,6 +60,7 @@ const apiStore = useApiStore();
 
 const isRecording = ref(false);
 const isProcessing = ref(false);
+const isInitializing = ref(false);
 const errorMessage = ref('');
 const mediaRecorder = ref(null);
 const audioChunks = ref([]);
@@ -95,6 +97,7 @@ watch(
 const startRecording = async () => {
     errorMessage.value = '';
     shouldProcessRecording.value = false;
+    isInitializing.value = true;
     try {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         const recorder = new MediaRecorder(stream);
@@ -115,6 +118,8 @@ const startRecording = async () => {
         errorMessage.value = languageStore.t('general.errorOccurred');
         emit('error', error);
         dialogStore.closeDialog(props.dialogKey);
+    } finally {
+        isInitializing.value = false;
     }
 };
 
