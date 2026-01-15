@@ -367,18 +367,111 @@ exports.trainingLogCaloriesPrompt = (currentLog, user) => {
   `;
 };
 
-exports.imageToTrackArray = (textComment, outputLang) => {
+exports.imageToTrackerItemsSystemPrompt = (outputLang) => {
   return `
-    Verarbeite dieses Bild und den optionalen Textkommentar, um die Lebensmittel und ihre Nährwerte zu bestimmen.
-    Gib die Ergebnisse als JSON-Objekt aus.
-    - Beispiel: Auf dem Bild zu sehen ist ein Teller voll und gutgefüllt mit Spaghetti Bolognese. Antwort: "ein großer Teller Spaghetti Bolognese".
-    - Beispiel: Auf dem Bild zu sehen ist ein Müsliriegel Etikett von Nährwertangaben. Antwort: "1 Müsliriegel mit 400 kcal, Fett: 15 g, Kohlenhydrate: 60 g, davon Zucker: 25 g, Ballaststoffe: 5 g, Eiweiß: 8 g".
-    - Beispiel: Auf dem Bild zu sehen eine Flache Iso Getränke mit 1 Liter Inhaltsangabe. Antwort: "eine Flasche Iso Getränke mit 1 Liter".
-    - Beispiel: Auf dem Bild zu sehen eine Tüte mit Chips, Textkommentar "ich hatte eine Hand davon". Antwort: "eine handvoll Chips".
-    
-    Textkommentar: "${textComment}"
+    Analysiere das bereitgestellte Bild und den optionalen Textkommentar, um die Lebensmittel zu identifizieren.
+    Transformiere das Ergebnis in ein JSON-Array mit Nährwertangaben.
+    Stelle sicher, dass deine Antwort strikt im angegebenen JSON-Array-Format erfolgt und IMMER eine Ausgabe erfolgt, sofern irgendeine Schätzung oder Ableitung vernünftig möglich ist. Vermeide Fehlermeldungen oder „error“-Rückgaben – schätze stattdessen, falls keine exakten Kalorienwerte gegeben sind, basierend auf typischen Durchschnittswerten.
 
-    Schreibe deine Antwort in folgender Sprache: ${outputLang}.
+    Achte darauf, die Sprache ${outputLang} für die Ausgabe zu verwenden. Wenn du dir bei bestimmten Kalorienwerten unsicher bist, schätze sie, sofern keine genauen Angaben gemacht wurden. Wenn der Text oder das Bild Kalorienangaben enthält, verwende diese exakt wie angegeben, ohne zu runden. Nutze die folgenden Richtlinien für eine präzise Einschätzung:
+
+    - Berücksichtige bei der Kalorieninformation, dass Zutaten wie Pasta, Reis, Bohnen usw. im gekochten Zustand ein deutlich anderes Gewicht haben.
+    - Vermerke gekochte Gewichte mit "(gekocht)" im Namen des Lebensmittels.
+    - Schätze bei vagen Mengenangaben typische Werte, z.B. eine „Handvoll“.
+    - Korrigiere Rechtschreibfehler und identifiziere, was für eine Kalorienzähler-App relevant ist.
+    - Bei Gerichten liste einzelne Zutaten auf, betrachte sie jedoch als Teil eines vollständigen Gerichts. Schätze die Anteile proportional zur Gesamtmenge des Gerichts.
+    - Stelle sicher, dass die Kalorienverteilung innerhalb von Gerichten plausibel ist.
+    - Falls eine Einheit mit gegeben wird benutze diese, zB. "1 Teller Pommes" oder "1 Glas Wasser".
+
+    # Schritte
+    1. **Erkennen**: Analysiere das Bild und identifiziere alle sichtbaren Lebensmittel und Getränke. Berücksichtige auch den Textkommentar für Kontext (z.B. "davon habe ich die Hälfte gegessen").
+    2. **Mengen schätzen**: Schätze die Mengen anhand der visuellen Darstellung (Tellergröße, Glasgröße, Proportionen).
+    3. **Kalorien schätzen**: Wenn keine Angaben gemacht werden, basiere Schätzungen auf typischen Werten.
+    4. **Gerichtszusammensetzung aufschlüsseln**: Zerlege komplexe Gerichte in Zutaten und verteile die Kalorien proportional.
+    5. **JSON-Struktur einhalten**: Stelle sicher, dass die Ausgabe dem definierten JSON-Schema entspricht.
+    6. **Sprachkonsistenz**: Schreibe die Ausgabe in der Sprache ${outputLang}.
+
+    # Beispiele
+
+    ## Beispiel 1
+
+    ### Eingabe
+    Bild von einem Glas Wasser
+
+    ### Begründung
+    - Einfache Schätzung eines bekannten Werts.
+
+    ### Ausgabe
+    [
+      {
+        "name": "Wasser",
+        "amount": 1,
+        "unit": "Glas",
+        "kcal": 0,
+        "protein": 0,
+        "carbohydrates": 0,
+        "fat": 0,
+        "healthyRating": 2
+      }
+    ]
+
+    ## Beispiel 2
+
+    ### Eingabe
+    Bild von 500 Gramm Nudeln mit Tomten Linsen Sauce
+
+    ### Begründung
+    - Gericht wird in Zutaten aufgeteilt; Gewichtsanpassung für gekochte Mengen.
+
+    ### Ausgabe
+    [
+      {
+        "name": "Nudeln (gekocht)",
+        "amount": 300,
+        "unit": "g",
+        "kcal": 474,
+        "protein": 17.4,
+        "carbohydrates": 92.7,
+        "fat": 2.7,
+        "healthyRating": 3
+      },
+      {
+        "name": "Tomaten",
+        "amount": 150,
+        "unit": "g",
+        "kcal": 27,
+        "protein": 1.4,
+        "carbohydrates": 5.9,
+        "fat": 0.3,
+        "healthyRating": 4
+      },
+      {
+        "name": "Linsen (gekocht)",
+        "amount": 45,
+        "unit": "g",
+        "kcal": 52,
+        "protein": 4.1,
+        "carbohydrates": 9.0,
+        "fat": 0.2,
+        "healthyRating": 4
+      },
+      {
+        "name": "Olivenöl",
+        "amount": 5,
+        "unit": "g",
+        "kcal": 45,
+        "protein": 0,
+        "carbohydrates": 0,
+        "fat": 5.0,
+        "healthyRating": 3
+      }
+    ]
+
+    # Hinweise
+
+    - **Begründung**: Nur ausfüllen, wenn die Aufschlüsselung komplex ist. Bei einfachen Bewertungen leer lassen.
+    - **Gesundheitsbewertung**: Skala von 1 (sehr ungesund) bis 5 (sehr gesund).
+    - Stelle sicher, dass das JSON sauber formatiert ist und strikt dem vorgegebenen Schema entspricht.
   `;
 };
 

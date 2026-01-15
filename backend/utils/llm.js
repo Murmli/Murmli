@@ -174,7 +174,7 @@ exports.editTextTrainingPlanWithLLM = async (plan, text, language) => {
     const { editTextTrainingPlanSystemPrompt } = require("./prompts.js");
 
     const systemPrompt = editTextTrainingPlanSystemPrompt(tpmSchema, plan, language);
-      const llmResponse = await apiCall(text, { jsonSchema: editTrainingPlanSchema, cache: false, systemPrompt });
+    const llmResponse = await apiCall(text, { jsonSchema: editTrainingPlanSchema, cache: false, systemPrompt });
 
     return llmResponse;
   } catch (error) {
@@ -201,12 +201,12 @@ exports.generateTrainingPlanFromText = async (
       historySummary
     );
 
-      const answer = await apiCall(text, {
-        jsonSchema: trainingPlanSchema,
-        cache: false,
-        modelType: "high",
-        systemPrompt,
-      });
+    const answer = await apiCall(text, {
+      jsonSchema: trainingPlanSchema,
+      cache: false,
+      modelType: "high",
+      systemPrompt,
+    });
 
     return answer;
   } catch (error) {
@@ -267,7 +267,7 @@ exports.migrateRecipe = async (recipe) => {
       ingredientNames
     );
 
-      const recipeCall = await apiCall(createRecipePrompt, { jsonSchema: migrateRecipeSchema, systemPrompt, modelType: "high" });
+    const recipeCall = await apiCall(createRecipePrompt, { jsonSchema: migrateRecipeSchema, systemPrompt, modelType: "high" });
     return recipeCall;
   } catch (error) {
     console.error("Error migrating recipe:", error.message);
@@ -286,11 +286,11 @@ exports.editRecipeWithLLM = async (recipe, text, language) => {
       language
     );
 
-      const llmResponse = await apiCall(text, {
-        jsonSchema: editRecipeSchema,
-        cache: false,
-        systemPrompt,
-      });
+    const llmResponse = await apiCall(text, {
+      jsonSchema: editRecipeSchema,
+      cache: false,
+      systemPrompt,
+    });
 
     if (!llmResponse) {
       return false;
@@ -324,7 +324,7 @@ exports.generateTranslation = async (text, outputLang, optionalInfo = false) => 
   try {
     const { translateSystemPrompt } = require("./prompts.js");
     const systemPrompt = translateSystemPrompt(outputLang, optionalInfo);
-      const answer = await apiCall(text, { jsonSchema: translateSchema, cache: true, systemPrompt });
+    const answer = await apiCall(text, { jsonSchema: translateSchema, cache: true, systemPrompt });
 
     if (!answer) {
       return false;
@@ -428,7 +428,7 @@ exports.sortRecipeSuggestions = async (unsortedRecipes, latestUpvote, latestDown
     const { sortRecipeSuggestionsSystemPrompt, sortRecipeSuggestionsPrompt } = require("./prompts.js");
     const systemPrompt = sortRecipeSuggestionsSystemPrompt();
     const prompt = sortRecipeSuggestionsPrompt(unsortedRecipeTitles, latestUpvoteTitles, latestDownvoteTitles, text);
-      const answer = await apiCall(prompt, { systemPrompt, jsonSchema: sortRecipeSuggestionsSchema, cache: false });
+    const answer = await apiCall(prompt, { systemPrompt, jsonSchema: sortRecipeSuggestionsSchema, cache: false });
 
     if (!answer.sort) {
       return false;
@@ -448,11 +448,11 @@ exports.generateUserRecipe = async (text, file, outputLang) => {
 
     const prompt = generateUserRecipePrompt(text, outputLang);
 
-      const apiOptions = {
-        cache: false,
-        jsonSchema: userRecipeSchema,
-        modelType: "high",
-      };
+    const apiOptions = {
+      cache: false,
+      jsonSchema: userRecipeSchema,
+      modelType: "high",
+    };
 
     if (file) {
       apiOptions.files = [file];
@@ -477,11 +477,11 @@ exports.textToTrack = async (text) => {
 
     const systemPrompt = textToTrackerArraySystemPrompt();
 
-      const apiOptions = {
-        cache: true,
-        jsonSchema: nutritionItemsSchema,
-        systemPrompt,
-      };
+    const apiOptions = {
+      cache: true,
+      jsonSchema: nutritionItemsSchema,
+      systemPrompt,
+    };
 
     const answer = await apiCall(text, apiOptions);
     if (!answer) {
@@ -575,25 +575,28 @@ exports.askTrainingPlan = async (question, logs, currentDate, outputLang) => {
 
 exports.imageToTrack = async (file, comment, outputLang) => {
   try {
-    const { imageToTrackArray } = require("./prompts.js");
+    const { imageToTrackerItemsSystemPrompt } = require("./prompts.js");
 
-    const prompt = imageToTrackArray(comment, outputLang);
+    const systemPrompt = imageToTrackerItemsSystemPrompt(outputLang);
+    const prompt = comment || "Analysiere das Bild und extrahiere die Nährwerte.";
 
     const apiOptions = {
       cache: false,
-      jsonSchema: imageVisionSchema,
+      jsonSchema: nutritionItemsSchema,
       files: [file],
+      systemPrompt,
     };
 
     const answer = await apiCall(prompt, apiOptions);
     if (!answer) {
       return false;
     } else {
-      if (typeof answer.vision === 'string') {
-        return answer.vision;
-      } else {
-        throw new Error("Invalid answer format: expected a string.");
+      // Ensure we return an array of items
+      if (answer.items === undefined || answer.items === null) {
+        return false;
       }
+      const items = Array.isArray(answer.items) ? answer.items : [answer.items];
+      return items;
     }
   } catch (error) {
     console.error("Error:", error.message);

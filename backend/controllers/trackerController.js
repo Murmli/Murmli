@@ -623,24 +623,34 @@ exports.trackImage = async (req, res) => {
       return res.status(400).json({ error: "Tracker ID is required." });
     }
 
-    const llmResponse = await imageToTrack(imageFile, textComment, user.language);
+    const foodItems = await imageToTrack(imageFile, textComment, user.language);
 
     if (req.file) {
       fs.unlink(req.file.path, (err) => {
         if (err) {
-          throw new Error("Error deleting temporary file:", er);
+          console.error("Error deleting temporary file:", err);
         }
       });
     }
 
-    if (!llmResponse) {
+    if (!foodItems || foodItems.length === 0) {
       return res.status(400).json({ error: "No valid food items found in the image." });
     }
 
-    req.body.mode = "image";
-    req.body.text = llmResponse;
+    let tracker = await Tracker.findOne({ _id: trackerId, user: user._id });
 
-    return this.trackText(req, res);
+    if (!tracker) {
+      return res.status(404).json({ error: "Tracker not found." });
+    }
+
+    tracker.foodItems.push(...foodItems);
+
+    const totals = calculateFoodItemsTotals(tracker.foodItems);
+    tracker.totals = totals;
+
+    await tracker.save();
+
+    return res.status(200).json({ message: "Food items tracked from image and totals updated successfully", tracker });
   } catch (err) {
     console.log(`Error in trackImage: ${JSON.stringify(req.body)}`);
     console.error(err);
