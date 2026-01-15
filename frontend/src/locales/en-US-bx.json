@@ -254,7 +254,15 @@
       "addToDatabase": "Add recipe t' the daytabase"
     },
     "promoteStarted": "The recipe's now bein' added t' the daytabase in the backgound.",
-    "promoteInfo": "This user recipe's alre'ady paht of the official daytabase."
+    "promoteInfo": "This user recipe's alre'ady paht of the official daytabase.",
+    "shareText": "Check out this recipe!",
+    "chat": {
+      "title": "Recipe Chat",
+      "placeholder": "Ask a question 'bout this recipe...",
+      "emptyState": "Ask me somethin' 'bout this recipe!",
+      "welcomeMessage": "Hey! I'm yah recipe assistant. You can ask me questions 'bout this recipe — like ingredients, prep, or alternatives. I got the recipe data heah.",
+      "openButton": "Open tha assistant"
+    }
   },
   "units": {
     "gram": "Gramm",
@@ -600,5 +608,10 @@
         "description": "All 'bout the settin's an' a final outlook."
       }
     }
+  },
+  "publicRecipe": {
+    "downloadTitle": "Download Murmli",
+    "downloadDescription": "Create an' share yah own recipes with the Murmli app!",
+    "loading": "Loadin' the recipe..."
   }
 }

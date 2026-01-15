@@ -19,7 +19,8 @@
             :class="msg.role === 'user' ? 'justify-end' : 'justify-start'">
             <v-sheet :color="msg.role === 'user' ? 'primary' : 'surface-variant'" class="pa-3 rounded-lg"
               max-width="80%">
-              <p class="mb-0 text-pre-wrap">{{ msg.content }}</p>
+              <div v-if="msg.role === 'user'" class="mb-0 text-pre-wrap">{{ msg.content }}</div>
+              <div v-else class="mb-0 markdown-body" v-html="renderMarkdown(msg.content)"></div>
             </v-sheet>
           </div>
 
@@ -47,6 +48,7 @@
 import { ref, watch, nextTick } from 'vue';
 import { useRecipeStore } from '@/stores/recipeStore';
 import { useLanguageStore } from '@/stores/languageStore';
+import { marked } from 'marked';
 
 const props = defineProps({
   modelValue: Boolean,
@@ -70,6 +72,12 @@ watch(() => props.modelValue, (val) => {
 
 watch(show, (val) => {
   emit('update:modelValue', val);
+  if (val && messages.value.length === 0) {
+    messages.value.push({
+      role: 'assistant',
+      content: languageStore.t('recipe.chat.welcomeMessage') || 'Hello! Ask me anything about this recipe.'
+    });
+  }
 });
 
 const scrollToBottom = async () => {
@@ -81,6 +89,15 @@ const scrollToBottom = async () => {
 
 const close = () => {
   show.value = false;
+};
+
+const renderMarkdown = (content) => {
+  try {
+    return marked(content);
+  } catch (e) {
+    console.error("Markdown parsing error:", e);
+    return content;
+  }
 };
 
 const sendMessage = async () => {
@@ -112,5 +129,27 @@ const sendMessage = async () => {
 <style scoped>
 .text-pre-wrap {
   white-space: pre-wrap;
+}
+
+:deep(.markdown-body p) {
+  margin-bottom: 8px;
+}
+
+:deep(.markdown-body ul),
+:deep(.markdown-body ol) {
+  margin-left: 20px;
+  margin-bottom: 8px;
+}
+
+:deep(.markdown-body h1),
+:deep(.markdown-body h2),
+:deep(.markdown-body h3) {
+  margin-top: 12px;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+:deep(.markdown-body strong) {
+  font-weight: bold;
 }
 </style>

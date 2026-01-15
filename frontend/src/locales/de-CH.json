@@ -254,7 +254,15 @@
       "addToDatabase": "Räzept i d'Datenbank iifüege"
     },
     "promoteStarted": "Das Räzept wird jetzt im Hintergrund i d'Datenbank igfüegt.",
-    "promoteInfo": "Das Benutzer-Räzept isch scho Teil vo dr offizielle Datenbank."
+    "promoteInfo": "Das Benutzer-Räzept isch scho Teil vo dr offizielle Datenbank.",
+    "shareText": "Lueg dir das Rezept a!",
+    "chat": {
+      "title": "Rezept-Chat",
+      "placeholder": "Stell e Froog zue däm Rezept...",
+      "emptyState": "Frag mi öppis zue däm Rezept!",
+      "welcomeMessage": "Hoi! Ich bi din Rezept-Assistent. Du chasch mir Froge zue däm Rezept stelle, z.B. zu Zutate, Zubereitig oder Alternative. I ha d'Rezeptdate vorligg.",
+      "openButton": "Assistent uufmache"
+    }
   },
   "units": {
     "gram": "Gramm",
@@ -600,5 +608,10 @@
         "description": "Alles rund um d'Iistellige sowie e abschliessende Ussblick."
       }
     }
+  },
+  "publicRecipe": {
+    "downloadTitle": "Lad Murmli abe",
+    "downloadDescription": "Mach und teil dini eigene Rezäpte mit dä Murmli-App!",
+    "loading": "Rezept wird g'lade..."
   }
 }

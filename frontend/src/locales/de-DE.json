@@ -290,7 +290,14 @@
     },
     "promoteStarted": "Das Rezept wird nun im Hintergrund zur Datenbank hinzugefügt.",
     "promoteInfo": "Dieses Benutzerrezept ist bereits Teil der offiziellen Datenbank.",
-    "shareText": "Schau dir dieses Rezept an!"
+    "shareText": "Schau dir dieses Rezept an!",
+    "chat": {
+      "title": "Rezept-Chat",
+      "placeholder": "Stelle eine Frage zu diesem Rezept...",
+      "emptyState": "Frag mich etwas über dieses Rezept!",
+      "welcomeMessage": "Hallo! Ich bin dein Rezept-Assistent. Du kannst mir Fragen zu diesem Rezept stellen, z.B. zu Zutaten, Zubereitung oder Alternativen. Die Rezeptdaten liegen mir vor.",
+      "openButton": "Assistent öffnen"
+    }
   },
   "units": {
     "gram": "Gramm",

@@ -254,7 +254,15 @@
       "addToDatabase": "Ajouter la recette à la base de données"
     },
     "promoteStarted": "La recette est en cours d'ajout à la base de données en arrière-plan.",
-    "promoteInfo": "Cette recette d'utilisateur fait déjà partie de la base de données officielle."
+    "promoteInfo": "Cette recette d'utilisateur fait déjà partie de la base de données officielle.",
+    "shareText": "Découvre cette recette !",
+    "chat": {
+      "title": "Chat de recette",
+      "placeholder": "Pose une question sur cette recette...",
+      "emptyState": "Pose-moi une question sur cette recette !",
+      "welcomeMessage": "Bonjour ! Je suis ton assistant de recettes. Tu peux me poser des questions sur cette recette, par exemple sur les ingrédients, la préparation ou des alternatives. J'ai accès aux données de la recette.",
+      "openButton": "Ouvrir l'assistant"
+    }
   },
   "units": {
     "gram": "Gramme",
@@ -600,5 +608,10 @@
         "description": "Tout ce qui concerne les paramètres, suivi d'un mot de conclusion."
       }
     }
+  },
+  "publicRecipe": {
+    "downloadTitle": "Télécharge Murmli",
+    "downloadDescription": "Crée et partage tes propres recettes avec l'application Murmli !",
+    "loading": "Chargement de la recette..."
   }
 }

@@ -56,6 +56,12 @@
       </v-expansion-panel>
     </v-expansion-panels>
 
+    <div class="ma-4">
+       <v-btn block color="primary" prepend-icon="mdi-chat" @click="showChatDialog = true">
+        {{ languageStore.t('recipe.chat.openButton') || 'Open Assistant' }}
+      </v-btn>
+    </div>
+
     <!-- Nurtients -->
     <div>
       <h3 class="ma-5 text-center">{{ languageStore.t('recipe.nutrition.title') }}</h3>
@@ -124,12 +130,6 @@
 
     <!-- Chat Dialog -->
     <RecipeChatDialog v-model="showChatDialog" :recipeId="recipeStore.currentRecipe._id" />
-    
-    <!-- Floating Action Button for Chat -->
-    <v-layout-item model-value position="bottom" class="text-end pointer-events-none pa-4 mb-3">
-      <v-btn style="pointer-events: auto;" icon="mdi-chat" elevation="8" size="large" color="primary"
-        @click="showChatDialog = true"></v-btn>
-    </v-layout-item>
 
   </div>
 </template>

@@ -254,7 +254,15 @@
       "addToDatabase": "将食谱添加到数据库"
     },
     "promoteStarted": "该食谱现在正在后台添加到数据库中。",
-    "promoteInfo": "该用户的食谱已是官方数据库的一部分。"
+    "promoteInfo": "该用户的食谱已是官方数据库的一部分。",
+    "shareText": "看看这个食谱！",
+    "chat": {
+      "title": "食谱聊天",
+      "placeholder": "就这个食谱提问...",
+      "emptyState": "问我关于这个食谱的任何事情！",
+      "welcomeMessage": "你好！我是你的食谱助手。你可以向我询问有关此食谱的问题，例如配料、做法或替代方案。我掌握了该食谱的信息。",
+      "openButton": "打开助手"
+    }
   },
   "units": {
     "gram": "克",
@@ -600,5 +608,10 @@
         "description": "关于设置的所有内容以及最后的总结与展望。"
       }
     }
+  },
+  "publicRecipe": {
+    "downloadTitle": "下载 Murmli",
+    "downloadDescription": "使用 Murmli 应用创建并分享你自己的食谱！",
+    "loading": "正在加载食谱..."
   }
 }

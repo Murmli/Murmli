@@ -254,7 +254,15 @@
       "addToDatabase": "Rezept in d' Datenbank"
     },
     "promoteStarted": "Des Rezept werd jetzt im Hintergrund in d' Datenbank nei g'fügt.",
-    "promoteInfo": "Des Benutzerrezept is scho a Teil vo da offiziellen Datenbank."
+    "promoteInfo": "Des Benutzerrezept is scho a Teil vo da offiziellen Datenbank.",
+    "shareText": "Schau da amoi des Rezept o!",
+    "chat": {
+      "title": "Rezept-Chat",
+      "placeholder": "Stell a Frog zu dem Rezept...",
+      "emptyState": "Frag mi wos über's Rezept!",
+      "welcomeMessage": "Servus! I bin dei Rezept-Assistent. Du kannst ma Frogn zum Rezept stelln, z.B. zu Zutaten, zur Zubereitung oder zu Alternativen. De Rezeptdaten hob i da.",
+      "openButton": "Assistent aufmacha"
+    }
   },
   "units": {
     "gram": "Gramm",
@@ -600,5 +608,10 @@
         "description": "Ois rund um d'Einstellunga und a kurzer Ausblick zum Schluss."
       }
     }
+  },
+  "publicRecipe": {
+    "downloadTitle": "Lad da Murmli runter",
+    "downloadDescription": "Mach und teil dei eigna Rezepte mit da Murmli-App!",
+    "loading": "Rezept werd g'ladn..."
   }
 }

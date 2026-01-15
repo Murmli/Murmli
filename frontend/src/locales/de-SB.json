@@ -254,7 +254,15 @@
       "addToDatabase": "Rezept in d'Datenbank eintraga"
     },
     "promoteStarted": "Des Rezept werd jetz im Hintergrund in d'Datenbank eintraga.",
-    "promoteInfo": "Des Benutzerrezept isch scho a Teil vo dr offiziella Datenbank."
+    "promoteInfo": "Des Benutzerrezept isch scho a Teil vo dr offiziella Datenbank.",
+    "shareText": "Gugg dir des Rezept o!",
+    "chat": {
+      "title": "Rezept-Chat",
+      "placeholder": "Stell a Froag zom Rezept...",
+      "emptyState": "Frag mi ebbes übers Rezept!",
+      "welcomeMessage": "Servus! I bin dei Rezept-Assistent. Du kannscht mr Froga zom Rezept stelle, z. B. zu Zutaten, Zubetitung oder Alternativen. D'Rezeptdate henn i scho.",
+      "openButton": "Assistent aufmache"
+    }
   },
   "units": {
     "gram": "Gramm",
@@ -600,5 +608,10 @@
         "description": "Alles rund um d' Einstellunge sowie a abschließender Ausblick zum Schluss."
       }
     }
+  },
+  "publicRecipe": {
+    "downloadTitle": "Hol dir d'Murmli",
+    "downloadDescription": "Mach und teil dei eig'ne Rezepte mit dr Murmli-App!",
+    "loading": "Rezept wird g'ladet..."
   }
 }

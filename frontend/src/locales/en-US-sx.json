@@ -254,7 +254,15 @@
       "addToDatabase": "Add this here recipe t' the database"
     },
     "promoteStarted": "Now this here recipe's bein' added t' the database in th' background.",
-    "promoteInfo": "This here user recipe's already a part o' the official database."
+    "promoteInfo": "This here user recipe's already a part o' the official database.",
+    "shareText": "Y'all take a gander at this here recipe!",
+    "chat": {
+      "title": "Recipe Chaaat",
+      "placeholder": "Ask a question 'bout this here recipe...",
+      "emptyState": "Go on, ask me somethin' 'bout this recipe!",
+      "welcomeMessage": "Howdy! I'm yer recipe assistant. You can ask me 'bout this here recipe, like the ingredients, how to make it, or any substitutions. I got the recipe details right here.",
+      "openButton": "Open Assistant"
+    }
   },
   "units": {
     "gram": "Gram",
@@ -600,5 +608,10 @@
         "description": "All 'bout the settings an' a lil' final look ahead."
       }
     }
+  },
+  "publicRecipe": {
+    "downloadTitle": "Download Murmli",
+    "downloadDescription": "Create and share yer own recipes with the Murmli app!",
+    "loading": "Recipe's loadin'..."
   }
 }

@@ -254,7 +254,15 @@
       "addToDatabase": "Rezept in die DB packen"
     },
     "promoteStarted": "Das Rezept wird jetzt im Hintergrund in die DB geschoben.",
-    "promoteInfo": "Dieses User-Rezept ist schon in der offiziellen DB drin."
+    "promoteInfo": "Dieses User-Rezept ist schon in der offiziellen DB drin.",
+    "shareText": "Check mal dieses Rezept!",
+    "chat": {
+      "title": "Rezept-Chat",
+      "placeholder": "Frag was zum Rezept...",
+      "emptyState": "Frag mich was zum Rezept!",
+      "welcomeMessage": "Hey! Ich bin dein Rezept-Assi. Frag mich alles zum Rezept — z. B. zu Zutaten, Zubereitung oder Alternativen. Ich hab die Rezeptdaten am Start.",
+      "openButton": "Assi starten"
+    }
   },
   "units": {
     "gram": "Gramm",
@@ -600,5 +608,10 @@
         "description": "Alles zu den Einstellungen plus ein kurzer Ausblick zum Schluss."
       }
     }
+  },
+  "publicRecipe": {
+    "downloadTitle": "Hol dir Murmli",
+    "downloadDescription": "Erstell und teil deine eigenen Rezepte mit der Murmli-App!",
+    "loading": "Rezept lädt..."
   }
 }
