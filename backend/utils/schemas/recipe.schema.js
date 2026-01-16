@@ -13,7 +13,7 @@ module.exports = {
         items: {
           type: "object",
           properties: {
-            name: { type: "string", description: "Name der Zutat" },
+            name: { type: "string", description: "Name der Zutat, kurz, ohne weitere Zusätze in Klammern dahinter" },
             carbohydrates: { type: "number", description: "Kohlenhydrate pro Portion" },
             fat: { type: "number", description: "Fett pro Portion" },
             protein: { type: "number", description: "Protein pro Portion" },
