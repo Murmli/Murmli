@@ -5,6 +5,8 @@ const recipeInstructionsAgent = require("../utils/agents/recipeInstructionsAgent
 const recipeAnalysisAgent = require("../utils/agents/recipeAnalysisAgent.js");
 const recipeImagePromptAgent = require("../utils/agents/recipeImagePromptAgent.js");
 const { roundingRules } = require(`./../utils/rules.js`);
+
+const { createRecipe } = require('../utils/llm.js');
 const { generateImage, uploadImageToStorage } = require(`../utils/imageUtils.js`);
 
 exports.createRecipe = async (prompt, {
@@ -17,104 +19,50 @@ exports.createRecipe = async (prompt, {
   informationObject = false
 } = {}) => {
   try {
-    if (exclude) {
-      prompt = `${prompt}. Sofern ich dies nicht explizit beschrieben habe, soll es sich unterscheiden von diesen Rezepten: ${exclude}`;
-    }
-    if (informationObject) {
-      prompt = `${prompt}. Hier ist noch ein Object das Informationen zum User enthält: ${JSON.stringify(informationObject)}. `;
-    }
+    // Consolidated LLM call
+    const recipeData = await createRecipe(prompt, { inputImage, exclude, informationObject, servings });
 
-    // Step 1 : Title
-    const defineRecipe = await recipeTitleAgent(prompt, inputImage);
-    if (!defineRecipe) {
-      throw new Error("Error defining recipe.");
+    if (!recipeData) {
+      throw new Error("Error creating recipe.");
     } else {
-      console.log('Recipe title generated: ', defineRecipe.title);
+      console.log('Recipe generated:', recipeData.title);
     }
 
-    // Schritt 2: Zutaten generieren
-    const ingredientsArray = await recipeIngredientsAgent(
-      defineRecipe.title,
-      defineRecipe.description,
-      defineRecipe.descriptionShort,
-      inputImage
-    );
-    if (!ingredientsArray) {
-      throw new Error("Error generating ingredients.");
-    } else {
-      console.log('Ingredients generated');
-    }
-
-    // Schritt 3: Anleitungen generieren
-    const stepsArray = await recipeInstructionsAgent(
-      defineRecipe.title,
-      defineRecipe.description,
-      defineRecipe.descriptionShort,
-      ingredientsArray,
-      prompt
-    );
-    if (!stepsArray) {
-      throw new Error("Error generating instructions.");
-    } else {
-      console.log('Instructions generated');
-    }
-
-    // Schritt 4: Rezept-Objekt zusammenstellen
-    const initialRecipe = {
-      title: defineRecipe.title,
-      description: defineRecipe.description,
-      descriptionShort: defineRecipe.descriptionShort,
-      ingredients: ingredientsArray,
-      steps: stepsArray,
-      servings,
-      type
-    };
-
-    // Schritt 5: Rezept analysieren und erweitern
-    const augmentedRecipe = await recipeAnalysisAgent(initialRecipe);
-    if (!augmentedRecipe) {
-      throw new Error("Error analyzing recipe.");
-    } else {
-      console.log('Recipe created');
-    }
+    // Set additional properties
+    recipeData.type = type;
+    recipeData.active = active;
+    recipeData.provider = "AI";
+    // Ensure servings match 
+    if (!recipeData.servings) recipeData.servings = servings;
 
     if (image) {
-      // Schritt 6: Bildbeschreibung generieren
-      const imageDescription = await recipeImagePromptAgent(augmentedRecipe);
-      if (!imageDescription) {
-        throw new Error("Error generating image description.");
-      } else {
-        console.log('Image description generated');
-      }
-
-      // Schritt 7: Bild generieren & in Azure Speicher laden
       console.log('Generate Picture now...');
-      const imagePrompt = imageDescription;
-      const generatedImage = await generateImage(imagePrompt);
-      if (!generatedImage) {
-        throw new Error("Error generating image.");
-      } else {
-        console.log('Image generated');
-      }
+      const imagePrompt = recipeData.imageDescription;
 
-      // Schritt 8: Bild in Azure Blob Storage hochladen
-      const filename = `${augmentedRecipe.seoImageTitle}-${Date.now()}`;
-      const imageUrl = await uploadImageToStorage(generatedImage, filename);
-      if (!imageUrl) {
-        throw new Error("Error uploading image.");
-      } else {
-        console.log('Image uploaded');
+      if (imagePrompt) {
+        const generatedImage = await generateImage(imagePrompt);
+        if (!generatedImage) {
+          console.error("Error generating image.");
+        } else {
+          console.log('Image generated');
+          const filename = `${recipeData.seoImageTitle || 'recipe'}-${Date.now()}`;
+          const imageUrl = await uploadImageToStorage(generatedImage, filename);
+          if (!imageUrl) {
+            console.error("Error uploading image.");
+          } else {
+            console.log('Image uploaded');
+            recipeData.image = imageUrl;
+          }
+        }
       }
-      augmentedRecipe.image = imageUrl;
-    } else {
-      augmentedRecipe.image = "dummy";
     }
 
-    // Schritt 9: Zusammenstellen und exportieren des Rezepts
-    augmentedRecipe.active = active;
-    return augmentedRecipe;
-  }
-  catch (err) {
+    if (!recipeData.image) {
+      recipeData.image = "dummy";
+    }
+
+    return recipeData;
+  } catch (err) {
     console.error(err);
     return false;
   }

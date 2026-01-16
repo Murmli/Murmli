@@ -21,6 +21,7 @@ const userRecipeSchema = require("./schemas/userRecipe.schema.js");
 const nutritionItemsSchema = require("./schemas/nutritionItems.schema.js");
 const activitySchema = require("./schemas/activity.schema.js");
 const imageVisionSchema = require("./schemas/imageVision.schema.js");
+const createRecipeSchema = require("./schemas/createRecipe.schema.js");
 
 const provider = process.env.LLM_PROVIDER || "openai";
 if (!process.env.LLM_PROVIDER) {
@@ -164,6 +165,31 @@ exports.generateRecipeTitle = async (prompt, titleList, image) => {
     return request;
   } catch (error) {
     console.error("Error generating recipe title:", error.message);
+    return false;
+  }
+};
+
+exports.createRecipe = async (text, { inputImage, exclude, informationObject, servings } = {}) => {
+  try {
+    const { createRecipeSystemPrompt, createRecipePrompt } = require("./prompts.js");
+    const systemPrompt = createRecipeSystemPrompt();
+    const prompt = createRecipePrompt(text, exclude, informationObject, servings);
+
+    const apiOptions = {
+      systemPrompt,
+      jsonSchema: createRecipeSchema,
+      cache: false,
+      modelType: "high"
+    };
+
+    if (inputImage) {
+      apiOptions.files = [inputImage];
+    }
+
+    const response = await apiCall(prompt, apiOptions);
+    return response;
+  } catch (error) {
+    console.error("Error creating recipe:", error.message);
     return false;
   }
 };

@@ -796,3 +796,65 @@ exports.chatWithTrackerSystemPrompt = (tracker, bodyData, language) => {
     Antworte in der Sprache: ${language}.
   `;
 };
+
+exports.createRecipeSystemPrompt = () => {
+  const { unitRules, marketCategoryRules, seasonRules } = require("./rules.js");
+  const units = unitRules("json");
+  const categories = marketCategoryRules("json");
+  const seasons = seasonRules("json");
+
+  return `
+    Du bist ein professioneller Koch, Ernährungsberater und kreativer Food-Stylist.
+    Deine Aufgabe ist es, ein vollständiges, hochwertiges Rezept zu erstellen, das exakt den Wünschen des Nutzers entspricht.
+    
+    Du lieferst das gesamte Rezept inklusive Zutaten, Schritten, Analyse und einer Bildbeschreibung in einem einzigen JSON-Objekt zurück.
+
+    BEACHTE FOLGENDE REGELN:
+
+    1. **Titel & Beschreibung**:
+       - Erstelle einen kreativen, ansprechenden Titel.
+       - 'descriptionShort': Eine prägnante Zusammenfassung (1-2 Sätze).
+       - 'description': Eine ausführliche, appetitanregende Beschreibung des Gerichts.
+
+    2. **Zutaten (ingredients)**:
+       - Liste JEDE Zutat einzeln auf. Keine Sammelbegriffe.
+       - 'unit': Nutze NUR die IDs aus dieser Liste: ${units}. Das Feld 'unit' darf nicht null sein (nutze die ID für "Stück" oder "nach Belieben" falls passend).
+       - 'category': Nutze NUR die IDs aus dieser Liste: ${categories}.
+       - 'quantity': Menge als Zahl. Wenn unklar, schätze sinnvoll.
+       - 'unitWeight': Schätze das Gewicht eines Stücks in Gramm (falls zutreffend).
+       - Nährwerte (Kcal, Fett, etc.) pro Zutat schätzen.
+
+    3. **Zubereitung (steps)**:
+       - Strukturiere die Anleitung in logische Schritte.
+       - 'head': Das Array MUSS alle Zutaten enthalten, die in diesem spezifischen Schritt verwendet werden (mit Menge und Einheit).
+       - 'content': Die Textanweisung für den Schritt.
+       - 'name': Kurzer Titel des Schritts (z.B. "Gemüse schneiden").
+
+    4. **Analyse**:
+       - 'servings': Standardmäßig 4. WICHTIG: Wenn der Nutzer explizite Mengen vorgibt (z.B. "500g Fleisch"), leite die Portionen logisch davon ab. Wenn der Nutzer eine Anzahl nennt, nutze diese.
+       - 'preparationTime': Gesamte Zeit in Minuten.
+       - 'season': Wähle die beste ID aus: ${seasons}.
+       - 'originCountry': 2-stelliger Ländercode (z.B. "de", "it").
+       - 'nutrients': Berechne die Nährwerte PRO PORTION (Summe aller Zutaten / Portionen).
+       - Bewertee Health, Difficulty, Price, Sustainability, Everydayeignung ehrlich auf Skala 1-10.
+       - Setze Flags (vegan, vegetarian, glutenfree, etc.) korrekt.
+
+    5. **Bildbeschreibung (imageDescription)**:
+       - Schreibe eine detaillierte, englische Beschreibung für einen Bild-Generator. 
+       - Beschreibe das fertige Gericht, Anrichteweise, Lichtstimmung, Farben und Hintergrund.
+
+    Antworte AUSSCHLIESSLICH mit dem JSON-Objekt.
+  `;
+};
+
+exports.createRecipePrompt = (prompt, exclude, informationObject, servings = 4) => {
+  let text = `Erstelle ein ausführliches Kochrezept für: "${prompt}".`;
+  text += `\n\nRichtlinie für Portionen: Erstelle das Rezept standardmäßig für ${servings} Personen. WICHTIG: Sollten im Text jedoch spezifische Mengen (z.B. "500g Nudeln") oder eine explizite Personenanzahl genannt sein, hat dies Vorrang! Passe die 'servings' und Mengen dann entsprechend sinnvoll an.`;
+  if (exclude) {
+    text += `\nDas Rezept soll sich deutlich unterscheiden von: ${exclude}.`;
+  }
+  if (informationObject) {
+    text += `\nBerücksichtige bitte folgende User-Informationen/Vorlieben: ${JSON.stringify(informationObject)}.`;
+  }
+  return text;
+};
