@@ -57,7 +57,7 @@ module.exports = {
                 properties: {
                   name: { type: "string", description: "Zutatenname" },
                   quantity: { type: "number", description: "Menge" },
-                  unit: { type: "string", description: "Einheit" },
+                  unit: { type: "number", description: "Einheits-ID" },
                   addition: { type: ["string", "null"], description: "Zusatzangabe" }
                 },
                 required: ["name", "quantity", "unit", "addition"],
