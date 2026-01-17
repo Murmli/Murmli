@@ -67,7 +67,8 @@ export const useRecipeStore = defineStore("recipeStore", {
 
         if (response.status === 200) {
           const isFavoriteFlag = response.data.isFavorite ? 1 : 0;
-          this.setCurrentRecipe(response.data, isFavoriteFlag);
+          const recipeType = response.data.userId ? 2 : isFavoriteFlag;
+          this.setCurrentRecipe(response.data, recipeType);
           this.saveCache();
           return this.currentRecipe;
         }
@@ -180,7 +181,7 @@ export const useRecipeStore = defineStore("recipeStore", {
         if (response.status === 200 || response.status === 201) {
           this.generatedRecipe = response.data;
           this.userRecipes.push(response.data);
-          this.currentRecipe = response.data;
+          this.setCurrentRecipe(response.data, 2);
           this.generationStatus = null;
           this.saveCache();
           return this.generatedRecipe;
@@ -283,6 +284,8 @@ export const useRecipeStore = defineStore("recipeStore", {
         if (response.status === 200) {
           this.currentRecipe = response.data;
           this.saveCache();
+          // Explicitly set recipeType to 2 for User Recipes
+          this.setCurrentRecipe(this.currentRecipe, 2);
           return this.currentRecipe;
         }
       } catch (error) {
