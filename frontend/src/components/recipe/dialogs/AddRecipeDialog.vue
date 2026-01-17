@@ -36,8 +36,9 @@ const plannerStore = usePlannerStore();
 const portions = ref(4);
 const portionOptions = Array.from({ length: 12 }, (_, i) => i + 1);
 
-watch(() => dialogStore.dialogs.addRecipeDialog, (newVal) => {
+watch(() => dialogStore.dialogs.addRecipeDialog, async (newVal) => {
     if (newVal) {
+        await plannerStore.fetchFilters();
         portions.value = plannerStore.filters.servings || 2;
     }
 });
