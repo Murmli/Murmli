@@ -19,11 +19,12 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useLanguageStore } from '@/stores/languageStore';
 import { useRecipeStore } from '@/stores/recipeStore';
 import { useShoppingListStore } from '@/stores/shoppingListStore';
 import { useDialogStore } from '@/stores/dialogStore';
+import { usePlannerStore } from '@/stores/plannerStore';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
@@ -31,8 +32,15 @@ const dialogStore = useDialogStore();
 const languageStore = useLanguageStore();
 const recipeStore = useRecipeStore();
 const shoppinglistStore = useShoppingListStore();
+const plannerStore = usePlannerStore();
 const portions = ref(4);
 const portionOptions = Array.from({ length: 12 }, (_, i) => i + 1);
+
+watch(() => dialogStore.dialogs.addRecipeDialog, (newVal) => {
+    if (newVal) {
+        portions.value = plannerStore.filters.servings || 2;
+    }
+});
 
 const addRecipe = () => {
     shoppinglistStore.addRecipe(recipeStore.currentRecipe._id, portions.value)
