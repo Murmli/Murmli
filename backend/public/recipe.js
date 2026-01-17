@@ -85,8 +85,22 @@
     }
 
     if (heroImageEl) {
-      heroImageEl.src = recipe.image || placeholderImage;
-      heroImageEl.alt = `Foto von ${recipe.title}`;
+      const mediaContainer = heroImageEl.closest('.recipe-hero__media');
+
+      if (recipe.image) {
+        heroImageEl.src = recipe.image;
+        heroImageEl.alt = `Foto von ${recipe.title}`;
+        heroImageEl.style.display = '';
+        if (mediaContainer) mediaContainer.style.display = '';
+
+        heroImageEl.onerror = function () {
+          this.style.display = 'none';
+          if (mediaContainer) mediaContainer.style.display = 'none';
+        };
+      } else {
+        heroImageEl.style.display = 'none';
+        if (mediaContainer) mediaContainer.style.display = 'none';
+      }
     }
 
     if (heroMetaEl) {
