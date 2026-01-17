@@ -54,7 +54,7 @@ const shareRecipe = async () => {
     .replace(/^-|-$/g, '') // Remove leading/trailing hyphens
 
   // Use backend URL for the public recipe page
-  const backendUrl = import.meta.env.VITE_BACKEND_BASE_URL || 'http://localhost:8080'
+  const backendUrl = import.meta.env.VITE_BACKEND_BASE_URL || 'https://murmli.de'
   const userLanguage = languageStore.locale
   const shareUrl = `${backendUrl}/recipe/${slug}-${recipeId}?lang=${userLanguage}`
 
