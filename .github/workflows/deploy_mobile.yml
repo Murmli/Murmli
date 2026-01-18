@@ -61,7 +61,7 @@ jobs:
           retention-days: 1
 
   build-ios:
-    runs-on: macos-latest
+    runs-on: macos-26
     environment: ${{ needs.variables.outputs.environment }}
     needs:
       - variables
@@ -132,7 +132,7 @@ jobs:
           retention-days: 1
 
   deploy-ios:
-    runs-on: macos-latest
+    runs-on: macos-26
     environment: ${{ needs.variables.outputs.environment }}
     needs:
       - variables
