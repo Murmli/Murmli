@@ -94,14 +94,19 @@ exports.createUserRecipe = async (req, res) => {
     // Continue processing asynchronously
     (async () => {
       try {
-        const randomRecipes = await UserRecipe.aggregate([{ $sample: { size: 5 } }]);
-        const exclude = randomRecipes.map((recipe) => recipe.title).join(", ");
+        // Fetch last 4 generated recipes to ensure variety
+        const lastGenerations = user.generations.slice(-4).map(gen => gen.recipeId);
+        const generatedRecipes = await UserRecipe.find({ _id: { $in: lastGenerations } }, { title: 1 }).lean();
+        const exclude = generatedRecipes.map(r => r.title).join(", ");
+
         const userInformations = {
           country: user.language,
           filter: user.suggestions?.filter?.prompt || '',
           favoriteRecipes: [],
           dietLevel: user.dietLevel,
-          dietType: user.dietType
+          dietType: user.dietType,
+          likedRecipes: user.suggestions?.upvotes?.map(v => v.title) || [],
+          dislikedRecipes: user.suggestions?.downvotes?.map(v => v.title) || []
         };
 
         // If user has favorite recipes, get their titles
