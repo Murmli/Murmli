@@ -290,7 +290,8 @@ exports.deleteCheckedItems = async (req, res) => {
     const checkedItems = shoppingList.items.filter((item) => item.active === false);
     shoppingList.items = shoppingList.items.filter((item) => item.active === true);
     if (checkedItems.length === 0) {
-      return res.status(404).json({ error: "No checked items found" });
+      // return res.status(404).json({ error: "No checked items found" });
+      return exports.read(req, res);
     }
     const updatedShoppingList = await shoppingList.save();
     if (!updatedShoppingList) {
