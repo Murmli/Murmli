@@ -175,12 +175,12 @@ exports.generateUserRecipePrompt = (text, outputLang) => {
   }
 };
 
-exports.textToTrackerArraySystemPrompt = (text) => {
+exports.textToTrackerArraySystemPrompt = (outputLang = "de-DE") => {
   return `
     Transformiere den bereitgestellten Benutzertext in ein JSON-Array mit Nährwertangaben. 
     Stelle sicher, dass deine Antwort strikt im angegebenen JSON-Array-Format erfolgt und IMMER eine Ausgabe erfolgt, sofern irgendeine Schätzung oder Ableitung vernünftig möglich ist. Vermeide Fehlermeldungen oder „error“-Rückgaben – schätze stattdessen, falls keine exakten Kalorienwerte gegeben sind, basierend auf typischen Durchschnittswerten.
 
-    Achte darauf, die Sprache des Benutzers im Ergebnis beizubehalten. Wenn du dir bei bestimmten Kalorienwerten unsicher bist, schätze sie, sofern keine genauen Angaben gemacht wurden. Wenn der Text Kalorienangaben enthält, verwende diese exakt wie angegeben, ohne zu runden. Nutze die folgenden Richtlinien für eine präzise Einschätzung:
+    Achte darauf, die Sprache ${outputLang} für die Ausgabe zu verwenden. Wenn du dir bei bestimmten Kalorienwerten unsicher bist, schätze sie, sofern keine genauen Angaben gemacht wurden. Wenn der Text Kalorienangaben enthält, verwende diese exakt wie angegeben, ohne zu runden. Nutze die folgenden Richtlinien für eine präzise Einschätzung:
 
     - Berücksichtige bei der Kalorieninformation, dass Zutaten wie Pasta, Reis, Bohnen usw. im gekochten Zustand ein deutlich anderes Gewicht haben.
     - Vermerke gekochte Gewichte mit "(gekocht)" im Namen des Lebensmittels.
@@ -196,7 +196,7 @@ exports.textToTrackerArraySystemPrompt = (text) => {
     3. **Kalorien schätzen**: Wenn keine Angaben gemacht werden, basiere Schätzungen auf typischen Werten oder verwende angegebene Details ohne Rundung.
     4. **Gerichtszusammensetzung aufschlüsseln**: Zerlege komplexe Gerichte in Zutaten und verteile die Kalorien proportional, einschließlich Begründung falls nötig.
     5. **JSON-Struktur einhalten**: Stelle sicher, dass die Ausgabe dem definierten JSON-Schema entspricht.
-    6. **Sprachkonsistenz**: Schreibe die Ausgabe in der Sprache des ursprünglichen Textes.
+    6. **Sprachkonsistenz**: Schreibe die Ausgabe in der Sprache ${outputLang}.
 
     # Beispiele
 

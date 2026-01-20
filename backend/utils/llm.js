@@ -497,11 +497,11 @@ exports.generateUserRecipe = async (text, file, outputLang) => {
   }
 };
 
-exports.textToTrack = async (text) => {
+exports.textToTrack = async (text, outputLang) => {
   try {
     const { textToTrackerArraySystemPrompt } = require("./prompts.js");
 
-    const systemPrompt = textToTrackerArraySystemPrompt();
+    const systemPrompt = textToTrackerArraySystemPrompt(outputLang);
 
     const apiOptions = {
       cache: true,
@@ -746,10 +746,10 @@ exports.audioToItemArray = async (file) => {
   }
 };
 
-exports.audioToTrack = async (file, comment) => {
+exports.audioToTrack = async (file, comment, outputLang) => {
   try {
     const { textToTrackerArraySystemPrompt } = require("./prompts.js");
-    const systemPrompt = textToTrackerArraySystemPrompt();
+    const systemPrompt = textToTrackerArraySystemPrompt(outputLang);
     const prompt = comment || "Listen to the audio/video and extract the food items/meals for tracking.";
 
     const answer = await apiCall(prompt, {

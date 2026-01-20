@@ -238,7 +238,7 @@ exports.trackText = async (req, res) => {
       return res.status(400).json({ error: "Tracker ID is required." });
     }
 
-    const foodItems = await textToTrack(text);
+    const foodItems = await textToTrack(text, user.language);
     if (!foodItems || foodItems.length === 0) {
       return res.status(400).json({ error: "No valid food items found in the text." });
     }
@@ -762,7 +762,7 @@ exports.trackItemAudio = async (req, res) => {
       return res.status(400).json({ error: "Tracker ID is required." });
     }
 
-    const foodItems = await audioToTrack(file, req.body.comment || "");
+    const foodItems = await audioToTrack(file, req.body.comment || "", user.language);
 
     if (!foodItems || foodItems.length === 0) {
       return res.status(400).json({ error: "No food items could be identified from the audio." });
