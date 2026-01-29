@@ -102,9 +102,8 @@ exports.createUserRecipe = async (req, res) => {
         const userInformations = {
           country: user.language,
           filter: user.suggestions?.filter?.prompt || '',
+          servings: user.suggestions?.filter?.servings || 4,
           favoriteRecipes: [],
-          dietLevel: user.dietLevel,
-          dietType: user.dietType,
           likedRecipes: user.suggestions?.upvotes?.map(v => v.title) || [],
           dislikedRecipes: user.suggestions?.downvotes?.map(v => v.title) || []
         };
@@ -119,7 +118,7 @@ exports.createUserRecipe = async (req, res) => {
           userInformations.favoriteRecipes = favoriteRecipeDetails.map(recipe => recipe.title);
         }
 
-        const userRecipe = await createRecipe(text, { inputImage: file, exclude, informationObject: userInformations });
+        const userRecipe = await createRecipe(text, { inputImage: file, exclude, informationObject: userInformations, servings: userInformations.servings });
 
         if (req.file) {
           fs.unlink(req.file.path, (err) => {
