@@ -94,8 +94,8 @@ exports.createUserRecipe = async (req, res) => {
     // Continue processing asynchronously
     (async () => {
       try {
-        // Fetch last 4 generated recipes to ensure variety
-        const lastGenerations = user.generations.slice(-4).map(gen => gen.recipeId);
+        // Fetch last 6 generated recipes to ensure variety
+        const lastGenerations = user.generations.slice(-6).map(gen => gen.recipeId);
         const generatedRecipes = await UserRecipe.find({ _id: { $in: lastGenerations } }, { title: 1 }).lean();
         const exclude = generatedRecipes.map(r => r.title).join(", ");
 

@@ -851,7 +851,7 @@ exports.createRecipePrompt = (prompt, exclude, informationObject, servings = 4) 
   let text = `Erstelle ein ausführliches Kochrezept für: "${prompt}".`;
   text += `\n\nRichtlinie für Portionen: Erstelle das Rezept standardmäßig für ${servings} Personen. WICHTIG: Sollten im Text jedoch spezifische Mengen (z.B. "500g Nudeln") oder eine explizite Personenanzahl genannt sein, hat dies Vorrang! Passe die 'servings' und Mengen dann entsprechend sinnvoll an.`;
   if (exclude) {
-    text += `\nDas Rezept soll sich deutlich unterscheiden von: ${exclude}.`;
+    text += `\nDas Rezept soll sich deutlich unterscheiden von: ${exclude}, außer natürlich es ist explizit noch mal dasselbe gewünscht.`;
   }
   if (informationObject) {
     text += `\nBerücksichtige bitte folgende User-Informationen/Vorlieben: ${JSON.stringify(informationObject)}.`;
