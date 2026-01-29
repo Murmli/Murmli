@@ -22,6 +22,10 @@ const userRecipeSchema = new mongoose.Schema(
       type: Date,
       default: null,
     },
+    originalPrompt: {
+      type: String,
+      default: "",
+    },
   },
   {
     collection: "userRecipes",

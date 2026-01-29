@@ -129,6 +129,7 @@ exports.createUserRecipe = async (req, res) => {
         }
 
         userRecipe.userId = user._id;
+        userRecipe.originalPrompt = text;
         const recipe = new UserRecipe(userRecipe);
         const savedRecipe = await recipe.save();
 
@@ -455,9 +456,14 @@ exports.editTextUserRecipe = async (req, res) => {
     if (updatedRecipe) {
       updatedRecipeData = updatedRecipe;
     } else {
+      let instruction = text;
+      if (recipe.originalPrompt) {
+        instruction += `\n\n(Hinweis: Der ursprüngliche Wunsch für dieses Rezept war: "${recipe.originalPrompt}")`;
+      }
+
       const llmResult = await editRecipeWithLLM(
         recipe.toObject(),
-        text,
+        instruction,
         req.user.language
       );
 
