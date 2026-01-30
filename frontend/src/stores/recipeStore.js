@@ -329,7 +329,7 @@ export const useRecipeStore = defineStore("recipeStore", {
         const payload = preview
           ? { text, preview: true }
           : updatedRecipe
-            ? { updatedRecipe }
+            ? { updatedRecipe, text }
             : { text };
         const response = await apiStore.apiRequest(
           "post",

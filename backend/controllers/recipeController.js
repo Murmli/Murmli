@@ -487,6 +487,11 @@ exports.editTextUserRecipe = async (req, res) => {
       unit: typeof ing.unit === "object" ? ing.unit.id : ing.unit,
     }));
 
+    if (!preview && text) {
+      const oldPrompt = recipe.originalPrompt || "";
+      updatedRecipeData.originalPrompt = oldPrompt ? `${oldPrompt} // New Modification: ${text}` : text;
+    }
+
     updatedRecipeData.steps = updatedRecipeData.steps.map((step) => ({
       ...step,
       head: (step.head || []).map((h) => ({

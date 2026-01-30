@@ -122,7 +122,7 @@ const applyEdit = async () => {
         : recipeStore.editRecipe;
       await editFn(
         recipeStore.currentRecipe._id,
-        '',
+        text.value,
         false,
         previewData.value.preview
       );
