@@ -301,7 +301,7 @@ exports.migrateRecipe = async (recipe) => {
   }
 };
 
-exports.editRecipeWithLLM = async (recipe, text, language) => {
+exports.editRecipeWithLLM = async (recipe, text, language, { informationObject } = {}) => {
   try {
     const { rpmSchema } = require("../models/recipeModel.js");
     const { editRecipeSystemPrompt } = require("./prompts.js");
@@ -312,7 +312,12 @@ exports.editRecipeWithLLM = async (recipe, text, language) => {
       language
     );
 
-    const llmResponse = await apiCall(text, {
+    let prompt = text;
+    if (informationObject) {
+      prompt += `\n\nBerücksichtige bitte folgende User-Informationen/Vorlieben: ${JSON.stringify(informationObject)}.`;
+    }
+
+    const llmResponse = await apiCall(prompt, {
       jsonSchema: editRecipeSchema,
       cache: false,
       systemPrompt,

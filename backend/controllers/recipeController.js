@@ -461,10 +461,28 @@ exports.editTextUserRecipe = async (req, res) => {
         instruction += `\n\n(Hinweis: Der ursprüngliche Wunsch für dieses Rezept war: "${recipe.originalPrompt}")`;
       }
 
+      const userInformations = {
+        country: req.user.language,
+        filter: req.user.suggestions?.filter?.prompt || '',
+        servings: req.user.suggestions?.filter?.servings || 4,
+        favoriteRecipes: [],
+        likedRecipes: req.user.suggestions?.upvotes?.map(v => v.title) || [],
+        dislikedRecipes: req.user.suggestions?.downvotes?.map(v => v.title) || []
+      };
+
+      if (req.user.favoriteRecipes && req.user.favoriteRecipes.length > 0) {
+        const favoriteRecipeDetails = await Recipe.find(
+          { _id: { $in: req.user.favoriteRecipes } },
+          { title: 1 }
+        ).lean();
+        userInformations.favoriteRecipes = favoriteRecipeDetails.map(recipe => recipe.title);
+      }
+
       const llmResult = await editRecipeWithLLM(
         recipe.toObject(),
         instruction,
-        req.user.language
+        req.user.language,
+        { informationObject: userInformations }
       );
 
       if (!llmResult) {
@@ -536,10 +554,28 @@ exports.editTextRecipe = async (req, res) => {
     if (updatedRecipe) {
       updatedRecipeData = updatedRecipe;
     } else {
+      const userInformations = {
+        country: req.user.language,
+        filter: req.user.suggestions?.filter?.prompt || '',
+        servings: req.user.suggestions?.filter?.servings || 4,
+        favoriteRecipes: [],
+        likedRecipes: req.user.suggestions?.upvotes?.map(v => v.title) || [],
+        dislikedRecipes: req.user.suggestions?.downvotes?.map(v => v.title) || []
+      };
+
+      if (req.user.favoriteRecipes && req.user.favoriteRecipes.length > 0) {
+        const favoriteRecipeDetails = await Recipe.find(
+          { _id: { $in: req.user.favoriteRecipes } },
+          { title: 1 }
+        ).lean();
+        userInformations.favoriteRecipes = favoriteRecipeDetails.map(recipe => recipe.title);
+      }
+
       const llmResult = await editRecipeWithLLM(
         recipe.toObject(),
         text,
-        req.user.language
+        req.user.language,
+        { informationObject: userInformations }
       );
 
       if (!llmResult) {
