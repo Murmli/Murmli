@@ -11,6 +11,8 @@ Diese Datei enthält alle wichtigen Informationen für KI-Agenten, die am Murmli
 - **Struktur**: Monorepo mit Workspaces (backend, frontend)
 - **Version**: 1.0.0
 
+`ALWAYS start a new task by creating a new git branch with a descriptive name. Do not commit directly to the main branch.`
+
 ## 2. Technologie-Stack
 
 ### Backend (backend/)
