@@ -400,10 +400,10 @@ exports.generateJsonTranslation = async (text, outputLang) => {
   }
 };
 
-exports.findAlternativeItems = async (itemName, outputLang) => {
+exports.findAlternativeItems = async (itemName, outputLang, filter = '') => {
   try {
     const { findAlternativeItemsPrompt } = require("./prompts.js");
-    const prompt = findAlternativeItemsPrompt(itemName, outputLang);
+    const prompt = findAlternativeItemsPrompt(itemName, outputLang, filter);
     const answer = await apiCall(prompt, { jsonSchema: alternativeItemsSchema });
 
     if (!answer) {

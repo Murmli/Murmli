@@ -59,14 +59,21 @@ exports.translateJsonSystemPrompt = (outputLang) => {
   }
 };
 
-exports.findAlternativeItemsPrompt = (itemName, outputLang) => {
+exports.findAlternativeItemsPrompt = (itemName, outputLang, filter = '') => {
   try {
-    return `
+    let prompt = `
     Ich bin gerade im Supermarkt und kann ${itemName} nicht finden.
     Suche mir bitte alternative Produkte, die ich stattdessen nehmen kann, als Ersatz.
-    Zudem sag mir, wo im Supermarkt diese Produkte liegen könnten.
-    Formuliere deine Antwort als JSON in folgender Sprache: ${outputLang}.
+    Zudem sag mir, wo im Supermarkt diese Produkte liegen könnten.`;
+    
+    if (filter && filter.trim() !== '') {
+      prompt += `\n\nWICHTIG: Berücksichtige folgende Einschränkungen/Filter des Nutzers bei der Auswahl der Alternativen: ${filter}`;
+    }
+    
+    prompt += `\n    Formuliere deine Antwort als JSON in folgender Sprache: ${outputLang}.
     `;
+    
+    return prompt;
   } catch (error) {
     console.error("Error:", error.message);
     return false;

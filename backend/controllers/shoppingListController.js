@@ -224,7 +224,8 @@ exports.findItemAlternative = async (req, res) => {
     }
 
     const itemName = foundItem.name;
-    const alternatives = await findAlternativeItems(itemName, user.language);
+    const filter = user.suggestions?.filter?.prompt || '';
+    const alternatives = await findAlternativeItems(itemName, user.language, filter);
 
     if (!alternatives) {
       throw new Error("No alternative found for the item");
