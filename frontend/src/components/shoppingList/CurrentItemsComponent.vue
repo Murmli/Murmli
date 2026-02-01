@@ -8,7 +8,13 @@
                     <!-- Item Title -->
                     <v-list-item-title @click="openDropdown(item)">
                         <div class="align-center d-flex">
-                            <span class="w-100 text-capitalize">{{ item.name }}</span>
+                            <span class="w-100 text-capitalize" :class="{ 'text-warning': item._isPending }"
+                                  v-tooltip="item._isPending ? languageStore.t('shoppingList.pendingItemTooltip') : null">
+                                {{ item.name }}
+                                <v-icon v-if="item._isPending" size="small" color="warning" class="ml-1">
+                                    mdi-cloud-upload-outline
+                                </v-icon>
+                            </span>
                             <span class="text-caption">
                                 <span v-if="item.quantity && item.quantity > 0">
                                     {{ item.quantity }}
@@ -331,11 +337,11 @@ const saveItemChanges = async () => {
     dropdownMenu.value = false;
 };
 
-const toggleItemActive = (itemId) => {
+const toggleItemActive = async (itemId) => {
     const item = shoppingListStore.items.find(item => item._id === itemId);
     if (item) {
-        item.active = !item.active;
-        shoppingListStore.updateItem(item._id, item.name, item.quantity, item.unit.id, item.active);
+        // Use the new toggleItemActive method which handles offline mode
+        await shoppingListStore.toggleItemActive(itemId, item.name);
     }
 };
 

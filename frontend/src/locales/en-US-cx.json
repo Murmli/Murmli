@@ -150,7 +150,15 @@
     "deleteConfirmTooltip": "Press again to lock it in.",
     "recipeOwnership": "This recipe belongs to: ",
     "voiceRecordingInfo": "Voice recording's live. You can say what you want on your list in natural lingo. Your request gets processed and sent. If you wanna ditch the recording, you can delete it. Until you send it, everything stays local on your device.",
-    "categoryLabel": "Category"
+    "categoryLabel": "Category",
+    "offlineMode": "Offline mode's on — changes are chillin' locally, bro",
+    "backOnline": "Connection's back — we're back online, dude",
+    "syncComplete": "Changes synced — all smoothed out, man",
+    "pendingChanges": "{count} pending changes, bro",
+    "pendingChangesSingular": "1 pending change, bro",
+    "syncing": "Syncin'...",
+    "offline": "Offline, dude",
+    "pendingItemTooltip": "This item'll sync up once the connection's back, man"
   },
   "planner": {
     "title": "Recipe Planner",

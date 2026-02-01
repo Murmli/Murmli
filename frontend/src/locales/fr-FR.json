@@ -150,7 +150,15 @@
     "deleteConfirmTooltip": "Appuyez à nouveau pour confirmer.",
     "recipeOwnership": "Cette recette appartient à : ",
     "voiceRecordingInfo": "L'enregistrement vocal est actuellement en cours. Vous pouvez dire en langage naturel ce que vous souhaitez ajouter à votre liste de courses. Votre demande sera traitée et envoyée. Si vous souhaitez annuler l'enregistrement, vous pouvez le supprimer. Tant que vous n'envoyez pas l'enregistrement, tout reste local sur votre appareil.",
-    "categoryLabel": "Catégorie"
+    "categoryLabel": "Catégorie",
+    "offlineMode": "Mode hors ligne activé - les modifications sont enregistrées localement",
+    "backOnline": "Connexion rétablie",
+    "syncComplete": "Modifications synchronisées",
+    "pendingChanges": "{count} modifications en attente",
+    "pendingChangesSingular": "1 modification en attente",
+    "syncing": "Synchronisation en cours...",
+    "offline": "Hors ligne",
+    "pendingItemTooltip": "Cet article sera synchronisé lorsque la connexion sera rétablie"
   },
   "planner": {
     "title": "Planificateur de recettes",

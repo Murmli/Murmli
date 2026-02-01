@@ -150,7 +150,15 @@
     "deleteConfirmTooltip": "Press again to confirm.",
     "recipeOwnership": "This recipe belongs to: ",
     "voiceRecordingInfo": "Voice recordin' is currently runnin'. Yah can say in natural language what should be on yah shoppin' list. Yah request is processed 'nd sent. If yah wanna discard the recordin', yah can delete it. As long as yah don't send the recordin', it stays local on yah device.",
-    "categoryLabel": "Category"
+    "categoryLabel": "Category",
+    "offlineMode": "Offline mode active - changes'll be saved locally",
+    "backOnline": "Connection resto'ed",
+    "syncComplete": "Changes sync'd",
+    "pendingChanges": "{count} pendin' changes",
+    "pendingChangesSingular": "1 pendin' change",
+    "syncing": "Syncin'...",
+    "offline": "Offline",
+    "pendingItemTooltip": "This item'll be sync'd when the connection's resto'ed"
   },
   "planner": {
     "title": "Recipe Plannah",

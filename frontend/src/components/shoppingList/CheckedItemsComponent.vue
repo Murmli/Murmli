@@ -81,11 +81,11 @@ const deleteInactiveItems = async () => {
 };
 
 // Toggle item active status
-const toggleItemActive = (itemId) => {
+const toggleItemActive = async (itemId) => {
     const item = shoppingListStore.items.find(item => item._id === itemId);
     if (item) {
-        item.active = !item.active;
-        shoppingListStore.updateItem(item._id, item.name, item.quantity, item.unit, item.active);
+        // Use the new toggleItemActive method which handles offline mode
+        await shoppingListStore.toggleItemActive(itemId, item.name);
     }
 };
 

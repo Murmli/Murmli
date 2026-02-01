@@ -150,7 +150,15 @@
     "deleteConfirmTooltip": "再次按下以确认。",
     "recipeOwnership": "此食谱属于：",
     "voiceRecordingInfo": "当前正在进行语音录制。您可以用自然语言说出您想要添加到购物清单的内容。您的请求将被处理并发送。如果您想放弃录音，可以删除它。只要您不发送录音，一切都会保留在您的设备上。",
-    "categoryLabel": "类别"
+    "categoryLabel": "类别",
+    "offlineMode": "离线模式已启用 — 更改将保存在本地",
+    "backOnline": "连接已恢复",
+    "syncComplete": "更改已同步",
+    "pendingChanges": "{count} 个待处理的更改",
+    "pendingChangesSingular": "1 个待处理的更改",
+    "syncing": "正在同步...",
+    "offline": "离线",
+    "pendingItemTooltip": "该项目将在连接恢复后同步"
   },
   "planner": {
     "title": "食谱计划",

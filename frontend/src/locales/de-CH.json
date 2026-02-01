@@ -150,7 +150,15 @@
     "deleteConfirmTooltip": "Zur Bestätigig nomol drucke.",
     "recipeOwnership": "Das Rezäpt ghört zu: ",
     "voiceRecordingInfo": "D'Sprachufnahm lauft aktuell. Du chasch in natürlicher Sprach säge, was uf dini Iikauflischt söll. Dini Aafrog wird verarbeitet und gsendet. Wenn du d'Ufnahm verwürfe wetsch, chasch sie lösche. Solang du d'Ufnahm nöd sendisch, blibt alles lokal uf dim Gerät.",
-    "categoryLabel": "Kategorii"
+    "categoryLabel": "Kategorii",
+    "offlineMode": "Offline-Modus aktiv - Änderige werde lokal gspeicheret",
+    "backOnline": "Verbindig isch wieder da",
+    "syncComplete": "Änderige synchronisiert",
+    "pendingChanges": "{count} usstehendi Änderige",
+    "pendingChangesSingular": "1 usstehendi Änderig",
+    "syncing": "Am synchronisiere...",
+    "offline": "Offline",
+    "pendingItemTooltip": "Dä Artikel wird synchronisiert, wenn d'Verbindig wieder da isch"
   },
   "planner": {
     "title": "Rezäptplaner",

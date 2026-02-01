@@ -185,7 +185,15 @@
     "deleteConfirmTooltip": "Zur Bestätigung erneut drücken.",
     "recipeOwnership": "Dieses Rezept gehört zu: ",
     "voiceRecordingInfo": "Die Sprachaufnahme läuft aktuell. Du kannst in natürlicher Sprache sagen, was auf deine Einkaufsliste soll. Deine Anfrage wird verarbeitet und gesendet. Wenn du die Aufnahme verwerfen möchtest, kannst du sie löschen. Solange du die Aufnahme nicht sendest, bleibt alles lokal auf deinem Gerät.",
-    "categoryLabel": "Kategorie"
+    "categoryLabel": "Kategorie",
+    "offlineMode": "Offline-Modus aktiv - Änderungen werden lokal gespeichert",
+    "backOnline": "Verbindung wiederhergestellt",
+    "syncComplete": "Änderungen synchronisiert",
+    "pendingChanges": "{count} ausstehende Änderungen",
+    "pendingChangesSingular": "1 ausstehende Änderung",
+    "syncing": "Synchronisiere...",
+    "offline": "Offline",
+    "pendingItemTooltip": "Dieser Artikel wird synchronisiert, wenn die Verbindung wiederhergestellt ist"
   },
   "planner": {
     "title": "Rezepteplaner",

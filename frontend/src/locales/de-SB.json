@@ -150,7 +150,15 @@
     "deleteConfirmTooltip": "Zur Bestätigung erneut drucka.",
     "recipeOwnership": "Des Rezept ghört zu: ",
     "voiceRecordingInfo": "D' Sprachaufnahm läuft aktuell. Du kansch in natürlicher Sprach saga, was auf deine Eikaufslischd soll. Dei Anfrag wird verarbeitet ond gsendet. Wenn du d' Aufnahm verwerfä möchtä, kansch se löschä. Solang du d' Aufnahm ned sendesch, bleibt alles lokal auf deinem Gerät.",
-    "categoryLabel": "Kategorie"
+    "categoryLabel": "Kategorie",
+    "offlineMode": "Offline-Modus isch a – d'Änderunge werded lokal g'speichert",
+    "backOnline": "Verbindung isch wieder do",
+    "syncComplete": "All' Änderunge send g'synct",
+    "pendingChanges": "{count} ausstehende Änderunge",
+    "pendingChangesSingular": "1 ausstehende Änderig",
+    "syncing": "Wird g'synct...",
+    "offline": "Offline",
+    "pendingItemTooltip": "Der Artikel werd g'synct, wenn d'Verbindung wieder do isch"
   },
   "planner": {
     "title": "Rezeptplaner",

@@ -1,6 +1,8 @@
 import { defineStore } from "pinia";
 import { useApiStore } from "./apiStore";
+import { useNetworkStore } from "./networkStore";
 import { cache } from "@/utils/cache";
+import { offlineQueue } from "@/utils/offlineQueue";
 
 export const useShoppingListStore = defineStore("shoppingListStore", {
   state: () => ({
@@ -23,11 +25,23 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
     recipes: [],
     isAddingItem: false,
     eventSource: null,
+    isOffline: false,
+    pendingChangesCount: 0,
+    isSyncing: false,
+    offlineListenersInitialized: false,
   }),
 
   getters: {
     sortedFavorites(state) {
       return [...state.favorites].sort((a, b) => b.clicks - a.clicks);
+    },
+    hasPendingChanges(state) {
+      return state.pendingChangesCount > 0;
+    },
+    pendingChangesText(state) {
+      return state.pendingChangesCount === 1 
+        ? '1 ausstehende Änderung' 
+        : `${state.pendingChangesCount} ausstehende Änderungen`;
     },
   },
 
@@ -70,6 +84,180 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
         this.lsCategoryOverridesKey,
         JSON.stringify(this.categoryOverrides)
       );
+    },
+
+    // Offline functionality methods
+    initOfflineSupport() {
+      if (this.offlineListenersInitialized) return;
+      
+      const networkStore = useNetworkStore();
+      networkStore.initNetworkListeners();
+      
+      // Watch for online status changes
+      window.addEventListener('online', this.handleOnline.bind(this));
+      window.addEventListener('offline', this.handleOffline.bind(this));
+      
+      // Initial status check
+      this.updateOfflineStatus();
+      this.updatePendingChangesCount();
+      
+      this.offlineListenersInitialized = true;
+      console.log('[ShoppingListStore] Offline support initialized');
+    },
+
+    updateOfflineStatus() {
+      const networkStore = useNetworkStore();
+      this.isOffline = networkStore.isOffline;
+    },
+
+    handleOnline() {
+      console.log('[ShoppingListStore] Connection restored - syncing pending changes');
+      this.updateOfflineStatus();
+      this.syncPendingChanges();
+    },
+
+    handleOffline() {
+      console.log('[ShoppingListStore] Connection lost - offline mode active');
+      this.updateOfflineStatus();
+    },
+
+    updatePendingChangesCount() {
+      this.pendingChangesCount = offlineQueue.getCount();
+    },
+
+    async syncPendingChanges() {
+      if (this.isSyncing) return;
+      
+      const networkStore = useNetworkStore();
+      if (!networkStore.isOnline) {
+        console.log('[ShoppingListStore] Cannot sync - still offline');
+        return;
+      }
+
+      this.isSyncing = true;
+      networkStore.setSyncInProgress(true);
+      
+      const queue = offlineQueue.getAll();
+      console.log(`[ShoppingListStore] Syncing ${queue.length} pending changes`);
+      
+      let successCount = 0;
+      let failCount = 0;
+
+      for (const queueItem of queue) {
+        try {
+          await this.executeQueuedOperation(queueItem);
+          offlineQueue.remove(queueItem.id);
+          successCount++;
+        } catch (error) {
+          console.error(`[ShoppingListStore] Failed to sync operation ${queueItem.id}:`, error);
+          offlineQueue.markForRetry(queueItem.id);
+          
+          // Nach 3 Fehlversuchen entfernen
+          if (queueItem.retryCount >= 3) {
+            offlineQueue.remove(queueItem.id);
+            failCount++;
+          }
+        }
+      }
+
+      this.updatePendingChangesCount();
+      networkStore.recordSyncAttempt();
+      networkStore.setSyncInProgress(false);
+      this.isSyncing = false;
+
+      console.log(`[ShoppingListStore] Sync complete: ${successCount} success, ${failCount} failed`);
+      
+      // Nur vom Server aktualisieren wenn:
+      // 1. Es Fehler gab (damit wir den aktuellen Stand vom Server holen)
+      // 2. Die Liste mit anderen geteilt ist (damit wir deren Änderungen sehen)
+      if (failCount > 0 || (this.sharedWith && this.sharedWith.length > 0)) {
+        console.log('[ShoppingListStore] Refreshing from server due to failures or shared list');
+        await this.readShoppingList(false);
+      } else if (successCount > 0) {
+        // Bei erfolgreichem Sync ohne Fehler und ohne geteilte Liste:
+        // Nur das updatedAt Timestamp aktualisieren, aber die lokale Liste behalten
+        // da sie jetzt mit dem Server synchron ist
+        this.lastUpdate = new Date().toISOString();
+        
+        // Entferne alle _isPending Markierungen
+        this.items.forEach(item => delete item._isPending);
+        this.saveCache();
+        console.log('[ShoppingListStore] Local list is now in sync, no server refresh needed');
+      }
+    },
+
+    async executeQueuedOperation(queueItem) {
+      const { operation, data } = queueItem;
+      const apiStore = useApiStore();
+      
+      switch (operation) {
+        case 'create':
+          await this.addItemToShoppingList(data.text);
+          break;
+        case 'update':
+          await this.updateItem(
+            data.itemId,
+            data.name,
+            data.quantity,
+            data.unit,
+            data.active,
+            data.category
+          );
+          break;
+        case 'toggleActive': {
+          // Bei toggleActive den gespeicherten Ziel-Zustand direkt setzen
+          // Nicht toggeln, da wir bereits den gewünschten Zustand kennen
+          const item = this.items.find(item => item._id === data.itemId);
+          if (item) {
+            // Direkt den API-Call machen ohne lokale Änderungen
+            const request = await apiStore.apiRequest(
+              "put",
+              "/shoppingList/item/update",
+              {
+                itemId: data.itemId,
+                name: item.name,
+                quantity: item.quantity,
+                unit: item.unit?.id || 0,
+                category: item.category?.id,
+                active: data.active, // Der gespeicherte Ziel-Zustand
+                listId: this.listId,
+              },
+              false
+            );
+            
+            if (request.status === 200) {
+              // Update local state to match server
+              item.active = data.active;
+              delete item._isPending;
+              this.saveCache();
+            }
+          }
+          break;
+        }
+        case 'delete':
+          await this.deleteItem(data.itemId);
+          break;
+        case 'deleteChecked': {
+          // Direkt alle checked items löschen ohne lokale Filterung
+          const request = await apiStore.apiRequest(
+            "delete",
+            "/shoppingList/item/delete/checked",
+            { listId: this.listId },
+            false
+          );
+          if (request.status === 200) {
+            // Liste vom Response aktualisieren
+            this.items = request.data.list.items;
+            this.saveCache();
+          }
+          break;
+        }
+        case 'deleteAll':
+          await this.deleteAllItems();
+          break;
+        default:
+          console.warn(`[ShoppingListStore] Unknown operation: ${operation}`);
+      }
     },
 
     async ensureListId() {
@@ -181,14 +369,30 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
     async initializeShoppingList() {
       const storedListId = localStorage.getItem("shoppingListId");
 
+      // Initialize offline support
+      this.initOfflineSupport();
+
       this.favorites = this.getFavorites();
       this.loadCache();
+      
+      // Apply any pending changes to local cache
+      const networkStore = useNetworkStore();
+      if (networkStore.isOffline && this.items.length > 0) {
+        this.items = offlineQueue.applyPendingChangesToLocal(this.items);
+        this.updatePendingChangesCount();
+      }
+      
       await this.fetchCategories();
       if (storedListId) {
         await this.setListId(storedListId, false);
         await this.readShoppingList(true);
       } else {
         await this.createShoppingList();
+      }
+      
+      // If we come back online and have pending changes, sync them
+      if (!networkStore.isOffline && this.hasPendingChanges) {
+        setTimeout(() => this.syncPendingChanges(), 2000);
       }
     },
 
@@ -239,6 +443,20 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
 
     async readShoppingList(showLoading = false) {
       const apiStore = useApiStore();
+      const networkStore = useNetworkStore();
+
+      // Wenn offline, nur aus Cache laden
+      if (networkStore.isOffline) {
+        console.log('[ShoppingListStore] Offline - loading from cache only');
+        this.loadCache();
+        // Wende ausstehende Änderungen auf den Cache an
+        const pendingCount = offlineQueue.getCount();
+        if (pendingCount > 0) {
+          this.items = offlineQueue.applyPendingChangesToLocal(this.items);
+          this.updatePendingChangesCount();
+        }
+        return;
+      }
 
       try {
         const reqList = await apiStore.apiRequest(
@@ -251,7 +469,22 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
         );
 
         if (reqList.status == 200) {
-          this.items = reqList.data.list.items;
+          // Server-Daten als Basis nehmen
+          let serverItems = reqList.data.list.items;
+          
+          // Wenn es ausstehende Änderungen gibt, diese auf die Server-Daten anwenden
+          // statt die lokalen Änderungen zu verlieren
+          const pendingCount = offlineQueue.getCount();
+          if (pendingCount > 0) {
+            console.log(`[ShoppingListStore] Applying ${pendingCount} pending changes to server data`);
+            // Temporär die Server-Items setzen, damit applyPendingChangesToLocal darauf arbeiten kann
+            this.items = serverItems;
+            this.items = offlineQueue.applyPendingChangesToLocal(this.items);
+          } else {
+            // Keine ausstehenden Änderungen - Server-Daten übernehmen
+            this.items = serverItems;
+          }
+          
           this.listId = reqList.data.list._id;
           this.isOwner = reqList.data.list.isOwner;
           this.sharedWith = reqList.data.list.sharedWith || [];
@@ -278,17 +511,43 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
         }
       } catch (error) {
         this.error = error;
+        // Bei Fehler aus Cache laden
+        this.loadCache();
       }
     },
 
     async addItemToShoppingList(text) {
       const apiStore = useApiStore();
+      const networkStore = useNetworkStore();
       this.isAddingItem = true;
+      
       try {
         const ok = await this.ensureListId();
         if (!ok) {
           throw new Error("No shopping list available");
         }
+
+        // Wenn offline, zur Queue hinzufügen
+        if (networkStore.isOffline) {
+          console.log('[ShoppingListStore] Offline - queueing item creation:', text);
+          
+          // Parse einfache Items für lokale Anzeige
+          const parsedItems = this.parseSimpleItemText(text);
+          parsedItems.forEach(item => {
+            this.items.push({
+              ...item,
+              _isPending: true,
+              _id: `pending_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+            });
+          });
+          
+          offlineQueue.add('create', { text });
+          this.updatePendingChangesCount();
+          this.saveCache();
+          this.isAddingItem = false;
+          return;
+        }
+
         const request = await apiStore.apiRequest(
           "post",
           "/shoppingList/item/create/text",
@@ -305,11 +564,61 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
           this.saveCache();
         }
       } catch (error) {
-        this.error = error;
+        // Bei Netzwerkfehler, zur Queue hinzufügen
+        if (!navigator.onLine || error.message?.includes('network')) {
+          console.log('[ShoppingListStore] Network error - queueing item creation:', text);
+          offlineQueue.add('create', { text });
+          this.updatePendingChangesCount();
+          
+          // Lokale Anzeige aktualisieren
+          const parsedItems = this.parseSimpleItemText(text);
+          parsedItems.forEach(item => {
+            this.items.push({
+              ...item,
+              _isPending: true,
+              _id: `pending_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+            });
+          });
+          this.saveCache();
+        } else {
+          this.error = error;
+        }
       }
       finally {
         this.isAddingItem = false;
       }
+    },
+
+    // Hilfsmethode zum Parsen einfacher Item-Texte für Offline-Anzeige
+    parseSimpleItemText(text) {
+      const items = [];
+      const lines = text.split(/[,\n]/).map(l => l.trim()).filter(l => l);
+      
+      lines.forEach(line => {
+        // Einfaches Parsing: "2 Äpfel" oder "Milch"
+        const match = line.match(/^(\d+(?:\.\d+)?)?\s*(.+)$/);
+        if (match) {
+          const quantity = parseFloat(match[1]) || 1;
+          const name = match[2].trim();
+          items.push({
+            name,
+            quantity,
+            unit: { id: 0, name: 'Stück' },
+            category: { id: 0, name: 'Sonstiges' },
+            active: true,
+            recipe: false,
+          });
+        }
+      });
+      
+      return items.length > 0 ? items : [{
+        name: text.trim(),
+        quantity: 1,
+        unit: { id: 0, name: 'Stück' },
+        category: { id: 0, name: 'Sonstiges' },
+        active: true,
+        recipe: false,
+      }];
     },
 
     async voiceToItem(audioBlob) {
@@ -367,8 +676,22 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
 
     async deleteCheckedItems() {
       const apiStore = useApiStore();
+      const networkStore = useNetworkStore();
+      
+      // Lokal sofort entfernen
+      const itemsToDelete = this.items.filter((item) => item.active === false);
+      this.items = this.items.filter((item) => item.active !== false);
+      this.saveCache();
+      
+      // Wenn offline, zur Queue hinzufügen
+      if (networkStore.isOffline) {
+        console.log('[ShoppingListStore] Offline - queueing delete checked items');
+        offlineQueue.add('deleteChecked', { listId: this.listId });
+        this.updatePendingChangesCount();
+        return;
+      }
+      
       try {
-        this.items = this.items.filter((item) => item.active !== false);
         const request = await apiStore.apiRequest(
           "delete",
           "/shoppingList/item/delete/checked",
@@ -382,29 +705,79 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
           this.saveCache();
         }
       } catch (error) {
-        this.error = error;
+        // Bei Netzwerkfehler, zur Queue hinzufügen
+        if (!navigator.onLine || error.message?.includes('network')) {
+          console.log('[ShoppingListStore] Network error - queueing delete checked items');
+          offlineQueue.add('deleteChecked', { listId: this.listId });
+          this.updatePendingChangesCount();
+          
+          // Items bleiben lokal entfernt (optimistisch)
+        } else {
+          this.error = error;
+          // Bei anderen Fehlern, Items wiederherstellen
+          this.items = [...this.items, ...itemsToDelete];
+          this.saveCache();
+        }
       }
     },
 
     async deleteItem(itemId) {
       const apiStore = useApiStore();
+      const networkStore = useNetworkStore();
+      
+      // Lokal sofort entfernen
+      const itemToDelete = this.items.find((item) => item._id === itemId);
+      this.items = this.items.filter((item) => item._id !== itemId);
+      this.saveCache();
+      
+      // Wenn offline, zur Queue hinzufügen
+      if (networkStore.isOffline) {
+        console.log('[ShoppingListStore] Offline - queueing item deletion:', itemId);
+        offlineQueue.add('delete', { 
+          itemId,
+          itemName: itemToDelete?.name 
+        });
+        this.updatePendingChangesCount();
+        return;
+      }
+      
       try {
         const success = await apiStore.apiRequest(
           "delete",
           "/shoppingList/item/delete",
           { itemId }
         );
-        if (success) {
-          this.items = this.items.filter((item) => item._id !== itemId);
-          this.saveCache();
+        if (!success) {
+          // Bei Fehler, Item zurück zur Liste hinzufügen
+          if (itemToDelete) {
+            this.items.push(itemToDelete);
+            this.saveCache();
+          }
         }
       } catch (error) {
-        this.error = error;
+        // Bei Netzwerkfehler, zur Queue hinzufügen
+        if (!navigator.onLine || error.message?.includes('network')) {
+          console.log('[ShoppingListStore] Network error - queueing item deletion:', itemId);
+          offlineQueue.add('delete', { 
+            itemId,
+            itemName: itemToDelete?.name 
+          });
+          this.updatePendingChangesCount();
+        } else {
+          this.error = error;
+          // Item zurück zur Liste hinzufügen bei anderen Fehlern
+          if (itemToDelete) {
+            this.items.push(itemToDelete);
+            this.saveCache();
+          }
+        }
       }
     },
 
     async updateItem(itemId, name, quantity, unit, active, category) {
       const apiStore = useApiStore();
+      const networkStore = useNetworkStore();
+      
       try {
         // Überprüfung, ob unit ein Objekt ist, und Ersetzen mit unit.id
         if (typeof unit === "object" && unit !== null && "id" in unit) {
@@ -413,16 +786,41 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
 
         // Item lokal aktualisieren
         const item = this.items.find((item) => item._id === itemId);
+        const originalState = item ? { ...item } : null;
+        
         if (item) {
           item.name = name;
           item.quantity = quantity;
           item.active = active;
+          item._isPending = networkStore.isOffline;
           if (category !== undefined) {
             const catObj = this.categories.find(
               (c) => Number(c.id) === Number(category)
             );
             item.category = { id: Number(category), name: catObj?.name };
           }
+        }
+        
+        this.saveCache();
+
+        // Wenn offline, zur Queue hinzufügen
+        if (networkStore.isOffline) {
+          console.log('[ShoppingListStore] Offline - queueing item update:', itemId);
+          offlineQueue.add('update', { 
+            itemId, 
+            name, 
+            quantity, 
+            unit, 
+            active, 
+            category,
+            listId: this.listId 
+          });
+          this.updatePendingChangesCount();
+          
+          if (category !== undefined) {
+            this.setCategoryOverride(name, category);
+          }
+          return true;
         }
 
         this.pendingUpdates++;
@@ -451,12 +849,43 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
           if (request.data && request.data.list && request.data.list.updatedAt) {
             this.lastUpdate = request.data.list.updatedAt;
           }
+          
+          // Remove pending status
+          if (item) {
+            delete item._isPending;
+          }
           this.saveCache();
           return true;
         }
       } catch (error) {
-        this.error = error;
-        return false;
+        // Bei Netzwerkfehler, zur Queue hinzufügen
+        if (!navigator.onLine || error.message?.includes('network')) {
+          console.log('[ShoppingListStore] Network error - queueing item update:', itemId);
+          offlineQueue.add('update', { 
+            itemId, 
+            name, 
+            quantity, 
+            unit, 
+            active, 
+            category,
+            listId: this.listId 
+          });
+          this.updatePendingChangesCount();
+          
+          if (category !== undefined) {
+            this.setCategoryOverride(name, category);
+          }
+          return true;
+        } else {
+          this.error = error;
+          // Bei anderen Fehlern, Original-Zustand wiederherstellen
+          const item = this.items.find((item) => item._id === itemId);
+          if (item && originalState) {
+            Object.assign(item, originalState);
+            this.saveCache();
+          }
+          return false;
+        }
       } finally {
         this.pendingUpdates--;
         if (this.pendingUpdates === 0 && this.queuedSseUpdate) {
@@ -469,6 +898,73 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
             await this.refreshShoppingList();
           }
           this.queuedSseUpdate = null;
+        }
+      }
+    },
+
+    async toggleItemActive(itemId, itemName) {
+      const apiStore = useApiStore();
+      const networkStore = useNetworkStore();
+      
+      // Item finden und lokal togglen
+      const item = this.items.find((item) => item._id === itemId);
+      if (!item) return false;
+      
+      const newActiveState = !item.active;
+      item.active = newActiveState;
+      item._isPending = networkStore.isOffline;
+      this.saveCache();
+      
+      // Wenn offline, zur Queue hinzufügen
+      if (networkStore.isOffline) {
+        console.log('[ShoppingListStore] Offline - queueing toggle:', itemId);
+        offlineQueue.add('toggleActive', { 
+          itemId, 
+          itemName,
+          active: newActiveState 
+        });
+        this.updatePendingChangesCount();
+        return true;
+      }
+      
+      try {
+        const request = await apiStore.apiRequest(
+          "put",
+          "/shoppingList/item/update",
+          {
+            itemId,
+            name: item.name,
+            quantity: item.quantity,
+            unit: item.unit?.id || 0,
+            category: item.category?.id,
+            active: newActiveState,
+            listId: this.listId,
+          },
+          false
+        );
+
+        if (request.status == 200) {
+          delete item._isPending;
+          this.saveCache();
+          return true;
+        }
+      } catch (error) {
+        // Bei Netzwerkfehler, zur Queue hinzufügen
+        if (!navigator.onLine || error.message?.includes('network')) {
+          console.log('[ShoppingListStore] Network error - queueing toggle:', itemId);
+          offlineQueue.add('toggleActive', { 
+            itemId, 
+            itemName,
+            active: newActiveState 
+          });
+          this.updatePendingChangesCount();
+          return true;
+        } else {
+          this.error = error;
+          // Toggle rückgängig machen
+          item.active = !newActiveState;
+          this.saveCache();
+          return false;
         }
       }
     },

@@ -150,7 +150,15 @@
     "deleteConfirmTooltip": "Press again to confirm.",
     "recipeOwnership": "This recipe belongs to: ",
     "voiceRecordingInfo": "The voice recording is currently running. You can say in natural language what should be added to your shopping list. Your request will be processed and sent. If you want to discard the recording, you can delete it. As long as you do not send the recording, everything remains local on your device.",
-    "categoryLabel": "Category"
+    "categoryLabel": "Category",
+    "offlineMode": "Offline mode active — changes will be saved locally",
+    "backOnline": "Back online",
+    "syncComplete": "Changes synchronized",
+    "pendingChanges": "{count} pending changes",
+    "pendingChangesSingular": "1 pending change",
+    "syncing": "Syncing...",
+    "offline": "Offline",
+    "pendingItemTooltip": "This item will be synced when the connection is restored"
   },
   "planner": {
     "title": "Recipe Planner",
