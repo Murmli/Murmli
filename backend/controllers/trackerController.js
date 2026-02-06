@@ -882,3 +882,47 @@ exports.chat = async (req, res) => {
   }
 };
 
+exports.addItem = async (req, res) => {
+  try {
+    const user = req.user;
+    const { trackerId, item } = req.body;
+
+    if (!trackerId) {
+      return res.status(400).json({ error: "Tracker ID is required." });
+    }
+
+    if (!item || !item.name || item.amount === undefined || !item.unit) {
+      return res.status(400).json({ error: "Item with name, amount, and unit is required." });
+    }
+
+    let tracker = await Tracker.findOne({ _id: trackerId, user: user._id });
+
+    if (!tracker) {
+      return res.status(404).json({ error: "Tracker not found" });
+    }
+
+    const foodItem = {
+      name: item.name,
+      amount: parseFloat(item.amount),
+      unit: item.unit,
+      kcal: parseFloat(item.kcal) || 0,
+      protein: parseFloat(item.protein) || 0,
+      carbohydrates: parseFloat(item.carbohydrates) || 0,
+      fat: parseFloat(item.fat) || 0,
+      healthyRating: item.healthyRating || 3,
+    };
+
+    tracker.foodItems.push(foodItem);
+
+    const totals = calculateFoodItemsTotals(tracker.foodItems);
+    tracker.totals = totals;
+
+    await tracker.save();
+
+    return res.status(200).json({ message: "Food item added successfully", tracker });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Server Error" });
+  }
+};
+

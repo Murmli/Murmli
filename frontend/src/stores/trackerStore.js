@@ -149,6 +149,42 @@ export const useTrackerStore = defineStore("trackerStore", {
       return null;
     },
 
+    // Add a food item directly without AI processing (for favorites)
+    async addFoodItemDirect(item) {
+      this.isAddingItem = true;
+      const apiStore = useApiStore();
+      try {
+        const response = await apiStore.apiRequest(
+          "post",
+          "/calorietracker/item/add",
+          {
+            trackerId: this.tracker._id,
+            item: {
+              name: item.name,
+              amount: parseFloat(item.amount),
+              unit: item.unit,
+              kcal: parseFloat(item.kcal) || 0,
+              protein: parseFloat(item.protein) || 0,
+              carbohydrates: parseFloat(item.carbohydrates) || 0,
+              fat: parseFloat(item.fat) || 0,
+              healthyRating: item.healthyRating || 3
+            }
+          },
+          false
+        );
+        if (response.status === 200) {
+          this.tracker = response.data.tracker;
+          this.isAddingItem = false;
+          this.saveCache();
+          return true;
+        }
+      } catch (error) {
+        this.isAddingItem = false;
+        this.error = error;
+      }
+      return null;
+    },
+
     // Upload an audio file to track Food
     async trackFoodByAudio(file) {
       const apiStore = useApiStore();

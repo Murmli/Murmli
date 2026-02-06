@@ -783,4 +783,64 @@ router.put("/activity/update", secretKeyMiddleware, sessionMiddleware, trackerCo
  */
 router.post("/chat", secretKeyMiddleware, sessionMiddleware, trackerController.chat);
 
+/**
+ * @swagger
+ * /api/v2/calorietracker/item/add:
+ *   post:
+ *     tags: [Tracker]
+ *     title: Add Food Item Directly
+ *     summary: Add a food item directly without AI processing
+ *     description: Adds a food item with all nutritional values directly to the tracker without AI processing. Useful for favorites or manual entries.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - trackerId
+ *               - item
+ *             properties:
+ *               trackerId:
+ *                 type: string
+ *               item:
+ *                 type: object
+ *                 required:
+ *                   - name
+ *                   - amount
+ *                   - unit
+ *                   - kcal
+ *                 properties:
+ *                   name:
+ *                     type: string
+ *                   amount:
+ *                     type: number
+ *                   unit:
+ *                     type: string
+ *                   kcal:
+ *                     type: number
+ *                   protein:
+ *                     type: number
+ *                   carbohydrates:
+ *                     type: number
+ *                   fat:
+ *                     type: number
+ *                   healthyRating:
+ *                     type: number
+ *     responses:
+ *       200:
+ *         description: Food item added successfully
+ *       400:
+ *         description: Invalid input
+ *       401:
+ *         description: Unauthorized
+ *       403:
+ *         description: Forbidden - Invalid secret key
+ *       404:
+ *         description: Tracker not found
+ *       500:
+ *         description: Server error
+ */
+router.post("/item/add", secretKeyMiddleware, sessionMiddleware, trackerController.addItem);
+
 module.exports = router;

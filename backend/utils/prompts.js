@@ -189,9 +189,16 @@ exports.textToTrackerArraySystemPrompt = (outputLang = "de-DE") => {
 
     Achte darauf, die Sprache ${outputLang} für die Ausgabe zu verwenden. Wenn du dir bei bestimmten Kalorienwerten unsicher bist, schätze sie, sofern keine genauen Angaben gemacht wurden. Wenn der Text Kalorienangaben enthält, verwende diese exakt wie angegeben, ohne zu runden. Nutze die folgenden Richtlinien für eine präzise Einschätzung:
 
+    WICHTIG - MAKRONÄHRSTOFFE:
+    - Berechne Protein, Kohlenhydrate und Fett GENAU und pro angegebene Menge (nicht pro 100g, sondern für die tatsächliche Menge).
+    - Verwende typische Nährwerttabellen als Referenz (z.B. Nudeln ~12g Protein/100g, Reis ~7g Protein/100g, Hähnchenbrust ~23g Protein/100g).
+    - Bei gekochten vs. rohen Zutaten: Verwende die Nährwerte für den ZUSTAND in dem das Lebensmittel verzehrt wird.
+    - Die Summe aus (Protein × 4 + Kohlenhydrate × 4 + Fett × 9) sollte ungefähr den angegebenen kcal entsprechen.
+    - Sei besonders präzise beim Proteingehalt, da dies ein wichtiger Makronährstoff ist.
+
     - Berücksichtige bei der Kalorieninformation, dass Zutaten wie Pasta, Reis, Bohnen usw. im gekochten Zustand ein deutlich anderes Gewicht haben.
     - Vermerke gekochte Gewichte mit "(gekocht)" im Namen des Lebensmittels.
-    - Schätze bei vagen Mengenangaben typische Werte, z.B. eine „Handvoll“.
+    - Schätze bei vagen Mengenangaben typische Werte, z.B. eine „Handvoll".
     - Korrigiere Rechtschreibfehler und identifiziere, was für eine Kalorienzähler-App relevant ist.
     - Bei Gerichten liste einzelne Zutaten auf, betrachte sie jedoch als Teil eines vollständigen Gerichts. Schätze die Anteile proportional zur Gesamtmenge des Gerichts.
     - Stelle sicher, dass die Kalorienverteilung innerhalb von Gerichten plausibel ist.
@@ -388,9 +395,17 @@ exports.imageToTrackerItemsSystemPrompt = (outputLang) => {
 
     Achte darauf, die Sprache ${outputLang} für die Ausgabe zu verwenden. Wenn du dir bei bestimmten Kalorienwerten unsicher bist, schätze sie, sofern keine genauen Angaben gemacht wurden. Wenn der Text oder das Bild Kalorienangaben enthält, verwende diese exakt wie angegeben, ohne zu runden. Nutze die folgenden Richtlinien für eine präzise Einschätzung:
 
+    WICHTIG - MAKRONÄHRSTOFFE:
+    - Berechne Protein, Kohlenhydrate und Fett GENAU und pro geschätzter Menge auf dem Bild.
+    - Verwende typische Nährwerttabellen als Referenz (z.B. Nudeln ~12g Protein/100g, Reis ~7g Protein/100g, Hähnchenbrust ~23g Protein/100g).
+    - Bei gekochten vs. rohen Zutaten: Verwende die Nährwerte für den ZUSTAND in dem das Lebensmittel verzehrt wird.
+    - Die Summe aus (Protein × 4 + Kohlenhydrate × 4 + Fett × 9) sollte ungefähr den angegebenen kcal entsprechen.
+    - Sei besonders präzise beim Proteingehalt, da dies ein wichtiger Makronährstoff ist.
+    - Schätze die Menge basierend auf Tellergröße, Proportionen und Referenzobjekten.
+
     - Berücksichtige bei der Kalorieninformation, dass Zutaten wie Pasta, Reis, Bohnen usw. im gekochten Zustand ein deutlich anderes Gewicht haben.
     - Vermerke gekochte Gewichte mit "(gekocht)" im Namen des Lebensmittels.
-    - Schätze bei vagen Mengenangaben typische Werte, z.B. eine „Handvoll“.
+    - Schätze bei vagen Mengenangaben typische Werte, z.B. eine „Handvoll".
     - Korrigiere Rechtschreibfehler und identifiziere, was für eine Kalorienzähler-App relevant ist.
     - Bei Gerichten liste einzelne Zutaten auf, betrachte sie jedoch als Teil eines vollständigen Gerichts. Schätze die Anteile proportional zur Gesamtmenge des Gerichts.
     - Stelle sicher, dass die Kalorienverteilung innerhalb von Gerichten plausibel ist.

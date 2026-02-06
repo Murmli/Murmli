@@ -98,9 +98,23 @@
                         </v-col>
                     </v-row>
                     <v-row>
-                        <v-col>
+                        <v-col cols="6">
                             <v-text-field v-model="trackerStore.selectedItem.kcal" type="number"
                                 :label="languageStore.t('tracker.calories')" min="0" />
+                        </v-col>
+                        <v-col cols="6">
+                            <v-text-field v-model="trackerStore.selectedItem.protein" type="number"
+                                :label="languageStore.t('tracker.protein')" min="0" />
+                        </v-col>
+                    </v-row>
+                    <v-row>
+                        <v-col cols="6">
+                            <v-text-field v-model="trackerStore.selectedItem.carbohydrates" type="number"
+                                :label="languageStore.t('tracker.carbohydrates')" min="0" />
+                        </v-col>
+                        <v-col cols="6">
+                            <v-text-field v-model="trackerStore.selectedItem.fat" type="number"
+                                :label="languageStore.t('tracker.fat')" min="0" />
                         </v-col>
                     </v-row>
                 </v-container>
@@ -136,6 +150,9 @@ const isNotToday = computed(() => {
 const dropdownMenu = ref(false);
 const changeItemDialog = ref(false);
 const originalRatio = ref(0); // Speichert das ursprüngliche Verhältnis von kcal zu amount
+const originalProteinRatio = ref(0);
+const originalCarbsRatio = ref(0);
+const originalFatRatio = ref(0);
 
 const openDropdown = (item) => {
     trackerStore.selectedItem = item;
@@ -166,30 +183,65 @@ const addItemToday = async () => {
 
 const openChangeItem = () => {
     changeItemDialog.value = true;
-    // Beim Öffnen des Dialogs das ursprüngliche Verhältnis speichern
-    if (trackerStore.selectedItem &&
-        parseFloat(trackerStore.selectedItem.amount) > 0 &&
-        parseFloat(trackerStore.selectedItem.kcal) >= 0) {
-        originalRatio.value = parseFloat(trackerStore.selectedItem.kcal) / parseFloat(trackerStore.selectedItem.amount);
+    // Beim Öffnen des Dialogs die ursprünglichen Verhältnisse speichern
+    if (trackerStore.selectedItem && parseFloat(trackerStore.selectedItem.amount) > 0) {
+        const amount = parseFloat(trackerStore.selectedItem.amount);
+        if (parseFloat(trackerStore.selectedItem.kcal) >= 0) {
+            originalRatio.value = parseFloat(trackerStore.selectedItem.kcal) / amount;
+        }
+        if (parseFloat(trackerStore.selectedItem.protein) >= 0) {
+            originalProteinRatio.value = parseFloat(trackerStore.selectedItem.protein) / amount;
+        }
+        if (parseFloat(trackerStore.selectedItem.carbohydrates) >= 0) {
+            originalCarbsRatio.value = parseFloat(trackerStore.selectedItem.carbohydrates) / amount;
+        }
+        if (parseFloat(trackerStore.selectedItem.fat) >= 0) {
+            originalFatRatio.value = parseFloat(trackerStore.selectedItem.fat) / amount;
+        }
     }
 };
 
 const updateKcalBasedOnAmount = () => {
     const amount = parseFloat(trackerStore.selectedItem.amount);
-    if (amount > 0 && originalRatio.value > 0) {
-        // Berechne die neuen Kalorien basierend auf dem Verhältnis und der neuen Menge
-        const newKcal = Math.round(amount * originalRatio.value);
-        trackerStore.selectedItem.kcal = newKcal.toString();
+    if (amount > 0) {
+        // Berechne alle Nährwerte basierend auf den Verhältnissen und der neuen Menge
+        if (originalRatio.value > 0) {
+            const newKcal = Math.round(amount * originalRatio.value);
+            trackerStore.selectedItem.kcal = newKcal.toString();
+        }
+        if (originalProteinRatio.value > 0) {
+            const newProtein = parseFloat((amount * originalProteinRatio.value).toFixed(1));
+            trackerStore.selectedItem.protein = newProtein.toString();
+        }
+        if (originalCarbsRatio.value > 0) {
+            const newCarbs = parseFloat((amount * originalCarbsRatio.value).toFixed(1));
+            trackerStore.selectedItem.carbohydrates = newCarbs.toString();
+        }
+        if (originalFatRatio.value > 0) {
+            const newFat = parseFloat((amount * originalFatRatio.value).toFixed(1));
+            trackerStore.selectedItem.fat = newFat.toString();
+        }
     }
 };
 
 // Überwache Änderungen am selectedItem, wenn der Dialog geöffnet wird
 watch(() => changeItemDialog.value, (newValue) => {
     if (newValue && trackerStore.selectedItem) {
-        // Beim Öffnen des Dialogs das ursprüngliche Verhältnis speichern
-        if (parseFloat(trackerStore.selectedItem.amount) > 0 &&
-            parseFloat(trackerStore.selectedItem.kcal) >= 0) {
-            originalRatio.value = parseFloat(trackerStore.selectedItem.kcal) / parseFloat(trackerStore.selectedItem.amount);
+        // Beim Öffnen des Dialogs die ursprünglichen Verhältnisse speichern
+        if (parseFloat(trackerStore.selectedItem.amount) > 0) {
+            const amount = parseFloat(trackerStore.selectedItem.amount);
+            if (parseFloat(trackerStore.selectedItem.kcal) >= 0) {
+                originalRatio.value = parseFloat(trackerStore.selectedItem.kcal) / amount;
+            }
+            if (parseFloat(trackerStore.selectedItem.protein) >= 0) {
+                originalProteinRatio.value = parseFloat(trackerStore.selectedItem.protein) / amount;
+            }
+            if (parseFloat(trackerStore.selectedItem.carbohydrates) >= 0) {
+                originalCarbsRatio.value = parseFloat(trackerStore.selectedItem.carbohydrates) / amount;
+            }
+            if (parseFloat(trackerStore.selectedItem.fat) >= 0) {
+                originalFatRatio.value = parseFloat(trackerStore.selectedItem.fat) / amount;
+            }
         }
     }
 });

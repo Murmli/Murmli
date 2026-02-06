@@ -36,8 +36,8 @@ const favorites = computed(() => {
 onMounted(() => {
     trackerStore.loadFavoritesFromLocalStorage();
 });
-const addFavoriteToTracker = (favorite) => {
-    const text = `${favorite.amount} ${favorite.unit} ${favorite.name} ${favorite.kcal} kcal`;
-    trackerStore.trackFoodByText(text);
+const addFavoriteToTracker = async (favorite) => {
+    // Use direct add method to preserve exact nutritional values
+    await trackerStore.addFoodItemDirect(favorite);
 };
 </script>
