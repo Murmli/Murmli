@@ -10,6 +10,31 @@ const { generateImage, uploadImageToStorage } = require("../utils/imageUtils.js"
 const fs = require("fs");
 const PDFDocument = require("pdfkit");
 
+// Helper function to get recipe details with first 4 ingredients from vote items
+const getRecipeDetailsWithIngredients = async (voteItems) => {
+  if (!voteItems || voteItems.length === 0) return [];
+  
+  const recipeIds = voteItems.map(v => v.recipeId).filter(id => id);
+  if (recipeIds.length === 0) return voteItems.map(v => ({ title: v.title, ingredients: [] }));
+  
+  // Load from both Recipe and UserRecipe collections
+  const [systemRecipes, userRecipes] = await Promise.all([
+    Recipe.find({ _id: { $in: recipeIds } }, { title: 1, ingredients: 1 }).lean(),
+    UserRecipe.find({ _id: { $in: recipeIds } }, { title: 1, ingredients: 1 }).lean()
+  ]);
+  
+  const recipeMap = new Map();
+  [...systemRecipes, ...userRecipes].forEach(recipe => {
+    const ingredientNames = recipe.ingredients?.slice(0, 4).map(ing => ing.name) || [];
+    recipeMap.set(recipe._id.toString(), { title: recipe.title, ingredients: ingredientNames });
+  });
+  
+  return voteItems.map(vote => {
+    const recipeData = recipeMap.get(vote.recipeId?.toString());
+    return recipeData || { title: vote.title, ingredients: [] };
+  });
+};
+
 exports.readRecipe = async (req, res) => {
   try {
     const recipeId = req.body.recipeId;
@@ -99,13 +124,19 @@ exports.createUserRecipe = async (req, res) => {
         const generatedRecipes = await UserRecipe.find({ _id: { $in: lastGenerations } }, { title: 1 }).lean();
         const exclude = generatedRecipes.map(r => r.title).join(", ");
 
+        // Load liked and disliked recipes with their first 4 ingredients
+        const [likedRecipesWithIngredients, dislikedRecipesWithIngredients] = await Promise.all([
+          getRecipeDetailsWithIngredients(user.suggestions?.upvotes),
+          getRecipeDetailsWithIngredients(user.suggestions?.downvotes)
+        ]);
+
         const userInformations = {
           country: user.language,
           filter: user.suggestions?.filter?.prompt || '',
           servings: user.suggestions?.filter?.servings || 4,
           favoriteRecipes: [],
-          likedRecipes: user.suggestions?.upvotes?.map(v => v.title) || [],
-          dislikedRecipes: user.suggestions?.downvotes?.map(v => v.title) || []
+          likedRecipes: likedRecipesWithIngredients,
+          dislikedRecipes: dislikedRecipesWithIngredients
         };
 
         // If user has favorite recipes, get their titles
@@ -461,13 +492,19 @@ exports.editTextUserRecipe = async (req, res) => {
         instruction += `\n\n(Hinweis: Der ursprüngliche Wunsch für dieses Rezept war: "${recipe.originalPrompt}")`;
       }
 
+      // Load liked and disliked recipes with their first 4 ingredients
+      const [likedRecipesWithIngredients, dislikedRecipesWithIngredients] = await Promise.all([
+        getRecipeDetailsWithIngredients(req.user.suggestions?.upvotes),
+        getRecipeDetailsWithIngredients(req.user.suggestions?.downvotes)
+      ]);
+
       const userInformations = {
         country: req.user.language,
         filter: req.user.suggestions?.filter?.prompt || '',
         servings: req.user.suggestions?.filter?.servings || 4,
         favoriteRecipes: [],
-        likedRecipes: req.user.suggestions?.upvotes?.map(v => v.title) || [],
-        dislikedRecipes: req.user.suggestions?.downvotes?.map(v => v.title) || []
+        likedRecipes: likedRecipesWithIngredients,
+        dislikedRecipes: dislikedRecipesWithIngredients
       };
 
       if (req.user.favoriteRecipes && req.user.favoriteRecipes.length > 0) {
@@ -554,13 +591,19 @@ exports.editTextRecipe = async (req, res) => {
     if (updatedRecipe) {
       updatedRecipeData = updatedRecipe;
     } else {
+      // Load liked and disliked recipes with their first 4 ingredients
+      const [likedRecipesWithIngredients, dislikedRecipesWithIngredients] = await Promise.all([
+        getRecipeDetailsWithIngredients(req.user.suggestions?.upvotes),
+        getRecipeDetailsWithIngredients(req.user.suggestions?.downvotes)
+      ]);
+
       const userInformations = {
         country: req.user.language,
         filter: req.user.suggestions?.filter?.prompt || '',
         servings: req.user.suggestions?.filter?.servings || 4,
         favoriteRecipes: [],
-        likedRecipes: req.user.suggestions?.upvotes?.map(v => v.title) || [],
-        dislikedRecipes: req.user.suggestions?.downvotes?.map(v => v.title) || []
+        likedRecipes: likedRecipesWithIngredients,
+        dislikedRecipes: dislikedRecipesWithIngredients
       };
 
       if (req.user.favoriteRecipes && req.user.favoriteRecipes.length > 0) {
