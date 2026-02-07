@@ -187,6 +187,7 @@ export const useTrackerStore = defineStore("trackerStore", {
 
     // Upload an audio file to track Food
     async trackFoodByAudio(file) {
+      this.isAddingItem = true;
       const apiStore = useApiStore();
       const formData = new FormData();
       formData.append("trackerId", this.tracker._id);
@@ -201,10 +202,12 @@ export const useTrackerStore = defineStore("trackerStore", {
         );
         if (response.status === 200) {
           this.tracker = response.data.tracker;
+          this.isAddingItem = false;
           this.saveCache();
           return response.message;
         }
       } catch (error) {
+        this.isAddingItem = false;
         this.error = error;
       }
       return null;

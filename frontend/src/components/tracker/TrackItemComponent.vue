@@ -46,9 +46,10 @@ const openImageDialog = () => {
     dialogStore.openDialog('trackImageDialog');
 };
 
-const handleVoiceRecording = ({ audioBlob }) => {
+const handleVoiceRecording = async ({ audioBlob }) => {
     if (audioBlob) {
-        trackerStore.trackFoodByAudio(audioBlob);
+        await trackerStore.trackFoodByAudio(audioBlob);
+        dialogStore.closeDialog('trackVoiceDialog');
     }
 };
 </script>
