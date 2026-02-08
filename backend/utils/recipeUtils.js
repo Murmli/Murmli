@@ -28,6 +28,15 @@ exports.createRecipe = async (prompt, {
       console.log('Recipe generated:', recipeData.title);
     }
 
+    // Filter out empty steps (steps with empty name or content)
+    if (recipeData.steps && Array.isArray(recipeData.steps)) {
+      recipeData.steps = recipeData.steps.filter(step => {
+        const hasName = step.name && step.name.trim() !== '';
+        const hasContent = step.content && step.content.trim() !== '';
+        return hasName && hasContent;
+      });
+    }
+
     // Set additional properties
     recipeData.type = type;
     recipeData.active = active;

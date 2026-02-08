@@ -164,6 +164,17 @@ class BaseLLMClient {
           : { type: json ? "json_object" : "text" },
       });
 
+      // Validate response structure
+      if (!response || !response.choices || !Array.isArray(response.choices) || response.choices.length === 0) {
+        console.error(`Invalid response structure from ${this.provider} API:`, response);
+        return false;
+      }
+
+      if (!response.choices[0].message || !response.choices[0].message.content) {
+        console.error(`Invalid message structure in response from ${this.provider} API:`, response.choices[0]);
+        return false;
+      }
+
       const answer = response.choices[0].message.content;
 
       if (cache && !debug) {
@@ -177,10 +188,26 @@ class BaseLLMClient {
       let cleanAnswer = answer;
       // Strip markdown code blocks if present
       if (typeof cleanAnswer === 'string') {
-        cleanAnswer = cleanAnswer.replace(/^```json\s*/, "").replace(/^```\s*/, "").replace(/\s*```$/, "");
+        cleanAnswer = cleanAnswer.replace(/^```json\s*/, "").replace(/^```\s*/, "").replace(/\s*```$/, "").trim();
       }
 
-      return json || jsonSchema ? JSON.parse(cleanAnswer) : cleanAnswer;
+      // Parse JSON if required
+      if (json || jsonSchema) {
+        if (!cleanAnswer) {
+          console.error(`Empty response from ${this.provider} API when JSON was expected`);
+          return false;
+        }
+        
+        try {
+          return JSON.parse(cleanAnswer);
+        } catch (parseError) {
+          console.error(`JSON parse error from ${this.provider} API:`, parseError.message);
+          console.error("Response content:", cleanAnswer.substring(0, 200) + (cleanAnswer.length > 200 ? '...' : ''));
+          return false;
+        }
+      }
+      
+      return cleanAnswer;
     } catch (error) {
       console.error(`Error with ${this.provider} API:`, error.response ? error.response.data : error.message);
       if (error.response && error.response.data && error.response.data.error) {

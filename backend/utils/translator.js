@@ -86,13 +86,24 @@ exports.translateRecipes = async (recipes, outputLang) => {
 
       const translatedTitle = await generateTranslation(recipe.title, lang);
       const translatedDescriptionShort = await generateTranslation(recipe.descriptionShort, lang);
+      const translatedDescription = recipe.description ? await generateTranslation(recipe.description, lang) : null;
 
-      if (translatedTitle === false || translatedDescriptionShort === false) {
-        throw new Error("Translation failed for recipe title or description");
+      // Fallback to original text if translation fails
+      if (translatedTitle === false) {
+        console.warn(`Translation failed for recipe title: "${recipe.title}", using original`);
+      }
+      if (translatedDescriptionShort === false) {
+        console.warn(`Translation failed for recipe descriptionShort, using original`);
+      }
+      if (translatedDescription === false) {
+        console.warn(`Translation failed for recipe description, using original`);
       }
 
-      translatedRecipe.title = translatedTitle;
-      translatedRecipe.descriptionShort = translatedDescriptionShort;
+      translatedRecipe.title = translatedTitle || recipe.title;
+      translatedRecipe.descriptionShort = translatedDescriptionShort || recipe.descriptionShort;
+      if (recipe.description) {
+        translatedRecipe.description = translatedDescription || recipe.description;
+      }
 
       // Übersetzen der Zutaten
       await Promise.all(
@@ -100,14 +111,15 @@ exports.translateRecipes = async (recipes, outputLang) => {
           const optionalInfo = 'Die Übersetzung ist bezogen auf eine Rezeptzutat';
           const translatedIngredientName = await generateTranslation(ingredient.name, lang, optionalInfo);
 
+          // Fallback to original name if translation fails
           if (translatedIngredientName === false) {
-            throw new Error(`Translation failed for ingredient name (${ingredient.name})`);
+            console.warn(`Translation failed for ingredient name: "${ingredient.name}", using original`);
           }
 
           // Erstelle ein neues Zutatobjekt
           const newIngredient = {
             ...ingredient,
-            name: translatedIngredientName,
+            name: translatedIngredientName || ingredient.name,
             unit: {
               id: ingredient.unit,
               name: translatedUnits[ingredient.unit] || ""
@@ -125,11 +137,12 @@ exports.translateRecipes = async (recipes, outputLang) => {
           const translatedStepName = await generateTranslation(step.name, lang);
           const translatedStepContent = await generateTranslation(step.content, lang);
 
+          // Fallback to original text if translation fails
           if (translatedStepName === false) {
-            throw new Error("Translation failed for step name");
+            console.warn(`Translation failed for step name: "${step.name}", using original`);
           }
           if (translatedStepContent === false) {
-            throw new Error("Translation failed for step content");
+            console.warn(`Translation failed for step content, using original`);
           }
 
           let translatedHeads = [];
@@ -138,11 +151,11 @@ exports.translateRecipes = async (recipes, outputLang) => {
               step.head.map(async (heading) => {
                 const translatedHeadingName = await generateTranslation(heading.name, lang);
                 if (translatedHeadingName === false) {
-                  throw new Error("Translation failed for heading name");
+                  console.warn(`Translation failed for heading name: "${heading.name}", using original`);
                 }
                 return {
                   ...heading,
-                  name: translatedHeadingName,
+                  name: translatedHeadingName || heading.name,
                   unit: {
                     id: heading.unit,
                     name: translatedUnits[heading.unit] || ""
@@ -155,8 +168,8 @@ exports.translateRecipes = async (recipes, outputLang) => {
           // Erstelle ein neues Step-Objekt
           const newStep = {
             ...step,
-            name: translatedStepName,
-            content: translatedStepContent,
+            name: translatedStepName || step.name,
+            content: translatedStepContent || step.content,
             head: translatedHeads
           };
 

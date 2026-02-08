@@ -547,13 +547,15 @@ exports.editTextUserRecipe = async (req, res) => {
       updatedRecipeData.originalPrompt = oldPrompt ? `${oldPrompt} // New Modification: ${text}` : text;
     }
 
-    updatedRecipeData.steps = updatedRecipeData.steps.map((step) => ({
-      ...step,
-      head: (step.head || []).map((h) => ({
-        ...h,
-        unit: typeof h.unit === "object" ? h.unit.id : h.unit,
-      })),
-    }));
+    updatedRecipeData.steps = updatedRecipeData.steps
+      .filter((step) => step.name && step.name.trim() !== '' && step.content && step.content.trim() !== '')
+      .map((step) => ({
+        ...step,
+        head: (step.head || []).map((h) => ({
+          ...h,
+          unit: typeof h.unit === "object" ? h.unit.id : h.unit,
+        })),
+      }));
 
     const updatedRecipeDoc = await UserRecipe.findByIdAndUpdate(
       req.params.id,
@@ -639,13 +641,15 @@ exports.editTextRecipe = async (req, res) => {
       unit: typeof ing.unit === "object" ? ing.unit.id : ing.unit,
     }));
 
-    updatedRecipeData.steps = updatedRecipeData.steps.map((step) => ({
-      ...step,
-      head: (step.head || []).map((h) => ({
-        ...h,
-        unit: typeof h.unit === "object" ? h.unit.id : h.unit,
-      })),
-    }));
+    updatedRecipeData.steps = updatedRecipeData.steps
+      .filter((step) => step.name && step.name.trim() !== '' && step.content && step.content.trim() !== '')
+      .map((step) => ({
+        ...step,
+        head: (step.head || []).map((h) => ({
+          ...h,
+          unit: typeof h.unit === "object" ? h.unit.id : h.unit,
+        })),
+      }));
 
     const updatedRecipeDoc = await Recipe.findByIdAndUpdate(
       req.params.id,
