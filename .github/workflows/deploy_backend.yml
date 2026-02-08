@@ -1,4 +1,4 @@
-name: Deploy to Azure murmli.de
+name: Deploy Backend
 
 on:
   workflow_dispatch:
