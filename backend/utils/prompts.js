@@ -33,7 +33,7 @@ exports.translateSystemPrompt = (outputLang, optionalInfo) => {
     let prompt = `
       Übersetze mir meine Eingabe auf die Sprache "${outputLang}".
       Gib ausschließlich die Übersetzung als JSON zurück.
-      Falls der Text bereits in der richtigen Sprache ist, gib ihn unverändert zurück.`;
+      Falls der Text bereits in der richtigen Sprache ist, gib ihn unverändert zurück. (keinesfalls null!)`;
 
     if (optionalInfo) {
       prompt += `\n${optionalInfo}`;
@@ -51,7 +51,7 @@ exports.translateJsonSystemPrompt = (outputLang) => {
     return `
     DU übersetzt einen JSON (nur die Werte) in folgende Sprache: "${outputLang}".
     Gib ausschließlich die Übersetzung als JSON zurück.
-    Falls der Text bereits in der richtigen Sprache ist, gib ihn unverändert zurück.
+    Falls der Text bereits in der richtigen Sprache ist, gib ihn unverändert zurück. (keinesfall null)
     `;
   } catch (error) {
     console.error("Error:", error.message);
@@ -65,14 +65,14 @@ exports.findAlternativeItemsPrompt = (itemName, outputLang, filter = '') => {
     Ich bin gerade im Supermarkt und kann ${itemName} nicht finden.
     Suche mir bitte alternative Produkte, die ich stattdessen nehmen kann, als Ersatz.
     Zudem sag mir, wo im Supermarkt diese Produkte liegen könnten.`;
-    
+
     if (filter && filter.trim() !== '') {
       prompt += `\n\nWICHTIG: Berücksichtige folgende Einschränkungen/Filter des Nutzers bei der Auswahl der Alternativen: ${filter}`;
     }
-    
+
     prompt += `\n    Formuliere deine Antwort als JSON in folgender Sprache: ${outputLang}.
     `;
-    
+
     return prompt;
   } catch (error) {
     console.error("Error:", error.message);
