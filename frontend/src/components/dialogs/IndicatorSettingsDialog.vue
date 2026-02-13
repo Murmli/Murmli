@@ -64,7 +64,7 @@ watch(() => dialogStore.dialogs.indicatorSettingsDialog, (open) => {
     if (open) {
         localSettings.value = trackerStore.indicatorSettings.map(s => ({ ...s }));
     }
-});
+}, { immediate: true });
 
 const getIndicatorLabel = (key) => {
     const labels = {
