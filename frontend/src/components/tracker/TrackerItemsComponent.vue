@@ -296,8 +296,8 @@ const enabledIndicators = computed(() => trackerStore.getEnabledIndicators());
 const hasVisibleIndicators = (item) => {
     if (enabledIndicators.value.length === 0) return false;
     return enabledIndicators.value.some(ind => {
-        if (ind.key === 'acidBase') return item.acidBaseScore !== undefined && item.acidBaseScore !== null && item.acidBaseScore !== 0;
-        if (ind.key === 'histamine') return item.histamineLevel !== undefined && item.histamineLevel !== null && item.histamineLevel !== 0;
+        if (ind.key === 'acidBase') return item.acidBaseScore !== undefined && item.acidBaseScore !== null;
+        if (ind.key === 'histamine') return item.histamineLevel !== undefined && item.histamineLevel !== null;
         return false;
     });
 };
