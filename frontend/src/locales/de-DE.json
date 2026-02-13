@@ -483,11 +483,25 @@
     "selectRecipe": "Rezept auswählen",
     "portions": "Portionen",
     "voiceRecordingInfo": "Die Aufnahme wird lokal bei dir gespeichert. Wenn du die Audiodatei absenden möchtest, klicke auf Senden. \nAlternativ kannst du auf Verwerfen klicken, um die Aufnahme nicht zu senden.",
+    "nutritionDetails": "Nährwertdetails",
     "macronutrients": "Makronährstoffe",
     "carbs": "Carbs",
     "fat": "Fett",
     "protein": "Eiweiß",
     "noMacroTargetDefined": "Keine Makronährstoff-Ziele definiert",
+    "acidBase": {
+      "title": "Säure-Basen-Haushalt",
+      "alkaline": "Basisch - Gut für den Säure-Basen-Haushalt",
+      "balanced": "Ausgeglichen - Säure-Basen-Haushalt im Gleichgewicht",
+      "acidic": "Säurebildend - Mehr basische Lebensmittel empfohlen"
+    },
+    "histamine": {
+      "title": "Histamin",
+      "average": "Durchschnitt",
+      "low": "Niedriger Histamingehalt - Gut verträglich",
+      "moderate": "Mäßiger Histamingehalt - Bei Intoleranz beachten",
+      "high": "Hoher Histamingehalt - Bei Intoleranz problematisch"
+    },
     "enterQuestion": "Stelle hier deine Frage...",
     "askDialog": "Hier kannst du Fragen zur Ernährung stellen. Die App wird versuchen, deine Frage zu beantworten und bezieht dabei deine Körperdaten sowie deine Kalorienzählereinträge der letzten 14 Tage mit ein. Bitte beachte, dass die Antworten auf den Informationen basieren, die du in der App eingegeben hast.",
     "addImage": "Bild hinzufügen",

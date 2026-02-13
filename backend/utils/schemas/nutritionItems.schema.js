@@ -22,6 +22,16 @@ module.exports = {
               description: "Bewertung 1 sehr ungesund bis 5 sehr gesund",
               minimum: 1,
               maximum: 5
+            },
+            acidBaseScore: {
+              type: "number",
+              description: "PRAL-Score (Potential Renal Acid Load) in mEq pro angegebener Menge. Negativ = basisch, Positiv = säurebildend. Beispiele: Spinat 100g ~ -14, Rindfleisch 100g ~ +12, Reis 100g ~ +4.6, Zitrone 100g ~ -2.5"
+            },
+            histamineLevel: {
+              type: "number",
+              description: "Histamin-Stufe: 0 = kein/kaum Histamin (frisches Fleisch, frisches Gemüse), 1 = wenig Histamin (leicht verträglich), 2 = mäßig Histamin (z.B. Tomaten, Spinat, Avocado), 3 = hoch Histamin (z.B. gereifter Käse, Salami, Sauerkraut, Rotwein, Thunfisch)",
+              minimum: 0,
+              maximum: 3
             }
           },
           required: [
@@ -32,7 +42,9 @@ module.exports = {
             "protein",
             "carbohydrates",
             "fat",
-            "healthyRating"
+            "healthyRating",
+            "acidBaseScore",
+            "histamineLevel"
           ],
           additionalProperties: false
         }

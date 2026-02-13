@@ -39,6 +39,8 @@ async function getOrCreateTracker(userId, date, recommendations) {
         protein: 0,
         carbohydrates: 0,
         fat: 0,
+        acidBaseScore: 0,
+        histamineAvg: 0,
       },
     });
 
@@ -710,7 +712,7 @@ exports.removeItem = async (req, res) => {
 exports.updateItem = async (req, res) => {
   try {
     const user = req.user;
-    const { trackerId, foodItemId, name, amount, unit, kcal, protein, carbohydrates, fat, healthyRating } = req.body;
+    const { trackerId, foodItemId, name, amount, unit, kcal, protein, carbohydrates, fat, healthyRating, acidBaseScore, histamineLevel } = req.body;
 
     if (!foodItemId) {
       return res.status(400).json({ error: "Food Item ID is required." });
@@ -734,6 +736,8 @@ exports.updateItem = async (req, res) => {
     if (carbohydrates !== undefined) foodItem.carbohydrates = carbohydrates;
     if (fat !== undefined) foodItem.fat = fat;
     if (healthyRating !== undefined) foodItem.healthyRating = healthyRating;
+    if (acidBaseScore !== undefined) foodItem.acidBaseScore = acidBaseScore;
+    if (histamineLevel !== undefined) foodItem.histamineLevel = histamineLevel;
 
     // Berechne die neuen Totals
     const totals = calculateFoodItemsTotals(tracker.foodItems);
@@ -910,6 +914,8 @@ exports.addItem = async (req, res) => {
       carbohydrates: parseFloat(item.carbohydrates) || 0,
       fat: parseFloat(item.fat) || 0,
       healthyRating: item.healthyRating || 3,
+      acidBaseScore: parseFloat(item.acidBaseScore) || 0,
+      histamineLevel: parseInt(item.histamineLevel) || 0,
     };
 
     tracker.foodItems.push(foodItem);

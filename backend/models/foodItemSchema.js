@@ -36,6 +36,16 @@ const foodItemSchema = new Schema({
     max: 5,
     required: true,
   },
+  acidBaseScore: {
+    type: Number,
+    default: 0,
+  },
+  histamineLevel: {
+    type: Number,
+    min: 0,
+    max: 3,
+    default: 0,
+  },
   daily: {
     type: Number,
     default: 0,

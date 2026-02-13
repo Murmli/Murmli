@@ -22,6 +22,8 @@ export const useTrackerStore = defineStore("trackerStore", {
       carbohydrates: Number(),
       fat: Number(),
       healthyRating: Number(),
+      acidBaseScore: Number(),
+      histamineLevel: Number(),
       daily: Boolean(),
       _id: String()
     },
@@ -167,7 +169,9 @@ export const useTrackerStore = defineStore("trackerStore", {
               protein: parseFloat(item.protein) || 0,
               carbohydrates: parseFloat(item.carbohydrates) || 0,
               fat: parseFloat(item.fat) || 0,
-              healthyRating: item.healthyRating || 3
+              healthyRating: item.healthyRating || 3,
+              acidBaseScore: parseFloat(item.acidBaseScore) || 0,
+              histamineLevel: parseInt(item.histamineLevel) || 0
             }
           },
           false

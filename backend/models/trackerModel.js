@@ -54,6 +54,14 @@ const calorieTrackerSchema = new Schema(
         type: Number,
         default: 0,
       },
+      acidBaseScore: {
+        type: Number,
+        default: 0,
+      },
+      histamineAvg: {
+        type: Number,
+        default: 0,
+      },
     },
     calorieGoal: {
       type: Number,

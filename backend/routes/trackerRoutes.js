@@ -644,6 +644,12 @@ router.post("/item/addtoday", secretKeyMiddleware, sessionMiddleware, trackerCon
  *                 type: number
  *               healthyRating:
  *                 type: number
+ *               acidBaseScore:
+ *                 type: number
+ *                 description: PRAL score in mEq (negative = alkaline, positive = acidic)
+ *               histamineLevel:
+ *                 type: number
+ *                 description: Histamine level 0-3 (0=none, 1=low, 2=moderate, 3=high)
  *     responses:
  *       200:
  *         description: Food item updated successfully
@@ -827,6 +833,12 @@ router.post("/chat", secretKeyMiddleware, sessionMiddleware, trackerController.c
  *                     type: number
  *                   healthyRating:
  *                     type: number
+ *                   acidBaseScore:
+ *                     type: number
+ *                     description: PRAL score in mEq (negative = alkaline, positive = acidic)
+ *                   histamineLevel:
+ *                     type: number
+ *                     description: Histamine level 0-3 (0=none, 1=low, 2=moderate, 3=high)
  *     responses:
  *       200:
  *         description: Food item added successfully

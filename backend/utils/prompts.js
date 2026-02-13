@@ -196,6 +196,20 @@ exports.textToTrackerArraySystemPrompt = (outputLang = "de-DE") => {
     - Die Summe aus (Protein × 4 + Kohlenhydrate × 4 + Fett × 9) sollte ungefähr den angegebenen kcal entsprechen.
     - Sei besonders präzise beim Proteingehalt, da dies ein wichtiger Makronährstoff ist.
 
+    WICHTIG - SÄURE-BASEN-HAUSHALT (acidBaseScore):
+    - Berechne den PRAL-Score (Potential Renal Acid Load) in mEq für die tatsächliche angegebene Menge.
+    - Negativer Wert = basisch/basenbildend (z.B. Obst, Gemüse, Kartoffeln).
+    - Positiver Wert = säurebildend (z.B. Fleisch, Fisch, Getreide, Käse).
+    - Referenzwerte pro 100g: Spinat ~ -14, Banane ~ -5.5, Kartoffel ~ -4, Reis (gekocht) ~ +1.7, Nudeln ~ +6.7, Hähnchenbrust ~ +14.6, Parmesan ~ +34.2.
+    - Skaliere den Wert proportional zur tatsächlichen Menge.
+
+    WICHTIG - HISTAMIN (histamineLevel):
+    - Bewerte den Histamingehalt auf einer Skala von 0 bis 3:
+      - 0 = kein/kaum Histamin: Frisches Fleisch (nicht gereift), frisches Gemüse (außer Tomaten/Spinat/Aubergine), frisches Obst (außer Zitrusfrüchte/Erdbeeren), Reis, Nudeln, Brot.
+      - 1 = wenig Histamin: Leicht verarbeitete Lebensmittel, Kartoffeln, die meisten Milchprodukte (Frischkäse, Butter, Quark).
+      - 2 = mäßig Histamin: Tomaten, Spinat, Avocado, Aubergine, Zitrusfrüchte, Erdbeeren, Schokolade, Essig, Hefe.
+      - 3 = hoch Histamin: Gereifter Käse (Parmesan, Gouda), Salami, Schinken, Sauerkraut, Rotwein, Bier, Thunfisch/Makrele (Konserve), Sojasoße, fermentierte Lebensmittel.
+
     - Berücksichtige bei der Kalorieninformation, dass Zutaten wie Pasta, Reis, Bohnen usw. im gekochten Zustand ein deutlich anderes Gewicht haben.
     - Vermerke gekochte Gewichte mit "(gekocht)" im Namen des Lebensmittels.
     - Schätze bei vagen Mengenangaben typische Werte, z.B. eine „Handvoll".
@@ -209,8 +223,9 @@ exports.textToTrackerArraySystemPrompt = (outputLang = "de-DE") => {
     2. **Korrigieren und Klarstellen**: Behebe Tippfehler und schätze Mengen, falls unklar.
     3. **Kalorien schätzen**: Wenn keine Angaben gemacht werden, basiere Schätzungen auf typischen Werten oder verwende angegebene Details ohne Rundung.
     4. **Gerichtszusammensetzung aufschlüsseln**: Zerlege komplexe Gerichte in Zutaten und verteile die Kalorien proportional, einschließlich Begründung falls nötig.
-    5. **JSON-Struktur einhalten**: Stelle sicher, dass die Ausgabe dem definierten JSON-Schema entspricht.
-    6. **Sprachkonsistenz**: Schreibe die Ausgabe in der Sprache ${outputLang}.
+    5. **Säure-Basen- und Histaminwerte bestimmen**: Berechne den PRAL-Score und bewerte den Histamingehalt für jede Zutat.
+    6. **JSON-Struktur einhalten**: Stelle sicher, dass die Ausgabe dem definierten JSON-Schema entspricht.
+    7. **Sprachkonsistenz**: Schreibe die Ausgabe in der Sprache ${outputLang}.
 
     # Beispiele
 
@@ -232,7 +247,9 @@ exports.textToTrackerArraySystemPrompt = (outputLang = "de-DE") => {
         "protein": 0,
         "carbohydrates": 0,
         "fat": 0,
-        "healthyRating": 2
+        "healthyRating": 2,
+        "acidBaseScore": 0,
+        "histamineLevel": 0
       }
     ]
 
@@ -254,7 +271,9 @@ exports.textToTrackerArraySystemPrompt = (outputLang = "de-DE") => {
         "protein": 17.4,
         "carbohydrates": 92.7,
         "fat": 2.7,
-        "healthyRating": 3
+        "healthyRating": 3,
+        "acidBaseScore": 5.1,
+        "histamineLevel": 0
       },
       {
         "name": "Tomaten",
@@ -264,7 +283,9 @@ exports.textToTrackerArraySystemPrompt = (outputLang = "de-DE") => {
         "protein": 1.4,
         "carbohydrates": 5.9,
         "fat": 0.3,
-        "healthyRating": 4
+        "healthyRating": 4,
+        "acidBaseScore": -5.3,
+        "histamineLevel": 2
       },
       {
         "name": "Linsen (gekocht)",
@@ -274,7 +295,9 @@ exports.textToTrackerArraySystemPrompt = (outputLang = "de-DE") => {
         "protein": 4.1,
         "carbohydrates": 9.0,
         "fat": 0.2,
-        "healthyRating": 4
+        "healthyRating": 4,
+        "acidBaseScore": -0.5,
+        "histamineLevel": 0
       },
       {
         "name": "Olivenöl",
@@ -284,7 +307,9 @@ exports.textToTrackerArraySystemPrompt = (outputLang = "de-DE") => {
         "protein": 0,
         "carbohydrates": 0,
         "fat": 5.0,
-        "healthyRating": 3
+        "healthyRating": 3,
+        "acidBaseScore": 0,
+        "histamineLevel": 0
       }
     ]
 
@@ -292,6 +317,8 @@ exports.textToTrackerArraySystemPrompt = (outputLang = "de-DE") => {
 
     - **Begründung**: Nur ausfüllen, wenn die Aufschlüsselung komplex ist. Bei einfachen Bewertungen leer lassen.
     - **Gesundheitsbewertung**: Skala von 1 (sehr ungesund) bis 5 (sehr gesund).
+    - **Säure-Basen-Score**: PRAL-Wert in mEq für die angegebene Menge. Negativ = basisch, Positiv = säurebildend.
+    - **Histamin-Stufe**: 0 = kein/kaum, 1 = wenig, 2 = mäßig, 3 = hoch.
     - Stelle sicher, dass das JSON sauber formatiert ist und strikt dem vorgegebenen Schema entspricht.
 `;
 };
@@ -403,6 +430,20 @@ exports.imageToTrackerItemsSystemPrompt = (outputLang) => {
     - Sei besonders präzise beim Proteingehalt, da dies ein wichtiger Makronährstoff ist.
     - Schätze die Menge basierend auf Tellergröße, Proportionen und Referenzobjekten.
 
+    WICHTIG - SÄURE-BASEN-HAUSHALT (acidBaseScore):
+    - Berechne den PRAL-Score (Potential Renal Acid Load) in mEq für die tatsächliche geschätzte Menge.
+    - Negativer Wert = basisch/basenbildend (z.B. Obst, Gemüse, Kartoffeln).
+    - Positiver Wert = säurebildend (z.B. Fleisch, Fisch, Getreide, Käse).
+    - Referenzwerte pro 100g: Spinat ~ -14, Banane ~ -5.5, Kartoffel ~ -4, Reis (gekocht) ~ +1.7, Nudeln ~ +6.7, Hähnchenbrust ~ +14.6, Parmesan ~ +34.2.
+    - Skaliere den Wert proportional zur tatsächlichen Menge.
+
+    WICHTIG - HISTAMIN (histamineLevel):
+    - Bewerte den Histamingehalt auf einer Skala von 0 bis 3:
+      - 0 = kein/kaum Histamin: Frisches Fleisch (nicht gereift), frisches Gemüse (außer Tomaten/Spinat/Aubergine), frisches Obst (außer Zitrusfrüchte/Erdbeeren), Reis, Nudeln, Brot.
+      - 1 = wenig Histamin: Leicht verarbeitete Lebensmittel, Kartoffeln, die meisten Milchprodukte (Frischkäse, Butter, Quark).
+      - 2 = mäßig Histamin: Tomaten, Spinat, Avocado, Aubergine, Zitrusfrüchte, Erdbeeren, Schokolade, Essig, Hefe.
+      - 3 = hoch Histamin: Gereifter Käse (Parmesan, Gouda), Salami, Schinken, Sauerkraut, Rotwein, Bier, Thunfisch/Makrele (Konserve), Sojasoße, fermentierte Lebensmittel.
+
     - Berücksichtige bei der Kalorieninformation, dass Zutaten wie Pasta, Reis, Bohnen usw. im gekochten Zustand ein deutlich anderes Gewicht haben.
     - Vermerke gekochte Gewichte mit "(gekocht)" im Namen des Lebensmittels.
     - Schätze bei vagen Mengenangaben typische Werte, z.B. eine „Handvoll".
@@ -416,8 +457,9 @@ exports.imageToTrackerItemsSystemPrompt = (outputLang) => {
     2. **Mengen schätzen**: Schätze die Mengen anhand der visuellen Darstellung (Tellergröße, Glasgröße, Proportionen).
     3. **Kalorien schätzen**: Wenn keine Angaben gemacht werden, basiere Schätzungen auf typischen Werten.
     4. **Gerichtszusammensetzung aufschlüsseln**: Zerlege komplexe Gerichte in Zutaten und verteile die Kalorien proportional.
-    5. **JSON-Struktur einhalten**: Stelle sicher, dass die Ausgabe dem definierten JSON-Schema entspricht.
-    6. **Sprachkonsistenz**: Schreibe die Ausgabe in der Sprache ${outputLang}.
+    5. **Säure-Basen- und Histaminwerte bestimmen**: Berechne den PRAL-Score und bewerte den Histamingehalt für jede Zutat.
+    6. **JSON-Struktur einhalten**: Stelle sicher, dass die Ausgabe dem definierten JSON-Schema entspricht.
+    7. **Sprachkonsistenz**: Schreibe die Ausgabe in der Sprache ${outputLang}.
 
     # Beispiele
 
@@ -439,7 +481,9 @@ exports.imageToTrackerItemsSystemPrompt = (outputLang) => {
         "protein": 0,
         "carbohydrates": 0,
         "fat": 0,
-        "healthyRating": 2
+        "healthyRating": 2,
+        "acidBaseScore": 0,
+        "histamineLevel": 0
       }
     ]
 
@@ -461,7 +505,9 @@ exports.imageToTrackerItemsSystemPrompt = (outputLang) => {
         "protein": 17.4,
         "carbohydrates": 92.7,
         "fat": 2.7,
-        "healthyRating": 3
+        "healthyRating": 3,
+        "acidBaseScore": 5.1,
+        "histamineLevel": 0
       },
       {
         "name": "Tomaten",
@@ -471,7 +517,9 @@ exports.imageToTrackerItemsSystemPrompt = (outputLang) => {
         "protein": 1.4,
         "carbohydrates": 5.9,
         "fat": 0.3,
-        "healthyRating": 4
+        "healthyRating": 4,
+        "acidBaseScore": -5.3,
+        "histamineLevel": 2
       },
       {
         "name": "Linsen (gekocht)",
@@ -481,7 +529,9 @@ exports.imageToTrackerItemsSystemPrompt = (outputLang) => {
         "protein": 4.1,
         "carbohydrates": 9.0,
         "fat": 0.2,
-        "healthyRating": 4
+        "healthyRating": 4,
+        "acidBaseScore": -0.5,
+        "histamineLevel": 0
       },
       {
         "name": "Olivenöl",
@@ -491,7 +541,9 @@ exports.imageToTrackerItemsSystemPrompt = (outputLang) => {
         "protein": 0,
         "carbohydrates": 0,
         "fat": 5.0,
-        "healthyRating": 3
+        "healthyRating": 3,
+        "acidBaseScore": 0,
+        "histamineLevel": 0
       }
     ]
 
@@ -499,6 +551,8 @@ exports.imageToTrackerItemsSystemPrompt = (outputLang) => {
 
     - **Begründung**: Nur ausfüllen, wenn die Aufschlüsselung komplex ist. Bei einfachen Bewertungen leer lassen.
     - **Gesundheitsbewertung**: Skala von 1 (sehr ungesund) bis 5 (sehr gesund).
+    - **Säure-Basen-Score**: PRAL-Wert in mEq für die angegebene Menge. Negativ = basisch, Positiv = säurebildend.
+    - **Histamin-Stufe**: 0 = kein/kaum, 1 = wenig, 2 = mäßig, 3 = hoch.
     - Stelle sicher, dass das JSON sauber formatiert ist und strikt dem vorgegebenen Schema entspricht.
   `;
 };

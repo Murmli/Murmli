@@ -115,14 +115,23 @@ exports.calculateFoodItemsTotals = (foodItems) => {
     protein: 0,
     carbohydrates: 0,
     fat: 0,
+    acidBaseScore: 0,
+    histamineAvg: 0,
   };
 
   // Berechne die Summe der Nährwerte
+  let histamineSum = 0;
+  let histamineCount = 0;
   foodItems.forEach((item) => {
     totals.kcal += item.kcal || 0;
     totals.protein += item.protein || 0;
     totals.carbohydrates += item.carbohydrates || 0;
     totals.fat += item.fat || 0;
+    totals.acidBaseScore += item.acidBaseScore || 0;
+    if (item.histamineLevel !== undefined && item.histamineLevel !== null) {
+      histamineSum += item.histamineLevel;
+      histamineCount++;
+    }
   });
 
   // Runde alle Werte auf ganze Zahlen
@@ -130,5 +139,7 @@ exports.calculateFoodItemsTotals = (foodItems) => {
   totals.protein = Math.round(totals.protein);
   totals.carbohydrates = Math.round(totals.carbohydrates);
   totals.fat = Math.round(totals.fat);
+  totals.acidBaseScore = Math.round(totals.acidBaseScore * 10) / 10;
+  totals.histamineAvg = histamineCount > 0 ? Math.round((histamineSum / histamineCount) * 10) / 10 : 0;
   return totals;
 };
