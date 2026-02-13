@@ -16,23 +16,17 @@
                         {{ item.amount }} {{ item.unit }} ({{ item.kcal }} {{ languageStore.t('tracker.kcal') }})
                     </v-card-subtitle>
                 </div>
-                <div class="indicator-bars d-flex align-center ga-1 mr-3 my-2" v-if="hasIndicatorData(item)">
-                    <v-tooltip :text="getAcidBaseTooltip(item)" location="top">
-                        <template v-slot:activator="{ props }">
-                            <div v-bind="props"
-                                class="indicator-bar rounded-pill"
-                                :style="{ backgroundColor: getAcidBaseColor(item.acidBaseScore) }"
-                            ></div>
-                        </template>
-                    </v-tooltip>
-                    <v-tooltip :text="getHistamineTooltip(item)" location="top">
-                        <template v-slot:activator="{ props }">
-                            <div v-bind="props"
-                                class="indicator-bar rounded-pill"
-                                :style="{ backgroundColor: getHistamineColor(item.histamineLevel) }"
-                            ></div>
-                        </template>
-                    </v-tooltip>
+                <div class="indicator-bars d-flex align-center ga-1 mr-3 my-2" v-if="hasVisibleIndicators(item)">
+                    <template v-for="indicator in enabledIndicators" :key="indicator.key">
+                        <v-tooltip :text="getIndicatorTooltip(indicator.key, item)" location="top">
+                            <template v-slot:activator="{ props }">
+                                <div v-bind="props"
+                                    class="indicator-bar rounded-pill"
+                                    :style="{ backgroundColor: getIndicatorColor(indicator.key, item) }"
+                                ></div>
+                            </template>
+                        </v-tooltip>
+                    </template>
                 </div>
             </div>
         </v-card>
@@ -296,9 +290,28 @@ const getHealthyRatingClass = (rating) => {
     }[rating] || '';
 };
 
-const hasIndicatorData = (item) => {
-    return (item.acidBaseScore !== undefined && item.acidBaseScore !== null && item.acidBaseScore !== 0) ||
-        (item.histamineLevel !== undefined && item.histamineLevel !== null && item.histamineLevel !== 0);
+// Indicator settings
+const enabledIndicators = computed(() => trackerStore.getEnabledIndicators());
+
+const hasVisibleIndicators = (item) => {
+    if (enabledIndicators.value.length === 0) return false;
+    return enabledIndicators.value.some(ind => {
+        if (ind.key === 'acidBase') return item.acidBaseScore !== undefined && item.acidBaseScore !== null && item.acidBaseScore !== 0;
+        if (ind.key === 'histamine') return item.histamineLevel !== undefined && item.histamineLevel !== null && item.histamineLevel !== 0;
+        return false;
+    });
+};
+
+const getIndicatorColor = (key, item) => {
+    if (key === 'acidBase') return getAcidBaseColor(item.acidBaseScore);
+    if (key === 'histamine') return getHistamineColor(item.histamineLevel);
+    return '#BDBDBD';
+};
+
+const getIndicatorTooltip = (key, item) => {
+    if (key === 'acidBase') return getAcidBaseTooltip(item);
+    if (key === 'histamine') return getHistamineTooltip(item);
+    return '';
 };
 
 const getAcidBaseColor = (score) => {

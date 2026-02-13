@@ -41,6 +41,7 @@ export const useDialogStore = defineStore("dialogStore", () => {
     selectTrainingDayDialog: false, // <--- NEU für Trainingstag-Auswahl
     askTrainingPlanDialog: false,
     continueTrainingPlanDialog: false,
+    indicatorSettingsDialog: false,
   });
 
   const imageSrc = ref('');

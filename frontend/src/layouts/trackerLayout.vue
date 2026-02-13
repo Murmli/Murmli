@@ -43,6 +43,9 @@
 
   <!-- ListSort Dialog -->
   <ListSortComponent v-if="dialogStore.dialogs.listSortDialog" v-model="dialogStore.dialogs.listSortDialog" />
+
+  <!-- Indicator Settings Dialog -->
+  <IndicatorSettingsDialog v-if="dialogStore.dialogs.indicatorSettingsDialog" />
 </template>
 
 <script setup>
@@ -63,6 +66,7 @@ const menuItems = computed(() => [
   { title: languageStore.t('tracker.calorieGoal'), action: () => calorieGoal() },
   { title: languageStore.t('tracker.trackActivity'), action: () => trackActivity() },
   { title: languageStore.t('tracker.trackRecipe'), action: () => trackRecipe() },
+  { title: languageStore.t('tracker.indicatorSettings.menuTitle'), action: () => indicatorSettings() },
 ]);
 
 // Expose actions to the global bottom-sheet menu
@@ -87,6 +91,10 @@ const trackRecipe = () => {
 
 const calorieGoal = () => {
   dialogStore.openDialog("calorieGoalDialog");
+};
+
+const indicatorSettings = () => {
+  dialogStore.openDialog("indicatorSettingsDialog");
 };
 
 const askQuestion = () => {

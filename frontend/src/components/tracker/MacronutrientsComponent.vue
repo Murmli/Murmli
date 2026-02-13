@@ -65,79 +65,84 @@
             </v-col>
           </v-row>
 
-          <v-divider class="my-3" />
+          <!-- Dynamic indicator sections based on settings -->
+          <template v-for="indicator in enabledIndicators" :key="indicator.key">
 
-          <!-- Säure-Basen-Haushalt -->
-          <div class="text-caption font-weight-bold mb-2">
-            {{ languageStore.t('tracker.acidBase.title') }}
-          </div>
-
-          <v-row class="mb-2 align-center">
-            <v-col cols="3" class="text-right text-caption">
-              PRAL:
-            </v-col>
-            <v-col cols="9">
-              <div class="d-flex align-center">
-                <v-progress-linear
-                  :model-value="acidBaseBarValue"
-                  height="20"
-                  rounded
-                  :bg-color="acidBaseScore >= 0 ? 'orange-lighten-4 opacity-75' : 'teal-lighten-4 opacity-75'"
-                  :color="acidBaseScore >= 0 ? 'orange-darken-1 opacity-75' : 'teal-darken-1 opacity-75'"
-                >
-                  <template v-slot:default>
-                    <span class="font-weight-medium">
-                      {{ acidBaseScore }} mEq
-                    </span>
-                  </template>
-                </v-progress-linear>
+            <!-- Säure-Basen-Haushalt -->
+            <template v-if="indicator.key === 'acidBase'">
+              <v-divider class="my-3" />
+              <div class="text-caption font-weight-bold mb-2">
+                {{ languageStore.t('tracker.acidBase.title') }}
               </div>
-            </v-col>
-          </v-row>
-          <v-row class="mb-1 align-center">
-            <v-col cols="12">
-              <div class="text-caption text-center" :class="acidBaseTextColor">
-                <v-icon size="x-small" class="mr-1">{{ acidBaseIcon }}</v-icon>
-                {{ acidBaseLabel }}
+              <v-row class="mb-2 align-center">
+                <v-col cols="3" class="text-right text-caption">
+                  PRAL:
+                </v-col>
+                <v-col cols="9">
+                  <div class="d-flex align-center">
+                    <v-progress-linear
+                      :model-value="acidBaseBarValue"
+                      height="20"
+                      rounded
+                      :bg-color="acidBaseScore >= 0 ? 'orange-lighten-4 opacity-75' : 'teal-lighten-4 opacity-75'"
+                      :color="acidBaseScore >= 0 ? 'orange-darken-1 opacity-75' : 'teal-darken-1 opacity-75'"
+                    >
+                      <template v-slot:default>
+                        <span class="font-weight-medium">
+                          {{ acidBaseScore }} mEq
+                        </span>
+                      </template>
+                    </v-progress-linear>
+                  </div>
+                </v-col>
+              </v-row>
+              <v-row class="mb-1 align-center">
+                <v-col cols="12">
+                  <div class="text-caption text-center" :class="acidBaseTextColor">
+                    <v-icon size="x-small" class="mr-1">{{ acidBaseIcon }}</v-icon>
+                    {{ acidBaseLabel }}
+                  </div>
+                </v-col>
+              </v-row>
+            </template>
+
+            <!-- Histamin -->
+            <template v-if="indicator.key === 'histamine'">
+              <v-divider class="my-3" />
+              <div class="text-caption font-weight-bold mb-2">
+                {{ languageStore.t('tracker.histamine.title') }}
               </div>
-            </v-col>
-          </v-row>
+              <v-row class="mb-2 align-center">
+                <v-col cols="3" class="text-right text-caption">
+                  {{ languageStore.t('tracker.histamine.average') }}:
+                </v-col>
+                <v-col cols="9">
+                  <v-progress-linear
+                    :model-value="histamineBarValue"
+                    height="20"
+                    rounded
+                    :bg-color="histamineBarBgColor"
+                    :color="histamineBarColor"
+                  >
+                    <template v-slot:default>
+                      <span class="font-weight-medium">
+                        {{ histamineAvg }} / 3
+                      </span>
+                    </template>
+                  </v-progress-linear>
+                </v-col>
+              </v-row>
+              <v-row class="mb-1 align-center">
+                <v-col cols="12">
+                  <div class="text-caption text-center" :class="histamineTextColor">
+                    <v-icon size="x-small" class="mr-1">{{ histamineIcon }}</v-icon>
+                    {{ histamineLabel }}
+                  </div>
+                </v-col>
+              </v-row>
+            </template>
 
-          <v-divider class="my-3" />
-
-          <!-- Histamin -->
-          <div class="text-caption font-weight-bold mb-2">
-            {{ languageStore.t('tracker.histamine.title') }}
-          </div>
-
-          <v-row class="mb-2 align-center">
-            <v-col cols="3" class="text-right text-caption">
-              {{ languageStore.t('tracker.histamine.average') }}:
-            </v-col>
-            <v-col cols="9">
-              <v-progress-linear
-                :model-value="histamineBarValue"
-                height="20"
-                rounded
-                :bg-color="histamineBarBgColor"
-                :color="histamineBarColor"
-              >
-                <template v-slot:default>
-                  <span class="font-weight-medium">
-                    {{ histamineAvg }} / 3
-                  </span>
-                </template>
-              </v-progress-linear>
-            </v-col>
-          </v-row>
-          <v-row class="mb-1 align-center">
-            <v-col cols="12">
-              <div class="text-caption text-center" :class="histamineTextColor">
-                <v-icon size="x-small" class="mr-1">{{ histamineIcon }}</v-icon>
-                {{ histamineLabel }}
-              </div>
-            </v-col>
-          </v-row>
+          </template>
 
         </v-expansion-panel-text>
       </v-expansion-panel>
@@ -152,6 +157,9 @@ import { useLanguageStore } from '@/stores/languageStore';
 
 const trackerStore = useTrackerStore();
 const languageStore = useLanguageStore();
+
+// Enabled indicators from settings (respects order)
+const enabledIndicators = computed(() => trackerStore.getEnabledIndicators());
 
 // Prüfen, ob Makronährstoff-Daten vorhanden sind
 const hasMacroData = computed(() => {

@@ -13,6 +13,10 @@ export const useTrackerStore = defineStore("trackerStore", {
     error: null,
     isAddingItem: false,
     favorites: [], // Favoritenliste für Tracker-Items
+    indicatorSettings: [
+      { key: 'acidBase', enabled: true },
+      { key: 'histamine', enabled: true },
+    ],
     selectedItem: {
       name: String(),
       amount: Number(),
@@ -67,6 +71,7 @@ export const useTrackerStore = defineStore("trackerStore", {
 
     async initializeTracker(date = null) {
       this.loadCache();
+      this.loadIndicatorSettings();
       await this.fetchTracker(date);
     },
     // Get the tracker for a specific date (or today if no date is provided)
@@ -537,6 +542,44 @@ export const useTrackerStore = defineStore("trackerStore", {
       } catch (e) {
         console.error('Error loading tracker favorites:', e);
       }
+    },
+
+    // Indicator settings management
+    saveIndicatorSettings() {
+      try {
+        localStorage.setItem('trackerIndicatorSettings', JSON.stringify(this.indicatorSettings));
+      } catch (e) {
+        console.error('Error saving indicator settings:', e);
+      }
+    },
+
+    loadIndicatorSettings() {
+      try {
+        const data = localStorage.getItem('trackerIndicatorSettings');
+        if (data) {
+          const saved = JSON.parse(data);
+          // Merge with defaults to handle new indicators added in future updates
+          const defaults = [
+            { key: 'acidBase', enabled: true },
+            { key: 'histamine', enabled: true },
+          ];
+          this.indicatorSettings = defaults.map(def => {
+            const saved_item = saved.find(s => s.key === def.key);
+            return saved_item || def;
+          });
+        }
+      } catch (e) {
+        console.error('Error loading indicator settings:', e);
+      }
+    },
+
+    isIndicatorEnabled(key) {
+      const indicator = this.indicatorSettings.find(i => i.key === key);
+      return indicator ? indicator.enabled : false;
+    },
+
+    getEnabledIndicators() {
+      return this.indicatorSettings.filter(i => i.enabled);
     },
   },
 });
