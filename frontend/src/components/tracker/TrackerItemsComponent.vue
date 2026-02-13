@@ -5,15 +5,36 @@
     </div>
     <div v-else>
         <!-- Food Item Card -->
-        <v-card @click="openDropdown(item)" class="mb-1" v-for="(item, index) in tracker.foodItems" :key="index"
+        <v-card @click="openDropdown(item)" class="mb-1 food-item-card" v-for="(item, index) in tracker.foodItems" :key="index"
             :class="getHealthyRatingClass(item.healthyRating)">
-            <v-card-title class=" text-subtitle-2">
-                {{ item.name }} {{ item.daily === 1 ? languageStore.t('tracker.dailyTracked') : '' }}
-            </v-card-title>
-
-            <v-card-subtitle class="text-caption">
-                {{ item.amount }} {{ item.unit }} ({{ item.kcal }} {{ languageStore.t('tracker.kcal') }})
-            </v-card-subtitle>
+            <div class="d-flex align-stretch">
+                <div class="flex-grow-1 overflow-hidden">
+                    <v-card-title class="text-subtitle-2">
+                        {{ item.name }} {{ item.daily === 1 ? languageStore.t('tracker.dailyTracked') : '' }}
+                    </v-card-title>
+                    <v-card-subtitle class="text-caption">
+                        {{ item.amount }} {{ item.unit }} ({{ item.kcal }} {{ languageStore.t('tracker.kcal') }})
+                    </v-card-subtitle>
+                </div>
+                <div class="indicator-bars d-flex align-center ga-1 mr-3 my-2" v-if="hasIndicatorData(item)">
+                    <v-tooltip :text="getAcidBaseTooltip(item)" location="top">
+                        <template v-slot:activator="{ props }">
+                            <div v-bind="props"
+                                class="indicator-bar rounded-pill"
+                                :style="{ backgroundColor: getAcidBaseColor(item.acidBaseScore) }"
+                            ></div>
+                        </template>
+                    </v-tooltip>
+                    <v-tooltip :text="getHistamineTooltip(item)" location="top">
+                        <template v-slot:activator="{ props }">
+                            <div v-bind="props"
+                                class="indicator-bar rounded-pill"
+                                :style="{ backgroundColor: getHistamineColor(item.histamineLevel) }"
+                            ></div>
+                        </template>
+                    </v-tooltip>
+                </div>
+            </div>
         </v-card>
 
         <!-- Bottom Sheet -->
@@ -274,6 +295,44 @@ const getHealthyRatingClass = (rating) => {
         5: 'healthy-rating-very-high'
     }[rating] || '';
 };
+
+const hasIndicatorData = (item) => {
+    return (item.acidBaseScore !== undefined && item.acidBaseScore !== null && item.acidBaseScore !== 0) ||
+        (item.histamineLevel !== undefined && item.histamineLevel !== null && item.histamineLevel !== 0);
+};
+
+const getAcidBaseColor = (score) => {
+    if (score === undefined || score === null) return '#BDBDBD';
+    if (score <= -5) return '#00897B';   // teal - basisch
+    if (score <= 5) return '#BDBDBD';    // grau - neutral
+    if (score <= 15) return '#FFB74D';   // helles orange - leicht sauer
+    return '#EF6C00';                     // orange - stark sauer
+};
+
+const getHistamineColor = (level) => {
+    if (level === undefined || level === null || level === 0) return '#A5D6A7'; // hellgrün
+    if (level === 1) return '#81C784'; // grün
+    if (level === 2) return '#FFD54F'; // gelb/amber
+    return '#EF5350';                   // rot
+};
+
+const getAcidBaseTooltip = (item) => {
+    const score = item.acidBaseScore || 0;
+    if (score <= -5) return `${languageStore.t('tracker.acidBase.title')}: ${score} mEq (${languageStore.t('tracker.itemIndicator.alkaline')})`;
+    if (score <= 5) return `${languageStore.t('tracker.acidBase.title')}: ${score} mEq (${languageStore.t('tracker.itemIndicator.neutral')})`;
+    return `${languageStore.t('tracker.acidBase.title')}: ${score} mEq (${languageStore.t('tracker.itemIndicator.acidic')})`;
+};
+
+const getHistamineTooltip = (item) => {
+    const level = item.histamineLevel || 0;
+    const labels = [
+        languageStore.t('tracker.itemIndicator.histamineNone'),
+        languageStore.t('tracker.itemIndicator.histamineLow'),
+        languageStore.t('tracker.itemIndicator.histamineModerate'),
+        languageStore.t('tracker.itemIndicator.histamineHigh')
+    ];
+    return `${languageStore.t('tracker.histamine.title')}: ${labels[level] || labels[0]}`;
+};
 </script>
 
 <style scoped>
@@ -300,5 +359,16 @@ const getHealthyRatingClass = (rating) => {
 .healthy-rating-very-high {
     background: linear-gradient(to right, #2E7D32 8px, white 10px);
     /* Dunkelgrün */
+}
+
+.food-item-card .indicator-bars {
+    flex-shrink: 0;
+}
+
+.food-item-card .indicator-bar {
+    width: 4px;
+    height: 28px;
+    min-height: 28px;
+    opacity: 0.85;
 }
 </style>
