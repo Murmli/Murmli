@@ -16,14 +16,19 @@
                         {{ item.amount }} {{ item.unit }} ({{ item.kcal }} {{ languageStore.t('tracker.kcal') }})
                     </v-card-subtitle>
                 </div>
-                <div class="indicator-bars d-flex align-center ga-1 mr-3 my-2" v-if="hasVisibleIndicators(item)">
+                <div class="indicator-buttons d-flex align-center ga-1 mr-3 my-2" v-if="hasVisibleIndicators(item)">
                     <template v-for="indicator in enabledIndicators" :key="indicator.key">
                         <v-tooltip :text="getIndicatorTooltip(indicator.key, item)" location="top">
                             <template v-slot:activator="{ props }">
                                 <div v-bind="props"
-                                    class="indicator-bar rounded-pill"
+                                    class="indicator-btn"
+                                    :class="`indicator-btn-${indicator.key}`"
                                     :style="{ backgroundColor: getIndicatorColor(indicator.key, item) }"
-                                ></div>
+                                    @click.stop="openIndicatorSettings"
+                                >
+                                    <span v-if="indicator.key === 'histamine'" class="indicator-letter">H</span>
+                                    <v-icon v-else-if="indicator.key === 'acidBase'" size="x-small" color="white">mdi-water</v-icon>
+                                </div>
                             </template>
                         </v-tooltip>
                     </template>
@@ -149,10 +154,12 @@ import { ref, computed, watch } from 'vue';
 import { useTrackerStore } from '@/stores/trackerStore';
 import { useShoppingListStore } from '@/stores/shoppingListStore';
 import { useLanguageStore } from '@/stores/languageStore';
+import { useDialogStore } from '@/stores/dialogStore';
 
 const trackerStore = useTrackerStore();
 const shoppingListStore = useShoppingListStore();
 const languageStore = useLanguageStore();
+const dialogStore = useDialogStore();
 
 const tracker = computed(() => trackerStore.tracker || { foodItems: [] });
 const isNotToday = computed(() => {
@@ -346,6 +353,10 @@ const getHistamineTooltip = (item) => {
     ];
     return `${languageStore.t('tracker.histamine.title')}: ${labels[level] || labels[0]}`;
 };
+
+const openIndicatorSettings = () => {
+    dialogStore.openDialog('indicatorSettingsDialog');
+};
 </script>
 
 <style scoped>
@@ -374,14 +385,35 @@ const getHistamineTooltip = (item) => {
     /* Dunkelgrün */
 }
 
-.food-item-card .indicator-bars {
+.food-item-card .indicator-buttons {
     flex-shrink: 0;
 }
 
-.food-item-card .indicator-bar {
-    width: 4px;
-    height: 28px;
-    min-height: 28px;
-    opacity: 0.85;
+.food-item-card .indicator-btn {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.9;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.food-item-card .indicator-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.food-item-card .indicator-btn:active {
+    transform: scale(0.95);
+}
+
+.food-item-card .indicator-letter {
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    line-height: 1;
 }
 </style>
