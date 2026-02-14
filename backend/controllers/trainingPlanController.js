@@ -1,4 +1,5 @@
 const TrainingPlan = require('../models/trainingPlanModel');
+const Message = require('../models/messageModel');
 const { addCurrentWeekIfActive } = require('../utils/planerUtils');
 const { generateImagesForPlan } = require('../utils/exerciseImageUtils');
 const {
@@ -301,6 +302,15 @@ exports.generateTrainingPlan = async (req, res) => {
       sanitizeExercises(answer);
       const createdPlan = await TrainingPlan.create(answer);
       console.log(`Training plan ${createdPlan._id} created for user ${req.user._id}`);
+      
+      await Message.create({
+        userId: req.user._id,
+        type: "training_plan_ready",
+        title: "trainingPlanReady",
+        message: "trainingPlanReadyMessage",
+        data: { planId: createdPlan._id }
+      });
+      
       await generateImagesForPlan(createdPlan).catch(err =>
         console.error('exercise image generation:', err.message)
       );
@@ -375,6 +385,15 @@ exports.continueTrainingPlan = async (req, res) => {
         sanitizeExercises(answer);
         const createdPlan = await TrainingPlan.create(answer);
         console.log(`Training plan ${createdPlan._id} continued from ${basePlan._id} for user ${user._id}`);
+        
+        await Message.create({
+          userId: user._id,
+          type: "training_plan_ready",
+          title: "trainingPlanReady",
+          message: "trainingPlanReadyMessage",
+          data: { planId: createdPlan._id }
+        });
+        
         await generateImagesForPlan(createdPlan).catch(err =>
           console.error('exercise image generation:', err.message)
         );

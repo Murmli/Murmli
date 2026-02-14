@@ -12,6 +12,7 @@ const trackerRoutes = require("./routes/trackerRoutes.js");
 const trainingPlanRoutes = require("./routes/trainingPlanRoutes.js");
 const trainingLogRoutes = require("./routes/trainingLogRoutes.js");
 const visitorRoutes = require("./routes/visitorRoutes.js");
+const messageRoutes = require("./routes/messageRoutes.js");
 const { generateRecipeSitemap } = require("./utils/sitemapUtils.js");
 const app = express();
 const cors = require("cors");
@@ -182,5 +183,6 @@ app.use("/api/v2/calorietracker", trackerRoutes);
 app.use("/api/v2/training-plans", trainingPlanRoutes);
 app.use("/api/v2/training-logs", trainingLogRoutes);
 app.use("/api/v2/visitor", visitorRoutes);
+app.use("/api/v2/messages", messageRoutes);
 
 module.exports = app; // Nur die App exportieren

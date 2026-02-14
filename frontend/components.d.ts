@@ -45,6 +45,7 @@ declare module 'vue' {
     MyRecipesComponent: typeof import('./src/components/recipes/MyRecipesComponent.vue')['default']
     NavigationComponent: typeof import('./src/components/NavigationComponent.vue')['default']
     NotesSectionComponent: typeof import('./src/components/shoppingList/NotesSectionComponent.vue')['default']
+    NotificationDialog: typeof import('./src/components/general/NotificationDialog.vue')['default']
     PlannerFilterComponent: typeof import('./src/components/planner/dialogs/PlannerFilterComponent.vue')['default']
     PlannerHelpWindow: typeof import('./src/components/windows/PlannerHelpWindow.vue')['default']
     RecipeCardComponent: typeof import('./src/components/recipes/RecipeCardComponent.vue')['default']

@@ -5,6 +5,7 @@
       <router-view v-if="sessionReady" />
       <BottomNavigation />
       <ConfirmDialog />
+      <NotificationDialog />
     </v-main>
   </v-app>
 </template>
@@ -15,11 +16,13 @@ import { useApiStore } from '@/stores/apiStore';
 import { usePlannerStore } from '@/stores/plannerStore';
 import { useUserStore } from '@/stores/userStore';
 import { useLanguageStore } from '@/stores/languageStore';
+import { useNotificationStore } from '@/stores/notificationStore';
 
 const apiStore = useApiStore();
 const plannerStore = usePlannerStore();
 const userStore = useUserStore();
 const languageStore = useLanguageStore();
+const notificationStore = useNotificationStore();
 const sessionReady = ref(false);
 const MIN_RECIPE_SUGGESTIONS =
   parseInt(import.meta.env.VITE_MIN_RECIPE_SUGGESTIONS) || 5;
@@ -49,6 +52,11 @@ onMounted(async () => {
   ]);
 
   sessionReady.value = true;
+
+  // Initialize notification polling after session is established
+  if (sessionEstablished) {
+    notificationStore.initialize();
+  }
 
   // Fetch suggestions in the background to avoid blocking initial render
   if (

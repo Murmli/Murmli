@@ -1,6 +1,7 @@
 const Recipe = require("../models/recipeModel.js");
 const UserRecipe = require("../models/userRecipeModel.js");
 const Feedback = require("../models/feedbackModel.js");
+const Message = require("../models/messageModel.js");
 const { translateRecipes, translateString } = require(`../utils/translator.js`);
 const { createRecipe, scaleRecipe } = require(`../utils/recipeUtils.js`);
 const { editRecipeWithLLM, chatWithRecipe } = require("../utils/llm.js");
@@ -170,6 +171,15 @@ exports.createUserRecipe = async (req, res) => {
             createdAt: new Date(),
           });
           await user.save();
+          
+          await Message.create({
+            userId: user._id,
+            type: "recipe_ready",
+            title: "recipeReady",
+            message: "recipeReadyMessage",
+            data: { recipeId: savedRecipe._id }
+          });
+          
           console.log(`Recipe ${savedRecipe._id} created successfully for user ${user._id}`);
         } else {
           console.error("Failed to create recipe");

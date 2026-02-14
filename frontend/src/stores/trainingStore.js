@@ -1,9 +1,6 @@
 import { defineStore } from "pinia";
 import { useApiStore } from "./apiStore";
-import { useLanguageStore } from "./languageStore";
 import { cache } from "@/utils/cache";
-
-const languageStore = useLanguageStore();
 
 export const useTrainingStore = defineStore("trainingStore", {
     state: () => ({
@@ -196,7 +193,6 @@ export const useTrainingStore = defineStore("trainingStore", {
                             this.pollInterval = null;
                             this.generationStatus = null;
                             await this.fetchTrainingPlans();
-                            alert(languageStore.t('trainingPlans.readyMessage'));
                         }
                     };
                     this.pollInterval = setInterval(poll, 5000);
@@ -247,7 +243,6 @@ export const useTrainingStore = defineStore("trainingStore", {
                             this.pollInterval = null;
                             this.generationStatus = null;
                             await this.fetchTrainingPlans();
-                            alert(languageStore.t('trainingPlans.readyMessage'));
                         }
                     };
                     this.pollInterval = setInterval(poll, 5000);

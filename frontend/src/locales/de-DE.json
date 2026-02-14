@@ -91,6 +91,13 @@
     "cancel": "Abbrechen",
     "report": "Melden",
     "confirm": "Bestätigen",
+    "ok": "OK",
+    "notifications": {
+      "recipeReady": "Rezept fertig",
+      "recipeReadyMessage": "Dein Rezept wurde erstellt.",
+      "trainingPlanReady": "Trainingsplan fertig",
+      "trainingPlanReadyMessage": "Dein Trainingsplan wurde erstellt."
+    },
     "start": "Los geht's",
     "generate": "Generieren",
     "deleteRecipeDialog": {

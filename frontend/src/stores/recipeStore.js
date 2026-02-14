@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import { useApiStore } from "./apiStore";
-import { useLanguageStore } from "./languageStore";
 import { cache } from "@/utils/cache";
 import { Capacitor } from '@capacitor/core';
 import { Filesystem, Directory } from '@capacitor/filesystem';
@@ -18,8 +17,6 @@ const blobToBase64 = (blob) => {
     reader.readAsDataURL(blob);
   });
 };
-
-const languageStore = useLanguageStore();
 
 export const useRecipeStore = defineStore("recipeStore", {
   state: () => ({
@@ -201,7 +198,6 @@ export const useRecipeStore = defineStore("recipeStore", {
               this.pollInterval = null;
               this.generationStatus = null;
               await this.fetchUserRecipes(false);
-              alert(languageStore.t('recipes.readyMessage'));
             }
           };
           this.pollInterval = setInterval(poll, 5000);
