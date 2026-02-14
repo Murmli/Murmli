@@ -1,316 +1,216 @@
 # AGENTS.md - Murmli Project Guidelines for AI Agents
 
-Diese Datei enthält alle wichtigen Informationen für KI-Agenten, die am Murmli-Projekt arbeiten.
+## 1. Project Overview
 
-## 1. Projektübersicht
+**Murmli** is a fitness and lifestyle app combining shopping lists, recipes, meal planning, calorie tracking, and workout plans with LLM-powered features.
 
-**Murmli** ist eine integrierte Fitness- und Lifestyle-App, die Einkaufslisten, Rezepte, Wochenpläne, Kalorientracking und Trainingspläne in einer einheitlichen Plattform vereint. Das Projekt nutzt fortschrittliche LLM-Integrationen für intelligente Features.
-
-### Repository
+- **Structure**: Monorepo with `backend/` (Node.js/Express) and `frontend/` (Vue.js/Ionic)
 - **URL**: https://github.com/Murmli/Murmli.git
-- **Struktur**: Monorepo mit Workspaces (backend, frontend)
-- **Version**: 1.0.0
 
-`ALWAYS start a new task by creating a new git branch with a descriptive name. Do not commit directly to the main branch.`
+`ALWAYS start a new task by creating a new git branch. Never commit directly to main.`
 
-## 2. Technologie-Stack
+## 2. Build/Lint/Test Commands
 
-### Backend (backend/)
-- **Runtime**: Node.js 18+
-- **Framework**: Express.js 4.19+
-- **Datenbank**: MongoDB mit Mongoose ODM 8.4+
-- **API**: RESTful API V2
-- **Authentifizierung**: JWT + Session-Token
-- **LLM Integration**: Provider-agnostisch (OpenAI, Google, DeepSeek, OpenRouter)
-- **Tests**: Jest 29.7+
-
-### Frontend (frontend/)
-- **Framework**: Vue.js 3 (Composition API)
-- **UI Framework**: Ionic Framework
-- **Build Tool**: Vite 5.3+
-- **State Management**: Pinia 2.1+
-- **Styling**: SCSS/CSS (Global + Scoped)
-- **Internationalisierung**: vue-i18n (Quelle: de-DE.json)
-- **Mobile**: Capacitor 7.0+ (iOS & Android)
-- **Icons**: Material Design Icons (MDI)
-
-## 3. Architektur
-
-### Monorepo Struktur
-```
-Murmli/
-├── backend/           # Node.js/Express API
-│   ├── controllers/   # Route-Handler
-│   ├── models/        # Mongoose Schemas
-│   ├── routes/        # API Routes
-│   ├── utils/         # Utilities & LLM Integration
-│   └── tests/         # Jest Tests
-├── frontend/          # Vue.js/Ionic App
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── stores/    # Pinia Stores
-│   │   ├── locales/   # I18n Dateien
-│   │   └── utils/
-│   └── media/         # Store-Screenshots
-├── .github/           # GitHub Actions
-├── tests/             # Playwright E2E Tests
-└── package.json       # Root-Workspace Konfiguration
-```
-
-### LLM-Pipeline (Core Mechanic)
-
-Alle LLM-Interaktionen laufen durch einen zentralisierten Workflow:
-
-1. **Controller** empfängt Anfrage (z.B. `recipeController.js`)
-2. **Utils** ruft spezifische Funktion in `backend/utils/llm.js` auf
-3. **Prompting**: System- und User-Prompts in `backend/utils/prompts.js`
-4. **API Call**: `apiCall`-Wrapper aus Provider-Datei
-5. **Schema Validation**: JSON-Schemas in `backend/utils/schemas/`
-6. **Response**: Validiertes JSON zurück an Controller
-
-**WICHTIG**: Keine direkten API-Calls zu LLM-Providern in Controllern!
-
-### Frontend Architektur
-
-- **apiStore.js**: Authentifizierung, Base URL, Loading-States
-- **dialogStore.js**: Zentrales Modal/Dialog Management
-- **languageStore.js**: Lokalisierung
-- **API Requests**: Über `apiStore.apiRequest` mit automatischen Auth-Headers
-
-## 4. Code Konventionen
-
-### Sprachregeln
-- **Code** (Variablen, Funktionen, Kommentare): **Englisch**
-- **User-Kommunikation**: **Deutsch**
-- **Git Commit Messages**: **Englisch** (Imperativ: "Add feature", "Fix bug")
-
-### Backend
-- **Async/Await**: Durchgängig verwenden
-- **Error Handling**: `try...catch` in allen Controllern
-- **Dateinamen**: camelCase (`recipeController.js`)
-- **Models**: PascalCase (`RecipeModel.js`)
-- **Utils**: camelCase (`llmUtils.js`)
-
-### Frontend
-- **Vue Components**: `<script setup>` Syntax
-- **Component Namen**: Multi-Word, PascalCase (`RecipeCard.vue`)
-- **Stores**: camelCase (`recipeStore.js`)
-- **CSS**: Scoped wo möglich, CSS-Variablen für Theme-Konsistenz
-- **File Organization**: Features in Unterordnern (`components/recipe/`, `components/training/`)
-
-## 5. Entwicklungsworkflow
-
-### Installation
+### Development
 ```bash
-# Alle Dependencies installieren
-npm run install:all
-
-# Nur Backend
-npm run install:backend
-
-# Nur Frontend
-npm run install:frontend
+npm start                    # Backend (8080) + Frontend (3000)
+npm run dev                  # Backend (watch mode) + Frontend
+npm run dev:backend          # Only backend with nodemon
+npm run start:frontend       # Only frontend (Vite dev server)
 ```
 
-### Entwicklungsstart
+### Build
 ```bash
-# Backend (Port 8080) + Frontend (Port 3000)
-npm start
-
-# Backend in Watch-Mode + Frontend
-npm run dev
-
-# Nur Backend
-npm run dev:backend
-
-# Nur Frontend
-npm run start:frontend
+npm run build                # Production build (runs buildLang + vite build)
 ```
 
-### Wichtige Scripts
-- `npm run build`: Produktions-Build Frontend
-- `npm run test:e2e`: Playwright End-to-End Tests
-- `npm run lint`: ESLint Frontend
-
-## 6. Environment Variablen
-
-### Backend (`backend/.env`)
-```ini
-# Datenbank
-DB_STRING=mongodb://...
-PORT=8080
-HOST=localhost
-APP_URL=http://localhost:8080
-
-# Sicherheit
-JWT_SECRET=...
-SECRET_KEY=...
-DEBUG=false
-
-# LLM Provider
-LLM_PROVIDER=openrouter|google|openai|deepseek
-LLM_CACHE_MAX_AGE_DAYS=30
-
-# OpenRouter
-OPENROUTER_API_KEY=...
-OPENROUTER_LOW_MODEL=...
-OPENROUTER_HIGH_MODEL=...
-OPENROUTER_RECIPE_IMAGE_MODEL=google/gemini-2.5-flash-image
-
-# Google
-GOOGLE_API_KEY=...
-GOOGLE_LOW_MODEL=...
-GOOGLE_HIGH_MODEL=...
-
-# OpenAI
-OPENAI_API_KEY=...
-OPENAI_LOW_MODEL=...
-OPENAI_HIGH_MODEL=...
-OPENAI_TRANSCRIBE_MODEL=...
-
-# DeepSeek
-DEEPSEEK_API_KEY=...
-DEEPSEEK_LOW_MODEL=...
-DEEPSEEK_HIGH_MODEL=...
-
-# Features
-RECIPE_SUGGESTIONS_PER_REQUEST=3
-RECIPE_IMAGE_ASPECT_RATIO=3:2
-
-# Azure Storage (Bilder)
-AZURE_STORAGE_CONTAINER_NAME=...
-AZURE_STORAGE_CONNECTION_STRING=...
-AZURE_STORAGE_URL=...
-
-# Email
-GMAIL_SMTP_USER=...
-GMAIL_SMTP_PASSWORD=...
-```
-
-### Frontend (`frontend/.env` / `frontend/.env.production`)
-```ini
-VITE_API_BASE_URL=http://localhost:8080/api/v2
-VITE_BACKEND_BASE_URL=http://localhost:8080
-VITE_HEADER_SECRET_KEY=...
-VITE_MIN_RECIPE_SUGGESTIONS=3
-VITE_RECIPE_FETCH_COUNT=10
-
-# Für Locale-Generierung
-OPENAI_API_KEY=...
-OPENAI_TRANSLATION_MODEL=gpt-4
-```
-
-## 7. Testing
-
-### Backend Tests (Jest)
+### Lint
 ```bash
-cd backend
-npm test
+cd frontend && npm run lint  # ESLint with --fix
 ```
 
-**Test-Dateien**:
-- `backend/tests/visitorTracking.test.js`
-- `backend/tests/trainingWorkflow.test.js`
-- `backend/tests/shoppingListUtils.test.js`
-- `backend/tests/shoppingListController.test.js`
-- `backend/tests/exerciseImageUtils.test.js`
-
-### E2E Tests (Playwright)
+### Tests
 ```bash
-npm run test:e2e
+# Backend Unit Tests (Jest)
+cd backend && npm test                              # Run all tests
+cd backend && npx jest tests/visitorTracking.test.js    # Single test file
+cd backend && npx jest -t "should create a new visitor" # Single test by name
+
+# E2E Tests (Playwright)
+npm run test:e2e                                    # Run all E2E tests
+npx playwright test tests/e2e/example.spec.ts       # Single E2E test file
 ```
 
-Konfiguration in `playwright.config.ts`
+## 3. Code Style Guidelines
 
-## 8. Wichtige Patterns & Regeln
+### Language Rules
+- **Code/Comments**: English
+- **User Communication**: German (via i18n)
+- **Git Commits**: English imperative ("Add feature", "Fix bug")
 
-### LLM Integration
-1. **Prompts in `prompts.js`**: Keine Magic Strings in Business-Logic
-2. **Schema Compliance**: Bei Änderungen am LLM-Output auch Schema anpassen
-3. **Provider-Agnostisch**: Neue Provider über `backend/utils/llm/[provider].js` hinzufügen
+### Backend (Node.js/Express)
 
-### Datenbank
-- **Mongoose Models** in `backend/models/`
-- **Schemas** für strikte Validierung in `backend/utils/schemas/`
-- **Indexes** für häufige Queries definieren
+**Imports**: CommonJS with `require`
+```javascript
+const Recipe = require("../models/recipeModel.js");
+const { translateRecipes } = require("../utils/translator.js");
+```
+
+**Error Handling**: Always wrap controllers in try/catch
+```javascript
+exports.readRecipe = async (req, res) => {
+  try {
+    // ... logic
+    return res.status(200).json(data);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Server Error" });
+  }
+};
+```
+
+**Naming**:
+- Files: camelCase (`recipeController.js`)
+- Models: PascalCase (`RecipeModel.js`)
+- Exports: `exports.functionName = async () => {}`
+
+**Async**: Always use `async/await`, never raw Promises
+
+### Frontend (Vue.js 3 + Vuetify)
+
+**Component Structure**: `<script setup>` syntax
+```vue
+<template>
+  <v-card>...</v-card>
+</template>
+
+<script setup>
+import { useRouter } from 'vue-router';
+import { useRecipeStore } from '@/stores/recipeStore';
+
+const props = defineProps({
+  recipe: { type: Object, required: true }
+});
+const emit = defineEmits(['swiped']);
+</script>
+
+<style scoped>
+/* Scoped CSS here */
+</style>
+```
+
+**Imports**:
+- Stores: `import { useRecipeStore } from '@/stores/recipeStore'`
+- Components: Auto-imported via unplugin
+
+**Naming**:
+- Components: PascalCase (`RecipeCardComponent.vue`)
+- Stores: camelCase (`recipeStore.js`)
+- CSS: scoped preferred, use CSS variables for theming
+
+**API Calls**: Always via `apiStore.apiRequest`
+```javascript
+const apiStore = useApiStore();
+const response = await apiStore.apiRequest('get', '/recipes');
+```
+
+### Database (MongoDB/Mongoose)
+
+**Models** in `backend/models/` with PascalCase filenames
+```javascript
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
+
+const recipeSchema = new Schema({
+  title: { type: String, required: true },
+  // ...
+});
+
+module.exports = mongoose.model("Recipe", recipeSchema);
+```
+
+## 4. Architecture Patterns
+
+### LLM Pipeline (Critical)
+
+All LLM calls follow this centralized flow:
+1. Controller receives request
+2. Calls function from `backend/utils/llm.js`
+3. Prompts from `backend/utils/prompts.js`
+4. Schema validation from `backend/utils/schemas/`
+5. Provider call via `backend/utils/llm/[provider].js`
+
+**NEVER** call LLM APIs directly from controllers. Always go through `llm.js`.
 
 ### API Design
-- **RESTful** Endpoints
-- **Versionierung**: Aktuell V2 (`/api/v2/`)
-- **Auth**: JWT + `x-header-secret-key` Header
-- **Error Format**: `{ error: "Message" }`
+- Base path: `/api/v2/`
+- Auth: JWT Bearer token + `x-header-secret-key` header
+- Errors: `{ error: "Message" }`
+- Validation: Mongoose schemas + JSON schemas for LLM output
 
-### Internationalisierung
-- **EINZIGE Quelle**: `frontend/src/locales/de-DE.json` - **NUR diese Datei wird manuell gepflegt!**
-- **Workflow**: 
-  1. Neue Strings nur in `de-DE.json` hinzufügen
-  2. `npm run buildLang` ausführen (wird automatisch bei `npm run build` ausgeführt)
-  3. Das Script `scripts/buildLang.js` übersetzt alle Strings per OpenAI API in alle anderen Sprachen (en-US, fr-FR, zh-CN, etc.)
-- **WICHTIG**: Nie andere Locale-Dateien manuell editieren - diese werden bei jedem Build überschrieben!
-- **Verfügbare Sprachen**: de-DE, de-AT, de-CH, en-US, en, fr-FR, zh-CN, hi-IN + regionale Dialekte
+### Internationalization
+- **Source of truth**: `frontend/src/locales/de-DE.json` ONLY
+- Other locales auto-generated via `npm run buildLang` (OpenAI translation)
+- **Never** manually edit other locale files
 
-## 9. Deployment
+## 5. Environment Variables
 
-### GitHub Actions
-- `.github/workflows/deploy_backend.yml`: Backend Deployment
-- `.github/workflows/deploy_mobile.yml`: Mobile App Build
+Check existing `.env` files for required variables:
+- `backend/.env` - Database, LLM provider keys, Azure storage
+- `frontend/.env` - API URLs, feature flags
 
-### Production Build
-```bash
-# 1. Environment setzen (siehe 6.)
-# 2. Build Frontend
-npm run build
-# 3. Deploy Backend
-# 4. Sync Capacitor (Mobile)
-npx cap sync
+Key variables to verify before running:
+- `DB_STRING` - MongoDB connection
+- `LLM_PROVIDER` - Must be set (openai|google|deepseek|openrouter)
+- `JWT_SECRET` - Auth token signing
+
+## 6. Common Patterns
+
+### Adding a new API endpoint
+1. Create/update model in `backend/models/`
+2. Create controller in `backend/controllers/`
+3. Add route in `backend/routes/`
+4. Create store function in frontend `stores/`
+
+### Adding LLM-powered feature
+1. Define JSON schema in `backend/utils/schemas/`
+2. Add prompt in `backend/utils/prompts.js`
+3. Add function in `backend/utils/llm.js`
+4. Call from controller
+
+### Adding frontend component
+1. Create in feature subfolder (`components/recipe/`, `components/training/`)
+2. Use `<script setup>` with defineProps/defineEmits
+3. Import and use Pinia stores
+4. Use `apiStore.apiRequest()` for API calls
+5. Add i18n keys to `locales/de-DE.json` only
+
+## 7. File Organization
+
+```
+Murmli/
+├── backend/
+│   ├── controllers/    # Route handlers
+│   ├── models/         # Mongoose schemas
+│   ├── routes/         # Express routes
+│   ├── utils/          # LLM, validations, helpers
+│   │   ├── llm/        # Provider implementations
+│   │   └── schemas/    # JSON schemas for LLM
+│   └── tests/          # Jest unit tests
+├── frontend/
+│   └── src/
+│       ├── components/ # Vue components (by feature)
+│       ├── pages/       # Route pages
+│       ├── stores/      # Pinia stores
+│       └── locales/     # i18n (edit de-DE.json only)
+└── tests/e2e/           # Playwright tests
 ```
 
-### Mobile Deployment
-- **iOS**: Xcode Build
-- **Android**: Gradle Build
-- **Capacitor**: `npx cap copy && npx cap sync`
+## 8. Security
 
-## 10. Sicherheit
-
-- **Secrets**: Niemals in Git committen
-- **JWT**: Regelmäßig rotieren
-- **API Keys**: Provider-Secrets regelmäßig erneuern
-- **CORS**: Korrekt konfiguriert im Backend
-- **Validation**: Alle Inputs validieren (Mongoose + JSON Schema)
-
-## 11. Troubleshooting
-
-### Häufige Probleme
-
-**Backend startet nicht**:
-- Prüfe `.env` (alle Werte gesetzt?)
-- MongoDB erreichbar?
-
-**LLM Fehler**:
-- API Keys gültig?
-- `backend/utils/llm.js` und Schemas prüfen
-
-**Frontend Build-Fehler**:
-- `npm run install:frontend` ausführen
-- `frontend/.env.production` vorhanden?
-
-**Mobile Sync-Fehler**:
-- `npx cap sync` nach Build ausführen
-- Android Studio/Xcode korrekt konfiguriert?
-
-## 12. Ressourcen
-
-- **Discord Community**: https://discord.com/invite/qkxjGEp3Tg
-- **Backend README**: `backend/README.md`
-- **Frontend README**: `frontend/README.md`
-- **Gemini Dokumentation**: `GEMINI.md`
-
-## 13. Lizenz
-
-- **Source Code**: PolyForm Noncommercial License 1.0.0
-- **Assets** (Logos, Illustrationen): CC BY-NC 4.0
+- Never commit secrets (`.env` files are gitignored)
+- Validate all inputs (Mongoose + manual validation)
+- Use HTTPS in production
 
 ---
-
-*Letzte Aktualisierung: 2026-02-01*
+*Last updated: 2026-02-14*
