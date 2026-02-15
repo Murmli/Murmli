@@ -410,6 +410,12 @@ export const useTrackerStore = defineStore("trackerStore", {
         );
         if (response.status === 200) {
           this.tracker = response.data.tracker;
+          // Wenn das Item in den Favoriten existiert, aktualisiere es dort auch
+          const favoriteIndex = this.favorites.findIndex(fav => fav.name === updatedData.name);
+          if (favoriteIndex !== -1) {
+            this.favorites[favoriteIndex] = { ...updatedData };
+            this.saveFavoritesToLocalStorage();
+          }
           this.selectedItem = {};
           this.saveCache();
           return response.message;
