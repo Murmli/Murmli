@@ -215,9 +215,9 @@ const acidBaseTextColor = computed(() => {
 
 const acidBaseIcon = computed(() => {
   const score = acidBaseScore.value;
-  if (score <= -5) return 'mdi-leaf';
+  if (score <= -5) return 'mdi-ph';
   if (score <= 5) return 'mdi-scale-balance';
-  return 'mdi-alert-circle-outline';
+  return 'mdi-ph';
 });
 
 const acidBaseLabel = computed(() => {
@@ -259,9 +259,9 @@ const histamineTextColor = computed(() => {
 
 const histamineIcon = computed(() => {
   const avg = histamineAvg.value;
-  if (avg <= 1) return 'mdi-check-circle-outline';
-  if (avg <= 2) return 'mdi-alert-outline';
-  return 'mdi-alert-circle-outline';
+  if (avg <= 1) return 'mdi-molecule';
+  if (avg <= 2) return 'mdi-molecule';
+  return 'mdi-molecule';
 });
 
 const histamineLabel = computed(() => {

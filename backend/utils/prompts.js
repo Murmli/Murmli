@@ -204,11 +204,16 @@ exports.textToTrackerArraySystemPrompt = (outputLang = "de-DE") => {
     - Skaliere den Wert proportional zur tatsächlichen Menge.
 
     WICHTIG - HISTAMIN (histamineLevel):
-    - Bewerte den Histamingehalt auf einer Skala von 0 bis 3:
-      - 0 = kein/kaum Histamin: Frisches Fleisch (nicht gereift), frisches Gemüse (außer Tomaten/Spinat/Aubergine), frisches Obst (außer Zitrusfrüchte/Erdbeeren), Reis, Nudeln, Brot.
+    - Bewerte den Histamingehalt und die Histaminbelastung auf einer Skala von 0 bis 3:
+      - 0 = kein/kaum Histamin: Frisches Fleisch (nicht gereift), frisches Gemüse (außer Tomaten/Spinat/Aubergine), frisches Obst (außer Zitrusfrüchte/Erdbeeren/Bananen), Reis, Nudeln, Brot.
       - 1 = wenig Histamin: Leicht verarbeitete Lebensmittel, Kartoffeln, die meisten Milchprodukte (Frischkäse, Butter, Quark).
-      - 2 = mäßig Histamin: Tomaten, Spinat, Avocado, Aubergine, Zitrusfrüchte, Erdbeeren, Schokolade, Essig, Hefe.
+      - 2 = mäßig Histamin: Tomaten, Spinat, Avocado, Aubergine, Zitrusfrüchte, Erdbeeren, Schokolade, Essig, Hefe, BANANEN (Histamin-Liberator - enthalten andere biogene Amine wie Dopamin/Serotonin/Noradrenalin/Putrescin, die vom DAO-Enzym abgebaut werden und den Histaminabbau blockieren), Ananas, Papaya, Kiwis.
       - 3 = hoch Histamin: Gereifter Käse (Parmesan, Gouda), Salami, Schinken, Sauerkraut, Rotwein, Bier, Thunfisch/Makrele (Konserve), Sojasoße, fermentierte Lebensmittel.
+
+    - WICHTIG: Histamin-Liberatoren (auch wenn sie wenig direktes Histamin enthalten) müssen als Stufe 2 gewertet werden, da sie Histamin aus Mastzellen freisetzen oder den Abbau behindern:
+      - Obst: Bananen, Ananas, Papaya, Kiwis, Zitrusfrüchte
+      - Zusatzstoffe: Farb- und Konservierungsstoffe, Geschmacksverstärker
+      - Andere Biogene Amine: Lebensmittel mit hohen Gehalten an Tyramin, Putrescin, Cadaverin, Dopamin, Serotonin (konkurrieren mit Histamin um das DAO-Enzym)
 
     - Berücksichtige bei der Kalorieninformation, dass Zutaten wie Pasta, Reis, Bohnen usw. im gekochten Zustand ein deutlich anderes Gewicht haben.
     - Vermerke gekochte Gewichte mit "(gekocht)" im Namen des Lebensmittels.
@@ -438,11 +443,16 @@ exports.imageToTrackerItemsSystemPrompt = (outputLang) => {
     - Skaliere den Wert proportional zur tatsächlichen Menge.
 
     WICHTIG - HISTAMIN (histamineLevel):
-    - Bewerte den Histamingehalt auf einer Skala von 0 bis 3:
-      - 0 = kein/kaum Histamin: Frisches Fleisch (nicht gereift), frisches Gemüse (außer Tomaten/Spinat/Aubergine), frisches Obst (außer Zitrusfrüchte/Erdbeeren), Reis, Nudeln, Brot.
+    - Bewerte den Histamingehalt und die Histaminbelastung auf einer Skala von 0 bis 3:
+      - 0 = kein/kaum Histamin: Frisches Fleisch (nicht gereift), frisches Gemüse (außer Tomaten/Spinat/Aubergine), frisches Obst (außer Zitrusfrüchte/Erdbeeren/Bananen), Reis, Nudeln, Brot.
       - 1 = wenig Histamin: Leicht verarbeitete Lebensmittel, Kartoffeln, die meisten Milchprodukte (Frischkäse, Butter, Quark).
-      - 2 = mäßig Histamin: Tomaten, Spinat, Avocado, Aubergine, Zitrusfrüchte, Erdbeeren, Schokolade, Essig, Hefe.
+      - 2 = mäßig Histamin: Tomaten, Spinat, Avocado, Aubergine, Zitrusfrüchte, Erdbeeren, Schokolade, Essig, Hefe, BANANEN (Histamin-Liberator - enthalten andere biogene Amine wie Dopamin/Serotonin/Noradrenalin/Putrescin, die vom DAO-Enzym abgebaut werden und den Histaminabbau blockieren), Ananas, Papaya, Kiwis.
       - 3 = hoch Histamin: Gereifter Käse (Parmesan, Gouda), Salami, Schinken, Sauerkraut, Rotwein, Bier, Thunfisch/Makrele (Konserve), Sojasoße, fermentierte Lebensmittel.
+
+    - WICHTIG: Histamin-Liberatoren (auch wenn sie wenig direktes Histamin enthalten) müssen als Stufe 2 gewertet werden, da sie Histamin aus Mastzellen freisetzen oder den Abbau behindern:
+      - Obst: Bananen, Ananas, Papaya, Kiwis, Zitrusfrüchte
+      - Zusatzstoffe: Farb- und Konservierungsstoffe, Geschmacksverstärker
+      - Andere Biogene Amine: Lebensmittel mit hohen Gehalten an Tyramin, Putrescin, Cadaverin, Dopamin, Serotonin (konkurrieren mit Histamin um das DAO-Enzym)
 
     - Berücksichtige bei der Kalorieninformation, dass Zutaten wie Pasta, Reis, Bohnen usw. im gekochten Zustand ein deutlich anderes Gewicht haben.
     - Vermerke gekochte Gewichte mit "(gekocht)" im Namen des Lebensmittels.

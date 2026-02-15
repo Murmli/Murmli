@@ -26,8 +26,8 @@
                                     :style="{ backgroundColor: getIndicatorColor(indicator.key, item) }"
                                     @click.stop="openIndicatorSettings"
                                 >
-                                    <span v-if="indicator.key === 'histamine'" class="indicator-letter">H</span>
-                                    <v-icon v-else-if="indicator.key === 'acidBase'" size="x-small" color="white">mdi-water</v-icon>
+                                    <v-icon v-if="indicator.key === 'histamine'" size="x-small" color="white">mdi-molecule</v-icon>
+                                    <v-icon v-else-if="indicator.key === 'acidBase'" size="x-small" color="white">mdi-ph</v-icon>
                                 </div>
                             </template>
                         </v-tooltip>
