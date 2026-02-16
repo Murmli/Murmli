@@ -43,7 +43,7 @@
             <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn text @click="closeDialog">{{ languageStore.t('general.cancel') }}</v-btn>
-                <v-btn color="primary" @click="confirmSelection" :disabled="selectedImages.length === 0">
+                <v-btn color="primary" @click="confirmSelection">
                     {{ languageStore.t('general.confirm') }}
                 </v-btn>
             </v-card-actions>
@@ -52,7 +52,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { useDialogStore } from '@/stores/dialogStore';
 import { useLanguageStore } from '@/stores/languageStore';
 
@@ -60,6 +60,10 @@ const props = defineProps({
     showDescription: {
         type: Boolean,
         default: false
+    },
+    initialImages: {
+        type: Array,
+        default: () => []
     }
 });
 
@@ -81,6 +85,16 @@ const dialogBinding = computed({
         } else {
             dialogStore.closeDialog('trackImageDialog');
         }
+    }
+});
+
+// Watch für Dialog-Status - lädt Bilder wenn der Dialog geöffnet wird
+watch(() => dialogStore.dialogs.trackImageDialog, (isOpen) => {
+    if (isOpen && props.initialImages && props.initialImages.length > 0) {
+        selectedImages.value = props.initialImages.map(file => ({
+            file: file,
+            preview: URL.createObjectURL(file)
+        }));
     }
 });
 
@@ -127,6 +141,11 @@ const confirmSelection = () => {
 };
 
 const resetState = () => {
+    selectedImages.value.forEach(img => {
+        if (img.preview && img.preview.startsWith('blob:')) {
+            URL.revokeObjectURL(img.preview);
+        }
+    });
     selectedImages.value = [];
     description.value = '';
 };
