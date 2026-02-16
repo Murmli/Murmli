@@ -521,7 +521,11 @@
     "indicatorSettings": {
       "menuTitle": "Indikatoren",
       "title": "Indikatoren anpassen",
-      "description": "Wähle aus, welche Indikatoren bei deinen Lebensmitteln angezeigt werden sollen, und bestimme die Reihenfolge."
+      "description": "Wähle aus, welche Indikatoren bei deinen Lebensmitteln angezeigt werden sollen.",
+      "preview": "Vorschau",
+      "noIndicators": "Keine Indikatoren aktiviert",
+      "acidBaseDesc": "Zeigt den PRAL-Wert für den Säure-Basen-Haushalt",
+      "histamineDesc": "Zeigt den Histamingehalt für bessere Verträglichkeit"
     },
     "enterQuestion": "Stelle hier deine Frage...",
     "askDialog": "Hier kannst du Fragen zur Ernährung stellen. Die App wird versuchen, deine Frage zu beantworten und bezieht dabei deine Körperdaten sowie deine Kalorienzählereinträge der letzten 14 Tage mit ein. Bitte beachte, dass die Antworten auf den Informationen basieren, die du in der App eingegeben hast.",
