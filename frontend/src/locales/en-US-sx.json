@@ -96,7 +96,14 @@
     "week": "Week",
     "selectPhoto": "Select Photo",
     "capturePhoto": "Camera",
-    "voiceDialogInfo": "The voice recordin' is goin' on right now. You can toss it anytime. If ya send it, it'll be processed automatically."
+    "voiceDialogInfo": "The voice recordin' is goin' on right now. You can toss it anytime. If ya send it, it'll be processed automatically.",
+    "ok": "All righty",
+    "notifications": {
+      "recipeReady": "Yer recipe's ready",
+      "recipeReadyMessage": "Yer recipe's been made",
+      "trainingPlanReady": "Yer trainin' plan's ready",
+      "trainingPlanReadyMessage": "Yer trainin' plan's been made"
+    }
   },
   "shoppingList": {
     "newItemLabel": "New Item",
@@ -428,6 +435,39 @@
       "emptyState": "Go on, ask me somethin' 'bout yer eatin'!",
       "welcomeMessage": "Well howdy! I'm yer tracker assistant. I can answer questions 'bout yer calories, nutrients, and eatin' habits.",
       "openButton": "Open up the assistant"
+    },
+    "carbohydrates": "Carbohydrates (g)",
+    "nutritionDetails": "Nutrition details",
+    "acidBase": {
+      "title": "Acid-base balance",
+      "alkaline": "Alkaline — good fer the acid-base balance",
+      "balanced": "Balanced — acid-base balance's nice an' even",
+      "acidic": "Acid-formin' — more alkaline foods recommended"
+    },
+    "histamine": {
+      "title": "Histamine",
+      "average": "Average",
+      "low": "Low histamine — well tolerated",
+      "moderate": "Moderate histamine — mind it if y' got an intolerance",
+      "high": "High histamine — can be trouble if y' got an intolerance"
+    },
+    "itemIndicator": {
+      "alkaline": "Alkaline",
+      "neutral": "Neutral",
+      "acidic": "Acid-forming",
+      "histamineNone": "No histamine",
+      "histamineLow": "Low",
+      "histamineModerate": "Moderate",
+      "histamineHigh": "High"
+    },
+    "indicatorSettings": {
+      "menuTitle": "Indicators",
+      "title": "Adjust yer indicators",
+      "description": "Pick which indicators y' wanna see on yer foods.",
+      "preview": "Preview",
+      "noIndicators": "No indicators enabled",
+      "acidBaseDesc": "Shows the PRAL value fer the acid-base balance",
+      "histamineDesc": "Shows the histamine content fer better tolerability"
     }
   },
   "trainingPlans": {

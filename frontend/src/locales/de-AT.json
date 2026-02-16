@@ -96,7 +96,14 @@
     "week": "Woche",
     "selectPhoto": "Foto auswählen",
     "capturePhoto": "Kamera",
-    "voiceDialogInfo": "Die Sprachaufnahme is' grad am Laufen. Du kannst sie jederzeit verwerfen. Wenn du sie abschickst, wird sie automatisch weiterverarbeitet."
+    "voiceDialogInfo": "Die Sprachaufnahme is' grad am Laufen. Du kannst sie jederzeit verwerfen. Wenn du sie abschickst, wird sie automatisch weiterverarbeitet.",
+    "ok": "Oke",
+    "notifications": {
+      "recipeReady": "Rezept is fertig",
+      "recipeReadyMessage": "Dein Rezept is fertig.",
+      "trainingPlanReady": "Trainingsplan is fertig",
+      "trainingPlanReadyMessage": "Dein Trainingsplan is fertig."
+    }
   },
   "shoppingList": {
     "newItemLabel": "Neuer Artikel",
@@ -428,6 +435,39 @@
       "emptyState": "Frag mi wos über deine Ernährung!",
       "welcomeMessage": "Servus! I bin dein Tracker-Assistent. I kann dir Frogn zu deinen Kalorien, Nährwert'n und Essgewohnheiten beantworten.",
       "openButton": "Assistent aufmachen"
+    },
+    "carbohydrates": "Kohlenhydrate (g)",
+    "nutritionDetails": "Nährwert-Details",
+    "acidBase": {
+      "title": "Säure-Basen-Haushalt",
+      "alkaline": "Basisch - Guat für'n Säure-Basen-Haushalt",
+      "balanced": "Ausgeglichen - Säure-Basen-Haushalt im Gleichgewicht",
+      "acidic": "Säurebildend - Mehr basische Lebensmittel empfehl'n"
+    },
+    "histamine": {
+      "title": "Histamin",
+      "average": "Durchschnitt",
+      "low": "Niedriger Histamingehalt - Guat verträglich",
+      "moderate": "Mäßiger Histamingehalt - Bei Unverträglichkeit aufpassen",
+      "high": "Hoher Histamingehalt - Bei Unverträglichkeit problematisch"
+    },
+    "itemIndicator": {
+      "alkaline": "Basisch",
+      "neutral": "Neutral",
+      "acidic": "Säurebildend",
+      "histamineNone": "Koa Histamin",
+      "histamineLow": "Wenig",
+      "histamineModerate": "Mäßig",
+      "histamineHigh": "Hoch"
+    },
+    "indicatorSettings": {
+      "menuTitle": "Indikatoren",
+      "title": "Indikatoren anpassen",
+      "description": "Wähl aus, welche Indikatoren bei deinen Lebensmitteln angezeigt werden sollen.",
+      "preview": "Vorschau",
+      "noIndicators": "Koa Indikatoren aktiviert",
+      "acidBaseDesc": "Zeigt den PRAL-Wert für'n Säure-Basen-Haushalt",
+      "histamineDesc": "Zeigt den Histamingehalt für bess're Verträglichkeit"
     }
   },
   "trainingPlans": {

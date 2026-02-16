@@ -96,7 +96,14 @@
     "week": "Semaine",
     "selectPhoto": "Choisir une photo",
     "capturePhoto": "Caméra",
-    "voiceDialogInfo": "L'enregistrement vocal est en cours. Tu peux le supprimer à tout moment. Si tu l'envoies, il sera automatiquement traité."
+    "voiceDialogInfo": "L'enregistrement vocal est en cours. Tu peux le supprimer à tout moment. Si tu l'envoies, il sera automatiquement traité.",
+    "ok": "OK",
+    "notifications": {
+      "recipeReady": "Recette prête",
+      "recipeReadyMessage": "Ta recette a été créée.",
+      "trainingPlanReady": "Plan d'entraînement prêt",
+      "trainingPlanReadyMessage": "Ton plan d'entraînement a été créé."
+    }
   },
   "shoppingList": {
     "newItemLabel": "Nouvel article",
@@ -428,6 +435,39 @@
       "emptyState": "Demande-moi quelque chose sur ton alimentation !",
       "welcomeMessage": "Bonjour ! Je suis ton assistant de suivi. Je peux répondre à tes questions concernant tes calories, les valeurs nutritionnelles et tes habitudes alimentaires.",
       "openButton": "Ouvrir l'assistant"
+    },
+    "carbohydrates": "Glucides (g)",
+    "nutritionDetails": "Détails nutritionnels",
+    "acidBase": {
+      "title": "Équilibre acido-basique",
+      "alkaline": "Alcalin - Bon pour l'équilibre acido-basique",
+      "balanced": "Équilibré - Équilibre acido-basique",
+      "acidic": "Acidifiant - Plus d'aliments alcalins recommandés"
+    },
+    "histamine": {
+      "title": "Histamine",
+      "average": "Moyen",
+      "low": "Faible teneur en histamine - Bien toléré",
+      "moderate": "Teneur modérée en histamine - À surveiller en cas d'intolérance",
+      "high": "Forte teneur en histamine - Problématique en cas d'intolérance"
+    },
+    "itemIndicator": {
+      "alkaline": "Alcalin",
+      "neutral": "Neutre",
+      "acidic": "Acidifiant",
+      "histamineNone": "Sans histamine",
+      "histamineLow": "Faible",
+      "histamineModerate": "Modéré",
+      "histamineHigh": "Élevé"
+    },
+    "indicatorSettings": {
+      "menuTitle": "Indicateurs",
+      "title": "Personnaliser les indicateurs",
+      "description": "Choisis les indicateurs à afficher pour tes aliments.",
+      "preview": "Aperçu",
+      "noIndicators": "Aucun indicateur activé",
+      "acidBaseDesc": "Affiche la valeur PRAL pour l'équilibre acido-basique",
+      "histamineDesc": "Affiche la teneur en histamine pour une meilleure tolérance"
     }
   },
   "trainingPlans": {

@@ -96,7 +96,14 @@
     "week": "周",
     "selectPhoto": "选择照片",
     "capturePhoto": "相机",
-    "voiceDialogInfo": "语音录制正在进行。你可以随时放弃。发送后会自动进行后续处理。"
+    "voiceDialogInfo": "语音录制正在进行。你可以随时放弃。发送后会自动进行后续处理。",
+    "ok": "确定",
+    "notifications": {
+      "recipeReady": "食谱已完成",
+      "recipeReadyMessage": "你的食谱已生成。",
+      "trainingPlanReady": "训练计划已完成",
+      "trainingPlanReadyMessage": "你的训练计划已生成。"
+    }
   },
   "shoppingList": {
     "newItemLabel": "新项目",
@@ -428,6 +435,39 @@
       "emptyState": "向我提问有关你的饮食！",
       "welcomeMessage": "你好！我是你的追踪器助手。我可以回答有关你的卡路里、营养成分和饮食习惯的问题。",
       "openButton": "打开助手"
+    },
+    "carbohydrates": "碳水化合物（克）",
+    "nutritionDetails": "营养详情",
+    "acidBase": {
+      "title": "酸碱平衡",
+      "alkaline": "碱性 - 有利于酸碱平衡",
+      "balanced": "平衡 - 酸碱平衡良好",
+      "acidic": "酸性 - 建议多吃碱性食物"
+    },
+    "histamine": {
+      "title": "组胺",
+      "average": "平均",
+      "low": "低组胺含量 - 容易耐受",
+      "moderate": "中等组胺含量 - 对不耐受者需注意",
+      "high": "高组胺含量 - 对不耐受者可能有问题"
+    },
+    "itemIndicator": {
+      "alkaline": "碱性",
+      "neutral": "中性",
+      "acidic": "酸性",
+      "histamineNone": "无组胺",
+      "histamineLow": "低",
+      "histamineModerate": "中等",
+      "histamineHigh": "高"
+    },
+    "indicatorSettings": {
+      "menuTitle": "指标",
+      "title": "调整指标",
+      "description": "请选择要在食物上显示的指标。",
+      "preview": "预览",
+      "noIndicators": "未启用任何指标",
+      "acidBaseDesc": "显示用于酸碱平衡的PRAL值",
+      "histamineDesc": "显示组胺含量以便更好判断耐受性"
     }
   },
   "trainingPlans": {

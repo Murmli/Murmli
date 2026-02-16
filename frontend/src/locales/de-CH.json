@@ -96,7 +96,14 @@
     "week": "Wuche",
     "selectPhoto": "Foto uswahlä",
     "capturePhoto": "Kamera",
-    "voiceDialogInfo": "D'Sprachufnahm lauft grad. Du chasch sie jederzyt verwärfe. Wenn du sie abschicksch, wird sie automatisch wiiterverarbeitet."
+    "voiceDialogInfo": "D'Sprachufnahm lauft grad. Du chasch sie jederzyt verwärfe. Wenn du sie abschicksch, wird sie automatisch wiiterverarbeitet.",
+    "ok": "Alles klar",
+    "notifications": {
+      "recipeReady": "D'Rezept isch parat",
+      "recipeReadyMessage": "Däi Rezept isch erstellt worde.",
+      "trainingPlanReady": "Trainigsplan parat",
+      "trainingPlanReadyMessage": "Däi Trainigsplan isch erstellt worde."
+    }
   },
   "shoppingList": {
     "newItemLabel": "Neuer Artikel",
@@ -428,6 +435,39 @@
       "emptyState": "Frag mi öppis über dini Ernährig!",
       "welcomeMessage": "Hoi! Ich bi din Tracker-Assistent. Ich cha dir Froge zu dine Kalorie, zu de Nährwert und zu dine Ernährigsgwohnheite beantworte.",
       "openButton": "Assistent öppne"
+    },
+    "carbohydrates": "Kohlenhydrate (g)",
+    "nutritionDetails": "Nährwertangaben",
+    "acidBase": {
+      "title": "Säure-Basen-Haushalt",
+      "alkaline": "Basisch – guet fürs Säure-Basen-Gleichgwicht",
+      "balanced": "Uusgliche – dä Säure-Basen-Haushalt isch im Gleichgwicht",
+      "acidic": "Säurebildend – meh basischi Läbensmittel empfehlenswert"
+    },
+    "histamine": {
+      "title": "Histamin",
+      "average": "Durschnitt",
+      "low": "Niedrige Histamin-Menge – guet verträglich",
+      "moderate": "Mässig hohe Histamin-Menge – bi Intoleranz uufpasse",
+      "high": "Hohe Histamin-Menge – bi Intoleranz problematisch"
+    },
+    "itemIndicator": {
+      "alkaline": "Basisch",
+      "neutral": "Neutral",
+      "acidic": "Säurebildend",
+      "histamineNone": "Kein Histamin",
+      "histamineLow": "Wenig",
+      "histamineModerate": "Mässig",
+      "histamineHigh": "Hoch"
+    },
+    "indicatorSettings": {
+      "menuTitle": "Indikatore",
+      "title": "Indikatore aapasse",
+      "description": "Wähl uus, welchi Indikatore bi dine Läbensmittel aazeigt werde söll.",
+      "preview": "Vorschau",
+      "noIndicators": "Kei Indikatore aktiviert",
+      "acidBaseDesc": "Zeigt dä PRAL-Wärt fürs Säure-Basen-Haushalt",
+      "histamineDesc": "Zeigt dä Histamin-Gehalt für besseri Verträglichkeit"
     }
   },
   "trainingPlans": {

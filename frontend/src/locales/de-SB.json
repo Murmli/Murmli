@@ -96,7 +96,14 @@
     "week": "Woche",
     "selectPhoto": "Foto auswählä",
     "capturePhoto": "Kamera",
-    "voiceDialogInfo": "D' Sprachaufnahm' lauft grad. Du kannsch sie jederzit verwerfa. Wenn'd se schicksch, wird se automatisch weiterverarbeitet."
+    "voiceDialogInfo": "D' Sprachaufnahm' lauft grad. Du kannsch sie jederzit verwerfa. Wenn'd se schicksch, wird se automatisch weiterverarbeitet.",
+    "ok": "OK",
+    "notifications": {
+      "recipeReady": "Rezept isch fertig",
+      "recipeReadyMessage": "Dei Rezept isch grad erstellt worda.",
+      "trainingPlanReady": "Trainingsplan isch fertig",
+      "trainingPlanReadyMessage": "Dei Trainingsplan isch grad erstellt worda."
+    }
   },
   "shoppingList": {
     "newItemLabel": "Neuer Artikel",
@@ -428,6 +435,39 @@
       "emptyState": "Frag mi ebbes über dei Ernährig!",
       "welcomeMessage": "Grüaß di! I ben dei Tracker-Assischdent. I kann dir Froga zu deina Kalorie, Nährwerta und Essgewohnheita beantworta.",
       "openButton": "Assischdent aufmacha"
+    },
+    "carbohydrates": "Kohlenhydrate (g)",
+    "nutritionDetails": "Nährwertdetails",
+    "acidBase": {
+      "title": "Säure-Basen-Haushalt",
+      "alkaline": "Basisch - Guat für'n Säure-Basen-Haushalt",
+      "balanced": "Ausgeglichen - Säure-Basen-Haushalt im Gleichgwicht",
+      "acidic": "Säurebildend - Meh basische Lebensmittel empfohla"
+    },
+    "histamine": {
+      "title": "Histamin",
+      "average": "Durschnitt",
+      "low": "Niedriga Histamingehalt - Guat verträglich",
+      "moderate": "Mäßiga Histamingehalt - Bei Unverträglichkeit aufpassa",
+      "high": "Hoher Histamingehalt - Bei Unverträglichkeit problematisch"
+    },
+    "itemIndicator": {
+      "alkaline": "Basisch",
+      "neutral": "Neutral",
+      "acidic": "Säurebildend",
+      "histamineNone": "Koin Histamin",
+      "histamineLow": "Weniga",
+      "histamineModerate": "Mäßig",
+      "histamineHigh": "Hoch"
+    },
+    "indicatorSettings": {
+      "menuTitle": "Indikatore",
+      "title": "Indikatore anpassa",
+      "description": "Wähl aus, welche Indikatore bei dei Lebensmittel azeigt solla.",
+      "preview": "Vorschau",
+      "noIndicators": "Koin Indikatore aktiviert",
+      "acidBaseDesc": "Zeigt den PRAL-Wert für'n Säure-Basen-Haushalt",
+      "histamineDesc": "Zeigt den Histamingehalt für a bessre Verträglichkeit"
     }
   },
   "trainingPlans": {

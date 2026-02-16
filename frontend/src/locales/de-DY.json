@@ -96,7 +96,14 @@
     "week": "Woche",
     "selectPhoto": "Foto auswählen",
     "capturePhoto": "Kamera",
-    "voiceDialogInfo": "Die Aufnahme läuft grad. Du kannst sie jederzeit löschen. Sobald du sie abschickst, wird sie automatisch weiterverarbeitet."
+    "voiceDialogInfo": "Die Aufnahme läuft grad. Du kannst sie jederzeit löschen. Sobald du sie abschickst, wird sie automatisch weiterverarbeitet.",
+    "ok": "Alles klar",
+    "notifications": {
+      "recipeReady": "Rezept ready",
+      "recipeReadyMessage": "Dein Rezept ist fertig.",
+      "trainingPlanReady": "Trainingsplan ready",
+      "trainingPlanReadyMessage": "Dein Trainingsplan ist fertig."
+    }
   },
   "shoppingList": {
     "newItemLabel": "Neuer Artikel",
@@ -428,6 +435,39 @@
       "emptyState": "Schieß los — frag mich was zu deiner Ernährung!",
       "welcomeMessage": "Yo! Ich bin dein Tracker-Assi. Ich geb dir Antworten zu Kalorien, Nährwerten und deinem Essverhalten – frag einfach.",
       "openButton": "Assi starten"
+    },
+    "carbohydrates": "Carbs (g)",
+    "nutritionDetails": "Nährwert-Details",
+    "acidBase": {
+      "title": "Säure-Basen-Check",
+      "alkaline": "Basisch - top fürs Säure-Basen-Gleichgewicht",
+      "balanced": "Ausgeglichen - Balance passt",
+      "acidic": "Säurebildend - lieber mehr basische Lebensmittel essen"
+    },
+    "histamine": {
+      "title": "Histamin",
+      "average": "Durchschnitt",
+      "low": "Niedriges Histamin - easy verträglich",
+      "moderate": "Mäßiges Histamin - bei Intoleranz aufpassen",
+      "high": "Hohes Histamin - bei Intoleranz problematisch"
+    },
+    "itemIndicator": {
+      "alkaline": "Basisch",
+      "neutral": "Neutral",
+      "acidic": "Säurebildend",
+      "histamineNone": "Histaminfrei",
+      "histamineLow": "Wenig",
+      "histamineModerate": "Mäßig",
+      "histamineHigh": "Hoch"
+    },
+    "indicatorSettings": {
+      "menuTitle": "Indikatoren",
+      "title": "Indikatoren anpassen",
+      "description": "Wähl aus, welche Indikatoren bei deinen Lebensmitteln angezeigt werden sollen.",
+      "preview": "Vorschau",
+      "noIndicators": "Keine Indikatoren aktiviert",
+      "acidBaseDesc": "Zeigt den PRAL-Wert für den Säure-Basen-Check",
+      "histamineDesc": "Zeigt den Histamingehalt - hilft dir zu checken, ob's verträglich ist"
     }
   },
   "trainingPlans": {

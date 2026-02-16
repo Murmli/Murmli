@@ -96,7 +96,14 @@
     "week": "Week",
     "selectPhoto": "Select Photo",
     "capturePhoto": "Camera",
-    "voiceDialogInfo": "The voice recordin' is goin' on right now. Ya can chuck it anytime. If ya send it, it'll be processed automatically."
+    "voiceDialogInfo": "The voice recordin' is goin' on right now. Ya can chuck it anytime. If ya send it, it'll be processed automatically.",
+    "ok": "OK",
+    "notifications": {
+      "recipeReady": "Ecipe eady",
+      "recipeReadyMessage": "You ecipe has been ceated.",
+      "trainingPlanReady": "Taining plan eady",
+      "trainingPlanReadyMessage": "You taining plan has been ceated."
+    }
   },
   "shoppingList": {
     "newItemLabel": "New Item",
@@ -428,6 +435,39 @@
       "emptyState": "Ask me somethin' 'bout yah diet!",
       "welcomeMessage": "Hey! I'm yah Trackah Assistint. I can answah questions 'bout yah cahlories, nutrition facts, and eatin' habits.",
       "openButton": "Open Assistint"
+    },
+    "carbohydrates": "Cabohydates (g)",
+    "nutritionDetails": "Nutrition details",
+    "acidBase": {
+      "title": "Acid-base balance",
+      "alkaline": "Alkaline - Good fo acid-base balance",
+      "balanced": "Balanced - Acid-base balance in equilibrium",
+      "acidic": "Acid-foming - Moe alkaline foods ecommended"
+    },
+    "histamine": {
+      "title": "Histamine",
+      "average": "Aveage",
+      "low": "Low histamine content - Well toleated",
+      "moderate": "Modeate histamine content - Use caution if intoleant",
+      "high": "High histamine content - Poblematic if intoleant"
+    },
+    "itemIndicator": {
+      "alkaline": "Alkaline",
+      "neutral": "Neutal",
+      "acidic": "Acid-foming",
+      "histamineNone": "No histamine",
+      "histamineLow": "Low",
+      "histamineModerate": "Modeate",
+      "histamineHigh": "High"
+    },
+    "indicatorSettings": {
+      "menuTitle": "Indicatos",
+      "title": "Adjust indicatos",
+      "description": "Select which indicatos should be shown fo you foods.",
+      "preview": "Peview",
+      "noIndicators": "No indicatos enabled",
+      "acidBaseDesc": "Shows the PAL value fo acid-base balance",
+      "histamineDesc": "Shows histamine content fo bette toleability"
     }
   },
   "trainingPlans": {

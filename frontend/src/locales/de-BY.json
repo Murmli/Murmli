@@ -96,7 +96,14 @@
     "week": "Woche",
     "selectPhoto": "Foto auswähln",
     "capturePhoto": "Kamera",
-    "voiceDialogInfo": "D' Sprachaufnahme laaft grod. Du kannst's jederzeit verwerf'n. Wennst's losschickst, werd's automatisch weida verarbeitet."
+    "voiceDialogInfo": "D' Sprachaufnahme laaft grod. Du kannst's jederzeit verwerf'n. Wennst's losschickst, werd's automatisch weida verarbeitet.",
+    "ok": "Ois guad",
+    "notifications": {
+      "recipeReady": "Da Rezept is fertig",
+      "recipeReadyMessage": "Dei Rezept is jetz fertig gmacht.",
+      "trainingPlanReady": "Da Trainingsplan is fertig",
+      "trainingPlanReadyMessage": "Dei Trainingsplan is jetz fertig gmacht."
+    }
   },
   "shoppingList": {
     "newItemLabel": "Neier Artikel",
@@ -428,6 +435,39 @@
       "emptyState": "Frag mi wos über dei Ernährong!",
       "welcomeMessage": "Servus! I bin da Tracker-Assistent. I ko da Frogn zu dei'n Kalorien, Nährwertn und Essgewohnheiten beantworten.",
       "openButton": "Assistent aufmacha"
+    },
+    "carbohydrates": "Kohlenhydrat'n (g)",
+    "nutritionDetails": "Nährwert-Infos",
+    "acidBase": {
+      "title": "Säura-Basa-Haushalt",
+      "alkaline": "Basisch – guad fürs Säura-Basa-Gleichgewicht",
+      "balanced": "Ausgeglichen – da Säura-Basa-Haushalt is im Gleichgewicht",
+      "acidic": "Säurebildend – Mehr basische Lebensmittl empfohlen"
+    },
+    "histamine": {
+      "title": "Histamin",
+      "average": "Durschnitt",
+      "low": "Niedriger Histamin-Gehalt – guad verträglich",
+      "moderate": "Mäßiger Histamin-Gehalt – bei Unverträglichkeit aufpassn",
+      "high": "Hoher Histamin-Gehalt – bei Unverträglichkeit problematisch"
+    },
+    "itemIndicator": {
+      "alkaline": "Basisch",
+      "neutral": "Neutral",
+      "acidic": "Säurebildend",
+      "histamineNone": "Koans Histamin",
+      "histamineLow": "Wenig",
+      "histamineModerate": "Mäßig",
+      "histamineHigh": "Hoch"
+    },
+    "indicatorSettings": {
+      "menuTitle": "Indikatoren",
+      "title": "Indikatoren anpassn",
+      "description": "Wähl aus, welche Indikatoren bei dei'n Lebensmittl angezeigt werdn sollen.",
+      "preview": "Vorschau",
+      "noIndicators": "Koa Indikatoren aktiviert",
+      "acidBaseDesc": "Zeigt den PRAL-Wert fürs Säura-Basa-Gleichgewicht",
+      "histamineDesc": "Zeigt den Histamin-Gehalt für a bessere Verträglichkeit"
     }
   },
   "trainingPlans": {

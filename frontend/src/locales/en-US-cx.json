@@ -96,7 +96,14 @@
     "week": "Week",
     "selectPhoto": "Pick a Pic",
     "capturePhoto": "Snap It",
-    "voiceDialogInfo": "Yo, the voice recording's rolling right now — you can ditch it anytime. Send it and it'll get processed automatically, no stress."
+    "voiceDialogInfo": "Yo, the voice recording's rolling right now — you can ditch it anytime. Send it and it'll get processed automatically, no stress.",
+    "ok": "A-OK, dude",
+    "notifications": {
+      "recipeReady": "Recipe ready, dude",
+      "recipeReadyMessage": "Your recipe's been whipped up, brah.",
+      "trainingPlanReady": "Training plan ready, dude",
+      "trainingPlanReadyMessage": "Your training plan's all set, dude."
+    }
   },
   "shoppingList": {
     "newItemLabel": "Fresh Item",
@@ -428,6 +435,39 @@
       "emptyState": "Hit me up with something about your eats, bro!",
       "welcomeMessage": "Hey, brah! I'm your tracker assistant — stoked to help with your calories, nutrients, and what you chow down.",
       "openButton": "Open Assistant, dude"
+    },
+    "carbohydrates": "Carbs (g)",
+    "nutritionDetails": "Nutrition deets, bro",
+    "acidBase": {
+      "title": "Acid-Base Balance",
+      "alkaline": "Alkaline — good for your acid-base vibes",
+      "balanced": "Balanced — acid-base in harmony, dude",
+      "acidic": "Acid-forming — maybe add more alkaline grub, brah"
+    },
+    "histamine": {
+      "title": "Histamine",
+      "average": "Average — pretty mellow",
+      "low": "Low histamine — easy on the tummy, dude",
+      "moderate": "Moderate histamine — watch out if you're sensitive, bro",
+      "high": "High histamine — could be rough if you've got intolerance, brah"
+    },
+    "itemIndicator": {
+      "alkaline": "Alkaline",
+      "neutral": "Neutral",
+      "acidic": "Acid-forming",
+      "histamineNone": "No histamine",
+      "histamineLow": "Low",
+      "histamineModerate": "Moderate",
+      "histamineHigh": "High"
+    },
+    "indicatorSettings": {
+      "menuTitle": "Indicators",
+      "title": "Tweak indicators",
+      "description": "Pick which indicators you wanna see on your foods, dude.",
+      "preview": "Preview",
+      "noIndicators": "No indicators enabled",
+      "acidBaseDesc": "Shows the PRAL score for your acid-base vibes",
+      "histamineDesc": "Shows histamine levels so you can vibe with what your gut digs"
     }
   },
   "trainingPlans": {
