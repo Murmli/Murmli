@@ -1,25 +1,41 @@
 <template>
-    <v-dialog v-model="dialogStore.dialogs.trackImageDialog" max-width="500">
+    <v-dialog v-model="dialogBinding" max-width="600">
         <v-card>
             <v-card-title>{{ languageStore.t('tracker.addImage') }}</v-card-title>
             <v-card-text>
-                <v-textarea class="my-3" v-model="description" :label="languageStore.t('tracker.descriptionLabel')"
-                    :placeholder="languageStore.t('tracker.descriptionPlaceholder')" dense></v-textarea>
-                <div class="text-center">
-                    <v-img v-if="image" :src="image" class="my-4" max-height="200"></v-img>
+                <v-textarea v-if="showDescription" class="my-3" v-model="description"
+                    :label="languageStore.t('tracker.descriptionLabel')"
+                    :placeholder="languageStore.t('tracker.descriptionPlaceholder')" dense rows="2"></v-textarea>
 
+                <!-- Bildervorschau -->
+                <div v-if="selectedImages.length > 0" class="image-preview-grid mb-4">
+                    <div v-for="(image, index) in selectedImages" :key="index" class="image-preview-item">
+                        <v-img :src="image.preview" class="preview-image" cover>
+                            <template v-slot:placeholder>
+                                <v-row align="center" class="fill-height ma-0" justify="center">
+                                    <v-progress-circular color="primary" indeterminate size="24"></v-progress-circular>
+                                </v-row>
+                            </template>
+                        </v-img>
+                        <v-btn icon="mdi-close" size="x-small" color="error" class="remove-image-btn"
+                            @click="removeImage(index)"></v-btn>
+                    </div>
+                </div>
+
+                <div class="text-center">
                     <p class="pb-3">
-                        <v-btn color="primary" @click="triggerCapture">{{
-                            languageStore.t('general.capturePhoto')
-                            }}</v-btn>
+                        <v-btn color="primary" prepend-icon="mdi-camera" @click="triggerCapture">
+                            {{ languageStore.t('general.capturePhoto') }}
+                        </v-btn>
                         <input type="file" accept="image/*" ref="fileCapture" class="d-none" capture="environment"
-                            @change="handleFileInput" />
+                            multiple @change="handleFileInput" />
                     </p>
                     <p>
-                        <v-btn color="primary" @click="triggerFileInput">{{
-                            languageStore.t('general.selectPhoto')
-                            }}</v-btn>
-                        <input type="file" accept="image/*" ref="fileInput" class="d-none" @change="handleFileInput" />
+                        <v-btn color="primary" prepend-icon="mdi-image-multiple" @click="triggerFileInput">
+                            {{ languageStore.t('general.selectPhoto') }}
+                        </v-btn>
+                        <input type="file" accept="image/*" ref="fileInput" class="d-none" multiple
+                            @change="handleFileInput" />
                     </p>
                 </div>
             </v-card-text>
@@ -27,83 +43,121 @@
             <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn text @click="closeDialog">{{ languageStore.t('general.cancel') }}</v-btn>
-                <v-btn color="primary" @click="submitImage">{{ languageStore.t('general.send') }}</v-btn>
+                <v-btn color="primary" @click="confirmSelection" :disabled="selectedImages.length === 0">
+                    {{ languageStore.t('general.confirm') }}
+                </v-btn>
             </v-card-actions>
         </v-card>
     </v-dialog>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useDialogStore } from '@/stores/dialogStore';
 import { useLanguageStore } from '@/stores/languageStore';
-import { useTrackerStore } from '@/stores/trackerStore';
+
+const props = defineProps({
+    showDescription: {
+        type: Boolean,
+        default: false
+    }
+});
+
+const emit = defineEmits(['images-selected']);
 
 const dialogStore = useDialogStore();
 const languageStore = useLanguageStore();
-const trackerStore = useTrackerStore();
 
 const description = ref('');
-const image = ref(null); // Für die Vorschau (Data URL)
-const selectedFileObject = ref(null); // Für das eigentliche File-Objekt
+const selectedImages = ref([]);
 const fileInput = ref(null);
 const fileCapture = ref(null);
 
-// Trigger the file input for gallery selection
+const dialogBinding = computed({
+    get: () => Boolean(dialogStore.dialogs.trackImageDialog),
+    set: (value) => {
+        if (value) {
+            dialogStore.openDialog('trackImageDialog');
+        } else {
+            dialogStore.closeDialog('trackImageDialog');
+        }
+    }
+});
+
 const triggerFileInput = () => {
     fileInput.value.click();
 };
 
-// Trigger the file input for camera capture
 const triggerCapture = () => {
     fileCapture.value.click();
 };
 
-// Handle file input change (from gallery or camera)
 const handleFileInput = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-        selectedFileObject.value = file; // Store the File object
-        const reader = new FileReader();
-        reader.onload = () => {
-            image.value = reader.result; // Store the Data URL for preview
-        };
-        reader.readAsDataURL(file);
-    }
-    // Reset the input value to allow selecting the same file again
+    const files = Array.from(event.target.files);
+
+    files.forEach(file => {
+        if (file && file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = () => {
+                selectedImages.value.push({
+                    file: file,
+                    preview: reader.result
+                });
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
     event.target.value = null;
 };
 
+const removeImage = (index) => {
+    selectedImages.value.splice(index, 1);
+};
 
-function closeDialog() {
+const closeDialog = () => {
     dialogStore.closeDialog('trackImageDialog');
-    image.value = null;
-    selectedFileObject.value = null;
-    description.value = '';
-}
+    resetState();
+};
 
-function submitImage() {
-    if (!selectedFileObject.value) {
-        // Optional: Fehlermeldung anzeigen
-        console.warn('Kein Bild ausgewählt');
-        return;
-    }
-
-    const file = selectedFileObject.value;
-    const desc = description.value.trim();
-
-    // Dialog sofort schließen
+const confirmSelection = () => {
+    const imageFiles = selectedImages.value.map(img => img.file);
+    emit('images-selected', imageFiles);
     closeDialog();
+};
 
-    // Request im Hintergrund starten
-    trackerStore.trackFoodByImage(file, desc).catch(error => {
-        console.error('Fehler beim Hochladen des Bildes:', error);
-    });
-}
+const resetState = () => {
+    selectedImages.value = [];
+    description.value = '';
+};
 </script>
 
 <style scoped>
 .d-none {
     display: none;
+}
+
+.image-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 8px;
+}
+
+.image-preview-item {
+    position: relative;
+    aspect-ratio: 1;
+}
+
+.preview-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.remove-image-btn {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    z-index: 1;
 }
 </style>

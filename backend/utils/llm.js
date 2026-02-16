@@ -780,6 +780,40 @@ exports.audioToTrack = async (file, comment, outputLang) => {
   }
 };
 
+exports.multimodalToTrack = async (files, text, outputLang) => {
+  try {
+    const { imageToTrackerItemsSystemPrompt } = require("./prompts.js");
+    const systemPrompt = imageToTrackerItemsSystemPrompt(outputLang);
+    
+    let prompt = "Analysiere die bereitgestellten Medien und extrahiere die Nährwerte der abgebildeten/beschriebenen Lebensmittel.";
+    
+    if (text && text.trim().length > 0) {
+      prompt += `\n\nZusätzlicher Text vom Nutzer: "${text}"`;
+    }
+
+    const apiOptions = {
+      cache: false,
+      jsonSchema: nutritionItemsSchema,
+      files: files,
+      systemPrompt,
+    };
+
+    const answer = await apiCall(prompt, apiOptions);
+    if (!answer) {
+      return false;
+    } else {
+      if (answer.items === undefined || answer.items === null) {
+        return false;
+      }
+      const items = Array.isArray(answer.items) ? answer.items : [answer.items];
+      return items;
+    }
+  } catch (error) {
+    console.error("Error in multimodalToTrack:", error.message);
+    return false;
+  }
+};
+
 exports.chatWithRecipe = async (messages, recipe, language) => {
   try {
     const { chatWithRecipeSystemPrompt } = require("./prompts.js");

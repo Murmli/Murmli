@@ -6,7 +6,7 @@ const User = require("../models/userModel.js");
 const UserRecipe = require("../models/userRecipeModel.js");
 const { calculateAge, calculateCalories, calculateNutrientDistribution, calculateDietCalories, calculateFoodItemsTotals } = require(`../utils/trackerUtils.js`);
 
-const { textToTrack, audioToTrack, imageToTrack, textToActivity, askCalorieTracker, chatWithTracker } = require(`../utils/llm.js`);
+const { textToTrack, audioToTrack, imageToTrack, multimodalToTrack, textToActivity, askCalorieTracker, chatWithTracker } = require(`../utils/llm.js`);
 const fs = require("fs");
 
 const bodyDataFields = ["height", "weight", "birthyear", "gender", "dietType", "dietLevel", "dietStartedAt", "baseCalories", "recommendations", "workHoursWeek", "workDaysPAL"];
@@ -927,6 +927,63 @@ exports.addItem = async (req, res) => {
 
     return res.status(200).json({ message: "Food item added successfully", tracker });
   } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Server Error" });
+  }
+};
+
+exports.trackMultimodal = async (req, res) => {
+  try {
+    const user = req.user;
+    const { trackerId, text } = req.body;
+    const files = req.files;
+
+    if (!trackerId) {
+      return res.status(400).json({ error: "Tracker ID is required." });
+    }
+
+    // Sammle alle Dateien (Bilder und Audio)
+    const allFiles = [];
+    if (files && files.length > 0) {
+      files.forEach(file => {
+        allFiles.push(file);
+      });
+    }
+
+    if (allFiles.length === 0 && (!text || text.trim().length === 0)) {
+      return res.status(400).json({ error: "At least one file (image/audio) or text is required." });
+    }
+
+    let foodItems;
+
+    if (allFiles.length > 0) {
+      // Multimodale Verarbeitung mit Bildern/Audio
+      foodItems = await multimodalToTrack(allFiles, text, user.language);
+    } else {
+      // Nur Text
+      foodItems = await textToTrack(text, user.language);
+    }
+
+    // Cleanup temp files
+    if (files && files.length > 0) {
+      files.forEach(file => {
+        if (file.path && fs.existsSync(file.path)) {
+          fs.unlink(file.path, (err) => {
+            if (err) console.error("Error deleting temp file:", err);
+          });
+        }
+      });
+    }
+
+    if (!foodItems || foodItems.length === 0) {
+      return res.status(400).json({ error: "No valid food items found." });
+    }
+
+    const tracker = await trackItems(user, trackerId, foodItems);
+
+    return res.status(200).json({ message: "Food items tracked successfully", tracker });
+  } catch (err) {
+    console.log(`Error in trackMultimodal: ${JSON.stringify(req.body)}`);
     console.error(err);
     return res.status(500).json({ error: "Server Error" });
   }

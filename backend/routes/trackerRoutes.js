@@ -855,4 +855,51 @@ router.post("/chat", secretKeyMiddleware, sessionMiddleware, trackerController.c
  */
 router.post("/item/add", secretKeyMiddleware, sessionMiddleware, trackerController.addItem);
 
+/**
+ * @swagger
+ * /api/v2/calorietracker/track/multimodal:
+ *   post:
+ *     tags: [Tracker]
+ *     title: Track Food From Multiple Modalities
+ *     summary: Track food items from combined text, images, and audio
+ *     description: Upload multiple files (images and/or audio) with optional text. Food items are extracted using AI from all provided media and added to the specified tracker.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - trackerId
+ *             properties:
+ *               images:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *                   format: binary
+ *                 description: One or more image files containing food
+ *               audio:
+ *                 type: string
+ *                 format: binary
+ *                 description: Audio file describing food
+ *               text:
+ *                 type: string
+ *                 description: Optional text description
+ *               trackerId:
+ *                 type: string
+ *                 description: Tracker ID to add the food items to
+ *     responses:
+ *       200:
+ *         description: Food items tracked successfully
+ *       400:
+ *         description: Invalid input or no food items found
+ *       401:
+ *         description: Unauthorized
+ *       403:
+ *         description: Forbidden - Invalid secret key
+ *       500:
+ *         description: Server error
+ */
+router.post("/track/multimodal", secretKeyMiddleware, sessionMiddleware, upload.any(), trackerController.trackMultimodal);
+
 module.exports = router;

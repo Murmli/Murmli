@@ -542,7 +542,10 @@
       "emptyState": "Frag mich etwas über deine Ernährung!",
       "welcomeMessage": "Hallo! Ich bin dein Tracker-Assistent. Ich kann dir Fragen zu deinen Kalorien, Nährwerten und Ernährungsgewohnheiten beantworten.",
       "openButton": "Assistent öffnen"
-    }
+    },
+    "imageSelected": "Bild ausgewählt",
+    "imagesSelected": "Bilder ausgewählt",
+    "audioRecorded": "Audio aufgenommen"
   },
   "trainingPlans": {
     "title": "Trainingspläne",

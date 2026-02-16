@@ -271,6 +271,47 @@ export const useTrackerStore = defineStore("trackerStore", {
       return null;
     },
 
+    // Track food with multiple modalities (text, images, audio)
+    async trackFoodMultimodal({ text, images, audio }) {
+      this.isAddingItem = true;
+      const apiStore = useApiStore();
+      const formData = new FormData();
+      formData.append("trackerId", this.tracker._id);
+      
+      if (text) {
+        formData.append("text", text);
+      }
+      
+      if (images && images.length > 0) {
+        images.forEach((image, index) => {
+          formData.append(`images`, image);
+        });
+      }
+      
+      if (audio) {
+        formData.append("audio", audio);
+      }
+
+      try {
+        const response = await apiStore.apiRequest(
+          "post",
+          "/calorietracker/track/multimodal",
+          formData,
+          false
+        );
+        if (response.status === 200) {
+          this.tracker = response.data.tracker;
+          this.isAddingItem = false;
+          this.saveCache();
+          return true;
+        }
+      } catch (error) {
+        this.isAddingItem = false;
+        this.error = error;
+      }
+      return null;
+    },
+
     // Track an activity by text description
     async trackActivity(text) {
       const apiStore = useApiStore();
