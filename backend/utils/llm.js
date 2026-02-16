@@ -830,6 +830,43 @@ exports.multimodalToTrack = async (files, text, outputLang) => {
   }
 };
 
+exports.multimodalToTrainingPlan = async (files, text, user, existingExerciseNames, bodySummary, historySummary) => {
+  try {
+    const { generateTrainingPlanSystemPrompt } = require("./prompts.js");
+    
+    const systemPrompt = generateTrainingPlanSystemPrompt(
+      user.language,
+      user,
+      existingExerciseNames,
+      bodySummary,
+      historySummary
+    );
+    
+    let prompt = "Erstelle einen Trainingsplan basierend auf den bereitgestellten Medien und dem Text.";
+    
+    if (text && text.trim().length > 0) {
+      prompt += `\n\nZusätzlicher Text vom Nutzer: "${text}"`;
+    }
+
+    const apiOptions = {
+      cache: false,
+      jsonSchema: trainingPlanSchema,
+      files: files,
+      systemPrompt,
+      modelType: "high",
+    };
+
+    const answer = await apiCall(prompt, apiOptions);
+    if (!answer) {
+      return false;
+    }
+    return answer;
+  } catch (error) {
+    console.error("Error in multimodalToTrainingPlan:", error.message);
+    return false;
+  }
+};
+
 exports.chatWithRecipe = async (messages, recipe, language) => {
   try {
     const { chatWithRecipeSystemPrompt } = require("./prompts.js");

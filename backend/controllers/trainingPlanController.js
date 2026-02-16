@@ -1,3 +1,4 @@
+const fs = require('fs');
 const TrainingPlan = require('../models/trainingPlanModel');
 const Message = require('../models/messageModel');
 const { addCurrentWeekIfActive } = require('../utils/planerUtils');
@@ -7,6 +8,7 @@ const {
   generateTrainingPlanContinuation,
   editTextTrainingPlanWithLLM,
   askTrainingPlan,
+  multimodalToTrainingPlan,
 } = require('../utils/llm');
 const TrainingLog = require('../models/trainingLogModel');
 
@@ -318,6 +320,81 @@ exports.generateTrainingPlan = async (req, res) => {
       console.error('Error generating training plan:', error.message);
     }
   })();
+};
+
+exports.generateTrainingPlanMultimodal = async (req, res) => {
+  try {
+    const user = req.user;
+    const text = req.body.text || "";
+    const files = req.files || [];
+
+    if (files.length === 0 && !text.trim()) {
+      return res.status(400).json({ message: 'Missing input: provide text, images, or audio' });
+    }
+
+    res.status(202).json({ message: 'Training plan creation started', status: 'processing' });
+
+    (async () => {
+      const tempFiles = [];
+      try {
+        const context = await gatherTrainingPlanGenerationContext(user);
+        
+        const answer = await multimodalToTrainingPlan(
+          files,
+          text,
+          user,
+          context.existingExerciseNames,
+          context.bodySummary,
+          context.historySummary
+        );
+
+        if (!answer) {
+          console.error('LLM did not return a response for multimodal training plan');
+          return;
+        }
+
+        answer.user = user._id;
+        sanitizeExercises(answer);
+        const createdPlan = await TrainingPlan.create(answer);
+        console.log(`Training plan ${createdPlan._id} created for user ${user._id} (multimodal)`);
+        
+        await Message.create({
+          userId: user._id,
+          type: "training_plan_ready",
+          title: "trainingPlanReady",
+          message: "trainingPlanReadyMessage",
+          data: { planId: createdPlan._id }
+        });
+        
+        await generateImagesForPlan(createdPlan).catch(err =>
+          console.error('exercise image generation:', err.message)
+        );
+
+        files.forEach(file => {
+          if (file.path) {
+            fs.unlink(file.path, (err) => {
+              if (err) {
+                console.error("Error deleting temporary file:", err);
+              }
+            });
+          }
+        });
+      } catch (error) {
+        console.error('Error generating multimodal training plan:', error.message);
+        
+        if (req.files) {
+          req.files.forEach(file => {
+            if (file.path) {
+              fs.unlink(file.path, () => {});
+            }
+          });
+        }
+      }
+    })();
+  } catch (err) {
+    console.error("Error initiating multimodal training plan creation:", err);
+    return res.status(500).json({ error: "Server Error" });
+  }
 };
 
 exports.continueTrainingPlan = async (req, res) => {

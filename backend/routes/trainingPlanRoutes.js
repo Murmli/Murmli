@@ -1,7 +1,16 @@
 const express = require('express');
+const multer = require('multer');
 const router = express.Router();
 const trainingPlanController = require('../controllers/trainingPlanController');
 const { secretKeyMiddleware, sessionMiddleware } = require('../middlewares/authMiddleware.js');
+
+const upload = multer({
+  dest: "uploads/",
+  limits: {
+    fieldSize: 5 * 1024 * 1024, // 5MB für Formularfelder
+    fileSize: 25 * 1024 * 1024 // 25MB für Dateien
+  }
+});
 
 /**
  * @swagger
@@ -250,12 +259,46 @@ router.delete('/:id', secretKeyMiddleware, sessionMiddleware, trainingPlanContro
  *     responses:
  *       202:
  *         description: Training plan generation started
-*       400:
-*         description: Fehlerhafte Anfrage
-*       500:
+ *       400:
+ *         description: Fehlerhafte Anfrage
+ *       500:
  *         description: Serverfehler
  */
 router.post('/generate', secretKeyMiddleware, sessionMiddleware, trainingPlanController.generateTrainingPlan);
+
+/**
+ * @swagger
+ * /api/v2/training-plans/generate/multimodal:
+ *   post:
+ *     title: Generate Training Plan Multimodal
+ *     summary: Generiert einen Trainingsplan basierend auf Text, Bildern und/oder Audio
+ *     tags: [TrainingPlans]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             title: Generate Training Plan Multimodal Request
+ *             properties:
+ *               text:
+ *                 type: string
+ *                 description: Beschreibung oder Wunsch für den Trainingsplan
+ *               files:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *                   format: binary
+ *                 description: Bilder oder Audio-Dateien für die Analyse
+ *     responses:
+ *       202:
+ *         description: Training plan generation started
+ *       400:
+ *         description: Fehlerhafte Anfrage
+ *       500:
+ *         description: Serverfehler
+ */
+router.post('/generate/multimodal', secretKeyMiddleware, sessionMiddleware, upload.any(), trainingPlanController.generateTrainingPlanMultimodal);
 
 /**
  * @swagger

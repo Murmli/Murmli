@@ -204,6 +204,75 @@ export const useTrainingStore = defineStore("trainingStore", {
             return null;
         },
 
+        async generateTrainingPlanMultimodal({ text, images, audio }) {
+            const apiStore = useApiStore();
+            if (this.generationStatus === 'processing') {
+                return { status: 'processing' };
+            }
+            this.generationStatus = 'processing';
+            try {
+                const formData = new FormData();
+                
+                if (text) {
+                    formData.append("text", text);
+                }
+                
+                // Mehrere Bilder hinzufügen
+                if (images && images.length > 0) {
+                    images.forEach((image, index) => {
+                        formData.append(`image_${index}`, image);
+                    });
+                    formData.append("imageCount", images.length.toString());
+                }
+                
+                // Audio hinzufügen
+                if (audio) {
+                    formData.append("audio", audio, "recording.wav");
+                }
+
+                const response = await apiStore.apiRequest(
+                    "post",
+                    "/training-plans/generate/multimodal",
+                    formData,
+                    {
+                        headers: { "Content-Type": "multipart/form-data" },
+                    }
+                );
+                
+                if (response.status === 200 || response.status === 201) {
+                    this.generatedPlan = response.data;
+                    this.trainingPlans.push(response.data);
+                    this.saveCache();
+                    this.generationStatus = null;
+                    return this.generatedPlan;
+                } else if (response.status === 202) {
+                    this.generatedPlan = null;
+                    this.generationStatus = 'processing';
+                    const count = await this.fetchTrainingPlanCount(false);
+                    this.generationBaseCount = count || 0;
+                    if (this.pollInterval) clearInterval(this.pollInterval);
+                    const poll = async () => {
+                        if (this.isPolling) return;
+                        this.isPolling = true;
+                        const currentCount = await this.fetchTrainingPlanCount(false);
+                        this.isPolling = false;
+                        if (currentCount && currentCount >= this.generationBaseCount + 1) {
+                            clearInterval(this.pollInterval);
+                            this.pollInterval = null;
+                            this.generationStatus = null;
+                            await this.fetchTrainingPlans();
+                        }
+                    };
+                    this.pollInterval = setInterval(poll, 5000);
+                    return { status: 'processing' };
+                }
+            } catch (error) {
+                this.error = error;
+                this.generationStatus = null;
+            }
+            return null;
+        },
+
         async continueTrainingPlan(plan, text = '') {
             const apiStore = useApiStore();
             if (!plan || !plan._id) {
