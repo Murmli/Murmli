@@ -199,6 +199,144 @@ exports.createUserRecipe = async (req, res) => {
   }
 };
 
+exports.createUserRecipeMultimodal = async (req, res) => {
+  try {
+    const user = req.user;
+    const text = req.body.text;
+    const imageCount = parseInt(req.body.imageCount) || 0;
+    
+    // Sammle alle Bilder
+    const images = [];
+    for (let i = 0; i < imageCount; i++) {
+      const imageField = req.files.find(f => f.fieldname === `image_${i}`);
+      if (imageField) {
+        images.push(imageField);
+      }
+    }
+    
+    // Suche Audio-Datei
+    const audioFile = req.files.find(f => f.fieldname === 'audio');
+    
+    // Prüfe ob wir mindestens Text, Bilder oder Audio haben
+    if (!text && images.length === 0 && !audioFile) {
+      // Cleanup hochgeladene Dateien
+      req.files.forEach(file => {
+        fs.unlink(file.path, () => {});
+      });
+      return res.status(400).json({ error: "At least one of text, images, or audio is required" });
+    }
+
+    // Send immediate response that recipe creation has started
+    res.status(202).json({ message: "Recipe creation started", status: "processing" });
+
+    // Continue processing asynchronously
+    (async () => {
+      try {
+        // Cleanup-Array für temporäre Dateien
+        const tempFiles = [];
+        
+        // Fetch last 6 generated recipes to ensure variety
+        const lastGenerations = user.generations.slice(-6).map(gen => gen.recipeId);
+        const generatedRecipes = await UserRecipe.find({ _id: { $in: lastGenerations } }, { title: 1 }).lean();
+        const exclude = generatedRecipes.map(r => r.title).join(", ");
+
+        // Load liked and disliked recipes with their first 4 ingredients
+        const [likedRecipesWithIngredients, dislikedRecipesWithIngredients] = await Promise.all([
+          getRecipeDetailsWithIngredients(user.suggestions?.upvotes),
+          getRecipeDetailsWithIngredients(user.suggestions?.downvotes)
+        ]);
+
+        const userInformations = {
+          country: user.language,
+          filter: user.suggestions?.filter?.prompt || '',
+          servings: user.suggestions?.filter?.servings || 4,
+          favoriteRecipes: [],
+          likedRecipes: likedRecipesWithIngredients,
+          dislikedRecipes: dislikedRecipesWithIngredients
+        };
+
+        // If user has favorite recipes, get their titles
+        if (user.favoriteRecipes && user.favoriteRecipes.length > 0) {
+          const favoriteRecipeDetails = await Recipe.find(
+            { _id: { $in: user.favoriteRecipes } },
+            { title: 1 }
+          ).lean();
+
+          userInformations.favoriteRecipes = favoriteRecipeDetails.map(recipe => recipe.title);
+        }
+
+        // Erstelle Input-Objekt für createRecipe
+        const inputOptions = {
+          exclude,
+          informationObject: userInformations,
+          servings: userInformations.servings
+        };
+
+        // Füge Bilder hinzu
+        if (images.length > 0) {
+          inputOptions.inputImages = images;
+          images.forEach(img => tempFiles.push(img.path));
+        }
+
+        // Füge Audio hinzu
+        if (audioFile) {
+          inputOptions.inputAudio = audioFile;
+          tempFiles.push(audioFile.path);
+        }
+
+        const userRecipe = await createRecipe(text || "", inputOptions);
+
+        // Cleanup temporäre Dateien
+        tempFiles.forEach(filePath => {
+          fs.unlink(filePath, (err) => {
+            if (err) {
+              console.error("Error deleting temporary file:", err);
+            }
+          });
+        });
+
+        userRecipe.userId = user._id;
+        userRecipe.originalPrompt = text || (images.length > 0 ? "[Image-based recipe]" : "[Audio-based recipe]");
+        const recipe = new UserRecipe(userRecipe);
+        const savedRecipe = await recipe.save();
+
+        if (savedRecipe) {
+          user.generations.push({
+            recipeId: savedRecipe._id,
+            createdAt: new Date(),
+          });
+          await user.save();
+          
+          await Message.create({
+            userId: user._id,
+            type: "recipe_ready",
+            title: "recipeReady",
+            message: "recipeReadyMessage",
+            data: { recipeId: savedRecipe._id }
+          });
+          
+          console.log(`Recipe ${savedRecipe._id} created successfully for user ${user._id} (multimodal)`);
+        } else {
+          console.error("Failed to create recipe (multimodal)");
+        }
+      } catch (err) {
+        console.error("Error in async recipe creation (multimodal):", err);
+
+        // Cleanup bei Fehler
+        if (req.files) {
+          req.files.forEach(file => {
+            fs.unlink(file.path, () => {});
+          });
+        }
+      }
+    })();
+
+  } catch (err) {
+    console.error("Error initiating recipe creation (multimodal):", err);
+    return res.status(500).json({ error: "Server Error" });
+  }
+};
+
 exports.getUserRecipes = async (req, res) => {
   try {
     const user = req.user;

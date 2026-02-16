@@ -11,6 +11,8 @@ const { generateImage, uploadImageToStorage } = require(`../utils/imageUtils.js`
 
 exports.createRecipe = async (prompt, {
   inputImage = false,
+  inputImages = false,
+  inputAudio = false,
   image = false,
   type = "recipe",
   active = true,
@@ -20,7 +22,7 @@ exports.createRecipe = async (prompt, {
 } = {}) => {
   try {
     // Consolidated LLM call
-    const recipeData = await createRecipe(prompt, { inputImage, exclude, informationObject, servings });
+    const recipeData = await createRecipe(prompt, { inputImage, inputImages, inputAudio, exclude, informationObject, servings });
 
     if (!recipeData) {
       throw new Error("Error creating recipe.");

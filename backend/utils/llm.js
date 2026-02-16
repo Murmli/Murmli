@@ -169,7 +169,7 @@ exports.generateRecipeTitle = async (prompt, titleList, image) => {
   }
 };
 
-exports.createRecipe = async (text, { inputImage, exclude, informationObject, servings } = {}) => {
+exports.createRecipe = async (text, { inputImage, inputImages, inputAudio, exclude, informationObject, servings } = {}) => {
   try {
     const { createRecipeSystemPrompt, createRecipePrompt } = require("./prompts.js");
     const systemPrompt = createRecipeSystemPrompt();
@@ -182,8 +182,24 @@ exports.createRecipe = async (text, { inputImage, exclude, informationObject, se
       modelType: "high"
     };
 
-    if (inputImage) {
-      apiOptions.files = [inputImage];
+    // Sammle alle Dateien (Bilder und Audio) in einem Array
+    const files = [];
+    
+    // Mehrere Bilder
+    if (inputImages && inputImages.length > 0) {
+      files.push(...inputImages);
+    } else if (inputImage) {
+      // Einzelnes Bild (Legacy)
+      files.push(inputImage);
+    }
+    
+    // Audio-Datei
+    if (inputAudio) {
+      files.push(inputAudio);
+    }
+    
+    if (files.length > 0) {
+      apiOptions.files = files;
     }
 
     const response = await apiCall(prompt, apiOptions);

@@ -210,6 +210,77 @@ export const useRecipeStore = defineStore("recipeStore", {
       return null;
     },
 
+    // Create a new user recipe with multimodal input (text + multiple images + audio)
+    async createUserRecipeMultimodal({ text, images, audio }) {
+      const apiStore = useApiStore();
+      if (this.generationStatus === 'processing') {
+        return { status: 'processing' };
+      }
+      this.generationStatus = 'processing';
+      try {
+        const formData = new FormData();
+        
+        if (text) {
+          formData.append("text", text);
+        }
+        
+        // Mehrere Bilder hinzufügen
+        if (images && images.length > 0) {
+          images.forEach((image, index) => {
+            formData.append(`image_${index}`, image);
+          });
+          formData.append("imageCount", images.length.toString());
+        }
+        
+        // Audio hinzufügen
+        if (audio) {
+          formData.append("audio", audio, "recording.wav");
+        }
+
+        const response = await apiStore.apiRequest(
+          "post",
+          "/recipe/create/user/multimodal",
+          formData,
+          {
+            headers: { "Content-Type": "multipart/form-data" },
+          }
+        );
+        
+        if (response.status === 200 || response.status === 201) {
+          this.generatedRecipe = response.data;
+          this.userRecipes.push(response.data);
+          this.setCurrentRecipe(response.data, 2);
+          this.generationStatus = null;
+          this.saveCache();
+          return this.generatedRecipe;
+        } else if (response.status === 202) {
+          this.generatedRecipe = null;
+          this.generationStatus = "processing";
+          const count = await this.fetchUserRecipeCount(false);
+          this.generationBaseCount = count || 0;
+          if (this.pollInterval) clearInterval(this.pollInterval);
+          const poll = async () => {
+            if (this.isPolling) return;
+            this.isPolling = true;
+            const currentCount = await this.fetchUserRecipeCount(false);
+            this.isPolling = false;
+            if (currentCount && currentCount >= this.generationBaseCount + 1) {
+              clearInterval(this.pollInterval);
+              this.pollInterval = null;
+              this.generationStatus = null;
+              await this.fetchUserRecipes(false);
+            }
+          };
+          this.pollInterval = setInterval(poll, 5000);
+          return { status: "processing" };
+        }
+      } catch (error) {
+        this.error = error;
+        this.generationStatus = null;
+      }
+      return null;
+    },
+
     // Deletes a user recipe
     async deleteUserRecipe(recipeId) {
       const apiStore = useApiStore();

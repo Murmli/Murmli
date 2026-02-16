@@ -90,6 +90,53 @@ router.post("/create/user", secretKeyMiddleware, sessionMiddleware, upload.singl
 
 /**
  * @swagger
+ * /api/v2/recipe/create/user/multimodal:
+ *   post:
+ *     tags:
+ *       - Recipes
+ *     title: Create User Recipe Multimodal
+ *     summary: Create a new user recipe from multimodal input
+ *     description: Creates a new user recipe from text, multiple images, and optional audio upload.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             title: Create User Recipe Multimodal Request
+ *             properties:
+ *               text:
+ *                 type: string
+ *                 description: Recipe description or prompt text.
+ *               imageCount:
+ *                 type: integer
+ *                 description: Number of images being sent.
+ *               image_0:
+ *                 type: string
+ *                 format: binary
+ *                 description: First image file.
+ *               image_1:
+ *                 type: string
+ *                 format: binary
+ *                 description: Second image file (optional).
+ *               audio:
+ *                 type: string
+ *                 format: binary
+ *                 description: Optional audio file.
+ *     responses:
+ *       201:
+ *         description: Created recipe object.
+ *       202:
+ *         description: Recipe creation started (async processing).
+ *       400:
+ *         description: Missing required data.
+ *       500:
+ *         description: Server error.
+ */
+router.post("/create/user/multimodal", secretKeyMiddleware, sessionMiddleware, upload.any(), reciperController.createUserRecipeMultimodal);
+
+/**
+ * @swagger
  * /api/v2/recipe/user/read:
  *   post:
  *     tags:
