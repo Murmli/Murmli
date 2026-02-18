@@ -7,6 +7,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Configure status bar for iOS
+        if #available(iOS 13.0, *) {
+            let statusBar = UIView(frame: UIApplication.shared.statusBarFrame)
+            statusBar.backgroundColor = UIColor(red: 0.098, green: 0.463, blue: 0.824, alpha: 1.0) // #1976d2
+            UIApplication.shared.keyWindow?.addSubview(statusBar)
+        } else {
+            UIApplication.shared.statusBarView?.backgroundColor = UIColor(red: 0.098, green: 0.463, blue: 0.824, alpha: 1.0)
+        }
+        
         // Override point for customization after application launch.
         return true
     }
@@ -46,4 +55,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return ApplicationDelegateProxy.shared.application(application, continue: userActivity, restorationHandler: restorationHandler)
     }
 
+}
+
+// Extension to access status bar view for iOS < 13
+extension UIApplication {
+    var statusBarView: UIView? {
+        if #available(iOS 13.0, *) {
+            return nil
+        } else {
+            return value(forKey: "statusBar") as? UIView
+        }
+    }
 }

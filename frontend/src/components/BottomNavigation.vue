@@ -142,13 +142,12 @@ watch(hasBottomMenuItems, value => {
     z-index: 2000;
 }
 
-/* Add padding for Android 3-button navigation */
+/* Add padding for iOS safe area and Android 3-button navigation */
 .app-bottom-navigation {
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), constant(safe-area-inset-bottom, 0px));
 }
 
-/* Fallback for older Android devices with 3-button navigation */
+/* Fallback for older devices without safe-area support */
 @supports not (padding-bottom: env(safe-area-inset-bottom)) {
     .app-bottom-navigation {
         padding-bottom: 16px;

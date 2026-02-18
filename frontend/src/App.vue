@@ -2,10 +2,25 @@
   <v-app>
     <v-main>
       <ApiErrorComponent />
-      <router-view v-if="sessionReady" />
-      <BottomNavigation />
+      <!-- Show content even if session is not ready, but show error if failed -->
+      <router-view v-if="sessionReady || sessionError" />
+      <BottomNavigation v-if="sessionReady || sessionError" />
       <ConfirmDialog />
       <NotificationDialog />
+      
+      <!-- Show loading indicator while initializing -->
+      <v-overlay
+        v-if="!sessionReady && !sessionError"
+        class="align-center justify-center"
+        persistent
+        :model-value="true"
+      >
+        <v-progress-circular
+          color="primary"
+          indeterminate
+          size="64"
+        />
+      </v-overlay>
     </v-main>
   </v-app>
 </template>
@@ -24,6 +39,7 @@ const userStore = useUserStore();
 const languageStore = useLanguageStore();
 const notificationStore = useNotificationStore();
 const sessionReady = ref(false);
+const sessionError = ref(false);
 const MIN_RECIPE_SUGGESTIONS =
   parseInt(import.meta.env.VITE_MIN_RECIPE_SUGGESTIONS) || 5;
 
@@ -46,24 +62,30 @@ onMounted(async () => {
     return await apiStore.createSession();
   };
 
-  const [sessionEstablished] = await Promise.all([
-    ensureSession(),
-    languageStore.initLocale(),
-  ]);
+  try {
+    const [sessionEstablished] = await Promise.all([
+      ensureSession(),
+      languageStore.initLocale(),
+    ]);
 
-  sessionReady.value = true;
+    sessionReady.value = true;
 
-  // Initialize notification polling after session is established
-  if (sessionEstablished) {
-    notificationStore.initialize();
-  }
+    // Initialize notification polling after session is established
+    if (sessionEstablished) {
+      notificationStore.initialize();
+    }
 
-  // Fetch suggestions in the background to avoid blocking initial render
-  if (
-    sessionEstablished &&
-    plannerStore.recipeSuggestions.length < MIN_RECIPE_SUGGESTIONS
-  ) {
-    plannerStore.fetchRecipeSuggestions(false);
+    // Fetch suggestions in the background to avoid blocking initial render
+    if (
+      sessionEstablished &&
+      plannerStore.recipeSuggestions.length < MIN_RECIPE_SUGGESTIONS
+    ) {
+      plannerStore.fetchRecipeSuggestions(false);
+    }
+  } catch (error) {
+    console.error('Session initialization failed:', error);
+    sessionError.value = true;
+    sessionReady.value = true; // Show UI even on error
   }
 });
 </script>

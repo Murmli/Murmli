@@ -6,3 +6,35 @@
 .v-app-bar .v-toolbar-title {
   font-weight: 500;
 }
+
+/* iOS Safe Area Support */
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+#app {
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* iOS specific: Prevent elastic scrolling on body but allow on #app */
+@supports (-webkit-touch-callout: none) {
+  html, body {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  #app {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}

@@ -1,5 +1,22 @@
 {
   "appId": "de.murmli.twa",
   "appName": "Murmli",
-  "webDir": "dist"
+  "webDir": "dist",
+  "plugins": {
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#1976d2"
+    },
+    "Keyboard": {
+      "resize": "body",
+      "style": "DARK"
+    }
+  },
+  "ios": {
+    "contentInset": "always",
+    "backgroundColor": "#ffffff"
+  },
+  "android": {
+    "backgroundColor": "#ffffff"
+  }
 }
