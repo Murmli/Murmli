@@ -548,6 +548,8 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
           return;
         }
 
+        this.pendingUpdates++;
+
         const request = await apiStore.apiRequest(
           "post",
           "/shoppingList/item/create/text",
@@ -560,6 +562,9 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
 
         if (request.status == 200) {
           this.items = request.data.list.items;
+          if (request.data && request.data.list && request.data.list.updatedAt) {
+            this.lastUpdate = request.data.list.updatedAt;
+          }
           this.applyCategoryOverrides();
           this.saveCache();
         }
@@ -585,6 +590,18 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
         }
       }
       finally {
+        this.pendingUpdates--;
+        if (this.pendingUpdates === 0 && this.queuedSseUpdate) {
+          const incoming = new Date(this.queuedSseUpdate).getTime();
+          const current = this.lastUpdate
+            ? new Date(this.lastUpdate).getTime()
+            : 0;
+          if (incoming > current) {
+            this.lastUpdate = this.queuedSseUpdate;
+            await this.refreshShoppingList();
+          }
+          this.queuedSseUpdate = null;
+        }
         this.isAddingItem = false;
       }
     },
@@ -659,6 +676,9 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
 
     async deleteAllItems() {
       const apiStore = useApiStore();
+      
+      this.pendingUpdates++;
+      
       try {
         const request = await apiStore.apiRequest(
           "delete",
@@ -667,10 +687,26 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
         );
         if (request.status == 200) {
           this.items = [];
+          if (request.data && request.data.list && request.data.list.updatedAt) {
+            this.lastUpdate = request.data.list.updatedAt;
+          }
           this.saveCache();
         }
       } catch (error) {
         this.error = error;
+      } finally {
+        this.pendingUpdates--;
+        if (this.pendingUpdates === 0 && this.queuedSseUpdate) {
+          const incoming = new Date(this.queuedSseUpdate).getTime();
+          const current = this.lastUpdate
+            ? new Date(this.lastUpdate).getTime()
+            : 0;
+          if (incoming > current) {
+            this.lastUpdate = this.queuedSseUpdate;
+            await this.refreshShoppingList();
+          }
+          this.queuedSseUpdate = null;
+        }
       }
     },
 
@@ -691,6 +727,8 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
         return;
       }
       
+      this.pendingUpdates++;
+
       try {
         const request = await apiStore.apiRequest(
           "delete",
@@ -702,6 +740,9 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
         );
         if (request.status == 200) {
           this.items = request.data.list.items;
+          if (request.data && request.data.list && request.data.list.updatedAt) {
+            this.lastUpdate = request.data.list.updatedAt;
+          }
           this.saveCache();
         }
       } catch (error) {
@@ -717,6 +758,19 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
           // Bei anderen Fehlern, Items wiederherstellen
           this.items = [...this.items, ...itemsToDelete];
           this.saveCache();
+        }
+      } finally {
+        this.pendingUpdates--;
+        if (this.pendingUpdates === 0 && this.queuedSseUpdate) {
+          const incoming = new Date(this.queuedSseUpdate).getTime();
+          const current = this.lastUpdate
+            ? new Date(this.lastUpdate).getTime()
+            : 0;
+          if (incoming > current) {
+            this.lastUpdate = this.queuedSseUpdate;
+            await this.refreshShoppingList();
+          }
+          this.queuedSseUpdate = null;
         }
       }
     },
@@ -740,6 +794,8 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
         this.updatePendingChangesCount();
         return;
       }
+
+      this.pendingUpdates++;
       
       try {
         const success = await apiStore.apiRequest(
@@ -753,6 +809,10 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
             this.items.push(itemToDelete);
             this.saveCache();
           }
+        } else {
+           if (success.data && success.data.list && success.data.list.updatedAt) {
+             this.lastUpdate = success.data.list.updatedAt;
+           }
         }
       } catch (error) {
         // Bei Netzwerkfehler, zur Queue hinzufügen
@@ -770,6 +830,19 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
             this.items.push(itemToDelete);
             this.saveCache();
           }
+        }
+      } finally {
+        this.pendingUpdates--;
+        if (this.pendingUpdates === 0 && this.queuedSseUpdate) {
+          const incoming = new Date(this.queuedSseUpdate).getTime();
+          const current = this.lastUpdate
+            ? new Date(this.lastUpdate).getTime()
+            : 0;
+          if (incoming > current) {
+            this.lastUpdate = this.queuedSseUpdate;
+            await this.refreshShoppingList();
+          }
+          this.queuedSseUpdate = null;
         }
       }
     },
@@ -927,6 +1000,8 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
         return true;
       }
       
+      this.pendingUpdates++;
+
       try {
         const request = await apiStore.apiRequest(
           "put",
@@ -944,6 +1019,9 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
         );
 
         if (request.status == 200) {
+          if (request.data && request.data.list && request.data.list.updatedAt) {
+            this.lastUpdate = request.data.list.updatedAt;
+          }
           delete item._isPending;
           this.saveCache();
           return true;
@@ -965,6 +1043,19 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
           item.active = !newActiveState;
           this.saveCache();
           return false;
+        }
+      } finally {
+        this.pendingUpdates--;
+        if (this.pendingUpdates === 0 && this.queuedSseUpdate) {
+          const incoming = new Date(this.queuedSseUpdate).getTime();
+          const current = this.lastUpdate
+            ? new Date(this.lastUpdate).getTime()
+            : 0;
+          if (incoming > current) {
+            this.lastUpdate = this.queuedSseUpdate;
+            await this.refreshShoppingList();
+          }
+          this.queuedSseUpdate = null;
         }
       }
     },
