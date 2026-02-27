@@ -468,7 +468,10 @@
       "noIndicators": "未启用任何指标",
       "acidBaseDesc": "显示用于酸碱平衡的PRAL值",
       "histamineDesc": "显示组胺含量以便更好判断耐受性"
-    }
+    },
+    "imageSelected": "已选择图片",
+    "imagesSelected": "已选择多张图片",
+    "audioRecorded": "已录制音频"
   },
   "trainingPlans": {
     "title": "训练计划",

@@ -468,7 +468,10 @@
       "noIndicators": "No indicators enabled",
       "acidBaseDesc": "Shows the PRAL score for your acid-base vibes",
       "histamineDesc": "Shows histamine levels so you can vibe with what your gut digs"
-    }
+    },
+    "imageSelected": "Pic picked, stoked, bro",
+    "imagesSelected": "Pics picked, totally stoked, bro",
+    "audioRecorded": "Recorded some audio — sounds rad"
   },
   "trainingPlans": {
     "title": "Training Plans",

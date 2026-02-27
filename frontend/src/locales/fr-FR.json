@@ -468,7 +468,10 @@
       "noIndicators": "Aucun indicateur activé",
       "acidBaseDesc": "Affiche la valeur PRAL pour l'équilibre acido-basique",
       "histamineDesc": "Affiche la teneur en histamine pour une meilleure tolérance"
-    }
+    },
+    "imageSelected": "Image sélectionnée",
+    "imagesSelected": "Images sélectionnées",
+    "audioRecorded": "Audio enregistré"
   },
   "trainingPlans": {
     "title": "Plans d'entraînement",

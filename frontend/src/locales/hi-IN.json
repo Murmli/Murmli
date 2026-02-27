@@ -468,7 +468,10 @@
       "noIndicators": "कोई सूचक सक्रिय नहीं हैं",
       "acidBaseDesc": "अम्ल-क्षार संतुलन के लिए PRAL मान दिखाता है",
       "histamineDesc": "बेहतर सहनशीलता के लिए हिस्टामाइन स्तर दिखाता है"
-    }
+    },
+    "imageSelected": "चित्र चुना गया",
+    "imagesSelected": "चित्र चुने गए",
+    "audioRecorded": "ऑडियो रिकॉर्ड किया गया"
   },
   "trainingPlans": {
     "title": "प्रशिक्षण योजनाएं",

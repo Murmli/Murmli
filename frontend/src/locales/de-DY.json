@@ -468,7 +468,10 @@
       "noIndicators": "Keine Indikatoren aktiviert",
       "acidBaseDesc": "Zeigt den PRAL-Wert für den Säure-Basen-Check",
       "histamineDesc": "Zeigt den Histamingehalt - hilft dir zu checken, ob's verträglich ist"
-    }
+    },
+    "imageSelected": "Foto ausgesucht",
+    "imagesSelected": "Fotos ausgesucht",
+    "audioRecorded": "Sprachnachricht aufgenommen"
   },
   "trainingPlans": {
     "title": "Trainingspläne",

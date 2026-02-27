@@ -468,7 +468,10 @@
       "noIndicators": "No indicators enabled",
       "acidBaseDesc": "Shows the PRAL value for the acid-base balance",
       "histamineDesc": "Shows the histamine content for better tolerability"
-    }
+    },
+    "imageSelected": "Image selected",
+    "imagesSelected": "Images selected",
+    "audioRecorded": "Audio recorded"
   },
   "trainingPlans": {
     "title": "Training Plans",

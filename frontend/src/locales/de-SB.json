@@ -468,7 +468,10 @@
       "noIndicators": "Koin Indikatore aktiviert",
       "acidBaseDesc": "Zeigt den PRAL-Wert für'n Säure-Basen-Haushalt",
       "histamineDesc": "Zeigt den Histamingehalt für a bessre Verträglichkeit"
-    }
+    },
+    "imageSelected": "Bild ausgesuacht",
+    "imagesSelected": "Bilder ausgesuacht",
+    "audioRecorded": "Audio aufgnomma"
   },
   "trainingPlans": {
     "title": "Trainingsplänä",

@@ -468,7 +468,10 @@
       "noIndicators": "No indicatos enabled",
       "acidBaseDesc": "Shows the PAL value fo acid-base balance",
       "histamineDesc": "Shows histamine content fo bette toleability"
-    }
+    },
+    "imageSelected": "Pictcha selected",
+    "imagesSelected": "Pictchas selected",
+    "audioRecorded": "Audio 'ecorded"
   },
   "trainingPlans": {
     "title": "Trainin' Plans",

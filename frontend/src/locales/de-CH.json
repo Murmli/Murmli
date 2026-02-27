@@ -468,7 +468,10 @@
       "noIndicators": "Kei Indikatore aktiviert",
       "acidBaseDesc": "Zeigt dä PRAL-Wärt fürs Säure-Basen-Haushalt",
       "histamineDesc": "Zeigt dä Histamin-Gehalt für besseri Verträglichkeit"
-    }
+    },
+    "imageSelected": "Bild usgwehlt",
+    "imagesSelected": "Bilder usgwehlt",
+    "audioRecorded": "Audio ufgnoh"
   },
   "trainingPlans": {
     "title": "Trainingsplän",
