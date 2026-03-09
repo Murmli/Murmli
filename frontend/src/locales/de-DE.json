@@ -404,7 +404,15 @@
     "clearCache": "LLM-Cache leeren",
     "resetImages": "Übungsbilder zurücksetzen",
     "confirm": "Bestätigen ({seconds})",
-    "success": "Aktion ausgeführt"
+    "success": "Aktion ausgeführt",
+    "systemMessageTitle": "System-Nachricht senden",
+    "messageTitleLabel": "Titel",
+    "messageContentLabel": "Inhalt",
+    "correctGrammar": "Grammatik korrigieren",
+    "sendGlobalMessage": "Globale Nachricht senden",
+    "confirmSendTitle": "Nachricht wirklich senden?",
+    "confirmSendText": "Diese Nachricht wird an ALLE Benutzer gesendet. Möchtest du fortfahren?",
+    "sendSuccess": "Nachricht erfolgreich an alle Benutzer gesendet."
   },
   "contact": {
     "title": "Kontakt",

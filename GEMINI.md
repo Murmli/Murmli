@@ -1,119 +1,100 @@
-# Murmli Project Documentation (GEMINI.md)
+# GEMINI.md - Murmli Project Context
 
-Diese Datei dient als zentrale Wissensbasis für die Entwicklung am Murmli-Projekt. Sie beschreibt Architektur, Standards und Mechaniken, um einen konsistenten Entwicklungsprozess zu gewährleisten.
+Dieses Dokument dient als zentraler Kontext für die Arbeit mit der Murmli-Codebase. Es beschreibt die Architektur, Technologien und Konventionen des Projekts.
 
-## 1. Projektübersicht
+## Projektübersicht
 
-Murmli ist eine integrierte Gesundheits- und Lifestyle-Anwendung, die Ernährung, Fitness und Alltagsplanung vereint. Kernmerkmale sind die intelligente Verknüpfung von Rezepten, Einkaufslisten, Trainingsplänen und Kalorientracking, unterstützt durch fortschrittliche LLM-Integrationen.
+Murmli ist eine ganzheitliche Plattform für Fitness und Ernährung. Sie kombiniert Einkaufslisten, Rezepte, Mahlzeitenplanung, Kalorientracking und Trainingsprogramme in einer einheitlichen Anwendung. Die App nutzt intensiv Large Language Models (LLMs) für automatisierte Workflows und intelligente Empfehlungen.
 
-### Projektstruktur (Monorepo)
+### Kern-Technologien
 
-Das Projekt ist als Monorepo organisiert:
-- **Root**: Enthält globale Konfigurationen und Scripts (`npm run install:all`, `npm run start`).
-- **backend/**: Node.js/Express Applikation (API & Business Logic).
-- **frontend/**: Vue.js 3 / Ionic / Vite Applikation (User Interface).
-
-## 2. Technologie-Stack
-
-### Backend
-- **Runtime**: Node.js
-- **Framework**: Express.js
-- **Datenbank**: MongoDB (Mongoose ODM)
-- **API**: RESTful V2
-- **Validierung**: Eigene Validierungs-Utilities & JSON Schemas
-- **LLM Integration**: Provider-agnostische Implementierung (OpenAI, Google, etc. via Dynamic Import)
-
-### Frontend
-- **Framework**: Vue.js 3 (Composition API)
-- **UI Toolkit**: Ionic Framework
-- **Build Tool**: Vite
-- **State Management**: Pinia
-- **Sprache**: JavaScript
-- **Styling**: SCSS/CSS (Global + Scoped)
-- **I18n**: vue-i18n (Source of Truth: `de-DE.json`)
-
-## 3. Architektur & Mechaniken
-
-### 3.1. LLM-Pipeline (Core Mechanic)
-
-Die Interaktion mit Large Language Models ist zentralisiert und abstrahiert.
-
-**Workflow:**
-1.  **Controller**: Nimmt Anfrage entgegen (z.B. `recipeController.js`).
-2.  **Util-Layer**: Ruft spezifische Funktion in `backend/utils/llm.js` auf (z.B. `createRecipe`).
-3.  **Prompting**:
-    *   System-Prompts und User-Prompts werden strikt getrennt in `backend/utils/prompts.js` verwaltet.
-    *   Prompts sind Funktionen, die Kontext (z.B. Sprache, User-Präferenzen, existierende Daten) injizieren.
-4.  **API Call Wrapper**: `apiCall` (in `llm.js` importiert aus Provider-Datei) handhabt den Request.
-5.  **Schema Validation**: Fast alle LLM-Calls nutzen strikte JSON-Schemas (`backend/utils/schemas/*.schema.js`), um strukturierte Antworten zu erzwingen.
-6.  **Response**: Validiere JSON wird an den Controller zurückgegeben.
-
-**Wichtig**: Direkte API-Calls an LLM-Provider im Controller sind zu vermeiden. Immer über `llm.js` und `prompts.js` gehen.
-
-### 3.2. Frontend Architektur
-
-- **Stores (Pinia)**:
-    -   `apiStore.js`: Handhabt Authentifizierung (Session Token), Base URL und globale Loading-States.
-    -   `dialogStore.js`: Zentrales Management aller Modals/Dialoge (`openDialog`, `closeDialog`).
-    -   `languageStore.js`: Verwaltet Lokalisierung.
--   **Autochat/Kommunikation**:
-    -   API-Anfragen laufen über `apiStore.apiRequest`, welches Auth-Header (`Authorization`, `x-header-secret-key`) automatisch setzt.
--   **Components**: PascalCase, logische Trennung in `components/general`, `components/recipe` etc.
-
-### 3.3. Authentifizierung
-
--   Session-basiert mit JWT (oder opaque Tokens).
--   Token wird im `localStorage` ("sessionToken") gespeichert.
--   Backend validiert Session via Middleware.
--   `apiStore.createSession()` initialisiert anonyme Sessions.
-
-## 4. Code Styling & Konventionen
-
-### Allgemein
--   **Sprache**: Code (Variablen, Funktionen, Kommentare) immer auf **Englisch**.
--   **Kommunikation mit User**: Immer auf **Deutsch**.
--   **Git Commit Messages**: Immer auf **Englisch** (Imperativ, z.B. "Add recipe translation feature").
-
-### Backend
--   **Async/Await**: Durchgängig verwenden.
--   **Error Handling**: `try...catch` Blöcke in allen Controllern. Error-Responses folgen Standard-JSON `{ error: "Message" }`.
--   **Dateinamen**: camelCase (`recipeController.js`).
--   **Models**: PascalCase (`RecipeModel.js`).
-
-### Frontend
--   **Vue Components**: `<script setup>` Syntax.
--   **Component Namen**: Multi-Word, PascalCase (z.B. `RecipeCard.vue`).
--   **CSS**: Scoped wo immer möglich. Nutzung von CSS-Variablen für Theme-Konsistenz.
-
-## 5. Debugging & Starten
-
-### Entwicklungsumgebung starten
-
-```bash
-# Im Root-Verzeichnis
-npm run dev
-```
-Dies startet:
--   Backend auf port `8080`.
--   Frontend auf port `3000` (Proxy configured).
-
-### Wichtige Dateien für Debugging
--   **Logs**: Server-Logs im Terminal beachten.
--   **LLM Issues**: Prüfen von `backend/utils/llm.js` und den zugehörigen Schemas bei Parsing-Fehlern.
--   **Environment**: `.env` im Backend muss korrekt gesetzt sein (`DB_STRING`, `LLM_PROVIDER`, API Keys).
-
-## 6. Lokalisierung (i18n)
-
--   **Source**: `frontend/src/locales/de-DE.json` ist die Quelle der Wahrheit.
--   **Prozess**: Neue Strings immer zuerst in `de-DE.json` hinzufügen. Andere Sprachen werden davon abgeleitet (übersetzt).
--   **Keys**: Hierarchisch strukturiert (z.B. `recipe.ingredients.title`).
-
-## 7. Agenten-Regeln (Zusätzlich zu AGENTS.md)
-
-1.  **Analysiere zuerst**: Bevor Code geändert wird, verstehe die Abhängigkeiten (insb. bei LLM-Prompts).
-2.  **Keine "Magic Strings"**: Prompts gehören in `prompts.js`, nicht in den Business-Logic-Code.
-3.  **Schema Compliance**: Wenn du Output-Formate von LLMs änderst, musst du zwingend das zugehörige Schema in `backend/utils/schemas/` anpassen.
-4.  **UI Konsistenz**: Nutze existierende UI-Komponenten (`AdminStats`, `ChatDialog` Patterns) statt neue zu erfinden, wo nicht nötig.
+- **Monorepo:** Verwaltet Backend und Frontend in einem Repository.
+- **Backend:** Node.js mit Express, MongoDB (Mongoose) als Datenbank.
+- **Frontend:** Vue 3 mit Vuetify 3, Vite als Build-Tool, Pinia für State Management.
+- **Mobile:** Capacitor für die Bereitstellung als Android- und iOS-App.
+- **KI/LLM:** Integration von OpenAI, Google Gemini, DeepSeek und OpenRouter. Unterstützt Text-, Bild- und Audio-Eingaben (Multimodal).
+- **Testing:** Playwright für End-to-End-Tests, Jest für Unit-Tests im Backend.
 
 ---
-*Generated by Antigravity for Murmli Project Analysis.*
+
+## Architektur & Struktur
+
+### Backend (`/backend`)
+Folgt dem Controller-Route-Model-Pattern:
+- **`controllers/`**: Enthält die Geschäftslogik für die verschiedenen Module (Rezepte, Training, Shopping, etc.).
+- **`routes/`**: Definiert die API-Endpunkte (v2 Präfix: `/api/v2/...`).
+- **`models/`**: Mongoose-Schemata für die MongoDB-Datenstrukturen.
+- **`utils/`**: Hilfsfunktionen, insbesondere:
+    - **`llm.js`**: Zentraler Hub für alle KI-Anfragen. Abstrahiert die Provider (OpenAI, Google, etc.).
+    - **`agents/`**: Spezialisierte KI-Agenten für komplexe Aufgaben wie Rezeptanalyse oder Trainingsplanerstellung.
+    - **`schemas/`**: JSON-Schemata für strukturierte LLM-Antworten.
+
+### Frontend (`/frontend`)
+- **`src/pages/`**: Vue-Komponenten für die verschiedenen Ansichten.
+- **`src/stores/`**: Pinia-Stores für die globale Statusverwaltung (Auth, Planner, User, etc.).
+- **`src/plugins/`**: Konfiguration für Vuetify, Router und andere Integrationen.
+- **`android/` & `ios/`**: Native Projekte für Capacitor.
+
+---
+
+## Entwicklungsworkflow
+
+### Installation
+Im Wurzelverzeichnis ausführen:
+```powershell
+npm run install:all
+```
+
+### Starten der Entwicklungsumgebung
+Backend (Watch-Mode) und Frontend parallel starten:
+```powershell
+npm run dev
+```
+- **Backend:** http://localhost:8080 (API-Docs unter `/api-docs`)
+- **Frontend:** http://localhost:3000
+
+### Bauen für Produktion
+```powershell
+npm run build
+```
+
+### Mobile Development (Android)
+```powershell
+cd frontend
+npm run apprun
+```
+
+---
+
+## Konventionen & Richtlinien
+
+- **Sprache:** Code und Kommentare sind auf Englisch. Die Benutzeroberfläche unterstützt Mehrsprachigkeit (Locales in `frontend/src/locales`).
+- **Sicherheit:** 
+    - Secrets gehören in `.env`-Dateien (siehe `README.md` für erforderliche Variablen).
+    - API-Anfragen erfordern oft einen `X-Header-Secret-Key` zusätzlich zur JWT-Authentifizierung.
+- **KI-Interaktion:** Neue KI-Features sollten über `backend/utils/llm.js` implementiert werden, um die Provider-Abstraktion beizubehalten. Strukturierte Antworten (JSON) sind bevorzugt.
+- **Testing:** Bei Änderungen am Backend sollten bestehende Jest-Tests (`backend/tests`) ausgeführt werden. E2E-Tests befinden sich im Wurzelverzeichnis unter `tests/e2e`.
+
+---
+
+## Wichtige Befehle (Zusammenfassung)
+
+| Befehl | Beschreibung |
+| :--- | :--- |
+| `npm run install:all` | Installiert alle Abhängigkeiten im gesamten Monorepo. |
+| `npm run dev` | Startet Backend (nodemon) und Frontend (vite) im Dev-Modus. |
+| `npm run test:e2e` | Führt die Playwright E2E-Tests aus. |
+| `cd backend && npm test` | Führt Backend-Unit-Tests (Jest) aus. |
+| `cd frontend && npm run build` | Erstellt den Produktions-Build des Frontends. |
+
+---
+
+## Internationalisierung (i18n) & Lokalisierung
+
+- **Architektur:** Die App nutzt ein dynamisches Lokalisierungssystem. Der `languageStore` (Pinia) verwaltet die aktuelle Sprache (`locale`) und lädt die entsprechenden Übersetzungsdateien asynchron aus `frontend/src/locales/`.
+- **Referenzsprache:** Die Datei `de-DE.json` ist die **Referenzquelle**. Neue Texte müssen immer zuerst hier hinzugefügt werden.
+- **Automatisierte Übersetzung:** Mit dem Befehl `npm run buildLang` (ausgeführt im Frontend) wird das Script `scripts/buildLang.js` gestartet. Dieses Script vergleicht die Referenzdatei (`de-DE.json`) mit allen anderen Sprachen, identifiziert fehlende Schlüssel und übersetzt diese automatisch mithilfe der OpenAI API (GPT).
+- **Verwendung im Code:** Übersetzungen werden im Frontend über die Funktion `languageStore.t('pfad.zum.key')` abgerufen. Diese Funktion unterstützt verschachtelte Schlüssel und ersetzt Zeilenumbrüche (`\n`) automatisch durch HTML-Linebreaks (`<br />`). Es sollte niemals Text direkt ("hartkodiert") in Komponenten geschrieben werden.
+- **Persistenz:** Die vom Nutzer gewählte Sprache wird im `localStorage` unter `appLocale` gespeichert und beim App-Start automatisch geladen.
+
+---

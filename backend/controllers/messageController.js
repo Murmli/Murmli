@@ -1,4 +1,6 @@
 const Message = require("../models/messageModel.js");
+const User = require("../models/userModel.js");
+const { correctGrammar } = require("../utils/llm.js");
 
 exports.createMessage = async (req, res) => {
   try {
@@ -18,6 +20,55 @@ exports.createMessage = async (req, res) => {
     });
 
     return res.status(201).json(newMessage);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Server Error" });
+  }
+};
+
+exports.createSystemMessage = async (req, res) => {
+  try {
+    const { title, message } = req.body;
+
+    if (!title || !message) {
+      return res.status(400).json({ error: "Title and message are required" });
+    }
+
+    const users = await User.find({}, "_id");
+    const messagePromises = users.map((user) =>
+      Message.create({
+        userId: user._id,
+        type: "system_message",
+        title,
+        message,
+      })
+    );
+
+    await Promise.all(messagePromises);
+
+    return res.status(201).json({ success: true, count: users.length });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Server Error" });
+  }
+};
+
+exports.correctGrammar = async (req, res) => {
+  try {
+    const { text } = req.body;
+    const language = req.user.language || "de";
+
+    if (!text) {
+      return res.status(400).json({ error: "Text is required" });
+    }
+
+    const correctedText = await correctGrammar(text, language);
+
+    if (!correctedText) {
+      return res.status(500).json({ error: "LLM Error during grammar correction" });
+    }
+
+    return res.status(200).json({ correctedText });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: "Server Error" });

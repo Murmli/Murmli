@@ -945,3 +945,21 @@ exports.chatWithTracker = async (messages, tracker, bodyData, language) => {
     return false;
   }
 };
+
+exports.correctGrammar = async (text, language) => {
+  try {
+    const { grammarCorrectionSystemPrompt } = require("./prompts.js");
+    const systemPrompt = grammarCorrectionSystemPrompt(language);
+
+    const answer = await apiCall(text, {
+      systemPrompt,
+      cache: false,
+      json: false,
+    });
+
+    return answer;
+  } catch (error) {
+    console.error("Error in correctGrammar:", error.message);
+    return false;
+  }
+};

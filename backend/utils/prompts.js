@@ -940,7 +940,15 @@ exports.createRecipePrompt = (prompt, exclude, informationObject, servings = 4) 
     text += `\nDas Rezept soll sich deutlich unterscheiden von: ${exclude}, außer natürlich es ist explizit noch mal dasselbe gewünscht.`;
   }
   if (informationObject) {
-    text += `\nBerücksichtige bitte folgende User-Informationen/Vorlieben: ${JSON.stringify(informationObject)}.`;
-  }
-  return text;
-};
+    return text += `\nBerücksichtige bitte folgende User-Informationen/Vorlieben: ${JSON.stringify(informationObject)}.`;
+    }
+    return text;
+    };
+
+    exports.grammarCorrectionSystemPrompt = (language) => {
+    return `
+      Du bist ein erfahrener Lektor. Korrigiere die Grammatik, Rechtschreibung und Zeichensetzung des folgenden Textes in der Sprache "${language}".
+      Behalte den ursprünglichen Tonfall und die Bedeutung bei.
+      Gib ausschließlich den korrigierten Text zurück, keine Erklärungen oder Kommentare.
+    `;
+    };

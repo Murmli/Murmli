@@ -10,7 +10,7 @@ const messageSchema = new Schema(
     },
     type: {
       type: String,
-      enum: ["recipe_ready", "training_plan_ready", "system_update"],
+      enum: ["recipe_ready", "training_plan_ready", "system_update", "system_message"],
       required: true,
     },
     title: {

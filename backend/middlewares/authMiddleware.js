@@ -44,3 +44,11 @@ exports.secretKeyMiddleware = (req, res, next) => {
 
   next(); // Continue to the next middleware if the key is valid
 };
+
+exports.adminMiddleware = (req, res, next) => {
+  if (req.user && req.user.role === "administrator") {
+    next();
+  } else {
+    return res.status(403).json({ error: "Forbidden", message: "Admin privileges required" });
+  }
+};
