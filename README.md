@@ -71,12 +71,25 @@ GMAIL_SMTP_PASSWORD=
 
 ```ini
 VITE_API_BASE_URL=
+VITE_BACKEND_BASE_URL=
 VITE_HEADER_SECRET_KEY=
 VITE_MIN_RECIPE_SUGGESTIONS=
 VITE_RECIPE_FETCH_COUNT=
-OPENAI_API_KEY=
-OPENAI_TRANSLATION_MODEL=
+OPENROUTER_API_KEY=
+OPENROUTER_MODEL=google/gemini-3-flash-preview
 ```
+
+## Features & Administration
+
+### Admin-Messaging & Grammar Correction
+Administrators can send global system messages to all users from the settings page. This feature includes:
+- **LLM-driven Grammar Correction:** Automatically polish your message before sending.
+- **Double Confirmation:** Safety mechanism to prevent accidental global notifications.
+
+### Internationalization (i18n)
+Murmli supports multiple languages. 
+- **Reference:** `de-DE.json` is the source of truth.
+- **Automated Translation:** Run `npm run buildLang` in the frontend directory to translate new keys to all other supported languages using OpenRouter (`google/gemini-3-flash-preview`).
 
 ## Deployment Notes
 
