@@ -14,8 +14,8 @@ VITE_BACKEND_BASE_URL=
 VITE_HEADER_SECRET_KEY=
 VITE_MIN_RECIPE_SUGGESTIONS=
 VITE_RECIPE_FETCH_COUNT=
-OPENAI_API_KEY=
-OPENAI_TRANSLATION_MODEL=
+OPENROUTER_API_KEY=
+OPENROUTER_MODEL=google/gemini-3-flash-preview
 ```
 
 ### Example `.env.production` (deployment)
@@ -26,8 +26,8 @@ VITE_BACKEND_BASE_URL=
 VITE_HEADER_SECRET_KEY=
 VITE_MIN_RECIPE_SUGGESTIONS=
 VITE_RECIPE_FETCH_COUNT=
-OPENAI_API_KEY=
-OPENAI_TRANSLATION_MODEL=
+OPENROUTER_API_KEY=
+OPENROUTER_MODEL=google/gemini-3-flash-preview
 ```
 
 Guidelines:
@@ -36,4 +36,5 @@ Guidelines:
 - `VITE_BACKEND_BASE_URL`: Base URL of the backend for static pages (`https://…` in production, used for recipe sharing).
 - `VITE_HEADER_SECRET_KEY`: Must match `SECRET_KEY` from the backend.
 - `VITE_MIN_RECIPE_SUGGESTIONS` / `VITE_RECIPE_FETCH_COUNT`: Control recipe pagination in the UI.
-- `OPENAI_API_KEY` and `OPENAI_TRANSLATION_MODEL`: Required for the automated locale generation used during builds.
+- `OPENROUTER_API_KEY`: API key for OpenRouter (or use `OPENAI_API_KEY` as fallback). Required for automated locale generation.
+- `OPENROUTER_MODEL`: The model used for translations (default: `google/gemini-3-flash-preview`).

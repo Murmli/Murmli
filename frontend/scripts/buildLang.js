@@ -29,13 +29,14 @@ const { languageMapRaw, languageMap } = require("../../backend/languageMap.js");
 
 const localesDir = path.join(__dirname, '..', 'src', 'locales');
 
-// OpenAI Configuration
+// OpenRouter Configuration
 const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY
+    baseURL: "https://openrouter.ai/api/v1",
+    apiKey: process.env.OPENROUTER_API_KEY || process.env.OPENAI_API_KEY
 });
 
-if (!process.env.OPENAI_API_KEY) {
-    console.error('OpenAI API key is missing. Please set it in your .env file.');
+if (!process.env.OPENROUTER_API_KEY && !process.env.OPENAI_API_KEY) {
+    console.error('API key is missing. Please set OPENROUTER_API_KEY or OPENAI_API_KEY in your .env file.');
     process.exit(1);
 }
 
@@ -141,7 +142,7 @@ Anforderungen:
 
     try {
         const response = await openai.chat.completions.create({
-            model: process.env.OPENAI_TRANSLATION_MODEL || "gpt-5-mini",
+            model: process.env.OPENROUTER_MODEL || "google/gemini-3-flash-preview",
             messages: messages,
             response_format: { type: "json_object" },
         });
