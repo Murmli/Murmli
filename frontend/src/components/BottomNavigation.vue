@@ -34,7 +34,7 @@
     </v-bottom-sheet>
 
     <!-- New bottom navigation that mirrors the routes from the old list -->
-    <v-bottom-navigation v-model="current" grow min-height="60" height="auto" class="px-7 app-bottom-navigation">
+    <v-bottom-navigation v-model="current" grow class="px-7 app-bottom-navigation">
         <template v-for="item in items" :key="item.value">
             <v-btn :value="item.value" variant="text" :aria-label="item.label"
                 :aria-current="current === item.value ? 'page' : undefined">
@@ -142,24 +142,23 @@ watch(hasBottomMenuItems, value => {
     z-index: 2000;
 }
 
-/* Add padding for iOS safe area and Android 3-button navigation */
+/* Fix bottom navigation height and centering */
 .app-bottom-navigation {
-    padding-bottom: max(env(safe-area-inset-bottom, 0px), constant(safe-area-inset-bottom, 0px));
-}
-
-/* Fallback for older devices without safe-area support or when it returns 0 on Android */
-@supports not (padding-bottom: env(safe-area-inset-bottom)) {
-    .app-bottom-navigation {
-        padding-bottom: 24px;
-    }
+    height: calc(60px + env(safe-area-inset-bottom, 0px)) !important;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 @media screen and (max-width: 600px) {
     .app-bottom-navigation {
-        /* Ensure some minimum padding on mobile even if env is 0 
-           This is a safety margin for Android 3-button navigation 
-           if the app is drawn behind it but env() is 0. */
-        padding-bottom: calc(max(env(safe-area-inset-bottom, 0px), 24px));
+        /* On Android, if the navigation bar overlaps, we should only use 
+           small increments if env() doesn't work. But for now, 
+           let's rely on standard height to avoid the 'too high' bug. */
+        height: 60px !important;
+        padding-bottom: 0px;
+        
+        /* If a safe area is detected, we respect it. */
+        height: calc(60px + env(safe-area-inset-bottom, 0px)) !important;
+        padding-bottom: env(safe-area-inset-bottom, 0px);
     }
 }
 </style>
