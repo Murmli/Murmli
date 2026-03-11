@@ -96,7 +96,11 @@
       "recipeReady": "食谱已就绪",
       "recipeReadyMessage": "您的食谱已创建。",
       "trainingPlanReady": "训练计划已就绪",
-      "trainingPlanReadyMessage": "您的训练计划已创建。"
+      "trainingPlanReadyMessage": "您的训练计划已创建。",
+      "feedback": {
+        "title": "新反馈",
+        "success": "收到了一条关于食谱的新反馈。"
+      }
     },
     "start": "开始吧",
     "generate": "生成",
@@ -398,7 +402,24 @@
     "aiCacheSaved": "节省的 AI 请求 (缓存)",
     "stickiness": "用户粘性 (Stickiness)",
     "unreadFeedback": "未读反馈",
-    "stickinessHint": "日活与月活用户的比率。高值 (>20%) 表示形成了较强的用户习惯。"
+    "stickinessHint": "日活与月活用户的比率。高值 (>20%) 表示形成了较强的用户习惯。",
+    "feedback": {
+      "title": "反馈管理",
+      "noFeedback": "暂无反馈。",
+      "user": "用户",
+      "recipe": "食谱",
+      "content": "内容",
+      "date": "日期",
+      "markAsRead": "标记为已读",
+      "markAsUnread": "标记为未读",
+      "delete": "删除",
+      "edit": "编辑",
+      "save": "保存",
+      "cancel": "取消",
+      "confirmDelete": "确定要删除这条反馈吗？",
+      "deleteSuccess": "反馈已删除。",
+      "updateSuccess": "反馈已更新。"
+    }
   },
   "adminTools": {
     "title": "管理员工具",

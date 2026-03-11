@@ -96,7 +96,11 @@
       "recipeReady": "Order's Up",
       "recipeReadyMessage": "Your recipe is ready to shred.",
       "trainingPlanReady": "Plan is Ready",
-      "trainingPlanReadyMessage": "Your workout plan is locked and loaded."
+      "trainingPlanReadyMessage": "Your workout plan is locked and loaded.",
+      "feedback": {
+        "title": "Fresh Vibes",
+        "success": "Yo, some rad new feedback just washed ashore on one of your recipes."
+      }
     },
     "start": "Let's Go!",
     "generate": "Generate the Flow",
@@ -398,7 +402,24 @@
     "aiCacheSaved": "AI Waves Saved",
     "stickiness": "Addiction Level",
     "unreadFeedback": "Feedback to read",
-    "stickinessHint": "Daily vs Monthly users. Over 20% means they're hooked on the ride."
+    "stickinessHint": "Daily vs Monthly users. Over 20% means they're hooked on the ride.",
+    "feedback": {
+      "title": "Feedback Lineup",
+      "noFeedback": "The ocean is flat, man. No feedback yet.",
+      "user": "Soul Surfer",
+      "recipe": "Tasty Wave",
+      "content": "The Word",
+      "date": "When it Dropped",
+      "markAsRead": "Stoke checked",
+      "markAsUnread": "Keep it fresh",
+      "delete": "Wipe out",
+      "edit": "Tune the board",
+      "save": "Lock it in",
+      "cancel": "Bail",
+      "confirmDelete": "Whoa, you sure you wanna wipe this feedback out for good?",
+      "deleteSuccess": "Feedback is gone with the tide.",
+      "updateSuccess": "Feedback is looking totally righteous now."
+    }
   },
   "adminTools": {
     "title": "Admin Deck",

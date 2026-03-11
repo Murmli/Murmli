@@ -96,7 +96,11 @@
       "recipeReady": "Rezept ist am Start",
       "recipeReadyMessage": "Dein Rezept wurde fertig erstellt.",
       "trainingPlanReady": "Trainingsplan ready",
-      "trainingPlanReadyMessage": "Dein Trainingsplan wurde erstellt."
+      "trainingPlanReadyMessage": "Dein Trainingsplan wurde erstellt.",
+      "feedback": {
+        "title": "Frischer Gossip",
+        "success": "Jemand hat ein neues Review zu einem Rezept gedroppt."
+      }
     },
     "start": "Los geht's",
     "generate": "Generieren",
@@ -398,7 +402,24 @@
     "aiCacheSaved": "Gesparte AI-Requests (Cache)",
     "stickiness": "Stickiness (Haftkraft)",
     "unreadFeedback": "Ungelesenes Feedback",
-    "stickinessHint": "Ratio Daily vs. Monthly Users. Hoher Wert (>20%) heißt krasse Gewohnheit."
+    "stickinessHint": "Ratio Daily vs. Monthly Users. Hoher Wert (>20%) heißt krasse Gewohnheit.",
+    "feedback": {
+      "title": "Feedback-Corner",
+      "noFeedback": "Tote Hose hier, kein Feedback am Start.",
+      "user": "User",
+      "recipe": "Rezept",
+      "content": "Message",
+      "date": "Datum",
+      "markAsRead": "Abhaken",
+      "markAsUnread": "Wieder auf ungelesen setzen",
+      "delete": "Yeeten",
+      "edit": "Anpassen",
+      "save": "Speichern",
+      "cancel": "Abbrechen",
+      "confirmDelete": "Safe, dass du das Feedback weghauen willst?",
+      "deleteSuccess": "Feedback wurde geyetet.",
+      "updateSuccess": "Feedback ist jetzt fresh aktualisiert."
+    }
   },
   "adminTools": {
     "title": "Admin-Tools",

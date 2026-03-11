@@ -96,7 +96,11 @@
       "recipeReady": "Rezept is fertig",
       "recipeReadyMessage": "Dei Rezept is fertig bastelt wordn.",
       "trainingPlanReady": "Trainingsplan is fertig",
-      "trainingPlanReadyMessage": "Dei Trainingsplan is fertig bastelt wordn."
+      "trainingPlanReadyMessage": "Dei Trainingsplan is fertig bastelt wordn.",
+      "feedback": {
+        "title": "Neiche Rückmeldung",
+        "success": "Servas, es is grod a neiche Rückmeldung zu am Rezeptl einakummen."
+      }
     },
     "start": "Pack ma's",
     "generate": "Basteln",
@@ -398,7 +402,24 @@
     "aiCacheSaved": "Gsparte AI-Frong (Cache)",
     "stickiness": "Nutzer-Bindung (Stickiness)",
     "unreadFeedback": "Unglesenes Feedback",
-    "stickinessHint": "Verhältnis vo tägliche zu monatliche Nutzer. A hoher Wert (>20%) zeigt, dass de Leit gern bleim."
+    "stickinessHint": "Verhältnis vo tägliche zu monatliche Nutzer. A hoher Wert (>20%) zeigt, dass de Leit gern bleim.",
+    "feedback": {
+      "title": "Rückmeldungsvastaltung",
+      "noFeedback": "Ka Rückmeldung do.",
+      "user": "Benutzer",
+      "recipe": "Rezeptl",
+      "content": "Inhoit",
+      "date": "Datum",
+      "markAsRead": "Ois glesn markiern",
+      "markAsUnread": "Ois unglesn markiern",
+      "delete": "Löschn",
+      "edit": "Bearbeitn",
+      "save": "Speichern",
+      "cancel": "Obrechen",
+      "confirmDelete": "Bist da sicher, doss d' des wegtau mechst?",
+      "deleteSuccess": "Rückmeldung is glöscht.",
+      "updateSuccess": "Rückmeldung is aktualisiert."
+    }
   },
   "adminTools": {
     "title": "Admin-Werkzuig",

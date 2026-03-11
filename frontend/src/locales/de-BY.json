@@ -96,7 +96,11 @@
       "recipeReady": "Rezept is fertig",
       "recipeReadyMessage": "Dei Rezept is fertig gebastelt.",
       "trainingPlanReady": "Trainingsplan is fertig",
-      "trainingPlanReadyMessage": "Dei Trainingsplan is fertig gstellt."
+      "trainingPlanReadyMessage": "Dei Trainingsplan is fertig gstellt.",
+      "feedback": {
+        "title": "Neis G'stanzl",
+        "success": "S'is a neis Feedback zu am Rezeptl eitroffa."
+      }
     },
     "start": "Pack ma's",
     "generate": "Basteln",
@@ -398,7 +402,24 @@
     "aiCacheSaved": "Gsparte AI-Frong (Cache)",
     "stickiness": "Nutzer-Bindung (Stickiness)",
     "unreadFeedback": "Ungelesene Meinung",
-    "stickinessHint": "Verhältnis vo tägliche zu monatliche Leit. A hoher Wert (>20%) zoagt, dass d'Leit gern wiederkemma."
+    "stickinessHint": "Verhältnis vo tägliche zu monatliche Leit. A hoher Wert (>20%) zoagt, dass d'Leit gern wiederkemma.",
+    "feedback": {
+      "title": "Feedback-Vawaltung",
+      "noFeedback": "Gar nix do an Rückmaldunga.",
+      "user": "Benutza",
+      "recipe": "Rezeptl",
+      "content": "Inhalt",
+      "date": "Datum",
+      "markAsRead": "Ois g'lesn markiern",
+      "markAsUnread": "Ois unglesn markiern",
+      "delete": "Lösch'n",
+      "edit": "Bearban",
+      "save": "Speichern",
+      "cancel": "Abbrechn",
+      "confirmDelete": "Bist da ganz sicher, dass des Feedback wegdoa wuist?",
+      "deleteSuccess": "Feedback is glöscht.",
+      "updateSuccess": "Feedback is aktualisiert wordn."
+    }
   },
   "adminTools": {
     "title": "Admin-Werkzeug",

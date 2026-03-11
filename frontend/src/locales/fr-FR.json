@@ -96,7 +96,11 @@
       "recipeReady": "Recette prête",
       "recipeReadyMessage": "Votre recette a été créée.",
       "trainingPlanReady": "Plan d'entraînement prêt",
-      "trainingPlanReadyMessage": "Votre plan d'entraînement a été créé."
+      "trainingPlanReadyMessage": "Votre plan d'entraînement a été créé.",
+      "feedback": {
+        "title": "Nouveau feedback",
+        "success": "Un nouveau commentaire sur une recette a été reçu."
+      }
     },
     "start": "C'est parti",
     "generate": "Générer",
@@ -398,7 +402,24 @@
     "aiCacheSaved": "Requêtes IA économisées (cache)",
     "stickiness": "Rétention utilisateur (Stickiness)",
     "unreadFeedback": "Commentaires non lus",
-    "stickinessHint": "Rapport entre les utilisateurs quotidiens et mensuels. Une valeur élevée (>20%) indique une forte formation d'habitudes."
+    "stickinessHint": "Rapport entre les utilisateurs quotidiens et mensuels. Une valeur élevée (>20%) indique une forte formation d'habitudes.",
+    "feedback": {
+      "title": "Gestion des commentaires",
+      "noFeedback": "Aucun commentaire disponible.",
+      "user": "Utilisateur",
+      "recipe": "Recette",
+      "content": "Contenu",
+      "date": "Date",
+      "markAsRead": "Marquer comme lu",
+      "markAsUnread": "Marquer comme non lu",
+      "delete": "Supprimer",
+      "edit": "Modifier",
+      "save": "Enregistrer",
+      "cancel": "Annuler",
+      "confirmDelete": "Êtes-vous sûr de vouloir supprimer ce commentaire ?",
+      "deleteSuccess": "Commentaire supprimé.",
+      "updateSuccess": "Commentaire mis à jour."
+    }
   },
   "adminTools": {
     "title": "Outils Admin",

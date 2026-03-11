@@ -96,7 +96,11 @@
       "recipeReady": "Grub's ready",
       "recipeReadyMessage": "Ya recipe's been whipped up.",
       "trainingPlanReady": "Workout's ready",
-      "trainingPlanReadyMessage": "Ya workout plan is good to go."
+      "trainingPlanReadyMessage": "Ya workout plan is good to go.",
+      "feedback": {
+        "title": "New Feedback, kid",
+        "success": "New feedback on a recipe just rolled in, khed."
+      }
     },
     "start": "Off we go",
     "generate": "Whip it up",
@@ -398,7 +402,24 @@
     "aiCacheSaved": "Cached AI hits",
     "stickiness": "Stickiness",
     "unreadFeedback": "Needs lookin' at",
-    "stickinessHint": "Daily/Monthly ratio. Higher than 20% is wicked habit-formin'."
+    "stickinessHint": "Daily/Monthly ratio. Higher than 20% is wicked habit-formin'.",
+    "feedback": {
+      "title": "Feedback Management",
+      "noFeedback": "Ain't no feedback heah, chief.",
+      "user": "Regulah Guy",
+      "recipe": "Food Setup",
+      "content": "Stuff inside",
+      "date": "When it happened",
+      "markAsRead": "Say I read it",
+      "markAsUnread": "Say I didn't see it",
+      "delete": "Chuck it",
+      "edit": "Mess with it",
+      "save": "Keep it",
+      "cancel": "Forgit it",
+      "confirmDelete": "You wicked some? You really wanna chuck this feedback?",
+      "deleteSuccess": "Feedback's in the hähbah.",
+      "updateSuccess": "Fixed it up wicked good."
+    }
   },
   "adminTools": {
     "title": "Admin Stuff",

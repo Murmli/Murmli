@@ -96,7 +96,11 @@
       "recipeReady": "Recipe's done!",
       "recipeReadyMessage": "Your recipe's been cooked up.",
       "trainingPlanReady": "Trainin' plan's all done, sugar",
-      "trainingPlanReadyMessage": "Your new trainin' plan's been cooked up just for you."
+      "trainingPlanReadyMessage": "Your new trainin' plan's been cooked up just for you.",
+      "feedback": {
+        "title": "New Lil' Message",
+        "success": "Well looky here, some new feedback just rolled in 'bout a recipe."
+      }
     },
     "start": "Let's git",
     "generate": "Make it happen",
@@ -398,7 +402,24 @@
     "usersLast90Days": "Brand new folks (90 days)",
     "aiCacheSaved": "AI questions we didn't have to ask twice",
     "stickiness": "How much folks are stickin' around",
-    "stickinessHint": "The way we see how many folks come back every day compared to every month. If it's over 20%, they're makin' a real good habit of it."
+    "stickinessHint": "The way we see how many folks come back every day compared to every month. If it's over 20%, they're makin' a real good habit of it.",
+    "feedback": {
+      "title": "Tending to the Feedback",
+      "noFeedback": "Ain't no feedback here right now, sugar.",
+      "user": "Folks",
+      "recipe": "Recipe",
+      "content": "What's inside",
+      "date": "Date",
+      "markAsRead": "Mark as read, honey",
+      "markAsUnread": "Mark as unread",
+      "delete": "Get rid of it",
+      "edit": "Fix it up a bit",
+      "save": "Keep it safe",
+      "cancel": "Never mind",
+      "confirmDelete": "Are you sure 'nough you wanna toss this feedback away?",
+      "deleteSuccess": "Feedback's all gone now.",
+      "updateSuccess": "Feedback's all fixed up and updated."
+    }
   },
   "adminTools": {
     "title": "Admin Tools",

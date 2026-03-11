@@ -96,7 +96,11 @@
       "recipeReady": "Recipe ready",
       "recipeReadyMessage": "Your recipe has been created.",
       "trainingPlanReady": "Training plan ready",
-      "trainingPlanReadyMessage": "Your training plan has been created."
+      "trainingPlanReadyMessage": "Your training plan has been created.",
+      "feedback": {
+        "title": "New Feedback",
+        "success": "New feedback has been received for a recipe."
+      }
     },
     "start": "Let's go",
     "generate": "Generate",
@@ -398,7 +402,24 @@
     "aiCacheSaved": "AI requests saved (cache)",
     "stickiness": "User stickiness",
     "unreadFeedback": "Unread feedback",
-    "stickinessHint": "Ratio of daily to monthly users. A high value (>20%) indicates strong habit formation."
+    "stickinessHint": "Ratio of daily to monthly users. A high value (>20%) indicates strong habit formation.",
+    "feedback": {
+      "title": "Feedback Management",
+      "noFeedback": "No feedback available.",
+      "user": "User",
+      "recipe": "Recipe",
+      "content": "Content",
+      "date": "Date",
+      "markAsRead": "Mark as read",
+      "markAsUnread": "Mark as unread",
+      "delete": "Delete",
+      "edit": "Edit",
+      "save": "Save",
+      "cancel": "Cancel",
+      "confirmDelete": "Are you sure you want to delete this feedback?",
+      "deleteSuccess": "Feedback deleted.",
+      "updateSuccess": "Feedback updated."
+    }
   },
   "adminTools": {
     "title": "Admin Tools",

@@ -96,7 +96,11 @@
       "recipeReady": "Rezept isch fertig",
       "recipeReadyMessage": "Dei Rezept isch jetzt fertig b'schriebe.",
       "trainingPlanReady": "Sportplan isch fertig",
-      "trainingPlanReadyMessage": "Dei Sportplan isch fertig baschtelt."
+      "trainingPlanReadyMessage": "Dei Sportplan isch fertig baschtelt.",
+      "feedback": {
+        "title": "Neies Feedback",
+        "success": "S'isch a neie Rückmeldung zu am Rezept neikumma."
+      }
     },
     "start": "Jetzt goht's los",
     "generate": "Macha lasse",
@@ -398,7 +402,24 @@
     "aiCacheSaved": "G'sparte AI-Frage",
     "stickiness": "Nutzer-Bindong",
     "unreadFeedback": "Ung'lesenes Feedback",
-    "stickinessHint": "Wie oft d'Leit wiederkommet. Wenn's über 20% isch, dann isch des scho ordentlich."
+    "stickinessHint": "Wie oft d'Leit wiederkommet. Wenn's über 20% isch, dann isch des scho ordentlich.",
+    "feedback": {
+      "title": "Feedback-Verwaldung",
+      "noFeedback": "Koi Feedback omms Verregge do.",
+      "user": "Benidzer",
+      "recipe": "Rezeptle",
+      "content": "Inhalt",
+      "date": "Datum",
+      "markAsRead": "Als glese markiera",
+      "markAsUnread": "Wieder auf oglese setza",
+      "delete": "Löscha",
+      "edit": "Bearbeida",
+      "save": "Schbeichere",
+      "cancel": "Abbrecha",
+      "confirmDelete": "Bisch dir sicher, dass des Feedback weghaue wit?",
+      "deleteSuccess": "Feedback isch jetzt weg.",
+      "updateSuccess": "Feedback isch aktualisiert worra."
+    }
   },
   "adminTools": {
     "title": "Admin-Werkzaig",

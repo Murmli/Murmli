@@ -96,7 +96,11 @@
       "recipeReady": "Rezäpt fertig",
       "recipeReadyMessage": "Dis Rezäpt isch erstellt worde.",
       "trainingPlanReady": "Trainingsplan fertig",
-      "trainingPlanReadyMessage": "Din Trainingsplan isch erstellt worde."
+      "trainingPlanReadyMessage": "Din Trainingsplan isch erstellt worde.",
+      "feedback": {
+        "title": "Neus Feedback",
+        "success": "Äs isch es neus Feedback zu me Rezept yygange."
+      }
     },
     "start": "Los gaht's",
     "generate": "Generiere",
@@ -398,7 +402,24 @@
     "aiCacheSaved": "Gschparti KI-Aafroge (Cache)",
     "stickiness": "Benutzer-Bindig (Stickiness)",
     "unreadFeedback": "Uugläses Feedback",
-    "stickinessHint": "Verhältnis vo tägliche zu monatliche Benutzer. En hoche Wärt (>20%) zeigt e starchi Gwöhnig."
+    "stickinessHint": "Verhältnis vo tägliche zu monatliche Benutzer. En hoche Wärt (>20%) zeigt e starchi Gwöhnig.",
+    "feedback": {
+      "title": "Feedback-Verwaltig",
+      "noFeedback": "Es git keis Feedback.",
+      "user": "Benutzer",
+      "recipe": "Rezept",
+      "content": "Inhalt",
+      "date": "Datum",
+      "markAsRead": "Als gläse markiere",
+      "markAsUnread": "Als ungliäse markiere",
+      "delete": "Lösche",
+      "edit": "Bearbeite",
+      "save": "Spychere",
+      "cancel": "Abbräche",
+      "confirmDelete": "Bisch sicher, das de das Feedback lösche wotsch?",
+      "deleteSuccess": "Feedback glöscht.",
+      "updateSuccess": "Feedback aktualisiert."
+    }
   },
   "adminTools": {
     "title": "Admin-Wärchzüüg",
