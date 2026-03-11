@@ -138,7 +138,8 @@
     "days": "Days",
     "week": "Week",
     "selectPhoto": "Pick a pitcha",
-    "capturePhoto": "Snap it"
+    "capturePhoto": "Snap it",
+    "retry": "Give it anotha go, kehd"
   },
   "shoppingList": {
     "newItemLabel": "New Stuff",

@@ -138,7 +138,8 @@
     "days": "दिन",
     "week": "सप्ताह",
     "selectPhoto": "फोटो चुनें",
-    "capturePhoto": "कैमरा"
+    "capturePhoto": "कैमरा",
+    "retry": "पुनः प्रयास करें"
   },
   "shoppingList": {
     "newItemLabel": "नई वस्तु",

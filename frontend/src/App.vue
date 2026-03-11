@@ -2,15 +2,32 @@
   <v-app>
     <v-main>
       <ApiErrorComponent />
-      <!-- Show content even if session is not ready, but show error if failed -->
-      <router-view v-if="sessionReady || sessionError" />
-      <BottomNavigation v-if="sessionReady || sessionError" />
-      <ConfirmDialog />
-      <NotificationDialog />
+      
+      <!-- Show error screen if session failed -->
+      <v-container v-if="sessionError && !sessionReady" class="fill-height">
+        <v-row justify="center" align="center">
+          <v-col cols="12" sm="8" md="6" class="text-center">
+            <v-icon color="error" size="64" class="mb-4">mdi-alert-circle-outline</v-icon>
+            <h1 class="text-h5 mb-2">{{ languageStore.t('general.error') }}</h1>
+            <p class="mb-6">{{ languageStore.t('general.errorMessage') }}</p>
+            <v-btn color="primary" @click="retrySession">
+              {{ languageStore.t('general.confirm') || 'Retry' }}
+            </v-btn>
+          </v-col>
+        </v-row>
+      </v-container>
+
+      <!-- Show content only if session is ready -->
+      <template v-else-if="sessionReady">
+        <router-view />
+        <BottomNavigation />
+        <ConfirmDialog />
+        <NotificationDialog />
+      </template>
       
       <!-- Show loading indicator while initializing -->
       <v-overlay
-        v-if="!sessionReady && !sessionError"
+        v-else
         class="align-center justify-center"
         persistent
         :model-value="true"
@@ -43,23 +60,31 @@ const sessionError = ref(false);
 const MIN_RECIPE_SUGGESTIONS =
   parseInt(import.meta.env.VITE_MIN_RECIPE_SUGGESTIONS) || 5;
 
-onMounted(async () => {
+const initApp = async () => {
+  sessionReady.value = false;
+  sessionError.value = false;
+
   const ensureSession = async () => {
-    if (apiStore.token) {
-      const loginResult = await apiStore.login();
-      if (loginResult.success) {
-        return true;
-      }
+    try {
+      if (apiStore.token) {
+        const loginResult = await apiStore.login();
+        if (loginResult.success) {
+          return true;
+        }
 
-      if (loginResult.invalidSession) {
-        localStorage.clear();
-        userStore.setStartpage('/');
-        return await apiStore.createSession();
-      }
+        if (loginResult.invalidSession) {
+          localStorage.clear();
+          userStore.setStartpage('/');
+          return await apiStore.createSession();
+        }
 
+        return false;
+      }
+      return await apiStore.createSession();
+    } catch (e) {
+      console.error('ensureSession failed:', e);
       return false;
     }
-    return await apiStore.createSession();
   };
 
   try {
@@ -68,25 +93,32 @@ onMounted(async () => {
       languageStore.initLocale(),
     ]);
 
+    if (!sessionEstablished) {
+      sessionError.value = true;
+      return;
+    }
+
     sessionReady.value = true;
 
     // Initialize notification polling after session is established
-    if (sessionEstablished) {
-      notificationStore.initialize();
-    }
+    notificationStore.initialize();
 
     // Fetch suggestions in the background to avoid blocking initial render
-    if (
-      sessionEstablished &&
-      plannerStore.recipeSuggestions.length < MIN_RECIPE_SUGGESTIONS
-    ) {
+    if (plannerStore.recipeSuggestions.length < MIN_RECIPE_SUGGESTIONS) {
       plannerStore.fetchRecipeSuggestions(false);
     }
   } catch (error) {
     console.error('Session initialization failed:', error);
     sessionError.value = true;
-    sessionReady.value = true; // Show UI even on error
   }
+};
+
+const retrySession = () => {
+  initApp();
+};
+
+onMounted(() => {
+  initApp();
 });
 </script>
 

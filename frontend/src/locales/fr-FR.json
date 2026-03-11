@@ -138,7 +138,8 @@
     "days": "jours",
     "week": "Semaine",
     "selectPhoto": "Sélectionner une photo",
-    "capturePhoto": "Appareil photo"
+    "capturePhoto": "Appareil photo",
+    "retry": "Réessayer"
   },
   "shoppingList": {
     "newItemLabel": "Nouvel article",

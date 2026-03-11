@@ -92,6 +92,7 @@
     "report": "Melden",
     "confirm": "Bestätigen",
     "ok": "OK",
+    "retry": "Wiederholen",
     "notifications": {
       "recipeReady": "Rezept fertig",
       "recipeReadyMessage": "Dein Rezept wurde erstellt.",

@@ -34,7 +34,7 @@
     </v-bottom-sheet>
 
     <!-- New bottom navigation that mirrors the routes from the old list -->
-    <v-bottom-navigation v-model="current" grow height="60" class="px-7 app-bottom-navigation">
+    <v-bottom-navigation v-model="current" grow min-height="60" height="auto" class="px-7 app-bottom-navigation">
         <template v-for="item in items" :key="item.value">
             <v-btn :value="item.value" variant="text" :aria-label="item.label"
                 :aria-current="current === item.value ? 'page' : undefined">
@@ -147,10 +147,19 @@ watch(hasBottomMenuItems, value => {
     padding-bottom: max(env(safe-area-inset-bottom, 0px), constant(safe-area-inset-bottom, 0px));
 }
 
-/* Fallback for older devices without safe-area support */
+/* Fallback for older devices without safe-area support or when it returns 0 on Android */
 @supports not (padding-bottom: env(safe-area-inset-bottom)) {
     .app-bottom-navigation {
-        padding-bottom: 16px;
+        padding-bottom: 24px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .app-bottom-navigation {
+        /* Ensure some minimum padding on mobile even if env is 0 
+           This is a safety margin for Android 3-button navigation 
+           if the app is drawn behind it but env() is 0. */
+        padding-bottom: calc(max(env(safe-area-inset-bottom, 0px), 24px));
     }
 }
 </style>

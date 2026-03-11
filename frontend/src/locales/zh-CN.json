@@ -138,7 +138,8 @@
     "days": "天",
     "week": "周",
     "selectPhoto": "选择照片",
-    "capturePhoto": "拍照"
+    "capturePhoto": "拍照",
+    "retry": "重试"
   },
   "shoppingList": {
     "newItemLabel": "新项目",

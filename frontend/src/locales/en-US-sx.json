@@ -138,7 +138,8 @@
     "days": "Days",
     "week": "Week",
     "selectPhoto": "Pick a picture",
-    "capturePhoto": "Take a photo"
+    "capturePhoto": "Take a photo",
+    "retry": "Give it another go"
   },
   "shoppingList": {
     "newItemLabel": "New stuff",

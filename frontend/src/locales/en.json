@@ -138,7 +138,8 @@
     "days": "Days",
     "week": "Week",
     "selectPhoto": "Select Photo",
-    "capturePhoto": "Camera"
+    "capturePhoto": "Camera",
+    "retry": "Retry"
   },
   "shoppingList": {
     "newItemLabel": "New Item",

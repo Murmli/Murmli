@@ -138,7 +138,8 @@
     "days": "Toog",
     "week": "Wochn",
     "selectPhoto": "Foto aussuachn",
-    "capturePhoto": "Kamera"
+    "capturePhoto": "Kamera",
+    "retry": "No amoi probiern"
   },
   "shoppingList": {
     "newItemLabel": "Neicher Artikl",

@@ -138,7 +138,8 @@
     "days": "Tage",
     "week": "Woche",
     "selectPhoto": "Bildle aussuacha",
-    "capturePhoto": "Foddokischte"
+    "capturePhoto": "Foddokischte",
+    "retry": "Nochmal probiera"
   },
   "shoppingList": {
     "newItemLabel": "Neier Artikel",

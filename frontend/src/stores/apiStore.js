@@ -25,6 +25,13 @@ export const useApiStore = defineStore("apiStore", {
 
   actions: {
     async apiRequest(method, url, data = null, setLoading = true, options = {}) {
+      // Prevent requests to protected routes if no token is present
+      const isPublicRoute = url === "/session/create" || url.startsWith("/recipe/public/");
+      if (!this.token && !isPublicRoute) {
+        // console.warn(`[ApiStore] Request to ${url} blocked: No token available.`);
+        return false;
+      }
+
       if (setLoading) {
         this.loadingCount++;
       }
