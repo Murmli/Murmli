@@ -28,19 +28,22 @@ const languageStore = useLanguageStore();
 const getTitle = () => {
   const msg = notificationStore.currentMessage;
   if (!msg) return '';
-  if (msg.title.startsWith('recipeReady') || msg.title.startsWith('trainingPlanReady')) {
-    return languageStore.t(`general.notifications.${msg.title}`);
+  const translated = languageStore.t(`general.notifications.${msg.title}`);
+  // If translation returns the key itself, it might not exist in notifications
+  if (translated === `general.notifications.${msg.title}`) {
+    return languageStore.t(msg.title);
   }
-  return msg.title;
+  return translated;
 };
 
 const getMessage = () => {
   const msg = notificationStore.currentMessage;
   if (!msg) return '';
-  if (msg.message.startsWith('recipeReady') || msg.message.startsWith('trainingPlanReady')) {
-    return languageStore.t(`general.notifications.${msg.message}`);
+  const translated = languageStore.t(`general.notifications.${msg.message}`);
+  if (translated === `general.notifications.${msg.message}`) {
+    return languageStore.t(msg.message);
   }
-  return msg.message;
+  return translated;
 };
 
 const handleClose = () => {

@@ -528,6 +528,29 @@ exports.createFeedback = async (req, res) => {
     const savedFeedback = await feedback.save();
 
     if (savedFeedback) {
+      // Notify all administrators about new feedback
+      try {
+        const User = require("../models/userModel.js");
+        const Message = require("../models/messageModel.js");
+        const admins = await User.find({ role: "administrator" }, "_id");
+        
+        if (admins.length > 0) {
+          const messagePromises = admins.map((admin) =>
+            Message.create({
+              userId: admin._id,
+              type: "system_message",
+              title: "feedback.title",
+              message: "feedback.success",
+              data: { feedbackId: savedFeedback._id, recipeId }
+            })
+          );
+          await Promise.all(messagePromises);
+        }
+      } catch (notifyError) {
+        console.error("Error notifying admins about feedback:", notifyError.message);
+        // Don't fail the request if notification fails
+      }
+
       return res.status(201).json(savedFeedback);
     } else {
       return res.status(400).json({ error: "Failed to create feedback" });

@@ -371,6 +371,71 @@ router.delete('/llm/cache', secretKeyMiddleware, sessionMiddleware, systemContro
 router.get('/stats', sessionMiddleware, systemController.getStatistics);
 
 /**
+ * @swagger
+ * /api/v2/system/feedback:
+ *   get:
+ *     summary: Get all feedbacks
+ *     description: Returns a list of all feedbacks with populated user and recipe info. Administrator only.
+ *     tags:
+ *       - System
+ *     responses:
+ *       200:
+ *         description: List of feedbacks
+ *       403:
+ *         description: Forbidden
+ */
+router.get('/feedback', sessionMiddleware, systemController.getFeedbacks);
+
+/**
+ * @swagger
+ * /api/v2/system/feedback/{id}:
+ *   patch:
+ *     summary: Update feedback
+ *     description: Updates a feedback entry (e.g. mark as read). Administrator only.
+ *     tags:
+ *       - System
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Updated feedback
+ *       403:
+ *         description: Forbidden
+ *       404:
+ *         description: Not found
+ */
+router.patch('/feedback/:id', sessionMiddleware, systemController.updateFeedback);
+
+/**
+ * @swagger
+ * /api/v2/system/feedback/{id}:
+ *   delete:
+ *     summary: Delete feedback
+ *     description: Deletes a feedback entry. Administrator only.
+ *     tags:
+ *       - System
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Deleted
+ *       403:
+ *         description: Forbidden
+ *       404:
+ *         description: Not found
+ */
+router.delete('/feedback/:id', sessionMiddleware, systemController.deleteFeedback);
+
+
+/**
  * components:
  *   responses:
  *     BadRequest:

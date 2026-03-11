@@ -8,7 +8,7 @@ const feedbackSchema = new Schema(
     },
     recipe: {
       type: Schema.Types.ObjectId,
-      ref: "recipes",
+      ref: "Recipe",
     },
     user: {
       type: Schema.Types.ObjectId,

@@ -223,6 +223,7 @@
                     class="d-flex align-center pa-4 rounded-lg h-100 cursor-pointer transition-swing" 
                     :class="stats.unreadFeedback > 0 ? 'bg-orange-lighten-5' : 'bg-grey-lighten-4'"
                     v-ripple
+                    @click="showFeedbackDialog = true"
                  >
                    <v-badge 
                       :content="stats.unreadFeedback" 
@@ -321,6 +322,12 @@
            </v-expansion-panels>
        </v-col>
     </v-row>
+
+    <!-- Feedback Dialog -->
+    <AdminFeedbackDialog 
+      v-model="showFeedbackDialog" 
+      @refresh-stats="fetchStats"
+    />
   </div>
 </template>
 
@@ -328,11 +335,13 @@
 import { ref, onMounted } from 'vue';
 import { useApiStore } from '@/stores/apiStore';
 import { useLanguageStore } from '@/stores/languageStore';
+import AdminFeedbackDialog from './AdminFeedbackDialog.vue';
 
 const apiStore = useApiStore();
 const languageStore = useLanguageStore();
 
 const stats = ref({});
+const showFeedbackDialog = ref(false);
 
 const formatDiff = (val) => {
   if (val > 0) return `+${val}`;
@@ -357,13 +366,18 @@ const diffIcon = (val) => {
     return 'mdi-minus';
 }
 
-onMounted(async () => {
+const fetchStats = async () => {
   const response = await apiStore.apiRequest('get', '/system/stats');
   if (response && response.status === 200) {
     stats.value = response.data;
   }
+};
+
+onMounted(async () => {
+  await fetchStats();
 });
 </script>
+
 
 <style scoped>
 .stat-item {

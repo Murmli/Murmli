@@ -1,4 +1,6 @@
 const Recipe = require("../models/recipeModel.js");
+const User = require("../models/userModel.js");
+const Feedback = require("../models/feedbackModel.js");
 const UserRecipe = require("../models/userRecipeModel.js");
 const mongoose = require("mongoose");
 const { createRecipe } = require("../utils/recipeUtils.js");
@@ -501,3 +503,70 @@ exports.getStatistics = async (req, res) => {
     return res.status(500).json({ error: "Server Error" });
   }
 };
+
+exports.getFeedbacks = async (req, res) => {
+  try {
+    if (req.user.role !== "administrator") {
+      return res.status(403).json({ message: "Forbidden" });
+    }
+
+    const Feedback = require("../models/feedbackModel.js");
+    const feedbacks = await Feedback.find({})
+      .populate("user", "username email")
+      .populate("recipe", "title")
+      .sort({ createdAt: -1 });
+
+    return res.status(200).json({ feedbacks });
+  } catch (error) {
+    console.error("Error fetching feedbacks:", error.message);
+    return res.status(500).json({ error: "Server Error" });
+  }
+};
+
+exports.updateFeedback = async (req, res) => {
+  try {
+    if (req.user.role !== "administrator") {
+      return res.status(403).json({ message: "Forbidden" });
+    }
+
+    const Feedback = require("../models/feedbackModel.js");
+    const { id } = req.params;
+    const updateData = req.body;
+
+    const feedback = await Feedback.findByIdAndUpdate(id, updateData, { new: true })
+      .populate("user", "username email")
+      .populate("recipe", "title");
+
+    if (!feedback) {
+      return res.status(404).json({ error: "Feedback not found" });
+    }
+
+    return res.status(200).json({ feedback });
+  } catch (error) {
+    console.error("Error updating feedback:", error.message);
+    return res.status(500).json({ error: "Server Error" });
+  }
+};
+
+exports.deleteFeedback = async (req, res) => {
+  try {
+    if (req.user.role !== "administrator") {
+      return res.status(403).json({ message: "Forbidden" });
+    }
+
+    const Feedback = require("../models/feedbackModel.js");
+    const { id } = req.params;
+
+    const feedback = await Feedback.findByIdAndDelete(id);
+
+    if (!feedback) {
+      return res.status(404).json({ error: "Feedback not found" });
+    }
+
+    return res.status(200).json({ message: "Feedback deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting feedback:", error.message);
+    return res.status(500).json({ error: "Server Error" });
+  }
+};
+

@@ -11,6 +11,7 @@ declare module 'vue' {
     ActualTrainingPlans: typeof import('./src/components/trainingsPlans/ActualTrainingPlans.vue')['default']
     AddItemComponent: typeof import('./src/components/shoppingList/AddItemComponent.vue')['default']
     AddRecipeDialog: typeof import('./src/components/recipe/dialogs/AddRecipeDialog.vue')['default']
+    AdminFeedbackDialog: typeof import('./src/components/general/AdminFeedbackDialog.vue')['default']
     AdminStats: typeof import('./src/components/general/AdminStats.vue')['default']
     AdminTools: typeof import('./src/components/general/AdminTools.vue')['default']
     ApiErrorComponent: typeof import('./src/components/general/ApiErrorComponent.vue')['default']

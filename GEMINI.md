@@ -68,6 +68,7 @@ npm run apprun
 
 ## Konventionen & Richtlinien
 
+- **Mobile-First (Exklusiv):** Da Murmli primär als mobile App (Capacitor) genutzt wird, muss das Frontend **ausnahmslos für mobile Endgeräte optimiert** sein. UI-Komponenten müssen auf kleinen Bildschirmen gut lesbar, touch-freundlich und performant sein. Desktop-Optimierungen sind zweitrangig.
 - **Sprache:** Code und Kommentare sind auf Englisch. Die Benutzeroberfläche unterstützt Mehrsprachigkeit (Locales in `frontend/src/locales`).
 - **Sicherheit:** 
     - Secrets gehören in `.env`-Dateien (siehe `README.md` für erforderliche Variablen).

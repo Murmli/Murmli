@@ -97,7 +97,11 @@
       "recipeReady": "Rezept fertig",
       "recipeReadyMessage": "Dein Rezept wurde erstellt.",
       "trainingPlanReady": "Trainingsplan fertig",
-      "trainingPlanReadyMessage": "Dein Trainingsplan wurde erstellt."
+      "trainingPlanReadyMessage": "Dein Trainingsplan wurde erstellt.",
+      "feedback": {
+        "title": "Neues Feedback",
+        "success": "Es ist neues Feedback zu einem Rezept eingegangen."
+      }
     },
     "start": "Los geht's",
     "generate": "Generieren",
@@ -398,7 +402,24 @@
     "aiCacheSaved": "Gesparte AI-Anfragen (Cache)",
     "stickiness": "Nutzer-Bindung (Stickiness)",
     "unreadFeedback": "Ungelesenes Feedback",
-    "stickinessHint": "Verhältnis von täglichen zu monatlichen Nutzern. Ein hoher Wert (>20%) zeigt eine starke Gewohnheitsbildung."
+    "stickinessHint": "Verhältnis von täglichen zu monatlichen Nutzern. Ein hoher Wert (>20%) zeigt eine starke Gewohnheitsbildung.",
+    "feedback": {
+      "title": "Feedback Management",
+      "noFeedback": "Kein Feedback vorhanden.",
+      "user": "Benutzer",
+      "recipe": "Rezept",
+      "content": "Inhalt",
+      "date": "Datum",
+      "markAsRead": "Als gelesen markieren",
+      "markAsUnread": "Als ungelesen markieren",
+      "delete": "Löschen",
+      "edit": "Bearbeiten",
+      "save": "Speichern",
+      "cancel": "Abbrechen",
+      "confirmDelete": "Sicher, dass du dieses Feedback löschen möchtest?",
+      "deleteSuccess": "Feedback gelöscht.",
+      "updateSuccess": "Feedback aktualisiert."
+    }
   },
   "adminTools": {
     "title": "Admin-Tools",
