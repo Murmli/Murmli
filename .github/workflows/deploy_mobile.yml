@@ -46,8 +46,8 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_TRANSLATION_MODEL: ${{ secrets.OPENAI_TRANSLATION_MODEL }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_MODEL: ${{ secrets.OPENROUTER_MODEL }}
           VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
           VITE_HEADER_SECRET_KEY: ${{ secrets.VITE_HEADER_SECRET_KEY }}
           VITE_MIN_RECIPE_SUGGESTIONS: ${{ secrets.VITE_MIN_RECIPE_SUGGESTIONS }}
