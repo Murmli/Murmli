@@ -49,7 +49,12 @@ export const useLanguageStore = defineStore("language", () => {
     { text: "France", value: "fr-FR" },
     { text: "हिन्दी", value: "hi-IN" },
     { text: "中文", value: "zh-CN" },
-    { text: "Türkçe", value: "tr-TR" }
+    { text: "Türkçe", value: "tr-TR" },
+    { text: "Italiano", value: "it-IT" },
+    { text: "Español", value: "es-ES" },
+    { text: "Polski", value: "pl-PL" },
+    { text: "Čeština", value: "cs-CZ" },
+    { text: "Slovenščina", value: "sl-SI" }
   ];
 
   const timezones = [

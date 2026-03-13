@@ -1,0 +1,717 @@
+{
+  "greeting": "Ahoj",
+  "goodbye": "Na shledanou",
+  "help": {
+    "shoppinglist": {
+      "languagePrompt": "Nejprve si prosím zvolte jazyk a požadovanou úvodní stránku, abyste mohli pokračovat s Murmli.",
+      "languageTitle": "Výběr jazyka",
+      "selectLanguage": "Vybrat jazyk",
+      "welcome": "Vítejte v Murmli, vaší chytré aplikaci pro recepty, nakupování a výživu.\n\n Tato aplikace využívá AI k usnadnění překladů, interpretací a výběru receptů. Můžete si dokonce vytvářet vlastní recepty a přenášet je přímo do nákupního seznamu, aby byl váš každodenní život efektivnější.",
+      "welcomeTitle": "Vítejte",
+      "quickGuide": "Jednoduše zadejte do vstupního pole, co potřebujete, a Murmli to pomocí AI přidá do nákupního seznamu.\n\n Všechny položky jsou tříděny přímo podle kategorií v supermarketu, abyste je snáze našli.\n\n Jakmile jsou položky přidány, můžete na ně kliknout a najít alternativy.",
+      "quickGuideTitle": "Stručný návod",
+      "options": "Další možnosti, jako je sdílení nebo třídění seznamu, najdete v menu (vpravo nahoře). Seznam můžete sdílet například s partnerem a pracovat na něm společně. Sdílení můžete kdykoli zrušit.",
+      "optionsTitle": "Možnosti",
+      "start": "Jdeme na to!"
+    },
+    "planner": {
+      "welcomeTitle": "Plánovač receptů",
+      "welcome": "Níže určete, pro kolik osob a kolik receptů chcete plánovat. Do textového pole můžete navíc zadat svá přání přirozeným jazykem, AI je při výběru receptů automaticky zohlední (např. vegetariánské pro sportovce).",
+      "optionsTitle": "Výběr receptů",
+      "options": "Nyní se vám zobrazí recepty. \nDejte palec nahoru, pokud se vám recept líbí, nebo palec dolů, pokud ne. \n\nSystém se učí z vašich rozhodnutí, aby mohl dávat lepší návrhy.",
+      "shoppinglistTitle": "Nákupní seznam a recepty",
+      "shoppinglist": "Jakmile vyberete požadovaný počet receptů, automaticky se dostanete do nákupního seznamu. Ten obsahuje všechny ingredience pro dané recepty. \n\n Pod položkou 'Recepty' najdete své vybrané recepty včetně návodů. Tam můžete recepty hodnotit a dávat zpětnou vazbu.",
+      "openFilter": "Otevřít filtr"
+    },
+    "recipes": {
+      "overview": "Zde je přehled receptů, které patří k vašemu nákupnímu seznamu, vašich vlastních receptů a vašich oblíbených. Odtud je můžete vyvolat.",
+      "create": "Pomocí symbolu plus vpravo nahoře máte možnost vytvářet vlastní recepty. Zadejte svůj nápad, AI jej vygeneruje a vy můžete nahrát i fotku ingrediencí.",
+      "addToList": "Pokud chcete přidat některý ze svých receptů nebo oblíbených receptů do nákupního seznamu, vyvolejte recept a přidejte jej přes menu (tři tečky) vpravo nahoře.",
+      "overviewTitle": "Přehled receptů",
+      "createTitle": "Vytvořit recepty",
+      "addToListTitle": "Recepty do nákupního seznamu"
+    },
+    "tracker": {
+      "overviewTitle": "Záznam jídel",
+      "overview": "Jednoduše zapište, co jste jedli. \n\nMůžete vše popsat přirozeným jazykem, jako například „talíř těstovin“, uvést konkrétní produkty nebo přesné údaje o kaloriích – přesně tak, jak chcete.",
+      "calorieGoalTitle": "Váš kalorický cíl",
+      "calorieGoal": "Definujte si svůj denní kalorický cíl sami, nebo jej nechte automaticky vypočítat námi. \n\nK tomu stačí jednorázově zadat vaše tělesné údaje – zbytek uděláme za vás.",
+      "activityTrackingTitle": "Záznam aktivit",
+      "activityTracking": "Kromě toho zaznamenávejte své sportovní aktivity, jako např. „20 minut běhu“. Z toho automaticky vypočítáme, kolik kalorií můžete navíc přijmout – zcela individuálně pro vás."
+    },
+    "setup": {
+      "aboutAppTitle": "O této aplikaci",
+      "aboutApp": "Tato aplikace byla vyvinuta soukromě, aby zjednodušila život s nákupním seznamem a inteligentním plánováním receptů."
+    }
+  },
+  "helpPage": {
+    "title": "Nápověda a videonávody",
+    "intro": "Zde najdete sbírku krátkých videí, která vám ukážou nejdůležitější funkce Murmli. Můžete si je kdykoli prohlédnout v aplikaci, otevřít na YouTube nebo přehrát zvětšené přímo v aplikaci.",
+    "openHelpCenter": "Otevřít centrum nápovědy",
+    "sections": {
+      "overview": {
+        "title": "Přehled",
+        "description": "Rychlý přehled o Murmli a všech hlavních oblastech aplikace."
+      },
+      "firstStart": {
+        "title": "První spuštění aplikace",
+        "description": "Jak Murmli nastavit při prvním startu a hned se v ní zorientovat."
+      },
+      "shoppingList": {
+        "title": "Nákupní seznam",
+        "description": "Tipy a triky pro chytrý nákupní seznam a také pro přidávání, třídění a sdílení."
+      },
+      "planner": {
+        "title": "Plánovač",
+        "description": "Naučte se plánovat recepty, zadávat přání a využívat automatické návrhy."
+      },
+      "calorieCounter": {
+        "title": "Počítadlo kalorií",
+        "description": "Jak mít pod kontrolou svou výživu a aktivity pomocí počítadla kalorií."
+      },
+      "training": {
+        "title": "Tréninkové plány a deník",
+        "description": "Vytvářejte tréninkové plány, dokumentujte své jednotky a sledujte svůj pokrok."
+      },
+      "settings": {
+        "title": "Nastavení a závěr",
+        "description": "Vše o nastavení a závěrečný výhled do budoucna."
+      }
+    }
+  },
+  "general": {
+    "next": "Dále",
+    "back": "Zpět",
+    "error": "Chyba",
+    "errorMessage": "Došlo k chybě. Zkuste to prosím znovu za chvíli nebo nám tuto chybu nahlaste.",
+    "loading": "Načítání..",
+    "close": "Zavřít",
+    "save": "Uložit",
+    "send": "Odeslat",
+    "cancel": "Zrušit",
+    "report": "Nahlásit",
+    "confirm": "Potvrdit",
+    "ok": "OK",
+    "retry": "Opakovat",
+    "notifications": {
+      "recipeReady": "Recept je hotový",
+      "recipeReadyMessage": "Váš recept byl vytvořen.",
+      "trainingPlanReady": "Tréninkový plán je hotový",
+      "trainingPlanReadyMessage": "Váš tréninkový plán byl vytvořen.",
+      "feedback": {
+        "title": "Nová zpětná vazba",
+        "success": "Byla přijata nová zpětná vazba k receptu."
+      }
+    },
+    "start": "Začít",
+    "generate": "Generovat",
+    "deleteRecipeDialog": {
+      "text": "Odstranit recept",
+      "dialogMsg": "Opravdu chcete vybraný recept odstranit?"
+    },
+    "information": "Informace",
+    "ask": "Zeptat se",
+    "help": "Nápověda",
+    "selected": "Vybráno",
+    "discard": "Zahodit",
+    "resume": "Pokračovat",
+    "voiceRecording": "Audio záznam",
+    "voiceDialogInfo": "Právě probíhá hlasový záznam. Můžete jej kdykoli zahodit. Pokud jej odešlete, bude automaticky dále zpracován.",
+    "details": "Detaily",
+    "name": "Jméno",
+    "goal": "Cíl",
+    "type": "Typ",
+    "difficulty": "Náročnost",
+    "weekdays": {
+      "1": "Pondělí",
+      "2": "Úterý",
+      "3": "Středa",
+      "4": "Čtvrtek",
+      "5": "Pátek",
+      "6": "Sobota",
+      "7": "Neděle"
+    },
+    "edit": "Upravit",
+    "delete": "Smazat",
+    "activate": "Aktivovat",
+    "archive": "Archiv",
+    "finish": "Ukončit",
+    "weeks": "Týdny",
+    "progress": "Pokrok",
+    "instructions": "Návod",
+    "day": "Den",
+    "days": "Dny",
+    "week": "Týden",
+    "selectPhoto": "Vybrat foto",
+    "capturePhoto": "Fotoaparát"
+  },
+  "shoppingList": {
+    "newItemLabel": "Nová položka",
+    "newItemPlaceholder": "Zadejte název položky",
+    "notesLabel": "Poznámky",
+    "notesHint": "Vaše poznámky se ukládají automaticky",
+    "noItemsMessage": "V nákupním seznamu nejsou žádné položky.",
+    "checkedHeader": "Odškrtnuto",
+    "nameLabel": "Jméno",
+    "amountLabel": "Množství",
+    "unitLabel": "Jednotka",
+    "findAlternative": "Najít alternativu",
+    "editItem": "Změnit položku",
+    "showRecipe": "Zobrazit recept",
+    "saveAsFavorite": "Přidat k oblíbeným",
+    "removeFavorite": "Odebrat z oblíbených",
+    "shoppingListLabel": "Nákupní seznam",
+    "sortList": "Třídění",
+    "help": "Nápověda",
+    "favorites": "Oblíbené",
+    "shareList": "Sdílet seznam",
+    "inviteCode": "Zvací kód",
+    "inviteCodeExpires": "platný sekund",
+    "createInvite": "Vytvořit kód",
+    "leaveList": "Opustit seznam",
+    "joinedList": "Připojili jste se k cizímu seznamu.",
+    "noSharedUsers": "Seznam zatím nebyl sdílen.",
+    "joinList": "Připojit se k seznamu",
+    "sortCategoriesDialog": {
+      "title": "Seřadit kategorie",
+      "text": "Klikněte na kategorii pro určení pozice, nebo použijte šipky.",
+      "newPosition": "Nová pozice",
+      "changePositon": "Změnit pozici"
+    },
+    "removeRecipes": {
+      "text": "Odstranit recepty",
+      "dialogMsg": "Opravdu chcete ze svého nákupního seznamu odstranit všechny recepty? Ingredience zůstanou v nákupním seznamu a musí být smazány samostatně."
+    },
+    "removeIngredients": {
+      "text": "Odstranit ingredience",
+      "dialogMsg": "Opravdu chcete ze svého nákupního seznamu odstranit všechny položky související s ingrediencemi? Recepty zůstanou v přehledu receptů zachovány."
+    },
+    "clearAll": {
+      "text": "Vyprázdnit nákupní seznam",
+      "dialogMsg": "Opravdu chcete z nákupního seznamu odstranit všechny položky?"
+    },
+    "deleteList": {
+      "text": "Smazat nákupní seznam",
+      "dialogMsg": "Opravdu chcete smazat celý svůj nákupní seznam?"
+    },
+    "deleteConfirmTooltip": "Stiskněte znovu pro potvrzení.",
+    "recipeOwnership": "Tento recept patří uživateli: ",
+    "voiceRecordingInfo": "Právě probíhá hlasový záznam. Můžete přirozeným jazykem říci, co má být na vašem nákupním seznamu. Váš požadavek bude zpracován a odeslán. Pokud chcete záznam zahodit, můžete jej smazat. Dokud záznam neodešlete, zůstává vše lokálně ve vašem zařízení.",
+    "categoryLabel": "Kategorie",
+    "offlineMode": "Offline režim aktivní - změny se ukládají lokálně",
+    "backOnline": "Spojení obnoveno",
+    "syncComplete": "Změny synchronizovány",
+    "pendingChanges": "{count} čekajících změn",
+    "pendingChangesSingular": "1 čekající změna",
+    "syncing": "Synchronizace...",
+    "offline": "Offline",
+    "pendingItemTooltip": "Tato položka bude synchronizována, jakmile bude obnoveno spojení"
+  },
+  "planner": {
+    "title": "Plánovač receptů",
+    "filter": {
+      "title": "Nastavení filtru",
+      "servingsLabel": "Počet osob",
+      "recipesLabel": "Počet receptů",
+      "promptLabel": "Speciální přání",
+      "promptPlaceholder": "Popište svá přání"
+    },
+    "fetchingMessage": "Vaše recepty se načítají na pozadí. Prosím čekejte.",
+    "resetSelectionDialog": {
+      "text": "Resetovat výběr",
+      "dialogMsg": "Opravdu chcete resetovat svůj výběr receptů?"
+    }
+  },
+  "recipes": {
+    "title": "Recepty",
+    "shareDialog": "Sdílet recept",
+    "helpDialog": "Nápověda k receptům",
+    "empty": "Zatím jste nevytvořili žádný recept.",
+    "noneSelected": "Nejsou vybrány žádné recepty.",
+    "noFavorites": "Zatím nemáte žádné oblíbené.",
+    "tips": {
+      "swipeToRemove": "Přejetím přes recept doleva nebo doprava jej odstraníte.",
+      "createOwn": "Pomocí symbolu plus vpravo nahoře můžete vytvářet vlastní recepty.",
+      "printPdf": "Chcete si recepty vytisknout? Přes menu se třemi tečkami vpravo dole můžete vytvořit PDF.",
+      "editOwn": "Své vlastní recepty můžete kdykoli upravovat. Otevřete recept a použijte menu se třemi tečkami, tam najdete všechny možnosti.",
+      "feedbackPlanner": "Recept z plánovače vás nepřesvědčil? Otevřete jej a dejte zpětnou vazbu přes menu se třemi tečkami – postaráme se o to."
+    },
+    "panels": {
+      "selectedRecipes": {
+        "title": "Recepty z nákupního seznamu"
+      },
+      "myRecipes": {
+        "title": "Vlastní recepty"
+      },
+      "favoriteRecipes": {
+        "title": "Oblíbené recepty"
+      }
+    },
+    "createRecipeDialog": {
+      "title": "Generovat recept",
+      "text": "Popište svůj recept co nejpodrobněji: Co by měl bezpodmínečně obsahovat, čemu se chcete vyhnout? Čím více informací poskytnete, tím lépe budeme moci vygenerovat váš individuální recept.\n\nPo procesu vytváření trvá asi 2–3 minuty, než se váš recept objeví pod položkou 'Vlastní recepty'.\n\nVolitelně můžete přidat fotku – buď přímo z galerie, nebo pořízením nového snímku. Může to být fotka vaší lednice, jednotlivých ingrediencí nebo něčeho, co vám připomíná váš vysněný recept.",
+      "label": "Popis receptu",
+      "generatingText": "Váš recept se nyní vytváří. To může trvat až dvě minuty. Poté jej najdete pod položkou 'Vlastní recepty'."
+    },
+    "addIngredients": "Přidat ingredience",
+    "addIngreditensInfo": "Jste si jisti, že chcete přidat recept do aktuálního nákupního seznamu? Všechny ingredience budou přidány automaticky.",
+    "selectPortions": "Vybrat porce",
+    "processingMessage": "Váš recept se vytváří na pozadí. Budete upozorněni, jakmile bude hotový.",
+    "readyMessage": "Váš recept byl vytvořen.",
+    "downloadSelectedPdf": "Vybrané recepty jako PDF"
+  },
+  "recipe": {
+    "title": "Recept",
+    "recipeFor": "Recept pro",
+    "recipePerson": "osobu",
+    "recipePersons": "osob",
+    "prepareIngredients": "Příprava ingrediencí",
+    "downloadPdf": "Stáhnout PDF",
+    "nutrition": {
+      "title": "Nutriční hodnoty na porci",
+      "kilocalories": "kcal",
+      "carbohydrates": "Sacharidy",
+      "fat": "Tuk",
+      "protein": "Bílkoviny"
+    },
+    "information": {
+      "title": "Informace",
+      "healthy": "Zdravé",
+      "price": "Cena",
+      "difficulty": "Náročnost",
+      "sustainability": "Udržitelnost",
+      "preparationTime": "Příprava",
+      "everyday": "Všednodennost"
+    },
+    "feedback": {
+      "title": "Zpětná vazba",
+      "label": "Vaše zpětná vazba",
+      "success": "Děkujeme za vaši zpětnou vazbu!\nPostaráme se o to."
+    },
+    "editDialog": {
+      "title": "Upravit recept",
+      "instructions": "Popište své změny",
+      "preview": "Náhled",
+      "save": "Uložit změny",
+      "error": "Chyba při úpravě",
+      "changes": "Změny"
+    },
+    "menu": {
+      "addToList": "Ingredience do seznamu",
+      "addFavorite": "Přidat k oblíbeným",
+      "removeRecipe": "Odstranit recept",
+      "removeFavorite": "Odebrat z oblíbených",
+      "deleteRecipe": "Smazat recept",
+      "editRecipe": "Upravit recept",
+      "addToDatabase": "Recept do databáze",
+      "downloadPdf": "Stáhnout PDF",
+      "feedback": "Zpětná vazba",
+      "trackRecipe": "Sledovat recept"
+    },
+    "promoteStarted": "Recept je nyní na pozadí přidáván do databáze.",
+    "promoteInfo": "Tento uživatelský recept je již součástí oficiální databáze.",
+    "shareText": "Podívej se na tento recept!",
+    "chat": {
+      "title": "Chat k receptu",
+      "placeholder": "Otázky k receptu...",
+      "emptyState": "Zeptej se mě na cokoli o tomto receptu!",
+      "welcomeMessage": "Ahoj! Jsem tvůj asistent pro recepty. Můžeš se mě ptát na otázky k tomuto receptu, např. na ingredience, přípravu nebo alternativy. Mám k dispozici data o receptu.",
+      "openButton": "Otevřít asistenta"
+    }
+  },
+  "units": {
+    "gram": "gramů",
+    "kilogram": "kg",
+    "can": "plechovka",
+    "liter": "l",
+    "milliliter": "ml",
+    "cup": "hrnek",
+    "clove": "stroužek",
+    "piece": "kus",
+    "tablespoon": "lžíce",
+    "teaspoon": "lžička",
+    "breeze": "špetka"
+  },
+  "navigation": {
+    "shoppingList": "Nákupní seznam",
+    "planner": "Plánovač",
+    "recipes": "Recepty",
+    "calorieCounter": "Počítadlo kalorií",
+    "settings": "Nastavení",
+    "contact": "Kontakt",
+    "testPage": "Testovací stránka",
+    "rateApp": "Ohodnotit aplikaci",
+    "shareApp": "Sdílet aplikaci",
+    "email": "Sdílet e-mailem"
+  },
+  "settings": {
+    "account": "Účet",
+    "title": "Nastavení",
+    "export": "Exportovat data",
+    "import": "Importovat data",
+    "deleteAccount": "Smazat účet",
+    "confirmDeleteTitle": "Smazat účet?",
+    "confirmDeleteText": "Jste si jisti, že chcete svůj účet trvale smazat? Tuto akci nelze vzít zpět.",
+    "confirmDelete": "Ano, smazat",
+    "cancel": "Zrušit",
+    "accountDeleted": "Váš účet byl úspěšně smazán.",
+    "deleteError": "Chyba při mazání účtu.",
+    "importError": "Chyba při importu dat.",
+    "height": "Tělesná výška (cm)",
+    "gender": "Pohlaví",
+    "birthyear": "Rok narození",
+    "dietType": "Způsob stravování",
+    "dietLevel": "Úroveň diety",
+    "baseCalories": "Bazální metabolismus (kcal)",
+    "recommendations": "Doporučené hodnoty",
+    "kcal": "Kalorie (kcal)",
+    "protein": "Bílkoviny (g)",
+    "carbohydrates": "Sacharidy (g)",
+    "fat": "Tuk (g)",
+    "importWarningTitle": "Pozor: Přepsat data",
+    "importWarningText": "Importem budou přepsána všechna aktuální uživatelská data a budete odhlášeni. Chcete pokračovat?",
+    "userId": "ID uživatele",
+    "copySuccess": "Zkopírováno do schránky!",
+    "selectStartpage": "Vybrat úvodní stránku"
+  },
+  "adminStats": {
+    "title": "Statistiky",
+    "usersToday": "Noví uživatelé dnes",
+    "usersWeek": "Noví uživatelé tento týden",
+    "activeToday": "Aktivní uživatelé dnes",
+    "activeWeek": "Aktivní uživatelé tento týden",
+    "recipes24h": "Vytvořené recepty (24h)",
+    "trainingPlans24h": "Vytvořené tréninkové plány (24h)",
+    "trainingLogsWeek": "Vytvořené tréninkové protokoly (týden)",
+    "plannerUsersTotal": "Uživatelé s plánovačem celkem",
+    "plannerToday": "Uživatelé s plánovačem dnes",
+    "plannerWeek": "Uživatelé s plánovačem tento týden",
+    "shoppingUpdatedToday": "Aktualizované nákupní seznamy dnes",
+    "shoppingUpdatedWeek": "Aktualizované nákupní seznamy tento týden",
+    "calorieTrackerTotal": "Uživatelé s počítadlem kalorií celkem",
+    "calorieTrackerToday": "Uživatelé s počítadlem kalorií dnes",
+    "calorieTrackerWeek": "Uživatelé s počítadlem kalorií tento týden",
+    "usersLast7Days": "Noví uživatelé (7 dní)",
+    "usersLast30Days": "Noví uživatelé (30 dní)",
+    "usersLast90Days": "Noví uživatelé (90 dní)",
+    "growth": "Růst",
+    "activity": "Aktivita",
+    "content": "Obsah",
+    "details": "Detaily",
+    "smartInsights": "Chytré vhledy",
+    "aiCacheSaved": "Ušetřené AI dotazy (Cache)",
+    "stickiness": "Míra retence uživatelů (Stickiness)",
+    "unreadFeedback": "Nepřečtená zpětná vazba",
+    "stickinessHint": "Poměr denních k měsíčním uživatelům. Vysoká hodnota (>20 %) ukazuje na silnou tvorbu návyku.",
+    "feedback": {
+      "title": "Správa zpětné vazby",
+      "noFeedback": "Žádná zpětná vazba není k dispozici.",
+      "user": "Uživatel",
+      "recipe": "Recept",
+      "content": "Obsah",
+      "date": "Datum",
+      "markAsRead": "Označit jako přečtené",
+      "markAsUnread": "Označit jako nepřečtené",
+      "delete": "Smazat",
+      "edit": "Upravit",
+      "save": "Uložit",
+      "cancel": "Zrušit",
+      "confirmDelete": "Jste si jisti, že chcete tuto zpětnou vazbu smazat?",
+      "deleteSuccess": "Zpětná vazba smazána.",
+      "updateSuccess": "Zpětná vazba aktualizována."
+    }
+  },
+  "adminTools": {
+    "title": "Admin nástroje",
+    "clearCache": "Vyprázdnit LLM cache",
+    "resetImages": "Resetovat obrázky cvičení",
+    "confirm": "Potvrdit ({seconds})",
+    "success": "Akce provedena",
+    "systemMessageTitle": "Odeslat systémovou zprávu",
+    "messageTitleLabel": "Titul",
+    "messageContentLabel": "Obsah",
+    "correctGrammar": "Opravit gramatiku",
+    "sendGlobalMessage": "Odeslat globální zprávu",
+    "confirmSendTitle": "Opravdu odeslat zprávu?",
+    "confirmSendText": "Tato zpráva bude odeslána VŠEM uživatelům. Chcete pokračovat?",
+    "sendSuccess": "Zpráva byla úspěšně odeslána všem uživatelům."
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Kontaktujte nás prostřednictvím následujících kanálů",
+    "email": "Odeslat e-mail",
+    "discord": "Discord",
+    "footer": "Těšíme se na vaši zprávu!"
+  },
+  "tracker": {
+    "today": "Dnes",
+    "bodyData": "Tělesná data",
+    "trackNewItem": "Sledovat novou položku",
+    "noTargetDefined": "Není definován žádný kalorický cíl",
+    "noItemsTracked": "Zatím nebylo nic sledováno.",
+    "descriptionLabel": "Dodatečný popis",
+    "descriptionPlaceholder": "Popište své jídlo nebo aktivitu ve vztahu k obrázku",
+    "menu": {
+      "edit": "Upravit",
+      "daily": "Denně",
+      "addToShoppingList": "Přidat do nákupního seznamu",
+      "addToToday": "Přidat na dnešek",
+      "remove": "Odstranit"
+    },
+    "dailyTracked": "(denně)",
+    "calorieGoal": "Kalorický cíl",
+    "calorieCalculator": "Kalorická kalkulačka",
+    "trackActivity": "Sledovat aktivitu",
+    "trackRecipe": "Sledovat recept",
+    "activityLabel": "Aktivita",
+    "activityRequired": "Před pokračováním prosím zadejte aktivitu.",
+    "createActivity": "Přidat aktivitu",
+    "createActivityInfo": "Zde přidejte své aktivity, aplikace za vás automaticky vypočítá kalorie.",
+    "palOptions": {
+      "homeOffice": "Home office – sedavé zaměstnání, žádná fyzická aktivita",
+      "officeWorker": "Kancelářský pracovník – sedavé zaměstnání, málo pohybu",
+      "teacher": "Učitel – mírná chůze, stání",
+      "salesperson": "Prodavač – stání, chůze, lehká fyzická práce",
+      "waiter": "Číšník – hodně chůze, nošení talířů",
+      "nurse": "Ošetřovatel – častá chůze, zvedání pacientů",
+      "constructionWorker": "Dělník na stavbě – fyzicky namáhavé, zvedání, nošení",
+      "farmer": "Zemědělec – fyzická práce, zvedání, obsluha strojů",
+      "sportsTeacher": "Učitel tělocviku – aktivní, předvádění cviků",
+      "constructionSite": "Staveniště – těžká fyzická práce, zvedání, stání",
+      "mountainGuide": "Horský průvodce – extrémní aktivita, dlouhá chůze v terénu"
+    },
+    "height": "Tělesná výška (cm)",
+    "weight": "Hmotnost (kg)",
+    "birthyear": "Rok narození",
+    "gender": {
+      "text": "Pohlaví",
+      "male": "Muž",
+      "female": "Žena"
+    },
+    "workHoursWeek": "Pracovní hodiny týdně",
+    "workDaysPAL": "Hodnota PAL při práci",
+    "dietType": {
+      "text": "Způsob stravování",
+      "balanced": "Vyvážený",
+      "lowCarb": "Low Carb",
+      "lowFat": "Low Fat"
+    },
+    "dietLevel": {
+      "text": "Úroveň diety",
+      "strongLose": "Silné hubnutí -25%",
+      "lose": "Hubnutí -15%",
+      "maintain": "Udržování",
+      "gain": "Přibírání +10%",
+      "strongGain": "Silné přibírání +20%"
+    },
+    "bodyDataInfo": "Zde můžete zadat svá tělesná data pro výpočet kalorických cílů. Tyto údaje budou použity k určení vašich denních kalorických cílů.",
+    "minutes": "minut",
+    "burned": "spáleno",
+    "calories": "Kalorie",
+    "kcal": "kcal",
+    "protein": "Bílkoviny",
+    "carbohydrates": "Sacharidy (g)",
+    "fat": "Tuk",
+    "caloriesBurned": "Spálené kalorie (kcal)",
+    "duration": "Doba trvání (minuty)",
+    "calculateCalories": "Vypočítat kalorie",
+    "errorNoBodydata": "Pokud chcete používat kalorickou kalkulačku, musíte nejprve zadat svá tělesná data.",
+    "errorBodydataActivity": "Pokud chcete používat sledování aktivity, musíte nejprve zadat svá tělesná data.",
+    "selectRecipe": "Vybrat recept",
+    "portions": "Porce",
+    "voiceRecordingInfo": "Záznam se ukládá lokálně u vás. Pokud chcete audiosoubor odeslat, klikněte na Odeslat. \nAlternativně můžete kliknout na Zahodit, abyste záznam neodesílali.",
+    "nutritionDetails": "Nutriční detaily",
+    "macronutrients": "Makroživiny",
+    "carbs": "Sacharidy",
+    "noMacroTargetDefined": "Nejsou definovány žádné cíle pro makroživiny",
+    "acidBase": {
+      "title": "Acidobazická rovnováha",
+      "alkaline": "Zásadité - dobré pro acidobazickou rovnováhu",
+      "balanced": "Vyvážené - acidobazická rovnováha v rovnováze",
+      "acidic": "Kyselinotvorné - doporučeno více zásaditých potravin"
+    },
+    "histamine": {
+      "title": "Histamin",
+      "average": "Průměr",
+      "low": "Nízký obsah histaminu - dobře snášeno",
+      "moderate": "Mírný obsah histaminu - dbát v případě intolerance",
+      "high": "Vysoký obsah histaminu - problematické při intoleranci"
+    },
+    "itemIndicator": {
+      "alkaline": "Zásadité",
+      "neutral": "Neutrální",
+      "acidic": "Kyselinotvorné",
+      "histamineNone": "Bez histaminu",
+      "histamineLow": "Málo",
+      "histamineModerate": "Mírně",
+      "histamineHigh": "Vysoký"
+    },
+    "indicatorSettings": {
+      "menuTitle": "Indikátory",
+      "title": "Upravit indikátory",
+      "description": "Vyberte, které indikátory se mají u vašich potravin zobrazovat.",
+      "preview": "Náhled",
+      "noIndicators": "Žádné indikátory nejsou aktivovány",
+      "acidBaseDesc": "Zobrazuje hodnotu PRAL pro acidobazickou rovnováhu",
+      "histamineDesc": "Zobrazuje obsah histaminu pro lepší snášenlivost"
+    },
+    "enterQuestion": "Zde položte svou otázku...",
+    "askDialog": "Zde můžete pokládat otázky týkající se výživy. Aplikace se pokusí odpovědět na vaši otázku, přičemž zohlední vaše tělesná data i záznamy v počítadle kalorií za posledních 14 dní. Vezměte prosím na vědomí, že odpovědi jsou založeny na informacích, které jste do aplikace zadali.",
+    "addImage": "Přidat obrázek",
+    "uploadImage": "Nahrát obrázek",
+    "captureImage": "Pořídit obrázek",
+    "dietLevelChange": {
+      "dietLevelBefore": "Úroveň diety předtím",
+      "lastChanged": "naposledy změněno"
+    },
+    "chat": {
+      "title": "Asistent sledování",
+      "placeholder": "Položte otázku k vašim kaloriím...",
+      "emptyState": "Zeptejte se mě na cokoli o vaší výživě!",
+      "welcomeMessage": "Ahoj! Jsem tvůj asistent pro sledování. Mohu ti odpovědět na otázky k tvým kaloriím, nutričním hodnotám a stravovacím návykům.",
+      "openButton": "Otevřít asistenta"
+    },
+    "imageSelected": "Obrázek vybrán",
+    "imagesSelected": "Obrázky vybrány",
+    "audioRecorded": "Audio zaznamenáno"
+  },
+  "trainingPlans": {
+    "title": "Tréninkové plány",
+    "help": {
+      "step1": {
+        "title": "Vytvořit tréninkový plán",
+        "content": "Tréninkové plány lze vytvářet individuálně, můžete přesně popsat, co chcete, na co trénujete, kde, jak často v týdnu a jak intenzivně/dlouho."
+      },
+      "step2": {
+        "title": "Upravit tréninkový plán",
+        "content": "Pokud by vám něco nevyhovovalo, můžete tréninkové plány upravovat pomocí přirozeného jazyka. Jednoduše napište, co má být změněno, a dostanete aktualizovanou verzi."
+      },
+      "step3": {
+        "title": "Trénovat",
+        "content": "Tréninkové plány jsou časově omezené, pokud jsou aktivovány. Aktivní tréninkové plány lze trénovat a logovat po jednotlivých sériích – váhy, opakování nebo doba trvání sérií. Na konci máte možnost odeslat trénink přímo do počítadla kalorií, abyste sledovali spálené kalorie."
+      }
+    },
+    "descriptionLabelCreate": "Plán podrobně popište",
+    "voiceRecordingInfo": "Namluvte svůj popis tréninkového plánu. Záznam zůstane uložen lokálně a na text bude převeden až po odeslání. Pokud záznam nechcete použít, můžete jej zahodit.",
+    "createPlanInstructions": "Popište svůj plán co nejpřesněji: Co chcete trénovat? Jak často v týdnu? V jakém prostředí? Jaký typ tréninku preferujete?\n\nMůžete uvést i intenzitu: lehkou, mírnou nebo intenzivní.\n\nPříklady:\n'Chci chodit čtyřikrát týdně do fitka, zaměření na horní část těla. Jsem dobře trénovaný.'\n\n'Mám bolesti zad vlevo vzadu u ramene. Vytvoř mi plán s cílenými cviky na jeden den v týdnu ke zlepšení držení těla a zmírnění bolesti.'\n\nČím více informací zadáte, tím vhodnější tréninkový plán bude vytvořen.",
+    "subtitle": "Zde můžete vytvářet a spravovat své tréninkové plány.",
+    "editPlan": "Upravit tréninkový plán",
+    "editPlanDescription": "Popište, co má být změněno",
+    "repetitionsShort": "op.",
+    "duration": "Doba",
+    "restBetweenSets": "Pauza mezi sériemi",
+    "restAfterExercise": "Pauza po cviku",
+    "deletePlan": "Smazat tréninkový plán",
+    "activePlan": "Aktivní plán",
+    "confirmDeletePlan": "Opravdu chcete tento tréninkový plán smazat?",
+    "noPlans": "Zatím jste nevytvořili žádné tréninkové plány.",
+    "trainingDaysPerWeek": "Tréninkové dny v týdnu",
+    "addExercise": "Přidat cvik",
+    "removeExercise": "Odstranit cvik",
+    "exerciseName": "Název cviku",
+    "set": "Série",
+    "sets": "Série",
+    "reps": "Opakování",
+    "restTime": "Doba pauzy (sekundy)",
+    "savePlan": "Uložit tréninkový plán",
+    "createPlan": "Vytvořit tréninkový plán",
+    "train": "Trénovat",
+    "ask": "Pokládat otázky",
+    "continuePlan": "Vytvořit pokračování",
+    "continuePlanTitle": "Pokračování pro {name}",
+    "continuePlanDescription": "Vytvořte nový plán na základě tohoto tréninkového plánu. Volitelně můžete doplnit přání.",
+    "continuePlanNotesLabel": "Dodatečné pokyny (volitelné)",
+    "continuePlanAction": "Vytvořit pokračování",
+    "enterQuestion": "Položte otázku k tomuto plánu",
+    "askDialog": "Můžete pokládat otázky k tomuto tréninkovému plánu. Odesláno bude i posledních 10 tréninkových záznamů.",
+    "selectDay": "Vybrat den",
+    "suggestedWeight": "Doporuč. váha",
+    "suggestedDuration": "Doporuč. doba",
+    "weight": "Hmotnost (kg)",
+    "durationWeeks": "Doba trvání (týdny)",
+    "canceled": "Poslední trénink byl přerušen.",
+    "noPlansInfo": "Zatím nejsou k dispozici žádné tréninkové plány. Nový plán můžete přidat pomocí tlačítka plus vpravo nahoře.",
+    "activateDialog": {
+      "title": "Aktivovat tréninkový plán",
+      "msg": "Při spuštění tréninkového plánu se nastaví datum zahájení. Následně uvidíte, ve kterém týdnu tréninkového plánu se nacházíte.\nOpravdu chcete tréninkový plán spustit?"
+    },
+    "deleteDialog": {
+      "title": "Smazat tréninkový plán",
+      "msg": "Opravdu chcete tento tréninkový plán smazat?"
+    },
+    "finishDialog": {
+      "title": "Ukončit trénink",
+      "msg": "Ukončením tréninku dojde k resetování data zahájení a celého vašeho pokroku. Jste si jisti, že chcete trénink ukončit?"
+    },
+    "processingMessage": "Váš tréninkový plán se vytváří na pozadí. Budete upozorněni, jakmile bude hotový.",
+    "readyMessage": "Váš tréninkový plán byl vytvořen.",
+    "editDialog": {
+      "preview": "Náhled",
+      "save": "Uložit změny",
+      "changes": "Změny",
+      "error": "Chyba při úpravě"
+    },
+    "statistics": "Statistiky",
+    "totalWorkouts": "Dokončené tréninky",
+    "lastWorkout": "Poslední trénink",
+    "lastExercises": "Posledních 5 cviků",
+    "noWorkoutsYet": "Zatím nebyl dokončen žádný trénink."
+  },
+  "publicRecipe": {
+    "downloadTitle": "Stáhněte si Murmli",
+    "downloadDescription": "Vytvářejte a sdílejte své vlastní recepty s aplikací Murmli!",
+    "loading": "Recept se načítá..."
+  },
+  "training": {
+    "title": "Tréninkový deník",
+    "continue": "Pokračovat v tréninku",
+    "discard": "Zahodit trénink",
+    "exerciseListPlaceholder": "Načítání seznamu cviků...",
+    "noPlan": "Na dnešek není naplánován žádný trénink nebo plán neobsahuje žádné cviky.",
+    "estimatedTimePlaceholder": "cca X min",
+    "startTraining": "Začít trénink",
+    "setInfo": "Série {current} z {total}",
+    "finishSet": "Ukončit sérii",
+    "noDescription": "Žádný popis není k dispozici.",
+    "countdown": "Další série za {seconds} sekund...",
+    "noDaySelected": "Není vybrán žádný den",
+    "exercise": "Cvik",
+    "exercises": "Cviky",
+    "seconds": "sekundy",
+    "secondsShort": "s",
+    "noPreviousLog": "Zatím neexistuje žádný předchozí záznam.",
+    "noImageAvailable": "Obrázek zatím není k dispozici.",
+    "description": "Popis",
+    "lastLog": "poslední záznam:",
+    "actualLog": "aktuální záznam:",
+    "skipRest": "Přeskočit pauzu",
+    "completeSet": "Ukončit sérii",
+    "timeSeconds": "Čas (s)",
+    "time": "Čas",
+    "startTimer": "Spustit časovač",
+    "stopTimer": "Zastavit časovač",
+    "timer": "Časovač",
+    "exerciseCompleted": "Cvik dokončen",
+    "nextExercise": "Další cvik",
+    "allExercisesDone": "Všechny cviky dokončeny",
+    "finishTraining": "Ukončit trénink",
+    "getFeedback": "Vyžádat zpětnou vazbu",
+    "trackCalories": "Sledovat kalorie",
+    "caloriesBurned": "Sledované kalorie: {calories} kcal",
+    "feedbackTitle": "Zpětná vazba",
+    "noCurrentLog": "Žádný aktuální trénink neexistuje.",
+    "loadingLog": "Načítání tréninkového záznamu...",
+    "suggestedValues": "Navrhované hodnoty",
+    "useLastValue": "Zadat poslední hodnotu ({value})",
+    "difficulty": "Úsilí",
+    "summaryTitle": "Přehled tréninku",
+    "backToPlans": "Zpět k tréninkovým plánům",
+    "statistics": "Statistiky",
+    "totalMovedWeight": "Celková přemístěná váha",
+    "totalDuration": "Celková doba",
+    "totalSets": "Celkový počet sérií",
+    "avgWeightPerExercise": "Průměrná váha na cvik",
+    "cancelTraining": "Zrušit trénink",
+    "cancelTrainingConfirm": "Opravdu chcete trénink zrušit?"
+  }
+}

@@ -1,0 +1,717 @@
+{
+  "greeting": "Pozdravljeni",
+  "goodbye": "Nasvidenje",
+  "help": {
+    "shoppinglist": {
+      "languagePrompt": "Najprej izberite jezik in želeno začetno stran, da nadaljujete z Murmlijem.",
+      "languageTitle": "Izbira jezika",
+      "selectLanguage": "Izberite jezik",
+      "welcome": "Dobrodošli v Murmliju, vaši pametni aplikaciji za recepte, nakupovanje in prehrano.\n\n Ta aplikacija uporablja umetno inteligenco za lažje prevajanje, interpretacijo in izbiro receptov. Ustvarite lahko celo lastne recepte in jih prenesete neposredno na nakupovalni seznam, da bo vaš vsakdan učinkovitejši.",
+      "welcomeTitle": "Dobrodošli",
+      "quickGuide": "V vnosno polje preprosto vpišite, kaj potrebujete, in Murmli bo to s pomočjo UI dodal na nakupovalni seznam.\n\n Vsi predmeti so razvrščeni neposredno po kategorijah v supermarketu, da jih lažje najdete.\n\n Ko so predmeti dodani, lahko kliknete nanje in poiščete alternative.",
+      "quickGuideTitle": "Kratka navodila",
+      "options": "Poiščite več možnosti, kot sta deljenje ali razvrščanje seznama, v meniju (zgoraj desno). Seznam delite na primer s partnerjem, da boste pri projektu sodelovali. Deljenje lahko kadar koli prekličete.",
+      "optionsTitle": "Možnosti",
+      "start": "Gremo!"
+    },
+    "planner": {
+      "welcomeTitle": "Načrtovalnik receptov",
+      "welcome": "Spodaj določite, za koliko oseb in koliko receptov želite načrtovati. V besedilno polje lahko dodatno v naravnem jeziku vpišete svoje želje, UI pa jih bo samodejno upoštevala pri izbiri receptov (npr. vegetarijansko za športnike).",
+      "optionsTitle": "Izbira receptov",
+      "options": "Zdaj se vam bodo prikazali recepti. \nČe vam je recept všeč, mu dajte palec gor, če ne, pa palec dol. \n\nSistem se uči iz vaših odločitev, da vam v prihodnje ponudi boljše predloge.",
+      "shoppinglistTitle": "Nakupovalni seznam in recepti",
+      "shoppinglist": "Takoj ko izberete želeno število receptov, boste samodejno preusmerjeni na nakupovalni seznam. Ta vsebuje vse sestavine za recepte. \n\n Pod 'Recepti' boste našli izbrane recepte z navodili. Tam lahko recepte ocenite in podate povratne informacije.",
+      "openFilter": "Odpri filter"
+    },
+    "recipes": {
+      "overview": "Tukaj je pregled receptov, ki pripadajo vašemu nakupovalnemu seznamu, vaših lastnih receptov in vaših priljubljenih. Od tod lahko dostopate do njih.",
+      "create": "S klikom na simbol plus zgoraj desno lahko ustvarite lastne recepte. Vpišite svojo idejo, UI jo bo ustvarila, vi pa lahko naložite še sliko sestavin.",
+      "addToList": "Če želite na nakupovalni seznam dodati enega izmed svojih receptov ali priljubljenih receptov, odprite recept in ga dodajte preko menija (tri pike) zgoraj desno.",
+      "overviewTitle": "Pregled receptov",
+      "createTitle": "Ustvarjanje receptov",
+      "addToListTitle": "Recepti na nakupovalni seznam"
+    },
+    "tracker": {
+      "overviewTitle": "Beleženje obrokov",
+      "overview": "Preprosto vpišite, kaj ste jedli. \n\nOpisujete lahko v naravnem jeziku, npr. »krožnik testenin«, navedete konkretne izdelke ali vnesete natančne podatke o kalorijah – kakor koli želite.",
+      "calorieGoalTitle": "Vaš cilj kalorij",
+      "calorieGoal": "Sami določite svoj dnevni cilj kalorij ali pa naj ga mi izračunamo samodejno. \n\nV ta namen preprosto enkrat vnesite svoje telesne podatke – za ostalo poskrbimo mi.",
+      "activityTrackingTitle": "Beleženje aktivnosti",
+      "activityTracking": "Poleg tega beležite svoje športne aktivnosti, npr. »20 minut teka«. Na podlagi tega samodejno izračunamo, koliko dodatnih kalorij lahko zaužijete – povsem individualno za vas."
+    },
+    "setup": {
+      "aboutAppTitle": "O tej aplikaciji",
+      "aboutApp": "Ta aplikacija je bila razvita zasebno, da bi poenostavila življenje z nakupovalnim seznamom in inteligentnim načrtovanjem receptov."
+    }
+  },
+  "helpPage": {
+    "title": "Pomoč in video navodila",
+    "intro": "Tukaj boste našli zbirko kratkih videoposnetkov, ki vam prikazujejo najpomembnejše funkcije Murmlija. Ogledate si jih lahko kadar koli v aplikaciji, jih odprete na YouTubu ali jih predvajate povečano neposredno v aplikaciji.",
+    "openHelpCenter": "Odpri center za pomoč",
+    "sections": {
+      "overview": {
+        "title": "Pregled",
+        "description": "Hiter pregled Murmlija in vseh glavnih področij aplikacije."
+      },
+      "firstStart": {
+        "title": "Prvi zagon aplikacije",
+        "description": "Tako nastavite Murmlija ob prvem zagonu in se takoj znajdete."
+      },
+      "shoppingList": {
+        "title": "Nakupovalni seznam",
+        "description": "Nasveti in triki za pametni nakupovalni seznam ter za dodajanje, razvrščanje in deljenje."
+      },
+      "planner": {
+        "title": "Načrtovalnik",
+        "description": "Naučite se načrtovati recepte, navesti želje in uporabljati samodejne predloge."
+      },
+      "calorieCounter": {
+        "title": "Števec kalorij",
+        "description": "Tako s števcem kalorij spremljate svojo prehrano in aktivnosti."
+      },
+      "training": {
+        "title": "Načrti vadbe in dnevnik",
+        "description": "Ustvarite načrte vadbe, dokumentirajte svoje enote in spremljajte svoj napredek."
+      },
+      "settings": {
+        "title": "Nastavitve in zaključna beseda",
+        "description": "Vse o nastavitvah in končni obeti."
+      }
+    }
+  },
+  "general": {
+    "next": "Naprej",
+    "back": "Nazaj",
+    "error": "Napaka",
+    "errorMessage": "Prišlo je do napake. Prosimo, poskusite znova čez nekaj časa ali nam sporočite to napako.",
+    "loading": "Nalaganje..",
+    "close": "Zapri",
+    "save": "Shrani",
+    "send": "Pošlji",
+    "cancel": "Prekliči",
+    "report": "Prijavi",
+    "confirm": "Potrdi",
+    "ok": "V redu",
+    "retry": "Ponovi",
+    "notifications": {
+      "recipeReady": "Recept pripravljen",
+      "recipeReadyMessage": "Vaš recept je bil ustvarjen.",
+      "trainingPlanReady": "Načrt vadbe pripravljen",
+      "trainingPlanReadyMessage": "Vaš načrt vadbe je bil ustvarjen.",
+      "feedback": {
+        "title": "Nove povratne informacije",
+        "success": "Prejete so nove povratne informacije o receptu."
+      }
+    },
+    "start": "Gremo",
+    "generate": "Generiraj",
+    "deleteRecipeDialog": {
+      "text": "Odstrani recept",
+      "dialogMsg": "Ali res želite odstraniti izbrani recept?"
+    },
+    "information": "Informacije",
+    "ask": "Vprašaj",
+    "help": "Pomoč",
+    "selected": "Izbrano",
+    "discard": "Zavrzi",
+    "resume": "Nadaljuj",
+    "voiceRecording": "Zvočni posnetek",
+    "voiceDialogInfo": "Snemanje glasu poteka. Lahko ga kadar koli zavržete. Če ga pošljete, bo samodejno obdelan.",
+    "details": "Podrobnosti",
+    "name": "Ime",
+    "goal": "Cilj",
+    "type": "Vrsta",
+    "difficulty": "Težavnost",
+    "weekdays": {
+      "1": "Ponedeljek",
+      "2": "Torek",
+      "3": "Sreda",
+      "4": "Četrtek",
+      "5": "Petek",
+      "6": "Sobota",
+      "7": "Nedelja"
+    },
+    "edit": "Uredi",
+    "delete": "Izbriši",
+    "activate": "Aktiviraj",
+    "archive": "Arhiv",
+    "finish": "Končaj",
+    "weeks": "Tedni",
+    "progress": "Napredek",
+    "instructions": "Navodila",
+    "day": "Dan",
+    "days": "dni",
+    "week": "Teden",
+    "selectPhoto": "Izberi fotografijo",
+    "capturePhoto": "Kamera"
+  },
+  "shoppingList": {
+    "newItemLabel": "Nov artikel",
+    "newItemPlaceholder": "Vnesite ime artikla",
+    "notesLabel": "Opombe",
+    "notesHint": "Vaše opombe se samodejno shranijo",
+    "noItemsMessage": "Na nakupovalnem seznamu ni nobenega artikla.",
+    "checkedHeader": "Odkljukano",
+    "nameLabel": "Ime",
+    "amountLabel": "Količina",
+    "unitLabel": "Enota",
+    "findAlternative": "Poišči alternativo",
+    "editItem": "Spremeni vnos",
+    "showRecipe": "Prikaži recept",
+    "saveAsFavorite": "Dodaj med priljubljene",
+    "removeFavorite": "Odstrani iz priljubljenih",
+    "shoppingListLabel": "Nakupovalni seznam",
+    "sortList": "Razvrščanje",
+    "help": "Pomoč",
+    "favorites": "Priljubljene",
+    "shareList": "Deli seznam",
+    "inviteCode": "Koda za povabilo",
+    "inviteCodeExpires": "sekund veljavnosti",
+    "createInvite": "Ustvari kodo",
+    "leaveList": "Zapusti seznam",
+    "joinedList": "Pridružili ste se tujemu seznamu.",
+    "noSharedUsers": "Seznam do zdaj ni bil deljen.",
+    "joinList": "Pridruži se seznamu",
+    "sortCategoriesDialog": {
+      "title": "Razvrsti kategorije",
+      "text": "Kliknite na kategorijo, da določite položaj, ali uporabite puščice.",
+      "newPosition": "Nov položaj",
+      "changePositon": "Spremeni položaj"
+    },
+    "removeRecipes": {
+      "text": "Odstrani recepte",
+      "dialogMsg": "Ali res želite odstraniti vse recepte s svojega nakupovalnega seznama? Sestavine bodo ostale na seznamu in jih je treba izbrisati posebej."
+    },
+    "removeIngredients": {
+      "text": "Odstrani sestavine",
+      "dialogMsg": "Ali res želite odstraniti vse vnose, povezane s sestavinami, s svojega nakupovalnega seznama? Recepti bodo ostali v pogledu receptov."
+    },
+    "clearAll": {
+      "text": "Izprazni nakupovalni seznam",
+      "dialogMsg": "Ali res želite odstraniti vse predmete z nakupovalnega seznama?"
+    },
+    "deleteList": {
+      "text": "Izbriši nakupovalni seznam",
+      "dialogMsg": "Ali res želite izbrisati celoten nakupovalni seznam?"
+    },
+    "deleteConfirmTooltip": "Ponovno pritisnite za potrditev.",
+    "recipeOwnership": "Ta recept pripada uporabniku: ",
+    "voiceRecordingInfo": "Trenutno poteka snemanje glasu. V naravnem jeziku lahko poveš, kaj želiš na nakupovalnem seznamu. Tvoja zahteva bo obdelana in poslana. Če želiš snemanje zavreči, ga lahko izbrišeš. Dokler snemanja ne pošlješ, vse ostane lokalno na tvoji napravi.",
+    "categoryLabel": "Kategorija",
+    "offlineMode": "Način brez povezave aktiven – spremembe se shranjujejo lokalno",
+    "backOnline": "Povezava ponovno vzpostavljena",
+    "syncComplete": "Spremembe sinhronizirane",
+    "pendingChanges": "{count} čakajočih sprememb",
+    "pendingChangesSingular": "1 čakajoča sprememba",
+    "syncing": "Sinhroniziranje...",
+    "offline": "Brez povezave",
+    "pendingItemTooltip": "Ta artikel bo sinhroniziran, ko bo povezava ponovno vzpostavljena"
+  },
+  "planner": {
+    "title": "Načrtovalnik receptov",
+    "filter": {
+      "title": "Nastavitve filtra",
+      "servingsLabel": "Število oseb",
+      "recipesLabel": "Število receptov",
+      "promptLabel": "Posebne želje",
+      "promptPlaceholder": "Opišite svoje želje"
+    },
+    "fetchingMessage": "Vaši recepti se nalagajo v ozadju. Prosimo, počakajte.",
+    "resetSelectionDialog": {
+      "text": "Ponastavi izbiro",
+      "dialogMsg": "Ali res želite ponastaviti svojo izbiro receptov?"
+    }
+  },
+  "recipes": {
+    "title": "Recepti",
+    "shareDialog": "Deli recept",
+    "helpDialog": "Pomoč za recepte",
+    "empty": "Še niste ustvarili nobenega recepta.",
+    "noneSelected": "Noben recept ni izbran.",
+    "noFavorites": "Še nimate priljubljenih.",
+    "tips": {
+      "swipeToRemove": "Povlecite recept v levo ali desno, da ga odstranite.",
+      "createOwn": "Preko simbola plus zgoraj desno lahko ustvarite lastne recepte.",
+      "printPdf": "Želite natisniti svoje recepte? Preko menija s tremi pikami spodaj desno lahko ustvarite PDF.",
+      "editOwn": "Svoje recepte lahko kadar koli uredite. Odprite recept in uporabite meni s tremi pikami, tam boste našli vse možnosti.",
+      "feedbackPlanner": "Vam recept iz načrtovalnika ne ustreza? Odprite ga in podajte povratne informacije preko menija s tremi pikami – mi bomo poskrbeli za to."
+    },
+    "panels": {
+      "selectedRecipes": {
+        "title": "Recepti z nakupovalnega seznama"
+      },
+      "myRecipes": {
+        "title": "Moji recepti"
+      },
+      "favoriteRecipes": {
+        "title": "Priljubljeni recepti"
+      }
+    },
+    "createRecipeDialog": {
+      "title": "Ustvari recept",
+      "text": "Čim bolj podrobno opišite svoj recept: Kaj mora nujno vsebovati, čemu se želite izogniti? Več informacij ko boste podali, bolje bomo lahko ustvarili vaš individualni recept.\n\nPo postopku ustvarjanja traja približno 2–3 minute, da se vaš recept pojavi pod 'Moji recepti'.\n\nOpcijsko lahko dodate fotografijo – bodisi neposredno iz svoje galerije bodisi tako, da posnamete novo sliko. To je lahko slika vašega hladilnika, posameznih sestavin ali česa, kar vas spominja na vaš želeni recept.",
+      "label": "Opis recepta",
+      "generatingText": "Vaš recept se zdaj ustvarja. To lahko traja do dve minuti. Nato ga boste našli pod 'Moji recepti'."
+    },
+    "addIngredients": "Dodaj sestavine",
+    "addIngreditensInfo": "Ali ste prepričani, da želite recept dodati na svoj trenutni nakupovalni seznam? Vse sestavine bodo samodejno dodane.",
+    "selectPortions": "Izberite porcije",
+    "processingMessage": "Vaš recept se ustvarja v ozadju. Ko bo pripravljen, boste obveščeni.",
+    "readyMessage": "Vaš recept je bil ustvarjen.",
+    "downloadSelectedPdf": "Izbrani recepti kot PDF"
+  },
+  "recipe": {
+    "title": "Recept",
+    "recipeFor": "Recept za",
+    "recipePerson": "osebo",
+    "recipePersons": "oseb",
+    "prepareIngredients": "Priprava sestavin",
+    "downloadPdf": "Prenesi PDF",
+    "nutrition": {
+      "title": "Hranilne vrednosti na porcijo",
+      "kilocalories": "kcal",
+      "carbohydrates": "Oglj. hidrati",
+      "fat": "Maščobe",
+      "protein": "Beljakovine"
+    },
+    "information": {
+      "title": "Informacije",
+      "healthy": "Zdravo",
+      "price": "Cena",
+      "difficulty": "Težavnost",
+      "sustainability": "Trajnost",
+      "preparationTime": "Priprava",
+      "everyday": "Vsakdanjost"
+    },
+    "feedback": {
+      "title": "Povratne informacije",
+      "label": "Vaše povratne informacije",
+      "success": "Hvala za vaše povratne informacije!\nPoskrbeli bomo za njih."
+    },
+    "editDialog": {
+      "title": "Uredi recept",
+      "instructions": "Opišite svoje spremembe",
+      "preview": "Predogled",
+      "save": "Shrani spremembe",
+      "error": "Napaka pri urejanju",
+      "changes": "Spremembe"
+    },
+    "menu": {
+      "addToList": "Sestavine na seznam",
+      "addFavorite": "Dodaj med priljubljene",
+      "removeRecipe": "Odstrani recept",
+      "removeFavorite": "Odstrani iz priljubljenih",
+      "deleteRecipe": "Izbriši recept",
+      "editRecipe": "Uredi recept",
+      "addToDatabase": "Recept v bazo",
+      "downloadPdf": "Prenesi PDF",
+      "feedback": "Povratne informacije",
+      "trackRecipe": "Beleži recept"
+    },
+    "promoteStarted": "Recept se v ozadju dodaja v bazo podatkov.",
+    "promoteInfo": "Ta uporabniški recept je že del uradne baze podatkov.",
+    "shareText": "Poglej si ta recept!",
+    "chat": {
+      "title": "Klepet o receptu",
+      "placeholder": "Vprašanja o receptu...",
+      "emptyState": "Vprašaj me kaj o tem receptu!",
+      "welcomeMessage": "Živijo! Sem tvoj pomočnik za recepte. Lahko me vprašaš karkoli o tem receptu, npr. o sestavinah, pripravi ali alternativah. Podatke o receptu imam pred sabo.",
+      "openButton": "Odpri pomočnika"
+    }
+  },
+  "units": {
+    "gram": "gramov",
+    "kilogram": "kg",
+    "can": "pločevinka",
+    "liter": "L",
+    "milliliter": "ml",
+    "cup": "skodelica",
+    "clove": "strok",
+    "piece": "kos",
+    "tablespoon": "žlica",
+    "teaspoon": "čajna žlička",
+    "breeze": "ščep"
+  },
+  "navigation": {
+    "shoppingList": "Nakupovalni seznam",
+    "planner": "Načrtovalnik",
+    "recipes": "Recepti",
+    "calorieCounter": "Števec kalorij",
+    "settings": "Nastavitve",
+    "contact": "Kontakt",
+    "testPage": "Testna stran",
+    "rateApp": "Oceni aplikacijo",
+    "shareApp": "Deli aplikacijo",
+    "email": "Deli preko e-pošte"
+  },
+  "settings": {
+    "account": "Račun",
+    "title": "Nastavitve",
+    "export": "Izvozi podatke",
+    "import": "Uvozi podatke",
+    "deleteAccount": "Izbriši račun",
+    "confirmDeleteTitle": "Izbrišem račun?",
+    "confirmDeleteText": "Ali ste prepričani, da želite trajno izbrisati svoj račun? Tega dejanja ni mogoče razveljaviti.",
+    "confirmDelete": "Da, izbriši",
+    "cancel": "Prekliči",
+    "accountDeleted": "Vaš račun je bil uspešno izbrisan.",
+    "deleteError": "Napaka pri brisanju računa.",
+    "importError": "Napaka pri uvozu podatkov.",
+    "height": "Telesna višina (cm)",
+    "gender": "Spol",
+    "birthyear": "Leto rojstva",
+    "dietType": "Način prehranjevanja",
+    "dietLevel": "Stopnja diete",
+    "baseCalories": "Bazalni metabolizem (kcal)",
+    "recommendations": "Priporočene vrednosti",
+    "kcal": "Kalorije (kcal)",
+    "protein": "Beljakovine (g)",
+    "carbohydrates": "Ogljikovi hidrati (g)",
+    "fat": "Maščobe (g)",
+    "importWarningTitle": "Pozor: Prepiso podatkov",
+    "importWarningText": "Z uvozom bodo vsi trenutni uporabniški podatki prepisani in odjavljeni boste. Želite nadaljevati?",
+    "userId": "Uporabniški ID",
+    "copySuccess": "Kopirano v odložišče!",
+    "selectStartpage": "Izberite začetno stran"
+  },
+  "adminStats": {
+    "title": "Statistika",
+    "usersToday": "Novi uporabniki danes",
+    "usersWeek": "Novi uporabniki ta teden",
+    "activeToday": "Aktivni uporabniki danes",
+    "activeWeek": "Aktivni uporabniki ta teden",
+    "recipes24h": "Ustvarjeni recepti (24h)",
+    "trainingPlans24h": "Ustvarjeni načrti vadbe (24h)",
+    "trainingLogsWeek": "Ustvarjeni dnevniki vadbe (teden)",
+    "plannerUsersTotal": "Uporabniki z načrtovalnikom skupaj",
+    "plannerToday": "Uporabniki z načrtovalnikom danes",
+    "plannerWeek": "Uporabniki z načrtovalnikom ta teden",
+    "shoppingUpdatedToday": "Posodobljeni nakupovalni seznami danes",
+    "shoppingUpdatedWeek": "Posodobljeni nakupovalni seznami ta teden",
+    "calorieTrackerTotal": "Uporabniki s števcem kalorij skupaj",
+    "calorieTrackerToday": "Uporabniki s števcem kalorij danes",
+    "calorieTrackerWeek": "Uporabniki s števcem kalorij ta teden",
+    "usersLast7Days": "Novi uporabniki (7 dni)",
+    "usersLast30Days": "Novi uporabniki (30 dni)",
+    "usersLast90Days": "Novi uporabniki (90 dni)",
+    "growth": "Rast",
+    "activity": "Aktivnost",
+    "content": "Vsebina",
+    "details": "Podrobnosti",
+    "smartInsights": "Pametni vpogledi",
+    "aiCacheSaved": "Prihranjene poizvedbe UI (Cache)",
+    "stickiness": "Zadržanje uporabnikov (Stickiness)",
+    "unreadFeedback": "Neprebrane povratne informacije",
+    "stickinessHint": "Razmerje med dnevnimi in mesečnimi uporabniki. Visoka vrednost (>20%) kaže na močno oblikovanje navad.",
+    "feedback": {
+      "title": "Upravljanje povratnih informacij",
+      "noFeedback": "Ni povratnih informacij.",
+      "user": "Uporabnik",
+      "recipe": "Recept",
+      "content": "Vsebina",
+      "date": "Datum",
+      "markAsRead": "Označi kot prebrano",
+      "markAsUnread": "Označi kot neprebrano",
+      "delete": "Izbriši",
+      "edit": "Uredi",
+      "save": "Shrani",
+      "cancel": "Prekliči",
+      "confirmDelete": "Ste prepričani, da želite izbrisati te povratne informacije?",
+      "deleteSuccess": "Povratne informacije izbrisane.",
+      "updateSuccess": "Povratne informacije posodobljene."
+    }
+  },
+  "adminTools": {
+    "title": "Skrbniška orodja",
+    "clearCache": "Izprazni LLM-Cache",
+    "resetImages": "Ponastavi slike vaj",
+    "confirm": "Potrdi ({seconds})",
+    "success": "Akcija izvedena",
+    "systemMessageTitle": "Pošlji sistemsko sporočilo",
+    "messageTitleLabel": "Naslov",
+    "messageContentLabel": "Vsebina",
+    "correctGrammar": "Popravi gramatiko",
+    "sendGlobalMessage": "Pošlji globalno sporočilo",
+    "confirmSendTitle": "Res pošljem sporočilo?",
+    "confirmSendText": "To sporočilo bo poslano VSEM uporabnikom. Želite nadaljevati?",
+    "sendSuccess": "Sporočilo uspešno poslano vsem uporabnikom."
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Kontaktirajte nas preko naslednjih kanalov",
+    "email": "Pošlji e-pošto",
+    "discord": "Discord",
+    "footer": "Veselimo se vašega sporočila!"
+  },
+  "tracker": {
+    "today": "Danes",
+    "bodyData": "Telesni podatki",
+    "trackNewItem": "Beleži nov vnos",
+    "noTargetDefined": "Cilj kalorij ni določen",
+    "noItemsTracked": "Nič še ni bilo zabeleženo.",
+    "descriptionLabel": "Dodaten opis",
+    "descriptionPlaceholder": "Opišite svoj obrok ali aktivnost glede na sliko",
+    "menu": {
+      "edit": "Uredi",
+      "daily": "Dnevno",
+      "addToShoppingList": "Dodaj na nakupovalni seznam",
+      "addToToday": "Dodaj za danes",
+      "remove": "Odstrani"
+    },
+    "dailyTracked": "(dnevno)",
+    "calorieGoal": "Cilj kalorij",
+    "calorieCalculator": "Kalkulator kalorij",
+    "trackActivity": "Beleži aktivnost",
+    "trackRecipe": "Beleži recept",
+    "activityLabel": "Aktivnost",
+    "activityRequired": "Prosimo, vnesite aktivnost, preden nadaljujete.",
+    "createActivity": "Dodaj aktivnost",
+    "createActivityInfo": "Tukaj dodajte svoje aktivnosti, aplikacija bo samodejno izračunala kalorije za vas.",
+    "palOptions": {
+      "homeOffice": "Delo od doma – sedeče, brez telesne aktivnosti",
+      "officeWorker": "Pisarniški delavec – sedeče, malo gibanja",
+      "teacher": "Učitelj – zmerna hoja, stanje",
+      "salesperson": "Prodajalec – stanje, hoja, lahka fizična dela",
+      "waiter": "Natakar – veliko hoje, nošenje krožnikov",
+      "nurse": "Negovalec – pogosta hoja, dvigovanje bolnikov",
+      "constructionWorker": "Gradbeni delavec – fizično naporno, dvigovanje, nošenje",
+      "farmer": "Kmet – fizično delo, dvigovanje, upravljanje strojev",
+      "sportsTeacher": "Športni pedagog – aktiven, prikazovanje vaj",
+      "constructionSite": "Gradbišče – težko fizično delo, dvigovanje, stanje",
+      "mountainGuide": "Gorski vodnik – ekstremna aktivnost, dolga hoja po terenu"
+    },
+    "height": "Telesna višina (cm)",
+    "weight": "Teža (kg)",
+    "birthyear": "Leto rojstva",
+    "gender": {
+      "text": "Spol",
+      "male": "Moški",
+      "female": "Ženska"
+    },
+    "workHoursWeek": "Delovne ure na teden",
+    "workDaysPAL": "Vrednost PAL pri delu",
+    "dietType": {
+      "text": "Način prehranjevanja",
+      "balanced": "Uravnoteženo",
+      "lowCarb": "Malo ogljikovih hidratov",
+      "lowFat": "Malo maščob"
+    },
+    "dietLevel": {
+      "text": "Stopnja diete",
+      "strongLose": "Močno hujšanje -25%",
+      "lose": "Hujšanje -15%",
+      "maintain": "Vzdrževanje",
+      "gain": "Pridobivanje +10%",
+      "strongGain": "Močno pridobivanje +20%"
+    },
+    "bodyDataInfo": "Tukaj lahko vnesete svoje telesne podatke za izračun ciljev kalorij. Ti se bodo uporabili za določitev vaših dnevnih ciljev kalorij.",
+    "minutes": "minut",
+    "burned": "porabljeno",
+    "calories": "Kalorije",
+    "kcal": "kcal",
+    "protein": "Beljakovine",
+    "carbohydrates": "Ogljikovi hidrati (g)",
+    "fat": "Maščobe",
+    "caloriesBurned": "Porabljene kalorije (kcal)",
+    "duration": "Trajanje (minut)",
+    "calculateCalories": "Izračunaj kalorije",
+    "errorNoBodydata": "Če želite uporabljati kalkulator kalorij, morate najprej vnesti svoje telesne podatke.",
+    "errorBodydataActivity": "Če želite uporabljati sledenje aktivnostim, morate najprej vnesti svoje telesne podatke.",
+    "selectRecipe": "Izberi recept",
+    "portions": "Porcije",
+    "voiceRecordingInfo": "Posnetek se shrani lokalno pri vas. Če želite poslati zvočno datoteko, kliknite Pošlji. \nLahko pa kliknete Zavrzi, da posnetka ne pošljete.",
+    "nutritionDetails": "Podrobnosti o hranilni vrednosti",
+    "macronutrients": "Makrohranila",
+    "carbs": "Oglj. hidrati",
+    "noMacroTargetDefined": "Cilji makrohranil niso določeni",
+    "acidBase": {
+      "title": "Kislinsko-bazno ravnovesje",
+      "alkaline": "Alkalno - Dobro za kislinsko-bazno ravnovesje",
+      "balanced": "Uravnoteženo - Kislinsko-bazno ravnovesje v ravnovesju",
+      "acidic": "Kislotvorno - Priporočljivo več alkalnih živil"
+    },
+    "histamine": {
+      "title": "Histamin",
+      "average": "Povprečje",
+      "low": "Nizka vsebnost histamina - Dobro prenašanje",
+      "moderate": "Zmerna vsebnost histamina - Upoštevajte pri intoleranci",
+      "high": "Visoka vsebnost histamina - Problematično pri intoleranci"
+    },
+    "itemIndicator": {
+      "alkaline": "Alkalno",
+      "neutral": "Nevtralno",
+      "acidic": "Kislotvorno",
+      "histamineNone": "Brez histamina",
+      "histamineLow": "Malo",
+      "histamineModerate": "Zmerno",
+      "histamineHigh": "Visoko"
+    },
+    "indicatorSettings": {
+      "menuTitle": "Indikatorji",
+      "title": "Prilagajanje indikatorjev",
+      "description": "Izberite, kateri indikatorji naj se prikazujejo pri vaših živilih.",
+      "preview": "Predogled",
+      "noIndicators": "Indikatorji niso aktivirani",
+      "acidBaseDesc": "Prikazuje PRAL vrednost za kislinsko-bazno ravnovesje",
+      "histamineDesc": "Prikazuje vsebnost histamina za boljšo prenošljivost"
+    },
+    "enterQuestion": "Tukaj postavite vprašanje...",
+    "askDialog": "Tukaj lahko postavljate vprašanja o prehrani. Aplikacija bo poskušala odgovoriti na vaše vprašanje, pri čemer bo upoštevala vaše telesne podatke in vnose v števec kalorij v zadnjih 14 dneh. Upoštevajte, da odgovori temeljijo na informacijah, ki ste jih vnesli v aplikacijo.",
+    "addImage": "Dodaj sliko",
+    "uploadImage": "Naloži sliko",
+    "captureImage": "Posnemi sliko",
+    "dietLevelChange": {
+      "dietLevelBefore": "Stopnja diete prej",
+      "lastChanged": "zadnja sprememba"
+    },
+    "chat": {
+      "title": "Pomočnik sledilnika",
+      "placeholder": "Postavite vprašanje o svojih kalorijah...",
+      "emptyState": "Vprašaj me kaj o svoji prehrani!",
+      "welcomeMessage": "Živijo! Sem tvoj pomočnik sledilnika. Lahko ti odgovorim na vprašanja o tvojih kalorijah, hranilnih vrednostih in prehranjevalnih navadah.",
+      "openButton": "Odpri pomočnika"
+    },
+    "imageSelected": "Slika izbrana",
+    "imagesSelected": "Slike izbrane",
+    "audioRecorded": "Zvok posnet"
+  },
+  "trainingPlans": {
+    "title": "Načrti vadbe",
+    "help": {
+      "step1": {
+        "title": "Ustvarjanje načrta vadbe",
+        "content": "Načrte vadbe je mogoče ustvariti individualno; opiše se lahko vse, kar se točno želi, za kaj se trenira, kje, kolikokrat na teden in kako intenzivno/dolgo."
+      },
+      "step2": {
+        "title": "Urejanje načrta vadbe",
+        "content": "Če kaj ne bi ustrezalo, se lahko načrti vadbe uredijo z naravnim jezikom. Preprosto napišite, kaj želite spremeniti, in dobili boste posodobljeno različico."
+      },
+      "step3": {
+        "title": "Treniranje",
+        "content": "Načrti vadbe temeljijo na času, če so ti aktivirani. Aktivne načrte vadbe je mogoče trenirati in beležiti, vsako serijo posebej – uteži oziroma ponovitve ali trajanje serij. Na koncu imate možnost, da vadbo pošljete neposredno v števec kalorij, da zabeležite porabljene kalorije."
+      }
+    },
+    "descriptionLabelCreate": "Podrobno opišite načrt",
+    "voiceRecordingInfo": "Posnemite opis za načrt vadbe. Posnetek ostane shranjen lokalno in se pretvori v besedilo šele po pošiljanju. Če posnetka ne želite uporabiti, ga lahko zavržete.",
+    "createPlanInstructions": "Opišite svoj načrt čim bolj natančno: Kaj želite trenirati? Kolikokrat na teden? V kakšnem okolju? Kakšno vrsto vadbe imate raje?\n\nNavedete lahko tudi intenzivnost: lahka, zmerna ali intenzivna.\n\nPrimeri:\n'Želim iti štirikrat na teden v fitnes, poudarek na zgornjem delu telesa. Sem dobro natreniran.'\n\n'Imam bolečine v hrbtu na levi strani zadaj pri rami. Ustvari mi načrt s ciljnimi vajami za en dan na teden, da izboljšam držo in ublažim bolečine.'\n\nVeč informacij ko navedete, bolj ustrezno bo ustvarjen vaš načrt vadbe.",
+    "subtitle": "Tukaj lahko ustvarjate in upravljate svoje načrte vadbe.",
+    "editPlan": "Uredi načrt vadbe",
+    "editPlanDescription": "Opišite, kaj želite spremeniti",
+    "repetitionsShort": "pon.",
+    "duration": "Trajanje",
+    "restBetweenSets": "Odmor med serijami",
+    "restAfterExercise": "Odmor po vaji",
+    "deletePlan": "Izbriši načrt vadbe",
+    "activePlan": "Aktivni načrt",
+    "confirmDeletePlan": "Ali res želite izbrisati ta načrt vadbe?",
+    "noPlans": "Še niste ustvarili nobenega načrta vadbe.",
+    "trainingDaysPerWeek": "Dnevi vadbe na teden",
+    "addExercise": "Dodaj vajo",
+    "removeExercise": "Odstrani vajo",
+    "exerciseName": "Ime vaje",
+    "set": "Serija",
+    "sets": "Serije",
+    "reps": "Ponovitve",
+    "restTime": "Čas odmora (sekunde)",
+    "savePlan": "Shrani načrt vadbe",
+    "createPlan": "Ustvari načrt vadbe",
+    "train": "Treniraj",
+    "ask": "Postavi vprašanje",
+    "continuePlan": "Ustvari nadaljevanje",
+    "continuePlanTitle": "Nadaljevanje za {name}",
+    "continuePlanDescription": "Na podlagi tega načrta vadbe ustvarite nov načrt. Opcijsko lahko dodate želje.",
+    "continuePlanNotesLabel": "Dodatna navodila (opcijsko)",
+    "continuePlanAction": "Ustvari nadaljevanje",
+    "enterQuestion": "Postavite vprašanje o tem načrtu",
+    "askDialog": "O tem načrtu vadbe lahko postavljate vprašanja. Poslanih bo zadnjih 10 dnevnikov vadbe.",
+    "selectDay": "Izberite dan",
+    "suggestedWeight": "Priporočena teža",
+    "suggestedDuration": "Priporočeno trajanje",
+    "weight": "Teža (kg)",
+    "durationWeeks": "Trajanje (tedni)",
+    "canceled": "Zadnja vadba je bila prekinjena.",
+    "noPlansInfo": "Trenutno ni nobenih načrtov vadbe. Z gumbom plus zgoraj desno lahko dodate nov načrt vadbe.",
+    "activateDialog": {
+      "title": "Aktiviraj načrt vadbe",
+      "msg": "Ko zaženete svoj načrt vadbe, bo določen datum začetka. Nato boste videli, v katerem tednu načrta vadbe se nahajate.\nAli res želite zagnati načrt vadbe?"
+    },
+    "deleteDialog": {
+      "title": "Izbriši načrt vadbe",
+      "msg": "Ali res želite izbrisati ta načrt vadbe?"
+    },
+    "finishDialog": {
+      "title": "Končaj vadbo",
+      "msg": "Ko končate vadbo, se datum začetka in ves vaš napredek ponastavita. Ste prepričani, da želite končati z vadbenim ciklom?"
+    },
+    "processingMessage": "Vaš načrt vadbe se ustvarja v ozadju. Ko bo pripravljen, boste obveščeni.",
+    "readyMessage": "Vaš načrt vadbe je bil ustvarjen.",
+    "editDialog": {
+      "preview": "Predogled",
+      "save": "Shrani spremembe",
+      "changes": "Spremembe",
+      "error": "Napaka pri urejanju"
+    },
+    "statistics": "Statistika",
+    "totalWorkouts": "Zaključene vadbe",
+    "lastWorkout": "Zadnja vadba",
+    "lastExercises": "Zadnjih 5 vaj",
+    "noWorkoutsYet": "Ni še zaključenih vadb."
+  },
+  "publicRecipe": {
+    "downloadTitle": "Prenesi Murmli",
+    "downloadDescription": "Ustvari in deli lastne recepte z aplikacijo Murmli!",
+    "loading": "Nalaganje recepta..."
+  },
+  "training": {
+    "title": "Dnevnik vadbe",
+    "continue": "Nadaljuj z vadbo",
+    "discard": "Zavrzi vadbo",
+    "exerciseListPlaceholder": "Nalaganje seznama vaj...",
+    "noPlan": "Za danes ni načrtovane vadbe ali pa načrt ne vsebuje vaj.",
+    "estimatedTimePlaceholder": "pribl. X min",
+    "startTraining": "Začni z vadbo",
+    "setInfo": "Serija {current} od {total}",
+    "finishSet": "Končaj serijo",
+    "noDescription": "Opis ni na voljo.",
+    "countdown": "Naslednja serija čez {seconds} sekund...",
+    "noDaySelected": "Noben dan ni izbran",
+    "exercise": "Vaja",
+    "exercises": "Vaje",
+    "seconds": "Sekunde",
+    "secondsShort": "sek.",
+    "noPreviousLog": "Prejšnjega dnevnika še ni.",
+    "noImageAvailable": "Slika še ni na voljo.",
+    "description": "Opis",
+    "lastLog": "zadnji dnevnik:",
+    "actualLog": "trenutni dnevnik:",
+    "skipRest": "Preskoči odmor",
+    "completeSet": "Končaj serijo",
+    "timeSeconds": "Čas (sek.)",
+    "time": "Čas",
+    "startTimer": "Zaženi časovnik",
+    "stopTimer": "Ustavi časovnik",
+    "timer": "Časovnik",
+    "exerciseCompleted": "Vaja zaključena",
+    "nextExercise": "Naslednja vaja",
+    "allExercisesDone": "Vse vaje zaključene",
+    "finishTraining": "Končaj vadbo",
+    "getFeedback": "Zahtevaj povratne informacije",
+    "trackCalories": "Beleži kalorije",
+    "caloriesBurned": "Zabeležene kalorije: {calories} kcal",
+    "feedbackTitle": "Povratne informacije",
+    "noCurrentLog": "Trenutno ni aktivne vadbe.",
+    "loadingLog": "Nalaganje dnevnika vadbe...",
+    "suggestedValues": "Predlagane vrednosti",
+    "useLastValue": "Vnesi zadnjo vrednost ({value})",
+    "difficulty": "Napor",
+    "summaryTitle": "Povzetek vadbe",
+    "backToPlans": "Nazaj k načrtom vadbe",
+    "statistics": "Statistika",
+    "totalMovedWeight": "Skupna premaknjena teža",
+    "totalDuration": "Skupno trajanje",
+    "totalSets": "Skupno število serij",
+    "avgWeightPerExercise": "Povprečna teža na vajo",
+    "cancelTraining": "Prekini vadbo",
+    "cancelTrainingConfirm": "Ali res želite prekiniti vadbo?"
+  }
+}
