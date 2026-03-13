@@ -1,0 +1,717 @@
+{
+  "greeting": "Merhaba",
+  "goodbye": "Görüşmek üzere",
+  "help": {
+    "shoppinglist": {
+      "languagePrompt": "Murmli ile devam etmek için lütfen önce dilinizi ve istediğiniz ana sayfayı seçin.",
+      "languageTitle": "Dil Seçimi",
+      "selectLanguage": "Dil seçin",
+      "welcome": "Tarifler, alışveriş ve beslenme için akıllı uygulamanız Murmli'ye hoş geldiniz.\n\nBu uygulama, çevirileri, yorumları ve tarif seçimini kolaylaştırmak için yapay zeka kullanır. Hatta kendi tariflerinizi oluşturabilir ve günlük hayatınızı daha verimli hale getirmek için bunları doğrudan alışveriş listesine aktarabilirsiniz.",
+      "welcomeTitle": "Hoş Geldiniz",
+      "quickGuide": "İhtiyacınız olanı giriş alanına yazmanız yeterlidir; Murmli, yapay zeka aracılığıyla bunu alışveriş listesine ekleyecektir.\n\nTüm ürünler, daha kolay bulabilmeniz için doğrudan süpermarket kategorilerine göre sıralanır.\n\nÜrünler eklendikten sonra alternatifler bulmak için üzerlerine tıklayabilirsiniz.",
+      "quickGuideTitle": "Hızlı Başlangıç Kılavuzu",
+      "options": "Listenizi paylaşma veya sıralama gibi diğer seçenekleri menüde (sağ üstte) bulabilirsiniz. Birlikte çalışmak için listeyi örneğin partnerinizle paylaşın. Paylaşımı istediğiniz zaman iptal edebilirsiniz.",
+      "optionsTitle": "Seçenekler",
+      "start": "Hadi başlayalım!"
+    },
+    "planner": {
+      "welcomeTitle": "Tarif Planlayıcı",
+      "welcome": "Aşağıda kaç kişi için ve kaç tarif planlamak istediğinizi belirleyin. Metin alanına isteklerinizi doğal dilde de girebilirsiniz; bir yapay zeka, tarifleri seçerken bunları otomatik olarak dikkate alır (örneğin, sporcular için vejetaryen).",
+      "optionsTitle": "Tarif Seçimi",
+      "options": "Şimdi size tarifler gösterilecek. \nBir tarifi beğenirseniz başparmak yukarı, beğenmezseniz başparmak aşağı simgesine tıklayın. \n\nSistem, daha iyi öneriler sunmak için kararlarınızdan öğrenir.",
+      "shoppinglistTitle": "Alışveriş Listesi ve Tarifler",
+      "shoppinglist": "İstediğiniz sayıda tarifi seçtiğinizde otomatik olarak alışveriş listesine yönlendirilirsiniz. Bu liste, tarifler için tüm malzemeleri içerir. \n\n'Tarifler' altında talimatlar dahil seçtiğiniz tarifleri bulabilirsiniz. Orada tarifleri değerlendirebilir ve geri bildirimde bulunabilirsiniz.",
+      "openFilter": "Filtreyi aç"
+    },
+    "recipes": {
+      "overview": "Burada alışveriş listenize ait tariflerin, kendi tariflerinizin ve favorilerinizin genel görünümünü bulabilirsiniz. Bunlara buradan ulaşabilirsiniz.",
+      "create": "Sağ üstteki artı simgesiyle kendi tariflerinizi oluşturma imkanına sahipsiniz. Fikrinizi girin, yapay zeka tarifi oluştursun; ayrıca malzemelerin bir fotoğrafını da yükleyebilirsiniz.",
+      "addToList": "Kendi tariflerinizden veya favori tariflerinizden birini alışveriş listenize eklemek isterseniz, tarifi açın ve sağ üstteki menü (üç nokta) üzerinden ekleyin.",
+      "overviewTitle": "Tariflere Genel Bakış",
+      "createTitle": "Tarif Oluştur",
+      "addToListTitle": "Tarifleri Alışveriş Listesine Ekle"
+    },
+    "tracker": {
+      "overviewTitle": "Öğünleri Kaydet",
+      "overview": "Sadece ne yediğinizi yazın. \n\nHer şeyi doğal dilde tanımlayabilir; örneğin 'bir tabak makarna' diyebilir, açıkça ürün adlarını belirtebilir veya tam kalori bilgilerini verebilirsiniz - tamamen size kalmış.",
+      "calorieGoalTitle": "Kalori Hedefiniz",
+      "calorieGoal": "Günlük kalori hedefinizi kendiniz belirleyin veya otomatik olarak hesaplamamıza izin verin. \n\nBunun için vücut bilgilerinizi bir kez girmeniz yeterlidir; gerisini biz hallederiz.",
+      "activityTrackingTitle": "Aktiviteleri Kaydet",
+      "activityTracking": "Ayrıca '20 dakika koşu' gibi spor aktivitelerinizi de kaydedin. Buradan otomatik olarak ne kadar ekstra kalori alabileceğinizi - tamamen size özel olarak - hesaplıyoruz."
+    },
+    "setup": {
+      "aboutAppTitle": "Uygulama Hakkında",
+      "aboutApp": "Bu uygulama, bir alışveriş listesi ve akıllı tarif planlaması ile hayatı kolaylaştırmak için özel olarak geliştirilmiştir."
+    }
+  },
+  "helpPage": {
+    "title": "Yardım ve Video Eğitimleri",
+    "intro": "Burada size Murmli'nin en önemli fonksiyonlarını gösteren kısa videolardan oluşan bir koleksiyon bulacaksınız. Bunları istediğiniz zaman uygulama içinde izleyebilir, YouTube'da açabilir veya doğrudan uygulama içinde büyüterek oynatabilirsiniz.",
+    "openHelpCenter": "Yardım Merkezini Aç",
+    "sections": {
+      "overview": {
+        "title": "Genel Bakış",
+        "description": "Murmli'ye ve uygulamanın tüm ana bölümlerine hızlı bir bakış."
+      },
+      "firstStart": {
+        "title": "Uygulamanın İlk Çalıştırılması",
+        "description": "Murmli'yi ilk açılışta nasıl kuracağınız ve hemen alışacağınız."
+      },
+      "shoppingList": {
+        "title": "Alışveriş Listesi",
+        "description": "Akıllı alışveriş listesinin yanı sıra ekleme, sıralama ve paylaşma ile ilgili ipuçları ve püf noktaları."
+      },
+      "planner": {
+        "title": "Planlayıcı",
+        "description": "Tarifleri nasıl planlayacağınızı, isteklerinizi nasıl belirteceğinizi ve otomatik önerileri nasıl kullanacağınızı öğrenin."
+      },
+      "calorieCounter": {
+        "title": "Kalori Sayacı",
+        "description": "Kalori sayacı ile beslenmenizi ve aktivitelerinizi nasıl takip edeceğiniz."
+      },
+      "training": {
+        "title": "Antrenman Planları ve Kayıt",
+        "description": "Antrenman planları oluşturun, seanslarınızı belgeleyin ve ilerlemenizi takip edin."
+      },
+      "settings": {
+        "title": "Ayarlar ve Kapanış",
+        "description": "Ayarlar hakkındaki her şey ve son bir genel bakış."
+      }
+    }
+  },
+  "general": {
+    "next": "İleri",
+    "back": "Geri",
+    "error": "Hata",
+    "errorMessage": "Bir hata oluştu. Lütfen birazdan tekrar deneyin veya bu hatayı bize bildirin.",
+    "loading": "Yükleniyor...",
+    "close": "Kapat",
+    "save": "Kaydet",
+    "send": "Gönder",
+    "cancel": "İptal",
+    "report": "Bildir",
+    "confirm": "Onayla",
+    "ok": "Tamam",
+    "retry": "Tekrar Dene",
+    "notifications": {
+      "recipeReady": "Tarif Hazır",
+      "recipeReadyMessage": "Tarifiniz oluşturuldu.",
+      "trainingPlanReady": "Antrenman Planı Hazır",
+      "trainingPlanReadyMessage": "Antrenman planınız oluşturuldu.",
+      "feedback": {
+        "title": "Yeni Geri Bildirim",
+        "success": "Bir tarif hakkında yeni geri bildirim alındı."
+      }
+    },
+    "start": "Haydi başlayalım",
+    "generate": "Oluştur",
+    "deleteRecipeDialog": {
+      "text": "Tarifi Kaldır",
+      "dialogMsg": "Seçilen tarifi gerçekten kaldırmak istiyor musunuz?"
+    },
+    "information": "Bilgi",
+    "ask": "Soru Sor",
+    "help": "Yardım",
+    "selected": "Seçildi",
+    "discard": "Vazgeç",
+    "resume": "Devam Et",
+    "voiceRecording": "Ses Kaydı",
+    "voiceDialogInfo": "Ses kaydı şu an yapılıyor. İstediğiniz zaman vazgeçebilirsiniz. Gönderirseniz, otomatik olarak işlenecektir.",
+    "details": "Detaylar",
+    "name": "İsim",
+    "goal": "Hedef",
+    "type": "Tüp",
+    "difficulty": "Zorluk",
+    "weekdays": {
+      "1": "Pazartesi",
+      "2": "Salı",
+      "3": "Çarşamba",
+      "4": "Perşembe",
+      "5": "Cuma",
+      "6": "Cumartesi",
+      "7": "Pazar"
+    },
+    "edit": "Düzenle",
+    "delete": "Sil",
+    "activate": "Aktive Et",
+    "archive": "Arşiv",
+    "finish": "Bitir",
+    "weeks": "Hafta",
+    "progress": "İlerleme",
+    "instructions": "Talimatlar",
+    "day": "Gün",
+    "days": "Gün",
+    "week": "Hafta",
+    "selectPhoto": "Fotoğraf Seç",
+    "capturePhoto": "Kamera"
+  },
+  "shoppingList": {
+    "newItemLabel": "Yeni Ürün",
+    "newItemPlaceholder": "Ürün adını girin",
+    "notesLabel": "Notlar",
+    "notesHint": "Notlarınız otomatik olarak kaydedilir",
+    "noItemsMessage": "Alışveriş listesinde hiç ürün yok.",
+    "checkedHeader": "İşaretlenenler",
+    "nameLabel": "İsim",
+    "amountLabel": "Miktar",
+    "unitLabel": "Birim",
+    "findAlternative": "Alternatif Bul",
+    "editItem": "Girdiyi Düzenle",
+    "showRecipe": "Tarifi Göster",
+    "saveAsFavorite": "Favorilere Ekle",
+    "removeFavorite": "Favorilerden Kaldır",
+    "shoppingListLabel": "Alışveriş Listesi",
+    "sortList": "Sıralama",
+    "help": "Yardım",
+    "favorites": "Favoriler",
+    "shareList": "Listeyi Paylaş",
+    "inviteCode": "Davet Kodu",
+    "inviteCodeExpires": "Saniye geçerli",
+    "createInvite": "Kod Oluştur",
+    "leaveList": "Listeden Ayrıl",
+    "joinedList": "Başka birinin listesine katıldınız.",
+    "noSharedUsers": "Liste henüz paylaşılmadı.",
+    "joinList": "Listeye Katıl",
+    "sortCategoriesDialog": {
+      "title": "Kategorileri Sırala",
+      "text": "Bir konum belirlemek için bir kategoriye tıklayın veya okları kullanın.",
+      "newPosition": "Yeni Konum",
+      "changePositon": "Konumu Değiştir"
+    },
+    "removeRecipes": {
+      "text": "Tarifleri Kaldır",
+      "dialogMsg": "Tüm tarifleri alışveriş listenizden gerçekten kaldırmak istiyor musunuz? Malzemeler alışveriş listesinde kalacaktır ve ayrıca silinmelidir."
+    },
+    "removeIngredients": {
+      "text": "Malzemeleri Kaldır",
+      "dialogMsg": "Alışveriş listenizden malzemeyle ilgili tüm girdileri gerçekten kaldırmak istiyor musunuz? Tarifler, tarif görünümünde kalmaya devam edecektir."
+    },
+    "clearAll": {
+      "text": "Alışveriş Listesini Boşalt",
+      "dialogMsg": "Alışveriş listenizdeki tüm öğeleri gerçekten kaldırmak istiyor musunuz?"
+    },
+    "deleteList": {
+      "text": "Alışveriş Listesini Sil",
+      "dialogMsg": "Tüm alışveriş listenizi gerçekten silmek istiyor musunuz?"
+    },
+    "deleteConfirmTooltip": "Onaylamak için tekrar basın.",
+    "recipeOwnership": "Bu tarif şuna ait: ",
+    "voiceRecordingInfo": "Ses kaydı şu an devam ediyor. Alışveriş listenize ne eklenmesini istediğinizi doğal dilde söyleyebilirsiniz. Talebiniz işlenecek ve gönderilecektir. Kaydı iptal etmek isterseniz silebilirsiniz. Kaydı göndermediğiniz sürece her şey cihazınızda yerel olarak kalır.",
+    "categoryLabel": "Kategori",
+    "offlineMode": "Çevrimdışı mod aktif - Değişiklikler yerel olarak kaydediliyor",
+    "backOnline": "Bağlantı yeniden kuruldu",
+    "syncComplete": "Değişiklikler senkronize edildi",
+    "pendingChanges": "{count} bekleyen değişiklik",
+    "pendingChangesSingular": "1 bekleyen değişiklik",
+    "syncing": "Senkronize ediliyor...",
+    "offline": "Çevrimdışı",
+    "pendingItemTooltip": "Bağlantı yeniden kurulduğunda bu ürün senkronize edilecektir"
+  },
+  "planner": {
+    "title": "Tarif Planlayıcı",
+    "filter": {
+      "title": "Filtre Ayarları",
+      "servingsLabel": "Kişi Sayısı",
+      "recipesLabel": "Tarif Sayısı",
+      "promptLabel": "Özel İstekler",
+      "promptPlaceholder": "İsteklerinizi tarif edin"
+    },
+    "fetchingMessage": "Tarifleriniz arka planda yükleniyor. Lütfen bekleyin.",
+    "resetSelectionDialog": {
+      "text": "Seçimi Sıfırla",
+      "dialogMsg": "Tarif seçiminizi gerçekten sıfırlamak istiyor musunuz?"
+    }
+  },
+  "recipes": {
+    "title": "Tarifler",
+    "shareDialog": "Tarifi Paylaş",
+    "helpDialog": "Tarif Yardımı",
+    "empty": "Henüz bir tarif oluşturmadınız.",
+    "noneSelected": "Hiçbir tarif seçilmedi.",
+    "noFavorites": "Henüz favoriniz yok.",
+    "tips": {
+      "swipeToRemove": "Bir tarifi kaldırmak için sağa veya sola kaydırın.",
+      "createOwn": "Sağ üstteki artı simgesiyle kendi tariflerinizi oluşturabilirsiniz.",
+      "printPdf": "Tariflerinizi yazdırmak mı istiyorsunuz? Sağ alttaki üç nokta menüsünden bir PDF oluşturabilirsiniz.",
+      "editOwn": "Kendi tariflerinizi istediğiniz zaman düzenleyebilirsiniz. Tarifi açın ve üç nokta menüsünü kullanın, tüm seçenekleri orada bulacaksınız.",
+      "feedbackPlanner": "Planlayıcıdan gelen bir tarif sizi ikna etmedi mi? Onu açın ve üç nokta menüsü üzerinden geri bildirim verin; ilgileneceğiz."
+    },
+    "panels": {
+      "selectedRecipes": {
+        "title": "Alışveriş Listesindeki Tarifler"
+      },
+      "myRecipes": {
+        "title": "Kendi Tariflerim"
+      },
+      "favoriteRecipes": {
+        "title": "Favori Tarifler"
+      }
+    },
+    "createRecipeDialog": {
+      "title": "Tarif Oluştur",
+      "text": "Tarifinizi mümkün olduğunca detaylı tanımlayın: Mutlaka ne olmalı, nelerden kaçınmak istersiniz? Ne kadar çok bilgi verirseniz, size özel tarifi o kadar iyi oluşturabiliriz.\n\nOluşturma sürecinden sonra tarifinizin 'Kendi Tariflerim' altında görünmesi yaklaşık 2–3 dakika sürer.\n\nİsteğe bağlı olarak bir fotoğraf ekleyebilirsiniz; ister galerinizden, ister yeni bir fotoğraf çekerek. Bu, buzdolabınızın, tek tek malzemelerin veya size istediğiniz tarifi hatırlatan bir şeyin resmi olabilir.",
+      "label": "Tarif Açıklaması",
+      "generatingText": "Tarifiniz şimdi oluşturuluyor. Bu yaklaşık iki dakika sürebilir. Ardından 'Kendi Tariflerim' altında bulabilirsiniz."
+    },
+    "addIngredients": "Malzemeleri Ekle",
+    "addIngreditensInfo": "Tarifi güncel alışveriş listenize eklemek istediğinizden emin misiniz? Tüm malzemeler otomatik olarak eklenecektir.",
+    "selectPortions": "Porsiyonları Seç",
+    "processingMessage": "Tarifiniz arka planda oluşturuluyor. Hazır olduğunda bilgilendirileceksiniz.",
+    "readyMessage": "Tarifiniz oluşturuldu.",
+    "downloadSelectedPdf": "Seçilen Tarifler PDF Olarak"
+  },
+  "recipe": {
+    "title": "Tarif",
+    "recipeFor": "Şunun için tarif:",
+    "recipePerson": "Kişi",
+    "recipePersons": "Kişi",
+    "prepareIngredients": "Malzemeleri Hazırla",
+    "downloadPdf": "PDF İndir",
+    "nutrition": {
+      "title": "Porsiyon Başına Besin Değerleri",
+      "kilocalories": "kcal",
+      "carbohydrates": "Karbonhidrat",
+      "fat": "Yağ",
+      "protein": "Protein"
+    },
+    "information": {
+      "title": "Bilgiler",
+      "healthy": "Sağlıklı",
+      "price": "Fiyat",
+      "difficulty": "Zorluk",
+      "sustainability": "Sürdürülebilirlik",
+      "preparationTime": "Hazırlık",
+      "everyday": "Günlük Uygunluk"
+    },
+    "feedback": {
+      "title": "Geri Bildirim",
+      "label": "Geri Bildiriminiz",
+      "success": "Geri bildiriminiz için teşekkürler!\nİlgileneceğiz."
+    },
+    "editDialog": {
+      "title": "Tarifi Düzenle",
+      "instructions": "Değişikliklerinizi tanımlayın",
+      "preview": "Önizleme",
+      "save": "Değişiklikleri Kaydet",
+      "error": "Düzenleme sırasında hata",
+      "changes": "Değişiklikler"
+    },
+    "menu": {
+      "addToList": "Malzemeleri Listeye Ekle",
+      "addFavorite": "Favoriye Ekle",
+      "removeRecipe": "Tarifi Kaldır",
+      "removeFavorite": "Favoriyi Kaldır",
+      "deleteRecipe": "Tarifi Sil",
+      "editRecipe": "Tarifi Düzenle",
+      "addToDatabase": "Tarifi Veritabanına Ekle",
+      "downloadPdf": "PDF İndir",
+      "feedback": "Geri Bildirim",
+      "trackRecipe": "Tarifi Takip Et"
+    },
+    "promoteStarted": "Tarif şimdi arka planda veritabanına ekleniyor.",
+    "promoteInfo": "Bu kullanıcı tarifi zaten resmi veritabanının bir parçası.",
+    "shareText": "Bu tarife bir bak!",
+    "chat": {
+      "title": "Tarif Sohbeti",
+      "placeholder": "Tarif hakkında sorular...",
+      "emptyState": "Bu tarif hakkında bana bir şeyler sor!",
+      "welcomeMessage": "Merhaba! Ben tarif asistanınızım. Bana bu tarifle ilgili malzemeler, hazırlık veya alternatifler hakkında sorular sorabilirsiniz. Tarif bilgileri bende mevcut.",
+      "openButton": "Asistanı Aç"
+    }
+  },
+  "units": {
+    "gram": "Gram",
+    "kilogram": "kg",
+    "can": "Konserve",
+    "liter": "L",
+    "milliliter": "ml",
+    "cup": "Fincan",
+    "clove": "Diş",
+    "piece": "Adet",
+    "tablespoon": "Yemek kaşığı",
+    "teaspoon": "Tatlı kaşığı",
+    "breeze": "Tutam"
+  },
+  "navigation": {
+    "shoppingList": "Alışveriş Listesi",
+    "planner": "Planlayıcı",
+    "recipes": "Tarifler",
+    "calorieCounter": "Kalori Sayacı",
+    "settings": "Ayarlar",
+    "contact": "İletişim",
+    "testPage": "Test Sayfası",
+    "rateApp": "Uygulamayı Değerlendir",
+    "shareApp": "Uygulamayı Paylaş",
+    "email": "E-posta ile paylaş"
+  },
+  "settings": {
+    "account": "Hesap",
+    "title": "Ayarlar",
+    "export": "Verileri Dışa Aktar",
+    "import": "Verileri İçe Aktar",
+    "deleteAccount": "Hesabı Sil",
+    "confirmDeleteTitle": "Hesabı Sil?",
+    "confirmDeleteText": "Hesabınızı kalıcı olarak silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
+    "confirmDelete": "Evet, sil",
+    "cancel": "İptal",
+    "accountDeleted": "Hesabınız başarıyla silindi.",
+    "deleteError": "Hesap silinirken hata oluştu.",
+    "importError": "Veri aktarılırken hata oluştu.",
+    "height": "Boy (cm)",
+    "gender": "Cinsiyet",
+    "birthyear": "Doğum Yılı",
+    "dietType": "Beslenme Biçimi",
+    "dietLevel": "Diyet Seviyesi",
+    "baseCalories": "Bazal Metabolizma Hızı (kcal)",
+    "recommendations": "Önerilen Değerler",
+    "kcal": "Kalori (kcal)",
+    "protein": "Protein (g)",
+    "carbohydrates": "Karbonhidrat (g)",
+    "fat": "Yağ (g)",
+    "importWarningTitle": "Dikkat: Verilerin Üzerine Yazılacak",
+    "importWarningText": "İçe aktarma işlemi mevcut tüm kullanıcı verilerinin üzerine yazacak ve oturumunuz kapatılacaktır. Devam etmek istiyor musunuz?",
+    "userId": "Kullanıcı Kimliği",
+    "copySuccess": "Panoya kopyalandı!",
+    "selectStartpage": "Ana Sayfayı Seç"
+  },
+  "adminStats": {
+    "title": "İstatistikler",
+    "usersToday": "Bugün yeni kullanıcılar",
+    "usersWeek": "Bu hafta yeni kullanıcılar",
+    "activeToday": "Bugün aktif kullanıcılar",
+    "activeWeek": "Bu hafta aktif kullanıcılar",
+    "recipes24h": "Oluşturulan tarifler (24s)",
+    "trainingPlans24h": "Oluşturulan antrenman planları (24s)",
+    "trainingLogsWeek": "Oluşturulan antrenman kayıtları (Haftalık)",
+    "plannerUsersTotal": "Toplam planlayıcı kullanan kullanıcılar",
+    "plannerToday": "Bugün planlayıcı kullananlar",
+    "plannerWeek": "Bu hafta planlayıcı kullananlar",
+    "shoppingUpdatedToday": "Bugün güncellenen alışveriş listeleri",
+    "shoppingUpdatedWeek": "Bu hafta güncellenen alışveriş listeleri",
+    "calorieTrackerTotal": "Toplam kalori sayacı kullanan kullanıcılar",
+    "calorieTrackerToday": "Bugün kalori sayacı kullananlar",
+    "calorieTrackerWeek": "Bu hafta kalori sayacı kullananlar",
+    "usersLast7Days": "Yeni kullanıcılar (7 gün)",
+    "usersLast30Days": "Yeni kullanıcılar (30 gün)",
+    "usersLast90Days": "Yeni kullanıcılar (90 gün)",
+    "growth": "Büyüme",
+    "activity": "Aktivite",
+    "content": "İçerik",
+    "details": "Detaylar",
+    "smartInsights": "Akıllı Temalar",
+    "aiCacheSaved": "Tasarruf edilen AI istekleri (Önbellek)",
+    "stickiness": "Kullanıcı Bağlılığı (Stickiness)",
+    "unreadFeedback": "Okunmamış Geri Bildirimler",
+    "stickinessHint": "Günlük kullanıcıların aylık kullanıcılara oranı. Yüksek bir değer (>%20) güçlü bir alışkanlık oluşumunu gösterir.",
+    "feedback": {
+      "title": "Geri Bildirim Yönetimi",
+      "noFeedback": "Geri bildirim yok.",
+      "user": "Kullanıcı",
+      "recipe": "Tarif",
+      "content": "İçerik",
+      "date": "Tarih",
+      "markAsRead": "Okundu olarak işaretle",
+      "markAsUnread": "Okunmamış olarak işaretle",
+      "delete": "Sil",
+      "edit": "Düzenle",
+      "save": "Kaydet",
+      "cancel": "İptal",
+      "confirmDelete": "Bu geri bildirimi silmek istediğinizden emin misiniz?",
+      "deleteSuccess": "Geri bildirim silindi.",
+      "updateSuccess": "Geri bildirim güncellendi."
+    }
+  },
+  "adminTools": {
+    "title": "Yönetici Araçları",
+    "clearCache": "LLM Önbelleğini Temizle",
+    "resetImages": "Egzersiz Resimlerini Sıfırla",
+    "confirm": "Onayla ({seconds})",
+    "success": "İşlem gerçekleştirildi",
+    "systemMessageTitle": "Sistem Mesajı Gönder",
+    "messageTitleLabel": "Başlık",
+    "messageContentLabel": "İçerik",
+    "correctGrammar": "Dilbilgisini Düzelt",
+    "sendGlobalMessage": "Küresel Mesaj Gönder",
+    "confirmSendTitle": "Mesajı gerçekten gönder?",
+    "confirmSendText": "Bu mesaj TÜM kullanıcılara gönderilecektir. Devam etmek istiyor musunuz?",
+    "sendSuccess": "Mesaj tüm kullanıcılara başarıyla gönderildi."
+  },
+  "contact": {
+    "title": "İletişim",
+    "subtitle": "Bize şu kanallar üzerinden ulaşın",
+    "email": "E-posta Gönder",
+    "discord": "Discord",
+    "footer": "Mesajınızı bekliyoruz!"
+  },
+  "tracker": {
+    "today": "Bugün",
+    "bodyData": "Vücut Bilgileri",
+    "trackNewItem": "Yeni Giriş Kaydet",
+    "noTargetDefined": "Kalori hedefi belirlenmedi",
+    "noItemsTracked": "Henüz hiçbir şey kaydedilmedi.",
+    "descriptionLabel": "Ek Açıklama",
+    "descriptionPlaceholder": "Resimle ilgili öğününü veya aktiviteni tanımla",
+    "menu": {
+      "edit": "Düzenle",
+      "daily": "Günlük",
+      "addToShoppingList": "Alışveriş Listesine Ekle",
+      "addToToday": "Bugün için ekle",
+      "remove": "Kaldır"
+    },
+    "dailyTracked": "(günlük)",
+    "calorieGoal": "Kalori Hedefi",
+    "calorieCalculator": "Kalori Hesaplayıcı",
+    "trackActivity": "Aktivite Kaydet",
+    "trackRecipe": "Tarif Kaydet",
+    "activityLabel": "Aktivite",
+    "activityRequired": "Lütfen devam etmeden önce bir aktivite girin.",
+    "createActivity": "Aktivite Ekle",
+    "createActivityInfo": "Aktivitelerinizi buraya ekleyin, uygulama kalorileri sizin için otomatik olarak hesaplayacaktır.",
+    "palOptions": {
+      "homeOffice": "Home office – oturan, fiziksel aktivite yok",
+      "officeWorker": "Ofis çalışanı – oturan, az hareketli",
+      "teacher": "Öğretmen – orta derecede yürüme, ayakta durma",
+      "salesperson": "Satış elemanı – ayakta, yürüyen, hafif fiziksel iş",
+      "waiter": "Garson – çok yürüme, tabak taşıma",
+      "nurse": "Hemşire – sık yürüme, hasta kaldırma",
+      "constructionWorker": "İnşaat işçisi – fiziksel olarak yorucu, kaldırma, taşıma",
+      "farmer": "Çiftçi – fiziksel iş, kaldırma, makine kullanımı",
+      "sportsTeacher": "Spor öğretmeni – aktif, egzersiz gösterme",
+      "constructionSite": "İnşaat sahası – ağır fiziksel iş, kaldırma, ayakta durma",
+      "mountainGuide": "Dağ rehberi – aşırı aktivite, arazide uzun süreli yürüme"
+    },
+    "height": "Boy (cm)",
+    "weight": "Kilo (kg)",
+    "birthyear": "Doğum Yılı",
+    "gender": {
+      "text": "Cinsiyet",
+      "male": "Erkek",
+      "female": "Kadın"
+    },
+    "workHoursWeek": "Haftalık Çalışma Saati",
+    "workDaysPAL": "İş Sırasındaki PAL Değeri",
+    "dietType": {
+      "text": "Beslenme Biçimi",
+      "balanced": "Dengeli",
+      "lowCarb": "Düşük Karbonhidrat",
+      "lowFat": "Düşük Yağ"
+    },
+    "dietLevel": {
+      "text": "Diyet Seviyesi",
+      "strongLose": "Güçlü Kilo Verme -%25",
+      "lose": "Kilo Verme -%15",
+      "maintain": "Korumak",
+      "gain": "Kilo Almak +%10",
+      "strongGain": "Güçlü Kilo Almak +%20"
+    },
+    "bodyDataInfo": "Kalori hedeflerinizi hesaplamak için vücut bilgilerinizi buraya girebilirsiniz. Bunlar günlük kalori hedeflerinizi belirlemek için kullanılacaktır.",
+    "minutes": "Dakika",
+    "burned": "yakıldı",
+    "calories": "Kalori",
+    "kcal": "kcal",
+    "protein": "Protein",
+    "carbohydrates": "Karbonhidrat (g)",
+    "fat": "Yağ",
+    "caloriesBurned": "Yakılan Kalori (kcal)",
+    "duration": "Süre (Dakika)",
+    "calculateCalories": "Kalori Hesapla",
+    "errorNoBodydata": "Kalori hesaplayıcıyı kullanmak istiyorsanız, önce vücut bilgilerinizi girmelisiniz.",
+    "errorBodydataActivity": "Aktivite takibini kullanmak istiyorsanız, önce vücut bilgilerinizi girmelisiniz.",
+    "selectRecipe": "Tarif Seç",
+    "portions": "Porsiyon",
+    "voiceRecordingInfo": "Kayıt yerel olarak cihazınızda saklanır. Ses dosyasını göndermek isterseniz Gönder'e tıklayın. \nAlternatif olarak, kaydı göndermemek için Vazgeç'e tıklayabilirsiniz.",
+    "nutritionDetails": "Besin Ayrıntıları",
+    "macronutrients": "Makro Besinler",
+    "carbs": "Karbonhidrat",
+    "noMacroTargetDefined": "Makro besin hedefi belirlenmedi",
+    "acidBase": {
+      "title": "Asit-Baz Dengesi",
+      "alkaline": "Alkali - Asit-baz dengesi için iyi",
+      "balanced": "Dengeli - Asit-baz dengesi yerinde",
+      "acidic": "Asit yapıcı - Daha fazla alkali gıda önerilir"
+    },
+    "histamine": {
+      "title": "Histamin",
+      "average": "Ortalama",
+      "low": "Düşük histamin içeriği - İyi tolere edilir",
+      "moderate": "Orta histamin içeriği - İntolerans durumunda dikkat",
+      "high": "Yüksek histamin içeriği - İntolerans durumunda sorunlu"
+    },
+    "itemIndicator": {
+      "alkaline": "Alkali",
+      "neutral": "Nötr",
+      "acidic": "Asit yapıcı",
+      "histamineNone": "Histamin yok",
+      "histamineLow": "Az",
+      "histamineModerate": "Orta",
+      "histamineHigh": "Yüksek"
+    },
+    "indicatorSettings": {
+      "menuTitle": "Göstergeler",
+      "title": "Göstergeleri Özelleştir",
+      "description": "Gıdalarınızda hangi göstergelerin görüntüleneceğini seçin.",
+      "preview": "Önizleme",
+      "noIndicators": "Hiçbir gösterge aktif değil",
+      "acidBaseDesc": "Asit-baz dengesi için PRAL değerini gösterir",
+      "histamineDesc": "Daha iyi tolerans için histamin içeriğini gösterir"
+    },
+    "enterQuestion": "Sorunuzu buraya yazın...",
+    "askDialog": "Burada beslenme ile ilgili sorular sorabilirsiniz. Uygulama, vücut bilgilerinizi ve son 14 gündeki kalori sayacı girişlerinizi kullanarak sorunuzu yanıtlamaya çalışacaktır. Yanıtların uygulamaya girdiğiniz bilgilere dayandığını lütfen unutmayın.",
+    "addImage": "Resim Ekle",
+    "uploadImage": "Resim Yükle",
+    "captureImage": "Resim Çek",
+    "dietLevelChange": {
+      "dietLevelBefore": "Önceki diyet seviyesi",
+      "lastChanged": "son değiştirme"
+    },
+    "chat": {
+      "title": "Takip Asistanı",
+      "placeholder": "Kalorilerinizle ilgili bir soru sorun...",
+      "emptyState": "Beslenmeniz hakkında bana bir şeyler sorun!",
+      "welcomeMessage": "Merhaba! Ben takip asistanınızım. Kalorileriniz, besin değerleriniz ve beslenme alışkanlıklarınız hakkındaki sorularınızı yanıtlayabilirim.",
+      "openButton": "Asistanı Aç"
+    },
+    "imageSelected": "Resim seçildi",
+    "imagesSelected": "Resimler seçildi",
+    "audioRecorded": "Ses kaydedildi"
+  },
+  "trainingPlans": {
+    "title": "Antrenman Planları",
+    "help": {
+      "step1": {
+        "title": "Antrenman Planı Oluştur",
+        "content": "Antrenman planları bireysel olarak oluşturulabilir; neyi tam olarak istediğinizi, ne için çalıştığınızı, nerede, haftada kaç kez ve ne kadar yoğun/uzun olacağını her yönüyle tanımlayabilirsiniz."
+      },
+      "step2": {
+        "title": "Antrenman Planını Düzenle",
+        "content": "Eğer bir şey uygun değilse, antrenman planlarını doğal dille düzenleyebilirsiniz. Nelerin değiştirilmesi gerektiğini yazın ve güncellenmiş bir sürüm alacaksınız."
+      },
+      "step3": {
+        "title": "Antrenman Yap",
+        "content": "Antrenman planları, aktif edildiklerinde zamana göredir. Aktif planlarla antrenman yapılabilir ve kaydedilebilir; her set ayrı ayrı - ağırlıklar, tekrarlar veya setlerin süresi olarak. Sonunda, yakılan kalorileri takip etmek için antrenmanı doğrudan kalori sayacına gönderme imkanınız vardır."
+      }
+    },
+    "descriptionLabelCreate": "Planı ayrıntılı olarak tanımlayın",
+    "voiceRecordingInfo": "Antrenman planı açıklamasını sesli olarak söyleyin. Kayıt yerel olarak saklanır ve yalnızca gönderildikten sonra metne dönüştürülür. Kaydı kullanmak istemiyorsanız iptal edebilirsiniz.",
+    "createPlanInstructions": "Planınızı mümkün olduğunca doğru tanımlayın: Neyi çalıştırmak istiyorsunuz? Haftada kaç kez? Hangi ortamda? Hangi antrenman türünü tercih ediyorsunuz?\n\nYoğunluğu da belirtebilirsiniz: hafif, orta veya yoğun.\n\nÖrnekler:\n'Haftada dört kez spor salonuna gitmek istiyorum, odağım üst vücut. İyi eğitimliyim.'\n\n'Sol omuz arkasında sırt ağrım var. Duruşumu düzeltmek ve ağrıyı hafifletmek için haftada bir gün hedefli egzersizlerden oluşan bir plan oluştur.'\n\nNe kadar çok bilgi verirseniz, antrenman planınız o kadar uygun şekilde oluşturulur.",
+    "subtitle": "Burada antrenman planlarınızı oluşturabilir ve yönetebilirsiniz.",
+    "editPlan": "Antrenman Planını Düzenle",
+    "editPlanDescription": "Nelerin değiştirilmesi gerektiğini tanımlayın",
+    "repetitionsShort": "Tk.",
+    "duration": "Süre",
+    "restBetweenSets": "Set arası dinlenme",
+    "restAfterExercise": "Egzersiz sonrası mola",
+    "deletePlan": "Antrenman Planını Sil",
+    "activePlan": "Aktif Plan",
+    "confirmDeletePlan": "Bu antrenman planını gerçekten silmek istiyor musunuz?",
+    "noPlans": "Henüz antrenman planı oluşturmadınız.",
+    "trainingDaysPerWeek": "Haftalık Antrenman Günü Sayısı",
+    "addExercise": "Egzersiz Ekle",
+    "removeExercise": "Egzersiz Kaldır",
+    "exerciseName": "Egzersiz Adı",
+    "set": "Set",
+    "sets": "Set",
+    "reps": "Tekrar",
+    "restTime": "Dinlenme süresi (Saniye)",
+    "savePlan": "Antrenman Planını Kaydet",
+    "createPlan": "Antrenman Planı Oluştur",
+    "train": "Çalış",
+    "ask": "Soru Sor",
+    "continuePlan": "Devam Planı Oluştur",
+    "continuePlanTitle": "{name} için devam",
+    "continuePlanDescription": "Bu antrenman planını temel alan yeni bir plan oluşturun. İsteğe bağlı olarak yeni dilekler ekleyebilirsiniz.",
+    "continuePlanNotesLabel": "Ek Bilgiler (isteğe bağlı)",
+    "continuePlanAction": "Devam Planı Oluştur",
+    "enterQuestion": "Bu plan hakkında bir soru sorun",
+    "askDialog": "Bu antrenman planı hakkında sorular sorabilirsiniz. Son antrenman kayıtları (en fazla 10) birlikte gönderilecektir.",
+    "selectDay": "Gün Seç",
+    "suggestedWeight": "Önerilen Ağırlık",
+    "suggestedDuration": "Önerilen Süre",
+    "weight": "Ağırlık (kg)",
+    "durationWeeks": "Süre (Hafta)",
+    "canceled": "Son antrenman yarıda kesildi.",
+    "noPlansInfo": "Henüz herhangi bir antrenman planı bulunmuyor. Sağ üstteki artı butonu ile yeni bir antrenman planı ekleyebilirsiniz.",
+    "activateDialog": {
+      "title": "Antrenman Planını Aktive Et",
+      "msg": "Antrenman planınızı başlattığınızda başlangıç tarihi belirlenir. Ardından antrenman planınızın hangi haftasında olduğunuzu görebilirsiniz.\nAntrenman planını gerçekten başlatmak istiyor musunuz?"
+    },
+    "deleteDialog": {
+      "title": "Antrenman Planını Sil",
+      "msg": "Bu antrenman planını gerçekten silmek istiyor musunuz?"
+    },
+    "finishDialog": {
+      "title": "Antrenmanı Bitir",
+      "msg": "Antrenmanı bitirdiğinizde, başlangıç tarihi ve tüm ilerlemeniz sıfırlanacaktır. Antrenmanı bitirmek istediğinizden emin misiniz?"
+    },
+    "processingMessage": "Antrenman planınız arka planda oluşturuluyor. Hazır olduğunda bilgilendirileceksiniz.",
+    "readyMessage": "Antrenman planınız oluşturuldu.",
+    "editDialog": {
+      "preview": "Önizleme",
+      "save": "Değişiklikleri Kaydet",
+      "changes": "Değişiklikler",
+      "error": "Düzenleme sırasında hata"
+    },
+    "statistics": "İstatistikler",
+    "totalWorkouts": "Tamamlanan Antrenmanlar",
+    "lastWorkout": "Son Antrenman",
+    "lastExercises": "Son 5 Egzersiz",
+    "noWorkoutsYet": "Henüz antrenman tamamlanmadı."
+  },
+  "publicRecipe": {
+    "downloadTitle": "Murmli'yi İndir",
+    "downloadDescription": "Murmli uygulaması ile kendi tariflerini oluştur ve paylaş!",
+    "loading": "Tarif yükleniyor..."
+  },
+  "training": {
+    "title": "Antrenman Kaydı",
+    "continue": "Antrenmana Devam Et",
+    "discard": "Antrenmanı Sil",
+    "exerciseListPlaceholder": "Egzersiz listesi yükleniyor...",
+    "noPlan": "Bugün için bir antrenman planlanmadı veya plan egzersiz içermiyor.",
+    "estimatedTimePlaceholder": "yaklaşık X dk.",
+    "startTraining": "Antrenmanı Başlat",
+    "setInfo": "Set {current} / {total}",
+    "finishSet": "Seti Bitir",
+    "noDescription": "Açıklama mevcut değil.",
+    "countdown": "Sonraki set {seconds} saniye içinde...",
+    "noDaySelected": "Gün seçilmedi",
+    "exercise": "Egzersiz",
+    "exercises": "Egzersizler",
+    "seconds": "Saniye",
+    "secondsShort": "Sn.",
+    "noPreviousLog": "Henüz önceki bir kayıt yok.",
+    "noImageAvailable": "Resim henüz mevcut değil.",
+    "description": "Açıklama",
+    "lastLog": "son kayıt:",
+    "actualLog": "güncel kayıt:",
+    "skipRest": "Dinlenmeyi Atla",
+    "completeSet": "Seti Bitir",
+    "timeSeconds": "Süre (Sn.)",
+    "time": "Süre",
+    "startTimer": "Zamanlayıcıyı Başlat",
+    "stopTimer": "Zamanlayıcıyı Durdur",
+    "timer": "Zamanlayıcı",
+    "exerciseCompleted": "Egzersiz tamamlandı",
+    "nextExercise": "Sıradaki Egzersiz",
+    "allExercisesDone": "Tüm egzersizler tamamlandı",
+    "finishTraining": "Antrenmanı Bitir",
+    "getFeedback": "Geri Bildirim İste",
+    "trackCalories": "Kalori Kaydet",
+    "caloriesBurned": "Kaydedilen kalori: {calories} kcal",
+    "feedbackTitle": "Geri Bildirim",
+    "noCurrentLog": "Mevcut bir antrenman yok.",
+    "loadingLog": "Antrenman kaydı yükleniyor...",
+    "suggestedValues": "Önerilen Değerler",
+    "useLastValue": "Son değeri gir ({value})",
+    "difficulty": "Efor",
+    "summaryTitle": "Antrenman Özeti",
+    "backToPlans": "Antrenman Planlarına Dön",
+    "statistics": "İstatistikler",
+    "totalMovedWeight": "Toplam Kaldırılan Ağırlık",
+    "totalDuration": "Toplam Süre",
+    "totalSets": "Toplam Set Sayısı",
+    "avgWeightPerExercise": "Egzersiz Başına Ortalama Ağırlık",
+    "cancelTraining": "Antrenmanı İptal Et",
+    "cancelTrainingConfirm": "Antrenmanı gerçekten iptal etmek istiyor musunuz?"
+  }
+}
