@@ -74,6 +74,10 @@ npm run apprun
     - Secrets gehören in `.env`-Dateien (siehe `README.md` für erforderliche Variablen).
     - API-Anfragen erfordern oft einen `X-Header-Secret-Key` zusätzlich zur JWT-Authentifizierung.
 - **KI-Interaktion:** Neue KI-Features sollten über `backend/utils/llm.js` implementiert werden, um die Provider-Abstraktion beizubehalten. Strukturierte Antworten (JSON) sind bevorzugt.
+- **Build & Sync bei Frontend-Änderungen:** Nach jeder Änderung im `frontend`-Verzeichnis **muss** zwingend ein Build und ein Capacitor-Sync durchgeführt werden, damit die Änderungen im Android Studio / Emulator sichtbar werden:
+    1. `npm run build` (im Wurzelverzeichnis oder im `frontend` Ordner)
+    2. `npx cap copy` oder `npx cap sync` (im `frontend` Ordner)
+    Dies stellt sicher, dass die kompilierten Web-Assets in die nativen Android/iOS-Ordner übertragen werden.
 - **Testing:** Bei Änderungen am Backend sollten bestehende Jest-Tests (`backend/tests`) ausgeführt werden. E2E-Tests befinden sich im Wurzelverzeichnis unter `tests/e2e`.
 
 ---
