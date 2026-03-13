@@ -78,6 +78,9 @@ npm run apprun
     1. `npm run build` (im Wurzelverzeichnis oder im `frontend` Ordner)
     2. `npx cap copy` oder `npx cap sync` (im `frontend` Ordner)
     Dies stellt sicher, dass die kompilierten Web-Assets in die nativen Android/iOS-Ordner übertragen werden.
+- **Versionsanpassung (Store-Releases):** Nach jeder Änderung müssen die Versionen für die Stores angepasst werden (Inkrement um **+0.001**):
+    - **iOS:** In `frontend/ios/App/App.xcodeproj/project.pbxproj` den Wert `MARKETING_VERSION` anpassen.
+    - **Android:** In `frontend/android/app/build.gradle` den Wert `versionName` anpassen.
 - **Testing:** Bei Änderungen am Backend sollten bestehende Jest-Tests (`backend/tests`) ausgeführt werden. E2E-Tests befinden sich im Wurzelverzeichnis unter `tests/e2e`.
 
 ---
