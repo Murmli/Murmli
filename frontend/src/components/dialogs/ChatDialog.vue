@@ -1,7 +1,7 @@
 <template>
-  <v-dialog v-model="show" fullscreen transition="dialog-bottom-transition">
+  <v-dialog v-model="show" fullscreen transition="dialog-bottom-transition"  class="pt-4">
     <v-card>
-      <v-toolbar color="primary">
+      <v-toolbar color="primary" class="safe-area-top">
         <v-btn icon @click="close">
           <v-icon>mdi-close</v-icon>
         </v-btn>
@@ -122,6 +122,10 @@ const handleSend = async () => {
 </script>
 
 <style scoped>
+.safe-area-top {
+padding-top: max(env(safe-area-inset-top), 16px);
+}
+
 .text-pre-wrap {
   white-space: pre-wrap;
 }
