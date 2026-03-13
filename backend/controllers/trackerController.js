@@ -12,26 +12,27 @@ const fs = require("fs");
 const bodyDataFields = ["height", "weight", "birthyear", "gender", "dietType", "dietLevel", "dietStartedAt", "baseCalories", "recommendations", "workHoursWeek", "workDaysPAL"];
 
 async function getOrCreateTracker(userId, date, recommendations) {
+  // Normalize date to midnight UTC
+  const normalizedDate = new Date(date);
+  normalizedDate.setUTCHours(0, 0, 0, 0);
+
   // Fetch user data with daily items
   const user = await User.findById(userId);
   if (!user) {
     throw new Error('User not found');
   }
 
-  let tracker = await Tracker.findOne({ user: userId, date });
+  let tracker = await Tracker.findOne({ user: userId, date: normalizedDate });
 
   const today = new Date();
   today.setUTCHours(0, 0, 0, 0);
 
-  const requestedDate = new Date(date);
-  requestedDate.setUTCHours(0, 0, 0, 0);
-
-  const isToday = today.getTime() === requestedDate.getTime();
+  const isToday = today.getTime() === normalizedDate.getTime();
 
   if (!tracker) {
     tracker = new Tracker({
       user: userId,
-      date,
+      date: normalizedDate,
       foodItems: [],
       recommendations,
       totals: {
