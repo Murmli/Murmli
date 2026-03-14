@@ -86,6 +86,7 @@
     "errorMessage": "Ein Fehler ist aufgetreten. Bitte versuche es in Kürze erneut oder melde uns diesen Fehler.",
     "loading": "Lädt..",
     "close": "Schließen",
+    "moreInfo": "Mehr Informationen",
     "save": "Speichern",
     "send": "Senden",
     "cancel": "Abbrechen",
@@ -360,6 +361,10 @@
     "height": "Körpergröße (cm)",
     "gender": "Geschlecht",
     "birthyear": "Geburtsjahr",
+    "genderOptions": {
+      "male": "Männlich",
+      "female": "Weiblich"
+    },
     "dietType": "Ernährungsweise",
     "dietLevel": "Diät-Stufe",
     "baseCalories": "Grundumsatz (kcal)",
@@ -508,10 +513,10 @@
     "minutes": "Minuten",
     "burned": "verbrannt",
     "calories": "Kalorien",
-    "kcal": "kcal",
-    "protein": "Protein (g)",
+    "kcal": "Kalorien",
+    "protein": "Eiweiß",
     "carbohydrates": "Kohlenhydrate (g)",
-    "fat": "Fett (g)",
+    "fat": "Fett",
     "caloriesBurned": "Verbannte Kalorien (kcal)",
     "duration": "Dauer (Minuten)",
     "calculateCalories": "Kalorien berechnen",
@@ -523,21 +528,23 @@
     "nutritionDetails": "Nährwertdetails",
     "macronutrients": "Makronährstoffe",
     "carbs": "Carbs",
-    "fat": "Fett",
-    "protein": "Eiweiß",
     "noMacroTargetDefined": "Keine Makronährstoff-Ziele definiert",
+    "acidBaseBalance": "Säure-Basen-Haushalt",
     "acidBase": {
       "title": "Säure-Basen-Haushalt",
-      "alkaline": "Basisch - Gut für den Säure-Basen-Haushalt",
-      "balanced": "Ausgeglichen - Säure-Basen-Haushalt im Gleichgewicht",
-      "acidic": "Säurebildend - Mehr basische Lebensmittel empfohlen"
+      "alkaline": "Basisch",
+      "balanced": "Neutral",
+      "neutral": "Neutral",
+      "acidic": "Säurebildend"
     },
     "histamine": {
       "title": "Histamin",
+      "label": "Histamin",
+      "description": "Beschreibt die Verträglichkeit von Lebensmitteln.",
       "average": "Durchschnitt",
-      "low": "Niedriger Histamingehalt - Gut verträglich",
-      "moderate": "Mäßiger Histamingehalt - Bei Intoleranz beachten",
-      "high": "Hoher Histamingehalt - Bei Intoleranz problematisch"
+      "low": "Niedrig",
+      "moderate": "Mäßig",
+      "high": "Hoch"
     },
     "itemIndicator": {
       "alkaline": "Basisch",

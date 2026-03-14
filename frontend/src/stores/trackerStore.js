@@ -9,6 +9,7 @@ export const useTrackerStore = defineStore("trackerStore", {
   state: () => ({
     date: String(), // Date for the tracker
     tracker: {},
+    history: [], // Letzte 7 Tage Tracker-Daten
     bodyData: {},
     error: null,
     isAddingItem: false,
@@ -88,6 +89,23 @@ export const useTrackerStore = defineStore("trackerStore", {
           this.date = response.data.date;
           this.saveCache();
           return true
+        }
+      } catch (error) {
+        this.error = error;
+      }
+      return null;
+    },
+
+    async fetchHistory() {
+      const apiStore = useApiStore();
+      try {
+        const response = await apiStore.apiRequest(
+          "post",
+          "/calorietracker/history"
+        );
+        if (response.status === 200) {
+          this.history = response.data.history;
+          return true;
         }
       } catch (error) {
         this.error = error;

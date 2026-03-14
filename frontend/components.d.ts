@@ -43,6 +43,7 @@ declare module 'vue' {
     ListSortComponent: typeof import('./src/components/shoppingList/dialogs/ListSortComponent.vue')['default']
     LoadingOverlay: typeof import('./src/components/general/LoadingOverlay.vue')['default']
     MacronutrientsComponent: typeof import('./src/components/tracker/MacronutrientsComponent.vue')['default']
+    ModernTrackerProgress: typeof import('./src/components/tracker/ModernTrackerProgress.vue')['default']
     MyRecipesComponent: typeof import('./src/components/recipes/MyRecipesComponent.vue')['default']
     NavigationComponent: typeof import('./src/components/NavigationComponent.vue')['default']
     NotesSectionComponent: typeof import('./src/components/shoppingList/NotesSectionComponent.vue')['default']

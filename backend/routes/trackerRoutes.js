@@ -308,6 +308,25 @@ router.post("/track/recipe", secretKeyMiddleware, sessionMiddleware, trackerCont
 router.post("/get", secretKeyMiddleware, sessionMiddleware, trackerController.getTrackerByDate);
 /**
  * @swagger
+ * /api/v2/calorietracker/history:
+ *   post:
+ *     tags: [Tracker]
+ *     title: Get Tracker History
+ *     summary: Get tracker data for the last 7 days
+ *     description: Retrieves the totals and recommendations for the last 7 days.
+ *     responses:
+ *       200:
+ *         description: Tracker history retrieved successfully
+ *       401:
+ *         description: Unauthorized
+ *       403:
+ *         description: Forbidden - Invalid secret key
+ *       500:
+ *         description: Server error
+ */
+router.post("/history", secretKeyMiddleware, sessionMiddleware, trackerController.getHistory);
+/**
+ * @swagger
  * /api/v2/calorietracker/set/recommendations:
  *   put:
  *     tags: [Tracker]

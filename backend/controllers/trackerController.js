@@ -990,3 +990,31 @@ exports.trackMultimodal = async (req, res) => {
   }
 };
 
+exports.getHistory = async (req, res) => {
+  try {
+    const user = req.user;
+    const today = new Date();
+    today.setUTCHours(0, 0, 0, 0);
+
+    const sevenDaysAgo = new Date(today);
+    sevenDaysAgo.setDate(today.getDate() - 6);
+
+    const trackers = await Tracker.find({
+      user: user._id,
+      date: { $gte: sevenDaysAgo, $lte: today }
+    }).sort({ date: 1 }); // Oldest first
+
+    // Map to a simpler format for the heatmap
+    const history = trackers.map(t => ({
+      date: t.date,
+      kcal: t.totals?.kcal || 0,
+      target: t.recommendations?.kcal || 0
+    }));
+
+    return res.status(200).json({ history });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Server Error" });
+  }
+};
+

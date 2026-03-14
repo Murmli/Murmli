@@ -4,9 +4,8 @@
 
   <v-container>
     <TimePickerComponent class="mb-1" />
-    <MacronutrientsComponent class="mb-5" />
+    <ModernTrackerProgress class="mb-5" />
     <DietlevelComponent class="my-5" />
-    <TrackProgressComponent class="mb-5" />
     <ActivityItemsComponent class="mb-5" />
     <TrackerItemsComponent />
     <FavoriteTrackerItemsComponent v-if="favorites.length > 0" />
