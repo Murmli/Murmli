@@ -40,40 +40,28 @@
       <v-col cols="6" class="d-flex flex-column align-center justify-center">
         <div class="donut-container">
           <svg viewBox="0 0 100 100" class="donut-svg">
-            <!-- Background circle (Remaining track) -->
+            <!-- Background track circle -->
             <circle
               cx="50"
               cy="50"
               r="44"
               fill="transparent"
-              stroke="#eeeeee"
+              stroke="#f5f5f5"
               stroke-width="6"
             />
-            <!-- Remaining progress (Green tint) -->
+            <!-- Progress circle (Solid) -->
             <circle
               cx="50"
               cy="50"
               r="44"
               fill="transparent"
-              stroke="#4CAF50"
-              stroke-width="6"
-              stroke-dasharray="276.46"
-              stroke-dashoffset="0"
-              stroke-opacity="0.1"
-              transform="rotate(-90 50 50)"
-            />
-            <!-- Consumed progress (Orange) -->
-            <circle
-              cx="50"
-              cy="50"
-              r="44"
-              fill="transparent"
-              stroke="#FF9800"
+              :stroke="dynamicStrokeColor"
               stroke-width="7"
               stroke-dasharray="276.46"
-              :stroke-dashoffset="remainingDashOffset"
+              :stroke-dashoffset="consumedDashOffset"
               stroke-linecap="round"
               transform="rotate(-90 50 50)"
+              style="transition: stroke 0.5s ease, stroke-dashoffset 0.5s ease"
             />
           </svg>
           <div class="donut-content text-center">
@@ -185,12 +173,13 @@ const remainingKcal = computed(() => Math.round(targetKcal.value - totalKcal.val
 // SVG calculations (Circumference of r=44 is 2 * PI * 44 ≈ 276.46)
 const circumference = 276.46;
 
+// Consumed up to 100%
 const consumedPercentage = computed(() => {
   if (targetKcal.value === 0) return 0;
   return Math.min(totalKcal.value / targetKcal.value, 1);
 });
 
-const remainingDashOffset = computed(() => {
+const consumedDashOffset = computed(() => {
   return circumference * (1 - consumedPercentage.value);
 });
 
@@ -200,6 +189,33 @@ const getMacroPercentage = (key) => {
   if (target === 0) return 0;
   return Math.min((current / target) * 100, 100);
 };
+
+/**
+ * Calculates a dynamic color for the donut stroke based on proximity to target.
+ */
+const dynamicStrokeColor = computed(() => {
+  if (targetKcal.value === 0) return '#FF9800';
+  
+  const deviation = Math.abs(totalKcal.value - targetKcal.value) / targetKcal.value;
+  
+  const darkGreen = [46, 125, 50];  // #2E7D32
+  const yellow = [251, 192, 45];     // #FBC02D
+  const orange = [255, 152, 0];      // #FF9800
+
+  let r, g, b;
+  if (deviation <= 0.25) {
+    const t = deviation / 0.25;
+    r = Math.round(darkGreen[0] + t * (yellow[0] - darkGreen[0]));
+    g = Math.round(darkGreen[1] + t * (yellow[1] - darkGreen[1]));
+    b = Math.round(darkGreen[2] + t * (yellow[2] - darkGreen[2]));
+  } else {
+    const t = Math.min((deviation - 0.25) / 0.25, 1);
+    r = Math.round(yellow[0] + t * (orange[0] - yellow[0]));
+    g = Math.round(yellow[1] + t * (orange[1] - yellow[1]));
+    b = Math.round(yellow[2] + t * (orange[2] - yellow[2]));
+  }
+  return `rgb(${r}, ${g}, ${b})`;
+});
 
 // PRAL Logic
 const acidBaseScore = computed(() => trackerStore.tracker?.totals?.acidBaseScore || 0);
