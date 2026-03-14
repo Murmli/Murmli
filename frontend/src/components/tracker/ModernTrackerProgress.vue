@@ -192,28 +192,39 @@ const getMacroPercentage = (key) => {
 
 /**
  * Calculates a dynamic color for the donut stroke based on proximity to target.
+ * Within +/- 5% = Light Green (#4CAF50)
+ * Beyond 5% = Transition to Orange (#FF9800) and then Red (#E53935)
  */
 const dynamicStrokeColor = computed(() => {
-  if (targetKcal.value === 0) return '#FF9800';
+  if (targetKcal.value === 0) return '#4CAF50';
   
+  // Deviation from 100%
   const deviation = Math.abs(totalKcal.value - targetKcal.value) / targetKcal.value;
   
-  const darkGreen = [46, 125, 50];  // #2E7D32
-  const yellow = [251, 192, 45];     // #FBC02D
-  const orange = [255, 152, 0];      // #FF9800
+  // Define color points (RGB)
+  const itemGreen = [76, 175, 80];   // #4CAF50 (Ideal range)
+  const orange = [255, 152, 0];      // #FF9800 (Minor deviation)
+  const warningRed = [229, 57, 53];  // #E53935 (Major deviation)
+
+  if (deviation <= 0.05) {
+    return `rgb(${itemGreen[0]}, ${itemGreen[1]}, ${itemGreen[2]})`;
+  }
 
   let r, g, b;
   if (deviation <= 0.25) {
-    const t = deviation / 0.25;
-    r = Math.round(darkGreen[0] + t * (yellow[0] - darkGreen[0]));
-    g = Math.round(darkGreen[1] + t * (yellow[1] - darkGreen[1]));
-    b = Math.round(darkGreen[2] + t * (yellow[2] - darkGreen[2]));
+    // Transition from Green to Orange (between 5% and 25% deviation)
+    const t = (deviation - 0.05) / 0.20;
+    r = Math.round(itemGreen[0] + t * (orange[0] - itemGreen[0]));
+    g = Math.round(itemGreen[1] + t * (orange[1] - itemGreen[1]));
+    b = Math.round(itemGreen[2] + t * (orange[2] - itemGreen[2]));
   } else {
+    // Transition from Orange to Red (between 25% and 50% deviation)
     const t = Math.min((deviation - 0.25) / 0.25, 1);
-    r = Math.round(yellow[0] + t * (orange[0] - yellow[0]));
-    g = Math.round(yellow[1] + t * (orange[1] - yellow[1]));
-    b = Math.round(yellow[2] + t * (orange[2] - yellow[2]));
+    r = Math.round(orange[0] + t * (warningRed[0] - orange[0]));
+    g = Math.round(orange[1] + t * (warningRed[1] - orange[1]));
+    b = Math.round(orange[2] + t * (warningRed[2] - orange[2]));
   }
+
   return `rgb(${r}, ${g}, ${b})`;
 });
 
