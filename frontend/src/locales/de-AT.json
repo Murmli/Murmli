@@ -143,7 +143,8 @@
     "week": "Wochn",
     "selectPhoto": "Foto aussuachn",
     "capturePhoto": "Kamera",
-    "retry": "No amoi probiern"
+    "retry": "No amoi probiern",
+    "moreInfo": "Mehr Infos hoid"
   },
   "shoppingList": {
     "newItemLabel": "Neicher Artikl",
@@ -372,7 +373,11 @@
     "importWarningText": "Mit'm Import wird ois überschriebn und du wirst ausloggt. Wüllst des wirkli?",
     "userId": "Benutzer-ID",
     "copySuccess": "In de Zwischenoblog kopiert!",
-    "selectStartpage": "Startseitn aussuachn"
+    "selectStartpage": "Startseitn aussuachn",
+    "genderOptions": {
+      "male": "Manderl",
+      "female": "Weiberl"
+    }
   },
   "adminStats": {
     "title": "Statistiken",
@@ -528,14 +533,17 @@
       "title": "Säure-Basen-Hausholt",
       "alkaline": "Basisch - Super für'n Hausholt",
       "balanced": "Ausglichn - Ois im Gleichgewicht",
-      "acidic": "Säurebüldend - Iss a bissl mehr basische Sochn"
+      "acidic": "Säurebüldend - Iss a bissl mehr basische Sochn",
+      "neutral": "Passt scho"
     },
     "histamine": {
       "title": "Histamin",
       "average": "Durchschnitt",
       "low": "Wenig Histamin - Guat verträglich",
       "moderate": "Mittel - Bei Intoleranz aufpassn",
-      "high": "Vü Histamin - Problematisch bei Intoleranz"
+      "high": "Vü Histamin - Problematisch bei Intoleranz",
+      "label": "Histamin",
+      "description": "Sogt da, obst des Zeug vertrogst oder obs di herbeidlt."
     },
     "itemIndicator": {
       "alkaline": "Basisch",
@@ -573,7 +581,8 @@
     },
     "imageSelected": "Bildl is ausgwöht",
     "imagesSelected": "Bildl san ausgwöht",
-    "audioRecorded": "Audio is aufgnomma"
+    "audioRecorded": "Audio is aufgnomma",
+    "acidBaseBalance": "Säure-Basen-G'schicht"
   },
   "trainingPlans": {
     "title": "Trainingspläne",

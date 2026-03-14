@@ -143,7 +143,8 @@
     "week": "周",
     "selectPhoto": "选择照片",
     "capturePhoto": "拍照",
-    "retry": "重试"
+    "retry": "重试",
+    "moreInfo": "更多信息"
   },
   "shoppingList": {
     "newItemLabel": "新项目",
@@ -372,7 +373,11 @@
     "importWarningText": "导入将覆盖所有当前用户数据并使您退登。是否继续？",
     "userId": "用户 ID",
     "copySuccess": "已复制到剪贴板！",
-    "selectStartpage": "选择首页"
+    "selectStartpage": "选择首页",
+    "genderOptions": {
+      "male": "男",
+      "female": "女"
+    }
   },
   "adminStats": {
     "title": "统计数据",
@@ -528,14 +533,17 @@
       "title": "酸碱平衡",
       "alkaline": "碱性 - 对酸碱平衡有益",
       "balanced": "均衡 - 酸碱平衡处于平衡状态",
-      "acidic": "产酸 - 建议摄入更多碱性食物"
+      "acidic": "产酸 - 建议摄入更多碱性食物",
+      "neutral": "中性"
     },
     "histamine": {
       "title": "组胺",
       "average": "平均",
       "low": "低组胺含量 - 耐受性良好",
       "moderate": "中等组胺含量 - 不耐受者需注意",
-      "high": "高组胺含量 - 不耐受者可能会有问题"
+      "high": "高组胺含量 - 不耐受者可能会有问题",
+      "label": "组胺",
+      "description": "描述食物的耐受性。"
     },
     "itemIndicator": {
       "alkaline": "碱性",
@@ -573,7 +581,8 @@
     },
     "imageSelected": "已选择图片",
     "imagesSelected": "已选择多张图片",
-    "audioRecorded": "音频已录制"
+    "audioRecorded": "音频已录制",
+    "acidBaseBalance": "酸碱平衡"
   },
   "trainingPlans": {
     "title": "训练计划",

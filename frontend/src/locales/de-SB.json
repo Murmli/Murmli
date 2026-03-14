@@ -143,7 +143,8 @@
     "week": "Woche",
     "selectPhoto": "Bildle aussuacha",
     "capturePhoto": "Foddokischte",
-    "retry": "Nochmal probiera"
+    "retry": "Nochmal probiera",
+    "moreInfo": "Noch meh Informazione"
   },
   "shoppingList": {
     "newItemLabel": "Neier Artikel",
@@ -372,7 +373,11 @@
     "importWarningText": "Wenn de des importiersch, isch alles Alte weg ond de wirsch ab'gmeldet. Willsch des?",
     "userId": "Benutzer-ID",
     "copySuccess": "Kopiert!",
-    "selectStartpage": "Startseit' aussuacha"
+    "selectStartpage": "Startseit' aussuacha",
+    "genderOptions": {
+      "male": "Männle",
+      "female": "Weible"
+    }
   },
   "adminStats": {
     "title": "Statistike",
@@ -528,14 +533,17 @@
       "title": "Säure-Basen-Deng",
       "alkaline": "Basisch - Guat für de Körper",
       "balanced": "Aus'pohlt - Alles im Lot",
-      "acidic": "Säurebildend - Iss mal meh Basischs"
+      "acidic": "Säurebildend - Iss mal meh Basischs",
+      "neutral": "Nix bsonders"
     },
     "histamine": {
       "title": "Histamin",
       "average": "Mittelmaß",
       "low": "Wenig Histamin - Verträgt mer guat",
       "moderate": "Mittel - Obacht geaba bei Intoleranz",
-      "high": "Viel Histamin - Des gibt Probleme"
+      "high": "Viel Histamin - Des gibt Probleme",
+      "label": "Histamin",
+      "description": "Des zeigt o, ob ma des Zeug au gscheit vertrage ka."
     },
     "itemIndicator": {
       "alkaline": "Basisch",
@@ -573,7 +581,8 @@
     },
     "imageSelected": "Bildle aus'gsucht",
     "imagesSelected": "Bildle aus'gsucht",
-    "audioRecorded": "Sproch uff'gnomme"
+    "audioRecorded": "Sproch uff'gnomme",
+    "acidBaseBalance": "Saure-Basen-Haushalt"
   },
   "trainingPlans": {
     "title": "Sportpläne",

@@ -143,7 +143,8 @@
     "week": "Woch",
     "selectPhoto": "Buidl aussuacha",
     "capturePhoto": "Kamera",
-    "retry": "Noamoi probiern"
+    "retry": "Noamoi probiern",
+    "moreInfo": "No mehra Infos"
   },
   "shoppingList": {
     "newItemLabel": "Neier Artikel",
@@ -372,7 +373,11 @@
     "importWarningText": "Beim Import wern olle neia Daten überschrim und du wirst ausbloggt. Wuist des wirklich?",
     "userId": "Benutzer-ID",
     "copySuccess": "In de Zwischenablag kopiert!",
-    "selectStartpage": "Startseitn aussuacha"
+    "selectStartpage": "Startseitn aussuacha",
+    "genderOptions": {
+      "male": "Manderl",
+      "female": "Weiberl"
+    }
   },
   "adminStats": {
     "title": "Statistiken",
@@ -528,14 +533,17 @@
       "title": "Säure-Basen-Haushalt",
       "alkaline": "Basisch - Guat für'n Haushalt",
       "balanced": "Ausglichn - Ois in da Waag",
-      "acidic": "Säurebildend - Iss amoi wieder was Basischs"
+      "acidic": "Säurebildend - Iss amoi wieder was Basischs",
+      "neutral": "Passt scho"
     },
     "histamine": {
       "title": "Histamin",
       "average": "Durchschnitt",
       "low": "Wenig Histamin - Guat verträglich",
       "moderate": "Mittel - Obacht bei Intoleranz",
-      "high": "Vui Histamin - Do werd's kritisch"
+      "high": "Vui Histamin - Do werd's kritisch",
+      "label": "Histamin",
+      "description": "Des sogt dir, ob des Essn aa gscheid verträglich is."
     },
     "itemIndicator": {
       "alkaline": "Basisch",
@@ -573,7 +581,8 @@
     },
     "imageSelected": "Buidl ausgwählt",
     "imagesSelected": "Buidl ausgwählt",
-    "audioRecorded": "Audio aufgnomma"
+    "audioRecorded": "Audio aufgnomma",
+    "acidBaseBalance": "Saure-Basn-Gleichgewicht"
   },
   "trainingPlans": {
     "title": "Trainingspläne",

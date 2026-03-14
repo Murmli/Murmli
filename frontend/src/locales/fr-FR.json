@@ -143,7 +143,8 @@
     "week": "Semaine",
     "selectPhoto": "Sélectionner une photo",
     "capturePhoto": "Appareil photo",
-    "retry": "Réessayer"
+    "retry": "Réessayer",
+    "moreInfo": "Plus d'informations"
   },
   "shoppingList": {
     "newItemLabel": "Nouvel article",
@@ -372,7 +373,11 @@
     "importWarningText": "L'importation écrasera toutes les données utilisateur actuelles et vous déconnectera. Voulez-vous continuer ?",
     "userId": "ID Utilisateur",
     "copySuccess": "Copié dans le presse-papiers !",
-    "selectStartpage": "Choisir la page de démarrage"
+    "selectStartpage": "Choisir la page de démarrage",
+    "genderOptions": {
+      "male": "Homme",
+      "female": "Femme"
+    }
   },
   "adminStats": {
     "title": "Statistiques",
@@ -528,14 +533,17 @@
       "title": "Équilibre acido-basique",
       "alkaline": "Alcalin - Bon pour l'équilibre acido-basique",
       "balanced": "Compensé - Équilibre acido-basique stable",
-      "acidic": "Acidifiant - Plus d'aliments alcalins recommandés"
+      "acidic": "Acidifiant - Plus d'aliments alcalins recommandés",
+      "neutral": "Neutre"
     },
     "histamine": {
       "title": "Histamine",
       "average": "Moyenne",
       "low": "Faible teneur en histamine - Bien toléré",
       "moderate": "Teneur modérée en histamine - À surveiller en cas d'intolérance",
-      "high": "Teneur élevée en histamine - Problématique en cas d'intolérance"
+      "high": "Teneur élevée en histamine - Problématique en cas d'intolérance",
+      "label": "Histamine",
+      "description": "Décrit la tolérance aux aliments."
     },
     "itemIndicator": {
       "alkaline": "Alcalin",
@@ -573,7 +581,8 @@
     },
     "imageSelected": "Image sélectionnée",
     "imagesSelected": "Images sélectionnées",
-    "audioRecorded": "Audio enregistré"
+    "audioRecorded": "Audio enregistré",
+    "acidBaseBalance": "Équilibre acido-basique"
   },
   "trainingPlans": {
     "title": "Plans d'entraînement",

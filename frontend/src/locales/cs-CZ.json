@@ -143,7 +143,8 @@
     "days": "Dny",
     "week": "Týden",
     "selectPhoto": "Vybrat foto",
-    "capturePhoto": "Fotoaparát"
+    "capturePhoto": "Fotoaparát",
+    "moreInfo": "Více informací"
   },
   "shoppingList": {
     "newItemLabel": "Nová položka",
@@ -372,7 +373,11 @@
     "importWarningText": "Importem budou přepsána všechna aktuální uživatelská data a budete odhlášeni. Chcete pokračovat?",
     "userId": "ID uživatele",
     "copySuccess": "Zkopírováno do schránky!",
-    "selectStartpage": "Vybrat úvodní stránku"
+    "selectStartpage": "Vybrat úvodní stránku",
+    "genderOptions": {
+      "male": "Muž",
+      "female": "Žena"
+    }
   },
   "adminStats": {
     "title": "Statistiky",
@@ -528,14 +533,17 @@
       "title": "Acidobazická rovnováha",
       "alkaline": "Zásadité - dobré pro acidobazickou rovnováhu",
       "balanced": "Vyvážené - acidobazická rovnováha v rovnováze",
-      "acidic": "Kyselinotvorné - doporučeno více zásaditých potravin"
+      "acidic": "Kyselinotvorné - doporučeno více zásaditých potravin",
+      "neutral": "Neutrální"
     },
     "histamine": {
       "title": "Histamin",
       "average": "Průměr",
       "low": "Nízký obsah histaminu - dobře snášeno",
       "moderate": "Mírný obsah histaminu - dbát v případě intolerance",
-      "high": "Vysoký obsah histaminu - problematické při intoleranci"
+      "high": "Vysoký obsah histaminu - problematické při intoleranci",
+      "label": "Histamin",
+      "description": "Popisuje snášenlivost potravin."
     },
     "itemIndicator": {
       "alkaline": "Zásadité",
@@ -573,7 +581,8 @@
     },
     "imageSelected": "Obrázek vybrán",
     "imagesSelected": "Obrázky vybrány",
-    "audioRecorded": "Audio zaznamenáno"
+    "audioRecorded": "Audio zaznamenáno",
+    "acidBaseBalance": "Acidobazická rovnováha"
   },
   "trainingPlans": {
     "title": "Tréninkové plány",

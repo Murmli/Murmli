@@ -143,7 +143,8 @@
     "week": "Wuche",
     "selectPhoto": "Foti uswähle",
     "capturePhoto": "Chamera",
-    "retry": "No emal probiere"
+    "retry": "No emal probiere",
+    "moreInfo": "Ä bitzeli meh Infos"
   },
   "shoppingList": {
     "newItemLabel": "Neu's Ding",
@@ -372,7 +373,11 @@
     "importWarningText": "Durch de Import wärdet alli aktuelle Date überschribe und du wirsch uusgloggt. Wotsch wiitermache?",
     "userId": "Benutzer-ID",
     "copySuccess": "Id Zwüscheablag kopiert!",
-    "selectStartpage": "Startsiite uswähle"
+    "selectStartpage": "Startsiite uswähle",
+    "genderOptions": {
+      "male": "Männli",
+      "female": "Wybli"
+    }
   },
   "adminStats": {
     "title": "Statischtike",
@@ -528,14 +533,17 @@
       "title": "Süüri-Base-Huushalt",
       "alkaline": "Basisch - Guet für de Süüri-Base-Huushalt",
       "balanced": "Uusgliche - Süüri-Base-Huushalt im Gliichgwicht",
-      "acidic": "Süüribildend - Meh basischi Läbesmittel empfohle"
+      "acidic": "Süüribildend - Meh basischi Läbesmittel empfohle",
+      "neutral": "Neutrual"
     },
     "histamine": {
       "title": "Hischtamin",
       "average": "Durchschnitt",
       "low": "Tüüfe Hischtamingehalt - Guet verträglich",
       "moderate": "Mässige Hischtamingehalt - Bi Intoleranz ufpasse",
-      "high": "Hoche Hischtamingehalt - Bi Intoleranz problematisch"
+      "high": "Hoche Hischtamingehalt - Bi Intoleranz problematisch",
+      "label": "Histamin",
+      "description": "Beschrybt, öb mer d'Läbesmittel guet vertrait."
     },
     "itemIndicator": {
       "alkaline": "Basisch",
@@ -573,7 +581,8 @@
     },
     "imageSelected": "Bild uusgwählt",
     "imagesSelected": "Bilder uusgwählt",
-    "audioRecorded": "Audio uufgnoh"
+    "audioRecorded": "Audio uufgnoh",
+    "acidBaseBalance": "Süüri-Basä-Huushalt"
   },
   "trainingPlans": {
     "title": "Trainingsplän",

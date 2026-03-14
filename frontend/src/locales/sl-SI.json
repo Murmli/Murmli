@@ -143,7 +143,8 @@
     "days": "dni",
     "week": "Teden",
     "selectPhoto": "Izberi fotografijo",
-    "capturePhoto": "Kamera"
+    "capturePhoto": "Kamera",
+    "moreInfo": "Več informacij"
   },
   "shoppingList": {
     "newItemLabel": "Nov artikel",
@@ -372,7 +373,11 @@
     "importWarningText": "Z uvozom bodo vsi trenutni uporabniški podatki prepisani in odjavljeni boste. Želite nadaljevati?",
     "userId": "Uporabniški ID",
     "copySuccess": "Kopirano v odložišče!",
-    "selectStartpage": "Izberite začetno stran"
+    "selectStartpage": "Izberite začetno stran",
+    "genderOptions": {
+      "male": "Moški",
+      "female": "Ženski"
+    }
   },
   "adminStats": {
     "title": "Statistika",
@@ -528,14 +533,17 @@
       "title": "Kislinsko-bazno ravnovesje",
       "alkaline": "Alkalno - Dobro za kislinsko-bazno ravnovesje",
       "balanced": "Uravnoteženo - Kislinsko-bazno ravnovesje v ravnovesju",
-      "acidic": "Kislotvorno - Priporočljivo več alkalnih živil"
+      "acidic": "Kislotvorno - Priporočljivo več alkalnih živil",
+      "neutral": "Nevtralno"
     },
     "histamine": {
       "title": "Histamin",
       "average": "Povprečje",
       "low": "Nizka vsebnost histamina - Dobro prenašanje",
       "moderate": "Zmerna vsebnost histamina - Upoštevajte pri intoleranci",
-      "high": "Visoka vsebnost histamina - Problematično pri intoleranci"
+      "high": "Visoka vsebnost histamina - Problematično pri intoleranci",
+      "label": "Histamin",
+      "description": "Opisuje prenašanje živil."
     },
     "itemIndicator": {
       "alkaline": "Alkalno",
@@ -573,7 +581,8 @@
     },
     "imageSelected": "Slika izbrana",
     "imagesSelected": "Slike izbrane",
-    "audioRecorded": "Zvok posnet"
+    "audioRecorded": "Zvok posnet",
+    "acidBaseBalance": "Kislinsko-bazno ravnovesje"
   },
   "trainingPlans": {
     "title": "Načrti vadbe",

@@ -143,7 +143,8 @@
     "week": "Week",
     "selectPhoto": "Pick a picture",
     "capturePhoto": "Take a photo",
-    "retry": "Give it another go"
+    "retry": "Give it another go",
+    "moreInfo": "A bit more info for ya"
   },
   "shoppingList": {
     "newItemLabel": "New stuff",
@@ -372,7 +373,11 @@
     "importWarningText": "Importin' will wipe your current stuff and log you out. You sure?",
     "userId": "User-ID",
     "copySuccess": "Copied it to your clipboard!",
-    "selectStartpage": "Pick your porch"
+    "selectStartpage": "Pick your porch",
+    "genderOptions": {
+      "male": "Gentleman",
+      "female": "Lady"
+    }
   },
   "adminStats": {
     "title": "The Numbers",
@@ -525,14 +530,17 @@
       "title": "Acid-Base Balance",
       "alkaline": "Alkaline - Real good for ya",
       "balanced": "Right as rain – your acid-base is site-down level",
-      "acidic": "A bit sour – might want to eat some more of them basic greens"
+      "acidic": "A bit sour – might want to eat some more of them basic greens",
+      "neutral": "Right down the middle"
     },
     "histamine": {
       "title": "Histamine",
       "average": "Average",
       "low": "Low - Goes down easy",
       "moderate": "Some histamine – mind how you're feelin' if you're sensitive",
-      "high": "Lots of histamine – might give you a lick of trouble if you're intolerant"
+      "high": "Lots of histamine – might give you a lick of trouble if you're intolerant",
+      "label": "Histamine",
+      "description": "Tells ya if them vittles are gonna sit right with ya."
     },
     "itemIndicator": {
       "alkaline": "Alkaline",
@@ -573,7 +581,8 @@
     "audioRecorded": "Talkin' recorded",
     "workDaysPAL": "How hard you're workin' on your job days",
     "caloriesBurned": "Calories you done burned off (kcal)",
-    "errorBodydataActivity": "Honey, if you wanna track your movin', you gotta put in your body stats first."
+    "errorBodydataActivity": "Honey, if you wanna track your movin', you gotta put in your body stats first.",
+    "acidBaseBalance": "That there acid-base balance"
   },
   "trainingPlans": {
     "title": "Workout Plans",

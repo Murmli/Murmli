@@ -143,7 +143,8 @@
     "days": "Gün",
     "week": "Hafta",
     "selectPhoto": "Fotoğraf Seç",
-    "capturePhoto": "Kamera"
+    "capturePhoto": "Kamera",
+    "moreInfo": "Daha fazla bilgi"
   },
   "shoppingList": {
     "newItemLabel": "Yeni Ürün",
@@ -372,7 +373,11 @@
     "importWarningText": "İçe aktarma işlemi mevcut tüm kullanıcı verilerinin üzerine yazacak ve oturumunuz kapatılacaktır. Devam etmek istiyor musunuz?",
     "userId": "Kullanıcı Kimliği",
     "copySuccess": "Panoya kopyalandı!",
-    "selectStartpage": "Ana Sayfayı Seç"
+    "selectStartpage": "Ana Sayfayı Seç",
+    "genderOptions": {
+      "male": "Erkek",
+      "female": "Kadın"
+    }
   },
   "adminStats": {
     "title": "İstatistikler",
@@ -528,14 +533,17 @@
       "title": "Asit-Baz Dengesi",
       "alkaline": "Alkali - Asit-baz dengesi için iyi",
       "balanced": "Dengeli - Asit-baz dengesi yerinde",
-      "acidic": "Asit yapıcı - Daha fazla alkali gıda önerilir"
+      "acidic": "Asit yapıcı - Daha fazla alkali gıda önerilir",
+      "neutral": "Nötr"
     },
     "histamine": {
       "title": "Histamin",
       "average": "Ortalama",
       "low": "Düşük histamin içeriği - İyi tolere edilir",
       "moderate": "Orta histamin içeriği - İntolerans durumunda dikkat",
-      "high": "Yüksek histamin içeriği - İntolerans durumunda sorunlu"
+      "high": "Yüksek histamin içeriği - İntolerans durumunda sorunlu",
+      "label": "Histamin",
+      "description": "Gıdaların tolere edilebilirliğini tanımlar."
     },
     "itemIndicator": {
       "alkaline": "Alkali",
@@ -573,7 +581,8 @@
     },
     "imageSelected": "Resim seçildi",
     "imagesSelected": "Resimler seçildi",
-    "audioRecorded": "Ses kaydedildi"
+    "audioRecorded": "Ses kaydedildi",
+    "acidBaseBalance": "Asit-baz dengesi"
   },
   "trainingPlans": {
     "title": "Antrenman Planları",

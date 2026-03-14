@@ -143,7 +143,8 @@
     "week": "Woche",
     "selectPhoto": "Foto aussuchen",
     "capturePhoto": "Kamera",
-    "retry": "Nochmal moven"
+    "retry": "Nochmal moven",
+    "moreInfo": "Checken für mehr Infos"
   },
   "shoppingList": {
     "newItemLabel": "Neues Item",
@@ -372,7 +373,11 @@
     "importWarningText": "Beim Import fliegen alle alten Daten raus und du wirst ausgeloggt. Machen?",
     "userId": "User-ID",
     "copySuccess": "Kopiert!",
-    "selectStartpage": "Startseite wählen"
+    "selectStartpage": "Startseite wählen",
+    "genderOptions": {
+      "male": "Boy",
+      "female": "Girl"
+    }
   },
   "adminStats": {
     "title": "Stats",
@@ -528,14 +533,17 @@
       "title": "Säure-Basen",
       "alkaline": "Basisch – Mega stabil für den Haushalt",
       "balanced": "Ausgeglichen – Alles in Balance",
-      "acidic": "Säurebildend – Mehr Basisches wäre nice"
+      "acidic": "Säurebildend – Mehr Basisches wäre nice",
+      "neutral": "Chillig"
     },
     "histamine": {
       "title": "Histamin",
       "average": "Durchschnitt",
       "low": "Wenig Histamin – Verträgst du gut",
       "moderate": "Mittel – Bei Intoleranz aufpassen",
-      "high": "Viel Histamin – Könnte Probleme machen"
+      "high": "Viel Histamin – Könnte Probleme machen",
+      "label": "Histamin",
+      "description": "Sagt dir, ob das Food gönnbar ist oder eher bodenlos."
     },
     "itemIndicator": {
       "alkaline": "Basisch",
@@ -573,7 +581,8 @@
     },
     "imageSelected": "Bild ausgewählt",
     "imagesSelected": "Bilder ausgewählt",
-    "audioRecorded": "Audio aufgenommen"
+    "audioRecorded": "Audio aufgenommen",
+    "acidBaseBalance": "Säure-Basen-Vibe"
   },
   "trainingPlans": {
     "title": "Trainingspläne",

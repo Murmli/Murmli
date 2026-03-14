@@ -143,7 +143,8 @@
     "days": "Giorni",
     "week": "Settimana",
     "selectPhoto": "Seleziona foto",
-    "capturePhoto": "Fotocamera"
+    "capturePhoto": "Fotocamera",
+    "moreInfo": "Maggiori informazioni"
   },
   "shoppingList": {
     "newItemLabel": "Nuovo articolo",
@@ -372,7 +373,11 @@
     "importWarningText": "L'importazione sovrascriverà tutti i dati utente correnti e verrai disconnesso. Vuoi procedere?",
     "userId": "ID Utente",
     "copySuccess": "Copiato negli appunti!",
-    "selectStartpage": "Seleziona pagina iniziale"
+    "selectStartpage": "Seleziona pagina iniziale",
+    "genderOptions": {
+      "male": "Maschio",
+      "female": "Femmina"
+    }
   },
   "adminStats": {
     "title": "Statistiche",
@@ -528,14 +533,17 @@
       "title": "Equilibrio acido-base",
       "alkaline": "Alcalino - Buono per l'equilibrio acido-base",
       "balanced": "Bilanciato - Equilibrio acido-base in pareggio",
-      "acidic": "Acidificante - Consigliati più alimenti alcalini"
+      "acidic": "Acidificante - Consigliati più alimenti alcalini",
+      "neutral": "Neutro"
     },
     "histamine": {
       "title": "Istamina",
       "average": "Media",
       "low": "Basso contenuto di istamina - Ben tollerato",
       "moderate": "Moderato contenuto di istamina - Fai attenzione se intollerante",
-      "high": "Alto contenuto di istamina - Problematico se intollerante"
+      "high": "Alto contenuto di istamina - Problematico se intollerante",
+      "label": "Istamina",
+      "description": "Descrive la tolleranza alimentare."
     },
     "itemIndicator": {
       "alkaline": "Alcalino",
@@ -573,7 +581,8 @@
     },
     "imageSelected": "Immagine selezionata",
     "imagesSelected": "Immagini selezionate",
-    "audioRecorded": "Audio registrato"
+    "audioRecorded": "Audio registrato",
+    "acidBaseBalance": "Equilibrio acido-base"
   },
   "trainingPlans": {
     "title": "Piani di allenamento",

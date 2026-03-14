@@ -143,7 +143,8 @@
     "week": "Week",
     "selectPhoto": "Pick a pitcha",
     "capturePhoto": "Snap it",
-    "retry": "Give it anotha go, kehd"
+    "retry": "Give it anotha go, kehd",
+    "moreInfo": "Moah info heah"
   },
   "shoppingList": {
     "newItemLabel": "New Stuff",
@@ -372,7 +373,11 @@
     "importWarningText": "Importin' will wipe everythin' and kick ya out. Proceed?",
     "userId": "User ID",
     "copySuccess": "Copied it!",
-    "selectStartpage": "Pick ya home"
+    "selectStartpage": "Pick ya home",
+    "genderOptions": {
+      "male": "Guy",
+      "female": "Gal"
+    }
   },
   "adminStats": {
     "title": "Stat-a-rooneys",
@@ -528,14 +533,17 @@
       "title": "Acid-Base Balance",
       "alkaline": "Alkaline - Wicked good for ya",
       "balanced": "Balanced - Just right",
-      "acidic": "Acidic - Eat some veggies, ked"
+      "acidic": "Acidic - Eat some veggies, ked",
+      "neutral": "Neut-ral"
     },
     "histamine": {
       "title": "Histamine",
       "average": "Normal",
       "low": "Low - All good",
       "moderate": "Middlin' - Watch out if ya sensitive",
-      "high": "High - Trouble if ya can't handle it"
+      "high": "High - Trouble if ya can't handle it",
+      "label": "Hist-a-mine",
+      "description": "Tells ya if the food is gonna mess ya up or if it's wicked awesome."
     },
     "itemIndicator": {
       "alkaline": "Alkaline",
@@ -573,7 +581,8 @@
     },
     "imageSelected": "Pitcha ready",
     "imagesSelected": "Pitchas ready",
-    "audioRecorded": "Talkin' saved"
+    "audioRecorded": "Talkin' saved",
+    "acidBaseBalance": "Acid-base balance wicked numbahs"
   },
   "trainingPlans": {
     "title": "Workout Plans",

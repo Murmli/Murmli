@@ -143,7 +143,8 @@
     "week": "Week",
     "selectPhoto": "Select Photo",
     "capturePhoto": "Camera",
-    "retry": "Retry"
+    "retry": "Retry",
+    "moreInfo": "More information"
   },
   "shoppingList": {
     "newItemLabel": "New Item",
@@ -372,7 +373,11 @@
     "importWarningText": "Importing will overwrite all current user data and log you out. Do you want to continue?",
     "userId": "User ID",
     "copySuccess": "Copied to clipboard!",
-    "selectStartpage": "Select starting page"
+    "selectStartpage": "Select starting page",
+    "genderOptions": {
+      "male": "Male",
+      "female": "Female"
+    }
   },
   "adminStats": {
     "title": "Statistics",
@@ -528,14 +533,17 @@
       "title": "Acid-Base Balance",
       "alkaline": "Alkaline - Good for acid-base balance",
       "balanced": "Balanced - Acid-base balance in equilibrium",
-      "acidic": "Acid-forming - More alkaline foods recommended"
+      "acidic": "Acid-forming - More alkaline foods recommended",
+      "neutral": "Neutral"
     },
     "histamine": {
       "title": "Histamine",
       "average": "Average",
       "low": "Low histamine content - Well tolerated",
       "moderate": "Moderate histamine content - Be cautious if intolerant",
-      "high": "High histamine content - Problematic if intolerant"
+      "high": "High histamine content - Problematic if intolerant",
+      "label": "Histamine",
+      "description": "Describes the tolerance level of foods."
     },
     "itemIndicator": {
       "alkaline": "Alkaline",
@@ -573,7 +581,8 @@
     },
     "imageSelected": "Image selected",
     "imagesSelected": "Images selected",
-    "audioRecorded": "Audio recorded"
+    "audioRecorded": "Audio recorded",
+    "acidBaseBalance": "Acid-base balance"
   },
   "trainingPlans": {
     "title": "Training Plans",

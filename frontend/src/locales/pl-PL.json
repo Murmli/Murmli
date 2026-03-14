@@ -143,7 +143,8 @@
     "days": "dni",
     "week": "Tydzień",
     "selectPhoto": "Wybierz zdjęcie",
-    "capturePhoto": "Aparat"
+    "capturePhoto": "Aparat",
+    "moreInfo": "Więcej informacji"
   },
   "shoppingList": {
     "newItemLabel": "Nowy artykuł",
@@ -372,7 +373,11 @@
     "importWarningText": "Import spowoduje nadpisanie wszystkich aktualnych danych użytkownika i zostaniesz wylogowany. Czy chcesz kontynuować?",
     "userId": "ID użytkownika",
     "copySuccess": "Skopiowano do schowka!",
-    "selectStartpage": "Wybierz stronę startową"
+    "selectStartpage": "Wybierz stronę startową",
+    "genderOptions": {
+      "male": "Mężczyzna",
+      "female": "Kobieta"
+    }
   },
   "adminStats": {
     "title": "Statystyki",
@@ -528,14 +533,17 @@
       "title": "Równowaga kwasowo-zasadowa",
       "alkaline": "Zasadowe – dobre dla równowagi kwasowo-zasadowej",
       "balanced": "Zrównoważone – równowaga kwasowo-zasadowa zachowana",
-      "acidic": "Zakwaszające – zalecane więcej produktów zasadowych"
+      "acidic": "Zakwaszające – zalecane więcej produktów zasadowych",
+      "neutral": "Neutralny"
     },
     "histamine": {
       "title": "Histamina",
       "average": "Średnia",
       "low": "Niska zawartość histaminy – dobrze tolerowane",
       "moderate": "Umiarkowana zawartość histaminy – zachować ostrożność przy nietolerancji",
-      "high": "Wysoka zawartość histaminy – problematyczne przy nietolerancji"
+      "high": "Wysoka zawartość histaminy – problematyczne przy nietolerancji",
+      "label": "Histamina",
+      "description": "Opisuje tolerancję na produkty spożywcze."
     },
     "itemIndicator": {
       "alkaline": "Zasadowe",
@@ -573,7 +581,8 @@
     },
     "imageSelected": "Wybrano obraz",
     "imagesSelected": "Wybrano obrazy",
-    "audioRecorded": "Nagrano dźwięk"
+    "audioRecorded": "Nagrano dźwięk",
+    "acidBaseBalance": "Równowaga kwasowo-zasadowa"
   },
   "trainingPlans": {
     "title": "Plany treningowe",

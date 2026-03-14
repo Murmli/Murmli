@@ -143,7 +143,8 @@
     "days": "Días",
     "week": "Semana",
     "selectPhoto": "Seleccionar foto",
-    "capturePhoto": "Cámara"
+    "capturePhoto": "Cámara",
+    "moreInfo": "Más información"
   },
   "shoppingList": {
     "newItemLabel": "Nuevo artículo",
@@ -372,7 +373,11 @@
     "importWarningText": "La importación sobrescribirá todos los datos de usuario actuales y se cerrará tu sesión. ¿Deseas continuar?",
     "userId": "ID de usuario",
     "copySuccess": "¡Copiado al portapapeles!",
-    "selectStartpage": "Seleccionar página de inicio"
+    "selectStartpage": "Seleccionar página de inicio",
+    "genderOptions": {
+      "male": "Masculino",
+      "female": "Femenino"
+    }
   },
   "adminStats": {
     "title": "Estadísticas",
@@ -528,14 +533,17 @@
       "title": "Equilibrio ácido-base",
       "alkaline": "Alcalino - Bueno para el equilibrio ácido-base",
       "balanced": "Equilibrado - Equilibrio ácido-base en balance",
-      "acidic": "Acidificante - Se recomiendan más alimentos alcalinos"
+      "acidic": "Acidificante - Se recomiendan más alimentos alcalinos",
+      "neutral": "Neutro"
     },
     "histamine": {
       "title": "Histamina",
       "average": "Promedio",
       "low": "Bajo contenido en histamina - Bien tolerado",
       "moderate": "Contenido moderado en histamina - Tener en cuenta en caso de intolerancia",
-      "high": "Alto contenido en histamina - Problemático en caso de intolerancia"
+      "high": "Alto contenido en histamina - Problemático en caso de intolerancia",
+      "label": "Histamina",
+      "description": "Describe la tolerancia de los alimentos."
     },
     "itemIndicator": {
       "alkaline": "Alcalino",
@@ -573,7 +581,8 @@
     },
     "imageSelected": "Imagen seleccionada",
     "imagesSelected": "Imágenes seleccionadas",
-    "audioRecorded": "Audio grabado"
+    "audioRecorded": "Audio grabado",
+    "acidBaseBalance": "Equilibrio ácido-base"
   },
   "trainingPlans": {
     "title": "Planes de entrenamiento",
