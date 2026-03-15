@@ -414,6 +414,29 @@ img {
   transform: translateY(-2px);
 }
 
+.primary-cta {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 28px;
+  background-color: var(--secondary-color);
+  color: var(--white) !important;
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-decoration: none !important;
+  margin-top: 15px;
+}
+
+.primary-cta:hover {
+  background-color: var(--secondary-dark);
+  transform: translateY(-2px);
+  text-decoration: none !important;
+}
+
 .calorie-calculator__hint {
   font-size: 0.9rem;
   color: var(--text-color);
