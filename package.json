@@ -18,6 +18,9 @@
     "build": "npm run build:frontend",
     "build:frontend": "cd frontend && npm run build",
     "dev": "concurrently \"npm run dev:backend\" \"npm run start:frontend\"",
+    "db:backup": "node backend/scripts/dbOps.js backup",
+    "db:restore": "node backend/scripts/dbOps.js restore",
+    "refresh-recipes": "cd backend && npm run refresh-recipes --",
     "test:e2e": "playwright test"
   },
   "devDependencies": {
