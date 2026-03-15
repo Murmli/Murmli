@@ -218,6 +218,7 @@ exports.textToTrackerArraySystemPrompt = (outputLang = "de-DE") => {
     - Berücksichtige bei der Kalorieninformation, dass Zutaten wie Pasta, Reis, Bohnen usw. im gekochten Zustand ein deutlich anderes Gewicht haben.
     - Vermerke gekochte Gewichte mit "(gekocht)" im Namen des Lebensmittels.
     - Schätze bei vagen Mengenangaben typische Werte, z.B. eine „Handvoll".
+    - WICHTIG - EINHEITEN: Wenn der Nutzer eine spezifische Einheit nennt (z.B. "3 Scheiben Käse", "2 Becher Joghurt", "1 Riegel Schokolade", "5 Stück Sushi"), dann MUSS diese Einheit exakt so im Feld "unit" übernommen werden und die Zahl im Feld "amount" stehen. Konvertiere solche Angaben NICHT automatisch in Gramm oder Milliliter, es sei denn, der Nutzer macht keine spezifische Einheitenangabe (dann verwende "g" oder "ml").
     - Korrigiere Rechtschreibfehler und identifiziere, was für eine Kalorienzähler-App relevant ist.
     - Bei Gerichten liste einzelne Zutaten auf, betrachte sie jedoch als Teil eines vollständigen Gerichts. Schätze die Anteile proportional zur Gesamtmenge des Gerichts.
     - Stelle sicher, dass die Kalorienverteilung innerhalb von Gerichten plausibel ist.
@@ -225,12 +226,13 @@ exports.textToTrackerArraySystemPrompt = (outputLang = "de-DE") => {
 
     # Schritte
     1. **Zutaten identifizieren**: Analysiere den Originaltext nach Lebensmitteln und Mengenangaben.
-    2. **Korrigieren und Klarstellen**: Behebe Tippfehler und schätze Mengen, falls unklar.
-    3. **Kalorien schätzen**: Wenn keine Angaben gemacht werden, basiere Schätzungen auf typischen Werten oder verwende angegebene Details ohne Rundung.
-    4. **Gerichtszusammensetzung aufschlüsseln**: Zerlege komplexe Gerichte in Zutaten und verteile die Kalorien proportional, einschließlich Begründung falls nötig.
-    5. **Säure-Basen- und Histaminwerte bestimmen**: Berechne den PRAL-Score und bewerte den Histamingehalt für jede Zutat.
-    6. **JSON-Struktur einhalten**: Stelle sicher, dass die Ausgabe dem definierten JSON-Schema entspricht.
-    7. **Sprachkonsistenz**: Schreibe die Ausgabe in der Sprache ${outputLang}.
+    2. **Einheiten wahren**: Falls spezifische Einheiten (Scheiben, Stück, Becher, Riegel etc.) genannt wurden, verwende diese direkt als "unit".
+    3. **Korrigieren und Klarstellen**: Behebe Tippfehler und schätze Mengen, falls unklar.
+    4. **Kalorien schätzen**: Wenn keine Angaben gemacht werden, basiere Schätzungen auf typischen Werten oder verwende angegebene Details ohne Rundung.
+    5. **Gerichtszusammensetzung aufschlüsseln**: Zerlege komplexe Gerichte in Zutaten und verteile die Kalorien proportional, einschließlich Begründung falls nötig.
+    6. **Säure-Basen- und Histaminwerte bestimmen**: Berechne den PRAL-Score und bewerte den Histamingehalt für jede Zutat.
+    7. **JSON-Struktur einhalten**: Stelle sicher, dass die Ausgabe dem definierten JSON-Schema entspricht.
+    8. **Sprachkonsistenz**: Schreibe die Ausgabe in der Sprache ${outputLang}.
 
     # Beispiele
 
@@ -457,6 +459,7 @@ exports.imageToTrackerItemsSystemPrompt = (outputLang) => {
     - Berücksichtige bei der Kalorieninformation, dass Zutaten wie Pasta, Reis, Bohnen usw. im gekochten Zustand ein deutlich anderes Gewicht haben.
     - Vermerke gekochte Gewichte mit "(gekocht)" im Namen des Lebensmittels.
     - Schätze bei vagen Mengenangaben typische Werte, z.B. eine „Handvoll".
+    - WICHTIG - EINHEITEN: Wenn der Nutzer oder das Bild eine spezifische Einheit nahelegen (z.B. "3 Scheiben Käse", "2 Becher Joghurt", "1 Riegel Schokolade", "5 Stück Sushi"), dann MUSS diese Einheit exakt so im Feld "unit" übernommen werden und die Zahl im Feld "amount" stehen. Konvertiere solche Angaben NICHT automatisch in Gramm oder Milliliter, es sei denn, es gibt keine spezifische Einheitenangabe (dann verwende "g" oder "ml").
     - Korrigiere Rechtschreibfehler und identifiziere, was für eine Kalorienzähler-App relevant ist.
     - Bei Gerichten liste einzelne Zutaten auf, betrachte sie jedoch als Teil eines vollständigen Gerichts. Schätze die Anteile proportional zur Gesamtmenge des Gerichts.
     - Stelle sicher, dass die Kalorienverteilung innerhalb von Gerichten plausibel ist.
@@ -464,12 +467,13 @@ exports.imageToTrackerItemsSystemPrompt = (outputLang) => {
 
     # Schritte
     1. **Erkennen**: Analysiere das Bild und identifiziere alle sichtbaren Lebensmittel und Getränke. Berücksichtige auch den Textkommentar für Kontext (z.B. "davon habe ich die Hälfte gegessen").
-    2. **Mengen schätzen**: Schätze die Mengen anhand der visuellen Darstellung (Tellergröße, Glasgröße, Proportionen).
-    3. **Kalorien schätzen**: Wenn keine Angaben gemacht werden, basiere Schätzungen auf typischen Werten.
-    4. **Gerichtszusammensetzung aufschlüsseln**: Zerlege komplexe Gerichte in Zutaten und verteile die Kalorien proportional.
-    5. **Säure-Basen- und Histaminwerte bestimmen**: Berechne den PRAL-Score und bewerte den Histamingehalt für jede Zutat.
-    6. **JSON-Struktur einhalten**: Stelle sicher, dass die Ausgabe dem definierten JSON-Schema entspricht.
-    7. **Sprachkonsistenz**: Schreibe die Ausgabe in der Sprache ${outputLang}.
+    2. **Einheiten wahren**: Falls spezifische Einheiten (Scheiben, Stück, Becher, Riegel etc.) erkennbar oder genannt sind, verwende diese direkt als "unit".
+    3. **Mengen schätzen**: Schätze die Mengen anhand der visuellen Darstellung (Tellergröße, Glasgröße, Proportionen).
+    4. **Kalorien schätzen**: Wenn keine Angaben gemacht werden, basiere Schätzungen auf typischen Werten.
+    5. **Gerichtszusammensetzung aufschlüsseln**: Zerlege komplexe Gerichte in Zutaten und verteile die Kalorien proportional.
+    6. **Säure-Basen- und Histaminwerte bestimmen**: Berechne den PRAL-Score und bewerte den Histamingehalt für jede Zutat.
+    7. **JSON-Struktur einhalten**: Stelle sicher, dass die Ausgabe dem definierten JSON-Schema entspricht.
+    8. **Sprachkonsistenz**: Schreibe die Ausgabe in der Sprache ${outputLang}.
 
     # Beispiele
 
@@ -941,14 +945,14 @@ exports.createRecipePrompt = (prompt, exclude, informationObject, servings = 4) 
   }
   if (informationObject) {
     return text += `\nBerücksichtige bitte folgende User-Informationen/Vorlieben: ${JSON.stringify(informationObject)}.`;
-    }
-    return text;
-    };
+  }
+  return text;
+};
 
-    exports.grammarCorrectionSystemPrompt = (language) => {
-    return `
+exports.grammarCorrectionSystemPrompt = (language) => {
+  return `
       Du bist ein erfahrener Lektor. Korrigiere die Grammatik, Rechtschreibung und Zeichensetzung des folgenden Textes in der Sprache "${language}".
       Behalte den ursprünglichen Tonfall und die Bedeutung bei.
       Gib ausschließlich den korrigierten Text zurück, keine Erklärungen oder Kommentare.
     `;
-    };
+};
