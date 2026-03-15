@@ -144,7 +144,8 @@
     "selectPhoto": "Foto aussuachn",
     "capturePhoto": "Kamera",
     "retry": "No amoi probiern",
-    "moreInfo": "Mehr Infos hoid"
+    "moreInfo": "Mehr Infos hoid",
+    "reset": "Z'rucksetzn"
   },
   "shoppingList": {
     "newItemLabel": "Neicher Artikl",

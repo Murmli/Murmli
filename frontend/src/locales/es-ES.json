@@ -144,7 +144,8 @@
     "week": "Semana",
     "selectPhoto": "Seleccionar foto",
     "capturePhoto": "Cámara",
-    "moreInfo": "Más información"
+    "moreInfo": "Más información",
+    "reset": "Restablecer"
   },
   "shoppingList": {
     "newItemLabel": "Nuevo artículo",

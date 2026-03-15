@@ -144,7 +144,8 @@
     "selectPhoto": "Pick a picture",
     "capturePhoto": "Take a photo",
     "retry": "Give it another go",
-    "moreInfo": "A bit more info for ya"
+    "moreInfo": "A bit more info for ya",
+    "reset": "Start 'er all over again"
   },
   "shoppingList": {
     "newItemLabel": "New stuff",

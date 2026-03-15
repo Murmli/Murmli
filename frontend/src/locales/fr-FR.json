@@ -144,7 +144,8 @@
     "selectPhoto": "Sélectionner une photo",
     "capturePhoto": "Appareil photo",
     "retry": "Réessayer",
-    "moreInfo": "Plus d'informations"
+    "moreInfo": "Plus d'informations",
+    "reset": "Réinitialiser"
   },
   "shoppingList": {
     "newItemLabel": "Nouvel article",

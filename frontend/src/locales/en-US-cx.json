@@ -144,7 +144,8 @@
     "selectPhoto": "Pick a Shot",
     "capturePhoto": "Snap a Pic",
     "retry": "Catch another wave",
-    "moreInfo": "Deep dive for more deets"
+    "moreInfo": "Deep dive for more deets",
+    "reset": "Wipe it out, brah"
   },
   "shoppingList": {
     "newItemLabel": "New Gear",

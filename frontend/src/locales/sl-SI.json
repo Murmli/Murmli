@@ -144,7 +144,8 @@
     "week": "Teden",
     "selectPhoto": "Izberi fotografijo",
     "capturePhoto": "Kamera",
-    "moreInfo": "Več informacij"
+    "moreInfo": "Več informacij",
+    "reset": "Ponastavi"
   },
   "shoppingList": {
     "newItemLabel": "Nov artikel",

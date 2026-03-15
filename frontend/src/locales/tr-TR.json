@@ -144,7 +144,8 @@
     "week": "Hafta",
     "selectPhoto": "Fotoğraf Seç",
     "capturePhoto": "Kamera",
-    "moreInfo": "Daha fazla bilgi"
+    "moreInfo": "Daha fazla bilgi",
+    "reset": "Sıfırla"
   },
   "shoppingList": {
     "newItemLabel": "Yeni Ürün",

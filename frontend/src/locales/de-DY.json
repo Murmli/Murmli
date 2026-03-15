@@ -144,7 +144,8 @@
     "selectPhoto": "Foto aussuchen",
     "capturePhoto": "Kamera",
     "retry": "Nochmal moven",
-    "moreInfo": "Checken für mehr Infos"
+    "moreInfo": "Checken für mehr Infos",
+    "reset": "Resetten"
   },
   "shoppingList": {
     "newItemLabel": "Neues Item",

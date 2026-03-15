@@ -95,8 +95,11 @@
     <!-- Change Item Dialog-->
     <v-dialog v-model="changeItemDialog" persistent max-width="600px">
         <v-card>
-            <v-card-title>
-                {{ changeItemDialog.name }}
+            <v-card-title class="d-flex align-center">
+                <span>{{ trackerStore.selectedItem.name }}</span>
+                <v-spacer></v-spacer>
+                <v-btn icon="mdi-restore" variant="text" size="small" @click="resetToOriginal"
+                    :title="languageStore.t('general.reset')"></v-btn>
             </v-card-title>
             <v-card-text>
                 <v-container>
@@ -171,6 +174,7 @@ const isNotToday = computed(() => {
 });
 const dropdownMenu = ref(false);
 const changeItemDialog = ref(false);
+const originalItemData = ref(null);
 const originalRatio = ref(0); // Speichert das ursprüngliche Verhältnis von kcal zu amount
 const originalProteinRatio = ref(0);
 const originalCarbsRatio = ref(0);
@@ -205,6 +209,9 @@ const addItemToday = async () => {
 
 const openChangeItem = () => {
     changeItemDialog.value = true;
+    // Beim Öffnen des Dialogs eine Kopie des Originals speichern
+    originalItemData.value = JSON.parse(JSON.stringify(trackerStore.selectedItem));
+    
     // Beim Öffnen des Dialogs die ursprünglichen Verhältnisse speichern
     if (trackerStore.selectedItem && parseFloat(trackerStore.selectedItem.amount) > 0) {
         const amount = parseFloat(trackerStore.selectedItem.amount);
@@ -220,6 +227,12 @@ const openChangeItem = () => {
         if (parseFloat(trackerStore.selectedItem.fat) >= 0) {
             originalFatRatio.value = parseFloat(trackerStore.selectedItem.fat) / amount;
         }
+    }
+};
+
+const resetToOriginal = () => {
+    if (originalItemData.value) {
+        trackerStore.selectedItem = JSON.parse(JSON.stringify(originalItemData.value));
     }
 };
 
@@ -249,6 +262,9 @@ const updateKcalBasedOnAmount = () => {
 // Überwache Änderungen am selectedItem, wenn der Dialog geöffnet wird
 watch(() => changeItemDialog.value, (newValue) => {
     if (newValue && trackerStore.selectedItem) {
+        // Beim Öffnen des Dialogs eine Kopie des Originals speichern
+        originalItemData.value = JSON.parse(JSON.stringify(trackerStore.selectedItem));
+
         // Beim Öffnen des Dialogs die ursprünglichen Verhältnisse speichern
         if (parseFloat(trackerStore.selectedItem.amount) > 0) {
             const amount = parseFloat(trackerStore.selectedItem.amount);

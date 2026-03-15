@@ -144,7 +144,8 @@
     "selectPhoto": "Foti uswähle",
     "capturePhoto": "Chamera",
     "retry": "No emal probiere",
-    "moreInfo": "Ä bitzeli meh Infos"
+    "moreInfo": "Ä bitzeli meh Infos",
+    "reset": "Zruggsetze"
   },
   "shoppingList": {
     "newItemLabel": "Neu's Ding",

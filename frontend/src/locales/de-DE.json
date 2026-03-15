@@ -144,7 +144,8 @@
     "days": "Tagen",
     "week": "Woche",
     "selectPhoto": "Foto auswählen",
-    "capturePhoto": "Kamera"
+    "capturePhoto": "Kamera",
+    "reset": "Zurücksetzen"
   },
   "shoppingList": {
     "newItemLabel": "Neuer Artikel",

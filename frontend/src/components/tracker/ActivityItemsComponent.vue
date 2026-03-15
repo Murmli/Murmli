@@ -44,8 +44,11 @@
     <!-- Change Item Dialog-->
     <v-dialog v-model="changeItemDialog" persistent max-width="600px">
         <v-card>
-            <v-card-title>
-                {{ changeItemDialog.name }}
+            <v-card-title class="d-flex align-center">
+                <span>{{ trackerStore.selectedItem.name }}</span>
+                <v-spacer></v-spacer>
+                <v-btn icon="mdi-restore" variant="text" size="small" @click="resetToOriginal"
+                    :title="languageStore.t('general.reset')"></v-btn>
             </v-card-title>
             <v-card-text>
                 <v-container>
@@ -90,6 +93,7 @@ const languageStore = useLanguageStore();
 const tracker = computed(() => trackerStore.tracker || { foodItems: [] });
 const dropdownMenu = ref(false);
 const changeItemDialog = ref(false);
+const originalItemData = ref(null);
 
 const originalDuration = ref(0);
 const originalCalories = ref(0);
@@ -107,7 +111,15 @@ const deleteItem = async () => {
 const openChangeItem = () => {
     originalDuration.value = trackerStore.selectedItem.duration;
     originalCalories.value = trackerStore.selectedItem.caloriesBurned;
+    // Kopie des Originals speichern
+    originalItemData.value = JSON.parse(JSON.stringify(trackerStore.selectedItem));
     changeItemDialog.value = true;
+};
+
+const resetToOriginal = () => {
+    if (originalItemData.value) {
+        trackerStore.selectedItem = JSON.parse(JSON.stringify(originalItemData.value));
+    }
 };
 
 const saveEditedItem = async () => {
@@ -125,4 +137,12 @@ watch(
         }
     }
 );
+
+watch(() => changeItemDialog.value, (newValue) => {
+    if (newValue && trackerStore.selectedItem) {
+        originalDuration.value = trackerStore.selectedItem.duration;
+        originalCalories.value = trackerStore.selectedItem.caloriesBurned;
+        originalItemData.value = JSON.parse(JSON.stringify(trackerStore.selectedItem));
+    }
+});
 </script>

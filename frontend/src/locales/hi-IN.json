@@ -144,7 +144,8 @@
     "selectPhoto": "फोटो चुनें",
     "capturePhoto": "कैमरा",
     "retry": "पुनः प्रयास करें",
-    "moreInfo": "अधिक जानकारी"
+    "moreInfo": "अधिक जानकारी",
+    "reset": "रीसेट करें"
   },
   "shoppingList": {
     "newItemLabel": "नई वस्तु",

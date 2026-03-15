@@ -144,7 +144,8 @@
     "selectPhoto": "Pick a pitcha",
     "capturePhoto": "Snap it",
     "retry": "Give it anotha go, kehd",
-    "moreInfo": "Moah info heah"
+    "moreInfo": "Moah info heah",
+    "reset": "Staht it ovah"
   },
   "shoppingList": {
     "newItemLabel": "New Stuff",

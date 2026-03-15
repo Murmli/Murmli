@@ -144,7 +144,8 @@
     "week": "Týden",
     "selectPhoto": "Vybrat foto",
     "capturePhoto": "Fotoaparát",
-    "moreInfo": "Více informací"
+    "moreInfo": "Více informací",
+    "reset": "Resetovat"
   },
   "shoppingList": {
     "newItemLabel": "Nová položka",

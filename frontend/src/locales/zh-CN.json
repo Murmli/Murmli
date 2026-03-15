@@ -144,7 +144,8 @@
     "selectPhoto": "选择照片",
     "capturePhoto": "拍照",
     "retry": "重试",
-    "moreInfo": "更多信息"
+    "moreInfo": "更多信息",
+    "reset": "重置"
   },
   "shoppingList": {
     "newItemLabel": "新项目",
