@@ -5,17 +5,18 @@
   <v-container>
     <TimePickerComponent class="mb-1" />
     <ModernTrackerProgress class="mb-5" />
-    <DietlevelComponent class="my-5" />
-    <ActivityItemsComponent class="mb-5" />
-    <TrackerItemsComponent />
-    <FavoriteTrackerItemsComponent v-if="favorites.length > 0" />
     
-    <div class="ma-4">
+    <div class="mb-5">
        <v-btn block color="primary" prepend-icon="mdi-chat" @click="showChatDialog = true">
         {{ languageStore.t('tracker.chat.openButton') || 'Open Assistant' }}
       </v-btn>
     </div>
 
+    <DietlevelComponent class="my-5" />
+    <ActivityItemsComponent class="mb-5" />
+    <TrackerItemsComponent />
+    <FavoriteTrackerItemsComponent v-if="favorites.length > 0" />
+    
     <ChatDialog 
       v-model="showChatDialog" 
       :title="languageStore.t('tracker.chat.title') || 'Tracker Assistant'"

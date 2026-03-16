@@ -17,8 +17,8 @@
 
           <div v-for="(msg, index) in messages" :key="index" class="d-flex mb-4"
             :class="msg.role === 'user' ? 'justify-end' : 'justify-start'">
-            <v-sheet :color="msg.role === 'user' ? 'primary' : 'surface-variant'" class="pa-3 rounded-lg"
-              max-width="80%">
+            <v-sheet :color="msg.role === 'user' ? 'primary' : 'surface-variant'" class="pa-2 rounded-lg chat-bubble"
+              max-width="85%">
               <div v-if="msg.role === 'user'" class="mb-0 text-pre-wrap">{{ msg.content }}</div>
               <div v-else class="mb-0 markdown-body" v-html="renderMarkdown(msg.content)"></div>
             </v-sheet>
@@ -130,8 +130,13 @@ padding-top: max(env(safe-area-inset-top), 16px);
   white-space: pre-wrap;
 }
 
+.chat-bubble {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
 :deep(.markdown-body p) {
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 :deep(.markdown-body ul),
