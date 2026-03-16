@@ -1166,6 +1166,8 @@ body.recipe-page main {
   margin: 0;
   display: flex;
   gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .footer-links a {
