@@ -425,7 +425,18 @@
       "confirmDelete": "Bisch dir sicher, dass des Feedback weghaue wit?",
       "deleteSuccess": "Feedback isch jetzt weg.",
       "updateSuccess": "Feedback isch aktualisiert worra."
-    }
+    },
+    "period24h": "D'letzte 24 Stond",
+    "period7d": "D'letzte 7 Täg",
+    "period30d": "D'letzte 30 Täg",
+    "newUsers": "Neie Leit",
+    "activeUsers": "Aktive Leit",
+    "calorieTrackers": "Kalorieneiträg",
+    "shoppingLists": "Eikaofszettl aktualisiert",
+    "generatedRecipes": "Rezepte, wo gmacht worde send",
+    "plannerUsage": "Rezeptplaner-Nutzong",
+    "trainingPlans": "Neie Trainingsplän",
+    "trainingLogs": "Neie Trainingslogs"
   },
   "adminTools": {
     "title": "Admin-Werkzaig",

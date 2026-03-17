@@ -425,7 +425,18 @@
       "confirmDelete": "Jste si jisti, že chcete tuto zpětnou vazbu smazat?",
       "deleteSuccess": "Zpětná vazba smazána.",
       "updateSuccess": "Zpětná vazba aktualizována."
-    }
+    },
+    "period24h": "Posledních 24h",
+    "period7d": "Posledních 7 dní",
+    "period30d": "Posledních 30 dní",
+    "newUsers": "Noví uživatelé",
+    "activeUsers": "Aktivní uživatelé",
+    "calorieTrackers": "Záznamy v kalorických tabulkách",
+    "shoppingLists": "Aktualizace nákupních seznamů",
+    "generatedRecipes": "Vygenerované recepty",
+    "plannerUsage": "Využití plánovače receptů",
+    "trainingPlans": "Nové tréninkové plány",
+    "trainingLogs": "Nové tréninkové deníky"
   },
   "adminTools": {
     "title": "Admin nástroje",

@@ -425,7 +425,18 @@
       "confirmDelete": "Bisch sicher, das de das Feedback lösche wotsch?",
       "deleteSuccess": "Feedback glöscht.",
       "updateSuccess": "Feedback aktualisiert."
-    }
+    },
+    "period24h": "D'letschte 24 Schtund",
+    "period7d": "D'letschte 7 Tääg",
+    "period30d": "D'letschte 30 Tääg",
+    "newUsers": "Neui Benutzer",
+    "activeUsers": "Aktivi Benutzer",
+    "calorieTrackers": "Iiträg im Kaloriizähler",
+    "shoppingLists": "Updates vo de Ichaslischtli",
+    "generatedRecipes": "Generierti Rezäpt",
+    "plannerUsage": "Nutzig vom Rezäptplaner",
+    "trainingPlans": "Neui Trainingsplän",
+    "trainingLogs": "Neui Trainingslogs"
   },
   "adminTools": {
     "title": "Admin-Wärchzüüg",

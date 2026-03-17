@@ -425,7 +425,18 @@
       "confirmDelete": "确定要删除这条反馈吗？",
       "deleteSuccess": "反馈已删除。",
       "updateSuccess": "反馈已更新。"
-    }
+    },
+    "period24h": "最近 24 小时",
+    "period7d": "最近 7 天",
+    "period30d": "最近 30 天",
+    "newUsers": "新用户",
+    "activeUsers": "活跃用户",
+    "calorieTrackers": "卡路里追踪记录",
+    "shoppingLists": "购物清单更新",
+    "generatedRecipes": "生成的食谱",
+    "plannerUsage": "饮食计划使用情况",
+    "trainingPlans": "新训练计划",
+    "trainingLogs": "新训练日志"
   },
   "adminTools": {
     "title": "管理员工具",

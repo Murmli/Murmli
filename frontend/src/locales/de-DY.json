@@ -425,7 +425,18 @@
       "confirmDelete": "Safe, dass du das Feedback weghauen willst?",
       "deleteSuccess": "Feedback wurde geyetet.",
       "updateSuccess": "Feedback ist jetzt fresh aktualisiert."
-    }
+    },
+    "period24h": "Die letzten 24h",
+    "period7d": "Letzte 7 Tage",
+    "period30d": "Letzte 30 Tage",
+    "newUsers": "Neue Bros & Beauties",
+    "activeUsers": "User am Start",
+    "calorieTrackers": "Kalorien-Tracker Moves",
+    "shoppingLists": "Einkaufslisten Upgrades",
+    "generatedRecipes": "Rezepte gegönnt",
+    "plannerUsage": "Planer-Action",
+    "trainingPlans": "Frische Trainingspläne",
+    "trainingLogs": "Neue Workout-Logs"
   },
   "adminTools": {
     "title": "Admin-Tools",

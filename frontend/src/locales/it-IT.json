@@ -425,7 +425,18 @@
       "confirmDelete": "Sicuro di voler eliminare questo feedback?",
       "deleteSuccess": "Feedback eliminato.",
       "updateSuccess": "Feedback aggiornato."
-    }
+    },
+    "period24h": "Ultime 24 ore",
+    "period7d": "Ultimi 7 giorni",
+    "period30d": "Ultimi 30 giorni",
+    "newUsers": "Nuovi utenti",
+    "activeUsers": "Utenti attivi",
+    "calorieTrackers": "Voci contacalorie",
+    "shoppingLists": "Aggiornamenti liste della spesa",
+    "generatedRecipes": "Ricette generate",
+    "plannerUsage": "Utilizzo pianificatore ricette",
+    "trainingPlans": "Nuovi piani di allenamento",
+    "trainingLogs": "Nuovi registri di allenamento"
   },
   "adminTools": {
     "title": "Strumenti Admin",

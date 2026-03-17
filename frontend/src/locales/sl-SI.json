@@ -425,7 +425,18 @@
       "confirmDelete": "Ste prepričani, da želite izbrisati te povratne informacije?",
       "deleteSuccess": "Povratne informacije izbrisane.",
       "updateSuccess": "Povratne informacije posodobljene."
-    }
+    },
+    "period24h": "Zadnjih 24 ur",
+    "period7d": "Zadnjih 7 dni",
+    "period30d": "Zadnjih 30 dni",
+    "newUsers": "Novi uporabniki",
+    "activeUsers": "Aktivni uporabniki",
+    "calorieTrackers": "Vnosi v števec kalorij",
+    "shoppingLists": "Posodobitve nakupovalnih seznamov",
+    "generatedRecipes": "Generirani recepti",
+    "plannerUsage": "Uporaba načrtovalca receptov",
+    "trainingPlans": "Novi načrti treningov",
+    "trainingLogs": "Novi dnevniki treningov"
   },
   "adminTools": {
     "title": "Skrbniška orodja",

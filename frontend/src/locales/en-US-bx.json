@@ -425,7 +425,18 @@
       "confirmDelete": "You wicked some? You really wanna chuck this feedback?",
       "deleteSuccess": "Feedback's in the hähbah.",
       "updateSuccess": "Fixed it up wicked good."
-    }
+    },
+    "period24h": "Last 24 houahs",
+    "period7d": "Last 7 days",
+    "period30d": "Last 30 days",
+    "newUsers": "New usehs",
+    "activeUsers": "Active usehs",
+    "calorieTrackers": "Calorie trackah entries",
+    "shoppingLists": "Shoppin' list updates",
+    "generatedRecipes": "Recipes we whipped up",
+    "plannerUsage": "Recipe plannah usage",
+    "trainingPlans": "New trainin' plans",
+    "trainingLogs": "New trainin' logs"
   },
   "adminTools": {
     "title": "Admin Stuff",

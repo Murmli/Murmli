@@ -222,6 +222,7 @@ exports.getStatistics = async (req, res) => {
     }
 
     const User = require("../models/userModel.js");
+    const UserRecipe = require("../models/userRecipeModel.js");
     const TrainingPlan = require("../models/trainingPlanModel.js");
     const TrainingLog = require("../models/trainingLogModel.js");
     const ShoppingList = require("../models/shoppingListModel.js");
@@ -230,273 +231,94 @@ exports.getStatistics = async (req, res) => {
     const Feedback = require("../models/feedbackModel.js");
 
     const now = new Date();
-    const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    const startOfWeek = new Date(startOfDay);
-    const day = startOfDay.getDay();
-    const diffToMonday = (day + 6) % 7; // Monday as start of week
-    startOfWeek.setDate(startOfDay.getDate() - diffToMonday);
-
-    const startOfYesterday = new Date(startOfDay);
-    startOfYesterday.setDate(startOfYesterday.getDate() - 1);
-    const startOfLastWeek = new Date(startOfWeek);
-    startOfLastWeek.setDate(startOfLastWeek.getDate() - 7);
-
-    const startOfLast7Days = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-    const startOfPrevious7Days = new Date(now.getTime() - 14 * 24 * 60 * 60 * 1000);
-
-    const usersLast7Days = await User.countDocuments({ createdAt: { $gte: startOfLast7Days } });
-    const usersPrevious7Days = await User.countDocuments({
-      createdAt: { $gte: startOfPrevious7Days, $lt: startOfLast7Days },
-    });
-    const usersLast7DaysDiff = usersLast7Days - usersPrevious7Days;
-
-    const usersToday = await User.countDocuments({ createdAt: { $gte: startOfDay } });
-    const usersYesterday = await User.countDocuments({
-      createdAt: { $gte: startOfYesterday, $lt: startOfDay },
-    });
-    const usersThisWeek = await User.countDocuments({ createdAt: { $gte: startOfWeek } });
-    const usersLastWeek = await User.countDocuments({
-      createdAt: { $gte: startOfLastWeek, $lt: startOfWeek },
-    });
-
-    const last24h = new Date(now.getTime() - 24 * 60 * 60 * 1000);
-
-    const recipesLast24h = await Recipe.countDocuments({ createdAt: { $gte: last24h } });
-    const trainingPlansLast24h = await TrainingPlan.countDocuments({ createdAt: { $gte: last24h } });
-
-    const plannerUsersTotal = await User.countDocuments({
-      'suggestions.downvotes': { $ne: [] },
-    });
-
-    const plannerUsersToday = await User.countDocuments({
-      $or: [
-        { 'suggestions.upvotes': { $elemMatch: { createdAt: { $gte: startOfDay } } } },
-        { 'suggestions.downvotes': { $elemMatch: { createdAt: { $gte: startOfDay } } } },
-        { 'suggestions.selected': { $elemMatch: { createdAt: { $gte: startOfDay } } } },
-      ],
-    });
-
-    const plannerUsersYesterday = await User.countDocuments({
-      $or: [
-        {
-          'suggestions.upvotes': {
-            $elemMatch: { createdAt: { $gte: startOfYesterday, $lt: startOfDay } },
-          },
-        },
-        {
-          'suggestions.downvotes': {
-            $elemMatch: { createdAt: { $gte: startOfYesterday, $lt: startOfDay } },
-          },
-        },
-        {
-          'suggestions.selected': {
-            $elemMatch: { createdAt: { $gte: startOfYesterday, $lt: startOfDay } },
-          },
-        },
-      ],
-    });
-
-    const plannerUsersThisWeek = await User.countDocuments({
-      $or: [
-        { 'suggestions.upvotes': { $elemMatch: { createdAt: { $gte: startOfWeek } } } },
-        { 'suggestions.downvotes': { $elemMatch: { createdAt: { $gte: startOfWeek } } } },
-        { 'suggestions.selected': { $elemMatch: { createdAt: { $gte: startOfWeek } } } },
-      ],
-    });
-
-    const plannerUsersLastWeek = await User.countDocuments({
-      $or: [
-        {
-          'suggestions.upvotes': {
-            $elemMatch: { createdAt: { $gte: startOfLastWeek, $lt: startOfWeek } },
-          },
-        },
-        {
-          'suggestions.downvotes': {
-            $elemMatch: { createdAt: { $gte: startOfLastWeek, $lt: startOfWeek } },
-          },
-        },
-        {
-          'suggestions.selected': {
-            $elemMatch: { createdAt: { $gte: startOfLastWeek, $lt: startOfWeek } },
-          },
-        },
-      ],
-    });
-
-    const shoppingListUsersToday = (
-      await ShoppingList.distinct('user', { updatedAt: { $gte: startOfDay } })
-    ).length;
-    const shoppingListUsersYesterday = (
-      await ShoppingList.distinct('user', {
-        updatedAt: { $gte: startOfYesterday, $lt: startOfDay },
-      })
-    ).length;
-    const shoppingListUsersThisWeek = (
-      await ShoppingList.distinct('user', { updatedAt: { $gte: startOfWeek } })
-    ).length;
-    const shoppingListUsersLastWeek = (
-      await ShoppingList.distinct('user', {
-        updatedAt: { $gte: startOfLastWeek, $lt: startOfWeek },
-      })
-    ).length;
-
-    const calorieEntryFilter = {
-      $or: [
-        { 'foodItems.0': { $exists: true } },
-        { 'activities.0': { $exists: true } },
-      ],
+    const periods = {
+      "24h": 24 * 60 * 60 * 1000,
+      "7d": 7 * 24 * 60 * 60 * 1000,
+      "30d": 30 * 24 * 60 * 60 * 1000,
     };
 
-    const calorieTrackerUsersTotal = (
-      await CalorieTracker.distinct('user', calorieEntryFilter)
-    ).length;
-    const calorieTrackerUsersToday = (
-      await CalorieTracker.distinct('user', {
-        ...calorieEntryFilter,
-        updatedAt: { $gte: startOfDay },
-      })
-    ).length;
-    const calorieTrackerUsersYesterday = (
-      await CalorieTracker.distinct('user', {
-        ...calorieEntryFilter,
-        updatedAt: { $gte: startOfYesterday, $lt: startOfDay },
-      })
-    ).length;
-    const calorieTrackerUsersThisWeek = (
-      await CalorieTracker.distinct('user', {
-        ...calorieEntryFilter,
-        updatedAt: { $gte: startOfWeek },
-      })
-    ).length;
-    const calorieTrackerUsersLastWeek = (
-      await CalorieTracker.distinct('user', {
-        ...calorieEntryFilter,
-        updatedAt: { $gte: startOfLastWeek, $lt: startOfWeek },
-      })
-    ).length;
+    const getMetricForPeriod = async (model, periodMs, query = {}, dateField = "createdAt") => {
+      const mid = new Date(now.getTime() - periodMs);
+      const start = new Date(now.getTime() - 2 * periodMs);
+      const current = await model.countDocuments({ ...query, [dateField]: { $gte: mid } });
+      const previous = await model.countDocuments({ ...query, [dateField]: { $gte: start, $lt: mid } });
+      return { current, previous, diff: current - previous };
+    };
 
-    const models = [
-      { model: UserRecipe, field: 'userId' },
-      { model: TrainingPlan, field: 'user' },
-      { model: TrainingLog, field: 'user' },
-      { model: ShoppingList, field: 'user' },
-      { model: CalorieTracker, field: 'user' },
-    ];
+    const getActiveUsersForPeriod = async (periodMs) => {
+      const mid = new Date(now.getTime() - periodMs);
+      const start = new Date(now.getTime() - 2 * periodMs);
+      const models = [
+        { model: UserRecipe, field: "userId" },
+        { model: TrainingPlan, field: "user" },
+        { model: TrainingLog, field: "user" },
+        { model: ShoppingList, field: "user" },
+        { model: CalorieTracker, field: "user" },
+      ];
+      
+      const getActiveCount = async (from, to) => {
+        const activeUsers = new Set();
+        for (const { model, field } of models) {
+          const ids = await model.distinct(field, { updatedAt: { $gte: from, $lt: to || now } });
+          ids.forEach((id) => activeUsers.add(String(id)));
+        }
+        return activeUsers.size;
+      };
 
-    const activeToday = new Set();
-    const activeYesterday = new Set();
-    const activeWeek = new Set();
-    const activeLastWeek = new Set();
+      const current = await getActiveCount(mid);
+      const previous = await getActiveCount(start, mid);
+      return { current, previous, diff: current - previous };
+    };
 
-    for (const { model, field } of models) {
-      const todayIds = await model.distinct(field, { updatedAt: { $gte: startOfDay } });
-      todayIds.forEach((id) => activeToday.add(String(id)));
-      const yesterdayIds = await model.distinct(field, {
-        updatedAt: { $gte: startOfYesterday, $lt: startOfDay },
-      });
-      yesterdayIds.forEach((id) => activeYesterday.add(String(id)));
-      const weekIds = await model.distinct(field, { updatedAt: { $gte: startOfWeek } });
-      weekIds.forEach((id) => activeWeek.add(String(id)));
-      const lastWeekIds = await model.distinct(field, {
-        updatedAt: { $gte: startOfLastWeek, $lt: startOfWeek },
-      });
-      lastWeekIds.forEach((id) => activeLastWeek.add(String(id)));
+    const getPlannerForPeriod = async (periodMs) => {
+      const mid = new Date(now.getTime() - periodMs);
+      const start = new Date(now.getTime() - 2 * periodMs);
+      const getCount = async (from, to) => {
+        return await User.countDocuments({
+          $or: [
+            { "suggestions.upvotes": { $elemMatch: { createdAt: { $gte: from, $lt: to || now } } } },
+            { "suggestions.downvotes": { $elemMatch: { createdAt: { $gte: from, $lt: to || now } } } },
+            { "suggestions.selected": { $elemMatch: { createdAt: { $gte: from, $lt: to || now } } } },
+          ],
+        });
+      };
+      const current = await getCount(mid);
+      const previous = await getCount(start, mid);
+      return { current, previous, diff: current - previous };
+    };
+
+    const results = {};
+    for (const [key, ms] of Object.entries(periods)) {
+      results[key] = {
+        newUsers: await getMetricForPeriod(User, ms),
+        calorieTrackers: await getMetricForPeriod(CalorieTracker, ms),
+        shoppingLists: await getMetricForPeriod(ShoppingList, ms, {}, "updatedAt"),
+        generatedRecipes: await getMetricForPeriod(UserRecipe, ms),
+        trainingPlans: await getMetricForPeriod(TrainingPlan, ms),
+        trainingLogs: await getMetricForPeriod(TrainingLog, ms),
+        activeUsers: await getActiveUsersForPeriod(ms),
+        plannerUsage: await getPlannerForPeriod(ms),
+      };
     }
 
-    const activeUsersToday = activeToday.size;
-    const activeUsersYesterday = activeYesterday.size;
-    const activeUsersThisWeek = activeWeek.size;
-    const activeUsersLastWeek = activeLastWeek.size;
-
-    const usersTodayDiff = usersToday - usersYesterday;
-    const usersThisWeekDiff = usersThisWeek - usersLastWeek;
-    const activeUsersTodayDiff = activeUsersToday - activeUsersYesterday;
-    const activeUsersThisWeekDiff = activeUsersThisWeek - activeUsersLastWeek;
-    const plannerUsersTodayDiff = plannerUsersToday - plannerUsersYesterday;
-    const plannerUsersThisWeekDiff = plannerUsersThisWeek - plannerUsersLastWeek;
-    const shoppingListUsersTodayDiff = shoppingListUsersToday - shoppingListUsersYesterday;
-    const shoppingListUsersThisWeekDiff = shoppingListUsersThisWeek - shoppingListUsersLastWeek;
-    const calorieTrackerUsersTodayDiff =
-      calorieTrackerUsersToday - calorieTrackerUsersYesterday;
-    const calorieTrackerUsersThisWeekDiff =
-      calorieTrackerUsersThisWeek - calorieTrackerUsersLastWeek;
-
-    const trainingLogsThisWeek = await TrainingLog.countDocuments({ createdAt: { $gte: startOfWeek } });
-    const trainingLogsLastWeek = await TrainingLog.countDocuments({
-      createdAt: { $gte: startOfLastWeek, $lt: startOfWeek },
-    });
-    const trainingLogsThisWeekDiff = trainingLogsThisWeek - trainingLogsLastWeek;
-
-    // Smart Stats
-    // 1. AI Efficiency
     const cacheSavedTotal = await LlmCache.countDocuments({});
-
-    // 2. Feedback
     const unreadFeedback = await Feedback.countDocuments({ readed: false });
+    const totalUsers = await User.countDocuments({});
 
-    // 3. Stickiness (DAU/MAU)
-    // MAU = Active users in last 30 days
-    const startOfLast30Days = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
-    const activeMonthly = new Set();
-
-    for (const { model, field } of models) {
-      const monthlyIds = await model.distinct(field, { updatedAt: { $gte: startOfLast30Days } });
-      monthlyIds.forEach((id) => activeMonthly.add(String(id)));
-    }
-    const activeUsersMonthly = activeMonthly.size;
-
-    let stickiness = 0;
-    if (activeUsersMonthly > 0) {
-      stickiness = Math.round((activeUsersToday / activeUsersMonthly) * 100);
-    }
+    // Stickiness based on last 24h vs last 30d
+    const activeDaily = (await getActiveUsersForPeriod(periods["24h"])).current;
+    const activeMonthly = (await getActiveUsersForPeriod(periods["30d"])).current;
+    const stickiness = activeMonthly > 0 ? Math.round((activeDaily / activeMonthly) * 100) : 0;
 
     return res.status(200).json({
-      cacheSavedTotal,
-      unreadFeedback,
-      activeUsersMonthly,
-      stickiness,
-      usersToday,
-      usersThisWeek,
-      usersLast7Days,
-      usersLast7DaysDiff,
-      usersLast30Days: await User.countDocuments({ createdAt: { $gte: startOfLast30Days } }),
-      usersLast90Days: await User.countDocuments({ createdAt: { $gte: new Date(now.getTime() - 90 * 24 * 60 * 60 * 1000) } }),
-      activeUsersToday,
-      activeUsersThisWeek,
-      recipesLast24h,
-      trainingPlansLast24h,
-      plannerUsersTotal,
-      plannerUsersToday,
-      plannerUsersThisWeek,
-      shoppingListUsersToday,
-      shoppingListUsersThisWeek,
-      calorieTrackerUsersTotal,
-      calorieTrackerUsersToday,
-      calorieTrackerUsersThisWeek,
-      usersYesterday,
-      usersLastWeek,
-      activeUsersYesterday,
-      activeUsersLastWeek,
-      plannerUsersYesterday,
-      plannerUsersLastWeek,
-      shoppingListUsersYesterday,
-      shoppingListUsersLastWeek,
-      calorieTrackerUsersYesterday,
-      calorieTrackerUsersLastWeek,
-      usersTodayDiff,
-      usersThisWeekDiff,
-      activeUsersTodayDiff,
-      activeUsersThisWeekDiff,
-      plannerUsersTodayDiff,
-      plannerUsersThisWeekDiff,
-      shoppingListUsersTodayDiff,
-      shoppingListUsersThisWeekDiff,
-      calorieTrackerUsersTodayDiff,
-      calorieTrackerUsersThisWeekDiff,
-      trainingLogsThisWeek,
-      trainingLogsLastWeek,
-      trainingLogsThisWeekDiff,
+      metrics: results,
+      global: {
+        cacheSavedTotal,
+        unreadFeedback,
+        totalUsers,
+        stickiness,
+        activeMonthly
+      }
     });
   } catch (error) {
     console.error("Error collecting statistics:", error.message);

@@ -425,7 +425,18 @@
       "confirmDelete": "Are you sure 'nough you wanna toss this feedback away?",
       "deleteSuccess": "Feedback's all gone now.",
       "updateSuccess": "Feedback's all fixed up and updated."
-    }
+    },
+    "period24h": "Last twenty-four hours, sugar",
+    "period7d": "Them last seven days",
+    "period30d": "Short of a month now",
+    "newUsers": "Fresh faces 'round here",
+    "activeUsers": "Folks a-movin' and a-shakin'",
+    "calorieTrackers": "Calorie countin' notes",
+    "shoppingLists": "Groceries a-waitin'",
+    "generatedRecipes": "Recipes cooked up right",
+    "plannerUsage": "Makin' a plan for supper",
+    "trainingPlans": "New ways to get strong",
+    "trainingLogs": "Keepin' track of all that work"
   },
   "adminTools": {
     "title": "Admin Tools",

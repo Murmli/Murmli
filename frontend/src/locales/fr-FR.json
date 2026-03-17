@@ -425,7 +425,18 @@
       "confirmDelete": "Êtes-vous sûr de vouloir supprimer ce commentaire ?",
       "deleteSuccess": "Commentaire supprimé.",
       "updateSuccess": "Commentaire mis à jour."
-    }
+    },
+    "period24h": "Dernières 24h",
+    "period7d": "7 derniers jours",
+    "period30d": "30 derniers jours",
+    "newUsers": "Nouveaux utilisateurs",
+    "activeUsers": "Utilisateurs actifs",
+    "calorieTrackers": "Entrées du compteur de calories",
+    "shoppingLists": "Mises à jour des listes de courses",
+    "generatedRecipes": "Recettes générées",
+    "plannerUsage": "Utilisation du planificateur de recettes",
+    "trainingPlans": "Nouveaux programmes d'entraînement",
+    "trainingLogs": "Nouveaux journaux d'entraînement"
   },
   "adminTools": {
     "title": "Outils Admin",

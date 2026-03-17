@@ -425,7 +425,18 @@
       "confirmDelete": "Whoa, you sure you wanna wipe this feedback out for good?",
       "deleteSuccess": "Feedback is gone with the tide.",
       "updateSuccess": "Feedback is looking totally righteous now."
-    }
+    },
+    "period24h": "Past 24 hours of stoke",
+    "period7d": "Last 7 days of riding the wave",
+    "period30d": "Last 30 days in the lineup",
+    "newUsers": "Fresh shredders",
+    "activeUsers": "Chill dudes hanging ten",
+    "calorieTrackers": "Calorie tracking vibes",
+    "shoppingLists": "Grocery haul updates",
+    "generatedRecipes": "Tasty grubs cooked up",
+    "plannerUsage": "Meal flow sessions",
+    "trainingPlans": "New workout sets",
+    "trainingLogs": "Recent shred logs"
   },
   "adminTools": {
     "title": "Admin Deck",

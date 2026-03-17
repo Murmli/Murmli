@@ -425,7 +425,18 @@
       "confirmDelete": "क्या आप वाकई इस प्रतिक्रिया को हटाना चाहते हैं?",
       "deleteSuccess": "प्रतिक्रिया हटा दी गई।",
       "updateSuccess": "प्रतिक्रिया अपडेट कर दी गई।"
-    }
+    },
+    "period24h": "पिछले 24 घंटे",
+    "period7d": "पिछले 7 दिन",
+    "period30d": "पिछले 30 दिन",
+    "newUsers": "नए उपयोगकर्ता",
+    "activeUsers": "सक्रिय उपयोगकर्ता",
+    "calorieTrackers": "कैलोरी ट्रैकर प्रविष्टियाँ",
+    "shoppingLists": "खरीददारी सूची अपडेट",
+    "generatedRecipes": "जनरेट किए गए व्यंजन",
+    "plannerUsage": "प्लानर का उपयोग",
+    "trainingPlans": "नई प्रशिक्षण योजनाएँ",
+    "trainingLogs": "नई प्रशिक्षण लॉग"
   },
   "adminTools": {
     "title": "एडमिन टूल्स",

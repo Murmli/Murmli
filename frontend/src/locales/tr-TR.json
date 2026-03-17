@@ -425,7 +425,18 @@
       "confirmDelete": "Bu geri bildirimi silmek istediğinizden emin misiniz?",
       "deleteSuccess": "Geri bildirim silindi.",
       "updateSuccess": "Geri bildirim güncellendi."
-    }
+    },
+    "period24h": "Son 24 Saat",
+    "period7d": "Son 7 Gün",
+    "period30d": "Son 30 Gün",
+    "newUsers": "Yeni Kullanıcılar",
+    "activeUsers": "Aktif Kullanıcılar",
+    "calorieTrackers": "Kalori Takip Kayıtları",
+    "shoppingLists": "Alışveriş Listesi Güncellemeleri",
+    "generatedRecipes": "Oluşturulan Tarifler",
+    "plannerUsage": "Tarif Planlayıcı Kullanımı",
+    "trainingPlans": "Yeni Antrenman Planları",
+    "trainingLogs": "Yeni Antrenman Kayıtları"
   },
   "adminTools": {
     "title": "Yönetici Araçları",

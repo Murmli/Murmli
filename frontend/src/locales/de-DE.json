@@ -381,6 +381,17 @@
     "selectStartpage": "Startseite auswählen"
   },
   "adminStats": {
+    "period24h": "Letzte 24h",
+    "period7d": "Letzte 7 Tage",
+    "period30d": "Letzte 30 Tage",
+    "newUsers": "Neue Benutzer",
+    "activeUsers": "Aktive Benutzer",
+    "calorieTrackers": "Kalorienzähler Einträge",
+    "shoppingLists": "Einkaufslisten Updates",
+    "generatedRecipes": "Generierte Rezepte",
+    "plannerUsage": "Rezeptplaner Nutzung",
+    "trainingPlans": "Neue Trainingspläne",
+    "trainingLogs": "Neue Trainingslogs",
     "title": "Statistiken",
     "usersToday": "Neue Nutzer heute",
     "usersWeek": "Neue Nutzer diese Woche",

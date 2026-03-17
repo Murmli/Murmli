@@ -425,7 +425,18 @@
       "confirmDelete": "Bist da sicher, doss d' des wegtau mechst?",
       "deleteSuccess": "Rückmeldung is glöscht.",
       "updateSuccess": "Rückmeldung is aktualisiert."
-    }
+    },
+    "period24h": "De letzten 24 Stunden",
+    "period7d": "De letzten 7 Tag",
+    "period30d": "De letzten 30 Tag",
+    "newUsers": "Neiche User",
+    "activeUsers": "Aktive Leit",
+    "calorieTrackers": "Kalorienzähler-Einträge",
+    "shoppingLists": "Einkaufslisten-Updates",
+    "generatedRecipes": "Zammgstöllte Rezepte",
+    "plannerUsage": "Nutzung vom Rezeptplaner",
+    "trainingPlans": "Neiche Trainingsplän",
+    "trainingLogs": "Neiche Trainingslogs"
   },
   "adminTools": {
     "title": "Admin-Werkzuig",

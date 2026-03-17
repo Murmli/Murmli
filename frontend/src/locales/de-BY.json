@@ -425,7 +425,18 @@
       "confirmDelete": "Bist da ganz sicher, dass des Feedback wegdoa wuist?",
       "deleteSuccess": "Feedback is glöscht.",
       "updateSuccess": "Feedback is aktualisiert wordn."
-    }
+    },
+    "period24h": "De letzten 24 Stundn",
+    "period7d": "De letzten 7 Dog",
+    "period30d": "De letzten 30 Dog",
+    "newUsers": "Neie Leid",
+    "activeUsers": "Aktive Leid",
+    "calorieTrackers": "Kalorienzähler Eiträg",
+    "shoppingLists": "Einkaufslistn Updates",
+    "generatedRecipes": "Gemachte Rezepte",
+    "plannerUsage": "Rezeptplaner-Nutzung",
+    "trainingPlans": "Neie Trainingsplän",
+    "trainingLogs": "Neie Trainingslogs"
   },
   "adminTools": {
     "title": "Admin-Werkzeug",

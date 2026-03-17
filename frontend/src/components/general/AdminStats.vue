@@ -1,327 +1,97 @@
 <template>
   <div class="admin-stats-container">
-    <v-row>
-      <!-- Growth Section -->
-      <v-col cols="12" md="4">
-        <v-card class="h-100" elevation="2">
-          <v-card-title class="d-flex align-center">
-            <v-icon color="primary" class="mr-2">mdi-account-plus</v-icon>
-            {{ languageStore.t('adminStats.growth') }}
-          </v-card-title>
-          <v-card-text>
-            <div class="stat-item mb-3">
-              <div class="text-caption text-medium-emphasis">
-                {{ languageStore.t('adminStats.usersToday') }}
+    <v-card elevation="2" class="rounded-lg mb-4">
+      <v-card-title class="d-flex justify-space-between align-center py-2 px-4">
+        <span class="text-subtitle-1 font-weight-bold">{{ languageStore.t('adminStats.title') }}</span>
+        <div class="d-flex align-center">
+          <v-btn icon="mdi-refresh" variant="text" density="comfortable" :loading="loading" @click="fetchStats"></v-btn>
+        </div>
+      </v-card-title>
+      
+      <v-divider></v-divider>
+
+      <v-table density="compact" class="stats-table">
+        <thead>
+          <tr>
+            <th class="text-left py-2">{{ languageStore.t('adminStats.metric') || 'Metrik' }}</th>
+            <th class="text-center">{{ languageStore.t('adminStats.period24h') }}</th>
+            <th class="text-center">{{ languageStore.t('adminStats.period7d') }}</th>
+            <th class="text-center">{{ languageStore.t('adminStats.period30d') }}</th>
+          </tr>
+        </thead>
+        <tbody v-if="!loading">
+          <tr v-for="metric in mainMetrics" :key="metric.key">
+            <td class="font-weight-medium">
+              {{ languageStore.t('adminStats.' + metric.key) }}
+            </td>
+            <td class="text-center">
+              <div class="d-flex flex-column align-center">
+                <span class="text-body-2">{{ stats.metrics?.['24h']?.[metric.key]?.current ?? 0 }}</span>
+                <span :class="getTrendClass(stats.metrics?.['24h']?.[metric.key]?.diff)" class="text-caption font-weight-bold">
+                  {{ formatDiff(stats.metrics?.['24h']?.[metric.key]?.diff) }}
+                </span>
               </div>
-              <div class="d-flex align-center">
-                <span class="text-h6 mr-2">{{ stats.usersToday ?? '-' }}</span>
-                <v-chip
-                  v-if="stats.usersTodayDiff !== undefined"
-                  :color="diffColor(stats.usersTodayDiff)"
-                  size="x-small"
-                  label
-                >
-                  <v-icon start size="x-small">{{ diffIcon(stats.usersTodayDiff) }}</v-icon>
-                  {{ formatDiff(stats.usersTodayDiff) }}
-                </v-chip>
+            </td>
+            <td class="text-center">
+              <div class="d-flex flex-column align-center">
+                <span class="text-body-2">{{ stats.metrics?.['7d']?.[metric.key]?.current ?? 0 }}</span>
+                <span :class="getTrendClass(stats.metrics?.['7d']?.[metric.key]?.diff)" class="text-caption font-weight-bold">
+                  {{ formatDiff(stats.metrics?.['7d']?.[metric.key]?.diff) }}
+                </span>
               </div>
+            </td>
+            <td class="text-center">
+              <div class="d-flex flex-column align-center">
+                <span class="text-body-2">{{ stats.metrics?.['30d']?.[metric.key]?.current ?? 0 }}</span>
+                <span :class="getTrendClass(stats.metrics?.['30d']?.[metric.key]?.diff)" class="text-caption font-weight-bold">
+                  {{ formatDiff(stats.metrics?.['30d']?.[metric.key]?.diff) }}
+                </span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </v-table>
+      
+      <v-divider></v-divider>
+
+      <!-- Global / Smart Insights - Compact -->
+      <v-card-text class="pa-3 bg-grey-lighten-4">
+        <v-row dense>
+          <v-col cols="6" sm="3">
+            <div class="text-caption text-medium-emphasis">Total Users</div>
+            <div class="text-body-2 font-weight-bold">{{ stats.global?.totalUsers ?? 0 }}</div>
+          </v-col>
+          <v-col cols="6" sm="3">
+            <div class="text-caption text-medium-emphasis">Stickiness (DAU/MAU)</div>
+            <div class="text-body-2 font-weight-bold" :class="getStickinessClass(stats.global?.stickiness)">
+              {{ stats.global?.stickiness ?? 0 }}%
             </div>
-
-            <div class="stat-item mb-3">
-              <div class="text-caption text-medium-emphasis">
-                {{ languageStore.t('adminStats.usersLast7Days') }}
-              </div>
-              <div class="d-flex align-center">
-                <span class="text-h6 mr-2">{{ stats.usersLast7Days ?? '-' }}</span>
-                <v-chip
-                  v-if="stats.usersLast7DaysDiff !== undefined"
-                  :color="diffColor(stats.usersLast7DaysDiff)"
-                  size="x-small"
-                  label
-                >
-                  <v-icon start size="x-small">{{ diffIcon(stats.usersLast7DaysDiff) }}</v-icon>
-                  {{ formatDiff(stats.usersLast7DaysDiff) }}
-                </v-chip>
-              </div>
+          </v-col>
+          <v-col cols="6" sm="3">
+            <div class="text-caption text-medium-emphasis">AI Cache Saved</div>
+            <div class="text-body-2 font-weight-bold text-success">{{ stats.global?.cacheSavedTotal ?? 0 }}</div>
+          </v-col>
+          <v-col cols="6" sm="3">
+            <div 
+              class="text-caption text-medium-emphasis cursor-pointer" 
+              @click="showFeedbackDialog = true"
+            >
+              Unread Feedback
+              <v-badge 
+                v-if="stats.global?.unreadFeedback > 0" 
+                :content="stats.global.unreadFeedback" 
+                color="error" 
+                inline
+                density="compact"
+              ></v-badge>
             </div>
-
-            <div class="stat-item mb-3">
-              <div class="text-caption text-medium-emphasis">
-                {{ languageStore.t('adminStats.usersLast30Days') }}
-              </div>
-              <div class="d-flex align-center">
-                <span class="text-h6 font-weight-bold mr-2">{{ stats.usersLast30Days ?? '-' }}</span>
-              </div>
+            <div class="text-body-2 font-weight-bold" :class="stats.global?.unreadFeedback > 0 ? 'text-error' : ''">
+              {{ stats.global?.unreadFeedback ?? 0 }}
             </div>
-
-            <div class="stat-item mb-3">
-              <div class="text-caption text-medium-emphasis">
-                {{ languageStore.t('adminStats.usersLast90Days') }}
-              </div>
-              <div class="d-flex align-center">
-                <span class="text-h6 font-weight-bold mr-2">{{ stats.usersLast90Days ?? '-' }}</span>
-              </div>
-            </div>
-
-             <div class="stat-item">
-              <div class="text-caption text-medium-emphasis">
-                {{ languageStore.t('adminStats.usersWeek') }}
-              </div>
-              <div class="d-flex align-center">
-                <span class="text-h6 mr-2">{{ stats.usersThisWeek ?? '-' }}</span>
-                 <v-chip
-                  v-if="stats.usersThisWeekDiff !== undefined"
-                  :color="diffColor(stats.usersThisWeekDiff)"
-                  size="x-small"
-                  label
-                >
-                  <v-icon start size="x-small">{{ diffIcon(stats.usersThisWeekDiff) }}</v-icon>
-                  {{ formatDiff(stats.usersThisWeekDiff) }}
-                </v-chip>
-              </div>
-            </div>
-          </v-card-text>
-        </v-card>
-      </v-col>
-
-      <!-- Activity Section -->
-      <v-col cols="12" md="4">
-        <v-card class="h-100" elevation="2">
-          <v-card-title class="d-flex align-center">
-             <v-icon color="success" class="mr-2">mdi-chart-line</v-icon>
-            {{ languageStore.t('adminStats.activity') }}
-          </v-card-title>
-          <v-card-text>
-            <div class="stat-item mb-3">
-              <div class="text-caption text-medium-emphasis">
-                {{ languageStore.t('adminStats.activeToday') }}
-              </div>
-              <div class="d-flex align-center">
-                <span class="text-h6 mr-2">{{ stats.activeUsersToday ?? '-' }}</span>
-                <v-chip
-                  v-if="stats.activeUsersTodayDiff !== undefined"
-                  :color="diffColor(stats.activeUsersTodayDiff)"
-                  size="x-small"
-                  label
-                >
-                  <v-icon start size="x-small">{{ diffIcon(stats.activeUsersTodayDiff) }}</v-icon>
-                  {{ formatDiff(stats.activeUsersTodayDiff) }}
-                </v-chip>
-              </div>
-            </div>
-
-            <div class="stat-item mb-3">
-              <div class="text-caption text-medium-emphasis">
-                {{ languageStore.t('adminStats.activeWeek') }}
-              </div>
-              <div class="d-flex align-center">
-                <span class="text-h6 mr-2">{{ stats.activeUsersThisWeek ?? '-' }}</span>
-                 <v-chip
-                  v-if="stats.activeUsersThisWeekDiff !== undefined"
-                  :color="diffColor(stats.activeUsersThisWeekDiff)"
-                  size="x-small"
-                  label
-                >
-                  <v-icon start size="x-small">{{ diffIcon(stats.activeUsersThisWeekDiff) }}</v-icon>
-                  {{ formatDiff(stats.activeUsersThisWeekDiff) }}
-                </v-chip>
-              </div>
-            </div>
-
-            <v-divider class="my-3"></v-divider>
-             <div class="stat-item mb-2">
-              <div class="text-caption text-medium-emphasis">
-                {{ languageStore.t('adminStats.plannerToday') }}
-              </div>
-               <div class="d-flex align-center">
-                  <span class="text-body-1 mr-2">{{ stats.plannerUsersToday ?? '-' }}</span>
-                   <span :class="diffClass(stats.plannerUsersTodayDiff)" class="text-caption">({{ formatDiff(stats.plannerUsersTodayDiff) }})</span>
-               </div>
-            </div>
-             <div class="stat-item">
-              <div class="text-caption text-medium-emphasis">
-                {{ languageStore.t('adminStats.calorieTrackerToday') }}
-              </div>
-               <div class="d-flex align-center">
-                  <span class="text-body-1 mr-2">{{ stats.calorieTrackerUsersToday ?? '-' }}</span>
-                   <span :class="diffClass(stats.calorieTrackerUsersTodayDiff)" class="text-caption">({{ formatDiff(stats.calorieTrackerUsersTodayDiff) }})</span>
-               </div>
-            </div>
-
-
-          </v-card-text>
-        </v-card>
-      </v-col>
-
-      <!-- Smart Insights Section -->
-      <v-col cols="12">
-        <v-card class="h-100" elevation="3" rounded="lg">
-          <v-card-item class="bg-deep-purple-lighten-5 py-4">
-             <template v-slot:prepend>
-               <v-avatar color="deep-purple-lighten-4" rounded="0">
-                 <v-icon color="deep-purple-darken-2">mdi-brain</v-icon>
-               </v-avatar>
-             </template>
-            <v-card-title class="text-deep-purple-darken-3 font-weight-bold">
-              {{ languageStore.t('adminStats.smartInsights') }}
-            </v-card-title>
-          </v-card-item>
-
-          <v-card-text class="pt-6">
-            <v-row>
-              <!-- AI Efficiency -->
-              <v-col cols="12" md="4">
-                <v-sheet class="d-flex align-center pa-4 bg-grey-lighten-4 rounded-lg h-100">
-                  <v-avatar color="white" size="48" class="elevation-1 mr-4">
-                     <v-icon color="success" size="28">mdi-molecule</v-icon>
-                  </v-avatar>
-                  <div>
-                    <div class="text-caption text-medium-emphasis mb-1">
-                      {{ languageStore.t('adminStats.aiCacheSaved') }}
-                    </div>
-                    <div class="text-h5 font-weight-bold ml-1">
-                      {{ stats.cacheSavedTotal ?? 0 }}
-                    </div>
-                  </div>
-                </v-sheet>
-              </v-col>
-              
-              <!-- Stickiness -->
-              <v-col cols="12" md="4">
-                 <v-sheet class="d-flex align-center pa-4 bg-grey-lighten-4 rounded-lg h-100 position-relative">
-                   <div class="mr-4 position-relative">
-                      <v-progress-circular
-                        :model-value="stats.stickiness ?? 0"
-                        :color="stats.stickiness > 20 ? 'success' : 'warning'"
-                        size="56"
-                        width="6"
-                        bg-color="grey-lighten-2"
-                      >
-                        <span class="text-subtitle-2 font-weight-bold">{{ stats.stickiness }}%</span>
-                      </v-progress-circular>
-                   </div>
-                  <div>
-                    <div class="text-caption text-medium-emphasis mb-1 d-flex align-center">
-                      {{ languageStore.t('adminStats.stickiness') }}
-                      <v-tooltip location="top">
-                          <template v-slot:activator="{ props }">
-                            <v-icon v-bind="props" size="x-small" class="ml-1" color="grey">mdi-help-circle-outline</v-icon>
-                          </template>
-                          <span>{{ languageStore.t('adminStats.stickinessHint') }}</span>
-                      </v-tooltip>
-                    </div>
-                    <div class="text-caption font-weight-medium">
-                       MAU: {{ stats.activeUsersMonthly ?? 0 }}
-                    </div>
-                  </div>
-                </v-sheet>
-              </v-col>
-
-              <!-- Feedback -->
-              <v-col cols="12" md="4">
-                 <v-sheet 
-                    class="d-flex align-center pa-4 rounded-lg h-100 cursor-pointer transition-swing" 
-                    :class="stats.unreadFeedback > 0 ? 'bg-orange-lighten-5' : 'bg-grey-lighten-4'"
-                    v-ripple
-                    @click="showFeedbackDialog = true"
-                 >
-                   <v-badge 
-                      :content="stats.unreadFeedback" 
-                      color="error" 
-                      :model-value="stats.unreadFeedback > 0"
-                      location="top end"
-                      offset-x="10"
-                      offset-y="10"
-                      class="mr-4"
-                   >
-                     <v-avatar color="white" size="48" class="elevation-1">
-                        <v-icon :color="stats.unreadFeedback > 0 ? 'orange-darken-2' : 'grey'" size="28">
-                            {{ stats.unreadFeedback > 0 ? 'mdi-message-alert' : 'mdi-message-check' }}
-                        </v-icon>
-                     </v-avatar>
-                   </v-badge>
-                   
-                  <div>
-                    <div class="text-caption text-medium-emphasis mb-1">
-                      {{ languageStore.t('adminStats.unreadFeedback') }}
-                    </div>
-                   <div class="text-h5 font-weight-bold ml-1" :class="{'text-orange-darken-3': stats.unreadFeedback > 0}">
-                       {{ stats.unreadFeedback ?? 0 }}
-                   </div>
-                  </div>
-                </v-sheet>
-              </v-col>
-            </v-row>
-          </v-card-text>
-        </v-card>
-      </v-col>
-
-      <!-- Content Section -->
-      <v-col cols="12" md="4">
-        <v-card class="h-100" elevation="2">
-          <v-card-title class="d-flex align-center">
-            <v-icon color="info" class="mr-2">mdi-database</v-icon>
-            {{ languageStore.t('adminStats.content') }}
-          </v-card-title>
-          <v-card-text>
-             <div class="stat-item mb-3">
-              <div class="text-caption text-medium-emphasis">
-                {{ languageStore.t('adminStats.recipes24h') }}
-              </div>
-              <span class="text-h6">{{ stats.recipesLast24h ?? '-' }}</span>
-            </div>
-
-             <div class="stat-item mb-3">
-              <div class="text-caption text-medium-emphasis">
-                {{ languageStore.t('adminStats.trainingPlans24h') }}
-              </div>
-              <span class="text-h6">{{ stats.trainingPlansLast24h ?? '-' }}</span>
-            </div>
-
-            <div class="stat-item mb-3">
-              <div class="text-caption text-medium-emphasis">
-                {{ languageStore.t('adminStats.trainingLogsWeek') }}
-              </div>
-               <div class="d-flex align-center">
-                <span class="text-h6 mr-2">{{ stats.trainingLogsThisWeek ?? '-' }}</span>
-                  <v-chip
-                  v-if="stats.trainingLogsThisWeekDiff !== undefined"
-                  :color="diffColor(stats.trainingLogsThisWeekDiff)"
-                  size="x-small"
-                  label
-                >
-                  <v-icon start size="x-small">{{ diffIcon(stats.trainingLogsThisWeekDiff) }}</v-icon>
-                  {{ formatDiff(stats.trainingLogsThisWeekDiff) }}
-                </v-chip>
-               </div>
-            </div>
-          </v-card-text>
-        </v-card>
-      </v-col>
-
-      <!-- Detailed Breakdown (Optional/Collapsible or simply additional rows) -->
-       <v-col cols="12">
-           <v-expansion-panels>
-               <v-expansion-panel>
-                   <v-expansion-panel-title>{{ languageStore.t('adminStats.details') || 'Details' }}</v-expansion-panel-title>
-                   <v-expansion-panel-text>
-                        <v-row dense>
-                             <v-col cols="12" sm="6" md="4">
-                                {{ languageStore.t('adminStats.plannerUsersTotal') }}: {{ stats.plannerUsersTotal ?? '-' }}
-                            </v-col>
-                            <v-col cols="12" sm="6" md="4">
-                                {{ languageStore.t('adminStats.calorieTrackerTotal') }}: {{ stats.calorieTrackerUsersTotal ?? '-' }}
-                            </v-col>
-                             <v-col cols="12" sm="6" md="4">
-                                {{ languageStore.t('adminStats.shoppingUpdatedToday') }}: {{ stats.shoppingListUsersToday ?? '-' }}
-                                 <span :class="diffClass(stats.shoppingListUsersTodayDiff)">({{ formatDiff(stats.shoppingListUsersTodayDiff) }})</span>
-                            </v-col>
-                        </v-row>
-                   </v-expansion-panel-text>
-               </v-expansion-panel>
-           </v-expansion-panels>
-       </v-col>
-    </v-row>
+          </v-col>
+        </v-row>
+      </v-card-text>
+    </v-card>
 
     <!-- Feedback Dialog -->
     <AdminFeedbackDialog 
@@ -341,35 +111,47 @@ const apiStore = useApiStore();
 const languageStore = useLanguageStore();
 
 const stats = ref({});
+const loading = ref(true);
 const showFeedbackDialog = ref(false);
 
+const mainMetrics = [
+  { key: 'newUsers' },
+  { key: 'activeUsers' },
+  { key: 'calorieTrackers' },
+  { key: 'shoppingLists' },
+  { key: 'generatedRecipes' },
+  { key: 'plannerUsage' },
+  { key: 'trainingPlans' },
+  { key: 'trainingLogs' },
+];
+
 const formatDiff = (val) => {
-  if (val > 0) return `+${val}`;
-  return String(val);
+  if (val === undefined || val === 0) return '0';
+  return val > 0 ? `+${val}` : String(val);
 };
 
-const diffClass = (val) => {
-  if (val > 0) return 'text-success';
-  if (val < 0) return 'text-error';
-  return '';
+const getTrendClass = (val) => {
+  if (!val || val === 0) return 'text-grey';
+  return val > 0 ? 'text-success' : 'text-error';
 };
 
-const diffColor = (val) => {
-    if (val > 0) return 'success';
-    if (val < 0) return 'error';
-    return undefined; // default
-}
-
-const diffIcon = (val) => {
-    if (val > 0) return 'mdi-arrow-up';
-    if (val < 0) return 'mdi-arrow-down';
-    return 'mdi-minus';
-}
+const getStickinessClass = (val) => {
+  if (val > 20) return 'text-success';
+  if (val > 10) return 'text-warning';
+  return 'text-error';
+};
 
 const fetchStats = async () => {
-  const response = await apiStore.apiRequest('get', '/system/stats');
-  if (response && response.status === 200) {
-    stats.value = response.data;
+  loading.value = true;
+  try {
+    const response = await apiStore.apiRequest('get', '/system/stats');
+    if (response && response.status === 200) {
+      stats.value = response.data;
+    }
+  } catch (error) {
+    console.error("Error fetching stats:", error);
+  } finally {
+    loading.value = false;
   }
 };
 
@@ -378,9 +160,18 @@ onMounted(async () => {
 });
 </script>
 
-
 <style scoped>
-.stat-item {
-    line-height: 1.2;
+.stats-table :deep(th) {
+  font-size: 0.75rem !important;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.6) !important;
+  background-color: #f5f5f5;
+}
+.stats-table :deep(td) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+  padding: 4px 8px !important;
+}
+.stats-table tbody tr:hover {
+  background-color: #fafafa;
 }
 </style>

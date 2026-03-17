@@ -425,7 +425,18 @@
       "confirmDelete": "Are you sure you want to delete this feedback?",
       "deleteSuccess": "Feedback deleted.",
       "updateSuccess": "Feedback updated."
-    }
+    },
+    "period24h": "Last 24h",
+    "period7d": "Last 7 days",
+    "period30d": "Last 30 days",
+    "newUsers": "New Users",
+    "activeUsers": "Active Users",
+    "calorieTrackers": "Calorie Tracker Entries",
+    "shoppingLists": "Shopping List Updates",
+    "generatedRecipes": "Generated Recipes",
+    "plannerUsage": "Recipe Planner Usage",
+    "trainingPlans": "New Training Plans",
+    "trainingLogs": "New Training Logs"
   },
   "adminTools": {
     "title": "Admin Tools",

@@ -425,7 +425,18 @@
       "confirmDelete": "Czy na pewno chcesz usunąć tę opinię?",
       "deleteSuccess": "Opinia usunięta.",
       "updateSuccess": "Opinia zaktualizowana."
-    }
+    },
+    "period24h": "Ostatnie 24h",
+    "period7d": "Ostatnie 7 dni",
+    "period30d": "Ostatnie 30 dni",
+    "newUsers": "Nowi użytkownicy",
+    "activeUsers": "Aktywni użytkownicy",
+    "calorieTrackers": "Wpisy w liczniku kalorii",
+    "shoppingLists": "Aktualizacje list zakupów",
+    "generatedRecipes": "Wygenerowane przepisy",
+    "plannerUsage": "Użycie planera przepisów",
+    "trainingPlans": "Nowe plany treningowe",
+    "trainingLogs": "Nowe logi treningowe"
   },
   "adminTools": {
     "title": "Narzędzia administratora",
