@@ -64,17 +64,18 @@ async function run() {
                 delete cleanContext.updatedAt;
                 delete cleanContext.image; // Don't send old image URL to LLM
 
-                const prompt = `Dies ist ein bestehendes Rezept aus meiner Datenbank. Bitte aktualisiere und verbessere es nach deinen aktuellsten Standards und Logiken (insb. Nährwerte, Struktur der Schritte und Beschreibungen). 
+                const prompt = `eine AKTUALISIERUNG und VERBESSERUNG des folgenden bestehenden Rezepts nach deinen aktuellsten Standards:
                 
-WICHTIG: 
-- Behalte den Kern des Rezepts (Titel, Hauptzutaten, Art des Gerichts) bei.
-- Optimiere die Nährwertangaben so präzise wie möglich.
-- Verbessere die Schritt-für-Schritt Anleitung für maximale Effizienz beim Kochen.
-- Verfeinere die Bildbeschreibung (imageDescription) für einen Bild-Generator.
-- Falls das Rezept bereits deinen höchsten Standards entspricht, gib es nahezu identisch zurück.
+                AKTUELLER STAND DES REZEPTS (JSON):
+                ${JSON.stringify(cleanContext)}
 
-Hier ist das aktuelle Rezept als JSON:
-${JSON.stringify(cleanContext)}`;
+                WICHTIGE ANWEISUNGEN FÜR DAS UPDATE:
+                1. Behalte den Kern des Rezepts (Titel, Hauptzutaten) unbedingt bei.
+                2. Optimiere die Nährwertangaben und Zutaten-Kategorien/Einheiten so präzise wie möglich.
+                3. Strukturiere die Schritte exakt nach deinen Regeln (head-Array mit Mengen/Einheiten, KEINE Mengen im content, logische Abfolge).
+                4. Falls das Rezept bereits in allen Punkten (Struktur, Nährwerte, Beschreibungen) deinen höchsten aktuellen Standards entspricht, gib es nahezu identisch zurück.
+                5. Verbessere die 'imageDescription' für maximale Qualität bei der Bildgenerierung.
+                `;
 
                 // Use recipeUtils.createRecipe because it handles image generation and storage
                 const updatedData = await createRecipe(prompt, { 

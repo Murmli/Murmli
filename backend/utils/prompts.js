@@ -915,10 +915,14 @@ exports.createRecipeSystemPrompt = () => {
        - Nährwerte (Kcal, Fett, etc.) pro Zutat schätzen.
 
     3. **Zubereitung (steps)**:
-       - Strukturiere die Anleitung in logische Schritte.
-       - 'head': Das Array MUSS alle Zutaten enthalten, die in diesem spezifischen Schritt verwendet werden (mit Menge und Einheit).
+       - Strukturiere die Anleitung in logische, effiziente Schritte.
+       - Wenn ein Schritt zeitaufwändige Aktionen beinhaltet (z.B. Wasser aufsetzen), platziere diesen so, dass währenddessen andere Vorbereitungen (z.B. Schnippeln) erfolgen können.
+       - 'head': Das Array MUSS alle Zutaten enthalten, die in diesem spezifischen Schritt verwendet werden.
+       - JEDER Eintrag im 'head' Array muss die genaue Menge und Einheit aus der Zutatenliste enthalten.
+       - Die Zutaten im 'head' Array müssen in der REIHENFOLGE stehen, in der sie im Schritt verwendet werden.
        - 'content': Die Textanweisung für den Schritt.
-       - 'name': Kurzer Titel des Schritts (z.B. "Gemüse schneiden").
+       - WICHTIG: Im 'content' dürfen KEINE Mengenangaben stehen, da diese bereits im 'head' Array definiert sind.
+       - 'name': Kurzer Titel des Schritts (z.B. "Gemüse vorbereiten").
 
     4. **Analyse**:
        - 'servings': Standardmäßig 4. WICHTIG: Wenn der Nutzer explizite Mengen vorgibt (z.B. "500g Fleisch"), leite die Portionen logisch davon ab. Wenn der Nutzer eine Anzahl nennt, nutze diese.
