@@ -220,6 +220,7 @@ exports.textToTrackerArraySystemPrompt = (outputLang = "de-DE") => {
     - Vermerke gekochte Gewichte mit "(gekocht)" im Namen des Lebensmittels.
     - Schätze bei vagen Mengenangaben typische Werte, z.B. eine „Handvoll".
     - WICHTIG - EINHEITEN: Wenn der Nutzer eine spezifische Einheit nennt (z.B. "3 Scheiben Käse", "2 Becher Joghurt", "1 Riegel Schokolade", "5 Stück Sushi"), dann MUSS diese Einheit exakt so im Feld "unit" übernommen werden und die Zahl im Feld "amount" stehen. Konvertiere solche Angaben NICHT automatisch in Gramm oder Milliliter, es sei denn, der Nutzer macht keine spezifische Einheitenangabe (dann verwende "g" oder "ml").
+    - WICHTIG - GRUPPIERUNG: Wenn mehrere Zutaten zu einem gemeinsamen Gericht gehören (z.B. die Komponenten einer Lasagne oder eines Salats), trage im Feld "groupName" den Namen des Gerichts ein (z.B. "Lasagne" oder "Gemischter Salat"). Dies ermöglicht es dem System, diese Zutaten später gemeinsam zu skalieren. Bei einzelnen Lebensmitteln (z.B. "ein Apfel") lasse "groupName" leer.
     - Korrigiere Rechtschreibfehler und identifiziere, was für eine Kalorienzähler-App relevant ist.
     - Bei Gerichten liste einzelne Zutaten auf, betrachte sie jedoch als Teil eines vollständigen Gerichts. Schätze die Anteile proportional zur Gesamtmenge des Gerichts.
     - Stelle sicher, dass die Kalorienverteilung innerhalb von Gerichten plausibel ist.

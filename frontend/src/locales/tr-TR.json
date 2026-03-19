@@ -594,7 +594,9 @@
     "imageSelected": "Resim seçildi",
     "imagesSelected": "Resimler seçildi",
     "audioRecorded": "Ses kaydedildi",
-    "acidBaseBalance": "Asit-baz dengesi"
+    "acidBaseBalance": "Asit-baz dengesi",
+    "scalePortion": "Porsiyonu Ayarla",
+    "scaleGroupInfo": "Porsiyonu tüm yemek için ayarla. Tüm malzemeler orantılı olarak ölçeklendirilecektir."
   },
   "trainingPlans": {
     "title": "Antrenman Planları",

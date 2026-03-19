@@ -594,7 +594,9 @@
     "imageSelected": "Buidl ausgwählt",
     "imagesSelected": "Buidl ausgwählt",
     "audioRecorded": "Audio aufgnomma",
-    "acidBaseBalance": "Saure-Basn-Gleichgewicht"
+    "acidBaseBalance": "Saure-Basn-Gleichgewicht",
+    "scalePortion": "Portion herrichtn",
+    "scaleGroupInfo": "Bass d'Portion fia de ganze Speis o. Olle Zuadadn wern schee brav mit skalierd."
   },
   "trainingPlans": {
     "title": "Trainingspläne",

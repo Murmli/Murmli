@@ -594,7 +594,9 @@
     "workDaysPAL": "How hard you're workin' on your job days",
     "caloriesBurned": "Calories you done burned off (kcal)",
     "errorBodydataActivity": "Honey, if you wanna track your movin', you gotta put in your body stats first.",
-    "acidBaseBalance": "That there acid-base balance"
+    "acidBaseBalance": "That there acid-base balance",
+    "scalePortion": "Fixin' to size 'er up",
+    "scaleGroupInfo": "Now, go on 'n adjust that there portion for the whole plate. All them fixin's gonna be scaled just right, nice 'n slow."
   },
   "trainingPlans": {
     "title": "Workout Plans",

@@ -594,7 +594,9 @@
     "imageSelected": "Bild uusgwählt",
     "imagesSelected": "Bilder uusgwählt",
     "audioRecorded": "Audio uufgnoh",
-    "acidBaseBalance": "Süüri-Basä-Huushalt"
+    "acidBaseBalance": "Süüri-Basä-Huushalt",
+    "scalePortion": "Portion aapasse",
+    "scaleGroupInfo": "Pass d'Portion für das ganze Gricht aa. Alli Zuatate werdet proportional skaliert."
   },
   "trainingPlans": {
     "title": "Trainingsplän",

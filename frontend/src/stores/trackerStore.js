@@ -459,6 +459,26 @@ export const useTrackerStore = defineStore("trackerStore", {
       return null;
     },
 
+    // Update a group of food items in the tracker
+    async updateFoodGroup(groupId, scalingFactor) {
+      const apiStore = useApiStore();
+      try {
+        const response = await apiStore.apiRequest(
+          "put",
+          "/calorietracker/group/update",
+          { trackerId: this.tracker._id, groupId, scalingFactor }
+        );
+        if (response.status === 200) {
+          this.tracker = response.data.tracker;
+          this.saveCache();
+          return response.data.message;
+        }
+      } catch (error) {
+        this.error = error;
+      }
+      return null;
+    },
+
     // Update a food item in the tracker
     async updateFoodItem() {
       const { _id, ...updatedData } = this.selectedItem; // Entfernt _id aus dem Objekt

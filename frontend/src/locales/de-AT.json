@@ -594,7 +594,9 @@
     "imageSelected": "Bildl is ausgwöht",
     "imagesSelected": "Bildl san ausgwöht",
     "audioRecorded": "Audio is aufgnomma",
-    "acidBaseBalance": "Säure-Basen-G'schicht"
+    "acidBaseBalance": "Säure-Basen-G'schicht",
+    "scalePortion": "Portion herrichtn",
+    "scaleGroupInfo": "Pass die Portion fia die gaunze Speis au. Olle Zutotn werdn daun schee brav mitvalängert oder einkürzt."
   },
   "trainingPlans": {
     "title": "Trainingspläne",

@@ -594,7 +594,9 @@
     "imageSelected": "Imagen seleccionada",
     "imagesSelected": "Imágenes seleccionadas",
     "audioRecorded": "Audio grabado",
-    "acidBaseBalance": "Equilibrio ácido-base"
+    "acidBaseBalance": "Equilibrio ácido-base",
+    "scalePortion": "Ajustar ración",
+    "scaleGroupInfo": "Ajusta la ración para todo el plato. Todos los ingredientes se escalarán proporcionalmente."
   },
   "trainingPlans": {
     "title": "Planes de entrenamiento",

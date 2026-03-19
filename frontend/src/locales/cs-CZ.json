@@ -594,7 +594,9 @@
     "imageSelected": "Obrázek vybrán",
     "imagesSelected": "Obrázky vybrány",
     "audioRecorded": "Audio zaznamenáno",
-    "acidBaseBalance": "Acidobazická rovnováha"
+    "acidBaseBalance": "Acidobazická rovnováha",
+    "scalePortion": "Upravit porci",
+    "scaleGroupInfo": "Upravte porci pro celý pokrm. Všechny ingredience se proporcionálně změní."
   },
   "trainingPlans": {
     "title": "Tréninkové plány",

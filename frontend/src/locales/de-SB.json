@@ -594,7 +594,9 @@
     "imageSelected": "Bildle aus'gsucht",
     "imagesSelected": "Bildle aus'gsucht",
     "audioRecorded": "Sproch uff'gnomme",
-    "acidBaseBalance": "Saure-Basen-Haushalt"
+    "acidBaseBalance": "Saure-Basen-Haushalt",
+    "scalePortion": "Portion nabausa",
+    "scaleGroupInfo": "Paschs de d'Portion für des ganze Gricht a. Alle Zutata werda halt schee proportional mit-skaliert."
   },
   "trainingPlans": {
     "title": "Sportpläne",

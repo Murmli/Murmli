@@ -684,6 +684,43 @@ router.post("/item/addtoday", secretKeyMiddleware, sessionMiddleware, trackerCon
  *         description: Server error
  */
 router.put("/item/update", secretKeyMiddleware, sessionMiddleware, trackerController.updateItem);
+
+/**
+ * @swagger
+ * /api/v2/calorietracker/group/update:
+ *   put:
+ *     tags: [Tracker]
+ *     title: Update Food Group Portions
+ *     summary: Scale portions for all items in a group
+ *     description: Updates the amount and nutritional values for all food items belonging to the same group based on a scaling factor.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - trackerId
+ *               - groupId
+ *               - scalingFactor
+ *             properties:
+ *               trackerId:
+ *                 type: string
+ *               groupId:
+ *                 type: string
+ *               scalingFactor:
+ *                 type: number
+ *                 description: The factor to scale the amount and nutrients by (e.g. 1.3 for 30% increase)
+ *     responses:
+ *       200:
+ *         description: Food group updated successfully
+ *       400:
+ *         description: Invalid input
+ *       404:
+ *         description: Tracker or group not found
+ */
+router.put("/group/update", secretKeyMiddleware, sessionMiddleware, trackerController.updateGroup);
+
 /**
  * @swagger
  * /api/v2/calorietracker/activity/remove:

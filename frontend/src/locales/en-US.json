@@ -594,7 +594,9 @@
     "imageSelected": "Image selected",
     "imagesSelected": "Images selected",
     "audioRecorded": "Audio recorded",
-    "acidBaseBalance": "Acid-base balance"
+    "acidBaseBalance": "Acid-base balance",
+    "scalePortion": "Adjust Portion",
+    "scaleGroupInfo": "Adjust the portion for the entire dish. All ingredients will be scaled proportionally."
   },
   "trainingPlans": {
     "title": "Training Plans",

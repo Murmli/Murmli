@@ -476,6 +476,9 @@
       "remove": "Entfernen"
     },
     "dailyTracked": "(täglich)",
+    "scalePortion": "Portion anpassen",
+    "scaleGroupInfo": "Passe die Portion für das gesamte Gericht an. Alle Zutaten werden proportional skaliert.",
+    "portions": "Portionen",
     "calorieGoal": "Kalorienziel",
     "calorieCalculator": "Kalorienrechner",
     "trackActivity": "Aktivität tracken",
@@ -535,7 +538,6 @@
     "errorNoBodydata": "Wenn du den Kalorienrechner nutzen möchtest, musst du vorher deine Körperdaten eingeben.",
     "errorBodydataActivity": "Wenn du das Aktivitätentracking nutzen möchtest, musst du vorher deine Körperdaten eingeben.",
     "selectRecipe": "Rezept auswählen",
-    "portions": "Portionen",
     "voiceRecordingInfo": "Die Aufnahme wird lokal bei dir gespeichert. Wenn du die Audiodatei absenden möchtest, klicke auf Senden. \nAlternativ kannst du auf Verwerfen klicken, um die Aufnahme nicht zu senden.",
     "nutritionDetails": "Nährwertdetails",
     "macronutrients": "Makronährstoffe",

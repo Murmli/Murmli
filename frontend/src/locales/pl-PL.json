@@ -594,7 +594,9 @@
     "imageSelected": "Wybrano obraz",
     "imagesSelected": "Wybrano obrazy",
     "audioRecorded": "Nagrano dźwięk",
-    "acidBaseBalance": "Równowaga kwasowo-zasadowa"
+    "acidBaseBalance": "Równowaga kwasowo-zasadowa",
+    "scalePortion": "Dostosuj porcję",
+    "scaleGroupInfo": "Dostosuj porcję dla całego dania. Wszystkie składniki zostaną proporcjonalnie przeskalowane."
   },
   "trainingPlans": {
     "title": "Plany treningowe",

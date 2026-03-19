@@ -594,7 +594,9 @@
     "imageSelected": "Shot saved",
     "imagesSelected": "Shots saved",
     "audioRecorded": "Vibe logged",
-    "acidBaseBalance": "Vibes between acid and base"
+    "acidBaseBalance": "Vibes between acid and base",
+    "scalePortion": "Tweak the size of the wave",
+    "scaleGroupInfo": "Catch a bigger or smaller ride for the whole bowl, man. All the goods get scaled up or down together, totally proportional."
   },
   "trainingPlans": {
     "title": "Training Sets",

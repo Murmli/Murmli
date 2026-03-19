@@ -594,7 +594,9 @@
     "imageSelected": "Slika izbrana",
     "imagesSelected": "Slike izbrane",
     "audioRecorded": "Zvok posnet",
-    "acidBaseBalance": "Kislinsko-bazno ravnovesje"
+    "acidBaseBalance": "Kislinsko-bazno ravnovesje",
+    "scalePortion": "Prilagodi porcijo",
+    "scaleGroupInfo": "Prilagodite porcijo za celotno jed. Vse sestavine bodo sorazmerno spremenjene."
   },
   "trainingPlans": {
     "title": "Načrti vadbe",

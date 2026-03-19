@@ -214,6 +214,28 @@ async function trackItems(user, trackerId, foodItems) {
       throw new Error("Tracker not found");
     }
 
+    // Gruppierung nach groupName vornehmen
+    const groupedItems = foodItems.map(item => {
+      if (item.groupName) {
+        // Falls bereits eine groupId vorhanden ist (z.B. vom LLM, was wir aktuell nicht haben), behalten wir sie
+        // Ansonsten generieren wir eine neue, falls mehrere Items denselben groupName haben
+        return item;
+      }
+      return item;
+    });
+
+    // Wir weisen eine groupId für alle Items zu, die denselben groupName haben
+    const groupNameMap = new Map();
+    
+    foodItems.forEach(item => {
+      if (item.groupName && !item.groupId) {
+        if (!groupNameMap.has(item.groupName)) {
+          groupNameMap.set(item.groupName, `group_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`);
+        }
+        item.groupId = groupNameMap.get(item.groupName);
+      }
+    });
+
     tracker.foodItems.push(...foodItems);
 
     const totals = calculateFoodItemsTotals(tracker.foodItems);
@@ -655,18 +677,7 @@ exports.trackImage = async (req, res) => {
       return res.status(400).json({ error: "No valid food items found in the image." });
     }
 
-    let tracker = await Tracker.findOne({ _id: trackerId, user: user._id });
-
-    if (!tracker) {
-      return res.status(404).json({ error: "Tracker not found." });
-    }
-
-    tracker.foodItems.push(...foodItems);
-
-    const totals = calculateFoodItemsTotals(tracker.foodItems);
-    tracker.totals = totals;
-
-    await tracker.save();
+    const tracker = await trackItems(user, trackerId, foodItems);
 
     return res.status(200).json({ message: "Food items tracked from image and totals updated successfully", tracker });
   } catch (err) {
@@ -713,7 +724,7 @@ exports.removeItem = async (req, res) => {
 exports.updateItem = async (req, res) => {
   try {
     const user = req.user;
-    const { trackerId, foodItemId, name, amount, unit, kcal, protein, carbohydrates, fat, healthyRating, acidBaseScore, histamineLevel } = req.body;
+    const { trackerId, foodItemId, name, amount, unit, kcal, protein, carbohydrates, fat, healthyRating, acidBaseScore, histamineLevel, groupId, groupName } = req.body;
 
     if (!foodItemId) {
       return res.status(400).json({ error: "Food Item ID is required." });
@@ -739,6 +750,8 @@ exports.updateItem = async (req, res) => {
     if (healthyRating !== undefined) foodItem.healthyRating = healthyRating;
     if (acidBaseScore !== undefined) foodItem.acidBaseScore = acidBaseScore;
     if (histamineLevel !== undefined) foodItem.histamineLevel = histamineLevel;
+    if (groupId !== undefined) foodItem.groupId = groupId;
+    if (groupName !== undefined) foodItem.groupName = groupName;
 
     // Berechne die neuen Totals
     const totals = calculateFoodItemsTotals(tracker.foodItems);
@@ -747,6 +760,51 @@ exports.updateItem = async (req, res) => {
     await tracker.save();
 
     return res.status(200).json({ message: "Item updated successfully", tracker });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Server Error" });
+  }
+};
+
+exports.updateGroup = async (req, res) => {
+  try {
+    const user = req.user;
+    const { trackerId, groupId, scalingFactor } = req.body;
+
+    if (!trackerId || !groupId || scalingFactor === undefined) {
+      return res.status(400).json({ error: "Tracker ID, Group ID, and Scaling Factor are required." });
+    }
+
+    let tracker = await Tracker.findOne({ _id: trackerId, user: user._id });
+
+    if (!tracker) {
+      return res.status(404).json({ error: "Tracker not found." });
+    }
+
+    let itemsUpdated = 0;
+    tracker.foodItems.forEach(item => {
+      if (item.groupId === groupId) {
+        item.amount = parseFloat((item.amount * scalingFactor).toFixed(2));
+        item.kcal = Math.round(item.kcal * scalingFactor);
+        item.protein = parseFloat((item.protein * scalingFactor).toFixed(1));
+        item.carbohydrates = parseFloat((item.carbohydrates * scalingFactor).toFixed(1));
+        item.fat = parseFloat((item.fat * scalingFactor).toFixed(1));
+        item.acidBaseScore = parseFloat((item.acidBaseScore * scalingFactor).toFixed(2));
+        itemsUpdated++;
+      }
+    });
+
+    if (itemsUpdated === 0) {
+      return res.status(404).json({ error: "No items found for this group." });
+    }
+
+    // Berechne die neuen Totals
+    const totals = calculateFoodItemsTotals(tracker.foodItems);
+    tracker.totals = totals;
+
+    await tracker.save();
+
+    return res.status(200).json({ message: `Group updated successfully. ${itemsUpdated} items scaled.`, tracker });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: "Server Error" });

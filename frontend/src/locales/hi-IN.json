@@ -594,7 +594,9 @@
     "imageSelected": "चित्र चुना गया",
     "imagesSelected": "चित्र चुने गए",
     "audioRecorded": "ऑडियो रिकॉर्ड किया गया",
-    "acidBaseBalance": "अम्ल-क्षार संतुलन"
+    "acidBaseBalance": "अम्ल-क्षार संतुलन",
+    "scalePortion": "हिस्से को समायोजित करें",
+    "scaleGroupInfo": "पूरे व्यंजन के लिए हिस्से को समायोजित करें। सभी सामग्री को आनुपातिक रूप से बढ़ाया या घटाया जाएगा।"
   },
   "trainingPlans": {
     "title": "प्रशिक्षण योजनाएं",

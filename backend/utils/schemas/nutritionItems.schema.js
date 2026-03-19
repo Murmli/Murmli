@@ -32,6 +32,10 @@ module.exports = {
               description: "Histamin-Stufe: 0 = kein/kaum Histamin (frisches Fleisch, frisches Gemüse), 1 = wenig Histamin (leicht verträglich), 2 = mäßig Histamin (z.B. Tomaten, Spinat, Avocado), 3 = hoch Histamin (z.B. gereifter Käse, Salami, Sauerkraut, Rotwein, Thunfisch)",
               minimum: 0,
               maximum: 3
+            },
+            groupName: {
+              type: "string",
+              description: "Falls mehrere Zutaten zu einem Gericht gehören (z.B. Lasagne), hier den gemeinsamen Namen des Gerichts eintragen. Ansonsten leer lassen."
             }
           },
           required: [

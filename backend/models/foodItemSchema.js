@@ -50,6 +50,14 @@ const foodItemSchema = new Schema({
     type: Number,
     default: 0,
   },
+  groupId: {
+    type: String,
+    default: null,
+  },
+  groupName: {
+    type: String,
+    default: null,
+  },
 });
 
 module.exports = { foodItemSchema };
