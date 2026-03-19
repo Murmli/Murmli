@@ -64,7 +64,8 @@ exports.findAlternativeItemsPrompt = (itemName, outputLang, filter = '') => {
     let prompt = `
     Ich bin gerade im Supermarkt und kann ${itemName} nicht finden.
     Suche mir bitte alternative Produkte, die ich stattdessen nehmen kann, als Ersatz.
-    Zudem sag mir, wo im Supermarkt diese Produkte liegen könnten.`;
+    Zudem sag mir, wo im Supermarkt diese Produkte liegen könnten.
+    Halte dich bei deiner Antwort kurz und bündig. Antworte nur dann ausführlicher, wenn der Nutzer explizit danach fragt.`;
 
     if (filter && filter.trim() !== '') {
       prompt += `\n\nWICHTIG: Berücksichtige folgende Einschränkungen/Filter des Nutzers bei der Auswahl der Alternativen: ${filter}`;
@@ -354,7 +355,7 @@ exports.askCalorieTrackerSystemPrompt = (tracker, bodydata, outputLang) => {
     ${JSON.stringify(tracker)}
     """
     Der Nutzer ist ${bodydata.height} cm groß, ${bodydata.weight} kg schwer und ${age} Jahre alt.
-    Halte dich bei deiner Antwort kurz und präzise.
+    Halte dich bei deiner Antwort kurz und bündig. Antworte nur dann ausführlicher, wenn der Nutzer explizit danach fragt.
     Zähle nicht die Trackings auf, nur wenn du spezifisch auf eines eingeben möchtest.
     Schreibe deine Antwort als Markdown formatiert (ohne Tabellen) in folgender Sprache: ${outputLang}.
   `;
@@ -374,6 +375,7 @@ exports.askTrainingPlanSystemPrompt = (plan, logs, currentDate, outputLang) => {
     ${JSON.stringify(logs)}
     """
     Aktuelles Datum: ${currentDate}
+    Halte dich bei deiner Antwort kurz und bündig. Antworte nur dann ausführlicher, wenn der Nutzer explizit danach fragt.
     Beantworte die Fragen des Nutzers präzise in der Sprache ${outputLang}.
   `;
 };
@@ -382,6 +384,7 @@ exports.trainingLogFeedbackSystemPrompt = (outputLang) => {
   return `
     Du bist ein motivierender und erfahrener Trainingscoach.
     Analysiere die Daten vergangener Trainings und gib konstruktives Feedback.
+    Halte dich bei deiner Antwort kurz und bündig. Antworte nur dann ausführlicher, wenn der Nutzer explizit danach fragt.
     Formuliere deine Antwort kurz und prägnant in der Sprache ${outputLang}.
   `;
 };
@@ -867,6 +870,7 @@ exports.chatWithRecipeSystemPrompt = (recipe, language) => {
     Zubereitungsschritte:
     ${JSON.stringify(recipe.steps)}
 
+    Halte dich bei deiner Antwort kurz und bündig. Antworte nur dann ausführlicher, wenn der Nutzer explizit danach fragt.
     Beantworte die Fragen des Nutzers präzise und hilfreich basierend auf dem Rezept.
     Antworte in der Sprache: ${language}.
   `;
@@ -882,6 +886,7 @@ exports.chatWithTrackerSystemPrompt = (tracker, bodyData, language) => {
     Tracker-Daten für heute:
     ${JSON.stringify(tracker)}
 
+    Halte dich bei deiner Antwort kurz und bündig. Antworte nur dann ausführlicher, wenn der Nutzer explizit danach fragt.
     Beantworte Fragen des Benutzers zu seinen getrackten Daten, Nährwerten oder allgemeinen Ernährungsfragen basierend auf diesen Daten.
     Antworte in der Sprache: ${language}.
   `;
