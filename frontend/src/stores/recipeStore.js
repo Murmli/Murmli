@@ -171,6 +171,7 @@ export const useRecipeStore = defineStore("recipeStore", {
           "post",
           "/recipe/create/user",
           formData,
+          false,
           {
             headers: { "Content-Type": "multipart/form-data" },
           }
@@ -241,6 +242,7 @@ export const useRecipeStore = defineStore("recipeStore", {
           "post",
           "/recipe/create/user/multimodal",
           formData,
+          false,
           {
             headers: { "Content-Type": "multipart/form-data" },
           }

@@ -120,7 +120,8 @@ export const useTrackerStore = defineStore("trackerStore", {
         const response = await apiStore.apiRequest(
           "post",
           "/calorietracker/ask",
-          { question }
+          { question },
+          false
         );
         return response?.data.answer;
       } catch (error) {
@@ -136,7 +137,8 @@ export const useTrackerStore = defineStore("trackerStore", {
         const response = await apiStore.apiRequest(
           "post",
           "/calorietracker/chat",
-          { messages, trackerId: this.tracker._id }
+          { messages, trackerId: this.tracker._id },
+          false
         );
         if (response.status === 200) {
           return response.data;

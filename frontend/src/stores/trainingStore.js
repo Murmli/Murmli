@@ -171,7 +171,7 @@ export const useTrainingStore = defineStore("trainingStore", {
                 return { status: 'processing' };
             }
             try {
-                const response = await apiStore.apiRequest("post", "/training-plans/generate", { text });
+                const response = await apiStore.apiRequest("post", "/training-plans/generate", { text }, false);
                 if (response.status === 200 || response.status === 201) {
                     this.generatedPlan = response.data;
                     this.trainingPlans.push(response.data);
@@ -234,6 +234,7 @@ export const useTrainingStore = defineStore("trainingStore", {
                     "post",
                     "/training-plans/generate/multimodal",
                     formData,
+                    false,
                     {
                         headers: { "Content-Type": "multipart/form-data" },
                     }
@@ -287,7 +288,7 @@ export const useTrainingStore = defineStore("trainingStore", {
                     text,
                     plan,
                 };
-                const response = await apiStore.apiRequest("post", `/training-plans/${plan._id}/continue`, payload);
+                const response = await apiStore.apiRequest("post", `/training-plans/${plan._id}/continue`, payload, false);
                 if (!response) {
                     return null;
                 }
