@@ -536,6 +536,7 @@
     "errorBodydataActivity": "If you want to use activity tracking, you must enter your body data first.",
     "selectRecipe": "Select recipe",
     "portions": "Portions",
+    "totalWeight": "Total Weight (g)",
     "voiceRecordingInfo": "The recording is stored locally. If you want to send the audio file, click Send. \nAlternatively, you can click Discard if you don't want to send the recording.",
     "nutritionDetails": "Nutritional details",
     "macronutrients": "Macronutrients",

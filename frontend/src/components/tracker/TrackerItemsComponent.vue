@@ -236,6 +236,21 @@
                     class="mt-2"
                 ></v-slider>
 
+                <v-text-field
+                    v-if="hasWeightInGroup"
+                    v-model.number="localWeight"
+                    type="number"
+                    :label="languageStore.t('tracker.totalWeight')"
+                    suffix="g"
+                    density="compact"
+                    variant="outlined"
+                    class="mt-4"
+                    hide-details
+                    @input="onWeightInput"
+                    @focus="isWeightInputFocused = true"
+                    @blur="isWeightInputFocused = false"
+                ></v-text-field>
+
                 <v-row dense class="mt-4">
                     <v-col cols="3">
                         <v-btn block variant="outlined" size="small" @click="adjustScaling(-1.0)" :disabled="groupScalingFactor <= 1.0">
@@ -335,6 +350,81 @@ const groupScaleDialog = ref(false);
 const isScaling = ref(false);
 const selectedGroup = ref(null);
 const groupScalingFactor = ref(1.0);
+const localWeight = ref(0);
+const isWeightInputFocused = ref(false);
+
+const getTotalBaseWeight = () => {
+    if (!selectedGroup.value || !selectedGroup.value.items) return 0;
+    return selectedGroup.value.items.reduce((sum, item) => {
+        if (item.unit === 'g' || item.unit === 'ml') {
+            return sum + (item.amount || 0);
+        }
+        return sum;
+    }, 0);
+};
+
+// Update localWeight whenever scaling factor changes (slider, buttons, initial)
+watch(groupScalingFactor, (newFactor) => {
+    // If user is currently typing in the weight field, do NOT overwrite it
+    if (isWeightInputFocused.value) return;
+
+    const base = getTotalBaseWeight();
+    if (base > 0) {
+        const val = base * newFactor;
+        // Only update localWeight if the difference is significant
+        if (Math.abs(localWeight.value - val) > 0.1) {
+             localWeight.value = val % 1 === 0 ? val : parseFloat(val.toFixed(1));
+        }
+    }
+});
+
+const onWeightInput = () => {
+    const base = getTotalBaseWeight();
+    // Allow very small weights while typing
+    if (base > 0 && localWeight.value >= 0) {
+        let newFactor = parseFloat((localWeight.value / base).toFixed(4));
+        // Keep internal factor limits very low to prevent jumps during typing
+        if (newFactor < 0.001) newFactor = 0.001;
+        if (newFactor > 20.0) newFactor = 20.0;
+        groupScalingFactor.value = newFactor;
+    }
+};
+
+const hasWeightInGroup = computed(() => {
+    if (!selectedGroup.value || !selectedGroup.value.items) return false;
+    return selectedGroup.value.items.some(item => item.unit === 'g' || item.unit === 'ml');
+});
+
+const currentGroupWeight = computed({
+    get() {
+        if (!selectedGroup.value || !selectedGroup.value.items) return 0;
+        const totalBaseWeight = selectedGroup.value.items.reduce((sum, item) => {
+            if (item.unit === 'g' || item.unit === 'ml') {
+                return sum + (item.amount || 0);
+            }
+            return sum;
+        }, 0);
+        // Nutze eine höhere Präzision für die Anzeige, um Sprünge zu vermeiden
+        const weight = totalBaseWeight * groupScalingFactor.value;
+        return weight % 1 === 0 ? weight : parseFloat(weight.toFixed(1));
+    },
+    set(newWeight) {
+        if (!selectedGroup.value || !selectedGroup.value.items) return;
+        const totalBaseWeight = selectedGroup.value.items.reduce((sum, item) => {
+            if (item.unit === 'g' || item.unit === 'ml') {
+                return sum + (item.amount || 0);
+            }
+            return sum;
+        }, 0);
+        if (totalBaseWeight > 0) {
+            // Erhöhe die Präzision auf 4 Nachkommastellen für den Faktor
+            let newFactor = parseFloat((newWeight / totalBaseWeight).toFixed(4));
+            if (newFactor < 0.01) newFactor = 0.01;
+            if (newFactor > 10.0) newFactor = 10.0;
+            groupScalingFactor.value = newFactor;
+        }
+    }
+});
 
 const originalItemData = ref(null);
 const originalRatio = ref(0); // Speichert das ursprüngliche Verhältnis von kcal zu amount
@@ -350,6 +440,11 @@ const openDropdown = (item) => {
 const openGroupScaleDialog = (group) => {
     selectedGroup.value = group;
     groupScalingFactor.value = 1.0; // Start at 1.0 as factor
+    
+    // Initialize localWeight
+    const base = getTotalBaseWeight();
+    localWeight.value = base % 1 === 0 ? base : parseFloat(base.toFixed(1));
+    
     groupScaleDialog.value = true;
 };
 
@@ -358,6 +453,13 @@ const adjustScaling = (delta) => {
     if (newVal < 0.1) newVal = 0.1;
     if (newVal > 5.0) newVal = 5.0;
     groupScalingFactor.value = newVal;
+    
+    // Update localWeight to match the new factor
+    const base = getTotalBaseWeight();
+    if (base > 0) {
+        const val = base * newVal;
+        localWeight.value = val % 1 === 0 ? val : parseFloat(val.toFixed(1));
+    }
 };
 
 const saveGroupScaling = async () => {

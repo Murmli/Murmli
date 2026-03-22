@@ -479,6 +479,7 @@
     "scalePortion": "Portion anpassen",
     "scaleGroupInfo": "Passe die Portion für das gesamte Gericht an. Alle Zutaten werden proportional skaliert.",
     "portions": "Portionen",
+    "totalWeight": "Gesamtgewicht (g)",
     "calorieGoal": "Kalorienziel",
     "calorieCalculator": "Kalorienrechner",
     "trackActivity": "Aktivität tracken",
