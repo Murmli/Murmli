@@ -13,6 +13,31 @@
           </v-card-text>
         </v-card>
 
+        <v-row class="mb-6 px-3" dense>
+          <v-col cols="6">
+            <v-btn
+              block
+              color="primary"
+              variant="tonal"
+              prepend-icon="mdi-email-outline"
+              @click="openLink('mailto:prompt-engineered@protonmail.com?subject=Murmli%20App')"
+            >
+              {{ languageStore.t('contact.title') }}
+            </v-btn>
+          </v-col>
+          <v-col cols="6">
+            <v-btn
+              block
+              color="deep-purple-accent-2"
+              variant="tonal"
+              prepend-icon="mdi-chat"
+              @click="openLink('https://discord.com/invite/qkxjGEp3Tg')"
+            >
+              {{ languageStore.t('contact.discord') }}
+            </v-btn>
+          </v-col>
+        </v-row>
+
         <v-expansion-panels multiple>
           <v-expansion-panel v-for="section in sections" :key="section.key">
             <v-expansion-panel-title>
@@ -55,6 +80,10 @@ import { useLanguageStore } from '@/stores/languageStore';
 import AppPromotionActions from '@/components/general/AppPromotionActions.vue';
 
 const languageStore = useLanguageStore();
+
+const openLink = (url) => {
+  window.open(url, '_blank');
+};
 
 const sections = [
   { key: 'overview', videoId: 'RJfGFYFyhtY' },
