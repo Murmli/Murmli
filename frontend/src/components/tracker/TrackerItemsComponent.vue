@@ -9,13 +9,11 @@
             <!-- Group Header (only for actual groups) -->
             <v-card v-if="group.isGroup" class="mb-2 food-group-card" color="grey-lighten-4">
                 <v-card-title class="text-subtitle-1 d-flex align-center py-2">
-                    <v-icon start color="primary">mdi-silverware-fork-knife</v-icon>
+                    <v-btn icon size="x-small" variant="tonal" color="primary" class="mr-2" @click="openGroupScaleDialog(group)">
+                        <v-icon size="small">mdi-pencil</v-icon>
+                    </v-btn>
                     {{ group.name }}
                     <v-spacer></v-spacer>
-                    <v-btn size="small" variant="tonal" color="primary" @click="openGroupScaleDialog(group)">
-                        <v-icon start>mdi-scale-balance</v-icon>
-                        {{ languageStore.t('tracker.scalePortion') || 'Portion anpassen' }}
-                    </v-btn>
                 </v-card-title>
                 <v-divider></v-divider>
                 <v-card-text class="pa-0">
