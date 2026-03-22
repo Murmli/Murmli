@@ -596,7 +596,8 @@
     "audioRecorded": "音频已录制",
     "acidBaseBalance": "酸碱平衡",
     "scalePortion": "调整份量",
-    "scaleGroupInfo": "调整整道菜的份量，所有配料将按比例缩放。"
+    "scaleGroupInfo": "调整整道菜的份量，所有配料将按比例缩放。",
+    "totalWeight": "总重量 (g)"
   },
   "trainingPlans": {
     "title": "训练计划",

@@ -596,7 +596,8 @@
     "audioRecorded": "Audio aufgnomma",
     "acidBaseBalance": "Saure-Basn-Gleichgewicht",
     "scalePortion": "Portion herrichtn",
-    "scaleGroupInfo": "Bass d'Portion fia de ganze Speis o. Olle Zuadadn wern schee brav mit skalierd."
+    "scaleGroupInfo": "Bass d'Portion fia de ganze Speis o. Olle Zuadadn wern schee brav mit skalierd.",
+    "totalWeight": "Gsamtgwicht (g)"
   },
   "trainingPlans": {
     "title": "Trainingspläne",

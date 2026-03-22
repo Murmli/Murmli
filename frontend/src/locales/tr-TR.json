@@ -596,7 +596,8 @@
     "audioRecorded": "Ses kaydedildi",
     "acidBaseBalance": "Asit-baz dengesi",
     "scalePortion": "Porsiyonu Ayarla",
-    "scaleGroupInfo": "Porsiyonu tüm yemek için ayarla. Tüm malzemeler orantılı olarak ölçeklendirilecektir."
+    "scaleGroupInfo": "Porsiyonu tüm yemek için ayarla. Tüm malzemeler orantılı olarak ölçeklendirilecektir.",
+    "totalWeight": "Toplam Ağırlık (g)"
   },
   "trainingPlans": {
     "title": "Antrenman Planları",

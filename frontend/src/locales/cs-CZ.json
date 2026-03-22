@@ -596,7 +596,8 @@
     "audioRecorded": "Audio zaznamenáno",
     "acidBaseBalance": "Acidobazická rovnováha",
     "scalePortion": "Upravit porci",
-    "scaleGroupInfo": "Upravte porci pro celý pokrm. Všechny ingredience se proporcionálně změní."
+    "scaleGroupInfo": "Upravte porci pro celý pokrm. Všechny ingredience se proporcionálně změní.",
+    "totalWeight": "Celková hmotnost (g)"
   },
   "trainingPlans": {
     "title": "Tréninkové plány",

@@ -596,7 +596,8 @@
     "audioRecorded": "Audio is aufgnomma",
     "acidBaseBalance": "Säure-Basen-G'schicht",
     "scalePortion": "Portion herrichtn",
-    "scaleGroupInfo": "Pass die Portion fia die gaunze Speis au. Olle Zutotn werdn daun schee brav mitvalängert oder einkürzt."
+    "scaleGroupInfo": "Pass die Portion fia die gaunze Speis au. Olle Zutotn werdn daun schee brav mitvalängert oder einkürzt.",
+    "totalWeight": "Gsamtgwicht (g)"
   },
   "trainingPlans": {
     "title": "Trainingspläne",

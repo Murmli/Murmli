@@ -596,7 +596,8 @@
     "audioRecorded": "Talkin' saved",
     "acidBaseBalance": "Acid-base balance wicked numbahs",
     "scalePortion": "Fix up the size of the potion",
-    "scaleGroupInfo": "Change the size of the whole wicked meal. All the stuff inside gets sized up or down to match, ya hahd-on."
+    "scaleGroupInfo": "Change the size of the whole wicked meal. All the stuff inside gets sized up or down to match, ya hahd-on.",
+    "totalWeight": "Total weight in grams, ked. Heavy as a wicked huge lobstah."
   },
   "trainingPlans": {
     "title": "Workout Plans",

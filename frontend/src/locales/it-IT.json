@@ -596,7 +596,8 @@
     "audioRecorded": "Audio registrato",
     "acidBaseBalance": "Equilibrio acido-base",
     "scalePortion": "Modifica porzione",
-    "scaleGroupInfo": "Modifica la porzione per l'intero piatto. Tutti gli ingredienti saranno proporzionati di conseguenza."
+    "scaleGroupInfo": "Modifica la porzione per l'intero piatto. Tutti gli ingredienti saranno proporzionati di conseguenza.",
+    "totalWeight": "Peso totale (g)"
   },
   "trainingPlans": {
     "title": "Piani di allenamento",

@@ -596,7 +596,8 @@
     "audioRecorded": "Audio grabado",
     "acidBaseBalance": "Equilibrio ácido-base",
     "scalePortion": "Ajustar ración",
-    "scaleGroupInfo": "Ajusta la ración para todo el plato. Todos los ingredientes se escalarán proporcionalmente."
+    "scaleGroupInfo": "Ajusta la ración para todo el plato. Todos los ingredientes se escalarán proporcionalmente.",
+    "totalWeight": "Peso total (g)"
   },
   "trainingPlans": {
     "title": "Planes de entrenamiento",

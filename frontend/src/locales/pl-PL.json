@@ -596,7 +596,8 @@
     "audioRecorded": "Nagrano dźwięk",
     "acidBaseBalance": "Równowaga kwasowo-zasadowa",
     "scalePortion": "Dostosuj porcję",
-    "scaleGroupInfo": "Dostosuj porcję dla całego dania. Wszystkie składniki zostaną proporcjonalnie przeskalowane."
+    "scaleGroupInfo": "Dostosuj porcję dla całego dania. Wszystkie składniki zostaną proporcjonalnie przeskalowane.",
+    "totalWeight": "Waga całkowita (g)"
   },
   "trainingPlans": {
     "title": "Plany treningowe",

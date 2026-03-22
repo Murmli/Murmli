@@ -596,7 +596,8 @@
     "audioRecorded": "Audio recorded",
     "acidBaseBalance": "Acid-base balance",
     "scalePortion": "Adjust Portion",
-    "scaleGroupInfo": "Adjust the portion for the entire dish. All ingredients will be scaled proportionally."
+    "scaleGroupInfo": "Adjust the portion for the entire dish. All ingredients will be scaled proportionally.",
+    "totalWeight": "Total Weight (g)"
   },
   "trainingPlans": {
     "title": "Training Plans",

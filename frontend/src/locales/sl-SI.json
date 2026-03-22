@@ -596,7 +596,8 @@
     "audioRecorded": "Zvok posnet",
     "acidBaseBalance": "Kislinsko-bazno ravnovesje",
     "scalePortion": "Prilagodi porcijo",
-    "scaleGroupInfo": "Prilagodite porcijo za celotno jed. Vse sestavine bodo sorazmerno spremenjene."
+    "scaleGroupInfo": "Prilagodite porcijo za celotno jed. Vse sestavine bodo sorazmerno spremenjene.",
+    "totalWeight": "Skupna teža (g)"
   },
   "trainingPlans": {
     "title": "Načrti vadbe",

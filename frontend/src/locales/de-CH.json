@@ -596,7 +596,8 @@
     "audioRecorded": "Audio uufgnoh",
     "acidBaseBalance": "Süüri-Basä-Huushalt",
     "scalePortion": "Portion aapasse",
-    "scaleGroupInfo": "Pass d'Portion für das ganze Gricht aa. Alli Zuatate werdet proportional skaliert."
+    "scaleGroupInfo": "Pass d'Portion für das ganze Gricht aa. Alli Zuatate werdet proportional skaliert.",
+    "totalWeight": "Gsamtgwicht (g)"
   },
   "trainingPlans": {
     "title": "Trainingsplän",

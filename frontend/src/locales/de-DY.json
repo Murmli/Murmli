@@ -596,7 +596,8 @@
     "audioRecorded": "Audio aufgenommen",
     "acidBaseBalance": "Säure-Basen-Vibe",
     "scalePortion": "Portion upgraden/downgraden",
-    "scaleGroupInfo": "Check mal die Portion für das ganze Meal aus. Alle Zutaten werden dann direkt proportional angepasst, no cap."
+    "scaleGroupInfo": "Check mal die Portion für das ganze Meal aus. Alle Zutaten werden dann direkt proportional angepasst, no cap.",
+    "totalWeight": "Gesamtgewicht (g)"
   },
   "trainingPlans": {
     "title": "Trainingspläne",
