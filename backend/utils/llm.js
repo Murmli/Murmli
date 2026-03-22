@@ -1,6 +1,7 @@
 // utils/llm.js
 
 const { validateItemArray } = require("./validations.js");
+const Tracker = require("../models/trackerModel.js");
 
 // JSON-Schemata für strukturierte Antworten
 const shoppingListItemsSchema = require("./schemas/shoppingListItems.schema.js");
@@ -924,22 +925,113 @@ exports.chatWithRecipe = async (messages, recipe, language) => {
   }
 };
 
-exports.chatWithTracker = async (messages, tracker, bodyData, language) => {
+exports.chatWithTracker = async (messages, tracker, bodyData, language, userId) => {
   try {
     const { chatWithTrackerSystemPrompt } = require("./prompts.js");
     const systemPrompt = chatWithTrackerSystemPrompt(tracker, bodyData, language);
 
-    const lastMessage = messages[messages.length - 1].content;
-    const history = messages.slice(0, -1);
+    const tools = [
+      {
+        type: "function",
+        function: {
+          name: "get_tracker_for_date",
+          description: "Ruft die Tracker-Daten (Mahlzeiten, Kalorien, Makronährstoffe) für ein bestimmtes Datum ab.",
+          parameters: {
+            type: "object",
+            properties: {
+              date: {
+                type: "string",
+                description: "Das Datum im Format YYYY-MM-DD",
+              },
+            },
+            required: ["date"],
+          },
+        },
+      },
+      {
+        type: "function",
+        function: {
+          name: "get_tracker_history",
+          description: "Ruft die Tracker-Historie der letzten Tage ab (Standardmäßig 7 Tage).",
+          parameters: {
+            type: "object",
+            properties: {
+              days: {
+                type: "number",
+                description: "Anzahl der Tage in der Vergangenheit (z.B. 7 oder 14)",
+              },
+            },
+          },
+        },
+      },
+    ];
 
-    const answer = await apiCall(lastMessage, {
+    let currentMessages = [...messages];
+    let lastMessageContent = currentMessages[currentMessages.length - 1].content;
+    let history = currentMessages.slice(0, -1);
+
+    let response = await apiCall(lastMessageContent, {
       systemPrompt,
       cache: false,
       json: false,
-      history: history
+      history: history,
+      tools: tools,
     });
 
-    return answer;
+    // Loop for handling tool calls (supporting multiple sequential calls if needed, though usually one is enough)
+    let maxIterations = 3;
+    let toolContextHistory = [...history, { role: "user", content: lastMessageContent }];
+
+    while (response && response.tool_calls && maxIterations > 0) {
+      maxIterations--;
+      const toolCalls = response.tool_calls;
+      
+      // Add the assistant message with tool calls to history
+      toolContextHistory.push(response.message);
+
+      for (const toolCall of toolCalls) {
+        const functionName = toolCall.function.name;
+        const args = JSON.parse(toolCall.function.arguments);
+        let result;
+
+        if (functionName === "get_tracker_for_date") {
+          const date = new Date(args.date);
+          date.setUTCHours(0, 0, 0, 0);
+          const historicalTracker = await Tracker.findOne({ user: userId, date: date });
+          result = historicalTracker ? JSON.stringify(historicalTracker) : "Keine Daten für dieses Datum gefunden.";
+        } else if (functionName === "get_tracker_history") {
+          const days = args.days || 7;
+          const today = new Date();
+          today.setUTCHours(0, 0, 0, 0);
+          const startDate = new Date(today);
+          startDate.setDate(today.getDate() - (days - 1));
+
+          const trackers = await Tracker.find({
+            user: userId,
+            date: { $gte: startDate, $lte: today }
+          }).sort({ date: -1 });
+
+          result = trackers.length > 0 ? JSON.stringify(trackers) : "Keine Historie gefunden.";
+        }
+
+        toolContextHistory.push({
+          role: "tool",
+          tool_call_id: toolCall.id,
+          content: result,
+        });
+      }
+
+      // Call LLM again with the results, passing null as prompt because history now contains everything
+      response = await apiCall(null, {
+        systemPrompt,
+        cache: false,
+        json: false,
+        history: toolContextHistory,
+        tools: tools,
+      });
+    }
+
+    return response;
   } catch (error) {
     console.error("Error in chatWithTracker:", error.message);
     return false;

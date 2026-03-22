@@ -30,6 +30,8 @@ class BaseLLMClient {
    * @param {Array<object>} [options.history=[]] - Conversation history.
    * @param {Array<object>} [options.files=[]] - Files (e.g., images) to attach.
    * @param {string} [options.systemPrompt=""] - System message.
+   * @param {Array<object>} [options.tools=null] - Tools for function calling.
+   * @param {string} [options.toolChoice="auto"] - Tool choice mode.
    * @returns {Promise<string|object|boolean>}
    */
   async apiCall(prompt, options = {}) {
@@ -42,24 +44,28 @@ class BaseLLMClient {
       history = [],
       files = [],
       systemPrompt = "",
+      tools = null,
+      toolChoice = "auto",
     } = options;
 
-    if (!prompt) return false;
+    if (!prompt && history.length === 0) return false;
 
     const cleanText = (text) =>
       text
-        .split("\n")
-        .map((line) => line.trim())
-        .map((line) => line.replace(/\s+/g, " "))
-        .filter((line) => line.length > 0)
-        .join("\n");
+        ? text
+          .split("\n")
+          .map((line) => line.trim())
+          .map((line) => line.replace(/\s+/g, " "))
+          .filter((line) => line.length > 0)
+          .join("\n")
+        : "";
 
     const cleanedPrompt = cleanText(prompt);
     const cleanedSystemPrompt = systemPrompt ? cleanText(systemPrompt) : "";
-    const hashPrompt = cleanedPrompt + cleanedSystemPrompt;
+    const hashPrompt = (cleanedPrompt || "") + cleanedSystemPrompt;
     const selectedModel = modelType === "low" ? this.lowModel : this.highModel;
 
-    if (cache && !debug) {
+    if (cache && !debug && cleanedPrompt) {
       const cached = await llmReadCache(hashPrompt, this.provider, selectedModel);
       if (cached) return json || jsonSchema ? JSON.parse(cached) : cached;
     }
@@ -74,7 +80,7 @@ class BaseLLMClient {
       messages = messages.concat(history);
     }
 
-    if (files.length === 0) {
+    if (cleanedPrompt && files.length === 0) {
       messages.push({ role: "user", content: cleanedPrompt });
     }
 
@@ -154,15 +160,26 @@ class BaseLLMClient {
         console.log("\x1b[32m%s\x1b[0m", "Prompt:", cleanedPrompt);
         console.log("\x1b[33m%s\x1b[0m", "LLM Cache Hash: ", hash);
         console.log("\x1b[36m%s\x1b[0m", "Messages:", JSON.stringify(messages, null, 2));
+        if (tools) console.log("\x1b[35m%s\x1b[0m", "Tools:", JSON.stringify(tools, null, 2));
       }
 
-      const response = await this.llm.chat.completions.create({
+      const completionOptions = {
         model: selectedModel,
         messages,
-        response_format: jsonSchema
-          ? { type: "json_schema", json_schema: jsonSchema }
-          : { type: json ? "json_object" : "text" },
-      });
+      };
+
+      if (jsonSchema) {
+        completionOptions.response_format = { type: "json_schema", json_schema: jsonSchema };
+      } else if (json) {
+        completionOptions.response_format = { type: "json_object" };
+      }
+
+      if (tools && tools.length > 0) {
+        completionOptions.tools = tools;
+        completionOptions.tool_choice = toolChoice;
+      }
+
+      const response = await this.llm.chat.completions.create(completionOptions);
 
       // Validate response structure
       if (!response || !response.choices || !Array.isArray(response.choices) || response.choices.length === 0) {
@@ -170,12 +187,25 @@ class BaseLLMClient {
         return false;
       }
 
-      if (!response.choices[0].message || !response.choices[0].message.content) {
+      const message = response.choices[0].message;
+
+      // Check for tool calls
+      if (message.tool_calls && message.tool_calls.length > 0) {
+        if (debug) {
+          console.log("\x1b[35m%s\x1b[0m", "Tool Calls:", JSON.stringify(message.tool_calls, null, 2));
+        }
+        return {
+          tool_calls: message.tool_calls,
+          message: message // Include the full message for history
+        };
+      }
+
+      if (!message.content) {
         console.error(`Invalid message structure in response from ${this.provider} API:`, response.choices[0]);
         return false;
       }
 
-      const answer = response.choices[0].message.content;
+      const answer = message.content;
 
       if (cache && !debug) {
         llmWriteCache(hashPrompt, this.provider, selectedModel, answer);

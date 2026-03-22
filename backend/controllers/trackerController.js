@@ -931,7 +931,7 @@ exports.chat = async (req, res) => {
       recommendations: user.recommendations
     };
 
-    const response = await chatWithTracker(messages, tracker, bodyData, user.language);
+    const response = await chatWithTracker(messages, tracker, bodyData, user.language, user._id);
 
     if (response) {
       return res.status(200).json({ answer: response });
