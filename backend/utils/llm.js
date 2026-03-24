@@ -2,6 +2,7 @@
 
 const { validateItemArray } = require("./validations.js");
 const Tracker = require("../models/trackerModel.js");
+const { calculateFoodItemsTotals } = require("./trackerUtils.js");
 
 // JSON-Schemata für strukturierte Antworten
 const shoppingListItemsSchema = require("./schemas/shoppingListItems.schema.js");
@@ -964,6 +965,85 @@ exports.chatWithTracker = async (messages, tracker, bodyData, language, userId) 
           },
         },
       },
+      {
+        type: "function",
+        function: {
+          name: "add_food_item",
+          description: "Fügt ein neues Lebensmittel zum Tracker für heute (oder ein spezifisches Datum) hinzu.",
+          parameters: {
+            type: "object",
+            properties: {
+              date: {
+                type: "string",
+                description: "Das Datum im Format YYYY-MM-DD (optional, Standard ist heute)",
+              },
+              name: { type: "string", description: "Name des Lebensmittels" },
+              amount: { type: "number", description: "Menge" },
+              unit: { type: "string", description: "Einheit (z.B. g, ml, Stück)" },
+              kcal: { type: "number", description: "Kalorien" },
+              protein: { type: "number", description: "Protein in g" },
+              carbohydrates: { type: "number", description: "Kohlenhydrate in g" },
+              fat: { type: "number", description: "Fett in g" },
+              healthyRating: { type: "number", description: "Gesundheits-Bewertung (1-5, optional)" },
+              acidBaseScore: { type: "number", description: "Säure-Basen-Wert (optional)" },
+              histamineLevel: { type: "number", description: "Histamin-Level (0-3, optional)" },
+            },
+            required: ["name", "amount", "unit", "kcal", "protein", "carbohydrates", "fat"],
+          },
+        },
+      },
+      {
+        type: "function",
+        function: {
+          name: "update_food_item",
+          description: "Aktualisiert ein vorhandenes Lebensmittel im Tracker.",
+          parameters: {
+            type: "object",
+            properties: {
+              date: {
+                type: "string",
+                description: "Das Datum des Trackers (Format YYYY-MM-DD)",
+              },
+              foodItemId: {
+                type: "string",
+                description: "Die ID des zu aktualisierenden Lebensmittels (aus den Tracker-Daten)",
+              },
+              name: { type: "string" },
+              amount: { type: "number" },
+              unit: { type: "string" },
+              kcal: { type: "number" },
+              protein: { type: "number" },
+              carbohydrates: { type: "number" },
+              fat: { type: "number" },
+              healthyRating: { type: "number" },
+              acidBaseScore: { type: "number" },
+              histamineLevel: { type: "number" },
+            },
+            required: ["date", "foodItemId"],
+          },
+        },
+      },
+      {
+        type: "function",
+        function: {
+          name: "remove_food_item",
+          description: "Entfernt ein Lebensmittel aus dem Tracker.",
+          parameters: {
+            type: "object",
+            properties: {
+              date: {
+                type: "string",
+                description: "Das Datum des Trackers (Format YYYY-MM-DD)",
+              },
+              foodItemId: {
+                type: "string",
+                description: "Die ID des zu entfernenden Lebensmittels",
+              },
+            },
+            required: ["date", "foodItemId"],
+          },
+        },
+      },
     ];
 
     let currentMessages = [...messages];
@@ -981,6 +1061,7 @@ exports.chatWithTracker = async (messages, tracker, bodyData, language, userId) 
     // Loop for handling tool calls (supporting multiple sequential calls if needed, though usually one is enough)
     let maxIterations = 3;
     let toolContextHistory = [...history, { role: "user", content: lastMessageContent }];
+    let latestTracker = null;
 
     while (response && response.tool_calls && maxIterations > 0) {
       maxIterations--;
@@ -1012,6 +1093,86 @@ exports.chatWithTracker = async (messages, tracker, bodyData, language, userId) 
           }).sort({ date: -1 });
 
           result = trackers.length > 0 ? JSON.stringify(trackers) : "Keine Historie gefunden.";
+        } else if (functionName === "add_food_item") {
+          const date = args.date ? new Date(args.date) : new Date();
+          date.setUTCHours(0, 0, 0, 0);
+          
+          let targetTracker = await Tracker.findOne({ user: userId, date: date });
+          if (!targetTracker) {
+            targetTracker = new Tracker({
+              user: userId,
+              date: date,
+              foodItems: [],
+              recommendations: bodyData.recommendations || { kcal: 2000, protein: 150, carbohydrates: 250, fat: 70 },
+            });
+          }
+
+          const newItem = {
+            name: args.name,
+            amount: args.amount,
+            unit: args.unit,
+            kcal: args.kcal,
+            protein: args.protein,
+            carbohydrates: args.carbohydrates,
+            fat: args.fat,
+            healthyRating: args.healthyRating || 3,
+            acidBaseScore: args.acidBaseScore || 0,
+            histamineLevel: args.histamineLevel || 0,
+          };
+
+          targetTracker.foodItems.push(newItem);
+          targetTracker.totals = calculateFoodItemsTotals(targetTracker.foodItems);
+          await targetTracker.save();
+          latestTracker = targetTracker;
+          result = `Lebensmittel erfolgreich hinzugefügt. Aktueller Tracker: ${JSON.stringify(targetTracker)}`;
+        } else if (functionName === "update_food_item") {
+          const date = new Date(args.date);
+          date.setUTCHours(0, 0, 0, 0);
+          
+          const targetTracker = await Tracker.findOne({ user: userId, date: date });
+          if (!targetTracker) {
+            result = "Fehler: Kein Tracker für dieses Datum gefunden.";
+          } else {
+            const item = targetTracker.foodItems.id(args.foodItemId);
+            if (!item) {
+              result = "Fehler: Lebensmittel mit dieser ID nicht gefunden.";
+            } else {
+              if (args.name !== undefined) item.name = args.name;
+              if (args.amount !== undefined) item.amount = args.amount;
+              if (args.unit !== undefined) item.unit = args.unit;
+              if (args.kcal !== undefined) item.kcal = args.kcal;
+              if (args.protein !== undefined) item.protein = args.protein;
+              if (args.carbohydrates !== undefined) item.carbohydrates = args.carbohydrates;
+              if (args.fat !== undefined) item.fat = args.fat;
+              if (args.healthyRating !== undefined) item.healthyRating = args.healthyRating;
+              if (args.acidBaseScore !== undefined) item.acidBaseScore = args.acidBaseScore;
+              if (args.histamineLevel !== undefined) item.histamineLevel = args.histamineLevel;
+
+              targetTracker.totals = calculateFoodItemsTotals(targetTracker.foodItems);
+              await targetTracker.save();
+              latestTracker = targetTracker;
+              result = `Lebensmittel erfolgreich aktualisiert. Aktueller Tracker: ${JSON.stringify(targetTracker)}`;
+            }
+          }
+        } else if (functionName === "remove_food_item") {
+          const date = new Date(args.date);
+          date.setUTCHours(0, 0, 0, 0);
+          
+          const targetTracker = await Tracker.findOne({ user: userId, date: date });
+          if (!targetTracker) {
+            result = "Fehler: Kein Tracker für dieses Datum gefunden.";
+          } else {
+            const itemIndex = targetTracker.foodItems.findIndex(i => i._id.toString() === args.foodItemId);
+            if (itemIndex === -1) {
+              result = "Fehler: Lebensmittel mit dieser ID nicht gefunden.";
+            } else {
+              targetTracker.foodItems.splice(itemIndex, 1);
+              targetTracker.totals = calculateFoodItemsTotals(targetTracker.foodItems);
+              await targetTracker.save();
+              latestTracker = targetTracker;
+              result = `Lebensmittel erfolgreich entfernt. Aktueller Tracker: ${JSON.stringify(targetTracker)}`;
+            }
+          }
         }
 
         toolContextHistory.push({
@@ -1031,7 +1192,7 @@ exports.chatWithTracker = async (messages, tracker, bodyData, language, userId) 
       });
     }
 
-    return response;
+    return { answer: response, updatedTracker: latestTracker };
   } catch (error) {
     console.error("Error in chatWithTracker:", error.message);
     return false;

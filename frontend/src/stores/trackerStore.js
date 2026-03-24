@@ -141,6 +141,10 @@ export const useTrackerStore = defineStore("trackerStore", {
           false
         );
         if (response.status === 200) {
+          if (response.data.tracker) {
+            this.tracker = response.data.tracker;
+            this.saveCache();
+          }
           return response.data;
         }
       } catch (error) {

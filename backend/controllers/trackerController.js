@@ -931,10 +931,13 @@ exports.chat = async (req, res) => {
       recommendations: user.recommendations
     };
 
-    const response = await chatWithTracker(messages, tracker, bodyData, user.language, user._id);
+    const chatResponse = await chatWithTracker(messages, tracker, bodyData, user.language, user._id);
 
-    if (response) {
-      return res.status(200).json({ answer: response });
+    if (chatResponse) {
+      return res.status(200).json({ 
+        answer: chatResponse.answer, 
+        tracker: chatResponse.updatedTracker || tracker 
+      });
     } else {
       return res.status(500).json({ error: "Failed to generate response." });
     }
