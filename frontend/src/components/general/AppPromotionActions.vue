@@ -1,12 +1,5 @@
 <template>
   <div>
-    <v-row class="d-flex justify-center mb-3">
-      <v-chip class="px-4" color="primary" text-color="white" variant="elevated" prepend-icon="mdi-heart"
-        append-icon="mdi-heart" @click="openLink('https://play.google.com/store/apps/details?id=de.murmli.twa')">
-        {{ languageStore.t('navigation.rateApp') }}
-      </v-chip>
-    </v-row>
-
     <v-row class="d-flex justify-center">
       <v-btn icon variant="text" @click="shareApp">
         <v-tooltip :text="languageStore.t('navigation.shareApp')" location="top">

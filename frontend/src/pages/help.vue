@@ -36,6 +36,17 @@
               {{ languageStore.t('contact.discord') }}
             </v-btn>
           </v-col>
+          <v-col cols="12" class="mt-1">
+            <v-btn
+              block
+              color="pink-accent-1"
+              variant="tonal"
+              prepend-icon="mdi-heart"
+              @click="openLink(getStoreLink())"
+            >
+              {{ languageStore.t('navigation.rateApp') }}
+            </v-btn>
+          </v-col>
         </v-row>
 
         <v-expansion-panels multiple>
@@ -78,11 +89,20 @@ meta:
 <script setup>
 import { useLanguageStore } from '@/stores/languageStore';
 import AppPromotionActions from '@/components/general/AppPromotionActions.vue';
+import { Capacitor } from '@capacitor/core';
 
 const languageStore = useLanguageStore();
 
 const openLink = (url) => {
   window.open(url, '_blank');
+};
+
+const getStoreLink = () => {
+  const platform = Capacitor.getPlatform();
+  if (platform === 'ios') {
+    return 'https://apps.apple.com/us/app/murmli/id6753867833';
+  }
+  return 'https://play.google.com/store/apps/details?id=de.murmli.twa';
 };
 
 const sections = [
