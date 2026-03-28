@@ -85,8 +85,8 @@
 
         <!-- Bottom Sheet -->
 
-        <v-dialog v-model="dropdownMenu" location="top">
-            <v-card max-width="500" style="margin-top: 20px;">
+        <v-bottom-sheet v-model="dropdownMenu">
+            <v-card>
                 <v-card-title>
                     {{ trackerStore.selectedItem.name }}
                 </v-card-title>
@@ -143,7 +143,7 @@
                     <v-btn @click="dropdownMenu = false">{{ languageStore.t('general.close') }}</v-btn>
                 </v-card-actions>
             </v-card>
-        </v-dialog>
+        </v-bottom-sheet>
     </div>
 
     <!-- Change Item Dialog-->
