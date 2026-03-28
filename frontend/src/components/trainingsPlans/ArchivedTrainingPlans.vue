@@ -25,8 +25,8 @@
             </v-card>
         </div>
 
-        <v-dialog v-model="bottomSheetVisible" location="top">
-            <v-card max-width="500" style="margin-top: 20px;">
+        <v-bottom-sheet v-model="bottomSheetVisible">
+            <v-card>
                 <v-card-title>
                     {{ selectedPlan?.name }}
                 </v-card-title>
@@ -65,7 +65,7 @@
                     <v-btn @click="bottomSheetVisible = false">{{ languageStore.t('general.close') }}</v-btn>
                 </v-card-actions>
             </v-card>
-        </v-dialog>
+        </v-bottom-sheet>
     </div>
 
     <EditTrainingPlanDialog />
