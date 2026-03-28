@@ -473,7 +473,8 @@
       "daily": "Denně",
       "addToShoppingList": "Přidat do nákupního seznamu",
       "addToToday": "Přidat na dnešek",
-      "remove": "Odstranit"
+      "remove": "Odstranit",
+      "duplicate": "Duplikovat"
     },
     "dailyTracked": "(denně)",
     "calorieGoal": "Kalorický cíl",

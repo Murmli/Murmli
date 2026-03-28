@@ -473,7 +473,8 @@
       "daily": "दैनिक",
       "addToShoppingList": "खरीदारी सूची में जोड़ें",
       "addToToday": "आज के लिए जोड़ें",
-      "remove": "हटाएं"
+      "remove": "हटाएं",
+      "duplicate": "प्रतिलिपि बनाएँ"
     },
     "dailyTracked": "(दैनिक)",
     "calorieGoal": "कैलोरी लक्ष्य",

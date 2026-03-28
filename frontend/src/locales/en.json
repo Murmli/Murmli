@@ -473,7 +473,8 @@
       "daily": "Daily",
       "addToShoppingList": "Add to shopping list",
       "addToToday": "Add for today",
-      "remove": "Remove"
+      "remove": "Remove",
+      "duplicate": "Duplicate"
     },
     "dailyTracked": "(daily)",
     "calorieGoal": "Calorie goal",

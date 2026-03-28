@@ -902,6 +902,46 @@ exports.addItemToToday = async (req, res) => {
   }
 };
 
+exports.duplicateItem = async (req, res) => {
+  try {
+    const user = req.user;
+    const { trackerId, foodItemId } = req.body;
+
+    if (!trackerId || !foodItemId) {
+      return res.status(400).json({ error: "Tracker ID and Food Item ID are required." });
+    }
+
+    let tracker = await Tracker.findOne({ _id: trackerId, user: user._id });
+
+    if (!tracker) {
+      return res.status(404).json({ error: "Tracker not found" });
+    }
+
+    // Find the food item by ID
+    const foodItem = tracker.foodItems.id(foodItemId);
+    if (!foodItem) {
+      return res.status(404).json({ error: "Food item not found" });
+    }
+
+    // Create a new FoodItem object (copy)
+    const newItem = foodItem.toObject();
+    delete newItem._id;
+
+    tracker.foodItems.push(newItem);
+
+    // Recalculate totals
+    const totals = calculateFoodItemsTotals(tracker.foodItems);
+    tracker.totals = totals;
+
+    await tracker.save();
+
+    return res.status(200).json({ message: "Item duplicated successfully", tracker });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Server error" });
+  }
+};
+
 exports.chat = async (req, res) => {
   try {
     const user = req.user;

@@ -473,7 +473,8 @@
       "daily": "Daily Routine",
       "addToShoppingList": "Add to Stash",
       "addToToday": "Add for Now",
-      "remove": "Ditch"
+      "remove": "Ditch",
+      "duplicate": "Double the stoke, man"
     },
     "dailyTracked": "(everyday)",
     "calorieGoal": "Fuel Goal",

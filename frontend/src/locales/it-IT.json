@@ -473,7 +473,8 @@
       "daily": "Giornaliero",
       "addToShoppingList": "Aggiungi alla lista spesa",
       "addToToday": "Aggiungi per oggi",
-      "remove": "Rimuovi"
+      "remove": "Rimuovi",
+      "duplicate": "Duplica"
     },
     "dailyTracked": "(giornaliero)",
     "calorieGoal": "Obiettivo calorico",

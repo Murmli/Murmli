@@ -625,6 +625,45 @@ router.delete("/item/remove", secretKeyMiddleware, sessionMiddleware, trackerCon
  *         description: Server error
  */
 router.post("/item/addtoday", secretKeyMiddleware, sessionMiddleware, trackerController.addItemToToday);
+
+/**
+ * @swagger
+ * /api/v2/calorietracker/item/duplicate:
+ *   post:
+ *     tags: [Tracker]
+ *     title: Duplicate Food Item
+ *     summary: Duplicate a food item within the same tracker
+ *     description: Creates a copy of a specific food item in the specified tracker.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - trackerId
+ *               - foodItemId
+ *             properties:
+ *               trackerId:
+ *                 type: string
+ *               foodItemId:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Food item duplicated successfully
+ *       400:
+ *         description: Invalid input
+ *       401:
+ *         description: Unauthorized
+ *       403:
+ *         description: Forbidden - Invalid secret key
+ *       404:
+ *         description: Tracker or item not found
+ *       500:
+ *         description: Server error
+ */
+router.post("/item/duplicate", secretKeyMiddleware, sessionMiddleware, trackerController.duplicateItem);
+
 /**
  * @swagger
  * /api/v2/calorietracker/item/update:

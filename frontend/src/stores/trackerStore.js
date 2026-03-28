@@ -443,6 +443,29 @@ export const useTrackerStore = defineStore("trackerStore", {
       return null;
     },
 
+    // Duplicate a food item within the same tracker
+    async duplicateFoodItem() {
+      const { _id } = this.selectedItem;
+      const apiStore = useApiStore();
+      try {
+        const response = await apiStore.apiRequest(
+          "post",
+          "/calorietracker/item/duplicate",
+          { trackerId: this.tracker._id, foodItemId: _id },
+          false
+        );
+        if (response.status === 200) {
+          this.tracker = response.data.tracker;
+          this.selectedItem = {};
+          this.saveCache();
+          return true;
+        }
+      } catch (error) {
+        this.error = error;
+      }
+      return null;
+    },
+
     // Update recommendations for calories and macronutrients
     async updateRecommendations(recommendations) {
       const apiStore = useApiStore();

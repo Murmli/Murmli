@@ -125,6 +125,12 @@
                             </template>
                             <v-list-item-title>{{ languageStore.t('tracker.menu.addToShoppingList') }}</v-list-item-title>
                         </v-list-item>
+                        <v-list-item @click="duplicateItem()">
+                            <template v-slot:prepend>
+                                <v-icon icon="mdi-content-copy"></v-icon>
+                            </template>
+                            <v-list-item-title>{{ languageStore.t('tracker.menu.duplicate') }}</v-list-item-title>
+                        </v-list-item>
                         <v-list-item @click="deleteItem()">
                             <template v-slot:prepend>
                                 <v-icon color="red" icon="mdi-delete-empty"></v-icon>
@@ -482,6 +488,11 @@ const addToShoppingList = async () => {
     if (trackerStore.selectedItem && trackerStore.selectedItem.name) {
         shoppingListStore.addItemToShoppingList(trackerStore.selectedItem.name);
     }
+    dropdownMenu.value = false;
+};
+
+const duplicateItem = async () => {
+    await trackerStore.duplicateFoodItem();
     dropdownMenu.value = false;
 };
 

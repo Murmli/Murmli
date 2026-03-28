@@ -473,7 +473,8 @@
       "daily": "Every day",
       "addToShoppingList": "Add to list",
       "addToToday": "Add to today",
-      "remove": "Ditch it"
+      "remove": "Ditch it",
+      "duplicate": "Make anotha copy, ked"
     },
     "dailyTracked": "(daily)",
     "calorieGoal": "Goal",

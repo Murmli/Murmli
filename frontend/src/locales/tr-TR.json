@@ -473,7 +473,8 @@
       "daily": "Günlük",
       "addToShoppingList": "Alışveriş Listesine Ekle",
       "addToToday": "Bugün için ekle",
-      "remove": "Kaldır"
+      "remove": "Kaldır",
+      "duplicate": "Kopyasını oluştur"
     },
     "dailyTracked": "(günlük)",
     "calorieGoal": "Kalori Hedefi",

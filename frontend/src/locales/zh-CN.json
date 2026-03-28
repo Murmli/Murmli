@@ -473,7 +473,8 @@
       "daily": "每日",
       "addToShoppingList": "添加到购物清单",
       "addToToday": "添加至今天",
-      "remove": "移除"
+      "remove": "移除",
+      "duplicate": "复刻"
     },
     "dailyTracked": "(每日)",
     "calorieGoal": "卡路里目标",

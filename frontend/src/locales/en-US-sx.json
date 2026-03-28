@@ -473,7 +473,8 @@
       "daily": "Every day",
       "addToShoppingList": "Put on shoppin' list",
       "addToToday": "For today",
-      "remove": "Take it off"
+      "remove": "Take it off",
+      "duplicate": "Make a double of that there"
     },
     "dailyTracked": "(daily-like)",
     "calorieGoal": "Calorie Aim",

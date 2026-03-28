@@ -473,7 +473,8 @@
       "daily": "Jeden Tag",
       "addToShoppingList": "Uff d'Eikaufslist'",
       "addToToday": "Für heit packe",
-      "remove": "Rausschmeiße"
+      "remove": "Rausschmeiße",
+      "duplicate": "Verdoppla"
     },
     "dailyTracked": "(täglich)",
     "calorieGoal": "Kalorienziel",

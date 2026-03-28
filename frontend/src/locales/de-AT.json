@@ -473,7 +473,8 @@
       "daily": "Jeden Toog",
       "addToShoppingList": "Auf d'Einkafslistschn",
       "addToToday": "Für heite eitrogn",
-      "remove": "Weghaun"
+      "remove": "Weghaun",
+      "duplicate": "Verdoppeln"
     },
     "dailyTracked": "(täglich)",
     "calorieGoal": "Kalorienzü",

@@ -473,7 +473,8 @@
       "daily": "Täglich",
       "addToShoppingList": "Auf die Liste",
       "addToToday": "Für heute adden",
-      "remove": "Kicken"
+      "remove": "Kicken",
+      "duplicate": "Copy-pasten"
     },
     "dailyTracked": "(daily)",
     "calorieGoal": "Kalorien-Goal",
