@@ -58,6 +58,10 @@ const foodItemSchema = new Schema({
     type: String,
     default: null,
   },
+  timestamp: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = { foodItemSchema };
