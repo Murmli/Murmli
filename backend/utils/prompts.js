@@ -348,6 +348,8 @@ exports.textToActivityPrompt = (text, gender, height, weight) => {
 
 exports.askCalorieTrackerSystemPrompt = (tracker, bodydata, outputLang) => {
   const age = calculateAge(bodydata.birthyear);
+  const now = new Date();
+  const currentDateTime = now.toLocaleString('de-DE', { timeZone: 'Europe/Berlin' });
 
   // Return the formatted string
   return `
@@ -355,6 +357,9 @@ exports.askCalorieTrackerSystemPrompt = (tracker, bodydata, outputLang) => {
     """
     ${JSON.stringify(tracker)}
     """
+    Aktuelle Zeit des Nutzers: ${currentDateTime} (Europe/Berlin).
+    WICHTIG: Die Zeitstempel in den Daten sind in UTC. Nutze die aktuelle Zeit, um relative Zeitangaben (z.B. "vor 2 Stunden") oder Tageszeiten (Morgen, Mittag, Abend) korrekt zuzuordnen.
+    
     Der Nutzer ist ${bodydata.height} cm groß, ${bodydata.weight} kg schwer und ${age} Jahre alt.
     Halte dich bei deiner Antwort kurz und bündig. Antworte nur dann ausführlicher, wenn der Nutzer explizit danach fragt.
     Zähle nicht die Trackings auf, nur wenn du spezifisch auf eines eingeben möchtest.
@@ -878,9 +883,15 @@ exports.chatWithRecipeSystemPrompt = (recipe, language) => {
 };
 
 exports.chatWithTrackerSystemPrompt = (tracker, bodyData, language) => {
+  const now = new Date();
+  const currentDateTime = now.toLocaleString('de-DE', { timeZone: 'Europe/Berlin' });
+
   return `
     Du bist ein hilfreicher Ernährungsberater und Assistent für einen Kalorien-Tracker.
     
+    Aktuelle Zeit des Nutzers: ${currentDateTime} (Europe/Berlin).
+    WICHTIG: Die Zeitstempel in den Daten sind in UTC. Nutze die aktuelle Zeit, um relative Zeitangaben (z.B. "vor 2 Stunden") oder Tageszeiten (Morgen, Mittag, Abend) korrekt zuzuordnen.
+
     Benutzerdaten:
     ${JSON.stringify(bodyData)}
 
