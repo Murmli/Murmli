@@ -506,6 +506,26 @@ export const useTrackerStore = defineStore("trackerStore", {
       return null;
     },
 
+    // Refine a group of food items using AI
+    async refineFoodGroup(groupId, instructions) {
+      const apiStore = useApiStore();
+      try {
+        const response = await apiStore.apiRequest(
+          "put",
+          "/calorietracker/group/refine",
+          { trackerId: this.tracker._id, groupId, instructions }
+        );
+        if (response.status === 200) {
+          this.tracker = response.data.tracker;
+          this.saveCache();
+          return response.data.message;
+        }
+      } catch (error) {
+        this.error = error;
+      }
+      return null;
+    },
+
     // Update a food item in the tracker
     async updateFoodItem() {
       const { _id, ...updatedData } = this.selectedItem; // Entfernt _id aus dem Objekt

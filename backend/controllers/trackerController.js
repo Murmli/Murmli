@@ -811,6 +811,64 @@ exports.updateGroup = async (req, res) => {
   }
 };
 
+exports.refineGroup = async (req, res) => {
+  try {
+    const user = req.user;
+    const { trackerId, groupId, instructions } = req.body;
+
+    if (!trackerId || !groupId || !instructions) {
+      return res.status(400).json({ error: "Tracker ID, Group ID, and Instructions are required." });
+    }
+
+    let tracker = await Tracker.findOne({ _id: trackerId, user: user._id });
+
+    if (!tracker) {
+      return res.status(404).json({ error: "Tracker not found." });
+    }
+
+    // Finde alle Items der Gruppe
+    const groupItems = tracker.foodItems.filter(item => item.groupId === groupId);
+    
+    if (groupItems.length === 0) {
+      return res.status(404).json({ error: "No items found for this group." });
+    }
+
+    const { refineTrackedItems } = require("../utils/llm.js");
+    
+    // LLM aufrufen, um die Items zu verfeinern
+    const refinedItems = await refineTrackedItems(groupItems, instructions, user.language || "de-DE");
+
+    if (!refinedItems) {
+      return res.status(500).json({ error: "Failed to refine group items with LLM." });
+    }
+
+    // Entferne die alten Items der Gruppe
+    tracker.foodItems = tracker.foodItems.filter(item => item.groupId !== groupId);
+
+    // Füge die neuen verfeinerten Items hinzu (stelle sicher, dass groupId und groupName gesetzt sind)
+    const groupName = groupItems[0].groupName || "Gericht";
+    
+    refinedItems.forEach(item => {
+      tracker.foodItems.push({
+        ...item,
+        groupId,
+        groupName
+      });
+    });
+
+    // Berechne die neuen Totals
+    const totals = calculateFoodItemsTotals(tracker.foodItems);
+    tracker.totals = totals;
+
+    await tracker.save();
+
+    return res.status(200).json({ message: "Group refined successfully", tracker });
+  } catch (err) {
+    console.error("Error in refineGroup:", err);
+    return res.status(500).json({ error: "Server Error" });
+  }
+};
+
 exports.trackItemAudio = async (req, res) => {
   try {
     const user = req.user;

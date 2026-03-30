@@ -598,7 +598,11 @@
     "acidBaseBalance": "Vibes between acid and base",
     "scalePortion": "Tweak the size of the wave",
     "scaleGroupInfo": "Catch a bigger or smaller ride for the whole bowl, man. All the goods get scaled up or down together, totally proportional.",
-    "totalWeight": "Total heavy vibes (g)"
+    "totalWeight": "Total heavy vibes (g)",
+    "refineGroupTitle": "Tweak it with AI, dude",
+    "refineGroupInfo": "Tell us how to catch a better wave with this dish (like \"less oil, man\" or \"extra protein for the gains\").",
+    "refineGroupPlaceholder": "Drop your vibes here...",
+    "refineGroupButton": "Ride the change"
   },
   "trainingPlans": {
     "title": "Training Sets",

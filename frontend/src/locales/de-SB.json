@@ -598,7 +598,11 @@
     "acidBaseBalance": "Saure-Basen-Haushalt",
     "scalePortion": "Portion nabausa",
     "scaleGroupInfo": "Paschs de d'Portion für des ganze Gricht a. Alle Zutata werda halt schee proportional mit-skaliert.",
-    "totalWeight": "Gsamtegwicht (g)"
+    "totalWeight": "Gsamtegwicht (g)",
+    "refineGroupTitle": "Mit KI bissle abändra",
+    "refineGroupInfo": "Sag oifach, was an dem Essa anderscht sei soll (z.B. \"weniger Öl\", \"meh Brotein\").",
+    "refineGroupPlaceholder": "Schreib nei, was de willsch...",
+    "refineGroupButton": "Des jetzt so macha"
   },
   "trainingPlans": {
     "title": "Sportpläne",

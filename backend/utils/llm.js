@@ -549,6 +549,37 @@ exports.textToTrack = async (text, outputLang) => {
   }
 };
 
+exports.refineTrackedItems = async (items, instructions, outputLang) => {
+  try {
+    const { refineTrackerArraySystemPrompt } = require("./prompts.js");
+    const systemPrompt = refineTrackerArraySystemPrompt(outputLang);
+
+    const prompt = `
+      AKTUELLE LISTE:
+      ${JSON.stringify(items, null, 2)}
+
+      ANWEISUNG DES BENUTZERS:
+      "${instructions}"
+    `;
+
+    const apiOptions = {
+      jsonSchema: nutritionItemsSchema,
+      systemPrompt,
+      cache: false,
+    };
+
+    const answer = await apiCall(prompt, apiOptions);
+    if (!answer) {
+      return false;
+    } else {
+      return answer.items;
+    }
+  } catch (error) {
+    console.error("Error in refineTrackedItems:", error.message);
+    return false;
+  }
+};
+
 exports.textToActivity = async (text, gender, height, weight) => {
   try {
     const { textToActivitySystemPrompt, textToActivityPrompt } = require("./prompts.js");

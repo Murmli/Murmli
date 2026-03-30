@@ -598,7 +598,11 @@
     "acidBaseBalance": "Equilibrio acido-base",
     "scalePortion": "Modifica porzione",
     "scaleGroupInfo": "Modifica la porzione per l'intero piatto. Tutti gli ingredienti saranno proporzionati di conseguenza.",
-    "totalWeight": "Peso totale (g)"
+    "totalWeight": "Peso totale (g)",
+    "refineGroupTitle": "Personalizza con l'IA",
+    "refineGroupInfo": "Indica cosa vuoi modificare in questo piatto (ad es. \"meno olio\", \"più proteine\").",
+    "refineGroupPlaceholder": "Inserisci istruzioni...",
+    "refineGroupButton": "Applica personalizzazione"
   },
   "trainingPlans": {
     "title": "Piani di allenamento",

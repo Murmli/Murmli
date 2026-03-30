@@ -762,6 +762,43 @@ router.put("/group/update", secretKeyMiddleware, sessionMiddleware, trackerContr
 
 /**
  * @swagger
+ * /api/v2/calorietracker/group/refine:
+ *   put:
+ *     tags: [Tracker]
+ *     title: Refine Food Group with AI
+ *     summary: Use AI to refine items in a group based on instructions
+ *     description: Updates or replaces items in a group based on user instructions (e.g., "make it healthier", "add more protein").
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - trackerId
+ *               - groupId
+ *               - instructions
+ *             properties:
+ *               trackerId:
+ *                 type: string
+ *               groupId:
+ *                 type: string
+ *               instructions:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Food group refined successfully
+ *       400:
+ *         description: Invalid input
+ *       404:
+ *         description: Tracker or group not found
+ *       500:
+ *         description: Server error
+ */
+router.put("/group/refine", secretKeyMiddleware, sessionMiddleware, trackerController.refineGroup);
+
+/**
+ * @swagger
  * /api/v2/calorietracker/activity/remove:
  *   delete:
  *     tags: [Tracker]

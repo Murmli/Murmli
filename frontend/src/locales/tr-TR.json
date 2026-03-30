@@ -598,7 +598,11 @@
     "acidBaseBalance": "Asit-baz dengesi",
     "scalePortion": "Porsiyonu Ayarla",
     "scaleGroupInfo": "Porsiyonu tüm yemek için ayarla. Tüm malzemeler orantılı olarak ölçeklendirilecektir.",
-    "totalWeight": "Toplam Ağırlık (g)"
+    "totalWeight": "Toplam Ağırlık (g)",
+    "refineGroupTitle": "Yapay Zeka ile Özelleştir",
+    "refineGroupInfo": "Bu yemekte neyin değiştirilmesini istediğinizi belirtin (örneğin \"daha az yağ\", \"daha fazla protein\").",
+    "refineGroupPlaceholder": "Talimat girin...",
+    "refineGroupButton": "Değişikliği Uygula"
   },
   "trainingPlans": {
     "title": "Antrenman Planları",

@@ -598,7 +598,11 @@
     "audioRecorded": "Audio recorded",
     "acidBaseBalance": "Acid-base balance",
     "scalePortion": "Adjust portion",
-    "scaleGroupInfo": "Adjust the portion for the entire dish. All ingredients will be scaled proportionally."
+    "scaleGroupInfo": "Adjust the portion for the entire dish. All ingredients will be scaled proportionally.",
+    "refineGroupTitle": "Refine with AI",
+    "refineGroupInfo": "Specify what should be changed about this dish (e.g., \"less oil\", \"more protein\").",
+    "refineGroupPlaceholder": "Enter instruction...",
+    "refineGroupButton": "Apply adjustment"
   },
   "trainingPlans": {
     "title": "Training Plans",

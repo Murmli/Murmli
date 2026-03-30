@@ -277,6 +277,38 @@
                         </v-btn>
                     </v-col>
                 </v-row>
+
+                <v-divider class="my-6"></v-divider>
+
+                <div class="text-subtitle-2 mb-2">
+                    {{ languageStore.t('tracker.refineGroupTitle') || 'Mit KI anpassen' }}
+                </div>
+                <div class="text-caption mb-3">
+                    {{ languageStore.t('tracker.refineGroupInfo') || 'Gib an, was an diesem Gericht geändert werden soll (z.B. "weniger Öl", "mehr Protein").' }}
+                </div>
+                
+                <v-textarea
+                    v-model="groupRefineInstructions"
+                    :placeholder="languageStore.t('tracker.refineGroupPlaceholder') || 'Anweisung eingeben...'"
+                    variant="outlined"
+                    density="compact"
+                    rows="2"
+                    auto-grow
+                    hide-details
+                    class="mb-3"
+                ></v-textarea>
+
+                <v-btn
+                    block
+                    color="secondary"
+                    variant="tonal"
+                    :loading="isRefining"
+                    :disabled="!groupRefineInstructions.trim()"
+                    prepend-icon="mdi-auto-fix"
+                    @click="refineGroup"
+                >
+                    {{ languageStore.t('tracker.refineGroupButton') || 'Anpassung anwenden' }}
+                </v-btn>
             </v-card-text>
             <v-card-actions>
                 <v-btn text @click="groupScaleDialog = false">{{ languageStore.t('general.close') }}</v-btn>
@@ -352,8 +384,10 @@ const dropdownMenu = ref(false);
 const changeItemDialog = ref(false);
 const groupScaleDialog = ref(false);
 const isScaling = ref(false);
+const isRefining = ref(false);
 const selectedGroup = ref(null);
 const groupScalingFactor = ref(1.0);
+const groupRefineInstructions = ref('');
 const localWeight = ref(0);
 const isWeightInputFocused = ref(false);
 
@@ -475,6 +509,19 @@ const saveGroupScaling = async () => {
         groupScaleDialog.value = false;
     } finally {
         isScaling.value = false;
+    }
+};
+
+const refineGroup = async () => {
+    if (!selectedGroup.value || !groupRefineInstructions.value.trim()) return;
+
+    isRefining.value = true;
+    try {
+        await trackerStore.refineFoodGroup(selectedGroup.value.id, groupRefineInstructions.value);
+        groupRefineInstructions.value = '';
+        groupScaleDialog.value = false;
+    } finally {
+        isRefining.value = false;
     }
 };
 
