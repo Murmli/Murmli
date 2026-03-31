@@ -1,0 +1,188 @@
+{
+  "meta": {
+    "title": "Murmli – Free AI Calorie Countah, Grocer'y List & Recipe Plannah",
+    "description": "Free AI Calorie Countah from Murmli: Calculate calories, make a smaht grocery list, and get ya weekly meal plan done in wicked fast time with the AI plannah.",
+    "keywords": "Free calorie countah, AI calorie calculatah, grocery list app, AI recipe plannah, count calories, weekly plan, Murmli",
+    "og_title": "Murmli – Free AI Calorie Countah & Recipe Plannah",
+    "og_description": "Calculate calories for free, get ya grocery lists done automatic, and plan recipes with the Murmli AI in one wicked app.",
+    "twitter_title": "Murmli – Free AI Calorie Countah & Recipe Plannah",
+    "twitter_description": "Calculate calories for free, plan recipes, and get an oah-dered grocery list – all with the Murmli AI."
+  },
+  "schema": {
+    "website_description": "Murmli is ya personal all-in-one app: Individual meal plannin', recipe managin', calorie countin', and workout plans, backed by an AI that actually pays attention to ya!",
+    "faq": [
+      {
+        "q": "Is the Murmli calorie countah actually free?",
+        "a": "Yeah, the calorie calculatah on the website and in the app is free forevah. You calculate and save ya info without payin' a dime."
+      },
+      {
+        "q": "Does the AI make my grocery list automatic?",
+        "a": "Murmli takes ya recipes or weekly plan and makes an oah-dered grocery list and fixes the amounts to match ya calorie goals."
+      },
+      {
+        "q": "Can I filtah the AI recipe plannah for allergies and macros?",
+        "a": "You can set stuff like lactose-free, undah 600 kcal, or at least 30g of protein and get recipes with all the nutrition info right there."
+      }
+    ],
+    "howto": {
+      "name": "How to calculate calorie needs with the Murmli calculatah",
+      "description": "Heah’s how you use the free Murmli AI calorie countah in 60 seconds.",
+      "steps": [
+        {
+          "name": "Enter the basics",
+          "text": "Type in ya gendah, weight, height, and the year you were boahn."
+        },
+        {
+          "name": "Pick ya woah-k PAL",
+          "text": "Select ya woah-k hours per week and the right PAL value to show how much you move at the job."
+        },
+        {
+          "name": "Set ya leisure PAL",
+          "text": "Put in the PAL for ya free time so Murmli can calculate the whole deal."
+        },
+        {
+          "name": "See ya calorie goals",
+          "text": "Click 'Calculate calorie needs' and check out the target ranges for losin' weight, stayin' the same, or buildin' muscle."
+        }
+      ]
+    }
+  },
+  "nav": {
+    "features": "Featu-ahs",
+    "calculator": "Calorie Calculatah",
+    "how_to": "How it woah-ks",
+    "faq": "FAQ",
+    "trailer": "Trail-ah",
+    "about": "About",
+    "home_label": "Back to Murmli Home"
+  },
+  "hero": {
+    "h1": "Free AI Calorie Countah with a Smaht Grocery List",
+    "p": "Wanna calculate calories for free, plan recipes, and get a grocery list automatic? Murmli does it all in one shot: AI-calculated calorie needs, a matchin' week plan, and an oah-dered list for the mah-ket.",
+    "google_play_alt": "Download it now on Google Play",
+    "app_store_alt": "Download it now on the Apple App Sto-ah",
+    "discord_alt": "Join ou-ah Discord serv-ah"
+  },
+  "trailer": {
+    "h2": "See Murmli in action!",
+    "p": "Watch ou-ah shoaht trail-ah and discov-ah the most impoahtant featu-ahs real quick."
+  },
+  "features": {
+    "h2": "What does Murmli do for ya right now?",
+    "items": [
+      {
+        "h3": "AI Calorie Countah – free",
+        "p": "Calculate ya metabolic rate with the Mifflin-St-Jeor formula and let the AI convert ya goals into calories – no paywall allowed."
+      },
+      {
+        "h3": "Automatic Grocery List",
+        "p": "Murmli makes an oah-dered grocery list straight from ya weekly plan and fixes the amounts for ya calorie goals."
+      },
+      {
+        "h3": "AI Recipe Plannah",
+        "p": "Just tell it what ya want like 'pasta without lactose undah 600 kcal' and get recipes with nutrition info and cookin' steps."
+      },
+      {
+        "h3": "Weekly Plan in Minutes",
+        "p": "Combine breakfast, lunch, dinn-ah, and snacks into a clear weekly plan that fits ya calorie budget."
+      },
+      {
+        "h3": "Adaptive Woah-kout Plans",
+        "p": "Get suggestions that look at ya progress and balance out ya energy levels."
+      },
+      {
+        "h3": "Recipe Management with Nutrients",
+        "p": "Save ya favo-ah-ite meals, fix ingredients for allergies, and see calories and protein right away."
+      }
+    ]
+  },
+  "how_to": {
+    "h2": "How do I calculate my calorie needs?",
+    "p": "Follow these shoaht steps, and Murmli will show ya metabolic rate and calorie goals right off the bat.",
+    "steps": [
+      "Enter ya gendah, weight, height, and boahn year.",
+      "Pick ya woah-k hours and the right PAL value.",
+      "Choose ya leisure PAL, tap 'Calculate calorie needs' and save the result.",
+      "Tap once to save it in the app so recipes, grocery lists, and woah-kouts get adjusted."
+    ],
+    "cta": "Fill out the calorie calculatah now"
+  },
+  "about": {
+    "h2": "Why is Murmli mo-ah than just a grocery list?",
+    "p1": "Murmli links the grocery list, calorie calculatah, and recipe plannah in one app. Share lists with family or pahtnahs and everything stays synced in real time.",
+    "p2": "The AI Recipe Plannah gives suggestions based on what ya want and sends the ingredients to the list with one tap. In the recipe manag-ah, you get clear steps plus nutrition info.",
+    "p3": "The calorie countah and calculatah woah-k togeth-ah: Meals you cooked are added, goals get updated, and woah-kout plans match up.",
+    "p4": "The result: a whole nutrition ecosystem from the sto-ah to trackin', always adjustin' to ya goals."
+  },
+  "calculator": {
+    "h2": "How does the Murmli calculatah figu-ah out ya calorie needs?",
+    "p": "It combines the Mifflin-St-Jeor formula with ya PAL values for woah-k and leisure and shows ya the rate for losin', keepin', or buildin' muscle.",
+    "gender": "Gendah",
+    "male": "Male",
+    "female": "Female",
+    "weight_label": "Body weight in kilograms",
+    "weight_placeholder": "75",
+    "height_label": "Height in centimeters",
+    "height_placeholder": "180",
+    "birth_year_label": "Year you were boahn",
+    "birth_year_placeholder": "1990",
+    "work_hours_label": "Woah-k hours per week",
+    "work_pal_label": "PAL value for woah-k",
+    "work_pal_options": [
+      "Sittin' job (PAL 1.2)",
+      "Mostly sittin' with a little movin' (PAL 1.4)",
+      "Mixed physical woah-k (PAL 1.6)",
+      "Wicked hahd physical woah-k (PAL 1.8)",
+      "Heavy labo-ah (PAL 2.0)"
+    ],
+    "rest_pal_label": "PAL value for leisure and restin'",
+    "rest_pal_options": [
+      "Relaxin' and light activity (PAL 1.2)",
+      "Light movement and walkin' (PAL 1.35)",
+      "Active free time with spoahts (PAL 1.5)"
+    ],
+    "calculate_button": "Calculate calorie needs",
+    "hint": "Note: This calculatah ain't a replacement for seein' a real doctah.",
+    "initial_result": "Put in ya data to get ya metabolic rate results right now.",
+    "info_h3": "Why the Murmli calculatah is wicked accurate",
+    "info_list": [
+      "Uses the scientific Mifflin-St-Jeor approach for the metabolic rate.",
+      "Takes ya personal weekly rhythm into account through woah-k and rest times.",
+      "Calculates target ranges for losin', keepin', and buildin' muscle just like in the app."
+    ],
+    "formula_title": "Mifflin-St-Jeor Formula:",
+    "formula_men": "Men = 10 × weight (kg) + 6.25 × height (cm) − 5 × age + 5",
+    "formula_women": "Women = 10 × weight (kg) + 6.25 × height (cm) − 5 × age − 161",
+    "formula_explanation": "Murmli combines the result with ya woah-k and rest times (PAL values) to calculate the total energy use transparently.",
+    "formula_result_explanation": "Aftah calculatin', you'll see ya basic rate, woah-k rate, and total energy use includin' the recommended goals. That way you can see if ya current diet fits ya goal.",
+    "formula_tip": "Tip: Save ya values in the Murmli app to automatic-ly match meals, recipes, and woah-kout plans to ya calorie needs."
+  },
+  "faq_section": {
+    "h2": "Common questions about the free Murmli calorie countah",
+    "items": [
+      {
+        "h3": "Is the Murmli calorie countah really free?",
+        "p": "Yeah. The calculatah on this page and in the app is free for good. You don't pay nothin' to figu-ah out ya calories or save results."
+      },
+      {
+        "h3": "Does the AI make my grocery list automatic?",
+        "p": "Yeah. From recipe wishes or the weekly plan, Murmli makes an oah-dered grocery list right away and fixes the amounts for ya calorie goal."
+      },
+      {
+        "h3": "Can I filtah the AI recipe plannah for allergies and macros?",
+        "p": "You can type in stuff like 'lactose-free', 'undah 600 kcal' or 'at least 30g protein'. The AI gives ya recipes with nutrition info and cookin' steps."
+      }
+    ]
+  },
+  "footer": {
+    "links": {
+      "home": "Home",
+      "sitemap": "Sitemap",
+      "privacy": "Privacy",
+      "imprint": "Imprint",
+      "github": "GitHub (Open Sou-ahce)"
+    },
+    "copy": "© 2026 Murmli – Ya smaht, personal everyday help-ah.",
+    "author": "Private project by Manuel Gaschler"
+  }
+}

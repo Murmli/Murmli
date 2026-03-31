@@ -12,7 +12,8 @@
     "test": "jest",
     "db:backup": "node scripts/dbOps.js backup",
     "db:restore": "node scripts/dbOps.js restore",
-    "refresh-recipes": "node scripts/refreshRecipes.js"
+    "refresh-recipes": "node scripts/refreshRecipes.js",
+    "build-lang": "node scripts/buildLang.js"
   },
   "author": "",
   "license": "ISC",

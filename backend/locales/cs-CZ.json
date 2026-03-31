@@ -1,0 +1,188 @@
+{
+  "meta": {
+    "title": "Murmli – Bezplatné počítadlo kalorií s AI, nákupní seznam a plánovač receptů",
+    "description": "Bezplatné AI počítadlo kalorií od Murmli: Vypočítejte si kalorie, vytvořte chytrý nákupní seznam a s AI plánovačem receptů mějte týdenní plán hotový během pár minut.",
+    "keywords": "bezplatné počítadlo kalorií, AI kalkulačka kalorií, aplikace nákupní seznam, AI plánovač receptů, výpočet kalorií, týdenní plán, Murmli",
+    "og_title": "Murmli – Bezplatné AI počítadlo kalorií a plánovač receptů",
+    "og_description": "Počítejte kalorie zdarma, automaticky vytvářejte nákupní seznamy a plánujte recepty s Murmli AI v jedné aplikaci.",
+    "twitter_title": "Murmli – Bezplatné AI počítadlo kalorií a plánovač receptů",
+    "twitter_description": "Zdarma výpočet kalorií, plánování receptů a setříděný nákupní seznam – vše s pomocí Murmli AI."
+  },
+  "schema": {
+    "website_description": "Murmli je vaše osobní aplikace vše v jednom: individuální plánování jídla, správa receptů, počítání kalorií a tréninkové plány, podpořené umělou inteligencí, která se vám přizpůsobí!",
+    "faq": [
+      {
+        "q": "Je počítadlo kalorií Murmli skutečně zdarma?",
+        "a": "Ano, kalkulačka kalorií na webu i v aplikaci je trvale zdarma. Svou potřebu si vypočítáte a uložíte bez jakýchkoli nákladů."
+      },
+      {
+        "q": "Vytváří AI také automaticky můj nákupní seznam?",
+        "a": "Murmli generuje setříděný nákupní seznam z vašich receptů nebo týdenního plánu a upravuje množství podle vašeho kalorického cíle."
+      },
+      {
+        "q": "Mohu v AI plánovači receptů filtrovat podle alergií a maker?",
+        "a": "Můžete zadat parametry jako bezlaktózové, pod 600 kcal nebo minimálně 30 g bílkovin a získáte odpovídající recepty včetně nutričních údajů."
+      }
+    ],
+    "howto": {
+      "name": "Jak vypočítat kalorickou potřebu s kalkulačkou Murmli",
+      "description": "Takto využijete bezplatné AI počítadlo kalorií Murmli během 60 sekund.",
+      "steps": [
+        {
+          "name": "Zadání základních údajů",
+          "text": "Zadejte pohlaví, váhu, výšku a rok narození."
+        },
+        {
+          "name": "Výběr pracovního PAL",
+          "text": "Zvolte počet pracovních hodin týdně a odpovídající hodnotu PAL pro zohlednění výdeje v práci."
+        },
+        {
+          "name": "Nastavení PAL pro volný čas",
+          "text": "Uveďte PAL pro volný čas, aby Murmli mohl kompletně vypočítat váš celkový výdej energie."
+        },
+        {
+          "name": "Zobrazení kalorického cíle",
+          "text": "Klikněte na „Vypočítat potřebu kalorií“ a prohlédněte si navrhovaná rozmezí pro hubnutí, udržování váhy nebo nabírání svalů."
+        }
+      ]
+    }
+  },
+  "nav": {
+    "features": "Funkce",
+    "calculator": "Kalkulačka kalorií",
+    "how_to": "Jak to funguje",
+    "faq": "Časté dotazy",
+    "trailer": "Trailer",
+    "about": "O nás",
+    "home_label": "Na úvodní stránku Murmli"
+  },
+  "hero": {
+    "h1": "Bezplatné AI počítadlo kalorií s chytrým nákupním seznamem",
+    "p": "Chcete zdarma počítat kalorie, plánovat recepty a automaticky získávat nákupní seznam? Murmli to zvládne v jednom kroku: AI výpočet kalorické potřeby, odpovídající týdenní plán a setříděný seznam do supermarketu.",
+    "google_play_alt": "Stáhnout na Google Play",
+    "app_store_alt": "Stáhnout v Apple App Store",
+    "discord_alt": "Připojte se k našemu Discord serveru"
+  },
+  "trailer": {
+    "h2": "Uvidíte Murmli v akci!",
+    "p": "Podívejte se na náš krátký trailer a objevte přehled nejdůležitějších funkcí."
+  },
+  "features": {
+    "h2": "Co pro vás Murmli okamžitě vyřeší?",
+    "items": [
+      {
+        "h3": "AI počítadlo kalorií – zdarma",
+        "p": "Vypočítejte si bazální a celkový výdej pomocí vzorce Mifflin-St Jeor a nechte AI převést vaše cíle na kalorie – bez platební brány."
+      },
+      {
+        "h3": "Automatický nákupní seznam",
+        "p": "Murmli vytváří setříděný nákupní seznam přímo z vašeho týdenního plánu a upravuje množství podle vašich kalorických cílů."
+      },
+      {
+        "h3": "AI plánovač receptů",
+        "p": "Stačí formulovat přání jako „těstoviny bez laktózy pod 600 kcal“ a získáte vhodné recepty s nutričními hodnotami a postupem vaření."
+      },
+      {
+        "h3": "Týdenní plán za pár minut",
+        "p": "Zkombinujte snídani, oběd, večeři a svačiny do jasného týdenního plánu, který odpovídá vašemu kalorickému rozpočtu."
+      },
+      {
+        "h3": "Adaptivní tréninkové plány",
+        "p": "Získejte návrhy, které zohledňují váš pokrok a vyrovnávají vaši energetickou bilanci."
+      },
+      {
+        "h3": "Správa receptů s nutričními hodnotami",
+        "p": "Ukládejte si oblíbená jídla, upravujte ingredience podle alergií a okamžitě vidíte kalorie, bílkoviny a další údaje."
+      }
+    ]
+  },
+  "how_to": {
+    "h2": "Jak si vypočítám svou kalorickou potřebu?",
+    "p": "Postupujte podle těchto krátkých kroků a Murmli vám okamžitě ukáže bazální metabolismus, celkový výdej a vhodné kalorické cíle.",
+    "steps": [
+      "Zadejte pohlaví, váhu, výšku a rok narození.",
+      "Zvolte počet pracovních hodin a odpovídající hodnotu PAL.",
+      "Zvolte PAL pro volný čas, klikněte na „Vypočítat potřebu kalorií“ a uložte výsledek.",
+      "Jedním klepnutím uložte hodnotu do aplikace, aby se recepty, nákupní seznam a trénink automaticky přizpůsobily."
+    ],
+    "cta": "Vyplnit kalkulačku kalorií"
+  },
+  "about": {
+    "h2": "Proč je Murmli víc než jen nákupní seznam?",
+    "p1": "Murmli propojuje nákupní seznam, kalkulačku kalorií a plánovač receptů v jedné aplikaci. Seznamy můžete sdílet s rodinou nebo partnery a vše zůstává živě synchronizované.",
+    "p2": "AI plánovač receptů dodává návrhy podle vašich požadavků a jedním klepnutím odesílá ingredience přímo na seznam. Ve správě receptů získáte jasné kroky i nutriční hodnoty.",
+    "p3": "Počítadlo kalorií a kalkulačka spolupracují: uvařená jídla se propisují do statistik, cíle se aktualizují a tréninkové plány se tomu přizpůsobují.",
+    "p4": "Výsledek: ucelený nutriční ekosystém od nákupu až po sledování pokroku, který se neustále přizpůsobuje vašim cílům."
+  },
+  "calculator": {
+    "h2": "Jak kalkulačka Murmli počítá vaši kalorickou potřebu?",
+    "p": "Kombinuje vzorec Mifflin-St Jeor s vašimi hodnotami PAL pro práci a volný čas a okamžitě zobrazuje bazální a celkový výdej pro hubnutí, udržování váhy nebo nabírání svalů.",
+    "gender": "Pohlaví",
+    "male": "Muž",
+    "female": "Žena",
+    "weight_label": "Tělesná hmotnost v kilogramech",
+    "weight_placeholder": "75",
+    "height_label": "Tělesná výška v centimetrech",
+    "height_placeholder": "180",
+    "birth_year_label": "Rok narození",
+    "birth_year_placeholder": "1990",
+    "work_hours_label": "Počet pracovních hodin týdně",
+    "work_pal_label": "Hodnota PAL pro práci",
+    "work_pal_options": [
+      "Sedavé zaměstnání (PAL 1.2)",
+      "Převážně sedavé s trochou pohybu (PAL 1.4)",
+      "Smíšená fyzická práce (PAL 1.6)",
+      "Fyzicky náročná práce (PAL 1.8)",
+      "Těžká fyzická práce (PAL 2.0)"
+    ],
+    "rest_pal_label": "Hodnota PAL pro volný čas a odpočinek",
+    "rest_pal_options": [
+      "Relaxace a lehká aktivita (PAL 1.2)",
+      "Lehký pohyb a procházky (PAL 1.35)",
+      "Aktivní volný čas se sportem (PAL 1.5)"
+    ],
+    "calculate_button": "Vypočítat potřebu kalorií",
+    "hint": "Upozornění: Kalkulačka nenahrazuje individuální lékařské poradenství.",
+    "initial_result": "Zadejte své údaje, abyste okamžitě získali vyhodnocení svého bazálního a celkového energetického výdeje.",
+    "info_h3": "Proč je kalkulačka Murmli přesná",
+    "info_list": [
+      "Používá vědecky uznávaný přístup Mifflin-St Jeor pro bazální metabolismus.",
+      "Zohledňuje váš osobní týdenní rytmus prostřednictvím pracovní doby a doby odpočinku.",
+      "Počítá cílová rozmezí pro hubnutí, udržování váhy a nabírání svalů stejně jako v aplikaci."
+    ],
+    "formula_title": "Vzorec Mifflin-St Jeor:",
+    "formula_men": "Muži = 10 × hmotnost (kg) + 6,25 × výška (cm) − 5 × věk + 5",
+    "formula_women": "Ženy = 10 × hmotnost (kg) + 6,25 × výška (cm) − 5 × věk − 161",
+    "formula_explanation": "Murmli kombinuje výsledek s vašimi uvedenými časy práce a odpočinku (hodnoty PAL), aby transparentně vypočítal celkový výdej.",
+    "formula_result_explanation": "Po výpočtu uvidíte bazální metabolismus, pracovní výdej a celkový výdej včetně doporučených kalorických cílů. Můžete tak přímo posoudit, zda váš aktuální stravovací plán odpovídá vašemu cíli.",
+    "formula_tip": "Tip: Uložte si své hodnoty v aplikaci Murmli, aby se jídla, recepty a tréninkové plány automaticky přizpůsobily vašemu kalorickému rozpočtu."
+  },
+  "faq_section": {
+    "h2": "Časté dotazy k bezplatnému počítadlu kalorií Murmli",
+    "items": [
+      {
+        "h3": "Je počítadlo kalorií Murmli skutečně zdarma?",
+        "p": "Ano. Kalkulačka na této stránce i v aplikaci je trvale zdarma. Neplatíte nic za výpočet kalorické potřeby ani za ukládání výsledků."
+      },
+      {
+        "h3": "Vytváří AI také automaticky můj nákupní seznam?",
+        "p": "Ano. Z požadavků na recepty nebo z týdenního plánu Murmli okamžitě generuje setříděný nákupní seznam a upravuje množství podle vašeho kalorického cíle."
+      },
+      {
+        "h3": "Mohu v AI plánovači receptů filtrovat podle alergií a maker?",
+        "p": "Můžete zadat parametry jako „bezlaktózové“, „pod 600 kcal“ nebo „minimálně 30 g bílkovin“. AI dodá vhodné recepty s nutričními hodnotami a postupem vaření."
+      }
+    ]
+  },
+  "footer": {
+    "links": {
+      "home": "Úvodní stránka",
+      "sitemap": "Mapa stránek",
+      "privacy": "Ochrana údajů",
+      "imprint": "Tiráž",
+      "github": "GitHub (Open Source)"
+    },
+    "copy": "© 2026 Murmli – Váš chytrý, osobní pomocník pro každý den.",
+    "author": "Soukromý projekt Manuela Gaschlera"
+  }
+}

@@ -1,0 +1,188 @@
+{
+  "meta": {
+    "title": "Murmli – Gratis KI Kaloriäzähler, Ichaufsliste & Rezept-Planer",
+    "description": "Gratis KI Kaloriäzähler vo Murmli: Kaloriä berächne, smarti Ichaufsliste erstelle und mit em KI Rezept-Planer d'Wucheplanig in es paar Minute fertig ha.",
+    "keywords": "Gratis Kaloriäzähler, KI Kaloriärechner, Ichaufsliste App, KI Rezept-Planer, Kaloriä berächne, Wucheplan, Murmli",
+    "og_title": "Murmli – Gratis KI Kaloriäzähler & Rezept-Planer",
+    "og_description": "Berächne dini Kaloriä gratis, erstell automatisch Ichaufslistene und plan Rezäpt mit dr Murmli KI in einere App.",
+    "twitter_title": "Murmli – Gratis KI Kaloriäzähler & Rezept-Planer",
+    "twitter_description": "Gratis Kaloriä berächne, Rezäpt plane und e sortierti Ichaufsliste übercho – alles mit dr Murmli KI."
+  },
+  "schema": {
+    "website_description": "Murmli isch dini persönli All-in-One App: Individuelli Ässensplanig, Rezäptverwaltig, Kaloriäzelle und Trainingsplän, unterstützt vo-n-ere KI, wo voll uf di ii-gaht!",
+    "faq": [
+      {
+        "q": "Isch dr Murmli Kaloriäzähler würkli gratis?",
+        "a": "Ja, dr Kaloriärechner uf dr Websiite und in dr App isch für immer gratis. Du chasch di Bedarf ohni Chöschte berächne und spichere."
+      },
+      {
+        "q": "Erstellt d'KI au automatisch mini Ichaufsliste?",
+        "a": "Murmli generiert us de Rezeptwünsch oder em Wucheplan e sortierti Ichaufsliste und passt d'Mängene a dis Kaloriä-Ziel a."
+      },
+      {
+        "q": "Chan ich bim KI Rezept-Planer nach Allergie und Makros filtere?",
+        "a": "Du chasch Vorgabe wie laktosefrei, under 600 kcal oder mindischtens 30 g Protein hinterlegge und überchunsch passendi Rezäpt mit Nährwärt-Agabe."
+      }
+    ],
+    "howto": {
+      "name": "Kaloriäbedarf mit em Murmli Rechner berächne",
+      "description": "So nutzt du dr gratis Murmli KI Kaloriäzähler in 60 Sekunde.",
+      "steps": [
+        {
+          "name": "Basisdate iigäh",
+          "text": "Gschlächt, Gwicht, Grössi und Geburtsjahr iitippe."
+        },
+        {
+          "name": "Arbets-PAL uslese",
+          "text": "Arbetsstunde pro Wuche und dr passendi PAL-Wärt uschoose, zum dr Arbets-Umsatz aazeige."
+        },
+        {
+          "name": "Freiziit-PAL feschtlegge",
+          "text": "Aagäh, was du in dr Freiziit machsch, damit Murmli dr komplett Leischtigsumsatz berächne cha."
+        },
+        {
+          "name": "Kaloriä-Ziel aazeige laa",
+          "text": "Uf \"Kaloriäbedarf berächne\" drucke und di vorgschlagene Ziel-Berich für s'Abnäh, Halte oder de Muskelufbau abläse."
+        }
+      ]
+    }
+  },
+  "nav": {
+    "features": "Funktione",
+    "calculator": "Kaloriärechner",
+    "how_to": "So funktioniert's",
+    "faq": "FAQ",
+    "trailer": "Trailer",
+    "about": "Über eus",
+    "home_label": "Zrugg zur Murmli Startsiite"
+  },
+  "hero": {
+    "h1": "Gratis KI Kaloriäzähler mit ere smarte Ichaufsliste",
+    "p": "Wotsch gratis Kaloriä berächne, Rezäpt plane und automatisch e Ichaufsliste übercho? Murmli erledigt das in eim Schritt: KI-berächnete Kaloriäbedarf, passende Wucheplan und e sortierti Liste für de Supermarkt.",
+    "google_play_alt": "Jetz bi Google Play abelade",
+    "app_store_alt": "Jetz im Apple App Store abelade",
+    "discord_alt": "Chum uf euse Discord Server"
+  },
+  "trailer": {
+    "h2": "Lueg dir dr Murmli in Aktion a!",
+    "p": "Lueg dr euse churzi Trailer a und entdeck die wichtigschte Funktione im Überblick."
+  },
+  "features": {
+    "h2": "Was macht dr Murmli sofort für di?",
+    "items": [
+      {
+        "h3": "KI Kaloriäzähler – gratis",
+        "p": "Berächne de Grund- und Leischtigsumsatz mit dr Mifflin-St-Jeor-Formle und loh d'KI dini Ziel in Kaloriä umrächne – ohni Paywall."
+      },
+      {
+        "h3": "Automatischi Ichaufsliste",
+        "p": "Murmli erstellt e sortierti Ichaufsliste diräkt us dim Wucheplan und passt d'Mängene a dini Kaloriä-Ziel a."
+      },
+      {
+        "h3": "KI Rezept-Planer",
+        "p": "Schriib eifach en Wunsch wie „Pasta ohni Laktose under 600 kcal“ und du überchunsch passendi Rezäpt mit Nährwärt und de Kochschritt."
+      },
+      {
+        "h3": "Wucheplan in Minute",
+        "p": "Kombinier de Zmorge, s'Mittagässe, de Zabig und Snacks zu me klare Wucheplan, abgestimmt uf dis Kaloriäbudget."
+      },
+      {
+        "h3": "Adaptivi Trainingsplän",
+        "p": "Überchumm Vorschläg, wo din Fortschritt berücksichtige und dini Energiebilanz uusgliiche."
+      },
+      {
+        "h3": "Rezäptverwaltig mit Nährwärt",
+        "p": "Spicher dini Lieblingsgrücht, pass Zuetate a Allergie a und gsehn sofort d'Kaloriä, Protein und Co."
+      }
+    ]
+  },
+  "how_to": {
+    "h2": "Wie berächne ich min Kaloriäbedarf?",
+    "p": "Folge dene churze Schritt, dänn zeigt dir dr Murmli sofort de Grundumsatz, Leischtigsumsatz und die passende Kaloriä-Ziel.",
+    "steps": [
+      "Gschlächt, Gwicht, Grössi und Geburtsjahr iiträge.",
+      "Arbetsstunde und de passendi PAL-Wärt uswähle.",
+      "Freiziit-PAL wähle, uf „Kaloriäbedarf berächne“ tippe und s'Ergebnis spichere.",
+      "Mit eim Tipp de Wärt in dr App hinterlegge, damit d'Rezäpt, d'Ichaufsliste und s'Training aagpasst wärde."
+    ],
+    "cta": "Jetz de Kaloriärechner uusfülle"
+  },
+  "about": {
+    "h2": "Warum isch dr Murmli meh als nur e Ichaufsliste?",
+    "p1": "Murmli verchnüpft d'Ichaufsliste, de Kaloriärechner und de Rezept-Planer in einere App. Du teilsch dini Listene mit dr Familie oder am Partner und alles blibt live synchron.",
+    "p2": "Dr KI Rezept-Planer lieferet Vorschläg nach dine Vorgabe und schickt d'Zuetate mit eim Tipp diräkt uf d'Liste. In dr Rezäpt-Verwaltig überchunsch du klari Schritt und alli Nährwärt.",
+    "p3": "Kaloriäzähler und Kaloriärechner schaffet zäme: Grücht, wo du gekocht häsch, wärde übernoh, d'Ziel aktualisiert und d'Trainingsplän dranne aagpasst.",
+    "p4": "S'Ergebnis: es durchgängigs Ernährigs-Ökosyschtem vom Ichauf bis zum Tracking, wo sich laufend a dini Ziel aapasst."
+  },
+  "calculator": {
+    "h2": "Wie berächnet dr Murmli Rechner din Kaloriäbedarf?",
+    "p": "Er kombiniert d'Mifflin-St-Jeor-Formle mit dine PAL-Wärt für d'Arbet und d'Freiziit und zeigt dir sofort de Grund- und Leischtigsumsatz für s'Abnäh, Halte oder de Muskelufbau.",
+    "gender": "Gschlächt",
+    "male": "Männli",
+    "female": "Wiibli",
+    "weight_label": "Körpergwicht in Kilogramm",
+    "weight_placeholder": "75",
+    "height_label": "Körpergrössi in Zentimeter",
+    "height_placeholder": "180",
+    "birth_year_label": "Geburtsjahr",
+    "birth_year_placeholder": "1990",
+    "work_hours_label": "Arbetsstunde pro Wuche",
+    "work_pal_label": "PAL-Wärt für d'Arbet",
+    "work_pal_options": [
+      "Sitzendi Tätigkeit (PAL 1.2)",
+      "Vorrängig sitzend mit bizli Bewegig (PAL 1.4)",
+      "Gmischteti körperli Arbet (PAL 1.6)",
+      "Körperli asträngendi Arbet (PAL 1.8)",
+      "Schwäri körperli Arbet (PAL 2.0)"
+    ],
+    "rest_pal_label": "PAL-Wärt für Freiziit und Rueh",
+    "rest_pal_options": [
+      "Entspannig und liechti Aktivität (PAL 1.2)",
+      "Liechti Bewegig und Spaziergäng (PAL 1.35)",
+      "Aktivi Freiziit mit Sport (PAL 1.5)"
+    ],
+    "calculate_button": "Kaloriäbedarf berächne",
+    "hint": "Hiwis: Dr Rechner ersetzt kei individuelli medizinisch Beratig.",
+    "initial_result": "Gib dini Date ii, zum sofort e Uuswärtig vo dim Grund- und Leischtigsumsatz z'übercho.",
+    "info_h3": "Warum dr Murmli Rechner so präzis isch",
+    "info_list": [
+      "Brutcht de wüsseschaftlich etablierti Mifflin-St-Jeor-Aasatz für de Grundumsatz.",
+      "Berücksichtigt din persönli Wucherhythmus über d'Arbets- und d'Ruehzyte.",
+      "Berächnet Ziel-Berich für s'Abnäh, Halte und de Muskelufbau gnau wie in dr App."
+    ],
+    "formula_title": "Mifflin-St-Jeor-Formle:",
+    "formula_men": "Manne = 10 × Gwicht (kg) + 6,25 × Grössi (cm) − 5 × Alter + 5",
+    "formula_women": "Fraue = 10 × Gwicht (kg) + 6,25 × Grössi (cm) − 5 × Alter − 161",
+    "formula_explanation": "Murmli kombiniert s'Ergebnis mit dine aagebene Arbets- und Ruehzyte (PAL-Wärt), zum de Gsamtumsatz transparent z'berächne.",
+    "formula_result_explanation": "Nach dr Berächnig gsehsch de Grundumsatz, de Arbetsumsatz und de Gsamtumsatz inklusive de empfohlene Kaloriä-Ziel. So chasch du diräkt ischätze, ob din aktuelle Ernährigsplan zu dim Ziel passt.",
+    "formula_tip": "Tipp: Spicher dini Wärt in dr Murmli App, zum automatisch Mahlzyte, Rezäpt und Trainingsplän uf din Kaloriähuushalt abstimmet loo."
+  },
+  "faq_section": {
+    "h2": "Häufigi Froge zum gratis Murmli Kaloriäzähler",
+    "items": [
+      {
+        "h3": "Isch dr Murmli Kaloriäzähler würkli gratis?",
+        "p": "Ja. Dr Rechner uf därä Siite und in dr App isch für immer choschtelos. Du zahlsch nüt, zum din Kaloriäbedarf z'berächne oder d'Ergebnis z'spichere."
+      },
+      {
+        "h3": "Erstellt d'KI au automatisch mini Ichaufsliste?",
+        "p": "Ja. Us dine Rezeptwünsch oder em Wucheplan generiert dr Murmli sofort e sortierti Ichaufsliste und passt d'Mängene a dis Kaloriä-Ziel a."
+      },
+      {
+        "h3": "Chan ich bim KI Rezept-Planer nach Allergie und Makros filtere?",
+        "p": "Du chasch Sache wie „laktosefrei“, „under 600 kcal“ oder „mindischtens 30 g Protein“ iigäh. D'KI lieferet passendi Rezäpt mit Nährwärt und de Kochschritt."
+      }
+    ]
+  },
+  "footer": {
+    "links": {
+      "home": "Startsiite",
+      "sitemap": "Sitemap",
+      "privacy": "Dateschutz",
+      "imprint": "Impressum",
+      "github": "GitHub (Open Source)"
+    },
+    "copy": "© 2026 Murmli – Din smarte, persönli Alltagsälfer.",
+    "author": "Privatprojekt vom Manuel Gaschler"
+  }
+}

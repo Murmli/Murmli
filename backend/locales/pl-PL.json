@@ -1,0 +1,188 @@
+{
+  "meta": {
+    "title": "Murmli – Darmowy licznik kalorii AI, lista zakupów i planer przepisów",
+    "description": "Darmowy licznik kalorii AI od Murmli: obliczaj kalorie, twórz inteligentne listy zakupów i przygotuj plan tygodniowy w kilka minut dzięki planerowi przepisów AI.",
+    "keywords": "Darmowy licznik kalorii, kalkulator kalorii AI, aplikacja lista zakupów, planer przepisów AI, obliczanie kalorii, plan tygodniowy, Murmli",
+    "og_title": "Murmli – Darmowy licznik kalorii AI i planer przepisów",
+    "og_description": "Obliczaj kalorie za darmo, twórz automatyczne listy zakupów i planuj posiłki z AI Murmli w jednej aplikacji.",
+    "twitter_title": "Murmli – Darmowy licznik kalorii AI i planer przepisów",
+    "twitter_description": "Obliczaj kalorie za darmo, planuj przepisy i otrzymuj posortowaną listę zakupów – wszystko dzięki AI Murmli."
+  },
+  "schema": {
+    "website_description": "Murmli to Twoja osobista aplikacja All-in-One: indywidualne planowanie posiłków, zarządzanie przepisami, liczenie kalorii i plany treningowe wspierane przez AI, która dostosowuje się do Ciebie!",
+    "faq": [
+      {
+        "q": "Czy licznik kalorii Murmli jest naprawdę darmowy?",
+        "a": "Tak, kalkulator kalorii na stronie i w aplikacji jest na stałe bezpłatny. Możesz obliczać i zapisywać swoje zapotrzebowanie bez żadnych kosztów."
+      },
+      {
+        "q": "Czy AI automatycznie tworzy moją listę zakupów?",
+        "a": "Murmli generuje posortowaną listę zakupów na podstawie wybranych przepisów lub planu tygodniowego i dostosowuje ilości do Twojego celu kalorycznego."
+      },
+      {
+        "q": "Czy mogę filtrować planer przepisów AI pod kątem alergii i makroskładników?",
+        "a": "Możesz zdefiniować preferencje, takie jak bez laktozy, poniżej 600 kcal lub minimum 30 g białka, a otrzymasz dopasowane przepisy z informacjami o wartościach odżywczych."
+      }
+    ],
+    "howto": {
+      "name": "Jak obliczyć zapotrzebowanie kaloryczne za pomocą kalkulatora Murmli",
+      "description": "Oto jak skorzystać z darmowego licznika kalorii AI Murmli w 60 sekund.",
+      "steps": [
+        {
+          "name": "Wprowadź dane podstawowe",
+          "text": "Wpisz swoją płeć, wagę, wzrost i rok urodzenia."
+        },
+        {
+          "name": "Wybierz PAL dotyczący pracy",
+          "text": "Wybierz liczbę godzin pracy tygodniowo i odpowiedni współczynnik PAL, aby odzwierciedlić wydatek energetyczny w pracy."
+        },
+        {
+          "name": "Ustal PAL dla czasu wolnego",
+          "text": "Podaj PAL dla czasu wolnego, aby Murmli mógł w pełni obliczyć Twoją całkowitą przemianę materii."
+        },
+        {
+          "name": "Wyświetl cel kaloryczny",
+          "text": "Kliknij „Oblicz zapotrzebowanie kaloryczne” i sprawdź sugerowane zakresy docelowe dla odchudzania, utrzymania wagi lub budowy masy mięśniowej."
+        }
+      ]
+    }
+  },
+  "nav": {
+    "features": "Funkcje",
+    "calculator": "Kalkulator kalorii",
+    "how_to": "Jak to działa",
+    "faq": "FAQ",
+    "trailer": "Trailer",
+    "about": "O nas",
+    "home_label": "Do strony głównej Murmli"
+  },
+  "hero": {
+    "h1": "Darmowy licznik kalorii AI z inteligentną listą zakupów",
+    "p": "Chcesz liczyć kalorie za darmo, planować przepisy i automatycznie otrzymywać listę zakupów? Murmli robi to w jednym kroku: obliczone przez AI zapotrzebowanie, dopasowany plan tygodniowy i posortowana lista do supermarketu.",
+    "google_play_alt": "Pobierz teraz z Google Play",
+    "app_store_alt": "Pobierz teraz z Apple App Store",
+    "discord_alt": "Dołącz do naszego serwera Discord"
+  },
+  "trailer": {
+    "h2": "Zobacz Murmli w akcji!",
+    "p": "Obejrzyj nasz krótki trailer i poznaj najważniejsze funkcje w pigułce."
+  },
+  "features": {
+    "h2": "Co Murmli może zrobić dla Ciebie od razu?",
+    "items": [
+      {
+        "h3": "Licznik kalorii AI – za darmo",
+        "p": "Oblicz podstawową i całkowitą przemianę materii za pomocą wzoru Mifflina-St Jeora i pozwól AI przeliczyć Twoje cele na kalorie – bez ukrytych opłat."
+      },
+      {
+        "h3": "Automatyczna lista zakupów",
+        "p": "Murmli tworzy posortowaną listę zakupów bezpośrednio z Twojego planu tygodniowego i dostosowuje ilości do Twoich celów kalorycznych."
+      },
+      {
+        "h3": "Planer przepisów AI",
+        "p": "Po prostu wpisz życzenie, np. „makaron bez laktozy poniżej 600 kcal”, a otrzymasz pasujące przepisy z wartościami odżywczymi i instrukcją gotowania."
+      },
+      {
+        "h3": "Plan tygodniowy w kilka minut",
+        "p": "Połącz śniadania, obiady, kolacje i przekąski w przejrzysty plan tygodniowy dopasowany do Twojego budżetu kalorycznego."
+      },
+      {
+        "h3": "Adaptacyjne plany treningowe",
+        "p": "Otrzymuj propozycje uwzględniające Twoje postępy i równoważące bilans energetyczny."
+      },
+      {
+        "h3": "Zarządzanie przepisami z wartościami odżywczymi",
+        "p": "Zapisuj ulubione dania, dostosowuj składniki do alergii i od razu sprawdzaj kalorie, białka i inne wartości."
+      }
+    ]
+  },
+  "how_to": {
+    "h2": "Jak obliczyć zapotrzebowanie kaloryczne?",
+    "p": "Wykonaj te krótkie kroki, a Murmli natychmiast pokaże Ci podstawową przemianę materii, całkowitą przemianę materii i odpowiednie cele kaloryczne.",
+    "steps": [
+      "Wpisz płeć, wagę, wzrost i rok urodzenia.",
+      "Wybierz godziny pracy i odpowiedni współczynnik PAL.",
+      "Wybierz PAL dla czasu wolnego, kliknij „Oblicz zapotrzebowanie kaloryczne” i zapisz wynik.",
+      "Jednym kliknięciem zapisz wartość w aplikacji, aby przepisy, lista zakupów i treningi zostały automatycznie dostosowane."
+    ],
+    "cta": "Wypełnij kalkulator kalorii"
+  },
+  "about": {
+    "h2": "Dlaczego Murmli to coś więcej niż lista zakupów?",
+    "p1": "Murmli łączy listę zakupów, kalkulator kalorii i planer przepisów w jednej aplikacji. Możesz udostępniać listy rodzinie lub partnerom, a wszystko synchronizuje się na żywo.",
+    "p2": "Planer przepisów AI dostarcza sugestie zgodne z Twoimi wytycznymi i jednym kliknięciem przesyła składniki bezpośrednio na listę. W module zarządzania przepisami otrzymujesz jasne kroki oraz wartości odżywcze.",
+    "p3": "Licznik kalorii i kalkulator współpracują ze sobą: ugotowane dania są uwzględniane w dzienniku, cele są aktualizowane, a plany treningowe odpowiednio modyfikowane.",
+    "p4": "Rezultat: spójny ekosystem żywieniowy od zakupów po śledzenie postępów, który na bieżąco dostosowuje się do Twoich celów."
+  },
+  "calculator": {
+    "h2": "Jak kalkulator Murmli oblicza Twoje zapotrzebowanie?",
+    "p": "Łączy wzór Mifflina-St Jeora z Twoimi współczynnikami PAL dla pracy i czasu wolnego, natychmiast pokazując zapotrzebowanie na redukcję, utrzymanie wagi lub budowę mięśni.",
+    "gender": "Płeć",
+    "male": "Mężczyzna",
+    "female": "Kobieta",
+    "weight_label": "Masa ciała w kilogramach",
+    "weight_placeholder": "75",
+    "height_label": "Wzrost w centymetrach",
+    "height_placeholder": "180",
+    "birth_year_label": "Rok urodzenia",
+    "birth_year_placeholder": "1990",
+    "work_hours_label": "Godziny pracy tygodniowo",
+    "work_pal_label": "Wartość PAL dla pracy",
+    "work_pal_options": [
+      "Praca siedząca (PAL 1.2)",
+      "Głównie siedząca z niewielką ilością ruchu (PAL 1.4)",
+      "Mieszana praca fizyczna (PAL 1.6)",
+      "Ciężka praca fizyczna (PAL 1.8)",
+      "Bardzo ciężka praca fizyczna (PAL 2.0)"
+    ],
+    "rest_pal_label": "Wartość PAL dla czasu wolnego i odpoczynku",
+    "rest_pal_options": [
+      "Relaks i lekka aktywność (PAL 1.2)",
+      "Lekki ruch i spacery (PAL 1.35)",
+      "Aktywny czas wolny ze sportem (PAL 1.5)"
+    ],
+    "calculate_button": "Oblicz zapotrzebowanie kaloryczne",
+    "hint": "Uwaga: Kalkulator nie zastępuje indywidualnej porady medycznej.",
+    "initial_result": "Wprowadź swoje dane, aby natychmiast otrzymać analizę podstawowej i całkowitej przemiany materii.",
+    "info_h3": "Dlaczego kalkulator Murmli jest precyzyjny",
+    "info_list": [
+      "Wykorzystuje naukowo uznany wzór Mifflina-St Jeora do obliczenia podstawowej przemiany materii.",
+      "Uwzględnia Twój osobisty rytm tygodniowy poprzez czas pracy i odpoczynku.",
+      "Oblicza zakresy docelowe dla odchudzania, utrzymania wagi i budowy mięśni, tak jak w aplikacji."
+    ],
+    "formula_title": "Wzór Mifflina-St Jeora:",
+    "formula_men": "Mężczyźni = 10 × waga (kg) + 6,25 × wzrost (cm) − 5 × wiek + 5",
+    "formula_women": "Kobiety = 10 × waga (kg) + 6,25 × wzrost (cm) − 5 × wiek − 161",
+    "formula_explanation": "Murmli łączy wynik z podanymi przez Ciebie godzinami pracy i odpoczynku (wartości PAL), aby przejrzyście obliczyć całkowitą przemianę materii.",
+    "formula_result_explanation": "Po obliczeniu zobaczysz podstawową przemianę materii, zapotrzebowanie związane z pracą oraz całkowite zapotrzebowanie wraz z zalecanymi celami kalorycznymi. Dzięki temu możesz od razu ocenić, czy Twój obecny plan żywieniowy pasuje do Twojego celu.",
+    "formula_tip": "Wskazówka: Zapisz swoje wartości w aplikacji Murmli, aby automatycznie dopasować posiłki, przepisy i plany treningowe do swojego bilansu kalorycznego."
+  },
+  "faq_section": {
+    "h2": "Często zadawane pytania dotyczące darmowego licznika kalorii Murmli",
+    "items": [
+      {
+        "h3": "Czy licznik kalorii Murmli jest naprawdę darmowy?",
+        "p": "Tak. Kalkulator na tej stronie oraz w aplikacji jest na stałe bezpłatny. Nie płacisz nic za obliczanie zapotrzebowania kalorycznego ani za zapisywanie wyników."
+      },
+      {
+        "h3": "Czy AI automatycznie tworzy moją listę zakupów?",
+        "p": "Tak. Na podstawie wybranych przepisów lub planu tygodniowego Murmli natychmiast generuje posortowaną listę zakupów i dostosowuje ilości do Twojego celu kalorycznego."
+      },
+      {
+        "h3": "Czy mogę filtrować planer przepisów AI pod kątem alergii i makroskładników?",
+        "p": "Możesz wprowadzić wytyczne takie jak „bez laktozy”, „poniżej 600 kcal” lub „minimum 30 g białka”. AI dostarczy odpowiednie przepisy wraz z wartościami odżywczymi i instrukcją przygotowania."
+      }
+    ]
+  },
+  "footer": {
+    "links": {
+      "home": "Strona główna",
+      "sitemap": "Mapa strony",
+      "privacy": "Polityka prywatności",
+      "imprint": "Nota prawna",
+      "github": "GitHub (Open Source)"
+    },
+    "copy": "© 2026 Murmli – Twój inteligentny, osobisty asystent codzienny.",
+    "author": "Prywatny projekt Manuela Gaschlera"
+  }
+}

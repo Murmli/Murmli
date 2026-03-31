@@ -1,0 +1,188 @@
+{
+  "meta": {
+    "title": "Murmli – Brezplačen števec kalorij z umetno inteligenco, nakupovalni seznam in načrtovalec receptov",
+    "description": "Brezplačen števec kalorij z umetno inteligenco Murmli: izračunajte kalorije, ustvarite pametne nakupovalne sezname in z načrtovalcem receptov z umetno inteligenco pripravite tedenski načrt v nekaj minutah.",
+    "keywords": "Brezplačen števec kalorij, KI kalkulator kalorij, aplikacija za nakupovalni seznam, KI načrtovalec receptov, izračun kalorij, tedenski načrt, Murmli",
+    "og_title": "Murmli – Brezplačen števec kalorij z umetno inteligenco in načrtovalec receptov",
+    "og_description": "Brezplačno izračunajte kalorije, samodejno ustvarite nakupovalne sezname in načrtujte recepte z umetno inteligenco Murmli v eni aplikaciji.",
+    "twitter_title": "Murmli – Brezplačen števec kalorij z umetno inteligenco in načrtovalec receptov",
+    "twitter_description": "Brezplačno izračunajte kalorije, načrtujte recepte in pridobite razvrščen nakupovalni seznam – vse z umetno inteligenco Murmli."
+  },
+  "schema": {
+    "website_description": "Murmli je vaša osebna aplikacija vse-v-enem: individualno načrtovanje obrokov, upravljanje receptov, štetje kalorij in načrti vadbe s pomočjo umetne inteligence, ki se prilagaja vam!",
+    "faq": [
+      {
+        "q": "Je števec kalorij Murmli res brezplačen?",
+        "a": "Da, kalkulator kalorij na spletni strani in v aplikaciji je trajno brezplačen. Svoje potrebe izračunate in shranite brez stroškov."
+      },
+      {
+        "q": "Ali umetna inteligenca samodejno ustvari tudi moj nakupovalni seznam?",
+        "a": "Murmli iz želja po receptih ali tedenskega načrta ustvari razvrščen nakupovalni seznam in prilagodi količine vašemu kaloričnemu cilju."
+      },
+      {
+        "q": "Ali lahko v načrtovalcu receptov z umetno inteligenco filtriram po alergijah in makrih?",
+        "a": "Določite lahko zahteve, kot so brez laktoze, pod 600 kcal ali vsaj 30 g beljakovin, in prejmete ustrezne recepte s podatki o hranilni vrednosti."
+      }
+    ],
+    "howto": {
+      "name": "Izračun potreb po kalorijah s kalkulatorjem Murmli",
+      "description": "Tako v 60 sekundah uporabite brezplačen števec kalorij Murmli z umetno inteligenco.",
+      "steps": [
+        {
+          "name": "Vnos osnovnih podatkov",
+          "text": "Vnesite spol, težo, višino in leto rojstva."
+        },
+        {
+          "name": "Izbira PAL vrednosti za delo",
+          "text": "Izberite delovne ure na teden in ustrezno vrednost PAL, da se upošteva poraba energije pri delu."
+        },
+        {
+          "name": "Določitev PAL vrednosti za prosti čas",
+          "text": "Navedite PAL za prosti čas, da Murmli v celoti izračuna vašo skupno porabo energije."
+        },
+        {
+          "name": "Prikaz kaloričnega cilja",
+          "text": "Kliknite na »Izračunaj potrebe po kalorijah« in si oglejte predlagana ciljna območja za hujšanje, vzdrževanje telesne teže ali pridobivanje mišične mase."
+        }
+      ]
+    }
+  },
+  "nav": {
+    "features": "Funkcije",
+    "calculator": "Kalkulator kalorij",
+    "how_to": "Kako deluje",
+    "faq": "Pogosta vprašanja",
+    "trailer": "Napovednik",
+    "about": "O projektu",
+    "home_label": "Na začetno stran Murmli"
+  },
+  "hero": {
+    "h1": "Brezplačen števec kalorij z umetno inteligenco in pametnim nakupovalnim seznamom",
+    "p": "Želite brezplačno izračunati kalorije, načrtovati recepte in samodejno dobiti nakupovalni seznam? Murmli to naredi v enem koraku: KI-izračunana potreba po kalorijah, ustrezen tedenski načrt in razvrščen seznam za trgovino.",
+    "google_play_alt": "Prenesite zdaj v Google Play",
+    "app_store_alt": "Prenesite zdaj v Apple App Store",
+    "discord_alt": "Pridružite se našemu Discord strežniku"
+  },
+  "trailer": {
+    "h2": "Oglejte si Murmli v akciji!",
+    "p": "Poglejte si naš kratek napovednik in odkrijte pregled najpomembnejših funkcij."
+  },
+  "features": {
+    "h2": "Kaj Murmli takoj naredi za vas?",
+    "items": [
+      {
+        "h3": "KI števec kalorij – brezplačno",
+        "p": "Izračunajte bazalno in aktivno porabo energije z Mifflin-St-Jeorjevo formulo in pustite umetni inteligenci, da pretvori vaše cilje v kalorije – brez plačljivih omejitev."
+      },
+      {
+        "h3": "Samodejni nakupovalni seznam",
+        "p": "Murmli ustvari razvrščen nakupovalni seznam neposredno iz vašega tedenskega načrta in prilagodi količine vašim kaloričnim ciljem."
+      },
+      {
+        "h3": "KI načrtovalec receptov",
+        "p": "Preprosto ubesedite željo, kot je »testenine brez laktoze pod 600 kcal«, in prejmite ustrezne recepte s hranilnimi vrednostmi in koraki kuhanja."
+      },
+      {
+        "h3": "Tedenski načrt v minutah",
+        "p": "Združite zajtrk, kosilo, večerjo in prigrizke v jasen tedenski načrt, prilagojen vašemu kaloričnemu proračunu."
+      },
+      {
+        "h3": "Prilagodljivi načrti vadbe",
+        "p": "Prezmite predloge, ki upoštevajo vaš napredek in uravnotežijo vašo energijsko bilanco."
+      },
+      {
+        "h3": "Upravljanje receptov s hranilnimi vrednostmi",
+        "p": "Shranite priljubljene jedi, prilagodite sestavine alergijam in takoj vidite kalorije, beljakovine in drugo."
+      }
+    ]
+  },
+  "how_to": {
+    "h2": "Kako izračunam svoje potrebe po kalorijah?",
+    "p": "Sledite tem kratkim korakom in Murmli vam bo takoj pokazal bazalno porabo, aktivno porabo in ustrezne kalorične cilje.",
+    "steps": [
+      "Vnesite spol, težo, višino in leto rojstva.",
+      "Izberite delovne ure in ustrezno vrednost PAL.",
+      "Izberite PAL za prosti čas, kliknite »Izračunaj potrebe po kalorijah« in shranite rezultat.",
+      "Z enim dotikom shranite vrednost v aplikaciji, da se recepti, nakupovalni seznam in trening samodejno prilagodijo."
+    ],
+    "cta": "Izpolnite kalkulator kalorij zdaj"
+  },
+  "about": {
+    "h2": "Zakaj je Murmli več kot le nakupovalni seznam?",
+    "p1": "Murmli povezuje nakupovalni seznam, kalkulator kalorij in načrtovalec receptov v eni aplikaciji. Sezname lahko delite z družino ali partnerji, vse pa ostane sinhronizirano v živo.",
+    "p2": "Načrtovalec receptov z umetno inteligenco nudi predloge po vaših merilih in z enim dotikom pošlje sestavine neposredno na seznam. Pri upravljanju receptov dobite jasne korake in hranilne vrednosti.",
+    "p3": "Števec kalorij in kalkulator kalorij delujeta skupaj: kuhane jedi se upoštevajo, cilji se posodobijo in načrti vadbe se temu prilagodijo.",
+    "p4": "Rezultat: celovit prehranski ekosistem od nakupa do sledenja, ki se nenehno prilagaja vašim ciljem."
+  },
+  "calculator": {
+    "h2": "Kako Murmli kalkulator izračuna vaše potrebe po kalorijah?",
+    "p": "Kombinira Mifflin-St-Jeorjevo formulo z vašimi PAL vrednostmi za delo in prosti čas ter takoj pokaže bazalno in skupno porabo za hujšanje, vzdrževanje teže ali pridobivanje mišic.",
+    "gender": "Spol",
+    "male": "Moški",
+    "female": "Ženska",
+    "weight_label": "Telesna teža v kilogramih",
+    "weight_placeholder": "75",
+    "height_label": "Telesna višina v centimetrih",
+    "height_placeholder": "180",
+    "birth_year_label": "Leto rojstva",
+    "birth_year_placeholder": "1990",
+    "work_hours_label": "Delovne ure na teden",
+    "work_pal_label": "PAL vrednost za delo",
+    "work_pal_options": [
+      "Sedeče delo (PAL 1.2)",
+      "Pretežno sedeče z malo gibanja (PAL 1.4)",
+      "Mešano fizično delo (PAL 1.6)",
+      "Fizično zahtevno delo (PAL 1.8)",
+      "Težko fizično delo (PAL 2.0)"
+    ],
+    "rest_pal_label": "PAL vrednost za prosti čas in počitek",
+    "rest_pal_options": [
+      "Sproščanje in lahka aktivnost (PAL 1.2)",
+      "Lahko gibanje in sprehodi (PAL 1.35)",
+      "Aktiven prosti čas s športom (PAL 1.5)"
+    ],
+    "calculate_button": "Izračunaj potrebe po kalorijah",
+    "hint": "Opomba: Kalkulator ne nadomešča individualnega medicinskega svetovanja.",
+    "initial_result": "Vnesite svoje podatke, da takoj prejmete oceno vaše bazalne in skupne porabe energije.",
+    "info_h3": "Zakaj je Murmli kalkulator natančen",
+    "info_list": [
+      "Uporablja znanstveno utemeljen Mifflin-St-Jeorjev pristop za bazalno porabo.",
+      "Upošteva vaš osebni tedenski ritem preko delovnega časa in časa počitka.",
+      "Izračuna ciljna območja za hujšanje, vzdrževanje in pridobivanje mišic, kot v aplikaciji."
+    ],
+    "formula_title": "Mifflin-St-Jeorjeva formula:",
+    "formula_men": "Moški = 10 × teža (kg) + 6,25 × višina (cm) − 5 × starost + 5",
+    "formula_women": "Ženske = 10 × teža (kg) + 6,25 × višina (cm) − 5 × starost − 161",
+    "formula_explanation": "Murmli kombinira rezultat z vašimi navedenimi delovnimi in počitniškimi časi (PAL vrednosti), da transparentno izračuna skupno porabo energije.",
+    "formula_result_explanation": "Po izračunu vidite bazalno porabo, delovno porabo in skupno porabo energije vključno s priporočenimi kaloričnimi cilji. Tako lahko takoj ocenite, ali vaš trenutni prehranski načrt ustreza vašemu cilju.",
+    "formula_tip": "Nasvet: Shranite svoje vrednosti v aplikaciji Murmli, da se obroki, recepti in načrti vadbe samodejno prilagodijo vaši kalorični bilanci."
+  },
+  "faq_section": {
+    "h2": "Pogosta vprašanja o brezplačnem števcu kalorij Murmli",
+    "items": [
+      {
+        "h3": "Je števec kalorij Murmli res brezplačen?",
+        "p": "Da. Kalkulator na tej strani in v aplikaciji je trajno brezplačen. Ne plačate ničesar za izračun potreb po kalorijah ali shranjevanje rezultatov."
+      },
+      {
+        "h3": "Ali umetna inteligenca samodejno ustvari tudi moj nakupovalni seznam?",
+        "p": "Da. Iz želja po receptih ali tedenskega načrta Murmli takoj ustvari razvrščen nakupovalni seznam in prilagodi količine vašemu kaloričnemu cilju."
+      },
+      {
+        "h3": "Ali lahko v načrtovalcu receptov z umetno inteligenco filtriram po alergijah in makrih?",
+        "p": "Vnesete lahko zahteve, kot so »brez laktoze«, »pod 600 kcal« ali »vsaj 30 g beljakovin«. Umetna inteligenca poda ustrezne recepte s hranilnimi vrednostmi in koraki kuhanja."
+      }
+    ]
+  },
+  "footer": {
+    "links": {
+      "home": "Domov",
+      "sitemap": "Zemljevid strani",
+      "privacy": "Varstvo podatkov",
+      "imprint": "Kolofon",
+      "github": "GitHub (Odprta koda)"
+    },
+    "copy": "© 2026 Murmli – Vaš pametni, osebni vsakdanji pomočnik.",
+    "author": "Zasebni projekt Manuela Gaschlerja"
+  }
+}

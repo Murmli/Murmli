@@ -1,0 +1,188 @@
+{
+  "meta": {
+    "title": "Murmli – Des koschdelose KI Kalorientool, Einkaufsleischd & Rezepte-Planer",
+    "description": "Kostenloser KI Kalorienzähler vom Murmli: Kaloria berechne, a gscheite Einkaufsleischd erstelle und mit em KI Rezepte Planer dei Wocheplanung in a paar Minute fertig han.",
+    "keywords": "Kostenloser Kalorienzähler, KI Kalorienrechner, Einkaufsleischd App, KI Rezepte Planer, Kaloria berechne, Wochenplan, Murmli",
+    "og_title": "Murmli – Koschdeloser KI Kalorienzähler & Rezepte-Planer",
+    "og_description": "Berechne dei Kaloria für lau, lass dir automatisch dei Einkaufsleischd mache und plan dei Esse mit der Murmli KI – alles in oiner App.",
+    "twitter_title": "Murmli – Koschdeloser KI Kalorienzähler & Rezepte-Planer",
+    "twitter_description": "Für Gottes Lohn Kaloria berechne, Rezepte plane und a g’ordnete Einkaufsleischd kriege – des macht d'Murmli KI."
+  },
+  "schema": {
+    "website_description": "Murmli isch dei persönliche All-in-One App: Individuelle Essensplanung, Rezeptverwaltung, Kaloriazähle und Trainingspläne – mit’ra KI, die genau auf di naufgaht!",
+    "faq": [
+      {
+        "q": "Isch der Murmli Kalorienzähler au wirklich fir lau?",
+        "a": "Ha joo, der Kalorienrechner auf der Webseit ond in der App koschdet nix und bleibt au so. Du kasch dei Bedarf berechne ond speichere, ohne dass de au nur oin Pfennig zahle musch."
+      },
+      {
+        "q": "Macht mir die KI au automatisch mei Einkaufsleischd?",
+        "a": "D'Murmli baschtelt dir aus deine Rezeptwünsch oder em Wochenplan a g’hörig sortierte Einkaufsleischd ond passt d'Menga glei an dei Kaloriaziel o."
+      },
+      {
+        "q": "Ka i den KI Rezepte Planer nach Allergie ond Makros filtere?",
+        "a": "Sicher dat! Du kasch sage „ohne Laktose“, „weniger als 600 kcal“ oder „mindeschtens 30 g Protein“ – dann kriegsch passende Rezepte mit alle Nährwertogabe."
+      }
+    ],
+    "howto": {
+      "name": "Kaloriebedarf mit em Murmli Rechner ausrechnen",
+      "description": "So nutzisch den koschdelose Murmli KI Kalorienzähler in grad mal 60 Sekunda.",
+      "steps": [
+        {
+          "name": "Basisdate eigebe",
+          "text": "Männle oder Weible, G’wicht, Größe ond dei Geburtsjohr neischreibe."
+        },
+        {
+          "name": "Arbeits-PAL aussuche",
+          "text": "Wie viel de schaffsch pro Woche ond den richtige PAL-Wert auswähle, damit mir wisse, was de beim Schaffe verbrausch."
+        },
+        {
+          "name": "Freizeit-PAL feschtlege",
+          "text": "Sag uns, was de in deiner Freizeit treibsch, damit Murmli dei ganze Leistungsumsatz ausrechne ka."
+        },
+        {
+          "name": "Kaloriaziel ozeige lasse",
+          "text": "Druck uf „Kaloriebedarf berechnen“ ond schau dir o, was de zum Abnehme, Halte oder Muskelaufbau brausch."
+        }
+      ]
+    }
+  },
+  "nav": {
+    "features": "Was es ka",
+    "calculator": "Kalorierechner",
+    "how_to": "So goht’s",
+    "faq": "Froga",
+    "trailer": "Video",
+    "about": "Über uns",
+    "home_label": "Zrugg zur Murmli Startseit"
+  },
+  "hero": {
+    "h1": "Koschdeloser KI Kalorienzähler mit’ra gscheite Einkaufsleischd",
+    "p": "Witt au für lau dei Kaloria berechne, Rezepte plane ond automatisch a Einkaufsleischd kriege? Murmli macht des alles auf oimol: KI-berechneter Kaloriebedarf, a passender Wochenplan ond a sortierte Leischd für de Supermarkt.",
+    "google_play_alt": "Glei bei Google Play runterlade",
+    "app_store_alt": "Glei im Apple App Store hole",
+    "discord_alt": "Komm uf onsern Discord Server"
+  },
+  "trailer": {
+    "h2": "Schau dir Murmli mol o!",
+    "p": "Guck dir onser kurz’ Video o ond entdeck d'wichtigschde Funktione im Überblick."
+  },
+  "features": {
+    "h2": "Was macht Murmli glei für di?",
+    "items": [
+      {
+        "h3": "KI Kalorienzähler – fir lau",
+        "p": "Berechne dei Grund- und Leistungsumsatz mit der Mifflin-St-Jeor-Formel ond lass d'KI dei Ziele in Kaloria umrechne – ganz ohne Bezahlschrank."
+      },
+      {
+        "h3": "Automatische Einkaufsleischd",
+        "p": "Murmli macht dir a sortierte Einkaufsleischd direkt aus deim Wochenplan ond passt d'Menga uf dei Kaloriaziel o."
+      },
+      {
+        "h3": "KI Rezepte Planer",
+        "p": "Schreib einfach nauf: „Pasta ohne Laktose unter 600 kcal“ ond scho kriegsch Rezepte mit Nährwerte ond wie mer des kocht."
+      },
+      {
+        "h3": "Wochenplan in Minute",
+        "p": "Pack dei Frühstück, Mittag, Obadessa ond Vesper zu am saubere Wochenplan z'samme, genau so wie's dein Geldbeutel – äh, dei Kaloriakonto – hergibt."
+      },
+      {
+        "h3": "Anpassbare Trainingspläne",
+        "p": "Krieg Vorschläg, die genau schaue, wie weit de scho bisch ond die dei Energiebilanz wieder ins Lot bringe."
+      },
+      {
+        "h3": "Rezeptverwaltung mit Nährwerte",
+        "p": "Speicher dei Leibspeise, pass d'Zutate an dei Allergie o ond seh glei, wie viel Kaloria ond Protein drin steckt."
+      }
+    ]
+  },
+  "how_to": {
+    "h2": "Wie berechne i meinen Kaloriebedarf?",
+    "p": "Mach einfach diese kurze Schritte, dann zeigt dir Murmli sofort Grundumsatz, Leistungsumsatz ond passende Kaloriaziel’ o.",
+    "steps": [
+      "Männle oder Weible, G’wicht, Größe ond Geburtsjohr neischreibe.",
+      "Arbeitsstunda ond den passende PAL-Wert aussuche.",
+      "Freizeit-PAL wähle, uf „Kaloriebedarf berechnen“ patsche ond des Ergebnis abspeichere.",
+      "Mit oim Klick den Wert in der App hinterlege, damit Rezepte, Einkaufsleischd ond Training glei Bescheid wisse."
+    ],
+    "cta": "Jetzt Kalorierechner ausfülle"
+  },
+  "about": {
+    "h2": "Warum isch Murmli meh als nur a Einkaufsleischd?",
+    "p1": "Murmli verknüpft d'Einkaufsleischd, den Kalorierechner ond den Rezepte-Planer in oiner App. Du kasch dei Leischda mit der Familie oder deim Schätzle teile ond alles bleibt live gleichtönig.",
+    "p2": "Der KI Rezepte Planer liefert dir Sache genau nach deim G’schmack ond schickt d'Zutate mit oim Fingerdruck direkt auf d'Leischd. In der Rezeptverwaltung kriegsch a feine Anleitung ond d'Nährwerbt oben drauf.",
+    "p3": "Kalorienzähler ond Kalorierechner schaffe Hand in Hand: Was de kocht hasch, wird übernomme, Ziele werde aktualisiert ond d'Trainingspläne glei angepasst.",
+    "p4": "Am Ende hosch a g’höriges Ernährungs-Deng, vom Einkaufe bis zum Tracke, wo sich immer an dei Ziele anpasst."
+  },
+  "calculator": {
+    "h2": "Wie rechnet der Murmli dei Kaloriebedarf aus?",
+    "p": "Er nimmt d'Mifflin-St-Jeor-Formel her mit deine PAL-Werte fürs Schaffe ond d'Freizeit ond zeigt dir glei, was de verbrausch zum Abnehme, Halte oder Muckis ufbaut.",
+    "gender": "G’schlecht",
+    "male": "Männle",
+    "female": "Weible",
+    "weight_label": "Körpergewicht in Kilogramm",
+    "weight_placeholder": "75",
+    "height_label": "Wie groß de bisch (in Zentimeter)",
+    "height_placeholder": "180",
+    "birth_year_label": "Geburtsjohr",
+    "birth_year_placeholder": "1990",
+    "work_hours_label": "Arbeitsstunda pro Woche",
+    "work_pal_label": "PAL-Wert fürs Schaffe",
+    "work_pal_options": [
+      "Hocke d'ganze Zeit (PAL 1.2)",
+      "Meischtens hocke, aber au mol uffschdehe (PAL 1.4)",
+      "A bissle G'schäft mit Bewegung (PAL 1.6)",
+      "Schweres Schaffe (PAL 1.8)",
+      "Richtig buckle ond schufte (PAL 2.0)"
+    ],
+    "rest_pal_label": "PAL-Wert für d'Freizeit ond d'Ruah",
+    "rest_pal_options": [
+      "Sich ausruhe ond nix Groß' mache (PAL 1.2)",
+      "A bissle laufe oder spaziera geh (PAL 1.35)",
+      "Richtig Gas gebe beim Sport (PAL 1.5)"
+    ],
+    "calculate_button": "Kaloriebedarf ausrechne",
+    "hint": "Obacht: Der Rechner ersetzt koina ärztliche Beratung.",
+    "initial_result": "Schreib dei Date nei, dann kriegsch glei dei Auswertung vom Grund- ond Leistungsumsatz.",
+    "info_h3": "Warum der Murmli Rechner g’scheit isch",
+    "info_list": [
+      "Nimmt den wissenschaftliche Mifflin-St-Jeor-Ansatz für den Grundumsatz her.",
+      "Schaut uf deinen persönliche Wochenrhythmus beim Schaffe ond in der Freizeit.",
+      "Rechnet Zielbereiche fürs Abnehme, Halte ond Muskelaufbau aus, genau wie in der App."
+    ],
+    "formula_title": "Mifflin-St-Jeor-Formel:",
+    "formula_men": "Männer = 10 × G'wicht (kg) + 6,25 × Größe (cm) − 5 × Alter + 5",
+    "formula_women": "Fraue = 10 × G'wicht (kg) + 6,25 × Größe (cm) − 5 × Alter − 161",
+    "formula_explanation": "Murmli nimmt des Ergebnis ond verrechnet des mit deine Arbeits- ond Ruhezeite (PAL-Werte), damit de genau siehsch, was Sach isch.",
+    "formula_result_explanation": "Nach em Rechnen siehsch dei Grundumsatz, Arbeitsumsatz ond Gesamtumsatz samt de empfohlene Kaloriaziel’. So kasch glei gucke, ob dei Esse aktuell zu deim Ziel passt.",
+    "formula_tip": "Tipp: Speicher dei Werte in der Murmli App, damit dei Mahlzeite, Rezepte ond Trainingspläne automatisch ufeinander abgestimmt werde."
+  },
+  "faq_section": {
+    "h2": "Häufige Froga zum koschdelose Murmli Kalorienzähler",
+    "items": [
+      {
+        "h3": "Isch der Murmli Kalorienzähler wirklich fir lau?",
+        "p": "Joo. Der Rechner do auf der Seit ond in der App koschdet dauerhaft nix. Du zahlsch koin Cent, um dei Kaloriebedarf zu berechne oder d'Ergebnisse zu speichere."
+      },
+      {
+        "h3": "Macht mir die KI au automatisch mei Einkaufsleischd?",
+        "p": "Freilich. Aus deine Rezeptwünsch oder em Wochenplan macht Murmli glei a sortierte Einkaufsleischd ond passt d'Menga an dei Kaloriaziel o."
+      },
+      {
+        "h3": "Ka i den KI Rezepte Planer nach Allergie ond Makros filtere?",
+        "p": "Genauso isch des. Du kasch agebe „laktosefrei“, „unter 600 kcal“ oder „mindeschtens 30 g Protein“. D'KI spuckt passende Rezepte mit Nährwerte ond Kochschritte aus."
+      }
+    ]
+  },
+  "footer": {
+    "links": {
+      "home": "Startseit",
+      "sitemap": "Sitemap",
+      "privacy": "Datenschutz",
+      "imprint": "Impressum",
+      "github": "GitHub (Open Source)"
+    },
+    "copy": "© 2026 Murmli – Dei g'scheiter, persönlicher Helfer für de Alltag.",
+    "author": "Privatprojekt vom Manuel Gaschler"
+  }
+}

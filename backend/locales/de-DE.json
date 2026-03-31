@@ -1,0 +1,188 @@
+{
+  "meta": {
+    "title": "Murmli – Kostenloser KI Kalorienzähler, Einkaufsliste & Rezepte-Planer",
+    "description": "Kostenloser KI Kalorienzähler von Murmli: Kalorien berechnen, smarte Einkaufsliste erstellen und mit dem KI Rezepte Planer deinen Wochenplan in Minuten fertig haben.",
+    "keywords": "Kostenloser Kalorienzähler, KI Kalorienrechner, Einkaufsliste App, KI Rezepte Planer, Kalorien berechnen, Wochenplan, Murmli",
+    "og_title": "Murmli – Kostenloser KI Kalorienzähler & Rezepte-Planer",
+    "og_description": "Berechne Kalorien gratis, erstelle automatisch Einkaufslisten und plane Rezepte mit der Murmli KI in einer App.",
+    "twitter_title": "Murmli – Kostenloser KI Kalorienzähler & Rezepte-Planer",
+    "twitter_description": "Kostenlos Kalorien berechnen, Rezepte planen und eine sortierte Einkaufsliste erhalten – alles mit der Murmli KI."
+  },
+  "schema": {
+    "website_description": "Murmli ist deine persönliche All-in-One App: Individuelle Essensplanung, Rezeptverwaltung, Kalorienzählung und Trainingspläne, unterstützt durch eine KI, die auf dich eingeht!",
+    "faq": [
+      {
+        "q": "Ist der Murmli Kalorienzähler wirklich kostenlos?",
+        "a": "Ja, der Kalorienrechner auf der Website und in der App ist dauerhaft gratis. Du berechnest und speicherst deinen Bedarf ohne Kosten."
+      },
+      {
+        "q": "Erstellt die KI auch automatisch meine Einkaufsliste?",
+        "a": "Murmli generiert aus Rezeptwünschen oder dem Wochenplan eine sortierte Einkaufsliste und passt Mengen an dein Kalorienziel an."
+      },
+      {
+        "q": "Kann ich den KI Rezepte Planer nach Allergien und Makros filtern?",
+        "a": "Du kannst Vorgaben wie laktosefrei, unter 600 kcal oder mindestens 30 g Protein hinterlegen und erhältst passende Rezepte mit Nährwertangaben."
+      }
+    ],
+    "howto": {
+      "name": "Kalorienbedarf mit dem Murmli Rechner berechnen",
+      "description": "So nutzt du den kostenlosen Murmli KI Kalorienzähler in 60 Sekunden.",
+      "steps": [
+        {
+          "name": "Basisdaten eingeben",
+          "text": "Geschlecht, Gewicht, Größe und Geburtsjahr eintippen."
+        },
+        {
+          "name": "Arbeits-PAL wählen",
+          "text": "Arbeitsstunden pro Woche und passenden PAL-Wert auswählen, um den Arbeitsumsatz abzubilden."
+        },
+        {
+          "name": "Freizeit-PAL festlegen",
+          "text": "PAL für Freizeit angeben, damit Murmli den Leistungsumsatz vollständig berechnet."
+        },
+        {
+          "name": "Kalorienziel anzeigen lassen",
+          "text": "Auf \"Kalorienbedarf berechnen\" klicken und die vorgeschlagenen Zielbereiche für Abnehmen, Halten oder Muskelaufbau ablesen."
+        }
+      ]
+    }
+  },
+  "nav": {
+    "features": "Funktionen",
+    "calculator": "Kalorienrechner",
+    "how_to": "So funktioniert es",
+    "faq": "FAQ",
+    "trailer": "Trailer",
+    "about": "Über",
+    "home_label": "Zur Murmli Startseite"
+  },
+  "hero": {
+    "h1": "Kostenloser KI Kalorienzähler mit smarter Einkaufsliste",
+    "p": "Du willst kostenlos Kalorien berechnen, Rezepte planen und automatisch eine Einkaufsliste erhalten? Murmli erledigt das in einem Schritt: KI-berechneter Kalorienbedarf, passender Wochenplan und sortierte Liste für den Supermarkt.",
+    "google_play_alt": "Jetzt bei Google Play herunterladen",
+    "app_store_alt": "Jetzt im Apple App Store herunterladen",
+    "discord_alt": "Tritt unserem Discord Server bei"
+  },
+  "trailer": {
+    "h2": "Sieh Murmli in Aktion!",
+    "p": "Schau dir unseren kurzen Trailer an und entdecke die wichtigsten Funktionen im Überblick."
+  },
+  "features": {
+    "h2": "Was erledigt Murmli sofort für dich?",
+    "items": [
+      {
+        "h3": "KI Kalorienzähler – gratis",
+        "p": "Berechne Grund- und Leistungsumsatz mit der Mifflin-St-Jeor-Formel und lass die KI deine Ziele in Kalorien umrechnen – ohne Paywall."
+      },
+      {
+        "h3": "Automatische Einkaufsliste",
+        "p": "Murmli erstellt eine sortierte Einkaufsliste direkt aus deinem Wochenplan und passt Mengen auf deine Kalorienziele an."
+      },
+      {
+        "h3": "KI Rezepte Planer",
+        "p": "Formuliere einfach einen Wunsch wie „pasta ohne laktose unter 600 kcal“ und erhalte passende Rezepte mit Nährwerten und Kochschritten."
+      },
+      {
+        "h3": "Wochenplan in Minuten",
+        "p": "Kombiniere Frühstück, Mittag, Abendessen und Snacks zu einem klaren Wochenplan, abgestimmt auf dein Kalorienbudget."
+      },
+      {
+        "h3": "Adaptive Trainingspläne",
+        "p": "Erhalte Vorschläge, die deinen Fortschritt berücksichtigen und deine Energiebilanz ausgleichen."
+      },
+      {
+        "h3": "Rezeptverwaltung mit Nährwerten",
+        "p": "Speichere Lieblingsgerichte, passe Zutaten an Allergien an und sieh sofort Kalorien, Proteine und Co."
+      }
+    ]
+  },
+  "how_to": {
+    "h2": "Wie berechne ich meinen Kalorienbedarf?",
+    "p": "Folge diesen kurzen Schritten, dann zeigt dir Murmli sofort Grundumsatz, Leistungsumsatz und passende Kalorienziele.",
+    "steps": [
+      "Geschlecht, Gewicht, Größe und Geburtsjahr eintragen.",
+      "Arbeitsstunden und passenden PAL-Wert auswählen.",
+      "Freizeit-PAL wählen, auf „Kalorienbedarf berechnen“ tippen und Ergebnis speichern.",
+      "Mit einem Tipp den Wert in der App hinterlegen, damit Rezepte, Einkaufsliste und Training angepasst werden."
+    ],
+    "cta": "Jetzt Kalorienrechner ausfüllen"
+  },
+  "about": {
+    "h2": "Warum ist Murmli mehr als eine Einkaufsliste?",
+    "p1": "Murmli verknüpft Einkaufsliste, Kalorienrechner und Rezepte-Planer in einer App. Du teilst Listen mit Familie oder Partnern und alles bleibt live synchron.",
+    "p2": "Der KI Rezepte Planer liefert Vorschläge nach deinen Vorgaben und schickt die Zutaten mit einem Tipp direkt auf die Liste. In der Rezeptverwaltung bekommst du klare Schritte plus Nährwerte.",
+    "p3": "Kalorienzähler und Kalorienrechner arbeiten zusammen: Gekochte Gerichte werden übernommen, Ziele aktualisiert und Trainingspläne daran angepasst.",
+    "p4": "Ergebnis: ein durchgängiges Ernährungs-Ökosystem vom Einkauf bis zum Tracking, das sich laufend an deine Ziele anpasst."
+  },
+  "calculator": {
+    "h2": "Wie berechnet der Murmli Rechner deinen Kalorienbedarf?",
+    "p": "Er kombiniert die Mifflin-St-Jeor-Formel mit deinen PAL-Werten für Arbeit und Freizeit und zeigt sofort Grund- und Leistungsumsatz für Abnehmen, Halten oder Muskelaufbau.",
+    "gender": "Geschlecht",
+    "male": "Männlich",
+    "female": "Weiblich",
+    "weight_label": "Körpergewicht in Kilogramm",
+    "weight_placeholder": "75",
+    "height_label": "Körpergröße in Zentimetern",
+    "height_placeholder": "180",
+    "birth_year_label": "Geburtsjahr",
+    "birth_year_placeholder": "1990",
+    "work_hours_label": "Arbeitsstunden pro Woche",
+    "work_pal_label": "PAL-Wert für die Arbeit",
+    "work_pal_options": [
+      "Sitzende Tätigkeit (PAL 1.2)",
+      "Überwiegend sitzend mit etwas Bewegung (PAL 1.4)",
+      "Gemischte körperliche Arbeit (PAL 1.6)",
+      "Körperlich anstrengende Arbeit (PAL 1.8)",
+      "Schwere körperliche Arbeit (PAL 2.0)"
+    ],
+    "rest_pal_label": "PAL-Wert für Freizeit und Ruhe",
+    "rest_pal_options": [
+      "Entspannung und leichte Aktivität (PAL 1.2)",
+      "Leichte Bewegung und Spaziergänge (PAL 1.35)",
+      "Aktive Freizeit mit Sport (PAL 1.5)"
+    ],
+    "calculate_button": "Kalorienbedarf berechnen",
+    "hint": "Hinweis: Der Rechner ersetzt keine individuelle medizinische Beratung.",
+    "initial_result": "Gib deine Daten ein, um sofort eine Auswertung deines Grund- und Leistungsumsatzes zu erhalten.",
+    "info_h3": "Warum der Murmli Rechner präzise ist",
+    "info_list": [
+      "Verwendet den wissenschaftlich etablierten Mifflin-St-Jeor-Ansatz für den Grundumsatz.",
+      "Berücksichtigt deinen persönlichen Wochenrhythmus über Arbeits- und Ruhezeiten.",
+      "Berechnet Zielbereiche für Abnehmen, Halten und Muskelaufbau wie in der App."
+    ],
+    "formula_title": "Mifflin-St-Jeor-Formel:",
+    "formula_men": "Männer = 10 \u00d7 Gewicht (kg) + 6,25 \u00d7 Größe (cm) \u2212 5 \u00d7 Alter + 5",
+    "formula_women": "Frauen = 10 \u00d7 Gewicht (kg) + 6,25 \u00d7 Größe (cm) \u2212 5 \u00d7 Alter \u2212 161",
+    "formula_explanation": "Murmli kombiniert das Ergebnis mit deinen angegebenen Arbeits- und Ruhezeiten (PAL-Werte), um den Gesamtumsatz transparent zu berechnen.",
+    "formula_result_explanation": "Nach der Berechnung siehst du Grundumsatz, Arbeitsumsatz und Gesamtumsatz inklusive der empfohlenen Kalorienziele. So kannst du direkt einschätzen, ob dein aktueller Ernährungsplan zu deinem Ziel passt.",
+    "formula_tip": "Tipp: Speichere deine Werte in der Murmli App, um automatisch Mahlzeiten, Rezepte und Trainingspläne auf deinen Kalorienhaushalt abstimmen zu lassen."
+  },
+  "faq_section": {
+    "h2": "Häufige Fragen zum kostenlosen Murmli Kalorienzähler",
+    "items": [
+      {
+        "h3": "Ist der Murmli Kalorienzähler wirklich kostenlos?",
+        "p": "Ja. Der Rechner auf dieser Seite und in der App ist dauerhaft kostenfrei. Du zahlst nichts, um deinen Kalorienbedarf zu berechnen oder Ergebnisse zu speichern."
+      },
+      {
+        "h3": "Erstellt die KI auch automatisch meine Einkaufsliste?",
+        "p": "Ja. Aus Rezeptwünschen oder dem Wochenplan generiert Murmli sofort eine sortierte Einkaufsliste und passt Mengen an dein Kalorienziel an."
+      },
+      {
+        "h3": "Kann ich den KI Rezepte Planer nach Allergien und Makros filtern?",
+        "p": "Du kannst Vorgaben wie \u201elaktosefrei\u201c, \u201eunter 600 kcal\u201c oder \u201emindestens 30 g Protein\u201c eingeben. Die KI liefert passende Rezepte mit Nährwerten und Kochschritten."
+      }
+    ]
+  },
+  "footer": {
+    "links": {
+      "home": "Startseite",
+      "sitemap": "Sitemap",
+      "privacy": "Datenschutz",
+      "imprint": "Impressum",
+      "github": "GitHub (Open Source)"
+    },
+    "copy": "\u00a9 2026 Murmli \u2013 Dein smarter, persönlicher Alltagshelfer.",
+    "author": "Privatprojekt von Manuel Gaschler"
+  }
+}

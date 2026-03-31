@@ -1,0 +1,188 @@
+{
+  "meta": {
+    "title": "Murmli – Contacalorie AI gratuito, lista della spesa e pianificatore di ricette",
+    "description": "Contacalorie AI gratuito di Murmli: calcola le calorie, crea liste della spesa intelligenti e completa il tuo piano settimanale in pochi minuti con il pianificatore di ricette AI.",
+    "keywords": "Contacalorie gratuito, calcolatore di calorie AI, app lista della spesa, pianificatore di ricette AI, calcolo calorie, piano settimanale, Murmli",
+    "og_title": "Murmli – Contacalorie AI gratuito & pianificatore di ricette",
+    "og_description": "Calcola le calorie gratuitamente, crea automaticamente liste della spesa e pianifica le ricette con l'AI di Murmli in un'unica app.",
+    "twitter_title": "Murmli – Contacalorie AI gratuito & pianificatore di ricette",
+    "twitter_description": "Calcola le calorie gratuitamente, pianifica le ricette e ottieni una lista della spesa ordinata – tutto con l'AI di Murmli."
+  },
+  "schema": {
+    "website_description": "Murmli è la tua app personale all-in-one: pianificazione dei pasti personalizzata, gestione delle ricette, conteggio delle calorie e piani di allenamento, supportati da un'AI che si adatta a te!",
+    "faq": [
+      {
+        "q": "Il contacalorie Murmli è davvero gratuito?",
+        "a": "Sì, il calcolatore di calorie sul sito web e nell'app è permanentemente gratuito. Puoi calcolare e salvare il tuo fabbisogno senza costi."
+      },
+      {
+        "q": "L'AI crea anche la mia lista della spesa automaticamente?",
+        "a": "Murmli genera una lista della spesa ordinata partendo dalle richieste di ricette o dal piano settimanale e adatta le quantità al tuo obiettivo calorico."
+      },
+      {
+        "q": "Posso filtrare il pianificatore di ricette AI per allergie e macro?",
+        "a": "Puoi impostare parametri come senza lattosio, sotto le 600 kcal o almeno 30 g di proteine e riceverai ricette adatte con informazioni nutrizionali."
+      }
+    ],
+    "howto": {
+      "name": "Calcolare il fabbisogno calorico con il calcolatore Murmli",
+      "description": "Ecco come utilizzare il contacalorie AI gratuito di Murmli in 60 secondi.",
+      "steps": [
+        {
+          "name": "Inserire i dati di base",
+          "text": "Digita sesso, peso, altezza e anno di nascita."
+        },
+        {
+          "name": "Scegliere il PAL lavorativo",
+          "text": "Seleziona le ore di lavoro a settimana e il valore PAL appropriato per rappresentare il metabolismo lavorativo."
+        },
+        {
+          "name": "Impostare il PAL del tempo libero",
+          "text": "Specifica il PAL per il tempo libero in modo che Murmli possa calcolare completamente il metabolismo basale e totale."
+        },
+        {
+          "name": "Visualizzare l'obiettivo calorico",
+          "text": "Clicca su \"Calcola fabbisogno calorico\" e leggi gli intervalli target suggeriti per dimagrire, mantenere il peso o costruire muscoli."
+        }
+      ]
+    }
+  },
+  "nav": {
+    "features": "Funzioni",
+    "calculator": "Calcolatore calorie",
+    "how_to": "Come funziona",
+    "faq": "FAQ",
+    "trailer": "Trailer",
+    "about": "Chi siamo",
+    "home_label": "Alla home di Murmli"
+  },
+  "hero": {
+    "h1": "Contacalorie AI gratuito con lista della spesa intelligente",
+    "p": "Vuoi calcolare le calorie gratuitamente, pianificare ricette e ricevere automaticamente una lista della spesa? Murmli fa tutto in un unico passaggio: fabbisogno calorico calcolato dall'AI, piano settimanale adatto e lista ordinata per il supermercato.",
+    "google_play_alt": "Scaricalo ora su Google Play",
+    "app_store_alt": "Scaricalo ora sull'Apple App Store",
+    "discord_alt": "Unisciti al nostro server Discord"
+  },
+  "trailer": {
+    "h2": "Guarda Murmli in azione!",
+    "p": "Guarda il nostro breve trailer e scopri una panoramica delle funzioni principali."
+  },
+  "features": {
+    "h2": "Cosa fa subito Murmli per te?",
+    "items": [
+      {
+        "h3": "Contacalorie AI – gratis",
+        "p": "Calcola il metabolismo basale e totale con la formula Mifflin-St-Jeor e lascia che l'AI converta i tuoi obiettivi in calorie – senza paywall."
+      },
+      {
+        "h3": "Lista della spesa automatica",
+        "p": "Murmli crea una lista della spesa ordinata direttamente dal tuo piano settimanale e adatta le quantità ai tuoi obiettivi calorici."
+      },
+      {
+        "h3": "Pianificatore di ricette AI",
+        "p": "Basta formulare un desiderio come \"pasta senza lattosio sotto le 600 kcal\" e otterrai ricette adatte con valori nutrizionali e passaggi di cottura."
+      },
+      {
+        "h3": "Piano settimanale in pochi minuti",
+        "p": "Combina colazione, pranzo, cena e spuntini in un piano settimanale chiaro, sintonizzato sul tuo budget calorico."
+      },
+      {
+        "h3": "Piani di allenamento adattivi",
+        "p": "Ricevi suggerimenti che tengono conto dei tuoi progressi e bilanciano il tuo equilibrio energetico."
+      },
+      {
+        "h3": "Gestione ricette con valori nutrizionali",
+        "p": "Salva i tuoi piatti preferiti, adatta gli ingredienti alle allergie e visualizza immediatamente calorie, proteine e altro."
+      }
+    ]
+  },
+  "how_to": {
+    "h2": "Come calcolo il mio fabbisogno calorico?",
+    "p": "Segui questi brevi passaggi e Murmli ti mostrerà subito il metabolismo basale, il metabolismo totale e gli obiettivi calorici ideali.",
+    "steps": [
+      "Inserisci sesso, peso, altezza e anno di nascita.",
+      "Seleziona le ore di lavoro e il valore PAL appropriato.",
+      "Scegli il PAL per il tempo libero, tocca \"Calcola fabbisogno calorico\" e salva il risultato.",
+      "Con un tocco, salva il valore nell'app in modo che ricette, lista della spesa e allenamento vengano adattati."
+    ],
+    "cta": "Compila ora il calcolatore di calorie"
+  },
+  "about": {
+    "h2": "Perché Murmli è più di una lista della spesa?",
+    "p1": "Murmli combina lista della spesa, calcolatore di calorie e pianificatore di ricette in un'unica app. Condividi le liste con la famiglia o i partner e tutto rimane sincronizzato in tempo reale.",
+    "p2": "Il pianificatore di ricette AI fornisce suggerimenti in base alle tue specifiche e invia gli ingredienti direttamente alla lista con un tocco. Nella gestione delle ricette ricevi passaggi chiari e valori nutrizionali.",
+    "p3": "Contacalorie e calcolatore lavorano insieme: i piatti cucinati vengono registrati, gli obiettivi aggiornati e i piani di allenamento adattati di conseguenza.",
+    "p4": "Il risultato: un ecosistema nutrizionale continuo, dalla spesa al monitoraggio, che si adatta costantemente ai tuoi obiettivi."
+  },
+  "calculator": {
+    "h2": "Come calcola Murmli il tuo fabbisogno calorico?",
+    "p": "Combina la formula Mifflin-St-Jeor con i tuoi valori PAL per il lavoro e il tempo libero e mostra immediatamente il metabolismo basale e totale per dimagrire, mantenere il peso o costruire muscoli.",
+    "gender": "Sesso",
+    "male": "Maschio",
+    "female": "Femmina",
+    "weight_label": "Peso corporeo in chilogrammi",
+    "weight_placeholder": "75",
+    "height_label": "Altezza in centimetri",
+    "height_placeholder": "180",
+    "birth_year_label": "Anno di nascita",
+    "birth_year_placeholder": "1990",
+    "work_hours_label": "Ore di lavoro a settimana",
+    "work_pal_label": "Valore PAL per il lavoro",
+    "work_pal_options": [
+      "Attività sedentaria (PAL 1.2)",
+      "Prevalentemente seduto con un po' di movimento (PAL 1.4)",
+      "Lavoro fisico misto (PAL 1.6)",
+      "Lavoro fisicamente faticoso (PAL 1.8)",
+      "Lavoro fisico pesante (PAL 2.0)"
+    ],
+    "rest_pal_label": "Valore PAL per il tempo libero e il riposo",
+    "rest_pal_options": [
+      "Relax e attività leggera (PAL 1.2)",
+      "Movimento leggero e passeggiate (PAL 1.35)",
+      "Tempo libero attivo con sport (PAL 1.5)"
+    ],
+    "calculate_button": "Calcola fabbisogno calorico",
+    "hint": "Nota: il calcolatore non sostituisce la consulenza medica individuale.",
+    "initial_result": "Inserisci i tuoi dati per ricevere immediatamente una valutazione del tuo metabolismo basale e totale.",
+    "info_h3": "Perché il calcolatore Murmli è preciso",
+    "info_list": [
+      "Utilizza l'approccio Mifflin-St-Jeor scientificamente riconosciuto per il metabolismo basale.",
+      "Considera il tuo ritmo settimanale personale attraverso i tempi di lavoro e di riposo.",
+      "Calcola gli intervalli target per dimagrire, mantenere il peso e costruire muscoli come nell'app."
+    ],
+    "formula_title": "Formula Mifflin-St-Jeor:",
+    "formula_men": "Uomini = 10 × peso (kg) + 6,25 × altezza (cm) − 5 × età + 5",
+    "formula_women": "Donne = 10 × peso (kg) + 6,25 × altezza (cm) − 5 × età − 161",
+    "formula_explanation": "Murmli combina il risultato con i tempi di lavoro e di riposo indicati (valori PAL) per calcolare il dispendio energetico totale in modo trasparente.",
+    "formula_result_explanation": "Dopo il calcolo vedrai il metabolismo basale, il metabolismo lavorativo e il metabolismo totale, inclusi gli obiettivi calorici raccomandati. Così puoi valutare direttamente se il tuo piano alimentare attuale è in linea con il tuo obiettivo.",
+    "formula_tip": "Suggerimento: salva i tuoi valori nell'app Murmli per adattare automaticamente pasti, ricette e piani di allenamento al tuo bilancio calorico."
+  },
+  "faq_section": {
+    "h2": "Domande frequenti sul contacalorie gratuito Murmli",
+    "items": [
+      {
+        "h3": "Il contacalorie Murmli è davvero gratuito?",
+        "p": "Sì. Il calcolatore in questa pagina e nell'app è permanentemente gratuito. Non paghi nulla per calcolare il tuo fabbisogno calorico o per salvare i risultati."
+      },
+      {
+        "h3": "L'AI crea anche la mia lista della spesa automaticamente?",
+        "p": "Sì. Murmli genera immediatamente una lista della spesa ordinata da desideri di ricette o dal piano settimanale e adatta le quantità al tuo obiettivo calorico."
+      },
+      {
+        "h3": "Posso filtrare il pianificatore di ricette AI per allergie e macro?",
+        "p": "Puoi inserire parametri come \"senza lattosio\", \"sotto le 600 kcal\" o \"almeno 30 g di proteine\". L'AI fornisce ricette adatte con valori nutrizionali e passaggi di cottura."
+      }
+    ]
+  },
+  "footer": {
+    "links": {
+      "home": "Home",
+      "sitemap": "Sitemap",
+      "privacy": "Privacy",
+      "imprint": "Note legali",
+      "github": "GitHub (Open Source)"
+    },
+    "copy": "© 2026 Murmli – Il tuo assistente quotidiano smart e personale.",
+    "author": "Progetto privato di Manuel Gaschler"
+  }
+}

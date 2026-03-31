@@ -1,0 +1,188 @@
+{
+  "meta": {
+    "title": "Murmli – Kostenloser KI Kalorienzähler, Einkaufslistn & Rezepte-Planer",
+    "description": "Kostenloser KI Kalorienzähler vom Murmli: Kalorien ausrechnen, a gscheite Einkaufslistn erstölln und mit'm KI Rezepte Planer dein Wochenplan in a paar Minutn fertig habn.",
+    "keywords": "Kostenloser Kalorienzähler, KI Kalorienrechner, Einkaufslistn App, KI Rezepte Planer, Kalorien berechnen, Wochenplan, Murmli",
+    "og_title": "Murmli – Kostenloser KI Kalorienzähler & Rezepte-Planer",
+    "og_description": "Rechn dir deine Kalorien gratis aus, lass dir automatisch Einkaufslistn erstölln und plan Rezepte mit der Murmli KI in ana App.",
+    "twitter_title": "Murmli – Kostenloser KI Kalorienzähler & Rezepte-Planer",
+    "twitter_description": "Ganz umsonst Kalorien ausrechnen, Rezepte planen und a sortierte Einkaufslistn kriagn – des gante Programm mit der Murmli KI."
+  },
+  "schema": {
+    "website_description": "Murmli is dei persönliche All-in-One App: Individuelle Essensplanung, Rezeptverwaltung, Kalorienzähln und Trainingspläne, unterstützt von ana KI, die si wirklich auf die einlosst!",
+    "faq": [
+      {
+        "q": "Is der Murmli Kalorienzähler wirklich g'schenkt?",
+        "a": "Jo freilich, der Kalorienrechner auf der Website und in der App is auf Dauer gratis. Du kannst dein Bedarf berechnen und speichern, ohne an Groschen zu brennen."
+      },
+      {
+        "q": "Moat die KI a mei Einkaufslistn gonz von alla?",
+        "a": "Murmli zaubert aus deine Rezeptwünsche oder'm Wochenplan a gscheit sortierte Einkaufslistn und passt die Mengen genau auf dei Kalorienziel an."
+      },
+      {
+        "q": "Kann i beim KI Rezepte Planer a noch Allergien und Makros schaun?",
+        "a": "Sicher dat! Du kannst sogn, dass'd ebbas ohne Laktose brauchst, unter 600 kcal oder mit am Haufn Protein, und scho kriegst passende Rezepte mit olle Nährwerte."
+      }
+    ],
+    "howto": {
+      "name": "Kalorienbedarf mit'm Murmli Rechner ausrechnen",
+      "description": "So nutzt den kostenlosen Murmli KI Kalorienzähler in 60 Sekundn.",
+      "steps": [
+        {
+          "name": "Basisdaten eingebn",
+          "text": "Bist a Mandl oder a Weibl? Gwicht, Größe und dei Geburtsjahrl eintippln."
+        },
+        {
+          "name": "Arbeits-PAL aussuachn",
+          "text": "Wia vü hacklst pro Wochen? Such da den passenden Wert aus, damit ma dei Hochenergie-Umsatz gscheit berechnen können."
+        },
+        {
+          "name": "Freizeit-PAL festlegen",
+          "text": "Gib an, wia's in der Freizeit ausschaut, damit Murmli genau weiß, wia vü'st wirklich verbrennst."
+        },
+        {
+          "name": "Kalorienziel anzeigen lossn",
+          "text": "Druck auf \"Kalorienbedarf berechnen\" und schau da an, wia vü'st mampfen darfst zum Abnehma, Halten oder Muskeln aufbaun."
+        }
+      ]
+    }
+  },
+  "nav": {
+    "features": "Wos des olles kann",
+    "calculator": "Kalorienrechner",
+    "how_to": "So haut des hin",
+    "faq": "Fragen & Antworten",
+    "trailer": "Video",
+    "about": "Über uns",
+    "home_label": "Zurück zur Murmli Startseitn"
+  },
+  "hero": {
+    "h1": "Kostenloser KI Kalorienzähler mit ana gscheitn Einkaufslistn",
+    "p": "Wüst umsonst Kalorien ausrechnen, Rezepte planen und glei a Einkaufslistn kriagn? Murmli mocht des olles auf amoi: KI-berechneter Bedarf, a Wochenplan der passt und a sortierte Listn für'n Supermarkt.",
+    "google_play_alt": "Gleich bei Google Play herunterlodn",
+    "app_store_alt": "Gleich im Apple App Store herunterlodn",
+    "discord_alt": "Kumm auf unsern Discord Server"
+  },
+  "trailer": {
+    "h2": "Schau da den Murmli in Aktion on!",
+    "p": "Guck da unsern kurzen Trailer on und siach die wichtigsten Funktionen auf an Blick."
+  },
+  "features": {
+    "h2": "Wos erledigt der Murmli glei für di?",
+    "items": [
+      {
+        "h3": "KI Kalorienzähler – umsonst",
+        "p": "Rechn dir dein Grundumsatz mit der Mifflin-St-Jeor-Formel aus und loss die KI deine Ziele in Kalorien ummünzen – ohne dass'd wos brennen musst."
+      },
+      {
+        "h3": "Automatische Einkaufslistn",
+        "p": "Murmli schreibt da a sortierte Einkaufslistn direkt aus dein Wochenplan und schaut, dass die Mengn zu deine Ziele passn."
+      },
+      {
+        "h3": "KI Rezepte Planer",
+        "p": "Sog einfach: „Nudeln ohne Laktose unter 600 kcal“ und du kriegst Rezepte mit Nährwerten und ana Anleitung, wia ma's kocht."
+      },
+      {
+        "h3": "Wochenplan in a paar Minutn",
+        "p": "Pack Frühstück, Mittogessn, Jausn und Abendessen in an gscheitn Plan, der genau in dei Kalorienbudget passt."
+      },
+      {
+        "h3": "Trainingspläne die si anpassen",
+        "p": "Kriag Vorschläge, die auf dein Fortschritt schaun und dei Energiebilanz wieder ins Lot bringan."
+      },
+      {
+        "h3": "Rezepte verwalten mit Nährwerten",
+        "p": "Speicher dei Lieblingsessen, pass auf Allergien auf und siach sofort, wia vü Kalorien und Proteine drin san."
+      }
+    ]
+  },
+  "how_to": {
+    "h2": "Wia rechn i mein Kalorienbedarf aus?",
+    "p": "Mach einfach des, wos da steht, dann zeigt da Murmli glei dein Grundumsatz und wos'd essen darfst.",
+    "steps": [
+      "Bist a Mandl oder a Weibl? Gwicht, Größe und Geburtsjahrl eintragn.",
+      "Hackler-Stundn und den passenden Wert fia dei Arbeit aussuachn.",
+      "Freizeit-Wert wählen, auf „Kalorienbedarf berechnen“ drucken und des Ergebnis speichern.",
+      "Mit am Klick den Wert in der App speichern, damit Rezepte, Einkaufslistn und Training glei Bescheid wissen."
+    ],
+    "cta": "Jetzt Kalorienrechner ausfüllen"
+  },
+  "about": {
+    "h2": "Warum is Murmli mehr als nur a Einkaufslistn?",
+    "p1": "Murmli packt Einkaufslistn, Kalorienrechner und Rezepte-Planer in ane App. Du kannst die Listn mit der Familie oder'm Partner teilen und olles is live g'schalten.",
+    "p2": "Der KI Rezepte Planer bringt da Ideen nach dein Geschmack und schickt die Zutaten mit an Klick direkt auf dei Listn. Bei der Rezeptverwaltung kriegst a Anleitung plus olle Nährwerte.",
+    "p3": "Kalorienzähler und Rechner spielen zam: Des, wos'd kocht hast, wird übernommen, deine Ziele werden aktualisiert und die Trainingspläne passn si an.",
+    "p4": "Des Ergebnis? A gscheites System von der Jausn bis zum Training, des si immer nach dir richtet."
+  },
+  "calculator": {
+    "h2": "Wia berechnet der Murmli dei Kalorien?",
+    "p": "Er nutzt die Mifflin-St-Jeor-Formel und schaut auf dei Hockn und dei Freizeit, damit'st genau weißt, wia vü'st zum Abnehma oder Muskelaufbaun brauchst.",
+    "gender": "Geschlecht",
+    "male": "Manderl",
+    "female": "Weiberl",
+    "weight_label": "Körpergwicht in Kilo",
+    "weight_placeholder": "75",
+    "height_label": "Wia groß bist (in cm)?",
+    "height_placeholder": "180",
+    "birth_year_label": "Wann bist g'born?",
+    "birth_year_placeholder": "1990",
+    "work_hours_label": "Wia vü Stundn hacklst in der Wochen?",
+    "work_pal_label": "Wia anstrengend is dei Hockn?",
+    "work_pal_options": [
+      "I sitz nua (PAL 1.2)",
+      "Vü sitzen, ab und an a bisserl Bewegung (PAL 1.4)",
+      "A bisserl was hackln (PAL 1.6)",
+      "Gscheit anstrengende Hockn (PAL 1.8)",
+      "Richtig schwere Maloche (PAL 2.0)"
+    ],
+    "rest_pal_label": "Wost in der Freizeit so treibst",
+    "rest_pal_options": [
+      "Couch-Potato und a bisserl was tun (PAL 1.2)",
+      "A bisserl spazieren gehn (PAL 1.35)",
+      "Ordentlich Sportln und Action (PAL 1.5)"
+    ],
+    "calculate_button": "Kalorienbedarf ausrechnen",
+    "hint": "Obacht: Der Rechner is ka Ersatz fia an echten Onkel Doktor.",
+    "initial_result": "Tipp mal dei Zeug ein, dann sogn ma da gleich, wos dei Körper so braucht.",
+    "info_h3": "Warum der Murmli Rechner so gscheit is",
+    "info_list": [
+      "Nutzt den wissenschaftlichen Mifflin-St-Jeor-Weg fia dein Grundumsatz.",
+      "Schaut gscheit drauf, wia dei Wochen mit Hockn und Freizeit ausschaut.",
+      "Rechnet dir genau aus, wia vü'st essen darfst zum Abnehma oder Kraft kriagn."
+    ],
+    "formula_title": "Mifflin-St-Jeor-Formel:",
+    "formula_men": "Mander = 10 × Gwicht (kg) + 6,25 × Größe (cm) − 5 × Alter + 5",
+    "formula_women": "Weiber = 10 × Gwicht (kg) + 6,25 × Größe (cm) − 5 × Alter − 161",
+    "formula_explanation": "Murmli rechnet des olles mit deine Arbeits- und Ruhezeitn zam, damit'st di auskennst.",
+    "formula_result_explanation": "Nach'm Rechnen siachst dein Grundumsatz, dei Arbeits-Umsatz und den Gesamtumsatz. So weißt glei, ob dei Jausn zu dein Ziel passt.",
+    "formula_tip": "A Tipp: Speicher dei Zeug in der Murmli App, damit dei Essen und dei Training automatisch angepasst werden."
+  },
+  "faq_section": {
+    "h2": "Typische Fragen zum Murmli Kalorienzähler",
+    "items": [
+      {
+        "h3": "Kostet der Murmli Kalorienzähler echt nix?",
+        "p": "Jo, wirklich. Der Rechner do und in der App is und bleibt umsonst. Du zahlst gar nix, um dein Bedarf zu wissen oder dei Zeug zu speichern."
+      },
+      {
+        "h3": "Macht die KI mir echt dei Einkaufslistn?",
+        "p": "Aber hallo! Aus deine Rezepte oder'm Plan macht Murmli glei a sortierte Listn und schaut, dass die Mengn fia dei Ziel passn."
+      },
+      {
+        "h3": "Kann i den KI Planer nach Allergien einstellen?",
+        "p": "Freilich, sag einfach „laktosefrei“ oder „vü Protein“. Die KI findt passende Rezepte und sogt da genau, wia ma's kocht."
+      }
+    ]
+  },
+  "footer": {
+    "links": {
+      "home": "Startseitn",
+      "sitemap": "Sitemap",
+      "privacy": "Datenschutz",
+      "imprint": "Impressum",
+      "github": "GitHub (Open Source)"
+    },
+    "copy": "© 2026 Murmli – Dei gscheiter, persönlicher Helfer im Alltag.",
+    "author": "Privatprojekt vom Manuel Gaschler"
+  }
+}

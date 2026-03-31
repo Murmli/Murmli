@@ -139,9 +139,108 @@ app.get("/sitemap.xml", async (req, res) => {
   }
 });
 
+// Helper to render templates with translations
+const fs = require('fs');
+const localesCache = {};
+
+const renderTemplate = (templatePath, locale) => {
+  let template = fs.readFileSync(templatePath, 'utf8');
+  
+  // Load locale data
+  if (!localesCache[locale]) {
+    const localePath = path.join(__dirname, 'locales', `${locale}.json`);
+    if (fs.existsSync(localePath)) {
+      localesCache[locale] = JSON.parse(fs.readFileSync(localePath, 'utf8'));
+    } else {
+      // Fallback to de-DE
+      const fallbackPath = path.join(__dirname, 'locales', 'de-DE.json');
+      localesCache[locale] = JSON.parse(fs.readFileSync(fallbackPath, 'utf8'));
+    }
+  }
+
+  const translations = localesCache[locale];
+
+  // Simple recursive placeholder replacement
+  const replacePlaceholders = (text, data, prefix = '') => {
+    let result = text;
+    for (const key in data) {
+      const fullKey = prefix ? `${prefix}.${key}` : key;
+      if (typeof data[key] === 'object' && !Array.isArray(data[key])) {
+        result = replacePlaceholders(result, data[key], fullKey);
+      } else if (Array.isArray(data[key])) {
+        data[key].forEach((item, index) => {
+          if (typeof item === 'object') {
+            result = replacePlaceholders(result, item, `${fullKey}.${index}`);
+          } else {
+            const regex = new RegExp(`{{${fullKey}.${index}}}`, 'g');
+            result = result.replace(regex, item);
+          }
+        });
+      } else {
+        const regex = new RegExp(`{{${fullKey}}}`, 'g');
+        result = result.replace(regex, data[key]);
+      }
+    }
+    return result;
+  };
+
+  let rendered = replacePlaceholders(template, translations);
+  
+  // Replace <html lang="de"> with correct locale
+  rendered = rendered.replace('<html lang="de">', `<html lang="${locale.split('-')[0]}">`);
+  
+  return rendered;
+};
+
 // Route to serve the landing page
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  const host = req.headers.host;
+  
+  // Detect locale from query param or header
+  let locale = req.query.lang;
+  if (!locale) {
+    const acceptLang = req.headers['accept-language'];
+    if (acceptLang) {
+      // Simple parsing: take the first one
+      const preferred = acceptLang.split(',')[0].split(';')[0];
+      // Map to supported locales if possible, otherwise default to de-DE
+      // This is a simplified check, ideally we'd match against backend/locales/*.json
+      if (preferred.startsWith('en')) locale = 'en';
+      else if (preferred.startsWith('fr')) locale = 'fr-FR';
+      else if (preferred.startsWith('it')) locale = 'it-IT';
+      else if (preferred.startsWith('es')) locale = 'es-ES';
+      else if (preferred.startsWith('pl')) locale = 'pl-PL';
+      else if (preferred.startsWith('cs')) locale = 'cs-CZ';
+      else if (preferred.startsWith('sl')) locale = 'sl-SI';
+      else if (preferred.startsWith('tr')) locale = 'tr-TR';
+      else if (preferred.startsWith('zh')) locale = 'zh-CN';
+      else if (preferred.startsWith('hi')) locale = 'hi-IN';
+      else locale = 'de-DE';
+    } else {
+      locale = 'de-DE';
+    }
+  }
+
+  // Ensure it's a valid locale we have a file for
+  const localePath = path.join(__dirname, 'locales', `${locale}.json`);
+  if (!fs.existsSync(localePath)) {
+    // Check if we have a partial match like 'en' -> 'en.json' or 'en-US.json'
+    if (locale === 'en' && fs.existsSync(path.join(__dirname, 'locales', 'en-US.json'))) {
+      locale = 'en-US';
+    } else if (locale === 'en' && fs.existsSync(path.join(__dirname, 'locales', 'en.json'))) {
+        locale = 'en';
+    } else {
+      locale = 'de-DE';
+    }
+  }
+
+  try {
+    const renderedHtml = renderTemplate(path.join(__dirname, "public", "index.template.html"), locale);
+    res.send(renderedHtml);
+  } catch (error) {
+    console.error("Error rendering landing page:", error);
+    res.sendFile(path.join(__dirname, "public", "index.html"));
+  }
 });
 
 // Route to serve public recipe pages

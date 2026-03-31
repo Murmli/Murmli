@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "npm run buildLang && vite build",
+    "build": "node ../backend/scripts/buildLang.js && npm run buildLang && vite build",
     "preview": "vite preview",
     "lint": "eslint . --fix --ignore-path .gitignore",
     "ionic:build": "npm run build",

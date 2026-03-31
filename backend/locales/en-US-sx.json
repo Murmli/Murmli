@@ -1,0 +1,188 @@
+{
+  "meta": {
+    "title": "Murmli – Free AI Calorie Counter, Grocery List & Recipe Planner",
+    "description": "Free AI Calorie Counter from Murmli: Calculate them calories, make yourself a smart shoppin' list, and get your weekly plan done in just a lick of a lamb's tail with our AI recipe planner.",
+    "keywords": "Free Calorie Counter, AI Calorie Calculator, Grocery List App, AI Recipe Planner, Calculate Calories, Weekly Plan, Murmli",
+    "og_title": "Murmli – Free AI Calorie Counter & Recipe Planner",
+    "og_description": "Calculate your calories for free, get your shoppin' lists made up automatic-like, and plan your meals with the Murmli AI, all in one sweet app.",
+    "twitter_title": "Murmli – Free AI Calorie Counter & Recipe Planner",
+    "twitter_description": "Count them calories for free, plan your vittles, and get a nice sorted shoppin' list – all with the Murmli AI."
+  },
+  "schema": {
+    "website_description": "Murmli is your very own all-in-one app: Personalized meal plannin', recipe managin', calorie countin', and workout plans, all helped along by an AI that's as friendly as a porch light!",
+    "faq": [
+      {
+        "q": "Is the Murmli calorie counter truly free of charge?",
+        "a": "Yes ma'am, and yes sir. The calorie calculator on the site and in the app is free forever. You can calculate and save your needs without spendin' a single dime."
+      },
+      {
+        "q": "Does that AI make my grocery list all by itself?",
+        "a": "Sure does. Murmli takes your recipe wishes or weekly plan and whips up a sorted shoppin' list, adjustin' the amounts to fit your calorie goals just right."
+      },
+      {
+        "q": "Can I filter the AI recipe planner for allergies and macros?",
+        "a": "You bet. You can put in things like lactose-free, under 600 kcal, or at least 30g of protein, and it'll give you recipes with all the nutrition facts included."
+      }
+    ],
+    "howto": {
+      "name": "How to calculate your calorie needs with the Murmli calculator",
+      "description": "Here's how you use the free Murmli AI calorie counter in about sixty seconds flat.",
+      "steps": [
+        {
+          "name": "Put in your basics",
+          "text": "Type in your gender, weight, height, and the year you were born."
+        },
+        {
+          "name": "Pick your work PAL",
+          "text": "Choose your work hours per week and the right PAL value to show how much you're movin' at the job."
+        },
+        {
+          "name": "Set your leisure PAL",
+          "text": "Tell us your PAL for your downtime so Murmli can figure out your whole daily energy use."
+        },
+        {
+          "name": "See your calorie goal",
+          "text": "Click on \"Calculate Calorie Needs\" and take a gander at the goals for losin' weight, stayin' where you are, or buildin' muscle."
+        }
+      ]
+    }
+  },
+  "nav": {
+    "features": "The Goodies",
+    "calculator": "Calorie Calculator",
+    "how_to": "How It Works",
+    "faq": "Common Questions",
+    "trailer": "Short Movie",
+    "about": "About Us",
+    "home_label": "Back to Murmli Home"
+  },
+  "hero": {
+    "h1": "Free AI Calorie Counter with a Smart Shoppin' List",
+    "p": "Lookin' to count calories for free, plan your meals, and get a shoppin' list made up automatic? Murmli does it all in one go: AI-calculated calorie needs, a weekly plan that fits, and a sorted list for the store.",
+    "google_play_alt": "Fetch it now at Google Play",
+    "app_store_alt": "Grab it now in the Apple App Store",
+    "discord_alt": "Come on over to our Discord server"
+  },
+  "trailer": {
+    "h2": "See Murmli in Action!",
+    "p": "Take a moment to watch our short trailer and see all the main features at a glance."
+  },
+  "features": {
+    "h2": "What can Murmli do for you right now?",
+    "items": [
+      {
+        "h3": "AI Calorie Counter – free",
+        "p": "Calculate your base and active metabolic rate with the Mifflin-St-Jeor formula and let the AI turn your goals into calories – no paywall at all."
+      },
+      {
+        "h3": "Automatic Shoppin' List",
+        "p": "Murmli makes a nice sorted shoppin' list straight from your weekly plan and fix-it-up to match your calorie goals."
+      },
+      {
+        "h3": "AI Recipe Planner",
+        "p": "Just tell it what you're hanker'in for, like \"lactose-free pasta under 600 kcal,\" and you'll get recipes with all the nutrition and cooking steps."
+      },
+      {
+        "h3": "Weekly Plan in Minutes",
+        "p": "Throw together breakfast, lunch, dinner, and snacks into a clear weekly plan that fits your calorie budget."
+      },
+      {
+        "h3": "Adaptive Workout Plans",
+        "p": "Get suggestions that keep an eye on your progress and keep your energy balance just right."
+      },
+      {
+        "h3": "Recipe Management with Nutrition Facts",
+        "p": "Save your favorite vittles, adjust ingredients for allergies, and see your calories and protein right away."
+      }
+    ]
+  },
+  "how_to": {
+    "h2": "How do I calculate my calorie needs?",
+    "p": "Follow these easy steps and Murmli will show you your base rate, active rate, and the right calorie goals in no time.",
+    "steps": [
+      "Enter your gender, weight, height, and birth year.",
+      "Pick your work hours and the right PAL value.",
+      "Choose your leisure PAL, tap on “Calculate Calorie Needs” and save the results.",
+      "With just one tap, save it in the app so your recipes, shoppin' list, and workouts are all synced up."
+    ],
+    "cta": "Fill out the calorie calculator now"
+  },
+  "about": {
+    "h2": "Why is Murmli more than just a shoppin' list?",
+    "p1": "Murmli ties your shoppin' list, calorie calculator, and recipe planner all together in one app. You can share lists with family or your sweetheart, and everything stays live and synced.",
+    "p2": "The AI recipe planner gives you ideas based on what you want and sends the ingredients straight to the list with one tap. In the recipe manager, you get clear steps and nutrition info.",
+    "p3": "The calorie counter and calculator work hand-in-hand: cooked meals are tracked, goals are updated, and workout plans adjust to fit you.",
+    "p4": "The result is a whole food ecosystem from the grocery store to your tracking, adjustin' to your goals as you go."
+  },
+  "calculator": {
+    "h2": "How does the Murmli calculator find your calorie needs?",
+    "p": "It combines that Mifflin-St-Jeor formula with your PAL values for work and play to show you exactly what you need to lose weight, maintain, or build muscle.",
+    "gender": "Gender",
+    "male": "Gentleman",
+    "female": "Lady",
+    "weight_label": "Body weight in kilograms",
+    "weight_placeholder": "75",
+    "height_label": "Height in centimeters",
+    "height_placeholder": "180",
+    "birth_year_label": "Year you were born",
+    "birth_year_placeholder": "1990",
+    "work_hours_label": "Working hours per week",
+    "work_pal_label": "PAL value for work",
+    "work_pal_options": [
+      "Sittin' down job (PAL 1.2)",
+      "Mostly sittin' with a bit of movin' (PAL 1.4)",
+      "Mixed physical work (PAL 1.6)",
+      "Tiring physical work (PAL 1.8)",
+      "Hard physical labor (PAL 2.0)"
+    ],
+    "rest_pal_label": "PAL value for rest and leisure",
+    "rest_pal_options": [
+      "Relaxin' and light activity (PAL 1.2)",
+      "Light movement and strolls (PAL 1.35)",
+      "Active leisure with sports (PAL 1.5)"
+    ],
+    "calculate_button": "Calculate Calorie Needs",
+    "hint": "Note: This calculator don't replace seein' a real doctor.",
+    "initial_result": "Put your info in to get a report on your base and active metabolic rate right away.",
+    "info_h3": "Why the Murmli calculator is as steady as a rock",
+    "info_list": [
+      "Uses the science-backed Mifflin-St-Jeor approach for your base rate.",
+      "Takes your personal weekly rhythm into account with work and rest times.",
+      "Calculates target ranges for losin' weight, maintainin', and buildin' muscle just like the app."
+    ],
+    "formula_title": "Mifflin-St-Jeor Formula:",
+    "formula_men": "Men = 10 × weight (kg) + 6.25 × height (cm) − 5 × age + 5",
+    "formula_women": "Women = 10 × weight (kg) + 6.25 × height (cm) − 5 × age − 161",
+    "formula_explanation": "Murmli mixes the result with your work and rest times (PAL values) to show your total energy use clear as day.",
+    "formula_result_explanation": "After you calculate, you'll see your base rate, work rate, and total rate includin' recommended calorie goals. That way, you can see if your meal plan fits your goal.",
+    "formula_tip": "Tip: Save your values in the Murmli app to have meals, recipes, and workout plans automatically matched to your calorie budget."
+  },
+  "faq_section": {
+    "h2": "Common questions about the free Murmli calorie counter",
+    "items": [
+      {
+        "h3": "Is the Murmli calorie counter really free of charge?",
+        "p": "Yessir. The calculator here and in the app is free forever. You don't have to pay a red cent to calculate your needs or save your results."
+      },
+      {
+        "h3": "Does the AI make my shoppin' list automatically?",
+        "p": "Sure does. From recipe wishes or your weekly plan, Murmli whips up a sorted shoppin' list and adjusts the amounts to your calorie goal."
+      },
+      {
+        "h3": "Can I filter the AI recipe planner for allergies and macros?",
+        "p": "You sure can. Put in \"lactose-free\", \"under 600 kcal\" or \"at least 30g protein\". The AI gives you recipes with all the nutrition facts and the steps to cook 'em."
+      }
+    ]
+  },
+  "footer": {
+    "links": {
+      "home": "Home",
+      "sitemap": "Sitemap",
+      "privacy": "Privacy",
+      "imprint": "Imprint",
+      "github": "GitHub (Open Source)"
+    },
+    "copy": "© 2026 Murmli – Your smart, personal everyday helper.",
+    "author": "Private project by Manuel Gaschler"
+  }
+}
