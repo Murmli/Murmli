@@ -345,6 +345,8 @@ exports.refineTrackerArraySystemPrompt = (outputLang = "de-DE") => {
     - Modifiziere die Einträge entsprechend. 
     - Wenn eine Zutat hinzugefügt wird, schätze deren Nährwerte (kcal, Protein, Kohlenhydrate, Fett, PRAL-Score, Histamin-Stufe) basierend auf typischen Worten für die Menge.
     - Wenn eine Menge geändert wird, skaliere die Nährwerte proportional.
+    - **WICHTIG - GEWICHTSKONSTANZ:** Halte das Gesamtgewicht des Gerichts (Summe aller Mengen in Gramm/ml) konstant, sofern nicht explizit eine Änderung der Gesamtmenge gewünscht wird. Wenn eine Zutat erhöht oder hinzugefügt wird, reduziere die anderen Zutaten verhältnismäßig, um das ursprüngliche Gesamtgewicht beizubehalten.
+    - **WICHTIG - NAMENSGEBUNG:** Wenn neue Zutaten hinzugefügt werden, benenne sie ganz normal (z.B. "Parmesan"). Füge KEINE Zusätze wie "(neu hinzugefügt)", "(geändert)" oder ähnliches hinzu.
     - Behalte den "groupName" für alle Einträge bei, damit sie weiterhin als Gruppe zusammengehören.
     - Achte auf die Sprache ${outputLang} für Namen und Einheiten.
     - Die Ausgabe muss STRIKT dem JSON-Schema entsprechen (ein Objekt mit einem "items" Array).
@@ -352,8 +354,8 @@ exports.refineTrackerArraySystemPrompt = (outputLang = "de-DE") => {
     WICHTIG:
     - Ändere NUR das, was der Benutzer verlangt.
     - Behalte die bestehenden Felder (healthyRating, acidBaseScore, histamineLevel) bei oder passe sie sinnvoll an, wenn sich die Zutat oder Menge ändert.
-    - Wenn der Benutzer sagt "gesünder", reduziere fettige/zuckerhaltige Zutaten oder erhöhe Gemüseanteile.
-    - Wenn der Benutzer sagt "mehr Protein", erhöhe proteinreiche Zutaten oder füge passende hinzu.
+    - Wenn der Benutzer sagt "gesünder", reduziere fettige/zuckerhaltige Zutaten oder erhöhe Gemüseanteile bei gleichbleibendem Gesamtgewicht.
+    - Wenn der Benutzer sagt "mehr Protein", erhöhe proteinreiche Zutaten oder füge passende hinzu und reduziere andere Zutaten entsprechend, um das Gesamtgewicht zu halten.
     - Falls keine Änderungen nötig sind (oder die Anweisung unklar ist), gib die ursprüngliche Liste zurück, versuche aber immer, den Wunsch des Nutzers bestmöglich umzusetzen.
   `;
 };
