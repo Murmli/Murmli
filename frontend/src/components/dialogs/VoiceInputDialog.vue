@@ -73,12 +73,10 @@ const displayText = computed(() => {
 });
 
 const dialogBinding = computed({
-    get: () => Boolean(dialogStore.dialogs[props.dialogKey]),
+    get: () => Boolean(dialogStore.dialogs[props.dialogKey]) && (isRecording.value || isProcessing.value || !!errorMessage.value),
     set: (value) => {
-        if (value) {
-            dialogStore.openDialog(props.dialogKey);
-        } else {
-            dialogStore.closeDialog(props.dialogKey);
+        if (!value) {
+            cancelRecording();
         }
     },
 });
@@ -117,7 +115,6 @@ const startRecording = async () => {
         console.error('Error accessing microphone:', error);
         errorMessage.value = languageStore.t('general.errorOccurred');
         emit('error', error);
-        dialogStore.closeDialog(props.dialogKey);
     } finally {
         isInitializing.value = false;
     }
