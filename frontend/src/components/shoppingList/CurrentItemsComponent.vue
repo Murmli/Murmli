@@ -4,27 +4,17 @@
         <draggable 
             v-model="draggableCategories" 
             item-key="categoryId"
-            handle=".category-drag-handle"
             :delay="300"
             :delay-on-touch-only="true"
             @end="onCategoryDragEnd"
             class="draggable-categories"
         >
             <template #item="{ element: categoryGroup }">
-                <v-card class="mx-auto mb-4 category-drag-handle" v-if="categoryGroup.items && categoryGroup.items.length">
-                    <v-card-title class="text-subtitle-2 py-2 px-4 d-flex align-center bg-grey-lighten-4">
-                        <v-icon :color="getCategoryColor(categoryGroup.categoryId)" :icon="getCategoryIcon(categoryGroup.categoryId)" size="20" class="mr-2"></v-icon>
-                        {{ categoryGroup.categoryName }}
-                        <v-spacer></v-spacer>
-                        <v-icon size="small" color="grey">mdi-drag-horizontal-variant</v-icon>
-                    </v-card-title>
-                    <v-divider></v-divider>
-                    
+                <v-card class="mx-auto mb-4" v-if="categoryGroup.items && categoryGroup.items.length">
                     <!-- Draggable Items within Category -->
                     <draggable 
                         v-model="categoryGroup.items" 
                         item-key="_id"
-                        handle=".item-drag-handle"
                         :delay="300"
                         :delay-on-touch-only="true"
                         @end="onItemDragEnd"
@@ -32,7 +22,7 @@
                     >
                         <template #item="{ element: item }">
                             <v-list bg-color="white" class="pa-0">
-                                <v-list-item class="item-drag-handle"
+                                <v-list-item class=""
                                     v-touch="{ left: wrapper => handleSwipe(wrapper, item._id), right: wrapper => handleSwipe(wrapper, item._id) }">
                                     <!-- Item Title -->
                                     <v-list-item-title @click="openDropdown(item)">

@@ -8,20 +8,17 @@
         <draggable 
             v-model="localDraggableGroups" 
             item-key="tempId"
-            handle=".drag-handle"
             :delay="300"
             :delay-on-touch-only="true"
             :touch-start-threshold="5"
             @end="onDragEnd"
             class="draggable-list"
             ghost-class="ghost-card"
-            chosen-class="chosen-card"
-            drag-class="drag-card"
         >
-            <template #item="{ element: group, index: gIndex }">
-                <div class="mb-1 drag-handle">
+            <template #item="{ element: group }">
+                <div class="draggable-item-wrapper">
                     <!-- Group Header (only for actual groups) -->
-                    <v-card v-if="group.isGroup" class="mb-1 food-group-card" color="grey-lighten-4">
+                    <v-card v-if="group.isGroup" class="mb-2 food-group-card" color="grey-lighten-4">
                         <v-card-title class="text-subtitle-1 d-flex align-center py-2">
                             <v-btn icon size="x-small" variant="tonal" color="primary" class="mr-2" @click.stop="openGroupScaleDialog(group)">
                                 <v-icon size="small">mdi-pencil</v-icon>
@@ -65,7 +62,7 @@
                     </v-card>
 
                     <!-- Single Item (no group) -->
-                    <v-card v-else @click="openDropdown(item)" class="mb-0 food-item-card" v-for="(item, iIndex) in group.items" :key="item._id || iIndex"
+                    <v-card v-else @click="openDropdown(item)" class="mb-2 food-item-card" v-for="(item, iIndex) in group.items" :key="item._id || iIndex"
                         :class="getHealthyRatingClass(item.healthyRating)">
                         <div class="d-flex align-stretch">
                             <div class="flex-grow-1 overflow-hidden">
