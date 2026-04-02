@@ -1,63 +1,49 @@
 <template>
     <div class="w-100">
-        <!-- Draggable Categories -->
-        <draggable 
-            v-model="draggableCategories" 
-            item-key="categoryId"
-            :delay="300"
-            :delay-on-touch-only="true"
-            @end="onCategoryDragEnd"
-            class="draggable-categories"
-        >
-            <template #item="{ element: categoryGroup }">
-                <v-card class="mx-auto mb-4" v-if="categoryGroup.items && categoryGroup.items.length">
-                    <!-- Items within Category (Not draggable individually) -->
-                    <v-list bg-color="white" class="pa-0">
-                        <template v-for="(item, index) in categoryGroup.items" :key="item._id">
-                            <v-list-item class=""
-                                v-touch="{ left: wrapper => handleSwipe(wrapper, item._id), right: wrapper => handleSwipe(wrapper, item._id) }">
-                                <!-- Item Title -->
-                                <v-list-item-title @click="openDropdown(item)">
-                                    <div class="align-center d-flex">
-                                        <span class="w-100 text-capitalize" :class="{ 'text-warning': item._isPending }"
-                                              v-tooltip="item._isPending ? languageStore.t('shoppingList.pendingItemTooltip') : null">
-                                            {{ item.name }}
-                                            <v-icon v-if="item._isPending" size="small" color="warning" class="ml-1">
-                                                mdi-cloud-upload-outline
-                                            </v-icon>
-                                        </span>
-                                        <span class="text-caption">
-                                            <span v-if="item.quantity && item.quantity > 0">
-                                                {{ item.quantity }}
-                                                <span v-if="item.unit?.id != null"> {{ item.unit.name }}</span>
-                                            </span>
-                                        </span>
-                                    </div>
-                                </v-list-item-title>
+        <v-card class="mx-auto mb-4" v-if="shoppingListStore.items && shoppingListStore.items.length"
+            v-for="(categoryItems, category) in groupedItems" :key="category">
+            <v-list bg-color="white">
+                <v-list-item class="" v-for="item in categoryItems" :key="item._id"
+                    v-touch="{ left: wrapper => handleSwipe(wrapper, item._id), right: wrapper => handleSwipe(wrapper, item._id) }">
+                    <!-- Item Title -->
+                    <v-list-item-title @click="openDropdown(item)">
+                        <div class="align-center d-flex">
+                            <span class="w-100 text-capitalize" :class="{ 'text-warning': item._isPending }"
+                                  v-tooltip="item._isPending ? languageStore.t('shoppingList.pendingItemTooltip') : null">
+                                {{ item.name }}
+                                <v-icon v-if="item._isPending" size="small" color="warning" class="ml-1">
+                                    mdi-cloud-upload-outline
+                                </v-icon>
+                            </span>
+                            <span class="text-caption">
+                                <span v-if="item.quantity && item.quantity > 0">
+                                    {{ item.quantity }}
+                                    <span v-if="item.unit.id != null"> {{ item.unit.name }}</span>
+                                </span>
+                            </span>
+                        </div>
+                    </v-list-item-title>
 
-                                <!-- Icon -->
-                                <template v-slot:prepend>
-                                    <v-badge v-if="item.recipe" color="orange" dot location="bottom end">
-                                        <v-icon :color="getCategoryColor(item.category.id)"
-                                            :icon="getCategoryIcon(item.category.id)" size="35">
-                                        </v-icon>
-                                    </v-badge>
-                                    <v-icon v-else :color="getCategoryColor(item.category.id)"
-                                        :icon="getCategoryIcon(item.category.id)" size="35">
-                                    </v-icon>
-                                </template>
+                    <!-- Icon -->
+                    <template v-slot:prepend>
+                        <v-badge v-if="item.recipe" color="orange" dot location="bottom end">
+                            <v-icon :color="getCategoryColor(item.category.id)"
+                                :icon="getCategoryIcon(item.category.id)" size="35">
+                            </v-icon>
+                        </v-badge>
+                        <v-icon v-else :color="getCategoryColor(item.category.id)"
+                            :icon="getCategoryIcon(item.category.id)" size="35">
+                        </v-icon>
+                    </template>
 
-                                <!-- Checked Checkbox -->
-                                <template v-slot:append="{ isActive }">
-                                    <v-checkbox-btn :model-value="isActive" @click="toggleItemActive(item._id)"></v-checkbox-btn>
-                                </template>
-                            </v-list-item>
-                            <v-divider v-if="index < categoryGroup.items.length - 1"></v-divider>
-                        </template>
-                    </v-list>
-                </v-card>
-            </template>
-        </draggable>
+                    <!-- Checked Checkbox -->
+                    <template v-slot:append="{ isActive }">
+                        <v-checkbox-btn :model-value="isActive" @click="toggleItemActive(item._id)"></v-checkbox-btn>
+                    </template>
+                </v-list-item>
+            </v-list>
+        </v-card>
+
         <!-- Dropdown Menu for Items -->
         <v-bottom-sheet v-model="dropdownMenu">
             <v-card>
@@ -168,12 +154,11 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useShoppingListStore } from '@/stores/shoppingListStore';
 import { useRecipeStore } from '@/stores/recipeStore';
 import { useLanguageStore } from '@/stores/languageStore'
 import { unitRules } from '@/utils/units';
-import draggable from 'vuedraggable';
 
 // Stores
 const languageStore = useLanguageStore()
@@ -186,67 +171,15 @@ const noItems = computed(() => {
     return !items || items.length === 0 || items.every(item => !item.active);
 });
 const activeItems = computed(() => shoppingListStore.items.filter(item => item.active));
-
-// Helper to get category name from ID
-const getCategoryName = (categoryId) => {
-    const cat = shoppingListStore.categories.find(c => Number(c.id) === Number(categoryId));
-    return cat ? cat.name : 'Sonstiges';
-};
-
-// Transform groupedItems into a sortable array for draggableCategories
-const draggableCategories = computed({
-    get() {
-        if (!activeItems.value || activeItems.value.length === 0) return [];
-        
-        const groups = activeItems.value.reduce((acc, item) => {
-            const categoryId = item.category?.id ?? 14; // Default to 14 (Sonstiges)
-            if (!acc[categoryId]) {
-                acc[categoryId] = {
-                    categoryId,
-                    categoryName: getCategoryName(categoryId),
-                    items: []
-                };
-            }
-            acc[categoryId].items.push(item);
-            return acc;
-        }, {});
-
-        // Sort items within each category by their 'order' property
-        Object.values(groups).forEach(group => {
-            group.items.sort((a, b) => (a.order || 0) - (b.order || 0));
-        });
-
-        // Sort categories based on shoppingListStore.sortingOrder (user preference)
-        const sortOrder = shoppingListStore.sortingOrder || [];
-        return Object.values(groups).sort((a, b) => {
-            const indexA = sortOrder.indexOf(Number(a.categoryId));
-            const indexB = sortOrder.indexOf(Number(b.categoryId));
-            const posA = indexA === -1 ? 999 : indexA;
-            const posB = indexB === -1 ? 999 : indexB;
-            return posA - posB;
-        });
-    },
-    set(newOrder) {
-        // We handle the update in onCategoryDragEnd
-    }
+const groupedItems = computed(() => {
+    if (!activeItems.value || activeItems.value.length === 0) return {};
+    return activeItems.value.reduce((groups, item) => {
+        const categoryName = item.category?.name || 'Uncategorized';
+        if (!groups[categoryName]) groups[categoryName] = [];
+        groups[categoryName].push(item);
+        return groups;
+    }, {});
 });
-
-const onCategoryDragEnd = async () => {
-    const newSortOrder = draggableCategories.value.map(group => Number(group.categoryId));
-    await shoppingListStore.reorderCategories(newSortOrder);
-};
-
-const onItemDragEnd = async (event) => {
-    // Collect all item IDs in the new overall order
-    const allItemIds = [];
-    draggableCategories.value.forEach(group => {
-        group.items.forEach(item => {
-            if (item._id) allItemIds.push(item._id);
-        });
-    });
-    
-    await shoppingListStore.reorderItems(allItemIds);
-};
 
 // Varaiables
 const dropdownMenu = ref(false);

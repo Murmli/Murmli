@@ -1081,44 +1081,22 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
       }
     },
 
-    async reorderItems(itemIds) {
+    async updateCategoriesSorting(sort) {
+      // sort must by array with ids [2,4, ...]
       const apiStore = useApiStore();
       try {
         const response = await apiStore.apiRequest(
           "put",
-          "/shoppingList/items/reorder",
-          { listId: this.listId, itemIds },
-          false
+          "/user/shoppingList/sorting/set",
+          { sort }
         );
-        if (response.status === 200) {
-          this.items = response.data.list.items;
+        if (response.status == 200) {
+          await this.readShoppingList();
           this.saveCache();
-          return true;
         }
       } catch (error) {
         this.error = error;
       }
-      return false;
-    },
-
-    async reorderCategories(categoryOrder) {
-      const apiStore = useApiStore();
-      try {
-        const response = await apiStore.apiRequest(
-          "put",
-          "/shoppingList/categories/reorder",
-          { categoryOrder },
-          false
-        );
-        if (response.status === 200) {
-          this.sortingOrder = response.data.sorting;
-          this.saveCache();
-          return true;
-        }
-      } catch (error) {
-        this.error = error;
-      }
-      return false;
     },
 
     async fetchSortingOrder() {

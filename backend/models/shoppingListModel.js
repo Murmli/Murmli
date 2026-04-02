@@ -61,10 +61,6 @@ const shoppingListsSchema = new Schema(
           type: Boolean,
           default: true,
         },
-        order: {
-          type: Number,
-          default: 0,
-        },
       },
     ],
     sharedWith: {
