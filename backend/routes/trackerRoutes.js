@@ -1034,4 +1034,40 @@ router.post("/item/add", secretKeyMiddleware, sessionMiddleware, trackerControll
  */
 router.post("/track/multimodal", secretKeyMiddleware, sessionMiddleware, upload.any(), trackerController.trackMultimodal);
 
+/**
+ * @swagger
+ * /api/v2/calorietracker/items/reorder:
+ *   put:
+ *     tags: [Tracker]
+ *     title: Reorder Food Items
+ *     summary: Update the order of food items in a tracker
+ *     description: Updates the order of food items based on the provided list of IDs.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - trackerId
+ *               - itemIds
+ *             properties:
+ *               trackerId:
+ *                 type: string
+ *               itemIds:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *     responses:
+ *       200:
+ *         description: Items reordered successfully
+ *       400:
+ *         description: Invalid input
+ *       404:
+ *         description: Tracker not found
+ *       500:
+ *         description: Server error
+ */
+router.put("/items/reorder", secretKeyMiddleware, sessionMiddleware, trackerController.reorderItems);
+
 module.exports = router;

@@ -30,6 +30,7 @@
     "marked": "^17.0.1",
     "roboto-fontface": "*",
     "vue": "^3.4.31",
+    "vuedraggable": "^4.1.0",
     "vuetify": "^3.6.11"
   },
   "devDependencies": {

@@ -4,21 +4,69 @@
         <v-alert type="info">{{ languageStore.t('tracker.noItemsTracked') }}</v-alert>
     </div>
     <div v-else>
-        <!-- Grouped Food Items -->
-        <template v-for="(group, gIndex) in groupedFoodItems" :key="group.id || 'ungrouped-' + gIndex">
-            <!-- Group Header (only for actual groups) -->
-            <v-card v-if="group.isGroup" class="mb-2 food-group-card" color="grey-lighten-4">
-                <v-card-title class="text-subtitle-1 d-flex align-center py-2">
-                    <v-btn icon size="x-small" variant="tonal" color="primary" class="mr-2" @click="openGroupScaleDialog(group)">
-                        <v-icon size="small">mdi-pencil</v-icon>
-                    </v-btn>
-                    {{ group.name }}
-                    <v-spacer></v-spacer>
-                </v-card-title>
-                <v-divider></v-divider>
-                <v-card-text class="pa-0">
-                    <v-card @click="openDropdown(item)" class="food-item-card group-item" v-for="(item, iIndex) in group.items" :key="item._id || iIndex"
-                        :class="getHealthyRatingClass(item.healthyRating)" variant="flat">
+        <!-- Grouped Food Items with Drag and Drop -->
+        <draggable 
+            v-model="localDraggableGroups" 
+            item-key="tempId"
+            handle=".drag-handle"
+            :delay="300"
+            :delay-on-touch-only="true"
+            :touch-start-threshold="5"
+            @end="onDragEnd"
+            class="draggable-list"
+            ghost-class="ghost-card"
+            chosen-class="chosen-card"
+            drag-class="drag-card"
+        >
+            <template #item="{ element: group, index: gIndex }">
+                <div class="mb-1 drag-handle">
+                    <!-- Group Header (only for actual groups) -->
+                    <v-card v-if="group.isGroup" class="mb-1 food-group-card" color="grey-lighten-4">
+                        <v-card-title class="text-subtitle-1 d-flex align-center py-2">
+                            <v-btn icon size="x-small" variant="tonal" color="primary" class="mr-2" @click.stop="openGroupScaleDialog(group)">
+                                <v-icon size="small">mdi-pencil</v-icon>
+                            </v-btn>
+                            {{ group.name }}
+                            <v-spacer></v-spacer>
+                        </v-card-title>
+                        <v-divider></v-divider>
+                        <v-card-text class="pa-0">
+                            <v-card @click="openDropdown(item)" class="food-item-card group-item" v-for="(item, iIndex) in group.items" :key="item._id || iIndex"
+                                :class="getHealthyRatingClass(item.healthyRating)" variant="flat">
+                                <div class="d-flex align-stretch">
+                                    <div class="flex-grow-1 overflow-hidden">
+                                        <v-card-title class="text-subtitle-2">
+                                            {{ item.name }} {{ item.daily === 1 ? languageStore.t('tracker.dailyTracked') : '' }}
+                                        </v-card-title>
+                                        <v-card-subtitle class="text-caption">
+                                            {{ item.amount }} {{ item.unit }} ({{ item.kcal }} {{ languageStore.t('tracker.kcal') }})
+                                        </v-card-subtitle>
+                                    </div>
+                                    <div class="indicator-buttons d-flex align-center ga-1 mr-3 my-2" v-if="hasVisibleIndicators(item)">
+                                        <template v-for="indicator in enabledIndicators" :key="indicator.key">
+                                            <v-tooltip :text="getIndicatorTooltip(indicator.key, item)" location="top">
+                                                <template v-slot:activator="{ props }">
+                                                    <div v-bind="props"
+                                                        class="indicator-btn"
+                                                        :class="`indicator-btn-${indicator.key}`"
+                                                        :style="{ backgroundColor: getIndicatorColor(indicator.key, item) }"
+                                                        @click.stop="openIndicatorSettings"
+                                                    >
+                                                        <v-icon v-if="indicator.key === 'histamine'" size="x-small" color="white">mdi-molecule</v-icon>
+                                                        <v-icon v-else-if="indicator.key === 'acidBase'" size="x-small" color="white">mdi-ph</v-icon>
+                                                    </div>
+                                                </template>
+                                            </v-tooltip>
+                                        </template>
+                                    </div>
+                                </div>
+                            </v-card>
+                        </v-card-text>
+                    </v-card>
+
+                    <!-- Single Item (no group) -->
+                    <v-card v-else @click="openDropdown(item)" class="mb-0 food-item-card" v-for="(item, iIndex) in group.items" :key="item._id || iIndex"
+                        :class="getHealthyRatingClass(item.healthyRating)">
                         <div class="d-flex align-stretch">
                             <div class="flex-grow-1 overflow-hidden">
                                 <v-card-title class="text-subtitle-2">
@@ -47,41 +95,11 @@
                             </div>
                         </div>
                     </v-card>
-                </v-card-text>
-            </v-card>
-
-            <!-- Single Item (no group) -->
-            <v-card v-else @click="openDropdown(item)" class="mb-1 food-item-card" v-for="(item, iIndex) in group.items" :key="item._id || iIndex"
-                :class="getHealthyRatingClass(item.healthyRating)">
-                <div class="d-flex align-stretch">
-                    <div class="flex-grow-1 overflow-hidden">
-                        <v-card-title class="text-subtitle-2">
-                            {{ item.name }} {{ item.daily === 1 ? languageStore.t('tracker.dailyTracked') : '' }}
-                        </v-card-title>
-                        <v-card-subtitle class="text-caption">
-                            {{ item.amount }} {{ item.unit }} ({{ item.kcal }} {{ languageStore.t('tracker.kcal') }})
-                        </v-card-subtitle>
-                    </div>
-                    <div class="indicator-buttons d-flex align-center ga-1 mr-3 my-2" v-if="hasVisibleIndicators(item)">
-                        <template v-for="indicator in enabledIndicators" :key="indicator.key">
-                            <v-tooltip :text="getIndicatorTooltip(indicator.key, item)" location="top">
-                                <template v-slot:activator="{ props }">
-                                    <div v-bind="props"
-                                        class="indicator-btn"
-                                        :class="`indicator-btn-${indicator.key}`"
-                                        :style="{ backgroundColor: getIndicatorColor(indicator.key, item) }"
-                                        @click.stop="openIndicatorSettings"
-                                    >
-                                        <v-icon v-if="indicator.key === 'histamine'" size="x-small" color="white">mdi-molecule</v-icon>
-                                        <v-icon v-else-if="indicator.key === 'acidBase'" size="x-small" color="white">mdi-ph</v-icon>
-                                    </div>
-                                </template>
-                            </v-tooltip>
-                        </template>
-                    </div>
                 </div>
-            </v-card>
-        </template>
+            </template>
+        </draggable>
+
+        <!-- Bottom Sheet -->
 
         <!-- Bottom Sheet -->
 
@@ -325,6 +343,7 @@ import { useTrackerStore } from '@/stores/trackerStore';
 import { useShoppingListStore } from '@/stores/shoppingListStore';
 import { useLanguageStore } from '@/stores/languageStore';
 import { useDialogStore } from '@/stores/dialogStore';
+import draggable from 'vuedraggable';
 
 const trackerStore = useTrackerStore();
 const shoppingListStore = useShoppingListStore();
@@ -333,38 +352,62 @@ const dialogStore = useDialogStore();
 
 const tracker = computed(() => trackerStore.tracker || { foodItems: [] });
 
-// Grouping logic
+// Local state for draggable to allow mutation
+const localDraggableGroups = ref([]);
+
+// Grouping logic (Order-preserving)
 const groupedFoodItems = computed(() => {
     if (!tracker.value || !tracker.value.foodItems) return [];
     
     const groups = [];
     const groupMap = new Map();
-    const ungrouped = { isGroup: false, items: [] };
 
-    tracker.value.foodItems.forEach(item => {
+    tracker.value.foodItems.forEach((item, index) => {
         if (item.groupId) {
             if (!groupMap.has(item.groupId)) {
-                groupMap.set(item.groupId, {
+                const newGroup = {
                     id: item.groupId,
+                    tempId: 'group-' + item.groupId, // tempId for draggable
                     name: item.groupName || 'Gericht',
                     isGroup: true,
                     items: []
-                });
+                };
+                groupMap.set(item.groupId, newGroup);
+                groups.push(newGroup);
             }
             groupMap.get(item.groupId).items.push(item);
         } else {
             // Wir behandeln jedes nicht-gruppierte Item einzeln in der Anzeige
-            groups.push({ isGroup: false, items: [item] });
+            groups.push({ 
+                isGroup: false, 
+                tempId: item._id || 'item-' + index, // tempId for draggable
+                items: [item] 
+            });
         }
     });
 
-    // Füge die tatsächlichen Gruppen hinzu
-    for (const group of groupMap.values()) {
-        groups.push(group);
-    }
-
     return groups;
 });
+
+// Sync local state with store
+watch(groupedFoodItems, (newVal) => {
+    // Only update if not currently dragging to avoid jitter
+    // We deep copy to ensure vuedraggable can mutate freely
+    localDraggableGroups.value = JSON.parse(JSON.stringify(newVal));
+}, { immediate: true, deep: true });
+
+const onDragEnd = async (event) => {
+    // Collect all item IDs in the new order
+    const newItemIds = [];
+    localDraggableGroups.value.forEach(group => {
+        group.items.forEach(item => {
+            if (item._id) newItemIds.push(item._id);
+        });
+    });
+    
+    // Update the backend
+    await trackerStore.reorderItems(newItemIds);
+};
 
 // Real-time calorie calculation for group scaling
 const currentGroupCalories = computed(() => {
@@ -777,5 +820,27 @@ const openIndicatorSettings = () => {
     font-weight: bold;
     color: white;
     line-height: 1;
+}
+
+/* Drag and Drop Styles */
+.drag-handle {
+    cursor: grab;
+}
+
+.drag-handle:active {
+    cursor: grabbing;
+}
+
+.ghost-card {
+    opacity: 0.5;
+    background: #c8ebfb !important;
+}
+
+.chosen-card {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important;
+}
+
+.drag-card {
+    opacity: 0;
 }
 </style>

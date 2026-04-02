@@ -1000,6 +1000,72 @@ exports.duplicateItem = async (req, res) => {
   }
 };
 
+exports.reorderItems = async (req, res) => {
+  try {
+    const user = req.user;
+    const { trackerId, itemIds } = req.body;
+
+    if (!trackerId || !itemIds || !Array.isArray(itemIds)) {
+      return res.status(400).json({ error: "Tracker ID and an array of Item IDs are required." });
+    }
+
+    let tracker = await Tracker.findOne({ _id: trackerId, user: user._id });
+    if (!tracker) {
+      return res.status(404).json({ error: "Tracker not found" });
+    }
+
+    // Reorder foodItems based on itemIds
+    const newFoodItems = [];
+    itemIds.forEach((id, index) => {
+      const item = tracker.foodItems.id(id);
+      if (item) {
+        item.order = index;
+        newFoodItems.push(item);
+      }
+    });
+
+    // Add any items that were not in itemIds (safety measure)
+    tracker.foodItems.forEach(item => {
+      if (!itemIds.includes(item._id.toString())) {
+        item.order = newFoodItems.length;
+        newFoodItems.push(item);
+      }
+    });
+
+    tracker.foodItems = newFoodItems;
+    await tracker.save();
+
+    // If any reordered items are daily, update the user's dailyFoodItems order too
+    const dailyItemsInTracker = tracker.foodItems.filter(item => item.daily === 1);
+    if (dailyItemsInTracker.length > 0) {
+      // Create a map for quick lookup
+      const trackerDailyMap = new Map();
+      dailyItemsInTracker.forEach(item => {
+        trackerDailyMap.set(item.name + item.amount + item.unit, item.order);
+      });
+
+      // Sort user.dailyFoodItems based on the order in the tracker
+      user.dailyFoodItems.sort((a, b) => {
+        const orderA = trackerDailyMap.get(a.name + a.amount + a.unit) ?? 999;
+        const orderB = trackerDailyMap.get(b.name + b.amount + b.unit) ?? 999;
+        return orderA - orderB;
+      });
+
+      // Also update the order property in user.dailyFoodItems
+      user.dailyFoodItems.forEach((item, index) => {
+        item.order = index;
+      });
+
+      await user.save();
+    }
+
+    return res.status(200).json({ message: "Items reordered successfully", tracker });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Server error" });
+  }
+};
+
 exports.chat = async (req, res) => {
   try {
     const user = req.user;

@@ -576,6 +576,27 @@ export const useTrackerStore = defineStore("trackerStore", {
       return null;
     },
 
+    // Reorder food items in the tracker
+    async reorderItems(itemIds) {
+      const apiStore = useApiStore();
+      try {
+        const response = await apiStore.apiRequest(
+          "put",
+          "/calorietracker/items/reorder",
+          { trackerId: this.tracker._id, itemIds },
+          false
+        );
+        if (response.status === 200) {
+          this.tracker = response.data.tracker;
+          this.saveCache();
+          return true;
+        }
+      } catch (error) {
+        this.error = error;
+      }
+      return null;
+    },
+
     // Get the user's body data
     async fetchBodyData() {
       const apiStore = useApiStore();
