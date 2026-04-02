@@ -777,6 +777,59 @@ exports.getUserShoppingList = async (req, res) => {
   }
 };
 
+exports.reorderItems = async (req, res) => {
+  try {
+    const shoppingList = req.shoppingList;
+    const { itemIds } = req.body;
+
+    if (!itemIds || !Array.isArray(itemIds)) {
+      return res.status(400).json({ error: "Item IDs array is required" });
+    }
+
+    // Update the order for each item in the shopping list
+    itemIds.forEach((id, index) => {
+      const item = shoppingList.items.id(id);
+      if (item) {
+        item.order = index;
+      }
+    });
+
+    // Also sort the array in-place to ensure the saved order is correct
+    shoppingList.items.sort((a, b) => (a.order || 0) - (b.order || 0));
+
+    const updatedShoppingList = await shoppingList.save();
+    if (!updatedShoppingList) {
+      throw new Error("Database Error");
+    }
+
+    broadcastUpdate(updatedShoppingList);
+    req.shoppingList = updatedShoppingList;
+    return exports.read(req, res);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Server Error" });
+  }
+};
+
+exports.reorderCategories = async (req, res) => {
+  try {
+    const user = req.user;
+    const { categoryOrder } = req.body;
+
+    if (!categoryOrder || !Array.isArray(categoryOrder)) {
+      return res.status(400).json({ error: "Category order array is required" });
+    }
+
+    user.shoppingListSort = categoryOrder.map(Number);
+    await user.save();
+
+    return res.status(200).json({ sorting: user.shoppingListSort });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Server Error" });
+  }
+};
+
 exports.stream = (req, res) => {
   const shoppingList = req.shoppingList;
 
