@@ -2,10 +2,11 @@
     <div class="w-100">
         <!-- Draggable Categories -->
         <draggable 
-            v-model="draggableCategories" 
+            v-model="localDraggableCategories" 
             item-key="categoryId"
             :delay="300"
             :delay-on-touch-only="true"
+            @start="onCategoryDragStart"
             @end="onCategoryDragEnd"
             class="draggable-categories"
         >
@@ -165,7 +166,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
 import { useShoppingListStore } from '@/stores/shoppingListStore';
 import { useRecipeStore } from '@/stores/recipeStore';
 import { useLanguageStore } from '@/stores/languageStore'
@@ -184,47 +185,68 @@ const noItems = computed(() => {
 });
 const activeItems = computed(() => shoppingListStore.items.filter(item => item.active));
 
+// Local state for draggable to allow mutation
+const localDraggableCategories = ref([]);
+const isDragging = ref(false);
+
 // Helper to get category name from ID
 const getCategoryName = (categoryId) => {
     const cat = shoppingListStore.categories.find(c => Number(c.id) === Number(categoryId));
     return cat ? cat.name : 'Sonstiges';
 };
 
-// Transform grouped items into a sortable array for draggable
-const draggableCategories = computed({
-    get() {
-        if (!activeItems.value || activeItems.value.length === 0) return [];
-        
-        const groups = activeItems.value.reduce((acc, item) => {
-            const categoryId = item.category?.id ?? 14; // Default to 14 (Sonstiges)
-            if (!acc[categoryId]) {
-                acc[categoryId] = {
-                    categoryId,
-                    categoryName: getCategoryName(categoryId),
-                    items: []
-                };
-            }
-            acc[categoryId].items.push(item);
-            return acc;
-        }, {});
+// Transform items into categories for display/drag
+const getGroupedCategories = () => {
+    if (!activeItems.value || activeItems.value.length === 0) return [];
+    
+    const groupsMap = {};
+    
+    activeItems.value.forEach(item => {
+        const categoryId = item.category?.id ?? 14;
+        if (!groupsMap[categoryId]) {
+            groupsMap[categoryId] = {
+                categoryId: Number(categoryId),
+                categoryName: getCategoryName(categoryId),
+                items: []
+            };
+        }
+        groupsMap[categoryId].items.push(item);
+    });
 
-        // Sort categories based on shoppingListStore.sortingOrder (user preference)
-        const sortOrder = shoppingListStore.sortingOrder || [];
-        return Object.values(groups).sort((a, b) => {
-            const indexA = sortOrder.indexOf(Number(a.categoryId));
-            const indexB = sortOrder.indexOf(Number(b.categoryId));
-            const posA = indexA === -1 ? 999 : indexA;
-            const posB = indexB === -1 ? 999 : indexB;
-            return posA - posB;
-        });
-    },
-    set(newOrder) {
-        // We handle the update in onCategoryDragEnd
+    // Convert to array
+    const groupsArray = Object.values(groupsMap);
+
+    // Sort categories based on shoppingListStore.sortingOrder (user preference)
+    const sortOrder = shoppingListStore.sortingOrder || [];
+    groupsArray.sort((a, b) => {
+        const indexA = sortOrder.indexOf(Number(a.categoryId));
+        const indexB = sortOrder.indexOf(Number(b.categoryId));
+        const posA = indexA === -1 ? 999 : indexA;
+        const posB = indexB === -1 ? 999 : indexB;
+        
+        if (posA !== posB) return posA - posB;
+        return a.categoryId - b.categoryId;
+    });
+
+    return groupsArray;
+};
+
+// Sync local state with store
+watch([activeItems, () => shoppingListStore.sortingOrder], () => {
+    if (!isDragging.value) {
+        localDraggableCategories.value = getGroupedCategories();
     }
-});
+}, { immediate: true, deep: true });
+
+const onCategoryDragStart = () => {
+    isDragging.value = true;
+};
 
 const onCategoryDragEnd = async () => {
-    const newSortOrder = draggableCategories.value.map(group => Number(group.categoryId));
+    isDragging.value = false;
+    // Get the new order from the local mutated ref
+    const newSortOrder = localDraggableCategories.value.map(group => Number(group.categoryId));
+    console.log('[ShoppingList] Saving new category order:', newSortOrder);
     await shoppingListStore.reorderCategories(newSortOrder);
 };
 
