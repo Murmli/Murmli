@@ -1099,6 +1099,26 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
       }
     },
 
+    async reorderCategories(categoryOrder) {
+      const apiStore = useApiStore();
+      try {
+        const response = await apiStore.apiRequest(
+          "put",
+          "/shoppingList/categories/reorder",
+          { categoryOrder },
+          false
+        );
+        if (response.status === 200) {
+          this.sortingOrder = response.data.sorting;
+          this.saveCache();
+          return true;
+        }
+      } catch (error) {
+        this.error = error;
+      }
+      return false;
+    },
+
     async fetchSortingOrder() {
       const apiStore = useApiStore();
       try {

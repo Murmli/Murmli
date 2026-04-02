@@ -777,6 +777,25 @@ exports.getUserShoppingList = async (req, res) => {
   }
 };
 
+exports.reorderCategories = async (req, res) => {
+  try {
+    const user = req.user;
+    const { categoryOrder } = req.body;
+
+    if (!categoryOrder || !Array.isArray(categoryOrder)) {
+      return res.status(400).json({ error: "Category order array is required" });
+    }
+
+    user.shoppingListSort = categoryOrder.map(Number);
+    await user.save();
+
+    return res.status(200).json({ sorting: user.shoppingListSort });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Server Error" });
+  }
+};
+
 exports.stream = (req, res) => {
   const shoppingList = req.shoppingList;
 
