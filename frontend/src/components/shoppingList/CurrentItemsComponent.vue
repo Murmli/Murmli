@@ -11,59 +11,50 @@
         >
             <template #item="{ element: categoryGroup }">
                 <v-card class="mx-auto mb-4" v-if="categoryGroup.items && categoryGroup.items.length">
-                    <!-- Draggable Items within Category -->
-                    <draggable 
-                        v-model="categoryGroup.items" 
-                        item-key="_id"
-                        :delay="300"
-                        :delay-on-touch-only="true"
-                        @end="onItemDragEnd"
-                        class="draggable-items"
-                    >
-                        <template #item="{ element: item }">
-                            <v-list bg-color="white" class="pa-0">
-                                <v-list-item class=""
-                                    v-touch="{ left: wrapper => handleSwipe(wrapper, item._id), right: wrapper => handleSwipe(wrapper, item._id) }">
-                                    <!-- Item Title -->
-                                    <v-list-item-title @click="openDropdown(item)">
-                                        <div class="align-center d-flex">
-                                            <span class="w-100 text-capitalize" :class="{ 'text-warning': item._isPending }"
-                                                  v-tooltip="item._isPending ? languageStore.t('shoppingList.pendingItemTooltip') : null">
-                                                {{ item.name }}
-                                                <v-icon v-if="item._isPending" size="small" color="warning" class="ml-1">
-                                                    mdi-cloud-upload-outline
-                                                </v-icon>
-                                            </span>
-                                            <span class="text-caption">
-                                                <span v-if="item.quantity && item.quantity > 0">
-                                                    {{ item.quantity }}
-                                                    <span v-if="item.unit?.id != null"> {{ item.unit.name }}</span>
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </v-list-item-title>
-
-                                    <!-- Icon -->
-                                    <template v-slot:prepend>
-                                        <v-badge v-if="item.recipe" color="orange" dot location="bottom end">
-                                            <v-icon :color="getCategoryColor(item.category.id)"
-                                                :icon="getCategoryIcon(item.category.id)" size="35">
+                    <!-- Items within Category (Not draggable individually) -->
+                    <v-list bg-color="white" class="pa-0">
+                        <template v-for="(item, index) in categoryGroup.items" :key="item._id">
+                            <v-list-item class=""
+                                v-touch="{ left: wrapper => handleSwipe(wrapper, item._id), right: wrapper => handleSwipe(wrapper, item._id) }">
+                                <!-- Item Title -->
+                                <v-list-item-title @click="openDropdown(item)">
+                                    <div class="align-center d-flex">
+                                        <span class="w-100 text-capitalize" :class="{ 'text-warning': item._isPending }"
+                                              v-tooltip="item._isPending ? languageStore.t('shoppingList.pendingItemTooltip') : null">
+                                            {{ item.name }}
+                                            <v-icon v-if="item._isPending" size="small" color="warning" class="ml-1">
+                                                mdi-cloud-upload-outline
                                             </v-icon>
-                                        </v-badge>
-                                        <v-icon v-else :color="getCategoryColor(item.category.id)"
+                                        </span>
+                                        <span class="text-caption">
+                                            <span v-if="item.quantity && item.quantity > 0">
+                                                {{ item.quantity }}
+                                                <span v-if="item.unit?.id != null"> {{ item.unit.name }}</span>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </v-list-item-title>
+
+                                <!-- Icon -->
+                                <template v-slot:prepend>
+                                    <v-badge v-if="item.recipe" color="orange" dot location="bottom end">
+                                        <v-icon :color="getCategoryColor(item.category.id)"
                                             :icon="getCategoryIcon(item.category.id)" size="35">
                                         </v-icon>
-                                    </template>
+                                    </v-badge>
+                                    <v-icon v-else :color="getCategoryColor(item.category.id)"
+                                        :icon="getCategoryIcon(item.category.id)" size="35">
+                                    </v-icon>
+                                </template>
 
-                                    <!-- Checked Checkbox -->
-                                    <template v-slot:append="{ isActive }">
-                                        <v-checkbox-btn :model-value="isActive" @click="toggleItemActive(item._id)"></v-checkbox-btn>
-                                    </template>
-                                </v-list-item>
-                                <v-divider v-if="categoryGroup.items.indexOf(item) < categoryGroup.items.length - 1"></v-divider>
-                            </v-list>
+                                <!-- Checked Checkbox -->
+                                <template v-slot:append="{ isActive }">
+                                    <v-checkbox-btn :model-value="isActive" @click="toggleItemActive(item._id)"></v-checkbox-btn>
+                                </template>
+                            </v-list-item>
+                            <v-divider v-if="index < categoryGroup.items.length - 1"></v-divider>
                         </template>
-                    </draggable>
+                    </v-list>
                 </v-card>
             </template>
         </draggable>
