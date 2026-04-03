@@ -27,8 +27,6 @@
                         <v-btn color="primary" prepend-icon="mdi-camera" @click="triggerCapture">
                             {{ languageStore.t('general.capturePhoto') }}
                         </v-btn>
-                        <input type="file" accept="image/*" ref="fileCapture" class="d-none" capture="environment"
-                            multiple @change="handleFileInput" />
                     </p>
                     <p>
                         <v-btn color="primary" prepend-icon="mdi-image-multiple" @click="triggerFileInput">
@@ -48,6 +46,9 @@
                 </v-btn>
             </v-card-actions>
         </v-card>
+
+        <!-- Inline Kamera -->
+        <InlineCamera v-model="isCameraOpen" @captured="handleCapturedPhoto" />
     </v-dialog>
 </template>
 
@@ -55,6 +56,8 @@
 import { ref, computed, watch } from 'vue';
 import { useDialogStore } from '@/stores/dialogStore';
 import { useLanguageStore } from '@/stores/languageStore';
+
+import InlineCamera from '@/components/general/InlineCamera.vue';
 
 const props = defineProps({
     showDescription: {
@@ -75,7 +78,7 @@ const languageStore = useLanguageStore();
 const description = ref('');
 const selectedImages = ref([]);
 const fileInput = ref(null);
-const fileCapture = ref(null);
+const isCameraOpen = ref(false);
 
 const dialogBinding = computed({
     get: () => Boolean(dialogStore.dialogs.trackImageDialog),
@@ -103,7 +106,18 @@ const triggerFileInput = () => {
 };
 
 const triggerCapture = () => {
-    fileCapture.value.click();
+    isCameraOpen.value = true;
+};
+
+const handleCapturedPhoto = (file) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+        selectedImages.value.push({
+            file: file,
+            preview: reader.result
+        });
+    };
+    reader.readAsDataURL(file);
 };
 
 const handleFileInput = (event) => {

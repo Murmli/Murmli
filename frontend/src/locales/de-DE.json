@@ -145,6 +145,8 @@
     "week": "Woche",
     "selectPhoto": "Foto auswählen",
     "capturePhoto": "Kamera",
+    "cameraError": "Kamerafehler",
+    "cameraPermissionDenied": "Kamerazugriff verweigert",
     "reset": "Zurücksetzen"
   },
   "shoppingList": {
