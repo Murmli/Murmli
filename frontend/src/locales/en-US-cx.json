@@ -602,7 +602,8 @@
     "refineGroupTitle": "Tweak it with AI, dude",
     "refineGroupInfo": "Tell us how to catch a better wave with this dish (like \"less oil, man\" or \"extra protein for the gains\").",
     "refineGroupPlaceholder": "Drop your vibes here...",
-    "refineGroupButton": "Ride the change"
+    "refineGroupButton": "Ride the change",
+    "groupName": "The name of your epic meal, bro"
   },
   "trainingPlans": {
     "title": "Training Sets",

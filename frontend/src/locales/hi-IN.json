@@ -602,7 +602,8 @@
     "refineGroupTitle": "AI के साथ अनुकूलित करें",
     "refineGroupInfo": "बताएं कि इस व्यंजन में क्या बदला जाना चाहिए (जैसे \"कम तेल\", \"अधिक प्रोटीन\")।",
     "refineGroupPlaceholder": "निर्देश दर्ज करें...",
-    "refineGroupButton": "परिवर्तन लागू करें"
+    "refineGroupButton": "परिवर्तन लागू करें",
+    "groupName": "पकवान का नाम"
   },
   "trainingPlans": {
     "title": "प्रशिक्षण योजनाएं",

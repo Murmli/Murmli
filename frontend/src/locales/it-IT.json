@@ -602,7 +602,8 @@
     "refineGroupTitle": "Personalizza con l'IA",
     "refineGroupInfo": "Indica cosa vuoi modificare in questo piatto (ad es. \"meno olio\", \"più proteine\").",
     "refineGroupPlaceholder": "Inserisci istruzioni...",
-    "refineGroupButton": "Applica personalizzazione"
+    "refineGroupButton": "Applica personalizzazione",
+    "groupName": "Nome del piatto"
   },
   "trainingPlans": {
     "title": "Piani di allenamento",

@@ -602,7 +602,8 @@
     "refineGroupTitle": "Fix it up with a bit o' AI",
     "refineGroupInfo": "Just tell us what needs a-changin' on this here plate (like \"easy on the oil\" or \"mo' protein, please\").",
     "refineGroupPlaceholder": "Go 'head and type it in...",
-    "refineGroupButton": "Let's get it fixed"
+    "refineGroupButton": "Let's get it fixed",
+    "groupName": "Name of that there dish"
   },
   "trainingPlans": {
     "title": "Workout Plans",

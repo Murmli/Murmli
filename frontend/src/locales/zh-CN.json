@@ -602,7 +602,8 @@
     "refineGroupTitle": "使用 AI 调整",
     "refineGroupInfo": "说明对此菜品需要进行的更改（例如“少油”、“增加蛋白质”）。",
     "refineGroupPlaceholder": "输入指令...",
-    "refineGroupButton": "应用调整"
+    "refineGroupButton": "应用调整",
+    "groupName": "菜品名称"
   },
   "trainingPlans": {
     "title": "训练计划",

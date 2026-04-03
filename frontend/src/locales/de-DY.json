@@ -602,7 +602,8 @@
     "refineGroupTitle": "Mit KI auf dein Level bringen",
     "refineGroupInfo": "Sag an, was an dem Food anders soll (z. B. \"weniger Öl\", \"mehr Protein\").",
     "refineGroupPlaceholder": "Anweisung droppen...",
-    "refineGroupButton": "Anpassung regeln"
+    "refineGroupButton": "Anpassung regeln",
+    "groupName": "Name vom Food"
   },
   "trainingPlans": {
     "title": "Trainingspläne",

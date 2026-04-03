@@ -477,6 +477,7 @@
       "remove": "Entfernen"
     },
     "dailyTracked": "(täglich)",
+    "groupName": "Name des Gerichts",
     "scalePortion": "Portion anpassen",
     "scaleGroupInfo": "Passe die Portion für das gesamte Gericht an. Alle Zutaten werden proportional skaliert.",
     "refineGroupTitle": "Mit KI anpassen",

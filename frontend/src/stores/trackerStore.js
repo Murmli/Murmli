@@ -487,13 +487,13 @@ export const useTrackerStore = defineStore("trackerStore", {
     },
 
     // Update a group of food items in the tracker
-    async updateFoodGroup(groupId, scalingFactor) {
+    async updateFoodGroup(groupId, scalingFactor, name) {
       const apiStore = useApiStore();
       try {
         const response = await apiStore.apiRequest(
           "put",
           "/calorietracker/group/update",
-          { trackerId: this.tracker._id, groupId, scalingFactor }
+          { trackerId: this.tracker._id, groupId, scalingFactor, name }
         );
         if (response.status === 200) {
           this.tracker = response.data.tracker;

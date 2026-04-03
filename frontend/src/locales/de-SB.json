@@ -602,7 +602,8 @@
     "refineGroupTitle": "Mit KI bissle abändra",
     "refineGroupInfo": "Sag oifach, was an dem Essa anderscht sei soll (z.B. \"weniger Öl\", \"meh Brotein\").",
     "refineGroupPlaceholder": "Schreib nei, was de willsch...",
-    "refineGroupButton": "Des jetzt so macha"
+    "refineGroupButton": "Des jetzt so macha",
+    "groupName": "Nama vom Gricht"
   },
   "trainingPlans": {
     "title": "Sportpläne",

@@ -602,7 +602,8 @@
     "refineGroupTitle": "Refine with AI",
     "refineGroupInfo": "Specify what should be changed about this dish (e.g., \"less oil\", \"more protein\").",
     "refineGroupPlaceholder": "Enter instruction...",
-    "refineGroupButton": "Apply adjustment"
+    "refineGroupButton": "Apply adjustment",
+    "groupName": "Name of the dish"
   },
   "trainingPlans": {
     "title": "Training Plans",

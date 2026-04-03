@@ -602,7 +602,8 @@
     "refineGroupTitle": "Mit der KI a bissl herrichten",
     "refineGroupInfo": "Sag ma anfoch, was ma bei der Speis anders machen solln (z. B. \"weniger Öl\", \"mehr Protein\").",
     "refineGroupPlaceholder": "Schreib dei Anweisung eina...",
-    "refineGroupButton": "Anpassung übernehma"
+    "refineGroupButton": "Anpassung übernehma",
+    "groupName": "Naman von dera Speis"
   },
   "trainingPlans": {
     "title": "Trainingspläne",

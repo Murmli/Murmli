@@ -769,10 +769,10 @@ exports.updateItem = async (req, res) => {
 exports.updateGroup = async (req, res) => {
   try {
     const user = req.user;
-    const { trackerId, groupId, scalingFactor } = req.body;
+    const { trackerId, groupId, scalingFactor, name } = req.body;
 
-    if (!trackerId || !groupId || scalingFactor === undefined) {
-      return res.status(400).json({ error: "Tracker ID, Group ID, and Scaling Factor are required." });
+    if (!trackerId || !groupId || (scalingFactor === undefined && name === undefined)) {
+      return res.status(400).json({ error: "Tracker ID, Group ID, and either Scaling Factor or Name are required." });
     }
 
     let tracker = await Tracker.findOne({ _id: trackerId, user: user._id });
@@ -784,12 +784,17 @@ exports.updateGroup = async (req, res) => {
     let itemsUpdated = 0;
     tracker.foodItems.forEach(item => {
       if (item.groupId === groupId) {
-        item.amount = parseFloat((item.amount * scalingFactor).toFixed(2));
-        item.kcal = Math.round(item.kcal * scalingFactor);
-        item.protein = parseFloat((item.protein * scalingFactor).toFixed(1));
-        item.carbohydrates = parseFloat((item.carbohydrates * scalingFactor).toFixed(1));
-        item.fat = parseFloat((item.fat * scalingFactor).toFixed(1));
-        item.acidBaseScore = parseFloat((item.acidBaseScore * scalingFactor).toFixed(2));
+        if (scalingFactor !== undefined && scalingFactor !== 1.0) {
+          item.amount = parseFloat((item.amount * scalingFactor).toFixed(2));
+          item.kcal = Math.round(item.kcal * scalingFactor);
+          item.protein = parseFloat((item.protein * scalingFactor).toFixed(1));
+          item.carbohydrates = parseFloat((item.carbohydrates * scalingFactor).toFixed(1));
+          item.fat = parseFloat((item.fat * scalingFactor).toFixed(1));
+          item.acidBaseScore = parseFloat((item.acidBaseScore * scalingFactor).toFixed(2));
+        }
+        if (name !== undefined) {
+          item.groupName = name;
+        }
         itemsUpdated++;
       }
     });

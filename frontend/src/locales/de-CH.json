@@ -602,7 +602,8 @@
     "refineGroupTitle": "Mit KI aapasse",
     "refineGroupInfo": "Gib doch eifach aa, was a däm Menü gänderet werde sött (z. B. \"weniger Öl\", \"meh Protein\").",
     "refineGroupPlaceholder": "Aawysig iigäh...",
-    "refineGroupButton": "Aapassig aawände"
+    "refineGroupButton": "Aapassig aawände",
+    "groupName": "Name vom Grüchtli"
   },
   "trainingPlans": {
     "title": "Trainingsplän",

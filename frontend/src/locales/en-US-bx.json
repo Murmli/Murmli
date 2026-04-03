@@ -602,7 +602,8 @@
     "refineGroupTitle": "Fix it up wicked smaht with AI",
     "refineGroupInfo": "Tell us how to tweak this chowa (like \"cut the oil\" or \"moah protein\").",
     "refineGroupPlaceholder": "Type ya orda...",
-    "refineGroupButton": "Apply the fix"
+    "refineGroupButton": "Apply the fix",
+    "groupName": "Name of the wicked cou't case"
   },
   "trainingPlans": {
     "title": "Workout Plans",

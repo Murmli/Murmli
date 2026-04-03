@@ -224,7 +224,14 @@
     <v-dialog v-model="groupScaleDialog" max-width="400px">
         <v-card>
             <v-card-title>
-                {{ selectedGroup?.name }}
+                <v-text-field
+                    v-model="localGroupName"
+                    :label="languageStore.t('tracker.groupName') || 'Gericht Name'"
+                    variant="underlined"
+                    density="compact"
+                    hide-details
+                    class="mb-2"
+                ></v-text-field>
             </v-card-title>
             <v-card-text>
                 <div class="text-body-2 mb-4">
@@ -426,6 +433,7 @@ const groupScaleDialog = ref(false);
 const isScaling = ref(false);
 const isRefining = ref(false);
 const selectedGroup = ref(null);
+const localGroupName = ref('');
 const groupScalingFactor = ref(1.0);
 const groupRefineInstructions = ref('');
 const localWeight = ref(0);
@@ -517,6 +525,7 @@ const openDropdown = (item) => {
 
 const openGroupScaleDialog = (group) => {
     selectedGroup.value = group;
+    localGroupName.value = group.name;
     groupScalingFactor.value = 1.0; // Start at 1.0 as factor
     
     // Initialize localWeight
@@ -545,7 +554,7 @@ const saveGroupScaling = async () => {
     
     isScaling.value = true;
     try {
-        await trackerStore.updateFoodGroup(selectedGroup.value.id, groupScalingFactor.value);
+        await trackerStore.updateFoodGroup(selectedGroup.value.id, groupScalingFactor.value, localGroupName.value);
         groupScaleDialog.value = false;
     } finally {
         isScaling.value = false;
