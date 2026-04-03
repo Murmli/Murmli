@@ -84,7 +84,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           "/calorietracker/get",
           date ? { date } : {}
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.tracker = response.data;
           this.date = response.data.date;
           this.saveCache();
@@ -103,7 +103,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           "post",
           "/calorietracker/history"
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.history = response.data.history;
           return true;
         }
@@ -140,7 +140,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           { messages, trackerId: this.tracker._id },
           false
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           if (response.data.tracker) {
             this.tracker = response.data.tracker;
             this.saveCache();
@@ -167,7 +167,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           },
           false
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.tracker = response.data.tracker;
           this.isAddingItem = false;
           this.saveCache();
@@ -205,7 +205,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           },
           false
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.tracker = response.data.tracker;
           this.isAddingItem = false;
           this.saveCache();
@@ -233,7 +233,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           formData,
           false
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.tracker = response.data.tracker;
           this.isAddingItem = false;
           this.saveCache();
@@ -255,7 +255,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           "/calorietracker/track/recipe",
           { recipeId, portions, trackerId: this.tracker._id }
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.tracker = response.data.tracker;
           this.saveCache();
           return response.message;
@@ -282,7 +282,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           formData,
           false
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.tracker = response.data.tracker;
           this.isAddingItem = false;
           this.saveCache();
@@ -323,7 +323,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           formData,
           false
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.tracker = response.data.tracker;
           this.isAddingItem = false;
           this.saveCache();
@@ -345,7 +345,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           "/calorietracker/track/activity",
           { text, trackerId: this.tracker._id }
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.tracker = response.data.tracker;
           this.saveCache();
           return response.message;
@@ -366,7 +366,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           "/calorietracker/activity/remove",
           { trackerId: this.tracker._id, activityId: _id }
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.tracker = response.data.tracker;
           this.selectedItem = {};
           this.saveCache();
@@ -387,7 +387,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           "/calorietracker/activity/update",
           { trackerId: this.tracker._id, activityId: _id, ...updatedData }
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.tracker = response.data.tracker;
           this.selectedItem = {};
           this.saveCache();
@@ -409,7 +409,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           "/calorietracker/item/daily/toggle",
           { trackerId: this.tracker._id, foodItemId: _id },
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.tracker = response.data.tracker;
           this.selectedItem = {};
           this.saveCache();
@@ -432,7 +432,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           { sourceTrackerId: this.tracker._id, foodItemId: _id },
           false
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.selectedItem = {};
           this.saveCache();
           return true;
@@ -454,7 +454,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           { trackerId: this.tracker._id, foodItemId: _id },
           false
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.tracker = response.data.tracker;
           this.selectedItem = {};
           this.saveCache();
@@ -495,7 +495,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           "/calorietracker/group/update",
           { trackerId: this.tracker._id, groupId, scalingFactor, name }
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.tracker = response.data.tracker;
           this.saveCache();
           return response.data.message;
@@ -515,7 +515,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           "/calorietracker/group/refine",
           { trackerId: this.tracker._id, groupId, instructions }
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.tracker = response.data.tracker;
           this.saveCache();
           return response.data.message;
@@ -536,7 +536,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           "/calorietracker/item/update",
           { trackerId: this.tracker._id, foodItemId: _id, ...updatedData }
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.tracker = response.data.tracker;
           // Wenn das Item in den Favoriten existiert, aktualisiere es dort auch
           const favoriteIndex = this.favorites.findIndex(fav => fav.name === updatedData.name);
@@ -564,7 +564,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           "/calorietracker/item/remove",
           { trackerId: this.tracker._id, foodItemId: _id }
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.tracker = response.data.tracker;
           this.selectedItem = {};
           this.saveCache();
@@ -586,7 +586,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           { trackerId: this.tracker._id, itemIds },
           false
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.tracker = response.data.tracker;
           this.saveCache();
           return true;
@@ -605,7 +605,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           "post",
           "/calorietracker/bodydata/get"
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.bodyData = response.data.bodyData;
           this.saveCache();
           return this.bodyData;
@@ -646,7 +646,7 @@ export const useTrackerStore = defineStore("trackerStore", {
           { workDays, workDaysPAL }
         );
 
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           return response.data.recommendations;
         }
       } catch (error) {

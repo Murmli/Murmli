@@ -25,6 +25,8 @@ export const useApiStore = defineStore("apiStore", {
 
   actions: {
     async apiRequest(method, url, data = null, setLoading = true, options = {}) {
+      const showError = options?.showError ?? true;
+
       // Prevent requests to protected routes if no token is present
       const isPublicRoute = url === "/session/create" || url.startsWith("/recipe/public/");
       if (!this.token && !isPublicRoute) {
@@ -39,7 +41,9 @@ export const useApiStore = defineStore("apiStore", {
       this.cancelTokenSource = cancelSource;
 
       try {
-        this.error = null;
+        if (showError) {
+          this.error = null;
+        }
         const baseHeaders = {
           "x-header-secret-key": HEADER_SECRET_KEY,
           ...(this.token ? { Authorization: `Bearer ${this.token}` } : {}),
@@ -50,7 +54,7 @@ export const useApiStore = defineStore("apiStore", {
         const headers = { ...baseHeaders, ...optionHeaders };
 
         // Avoid passing headers twice; strip from options before spreading
-        const { headers: _omitHeaders, ...restOptions } = options || {};
+        const { headers: _omitHeaders, showError: _omitShowError, ...restOptions } = options || {};
 
         const response = await axios({
           method,
@@ -64,7 +68,9 @@ export const useApiStore = defineStore("apiStore", {
 
         return response;
       } catch (error) {
-        this.error = error;
+        if (showError) {
+          this.error = error;
+        }
         return false;
       } finally {
         if (setLoading) {

@@ -22,7 +22,7 @@ export const useUserStore = defineStore("userStore", {
       try {
         localStorage.clear();
         const response = await apiStore.apiRequest("delete", "/user/delete");
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           window.location.href = "/";
           return true;
         }
@@ -119,7 +119,7 @@ export const useUserStore = defineStore("userStore", {
           "post",
           "/user/role/get"
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.role = response.data.role;
           localStorage.setItem("userRole", this.role);
           return this.role;
@@ -137,7 +137,7 @@ export const useUserStore = defineStore("userStore", {
           "post",
           "/user/id/get"
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.id = response.data.id;
           localStorage.setItem("userId", this.id);
           return this.id;

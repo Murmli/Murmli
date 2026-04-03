@@ -1068,7 +1068,7 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
           "/user/shoppingList/categories/read",
           { listId: this.listId }
         );
-        if (response.status == 200) {
+        if (response && response.status == 200) {
           this.categories = response.data.categories.map(c => ({
             id: Number(c.id),
             name: c.name,
@@ -1090,7 +1090,7 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
           "/user/shoppingList/sorting/set",
           { sort }
         );
-        if (response.status == 200) {
+        if (response && response.status == 200) {
           await this.readShoppingList();
           this.saveCache();
         }
@@ -1126,7 +1126,7 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
           "post",
           "/shoppingList/item/sorting"
         );
-        if (response.status == 200) {
+        if (response && response.status == 200) {
           this.sortingOrder = response.data.sorting;
           this.saveCache();
         }

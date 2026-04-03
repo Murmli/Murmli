@@ -62,7 +62,7 @@ export const useRecipeStore = defineStore("recipeStore", {
       try {
         const response = await apiStore.apiRequest("post", "/recipe/read", { recipeId, servings });
 
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           const isFavoriteFlag = response.data.isFavorite ? 1 : 0;
           const recipeType = response.data.userId ? 2 : isFavoriteFlag;
           this.setCurrentRecipe(response.data, recipeType);
@@ -139,7 +139,7 @@ export const useRecipeStore = defineStore("recipeStore", {
           "/recipe/favorite/delete",
           { recipeId }
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.favoriteRecipes = this.favoriteRecipes.filter(
             (recipe) => recipe._id !== recipeId
           );
@@ -292,7 +292,7 @@ export const useRecipeStore = defineStore("recipeStore", {
           "/recipe/user/delete",
           { recipeId }
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.userRecipes = this.userRecipes.filter(
             (recipe) => recipe._id !== recipeId
           );
@@ -350,7 +350,7 @@ export const useRecipeStore = defineStore("recipeStore", {
           "/recipe/user/read",
           { recipeId }
         );
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           this.currentRecipe = response.data;
           this.saveCache();
           // Explicitly set recipeType to 2 for User Recipes
@@ -383,7 +383,7 @@ export const useRecipeStore = defineStore("recipeStore", {
       const apiStore = useApiStore();
       try {
         const response = await apiStore.apiRequest("post", "/recipe/read/user/count", null, showLoader);
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           return response.data.count;
         }
       } catch (error) {

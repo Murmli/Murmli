@@ -24,8 +24,8 @@ export const usePlannerStore = defineStore("plannerStore", {
     async fetchFilters() {
       const apiStore = useApiStore();
       try {
-        const response = await apiStore.apiRequest("post", "/planer/filter/read", false);
-        if (response.status === 200) {
+        const response = await apiStore.apiRequest("post", "/planer/filter/read", false, { showError: false });
+        if (response && response.status === 200) {
           this.filters = response.data;
           return this.filters;
         }
@@ -163,7 +163,8 @@ export const usePlannerStore = defineStore("plannerStore", {
           "post",
           "/planer/suggestions/get",
           payload,
-          showLoading
+          showLoading,
+          { showError: showLoading }
         );
 
         if (!response && apiStore.error?.response?.status === 401) {
@@ -180,7 +181,8 @@ export const usePlannerStore = defineStore("plannerStore", {
             "post",
             "/planer/suggestions/get",
             payload,
-            showLoading
+            showLoading,
+            { showError: showLoading }
           );
         }
 

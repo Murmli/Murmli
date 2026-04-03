@@ -4,7 +4,11 @@
             <v-card-title>{{ languageStore.t('general.error') }}</v-card-title>
             <v-card-text>
                 <p class="pb-3">{{ languageStore.t('general.errorMessage') }}</p>
-                <code>Reason: {{ apiStore.error?.response?.data?.message || apiStore.error?.message || 'Unknown error' }}</code>
+                <code>
+                    Url: {{ apiStore.error?.config?.url || 'N/A' }}<br>
+                    Method: {{ apiStore.error?.config?.method?.toUpperCase() || 'N/A' }}<br>
+                    Reason: {{ apiStore.error?.response?.data?.message || apiStore.error?.message || 'Unknown error' }}
+                </code>
             </v-card-text>
 
             <v-card-actions>

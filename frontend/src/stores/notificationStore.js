@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import { useApiStore } from "./apiStore";
+import { App } from "@capacitor/app";
 
 export const useNotificationStore = defineStore("notificationStore", () => {
   const messages = ref([]);
@@ -13,6 +14,17 @@ export const useNotificationStore = defineStore("notificationStore", () => {
 
   const POLL_INTERVAL_MS = 10000;
 
+  // Initialize Capacitor App listeners
+  App.addListener("appStateChange", ({ isActive }) => {
+    if (isActive) {
+      console.log("[NotificationStore] App became active, resuming polling");
+      startPolling();
+    } else {
+      console.log("[NotificationStore] App went to background, stopping polling");
+      stopPolling();
+    }
+  });
+
   async function fetchUnreadCount() {
     const apiStore = useApiStore();
     try {
@@ -20,7 +32,8 @@ export const useNotificationStore = defineStore("notificationStore", () => {
         "post",
         "/messages/unread/count",
         null,
-        false
+        false,
+        { showError: false }
       );
       if (response && response.status === 200) {
         unreadCount.value = response.data.count;
@@ -39,7 +52,8 @@ export const useNotificationStore = defineStore("notificationStore", () => {
         "post",
         "/messages/read",
         { limit, unreadOnly: false },
-        false
+        false,
+        { showError: false }
       );
       if (response && response.status === 200) {
         messages.value = response.data.messages;
@@ -58,7 +72,8 @@ export const useNotificationStore = defineStore("notificationStore", () => {
         "post",
         "/messages/mark-read",
         { messageIds },
-        false
+        false,
+        { showError: false }
       );
       if (response && response.status === 200) {
         messages.value = messages.value.map((msg) =>

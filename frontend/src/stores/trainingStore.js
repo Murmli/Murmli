@@ -50,7 +50,7 @@ export const useTrainingStore = defineStore("trainingStore", {
             const apiStore = useApiStore();
             try {
                 const response = await apiStore.apiRequest("get", "/training-plans", null, false);
-                if (response.status === 200) {
+                if (response && response.status === 200) {
                     this.trainingPlans = response.data;
                     this.saveCache();
                     return this.trainingPlans;
@@ -74,7 +74,7 @@ export const useTrainingStore = defineStore("trainingStore", {
             const apiStore = useApiStore();
             try {
                 const response = await apiStore.apiRequest("get", `/training-plans/${planId}`);
-                if (response.status === 200) {
+                if (response && response.status === 200) {
                     this.selectedPlan = response.data;
                     this.selectedPlanId = response.data?._id || planId;
                     this.saveCache();
@@ -90,7 +90,7 @@ export const useTrainingStore = defineStore("trainingStore", {
             const apiStore = useApiStore();
             try {
                 const response = await apiStore.apiRequest("post", "/training-plans", data);
-                if (response.status === 201 || response.status === 200) {
+                if (response && (response.status === 201 || response.status === 200)) {
                     this.trainingPlans.push(response.data);
                     this.saveCache();
                     return response.data;
@@ -105,7 +105,7 @@ export const useTrainingStore = defineStore("trainingStore", {
             const apiStore = useApiStore();
             try {
                 const response = await apiStore.apiRequest("put", `/training-plans/${id}`, data);
-                if (response.status === 200) {
+                if (response && response.status === 200) {
                     this.trainingPlans = this.trainingPlans.map(plan =>
                         plan._id === id ? response.data : plan
                     );
@@ -129,7 +129,7 @@ export const useTrainingStore = defineStore("trainingStore", {
                     `/training-plans/${planId}/exercises/${exerciseId}`,
                     data
                 );
-                if (response.status === 200) {
+                if (response && response.status === 200) {
                     if (this.selectedPlan && this.selectedPlan._id === planId) {
                         for (const day of this.selectedPlan.days) {
                             const ex = day.exercises.find(e => e._id === exerciseId);
@@ -328,7 +328,7 @@ export const useTrainingStore = defineStore("trainingStore", {
             const apiStore = useApiStore();
             try {
                 const response = await apiStore.apiRequest("post", "/training-plans/count", null, showLoader);
-                if (response.status === 200) {
+                if (response && response.status === 200) {
                     return response.data.count;
                 }
             } catch (error) {
@@ -346,7 +346,7 @@ export const useTrainingStore = defineStore("trainingStore", {
                         ? { updatedPlan }
                         : { text };
                 const response = await apiStore.apiRequest("post", `/training-plans/${id}/edit-text`, payload, false);
-                if (response.status === 200) {
+                if (response && response.status === 200) {
                     if (preview) {
                         return {
                             preview: response.data.preview,
@@ -408,7 +408,7 @@ export const useTrainingStore = defineStore("trainingStore", {
                     `/training-plans/${planId}/status`,
                     { status }
                 );
-                if (response.status === 200) {
+                if (response && response.status === 200) {
                     const index = this.trainingPlans.findIndex(p => p._id === planId);
                     if (index !== -1) {
                         this.trainingPlans[index] = response.data;
@@ -426,7 +426,7 @@ export const useTrainingStore = defineStore("trainingStore", {
             const apiStore = useApiStore();
             try {
                 const response = await apiStore.apiRequest("get", `/training-logs/${logId}`);
-                if (response.status === 200) {
+                if (response && response.status === 200) {
                     this.currentLogId = logId;
                     this.currentLog = response.data;
                     return this.currentLog;
@@ -463,7 +463,7 @@ export const useTrainingStore = defineStore("trainingStore", {
             const apiStore = useApiStore();
             try {
                 const response = await apiStore.apiRequest("get", `/training-logs/last?trainingPlanId=${trainingPlanId}&weekday=${weekday}`);
-                if (response.status === 200) {
+                if (response && response.status === 200) {
                     if (response.data && response.data.message) {
                         this.latestLog = null;
                         return null;
@@ -484,7 +484,7 @@ export const useTrainingStore = defineStore("trainingStore", {
             const apiStore = useApiStore();
             try {
                 const response = await apiStore.apiRequest("post", `/training-logs/${logId}/complete`);
-                if (response.status === 200) {
+                if (response && response.status === 200) {
                     this.currentLog = response.data;
                     return this.currentLog;
                 }
@@ -506,7 +506,7 @@ export const useTrainingStore = defineStore("trainingStore", {
             const apiStore = useApiStore();
             try {
                 const response = await apiStore.apiRequest("patch", `/training-logs/${logId}/status`, { status });
-                if (response.status === 200) {
+                if (response && response.status === 200) {
                     this.currentLog = response.data;
                     return this.currentLog;
                 }
@@ -521,7 +521,7 @@ export const useTrainingStore = defineStore("trainingStore", {
             try {
                 const data = { trainingPlanId, weekday };
                 const response = await apiStore.apiRequest("post", "/training-logs/preview", data);
-                if (response.status === 200) {
+                if (response && response.status === 200) {
                     this.logPreview = response.data;
                     return this.logPreview;
                 }
@@ -558,7 +558,7 @@ export const useTrainingStore = defineStore("trainingStore", {
                     `/training-logs/${logId}/exercises/${exerciseId}/sets/${setId}`,
                     data
                 );
-                if (response.status === 200) {
+                if (response && response.status === 200) {
                     const updatedSet = response.data;
                     if (this.currentSet && this.currentSet._id === setId) {
                         this.currentSet = { ...this.currentSet, ...updatedSet };
@@ -589,7 +589,7 @@ export const useTrainingStore = defineStore("trainingStore", {
                     data
                 );
 
-                if (response.status === 200) {
+                if (response && response.status === 200) {
                     // Update the local state of the current log
                     if (this.currentLog) {
                         const exerciseIndex = this.currentLog.exercises.findIndex(e => e._id === exerciseId);
@@ -652,7 +652,7 @@ export const useTrainingStore = defineStore("trainingStore", {
             const apiStore = useApiStore();
             try {
                 const response = await apiStore.apiRequest("post", `/training-logs/${logId}/complete`, data);
-                if (response.status === 200) {
+                if (response && response.status === 200) {
                     this.currentLog = response.data.log || response.data;
                     if (this.currentLog) {
                         this.currentLog.status = 'completed';
@@ -685,7 +685,7 @@ export const useTrainingStore = defineStore("trainingStore", {
                     null,
                     false
                 );
-                if (response.status === 200) {
+                if (response && response.status === 200) {
                     return response.data;
                 }
             } catch (error) {
@@ -703,7 +703,7 @@ export const useTrainingStore = defineStore("trainingStore", {
                     null,
                     false
                 );
-                if (response.status === 200) {
+                if (response && response.status === 200) {
                     return response.data;
                 }
             } catch (error) {
@@ -743,7 +743,7 @@ export const useTrainingStore = defineStore("trainingStore", {
             const apiStore = useApiStore();
             try {
                 const response = await apiStore.apiRequest("get", "/training-logs/stats");
-                if (response.status === 200) {
+                if (response && response.status === 200) {
                     return response.data;
                 }
             } catch (error) {
