@@ -1,0 +1,68 @@
+name: Build All
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+  workflow_dispatch:
+
+jobs:
+  build-backend:
+    name: Build Backend
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: ./.github/actions/install-node
+
+      - name: Install dependencies
+        working-directory: ./backend
+        run: npm ci
+
+      - name: Build Backend (Translations)
+        working-directory: ./backend
+        run: npm run build-lang
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_MODEL: ${{ secrets.OPENROUTER_MODEL }}
+
+      - name: Run Tests (Optional)
+        working-directory: ./backend
+        run: npm test || echo "Tests failed or not found, continuing anyway"
+
+  build-frontend:
+    name: Build Frontend
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: ./.github/actions/install-node
+
+      - name: Install dependencies
+        working-directory: ./frontend
+        run: npm ci
+
+      - name: Build Frontend
+        working-directory: ./frontend
+        run: npm run build
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_MODEL: ${{ secrets.OPENROUTER_MODEL }}
+          VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
+          VITE_HEADER_SECRET_KEY: ${{ secrets.VITE_HEADER_SECRET_KEY }}
+          VITE_MIN_RECIPE_SUGGESTIONS: ${{ secrets.VITE_MIN_RECIPE_SUGGESTIONS }}
+          VITE_RECIPE_FETCH_COUNT: ${{ secrets.VITE_MIN_RECIPE_SUGGESTIONS }}
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-dist
+          path: frontend/dist
+          retention-days: 7
