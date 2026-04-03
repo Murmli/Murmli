@@ -145,7 +145,9 @@
     "selectPhoto": "Seleccionar foto",
     "capturePhoto": "Cámara",
     "moreInfo": "Más información",
-    "reset": "Restablecer"
+    "reset": "Restablecer",
+    "cameraError": "Error de cámara",
+    "cameraPermissionDenied": "Acceso a la cámara denegado"
   },
   "shoppingList": {
     "newItemLabel": "Nuevo artículo",

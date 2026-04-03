@@ -1,0 +1,188 @@
+{
+  "meta": {
+    "title": "Murmli – Ücretsiz Yapay Zeka Kalori Sayacı, Alışveriş Listesi ve Tarif Planlayıcı",
+    "description": "Murmli'den ücretsiz Yapay Zeka Kalori Sayacı: Kalori hesaplayın, akıllı alışveriş listesi oluşturun ve Yapay Zeka Tarif Planlayıcı ile haftalık planınızı dakikalar içinde hazırlayın.",
+    "keywords": "Ücretsiz Kalori Sayacı, Yapay Zeka Kalori Hesaplayıcı, Alışveriş Listesi Uygulaması, Yapay Zeka Tarif Planlayıcı, Kalori Hesaplama, Haftalık Plan, Murmli",
+    "og_title": "Murmli – Ücretsiz Yapay Zeka Kalori Sayacı ve Tarif Planlayıcı",
+    "og_description": "Kalori değerlerini ücretsiz hesaplayın, otomatik olarak alışveriş listeleri oluşturun ve Murmli Yapay Zekası ile tarifleri tek bir uygulamada planlayın.",
+    "twitter_title": "Murmli – Ücretsiz Yapay Zeka Kalori Sayacı ve Tarif Planlayıcı",
+    "twitter_description": "Ücretsiz kalori hesaplayın, yemek tarifleri planlayın ve sıralı bir alışveriş listesi alın – hepsi Murmli Yapay Zekası ile."
+  },
+  "schema": {
+    "website_description": "Murmli sizin kişisel hepsi bir arada uygulamanızdır: Bireysel yemek planlama, tarif yönetimi, kalori sayımı ve antrenman planları, size özel yanıt veren bir yapay zeka tarafından desteklenir!",
+    "faq": [
+      {
+        "q": "Murmli kalori sayacı gerçekten ücretsiz mi?",
+        "a": "Evet, web sitesindeki ve uygulamadaki kalori hesaplayıcı kalıcı olarak ücretsizdir. İhtiyaçlarınızı herhangi bir ücret ödemeden hesaplar ve kaydedersiniz."
+      },
+      {
+        "q": "Yapay zeka alışveriş listemi de otomatik olarak oluşturuyor mu?",
+        "a": "Murmli, tarif isteklerinden veya haftalık plandan sıralı bir alışveriş listesi oluşturur ve miktarları kalori hedefinize göre ayarlar."
+      },
+      {
+        "q": "Yapay Zeka Tarif Planlayıcısını alerjilere ve makrolara göre filtreleyebilir miyim?",
+        "a": "Laktozsuz, 600 kcal altı veya en az 30 g protein gibi kriterler belirleyebilir ve besin değerlerini içeren uygun tarifler alabilirsiniz."
+      }
+    ],
+    "howto": {
+      "name": "Murmli hesaplayıcısı ile kalori ihtiyacını hesaplama",
+      "description": "Ücretsiz Murmli Yapay Zeka Kalori Sayacını 60 saniyede şu şekilde kullanabilirsiniz.",
+      "steps": [
+        {
+          "name": "Temel verileri girin",
+          "text": "Cinsiyet, kilo, boy ve doğum yılını yazın."
+        },
+        {
+          "name": "Çalışma PAL değerini seçin",
+          "text": "Çalışma metabolizmasını yansıtmak için haftalık çalışma saatlerini ve uygun PAL değerini seçin."
+        },
+        {
+          "name": "Boş zaman PAL değerini belirleyin",
+          "text": "Murmli'nin toplam enerji harcamasını tam olarak hesaplaması için boş zaman PAL değerini belirtin."
+        },
+        {
+          "name": "Kalori hedefini görüntüleyin",
+          "text": "\"Kalori ihtiyacını hesapla\" butonuna tıklayın ve kilo verme, kiloyu koruma veya kas yapma için önerilen hedef aralıkları okuyun."
+        }
+      ]
+    }
+  },
+  "nav": {
+    "features": "Özellikler",
+    "calculator": "Kalori Hesaplayıcı",
+    "how_to": "Nasıl Çalışır?",
+    "faq": "SSS",
+    "trailer": "Tanıtım",
+    "about": "Hakkında",
+    "home_label": "Murmli Ana Sayfasına Dön"
+  },
+  "hero": {
+    "h1": "Akıllı Alışveriş Listesi ile Ücretsiz Yapay Zeka Kalori Sayacı",
+    "p": "Ücretsiz kalori hesaplamak, yemek tarifleri planlamak ve otomatik olarak bir alışveriş listesi almak mı istiyorsunuz? Murmli bunu tek adımda yapar: Yapay zeka tarafından hesaplanan kalori ihtiyacı, uygun haftalık plan ve süpermarket için sıralı liste.",
+    "google_play_alt": "Şimdi Google Play'den indirin",
+    "app_store_alt": "Şimdi Apple App Store'dan indirin",
+    "discord_alt": "Discord sunucumuza katılın"
+  },
+  "trailer": {
+    "h2": "Murmli'yi iş başında görün!",
+    "p": "Kısa tanıtım videomuzu izleyin ve en önemli özelliklere genel bir bakış atın."
+  },
+  "features": {
+    "h2": "Murmli sizin için neleri anında çözer?",
+    "items": [
+      {
+        "h3": "Yapay Zeka Kalori Sayacı – Ücretsiz",
+        "p": "Mifflin-St-Jeor formülü ile bazal ve aktif metabolizma hızınızı hesaplayın ve yapay zekanın hedeflerinizi kaloriye dönüştürmesine izin verin – ödeme duvarı olmadan."
+      },
+      {
+        "h3": "Otomatik Alışveriş Listesi",
+        "p": "Murmli, doğrudan haftalık planınızdan sıralı bir alışveriş listesi oluşturur ve miktarları kalori hedeflerinize göre uyarlar."
+      },
+      {
+        "h3": "Yapay Zeka Tarif Planlayıcı",
+        "p": "Sadece \"600 kcal altı laktozsuz makarna\" gibi bir istek belirtin; besin değerleri ve pişirme adımlarıyla birlikte uygun tarifleri alın."
+      },
+      {
+        "h3": "Dakikalar İçinde Haftalık Plan",
+        "p": "Kahvaltı, öğle yemeği, akşam yemeği ve atıştırmalıkları kalori bütçenize uygun net bir haftalık planda birleştirin."
+      },
+      {
+        "h3": "Uyarlanabilir Antrenman Planları",
+        "p": "İlerlemenizi dikkate alan ve enerji dengenizi eşitleyen öneriler alın."
+      },
+      {
+        "h3": "Besin Değerleri ile Tarif Yönetimi",
+        "p": "En sevdiğiniz yemekleri kaydedin, malzemeleri alerjilere göre uyarlayın ve kalorileri, proteinleri ve daha fazlasını anında görün."
+      }
+    ]
+  },
+  "how_to": {
+    "h2": "Kalori ihtiyacımı nasıl hesaplarım?",
+    "p": "Bu kısa adımları izleyin, Murmli size bazal metabolizma hızınızı, aktif metabolizma hızınızı ve uygun kalori hedeflerinizi anında gösterecektir.",
+    "steps": [
+      "Cinsiyet, kilo, boy ve doğum yılını girin.",
+      "Çalışma saatlerini ve uygun PAL değerini seçin.",
+      "Boş zaman PAL değerini seçin, „Kalori ihtiyacını hesapla“ butonuna dokunun ve sonucu kaydedin.",
+      "Tariflerin, alışveriş listesinin ve antrenmanın uyarlanması için değeri tek bir dokunuşla uygulamaya kaydedin."
+    ],
+    "cta": "Kalori hesaplayıcıyı şimdi doldurun"
+  },
+  "about": {
+    "h2": "Murmli neden bir alışveriş listesinden daha fazlasıdır?",
+    "p1": "Murmli; alışveriş listesini, kalori hesaplayıcıyı ve tarif planlayıcıyı tek bir uygulamada birleştirir. Listeleri ailenizle veya ortaklarınızla paylaşırsınız ve her şey canlı olarak senkronize kalır.",
+    "p2": "Yapay Zeka Tarif Planlayıcı, kriterlerinize göre öneriler sunar ve malzemeleri tek bir dokunuşla doğrudan listeye gönderir. Tarif yönetiminde, besin değerlerinin yanı sıra net adımlar alırsınız.",
+    "p3": "Kalori sayacı ve kalori hesaplayıcı birlikte çalışır: Pişirilen yemekler devralınır, hedefler güncellenir ve antrenman planları buna göre uyarlanır.",
+    "p4": "Sonuç: Alışverişten takibe kadar, hedeflerinize sürekli uyum sağlayan eksiksiz bir beslenme ekosistemi."
+  },
+  "calculator": {
+    "h2": "Murmli hesaplayıcı kalori ihtiyacınızı nasıl hesaplar?",
+    "p": "Mifflin-St-Jeor formülünü iş ve boş zaman için PAL değerlerinizle birleştirir ve zayıflama, koruma veya kas yapma için bazal ve aktif metabolizma hızını anında gösterir.",
+    "gender": "Cinsiyet",
+    "male": "Erkek",
+    "female": "Kadın",
+    "weight_label": "Kilogram cinsinden vücut ağırlığı",
+    "weight_placeholder": "75",
+    "height_label": "Santimetre cinsinden boy",
+    "height_placeholder": "180",
+    "birth_year_label": "Doğum yılı",
+    "birth_year_placeholder": "1990",
+    "work_hours_label": "Haftalık çalışma saati",
+    "work_pal_label": "İş için PAL değeri",
+    "work_pal_options": [
+      "Masa başı iş (PAL 1.2)",
+      "Biraz hareket içeren, ağırlıklı olarak oturarak (PAL 1.4)",
+      "Karışık fiziksel çalışma (PAL 1.6)",
+      "Fiziksel olarak yorucu iş (PAL 1.8)",
+      "Ağır fiziksel iş (PAL 2.0)"
+    ],
+    "rest_pal_label": "Boş zaman ve dinlenme için PAL değeri",
+    "rest_pal_options": [
+      "Dinlenme ve hafif aktivite (PAL 1.2)",
+      "Hafif hareket ve yürüyüşler (PAL 1.35)",
+      "Spor içeren aktif boş zaman (PAL 1.5)"
+    ],
+    "calculate_button": "Kalori ihtiyacını hesapla",
+    "hint": "Not: Hesaplayıcı, bireysel tıbbi danışmanlığın yerini tutmaz.",
+    "initial_result": "Bazal ve aktif metabolizma hızınızın değerlendirmesini anında almak için verilerinizi girin.",
+    "info_h3": "Murmli hesaplayıcı neden hassastır?",
+    "info_list": [
+      "Bazal metabolizma hızı için bilimsel olarak kabul görmüş Mifflin-St-Jeor yaklaşımını kullanır.",
+      "İş ve dinlenme süreleri üzerinden kişisel haftalık ritminizi dikkate alır.",
+      "Uygulamada olduğu gibi kilo verme, koruma ve kas yapma için hedef aralıkları hesaplar."
+    ],
+    "formula_title": "Mifflin-St-Jeor Formülü:",
+    "formula_men": "Erkekler = 10 × ağırlık (kg) + 6,25 × boy (cm) − 5 × yaş + 5",
+    "formula_women": "Kadınlar = 10 × ağırlık (kg) + 6,25 × boy (cm) − 5 × yaş − 161",
+    "formula_explanation": "Murmli, toplam metabolizma hızını şeffaf bir şekilde hesaplamak için sonucu belirttiğiniz iş ve dinlenme süreleriyle (PAL değerleri) birleştirir.",
+    "formula_result_explanation": "Hesaplamadan sonra bazal metabolizma hızını, çalışma metabolizmasını ve önerilen kalori hedefleri dahil olmak üzere toplam metabolizma hızını görürsünüz. Böylece mevcut beslenme planınızın hedefinize uygun olup olmadığını doğrudan değerlendirebilirsiniz.",
+    "formula_tip": "İpucu: Öğünlerin, tariflerin ve antrenman planlarının kalori dengenize otomatik olarak göre uyarlanması için değerlerinizi Murmli uygulamasına kaydedin."
+  },
+  "faq_section": {
+    "h2": "Ücretsiz Murmli Kalori Sayacı hakkında sıkça sorulan sorular",
+    "items": [
+      {
+        "h3": "Murmli kalori sayacı gerçekten ücretsiz mi?",
+        "p": "Evet. Bu sayfadaki ve uygulamadaki hesaplayıcı kalıcı olarak ücretsizdir. Kalori ihtiyacınızı hesaplamak veya sonuçları kaydetmek için hiçbir ücret ödemezsiniz."
+      },
+      {
+        "h3": "Yapay zeka alışveriş listemi de otomatik olarak oluşturuyor mu?",
+        "p": "Evet. Murmli, tarif isteklerinden veya haftalık plandan anında sıralı bir alışveriş listesi oluşturur ve miktarları kalori hedefinize göre ayarlar."
+      },
+      {
+        "h3": "Yapay Zeka Tarif Planlayıcısını alerjilere ve makrolara göre filtreleyebilir miyim?",
+        "p": "„Laktozsuz“, „600 kcal altı“ veya „en az 30 g protein“ gibi girişler yapabilirsiniz. Yapay zeka, besin değerleri ve pişirme adımlarıyla birlikte uygun tarifleri sunar."
+      }
+    ]
+  },
+  "footer": {
+    "links": {
+      "home": "Ana Sayfa",
+      "sitemap": "Site Haritası",
+      "privacy": "Gizlilik",
+      "imprint": "Künye",
+      "github": "GitHub (Açık Kaynak)"
+    },
+    "copy": "© 2026 Murmli – Akıllı, kişisel günlük yardımcınız.",
+    "author": "Manuel Gaschler'in özel projesi"
+  }
+}

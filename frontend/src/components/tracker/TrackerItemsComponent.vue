@@ -28,7 +28,7 @@
                         </v-card-title>
                         <v-divider></v-divider>
                         <v-card-text class="pa-0">
-                            <v-card @click="openDropdown(item)" @dblclick="handleDoubleClick(item)" class="food-item-card group-item" v-for="(item, iIndex) in group.items" :key="item._id || iIndex"
+                            <v-card @click="openDropdown(item)" @contextmenu.prevent="handleLongPress(item)" class="food-item-card group-item" v-for="(item, iIndex) in group.items" :key="item._id || iIndex"
                                 :class="getHealthyRatingClass(item.healthyRating)" variant="flat">
                                 <div class="d-flex align-stretch">
                                     <div class="flex-grow-1 overflow-hidden">
@@ -62,7 +62,7 @@
                     </v-card>
 
                     <!-- Single Item (no group) -->
-                    <v-card v-else @click="openDropdown(item)" @dblclick="handleDoubleClick(item)" class="mb-2 food-item-card" v-for="(item, iIndex) in group.items" :key="item._id || iIndex"
+                    <v-card v-else @click="openDropdown(item)" @contextmenu.prevent="handleLongPress(item)" class="mb-2 food-item-card" v-for="(item, iIndex) in group.items" :key="item._id || iIndex"
                         :class="getHealthyRatingClass(item.healthyRating)">
                         <div class="d-flex align-stretch">
                             <div class="flex-grow-1 overflow-hidden">
@@ -347,6 +347,7 @@ import { useTrackerStore } from '@/stores/trackerStore';
 import { useShoppingListStore } from '@/stores/shoppingListStore';
 import { useLanguageStore } from '@/stores/languageStore';
 import { useDialogStore } from '@/stores/dialogStore';
+import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import draggable from 'vuedraggable';
 
 const trackerStore = useTrackerStore();
@@ -355,6 +356,8 @@ const languageStore = useLanguageStore();
 const dialogStore = useDialogStore();
 
 const tracker = computed(() => trackerStore.tracker || { foodItems: [] });
+
+const isLongPressActive = ref(false);
 
 // Local state for draggable to allow mutation
 const localDraggableGroups = ref([]);
@@ -519,6 +522,7 @@ const originalCarbsRatio = ref(0);
 const originalFatRatio = ref(0);
 
 const openDropdown = (item) => {
+    if (isLongPressActive.value) return;
     trackerStore.selectedItem = item;
     dropdownMenu.value = true;
 };
@@ -592,10 +596,19 @@ const duplicateItem = async () => {
     dropdownMenu.value = false;
 };
 
-const handleDoubleClick = async (item) => {
+const handleLongPress = async (item) => {
+    isLongPressActive.value = true;
+    try {
+        await Haptics.impact({ style: ImpactStyle.Heavy });
+    } catch (e) {}
+    
     dropdownMenu.value = false;
     trackerStore.selectedItem = item;
     await trackerStore.duplicateFoodItem();
+    
+    setTimeout(() => {
+        isLongPressActive.value = false;
+    }, 500);
 };
 
 const deleteItem = async () => {

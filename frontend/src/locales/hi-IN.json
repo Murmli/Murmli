@@ -145,7 +145,9 @@
     "capturePhoto": "कैमरा",
     "retry": "पुनः प्रयास करें",
     "moreInfo": "अधिक जानकारी",
-    "reset": "रीसेट करें"
+    "reset": "रीसेट करें",
+    "cameraError": "कैमरा त्रुटि",
+    "cameraPermissionDenied": "कैमरा एक्सेस अस्वीकार कर दिया गया"
   },
   "shoppingList": {
     "newItemLabel": "नई वस्तु",

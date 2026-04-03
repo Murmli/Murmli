@@ -145,7 +145,9 @@
     "capturePhoto": "Snap a Pic",
     "retry": "Catch another wave",
     "moreInfo": "Deep dive for more deets",
-    "reset": "Wipe it out, brah"
+    "reset": "Wipe it out, brah",
+    "cameraError": "Bummer, lens wipeout! Camera's acting totally gnarly",
+    "cameraPermissionDenied": "Whoa there, access denied! The wave is closed"
   },
   "shoppingList": {
     "newItemLabel": "New Gear",

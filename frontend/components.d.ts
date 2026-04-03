@@ -39,6 +39,7 @@ declare module 'vue' {
     ImageDialog: typeof import('./src/components/dialogs/ImageDialog.vue')['default']
     ImportDataBtn: typeof import('./src/components/general/ImportDataBtn.vue')['default']
     IndicatorSettingsDialog: typeof import('./src/components/dialogs/IndicatorSettingsDialog.vue')['default']
+    InlineCamera: typeof import('./src/components/general/InlineCamera.vue')['default']
     LanguageSelect: typeof import('./src/components/general/LanguageSelect.vue')['default']
     ListSortComponent: typeof import('./src/components/shoppingList/dialogs/ListSortComponent.vue')['default']
     LoadingOverlay: typeof import('./src/components/general/LoadingOverlay.vue')['default']
