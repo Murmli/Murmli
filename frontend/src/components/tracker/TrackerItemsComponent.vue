@@ -28,7 +28,7 @@
                         </v-card-title>
                         <v-divider></v-divider>
                         <v-card-text class="pa-0">
-                            <v-card @click="openDropdown(item)" class="food-item-card group-item" v-for="(item, iIndex) in group.items" :key="item._id || iIndex"
+                            <v-card @click="openDropdown(item)" @dblclick="handleDoubleClick(item)" class="food-item-card group-item" v-for="(item, iIndex) in group.items" :key="item._id || iIndex"
                                 :class="getHealthyRatingClass(item.healthyRating)" variant="flat">
                                 <div class="d-flex align-stretch">
                                     <div class="flex-grow-1 overflow-hidden">
@@ -62,7 +62,7 @@
                     </v-card>
 
                     <!-- Single Item (no group) -->
-                    <v-card v-else @click="openDropdown(item)" class="mb-2 food-item-card" v-for="(item, iIndex) in group.items" :key="item._id || iIndex"
+                    <v-card v-else @click="openDropdown(item)" @dblclick="handleDoubleClick(item)" class="mb-2 food-item-card" v-for="(item, iIndex) in group.items" :key="item._id || iIndex"
                         :class="getHealthyRatingClass(item.healthyRating)">
                         <div class="d-flex align-stretch">
                             <div class="flex-grow-1 overflow-hidden">
@@ -590,6 +590,12 @@ const addToShoppingList = async () => {
 const duplicateItem = async () => {
     await trackerStore.duplicateFoodItem();
     dropdownMenu.value = false;
+};
+
+const handleDoubleClick = async (item) => {
+    dropdownMenu.value = false;
+    trackerStore.selectedItem = item;
+    await trackerStore.duplicateFoodItem();
 };
 
 const deleteItem = async () => {
