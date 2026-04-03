@@ -17,7 +17,15 @@ const videoRef = ref(null);
 const stream = ref(null);
 const isCapturing = ref(false);
 const errorMessage = ref('');
+const showError = ref(false);
 const hasMultipleCameras = ref(false);
+
+watch(errorMessage, (val) => {
+  if (val) {
+    showError.value = true;
+  }
+});
+
 const currentFacingMode = ref('environment'); // Default to back camera
 
 watch(() => props.modelValue, (val) => {
@@ -155,7 +163,7 @@ onUnmounted(() => {
         </div>
       </div>
       
-      <v-snackbar v-model="!!errorMessage" color="error" timeout="5000">
+      <v-snackbar v-model="showError" color="error" timeout="5000">
         {{ errorMessage }}
       </v-snackbar>
     </v-card>
