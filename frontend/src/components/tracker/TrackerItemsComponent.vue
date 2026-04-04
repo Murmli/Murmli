@@ -877,8 +877,12 @@ const openIndicatorSettings = () => {
     /* Dunkelgrün */
 }
 
-.food-item-card .indicator-buttons {
+.food-item-card {
     flex-shrink: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 .food-item-card .indicator-btn {
