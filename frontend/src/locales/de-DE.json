@@ -444,7 +444,7 @@
     "title": "Admin-Tools",
     "clearCache": "LLM-Cache leeren",
     "resetImages": "Übungsbilder zurücksetzen",
-    "forceRatingPrompt": "Bewertungs-Dialog erzwingen",
+    "forceRatingPrompt": "Rating erzwingen",
     "confirm": "Bestätigen ({seconds})",
     "success": "Aktion ausgeführt",
     "systemMessageTitle": "System-Nachricht senden",

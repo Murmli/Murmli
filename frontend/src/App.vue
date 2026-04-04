@@ -51,12 +51,21 @@ import { useUserStore } from '@/stores/userStore';
 import { useLanguageStore } from '@/stores/languageStore';
 import { useNotificationStore } from '@/stores/notificationStore';
 import AppRatingPrompt from '@/components/dialogs/AppRatingPrompt.vue';
+import { maybeShowRatingPrompt } from '@/utils/appRating';
+import { useRouter } from 'vue-router';
 
 const apiStore = useApiStore();
 const plannerStore = usePlannerStore();
 const userStore = useUserStore();
 const languageStore = useLanguageStore();
 const notificationStore = useNotificationStore();
+const router = useRouter();
+
+// Watch for route changes to trigger rating prompt
+router.afterEach(() => {
+  maybeShowRatingPrompt();
+});
+
 const sessionReady = ref(false);
 const sessionError = ref(false);
 const MIN_RECIPE_SUGGESTIONS =

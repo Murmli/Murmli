@@ -33,6 +33,8 @@
       variant="outlined"
       prepend-icon="mdi-star-circle"
       @click="forceShowRatingPrompt"
+      size="small"
+      class="text-none"
     >
       {{ languageStore.t('adminTools.forceRatingPrompt') }}
     </v-btn>
