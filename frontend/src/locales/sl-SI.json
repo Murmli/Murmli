@@ -453,7 +453,8 @@
     "sendGlobalMessage": "Pošlji globalno sporočilo",
     "confirmSendTitle": "Res pošljem sporočilo?",
     "confirmSendText": "To sporočilo bo poslano VSEM uporabnikom. Želite nadaljevati?",
-    "sendSuccess": "Sporočilo uspešno poslano vsem uporabnikom."
+    "sendSuccess": "Sporočilo uspešno poslano vsem uporabnikom.",
+    "forceRatingPrompt": "Prisili poziv k ocenjevanju"
   },
   "contact": {
     "title": "Kontakt",
@@ -745,5 +746,11 @@
     "avgWeightPerExercise": "Povprečna teža na vajo",
     "cancelTraining": "Prekini vadbo",
     "cancelTrainingConfirm": "Ali res želite prekiniti vadbo?"
+  },
+  "appRating": {
+    "title": "Ti je všeč Murmli?",
+    "description": "Murmli je brezplačen in odprtokoden. Ker nimam proračuna za oglaševanje, ocene v trgovini ogromno pomagajo, da aplikacijo odkrije več ljudi. Če ti je aplikacija všeč, bi bil zelo hvaležen za tvojo oceno!",
+    "rateNow": "Oceni zdaj",
+    "remindLater": "Morda pozneje"
   }
 }

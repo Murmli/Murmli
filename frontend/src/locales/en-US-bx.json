@@ -453,7 +453,8 @@
     "sendGlobalMessage": "Send to everyone",
     "confirmSendTitle": "Send for real?",
     "confirmSendText": "This goes to EVERYONE. You ready for that?",
-    "sendSuccess": "Blast sent."
+    "sendSuccess": "Blast sent.",
+    "forceRatingPrompt": "Force that wicked rate-us thingy right now"
   },
   "contact": {
     "title": "Talk to us",
@@ -745,5 +746,11 @@
     "cancelTraining": "Quit",
     "cancelTrainingConfirm": "Really quit now?",
     "nextExercise": "Nex' exercise, ked"
+  },
+  "appRating": {
+    "title": "You diggin' Murmli, kid?",
+    "description": "Murmli is wicked free and open-source. I don't got no budget for commercial spots and wicked expensive ads, so stashin' a review in the store helps a ton of wicked smaht people find this thing. If you think the app is wicked awesome, I'd be wicked happy if you left a l'il rating!",
+    "rateNow": "Rate it wicked fast",
+    "remindLater": "Maybe latah"
   }
 }

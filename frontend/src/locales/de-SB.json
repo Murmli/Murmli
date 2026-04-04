@@ -453,7 +453,8 @@
     "sendGlobalMessage": "Alle ebbes schicka",
     "confirmSendTitle": "Nachricht echt schicka?",
     "confirmSendText": "Des geht an ALLE Leit. Willsch des wirklich?",
-    "sendSuccess": "Nachricht isch an alle raus."
+    "sendSuccess": "Nachricht isch an alle raus.",
+    "forceRatingPrompt": "Den Bewertungs-Dialog midd G'walt herbeifiahra"
   },
   "contact": {
     "title": "Kontakt",
@@ -745,5 +746,11 @@
     "avgWeightPerExercise": "Schnitt pro Übong",
     "cancelTraining": "Abbreacha",
     "cancelTrainingConfirm": "Willsch echt uffhöre?"
+  },
+  "appRating": {
+    "title": "G'fällt dir dr Murmli?",
+    "description": "Dr Murmli isch koschdalos ond open-source. Weil i koi Geld für Werbung hau, helfet Bewerdonga em Store oms Verregga, damit mehr Leit die App au finda kennat. Wenn dr d'App gfällt, däd i mi narrisch über a Bewerdong freia!",
+    "rateNow": "Jetzt g'schwind bwerda",
+    "remindLater": "Vielleicht a andersch Mol"
   }
 }

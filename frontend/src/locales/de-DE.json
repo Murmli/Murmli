@@ -444,6 +444,7 @@
     "title": "Admin-Tools",
     "clearCache": "LLM-Cache leeren",
     "resetImages": "Übungsbilder zurücksetzen",
+    "forceRatingPrompt": "Bewertungs-Dialog erzwingen",
     "confirm": "Bestätigen ({seconds})",
     "success": "Aktion ausgeführt",
     "systemMessageTitle": "System-Nachricht senden",
@@ -689,6 +690,12 @@
     "lastWorkout": "Letztes Training",
     "lastExercises": "Letzte 5 Übungen",
     "noWorkoutsYet": "Noch kein Training abgeschlossen."
+  },
+  "appRating": {
+    "title": "Gefällt dir Murmli?",
+    "description": "Murmli ist kostenlos und open-source. Da ich kein Werbebudget habe, helfen Bewertungen im Store enorm, damit mehr Menschen die App entdecken können. Wenn dir die App gefällt, würde ich mich riesig über eine Bewertung freuen!",
+    "rateNow": "Jetzt bewerten",
+    "remindLater": "Vielleicht später"
   },
   "publicRecipe": {
     "downloadTitle": "Lade Murmli herunter",

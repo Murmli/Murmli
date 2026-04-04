@@ -42,6 +42,7 @@ export const useDialogStore = defineStore("dialogStore", () => {
     askTrainingPlanDialog: false,
     continueTrainingPlanDialog: false,
     indicatorSettingsDialog: false,
+    appRatingPrompt: false,
   });
 
   const imageSrc = ref('');

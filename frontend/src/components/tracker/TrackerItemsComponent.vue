@@ -358,6 +358,7 @@ import { useShoppingListStore } from '@/stores/shoppingListStore';
 import { useLanguageStore } from '@/stores/languageStore';
 import { useDialogStore } from '@/stores/dialogStore';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
+import { maybeShowRatingPrompt } from '@/utils/appRating';
 import draggable from 'vuedraggable';
 
 const trackerStore = useTrackerStore();
@@ -587,6 +588,9 @@ const openDropdown = (item) => {
     if (isLongPressActive.value) return;
     trackerStore.selectedItem = item;
     dropdownMenu.value = true;
+    
+    // Zufällig Bewertungs-Aufforderung triggern
+    maybeShowRatingPrompt();
 };
 
 const openGroupScaleDialog = (group) => {

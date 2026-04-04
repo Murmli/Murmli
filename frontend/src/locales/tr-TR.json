@@ -453,7 +453,8 @@
     "sendGlobalMessage": "Küresel Mesaj Gönder",
     "confirmSendTitle": "Mesajı gerçekten gönder?",
     "confirmSendText": "Bu mesaj TÜM kullanıcılara gönderilecektir. Devam etmek istiyor musunuz?",
-    "sendSuccess": "Mesaj tüm kullanıcılara başarıyla gönderildi."
+    "sendSuccess": "Mesaj tüm kullanıcılara başarıyla gönderildi.",
+    "forceRatingPrompt": "Değerlendirme Diyaloğunu Zorla"
   },
   "contact": {
     "title": "İletişim",
@@ -745,5 +746,11 @@
     "avgWeightPerExercise": "Egzersiz Başına Ortalama Ağırlık",
     "cancelTraining": "Antrenmanı İptal Et",
     "cancelTrainingConfirm": "Antrenmanı gerçekten iptal etmek istiyor musunuz?"
+  },
+  "appRating": {
+    "title": "Murmli'yi sevdin mi?",
+    "description": "Murmli ücretsiz ve açık kaynaklıdır. Reklam bütçem olmadığı için mağazadaki değerlendirmeler daha fazla insanın uygulamayı keşfetmesine muazzam yardımcı oluyor. Eğer uygulamayı beğendiysen, bir değerlendirme bırakman beni çok mutlu eder!",
+    "rateNow": "Şimdi değerlendir",
+    "remindLater": "Belki daha sonra"
   }
 }

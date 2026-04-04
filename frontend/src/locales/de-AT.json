@@ -453,7 +453,8 @@
     "sendGlobalMessage": "Globale Nochricht schickn",
     "confirmSendTitle": "Wirklich an olle schickn?",
     "confirmSendText": "De Nochricht kriagn OLLE Benutzer. Passt des?",
-    "sendSuccess": "Nochricht is an olle rausgaunga."
+    "sendSuccess": "Nochricht is an olle rausgaunga.",
+    "forceRatingPrompt": "Den Bewertungs-Dialog bittschön erzwingen"
   },
   "contact": {
     "title": "Kontakt",
@@ -745,5 +746,11 @@
     "avgWeightPerExercise": "Schnitt pro Übung",
     "cancelTraining": "Training ohbrechn",
     "cancelTrainingConfirm": "Wüllst wirkli mittendrin aufhern?"
+  },
+  "appRating": {
+    "title": "Taugt da der Murmli?",
+    "description": "Da Murmli is gratis und open-source. Weil i ka Budget fia Werbung hob, höfn ma de Bewertungen im Store voi weida, damit mehr Leit de App findn. Winns da de App taugt, dad i mi narrisch über a Bewertung gfrein!",
+    "rateNow": "Jetzt bewertn",
+    "remindLater": "Vielleicht a andas Moi"
   }
 }

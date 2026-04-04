@@ -453,7 +453,8 @@
     "sendGlobalMessage": "Send global message",
     "confirmSendTitle": "Really send message?",
     "confirmSendText": "This message will be sent to ALL users. Do you want to continue?",
-    "sendSuccess": "Message successfully sent to all users."
+    "sendSuccess": "Message successfully sent to all users.",
+    "forceRatingPrompt": "Force rating dialog"
   },
   "contact": {
     "title": "Contact",
@@ -745,5 +746,11 @@
     "avgWeightPerExercise": "Average weight per exercise",
     "cancelTraining": "Cancel training",
     "cancelTrainingConfirm": "Do you really want to cancel the training?"
+  },
+  "appRating": {
+    "title": "Do you like Murmli?",
+    "description": "Murmli is free and open-source. Since I don't have an advertising budget, store reviews help tremendously so that more people can discover the app. If you enjoy using the app, I would be thrilled if you could leave a review!",
+    "rateNow": "Rate now",
+    "remindLater": "Maybe later"
   }
 }

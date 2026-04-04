@@ -453,7 +453,8 @@
     "sendGlobalMessage": "Globale Nachricht senden",
     "confirmSendTitle": "Echt senden?",
     "confirmSendText": "Das geht an ALLE raus. Fortfahren?",
-    "sendSuccess": "Nachricht an alle ist raus."
+    "sendSuccess": "Nachricht an alle ist raus.",
+    "forceRatingPrompt": "Bewertungs-Pop-up mies forcieren"
   },
   "contact": {
     "title": "Kontakt",
@@ -745,5 +746,11 @@
     "avgWeightPerExercise": "Schnitt-Gewicht/Übung",
     "cancelTraining": "Abbrechen",
     "cancelTrainingConfirm": "Echt jetzt abbrechen?"
+  },
+  "appRating": {
+    "title": "Feierst du Murmli?",
+    "description": "Murmli ist for free und open-source. Da ich zero Werbebudget habe, pushen Bewertungen im Store extrem, damit mehr Leute die App checken. Wenn dir die App gefällt, wäre eine Bewertung echt ein stabiler Move!",
+    "rateNow": "Jetzt bewerten",
+    "remindLater": "Vielleicht später"
   }
 }

@@ -453,7 +453,8 @@
     "sendGlobalMessage": "Nachricht an olle schicka",
     "confirmSendTitle": "Wirklich an olle schicka?",
     "confirmSendText": "De Nachricht geht an JEDEN Benutzer. Wuist des echt?",
-    "sendSuccess": "Nachricht is an olle rausganga."
+    "sendSuccess": "Nachricht is an olle rausganga.",
+    "forceRatingPrompt": "An Bewertungsschubser erzwinga"
   },
   "contact": {
     "title": "Kontakt",
@@ -745,5 +746,11 @@
     "avgWeightPerExercise": "Schnitt-Gwicht pro Übung",
     "cancelTraining": "Abbrecha",
     "cancelTrainingConfirm": "Wuist echt abbrecha?"
+  },
+  "appRating": {
+    "title": "G'foid da da Murmli?",
+    "description": "Da Murmli is umsonst und open-source. Wei i koa Geid fia Werbung hob, helfan mir de Bewertungen im Store narrisch, damit de Leid de App überhaupts findn. Wann da de App dawischt, dad i mi sakrisch über a Bewertung gfreia!",
+    "rateNow": "Iatz glei bewertn",
+    "remindLater": "Vielleicht a anders Moi"
   }
 }

@@ -453,7 +453,8 @@
     "sendGlobalMessage": "Odeslat globální zprávu",
     "confirmSendTitle": "Opravdu odeslat zprávu?",
     "confirmSendText": "Tato zpráva bude odeslána VŠEM uživatelům. Chcete pokračovat?",
-    "sendSuccess": "Zpráva byla úspěšně odeslána všem uživatelům."
+    "sendSuccess": "Zpráva byla úspěšně odeslána všem uživatelům.",
+    "forceRatingPrompt": "Vynutit výzvu k hodnocení"
   },
   "contact": {
     "title": "Kontakt",
@@ -745,5 +746,11 @@
     "avgWeightPerExercise": "Průměrná váha na cvik",
     "cancelTraining": "Zrušit trénink",
     "cancelTrainingConfirm": "Opravdu chcete trénink zrušit?"
+  },
+  "appRating": {
+    "title": "Líbí se vám Murmli?",
+    "description": "Murmli je zdarma a open-source. Protože nemám žádný rozpočet na reklamu, hodnocení v obchodě velmi pomáhají lidem aplikaci objevit. Pokud se vám aplikace líbí, budu vám za hodnocení moc vděčný!",
+    "rateNow": "Ohodnotit nyní",
+    "remindLater": "Možná později"
   }
 }

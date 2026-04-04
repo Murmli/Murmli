@@ -453,7 +453,8 @@
     "sendGlobalMessage": "Shout globally",
     "confirmSendTitle": "Send to Everyone?",
     "confirmSendText": "This hits EVERYONE. You ready to paddle?",
-    "sendSuccess": "The message has touched the whole coast."
+    "sendSuccess": "The message has touched the whole coast.",
+    "forceRatingPrompt": "Drop the big one and force that rating pop-up, brah!"
   },
   "contact": {
     "title": "Reach Out",
@@ -745,5 +746,11 @@
     "avgWeightPerExercise": "Avg Weight / Move",
     "cancelTraining": "Abort Session",
     "cancelTrainingConfirm": "Really abort the ride?"
+  },
+  "appRating": {
+    "title": "You diggin' Murmli, dude?",
+    "description": "Murmli is totally free and open-source, man. Since I'm not running any heavy ad vibes, those store ratings really help the tribe find this app. If you're feeling the stoke, I'd be super stoked if you dropped a review!",
+    "rateNow": "Ride the wave now",
+    "remindLater": "Maybe after the next set"
   }
 }

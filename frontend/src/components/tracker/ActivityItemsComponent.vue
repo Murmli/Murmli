@@ -86,6 +86,7 @@
 import { ref, computed, watch } from 'vue';
 import { useTrackerStore } from '@/stores/trackerStore';
 import { useLanguageStore } from '@/stores/languageStore';
+import { maybeShowRatingPrompt } from '@/utils/appRating';
 
 const trackerStore = useTrackerStore();
 const languageStore = useLanguageStore();
@@ -101,6 +102,7 @@ const originalCalories = ref(0);
 const openDropdown = (item) => {
     trackerStore.selectedItem = item;
     dropdownMenu.value = true;
+    maybeShowRatingPrompt();
 };
 
 const deleteItem = async () => {

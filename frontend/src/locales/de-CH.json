@@ -453,7 +453,8 @@
     "sendGlobalMessage": "Globale Nachricht schicke",
     "confirmSendTitle": "Nachricht würklich schicke?",
     "confirmSendText": "Die Nachricht wird a ALLI Benutzer gschickt. Wotsch wiitermache?",
-    "sendSuccess": "Nachricht erfolgreich a alli Benutzer gschickt."
+    "sendSuccess": "Nachricht erfolgreich a alli Benutzer gschickt.",
+    "forceRatingPrompt": "Bewertigs-Dialog erzwinge"
   },
   "contact": {
     "title": "Kontakt",
@@ -745,5 +746,11 @@
     "avgWeightPerExercise": "Durchschnitts-Gwicht pro Üebig",
     "cancelTraining": "Training abbräche",
     "cancelTrainingConfirm": "Wotsch s'Training würklich abbräche?"
+  },
+  "appRating": {
+    "title": "Gfallt der s'Murmli?",
+    "description": "S'Murmli isch gratis und open-source. Da ich kei Wärbebudget han, hälfed Bewertige im Store enorm, damit meh Lüüt die App entdecke chönd. Wenn der d'App gfallt, wür i mi rüüsig über e Bewertig freue!",
+    "rateNow": "Jetzt bewärte",
+    "remindLater": "Viellecht spöter"
   }
 }

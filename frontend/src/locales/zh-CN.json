@@ -453,7 +453,8 @@
     "sendGlobalMessage": "发送全局消息",
     "confirmSendTitle": "确定发送消息？",
     "confirmSendText": "此消息将发送给所有用户。是否继续？",
-    "sendSuccess": "消息已成功发送给所有用户。"
+    "sendSuccess": "消息已成功发送给所有用户。",
+    "forceRatingPrompt": "强制评价提示"
   },
   "contact": {
     "title": "联系我们",
@@ -745,5 +746,11 @@
     "avgWeightPerExercise": "每项练习平均重量",
     "cancelTraining": "取消训练",
     "cancelTrainingConfirm": "您真的要取消训练吗？"
+  },
+  "appRating": {
+    "title": "你喜欢 Murmli 吗？",
+    "description": "Murmli 是一款免费且开源的软件。由于我没有广告预算，在商店中的评价对于帮助更多人发现这款应用至关重要。如果你喜欢这款应用，我将非常感激你的好评！",
+    "rateNow": "立即评价",
+    "remindLater": "稍后提醒"
   }
 }

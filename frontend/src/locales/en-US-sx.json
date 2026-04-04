@@ -453,7 +453,8 @@
     "sendGlobalMessage": "Tell everybody",
     "confirmSendTitle": "Send to everyone?",
     "confirmSendText": "This goes to EVERY soul. You sure?",
-    "sendSuccess": "Message sent out to the whole wide world."
+    "sendSuccess": "Message sent out to the whole wide world.",
+    "forceRatingPrompt": "Make 'em leave a l'il review right now"
   },
   "contact": {
     "title": "Contact",
@@ -745,5 +746,11 @@
     "avgWeightPerExercise": "Average weight",
     "cancelTraining": "Quit workout",
     "cancelTrainingConfirm": "You really wanna quit now?"
+  },
+  "appRating": {
+    "title": "Y'all likin' Murmli so far?",
+    "description": "Now, Murmli's free 'n open-source, don'tcha know. Since I ain't got no fancy budget for advertisin', those reviews in the store surely do help folks find their way to us. If you're havin' a fine old time with the app, I'd be mighty obliged if you'd leave a l'il review for me!",
+    "rateNow": "I'll do it right now",
+    "remindLater": "Maybe after a while"
   }
 }

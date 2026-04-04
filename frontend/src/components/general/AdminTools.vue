@@ -27,6 +27,16 @@
       }}
     </v-btn>
 
+    <v-btn
+      class="mb-6 w-100"
+      color="secondary"
+      variant="outlined"
+      prepend-icon="mdi-star-circle"
+      @click="forceShowRatingPrompt"
+    >
+      {{ languageStore.t('adminTools.forceRatingPrompt') }}
+    </v-btn>
+
     <v-divider class="mb-6 w-100"></v-divider>
 
     <h3 class="mb-4">{{ languageStore.t('adminTools.systemMessageTitle') }}</h3>
@@ -78,6 +88,7 @@ import { ref } from 'vue';
 import { useApiStore } from '@/stores/apiStore';
 import { useLanguageStore } from '@/stores/languageStore';
 import { useDialogStore } from '@/stores/dialogStore';
+import { forceShowRatingPrompt } from '@/utils/appRating';
 
 const apiStore = useApiStore();
 const languageStore = useLanguageStore();
