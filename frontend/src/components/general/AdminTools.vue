@@ -28,13 +28,12 @@
     </v-btn>
 
     <v-btn
-      class="mb-6 w-100"
+      class="mb-6 w-100 text-none"
       color="secondary"
       variant="outlined"
       prepend-icon="mdi-star-circle"
       @click="forceShowRatingPrompt"
       size="small"
-      class="text-none"
     >
       {{ languageStore.t('adminTools.forceRatingPrompt') }}
     </v-btn>

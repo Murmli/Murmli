@@ -16,6 +16,7 @@ declare module 'vue' {
     AdminTools: typeof import('./src/components/general/AdminTools.vue')['default']
     ApiErrorComponent: typeof import('./src/components/general/ApiErrorComponent.vue')['default']
     AppPromotionActions: typeof import('./src/components/general/AppPromotionActions.vue')['default']
+    AppRatingPrompt: typeof import('./src/components/dialogs/AppRatingPrompt.vue')['default']
     ArchivedTrainingPlans: typeof import('./src/components/trainingsPlans/ArchivedTrainingPlans.vue')['default']
     AskDialog: typeof import('./src/components/dialogs/AskDialog.vue')['default']
     AskTrainingPlanDialog: typeof import('./src/components/dialogs/AskTrainingPlanDialog.vue')['default']
