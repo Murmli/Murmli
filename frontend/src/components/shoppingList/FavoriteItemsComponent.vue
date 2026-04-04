@@ -39,3 +39,12 @@ const toggleFavoriteStatus = (favorite) => {
     shoppingListStore.addFavoriteToShoppingList(favorite);
 };
 </script>
+
+<style scoped>
+.v-chip {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+</style>

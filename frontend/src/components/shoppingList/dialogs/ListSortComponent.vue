@@ -5,7 +5,7 @@
             <v-card-text>
                 {{ languageStore.t('shoppingList.sortCategoriesDialog.text') }}
                 <v-list>
-                    <v-list-item v-for="(category, index) in categories" :key="category.id" class="m-10 p-0"
+                    <v-list-item v-for="(category, index) in categories" :key="category.id" class="m-10 p-0 selection-none"
                         style="padding: 0; margin: 0;">
                         <div class="d-flex align-center justify-space-between">
                             <div @click="openPositionDialog(index)" style="cursor: pointer;">
@@ -155,3 +155,12 @@ onMounted(() => {
     loadCategories();
 });
 </script>
+
+<style scoped>
+.selection-none {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+</style>

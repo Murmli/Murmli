@@ -13,7 +13,7 @@
             <template #item="{ element: categoryGroup }">
                 <v-card class="mx-auto mb-4" v-if="categoryGroup.items && categoryGroup.items.length">
                     <v-list bg-color="white">
-                        <v-list-item class="" v-for="item in categoryGroup.items" :key="item._id"
+                        <v-list-item class="shopping-item" v-for="item in categoryGroup.items" :key="item._id"
                             v-touch="{ left: wrapper => handleSwipe(wrapper, item._id), right: wrapper => handleSwipe(wrapper, item._id) }">
                             <!-- Item Title -->
                             <v-list-item-title @click="openDropdown(item)">
@@ -447,3 +447,12 @@ onMounted(() => {
 });
 
 </script>
+
+<style scoped>
+.shopping-item {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+</style>

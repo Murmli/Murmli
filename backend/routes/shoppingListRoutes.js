@@ -860,5 +860,6 @@ router.post("/lastUpdate", secretKeyMiddleware, sessionMiddleware, readAccessMid
 router.get("/myShoppingList", secretKeyMiddleware, sessionMiddleware, shoppingListController.getUserShoppingList);
 
 router.put("/categories/reorder", secretKeyMiddleware, sessionMiddleware, shoppingListController.reorderCategories);
+router.put("/recipes/reorder", secretKeyMiddleware, sessionMiddleware, readAccessMiddleware, shoppingListController.reorderRecipes);
 
 module.exports = router;

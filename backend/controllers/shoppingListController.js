@@ -796,6 +796,47 @@ exports.reorderCategories = async (req, res) => {
   }
 };
 
+exports.reorderRecipes = async (req, res) => {
+  try {
+    const shoppingList = req.shoppingList;
+    const { recipeOrder } = req.body;
+
+    if (!recipeOrder || !Array.isArray(recipeOrder)) {
+      return res.status(400).json({ error: "Recipe order array is required" });
+    }
+
+    // Reorder based on the provided array of IDs
+    const newRecipes = [];
+    recipeOrder.forEach(id => {
+      const recipe = shoppingList.recipes.find(r => r._id.toString() === id.toString());
+      if (recipe) {
+        newRecipes.push(recipe);
+      }
+    });
+
+    // Add any recipes that weren't in the reorder list (just in case)
+    shoppingList.recipes.forEach(recipe => {
+      if (!recipeOrder.includes(recipe._id.toString())) {
+        newRecipes.push(recipe);
+      }
+    });
+
+    shoppingList.recipes = newRecipes;
+    const savedList = await shoppingList.save();
+
+    if (savedList) {
+      req.shoppingList = savedList;
+      broadcastUpdate(savedList);
+      return exports.read(req, res);
+    } else {
+      throw new Error("Failed to update shopping list");
+    }
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Server Error" });
+  }
+};
+
 exports.stream = (req, res) => {
   const shoppingList = req.shoppingList;
 

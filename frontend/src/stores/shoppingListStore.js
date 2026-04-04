@@ -1119,6 +1119,26 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
       return false;
     },
 
+    async reorderRecipes(recipeOrder) {
+      const apiStore = useApiStore();
+      try {
+        const response = await apiStore.apiRequest(
+          "put",
+          "/shoppingList/recipes/reorder",
+          { recipeOrder },
+          false
+        );
+        if (response.status === 200) {
+          this.recipes = response.data.list.recipes;
+          this.saveCache();
+          return true;
+        }
+      } catch (error) {
+        this.error = error;
+      }
+      return false;
+    },
+
     async fetchSortingOrder() {
       const apiStore = useApiStore();
       try {

@@ -16,7 +16,7 @@
                 </v-list-item>
                 <v-divider></v-divider>
                 <!-- List: All Checked items -->
-                <v-list-item v-for="item in activeItems" color="primary" variant="plain" :key="item._id"
+                <v-list-item v-for="item in activeItems" color="primary" variant="plain" :key="item._id" class="shopping-item"
                     v-touch="{ left: wrapper => handleSwipe(wrapper, item._id), right: wrapper => handleSwipe(wrapper, item._id) }">
                     <v-list-item-title>
                         <div class="align-center d-flex">
@@ -94,3 +94,12 @@ const handleSwipe = (wrapper, itemId) => {
     // handle swipe action
 };
 </script>
+
+<style scoped>
+.shopping-item {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+</style>
