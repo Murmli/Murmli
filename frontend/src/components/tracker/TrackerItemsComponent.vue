@@ -370,7 +370,7 @@ const tracker = computed(() => trackerStore.tracker || { foodItems: [] });
 const isLongPressActive = ref(false);
 const longPressTimer = ref(null);
 const touchStartPos = ref({ x: 0, y: 0 });
-const LONG_PRESS_DELAY = 1000; // ms for duplication
+const LONG_PRESS_DELAY = 1500; // ms for duplication
 const MOVE_THRESHOLD = 10; // px to cancel duplication
 
 const startLongPressTimer = (item) => {
