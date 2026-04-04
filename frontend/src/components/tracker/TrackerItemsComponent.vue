@@ -28,7 +28,12 @@
                         </v-card-title>
                         <v-divider></v-divider>
                         <v-card-text class="pa-0">
-                            <v-card @click="openDropdown(item)" @contextmenu.prevent="handleLongPress(item)" class="food-item-card group-item" v-for="(item, iIndex) in group.items" :key="item._id || iIndex"
+                            <v-card @click="openDropdown(item)" 
+                                @touchstart="handleTouchStart($event, item)"
+                                @touchmove="handleTouchMove"
+                                @touchend="handleTouchEnd"
+                                @touchcancel="handleTouchEnd"
+                                class="food-item-card group-item" v-for="(item, iIndex) in group.items" :key="item._id || iIndex"
                                 :class="getHealthyRatingClass(item.healthyRating)" variant="flat">
                                 <div class="d-flex align-stretch">
                                     <div class="flex-grow-1 overflow-hidden">
@@ -62,7 +67,12 @@
                     </v-card>
 
                     <!-- Single Item (no group) -->
-                    <v-card v-else @click="openDropdown(item)" @contextmenu.prevent="handleLongPress(item)" class="mb-2 food-item-card" v-for="(item, iIndex) in group.items" :key="item._id || iIndex"
+                    <v-card v-else @click="openDropdown(item)" 
+                        @touchstart="handleTouchStart($event, item)"
+                        @touchmove="handleTouchMove"
+                        @touchend="handleTouchEnd"
+                        @touchcancel="handleTouchEnd"
+                        class="mb-2 food-item-card" v-for="(item, iIndex) in group.items" :key="item._id || iIndex"
                         :class="getHealthyRatingClass(item.healthyRating)">
                         <div class="d-flex align-stretch">
                             <div class="flex-grow-1 overflow-hidden">
@@ -358,6 +368,58 @@ const dialogStore = useDialogStore();
 const tracker = computed(() => trackerStore.tracker || { foodItems: [] });
 
 const isLongPressActive = ref(false);
+const longPressTimer = ref(null);
+const touchStartPos = ref({ x: 0, y: 0 });
+const LONG_PRESS_DELAY = 1000; // ms for duplication
+const MOVE_THRESHOLD = 10; // px to cancel duplication
+
+const startLongPressTimer = (item) => {
+    cancelLongPressTimer();
+    
+    longPressTimer.value = setTimeout(async () => {
+        isLongPressActive.value = true;
+        try {
+            await Haptics.impact({ style: ImpactStyle.Heavy });
+        } catch (e) {}
+        
+        trackerStore.selectedItem = item;
+        await trackerStore.duplicateFoodItem();
+        
+        // Reset state after a short delay
+        setTimeout(() => {
+            isLongPressActive.value = false;
+        }, 500);
+    }, LONG_PRESS_DELAY);
+};
+
+const cancelLongPressTimer = () => {
+    if (longPressTimer.value) {
+        clearTimeout(longPressTimer.value);
+        longPressTimer.value = null;
+    }
+};
+
+const handleTouchStart = (e, item) => {
+    const touch = e.touches[0];
+    touchStartPos.value = { x: touch.clientX, y: touch.clientY };
+    startLongPressTimer(item);
+};
+
+const handleTouchMove = (e) => {
+    if (!longPressTimer.value) return;
+    
+    const touch = e.touches[0];
+    const dx = Math.abs(touch.clientX - touchStartPos.value.x);
+    const dy = Math.abs(touch.clientY - touchStartPos.value.y);
+    
+    if (dx > MOVE_THRESHOLD || dy > MOVE_THRESHOLD) {
+        cancelLongPressTimer();
+    }
+};
+
+const handleTouchEnd = () => {
+    cancelLongPressTimer();
+};
 
 // Local state for draggable to allow mutation
 const localDraggableGroups = ref([]);
