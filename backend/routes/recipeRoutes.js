@@ -239,6 +239,38 @@ router.delete("/user/delete", secretKeyMiddleware, sessionMiddleware, reciperCon
 
 /**
  * @swagger
+ * /api/v2/recipe/user/reorder:
+ *   put:
+ *     tags:
+ *       - Recipes
+ *     title: Reorder User Recipes
+ *     summary: Update the order of user-created recipes
+ *     description: Updates the order of recipes in the user's generations list.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               recipeOrder:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *             required:
+ *               - recipeOrder
+ *     responses:
+ *       200:
+ *         description: Successfully reordered.
+ *       400:
+ *         description: Missing order.
+ *       500:
+ *         description: Server error.
+ */
+router.put("/user/reorder", secretKeyMiddleware, sessionMiddleware, reciperController.reorderUserRecipes);
+
+/**
+ * @swagger
  * /api/v2/recipe/user/promote:
  *   post:
  *     tags:
@@ -481,6 +513,38 @@ router.post("/favorite/create", secretKeyMiddleware, sessionMiddleware, reciperC
  *         description: Server error.
  */
 router.delete("/favorite/delete", secretKeyMiddleware, sessionMiddleware, reciperController.deleteFavorite);
+
+/**
+ * @swagger
+ * /api/v2/recipe/favorite/reorder:
+ *   put:
+ *     tags:
+ *       - Recipes
+ *     title: Reorder Favorite Recipes
+ *     summary: Update the order of user's favorite recipes
+ *     description: Updates the order of recipe IDs in the user's favoriteRecipes list.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               recipeOrder:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *             required:
+ *               - recipeOrder
+ *     responses:
+ *       200:
+ *         description: Successfully reordered.
+ *       400:
+ *         description: Missing order.
+ *       500:
+ *         description: Server error.
+ */
+router.put("/favorite/reorder", secretKeyMiddleware, sessionMiddleware, reciperController.reorderFavoriteRecipes);
 
 /**
  * @swagger

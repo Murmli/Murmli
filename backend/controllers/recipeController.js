@@ -340,14 +340,85 @@ exports.createUserRecipeMultimodal = async (req, res) => {
 exports.getUserRecipes = async (req, res) => {
   try {
     const user = req.user;
-    const recipes = await UserRecipe.find({ userId: user._id });
+    const recipes = await UserRecipe.find({ userId: user._id }).lean();
     if (!recipes || recipes.length === 0) {
       return res.status(200).json({ recipes: [] });
     }
 
-    const translatedRecipes = await translateRecipes(recipes, req.user.language);
+    // Sort based on user.generations if available
+    const orderedRecipes = [];
+    const recipeMap = new Map(recipes.map(r => [r._id.toString(), r]));
+    
+    if (user.generations && user.generations.length > 0) {
+      user.generations.forEach(gen => {
+        const recipe = recipeMap.get(gen.recipeId.toString());
+        if (recipe) {
+          orderedRecipes.push(recipe);
+          recipeMap.delete(gen.recipeId.toString());
+        }
+      });
+    }
+    
+    // Add any remaining recipes that might not be in generations array
+    recipeMap.forEach(recipe => orderedRecipes.push(recipe));
+
+    const translatedRecipes = await translateRecipes(orderedRecipes, req.user.language);
 
     return res.status(200).json({ recipes: translatedRecipes });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Server Error" });
+  }
+};
+
+exports.reorderUserRecipes = async (req, res) => {
+  try {
+    const user = req.user;
+    const { recipeOrder } = req.body;
+
+    if (!recipeOrder || !Array.isArray(recipeOrder)) {
+      return res.status(400).json({ error: "Recipe order is required" });
+    }
+
+    // We reorder the 'generations' array in user document
+    const generationMap = new Map(user.generations.map(gen => [gen.recipeId.toString(), gen]));
+    
+    const newGenerations = [];
+    recipeOrder.forEach(id => {
+      const gen = generationMap.get(id);
+      if (gen) {
+        newGenerations.push(gen);
+        generationMap.delete(id);
+      }
+    });
+
+    // Add any remaining generations that were not in the order array
+    generationMap.forEach(gen => newGenerations.push(gen));
+
+    user.generations = newGenerations;
+    await user.save();
+
+    return res.status(200).json({ message: "User recipes reordered successfully" });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Server Error" });
+  }
+};
+
+exports.reorderFavoriteRecipes = async (req, res) => {
+  try {
+    const user = req.user;
+    const { recipeOrder } = req.body;
+
+    if (!recipeOrder || !Array.isArray(recipeOrder)) {
+      return res.status(400).json({ error: "Recipe order is required" });
+    }
+
+    // favoriteRecipes is just an array of IDs
+    user.favoriteRecipes = recipeOrder;
+    await user.save();
+
+    return res.status(200).json({ message: "Favorite recipes reordered successfully" });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: "Server Error" });

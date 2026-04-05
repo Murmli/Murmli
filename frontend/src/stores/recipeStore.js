@@ -392,6 +392,44 @@ export const useRecipeStore = defineStore("recipeStore", {
       return null;
     },
 
+    async reorderUserRecipes(recipeOrder) {
+      const apiStore = useApiStore();
+      try {
+        const response = await apiStore.apiRequest(
+          "put",
+          "/recipe/user/reorder",
+          { recipeOrder },
+          false
+        );
+        if (response.status === 200) {
+          this.saveCache();
+          return true;
+        }
+      } catch (error) {
+        this.error = error;
+      }
+      return false;
+    },
+
+    async reorderFavoriteRecipes(recipeOrder) {
+      const apiStore = useApiStore();
+      try {
+        const response = await apiStore.apiRequest(
+          "put",
+          "/recipe/favorite/reorder",
+          { recipeOrder },
+          false
+        );
+        if (response.status === 200) {
+          this.saveCache();
+          return true;
+        }
+      } catch (error) {
+        this.error = error;
+      }
+      return false;
+    },
+
     async editUserRecipe(id, text, preview = false, updatedRecipe = null) {
       const apiStore = useApiStore();
       try {

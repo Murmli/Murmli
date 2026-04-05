@@ -1125,7 +1125,7 @@ export const useShoppingListStore = defineStore("shoppingListStore", {
         const response = await apiStore.apiRequest(
           "put",
           "/shoppingList/recipes/reorder",
-          { recipeOrder },
+          { recipeOrder, listId: this.listId },
           false
         );
         if (response.status === 200) {
