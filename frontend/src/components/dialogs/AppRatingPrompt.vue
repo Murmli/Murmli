@@ -44,15 +44,14 @@
 import { useLanguageStore } from '@/stores/languageStore';
 import { useDialogStore } from '@/stores/dialogStore';
 import { Capacitor } from '@capacitor/core';
+import { delayRatingPrompt } from '@/utils/appRating';
 
 const languageStore = useLanguageStore();
 const dialogStore = useDialogStore();
 
-const STORAGE_KEY = 'murmli_app_rated';
-
 const rateNow = () => {
-  // Permanent speichern, dass bewertet wurde
-  localStorage.setItem(STORAGE_KEY, 'true');
+  // Pausiert den Dialog für die nächsten 500 Besuche
+  delayRatingPrompt();
   
   const platform = Capacitor.getPlatform();
   let url = 'https://play.google.com/store/apps/details?id=de.murmli.twa';

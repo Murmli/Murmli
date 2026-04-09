@@ -7,8 +7,8 @@ android {
         applicationId "de.murmli.twa"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionName "1.087"
-        versionCode project.hasProperty('customVersionCode') ? project.customVersionCode.toInteger() : 91
+        versionName "1.088"
+        versionCode project.hasProperty('customVersionCode') ? project.customVersionCode.toInteger() : 92
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.

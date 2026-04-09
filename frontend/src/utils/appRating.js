@@ -1,32 +1,51 @@
 import { useDialogStore } from '@/stores/dialogStore';
 
-const STORAGE_KEY = 'murmli_app_rated';
-const SHOWN_KEY = 'murmli_app_rating_shown';
-const PROBABILITY = 1 / 300; // 1 zu 300 Wahrscheinlichkeit
+const VISITS_KEY = 'murmli_app_visits';
+const TARGET_VISITS = 50;
+const PAUSE_VISITS = 500;
 
 /**
  * Überprüft, ob der Bewertungs-Dialog angezeigt werden soll.
- * Wird nur angezeigt, wenn noch nicht bewertet wurde, er noch nie gezeigt wurde und die Zufallschance greift.
+ * Wird angezeigt nach jedem 50. Aufruf (bzw. "Besuch").
  */
 export const maybeShowRatingPrompt = () => {
-  const isRated = localStorage.getItem(STORAGE_KEY);
-  const isShown = localStorage.getItem(SHOWN_KEY);
+  let visits = parseInt(localStorage.getItem(VISITS_KEY)) || 0;
+  visits++;
 
-  if (isRated === 'true' || isShown === 'true') return;
-
-  if (Math.random() < PROBABILITY) {
+  if (visits >= TARGET_VISITS) {
     const dialogStore = useDialogStore();
     dialogStore.openDialog('appRatingPrompt');
-    // Sofort markieren, dass er einmal gezeigt wurde
-    localStorage.setItem(SHOWN_KEY, 'true');
+    // Zurücksetzen, damit es nach weiteren 50 wieder erscheint
+    localStorage.setItem(VISITS_KEY, '0');
+  } else {
+    localStorage.setItem(VISITS_KEY, visits.toString());
   }
 };
 
 /**
- * Erzwingt das Anzeigen des Bewertungs-Dialogs (für Developer).
- * Ignoriert den STORAGE_KEY Status.
+ * Pausiert den Dialog für die nächsten 500 Besuche.
+ * Wird aufgerufen, wenn der Benutzer auf "Bewerten" klickt.
+ */
+export const delayRatingPrompt = () => {
+  // Wenn der Benutzer bewertet hat, setzen wir den Zähler so zurück,
+  // dass es genau 500 + 50 (TARGET_VISITS) Aufrufe braucht, bis er wieder bei TARGET_VISITS landet.
+  const pauseValue = TARGET_VISITS - PAUSE_VISITS; // 50 - 500 = -450
+  localStorage.setItem(VISITS_KEY, pauseValue.toString());
+};
+
+/**
+ * Erzwingt das Anzeigen des Bewertungs-Dialogs (für Developer/Admins).
+ * Setzt außerdem den Zähler und alle dazugehörigen States zurück.
  */
 export const forceShowRatingPrompt = () => {
   const dialogStore = useDialogStore();
+  
+  // Zähler auf 0 setzen (setzt auch "RateNow 500er-Pause" zurück)
+  localStorage.setItem(VISITS_KEY, '0');
+  
+  // Entferne alte Keys vom vorherigen System, falls noch vorhanden
+  localStorage.removeItem('murmli_app_rated');
+  localStorage.removeItem('murmli_app_rating_shown');
+
   dialogStore.openDialog('appRatingPrompt');
 };
