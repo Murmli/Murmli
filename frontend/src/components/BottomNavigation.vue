@@ -140,12 +140,24 @@ watch(hasBottomMenuItems, value => {
     right: 16px;
     bottom: 96px;
     z-index: 2000;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Hide floating button when keyboard is visible */
+:deep(.keyboard-is-visible) .floating-more-btn {
+    display: none !important;
 }
 
 /* Fix bottom navigation height and centering */
 .app-bottom-navigation {
     height: calc(60px + env(safe-area-inset-bottom, 0px)) !important;
     padding-bottom: env(safe-area-inset-bottom, 0px);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Hide bottom navigation when keyboard is visible */
+:deep(.keyboard-is-visible) .app-bottom-navigation {
+    display: none !important;
 }
 
 @media screen and (max-width: 600px) {

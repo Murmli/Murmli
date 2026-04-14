@@ -44,7 +44,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
+import { Keyboard } from '@capacitor/keyboard';
 import { useApiStore } from '@/stores/apiStore';
 import { usePlannerStore } from '@/stores/plannerStore';
 import { useUserStore } from '@/stores/userStore';
@@ -128,8 +129,35 @@ const retrySession = () => {
   initApp();
 };
 
+let keyboardListeners = [];
+
+const setupKeyboard = async () => {
+  try {
+    // Some basic keyboard handling could be done here if needed
+    // For now we just ensure the plugin is loaded and we can listen to events
+    const showListener = await Keyboard.addListener('keyboardWillShow', info => {
+      // console.log('keyboard will show with height:', info.keyboardHeight);
+      document.body.classList.add('keyboard-is-visible');
+    });
+
+    const hideListener = await Keyboard.addListener('keyboardWillHide', () => {
+      // console.log('keyboard will hide');
+      document.body.classList.remove('keyboard-is-visible');
+    });
+
+    keyboardListeners.push(showListener, hideListener);
+  } catch (e) {
+    console.warn('Keyboard plugin not available', e);
+  }
+};
+
 onMounted(() => {
   initApp();
+  setupKeyboard();
+});
+
+onUnmounted(() => {
+  keyboardListeners.forEach(l => l.remove());
 });
 </script>
 
