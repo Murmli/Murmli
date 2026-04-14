@@ -60,11 +60,6 @@ const languageStore = useLanguageStore();
 const notificationStore = useNotificationStore();
 const router = useRouter();
 
-// Watch for route changes to trigger rating prompt
-router.afterEach(() => {
-  maybeShowRatingPrompt();
-});
-
 const sessionReady = ref(false);
 const sessionError = ref(false);
 const MIN_RECIPE_SUGGESTIONS =
@@ -109,6 +104,9 @@ const initApp = async () => {
     }
 
     sessionReady.value = true;
+
+    // Trigger In-App Review request on initialization
+    maybeShowRatingPrompt();
 
     // Initialize notification polling after session is established
     notificationStore.initialize();
