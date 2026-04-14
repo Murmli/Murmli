@@ -16,7 +16,7 @@
         <!-- App Rating Chip -->
         <v-row class="d-flex justify-center" style="max-height: 50px;">
             <v-chip class="px-4" color="primary" text-color="white" variant="elevated" prepend-icon="mdi-heart"
-                @click="openLink('https://play.google.com/store/apps/details?id=de.murmli.twa')">
+                @click="forceShowRatingPrompt">
                 {{ languageStore.t('navigation.rateApp') }}
             </v-chip>
         </v-row>
@@ -39,6 +39,7 @@
 <script setup>
 import { computed } from 'vue';
 import { useLanguageStore } from '@/stores/languageStore';
+import { forceShowRatingPrompt } from '@/utils/appRating';
 
 const languageStore = useLanguageStore();
 

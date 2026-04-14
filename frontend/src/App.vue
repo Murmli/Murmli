@@ -23,7 +23,6 @@
         <BottomNavigation />
         <ConfirmDialog />
         <NotificationDialog />
-        <AppRatingPrompt />
       </template>
       
       <!-- Show loading indicator while initializing -->
@@ -51,7 +50,6 @@ import { usePlannerStore } from '@/stores/plannerStore';
 import { useUserStore } from '@/stores/userStore';
 import { useLanguageStore } from '@/stores/languageStore';
 import { useNotificationStore } from '@/stores/notificationStore';
-import AppRatingPrompt from '@/components/dialogs/AppRatingPrompt.vue';
 import { maybeShowRatingPrompt } from '@/utils/appRating';
 import { useRouter } from 'vue-router';
 
