@@ -37,8 +37,9 @@
                                 :class="getHealthyRatingClass(item.healthyRating)" variant="flat">
                                 <div class="d-flex align-stretch">
                                     <div class="flex-grow-1 overflow-hidden">
-                                        <v-card-title class="text-subtitle-2">
-                                            {{ item.name }} {{ item.daily === 1 ? languageStore.t('tracker.dailyTracked') : '' }}
+                                        <v-card-title class="text-subtitle-2 d-flex align-center">
+                                            {{ item.name }}
+                                            <v-icon v-if="item.daily === 1" size="x-small" class="ml-1" color="grey">mdi-sync</v-icon>
                                         </v-card-title>
                                         <v-card-subtitle class="text-caption">
                                             {{ item.amount }} {{ item.unit }} ({{ item.kcal }} {{ languageStore.t('tracker.kcal') }})
@@ -76,8 +77,9 @@
                         :class="getHealthyRatingClass(item.healthyRating)">
                         <div class="d-flex align-stretch">
                             <div class="flex-grow-1 overflow-hidden">
-                                <v-card-title class="text-subtitle-2">
-                                    {{ item.name }} {{ item.daily === 1 ? languageStore.t('tracker.dailyTracked') : '' }}
+                                <v-card-title class="text-subtitle-2 d-flex align-center">
+                                    {{ item.name }}
+                                    <v-icon v-if="item.daily === 1" size="x-small" class="ml-1" color="grey">mdi-sync</v-icon>
                                 </v-card-title>
                                 <v-card-subtitle class="text-caption">
                                     {{ item.amount }} {{ item.unit }} ({{ item.kcal }} {{ languageStore.t('tracker.kcal') }})
