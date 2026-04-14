@@ -15,19 +15,10 @@ export const maybeShowRatingPrompt = async () => {
   }
 };
 
-/**
- * Erzwingt die Anfrage eines Reviews (z.B. durch manuellen Klick in den Einstellungen).
- * Auch hier entscheidet letztlich das OS über die Anzeige.
- */
 export const forceShowRatingPrompt = async () => {
   try {
     await InAppReview.requestReview();
   } catch (e) {
     console.error('In-App Review failed', e);
   }
-};
-
-// Veraltete Funktion für Kompatibilität beibehalten, falls noch irgendwo aufgerufen
-export const delayRatingPrompt = () => {
-  // Keine Aktion mehr nötig, da OS-gesteuert
 };
