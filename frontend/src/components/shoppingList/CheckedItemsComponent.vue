@@ -1,7 +1,7 @@
 <template>
     <div class="w-100">
         <v-card class="mx-auto mb-4" v-if="shoppingListStore.items && shoppingListStore.items.length">
-            <v-list bg-color="white">
+            <v-list bg-color="white" density="compact">
                 <!-- Header: Check all items -->
                 <v-list-item color="primary" variant="plain" class="pb-4">
                     <v-list-item-title>{{ languageStore.t('shoppingList.checkedHeader') }}</v-list-item-title>

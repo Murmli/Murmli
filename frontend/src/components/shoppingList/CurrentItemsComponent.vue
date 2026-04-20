@@ -12,7 +12,7 @@
         >
             <template #item="{ element: categoryGroup }">
                 <v-card class="mx-auto mb-4" v-if="categoryGroup.items && categoryGroup.items.length">
-                    <v-list bg-color="white">
+                    <v-list bg-color="white" density="compact">
                         <v-list-item class="shopping-item" v-for="item in categoryGroup.items" :key="item._id"
                             v-touch="{ left: wrapper => handleSwipe(wrapper, item._id), right: wrapper => handleSwipe(wrapper, item._id) }">
                             <!-- Item Title -->
@@ -38,11 +38,11 @@
                             <template v-slot:prepend>
                                 <v-badge v-if="item.recipe" color="orange" dot location="bottom end">
                                     <v-icon :color="getCategoryColor(item.category.id)"
-                                        :icon="getCategoryIcon(item.category.id)" size="35">
+                                        :icon="getCategoryIcon(item.category.id)" size="28">
                                     </v-icon>
                                 </v-badge>
                                 <v-icon v-else :color="getCategoryColor(item.category.id)"
-                                    :icon="getCategoryIcon(item.category.id)" size="35">
+                                    :icon="getCategoryIcon(item.category.id)" size="28">
                                 </v-icon>
                             </template>
 
@@ -454,5 +454,13 @@ onMounted(() => {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+}
+
+:deep(.v-list-item__prepend) {
+    margin-inline-end: 8px !important;
+}
+
+:deep(.v-list-item__spacer) {
+    width: 8px !important;
 }
 </style>
