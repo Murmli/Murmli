@@ -19,6 +19,7 @@
                             <v-list-item-title @click="openDropdown(item)">
                                 <div class="align-center d-flex">
                                     <span class="w-100 text-capitalize" :class="{ 'text-warning': item._isPending }"
+                                          :style="getItemNameStyle(item.name)"
                                           v-tooltip="item._isPending ? languageStore.t('shoppingList.pendingItemTooltip') : null">
                                         {{ item.name }}
                                         <v-icon v-if="item._isPending" size="small" color="warning" class="ml-1">
@@ -438,6 +439,15 @@ const handleSwipe = (wrapper, itemId) => {
     if (Math.abs(wrapper.offsetX) > threshold) {
         // reserved
     }
+};
+
+const getItemNameStyle = (name) => {
+    if (name.length > 25) {
+        return { fontSize: '0.75rem', letterSpacing: '-0.5px', lineHeight: '1.1' };
+    } else if (name.length > 18) {
+        return { fontSize: '0.85rem', letterSpacing: '-0.3px', lineHeight: '1.2' };
+    }
+    return {};
 };
 
 onMounted(() => {

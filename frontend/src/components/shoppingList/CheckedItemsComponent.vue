@@ -20,7 +20,7 @@
                     v-touch="{ left: wrapper => handleSwipe(wrapper, item._id), right: wrapper => handleSwipe(wrapper, item._id) }">
                     <v-list-item-title>
                         <div class="align-center d-flex">
-                            <span class="w-100 text-capitalize">{{ item.name }}</span>
+                            <span class="w-100 text-capitalize" :style="getItemNameStyle(item.name)">{{ item.name }}</span>
                             <span v-if="item.quantity != null && item.quantity != 0">
                                 {{ item.quantity }} <span v-if="item.unit != null">{{ item.unit.name }}</span>
                             </span>
@@ -92,6 +92,15 @@ const toggleItemActive = async (itemId) => {
 // Handle swipe actions
 const handleSwipe = (wrapper, itemId) => {
     // handle swipe action
+};
+
+const getItemNameStyle = (name) => {
+    if (name.length > 25) {
+        return { fontSize: '0.75rem', letterSpacing: '-0.5px', lineHeight: '1.1' };
+    } else if (name.length > 18) {
+        return { fontSize: '0.85rem', letterSpacing: '-0.3px', lineHeight: '1.2' };
+    }
+    return {};
 };
 </script>
 
