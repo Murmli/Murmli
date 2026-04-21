@@ -1226,15 +1226,15 @@ exports.getHistory = async (req, res) => {
     const today = new Date();
     today.setUTCHours(0, 0, 0, 0);
 
-    const sevenDaysAgo = new Date(today);
-    sevenDaysAgo.setDate(today.getDate() - 6);
+    const tenDaysAgo = new Date(today);
+    tenDaysAgo.setDate(today.getDate() - 9);
 
     const trackers = await Tracker.find({
       user: user._id,
-      date: { $gte: sevenDaysAgo, $lte: today }
+      date: { $gte: tenDaysAgo, $lte: today }
     }).sort({ date: 1 }); // Oldest first
 
-    // Map to a simpler format for the heatmap
+    // Map to a simpler format for history
     const history = trackers.map(t => ({
       date: t.date,
       kcal: t.totals?.kcal || 0,

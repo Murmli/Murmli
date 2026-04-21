@@ -5,6 +5,7 @@
   <v-container>
     <TimePickerComponent class="mb-1" />
     <ModernTrackerProgress class="mb-5" />
+    <CalorieHistoryWidget />
     
     <div class="mb-5">
        <v-btn block color="primary" prepend-icon="mdi-chat" @click="showChatDialog = true">
@@ -37,6 +38,14 @@
 import { onMounted, computed, ref } from 'vue';
 import { useTrackerStore } from '@/stores/trackerStore';
 import { useLanguageStore } from '@/stores/languageStore';
+import ModernTrackerProgress from '@/components/tracker/ModernTrackerProgress.vue';
+import CalorieHistoryWidget from '@/components/tracker/CalorieHistoryWidget.vue';
+import DietlevelComponent from '@/components/tracker/DietlevelComponent.vue';
+import ActivityItemsComponent from '@/components/tracker/ActivityItemsComponent.vue';
+import TrackerItemsComponent from '@/components/tracker/TrackerItemsComponent.vue';
+import FavoriteTrackerItemsComponent from '@/components/tracker/FavoriteTrackerItemsComponent.vue';
+import TimePickerComponent from '@/components/tracker/TimePickerComponent.vue';
+import TrackerHelpWindow from '@/components/windows/TrackerHelpWindow.vue';
 import ChatDialog from '@/components/dialogs/ChatDialog.vue';
 
 const trackerStore = useTrackerStore();
@@ -53,5 +62,6 @@ const handleChatSend = async (message, history) => {
 onMounted(async () => {
   trackerStore.fetchTracker();
   trackerStore.fetchBodyData();
+  trackerStore.fetchHistory();
 });
 </script>

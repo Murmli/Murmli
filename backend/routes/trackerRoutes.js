@@ -312,8 +312,8 @@ router.post("/get", secretKeyMiddleware, sessionMiddleware, trackerController.ge
  *   post:
  *     tags: [Tracker]
  *     title: Get Tracker History
- *     summary: Get tracker data for the last 7 days
- *     description: Retrieves the totals and recommendations for the last 7 days.
+ *     summary: Get tracker data for the last 10 days
+ *     description: Retrieves the totals and recommendations for the last 10 days.
  *     responses:
  *       200:
  *         description: Tracker history retrieved successfully

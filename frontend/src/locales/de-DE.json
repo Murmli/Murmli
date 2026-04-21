@@ -465,6 +465,9 @@
   },
   "tracker": {
     "today": "Heute",
+    "history": {
+      "title": "Kalorien der letzten 10 Tage"
+    },
     "bodyData": "Körperdaten",
     "trackNewItem": "Neuen Eintrag tracken",
     "noTargetDefined": "Kein Kalorienziel definiert",
