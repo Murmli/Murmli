@@ -387,6 +387,7 @@ exports.askCalorieTrackerSystemPrompt = (tracker, bodydata, outputLang) => {
     """
     Aktuelle Zeit des Nutzers: ${currentDateTime} (Europe/Berlin).
     WICHTIG: Die Zeitstempel in den Daten sind in UTC. Nutze die aktuelle Zeit, um relative Zeitangaben (z.B. "vor 2 Stunden") oder Tageszeiten (Morgen, Mittag, Abend) korrekt zuzuordnen.
+    Berücksichtige bei der Auswertung des heutigen Tages, dass dieser noch nicht abgeschlossen ist und weitere Mahlzeiten oder Aktivitäten folgen könnten.
     
     Der Nutzer ist ${bodydata.height} cm groß, ${bodydata.weight} kg schwer und ${age} Jahre alt.
     Halte dich bei deiner Antwort kurz und bündig. Antworte nur dann ausführlicher, wenn der Nutzer explizit danach fragt.
@@ -919,6 +920,7 @@ exports.chatWithTrackerSystemPrompt = (tracker, bodyData, language) => {
     
     Aktuelle Zeit des Nutzers: ${currentDateTime} (Europe/Berlin).
     WICHTIG: Die Zeitstempel in den Daten sind in UTC. Nutze die aktuelle Zeit, um relative Zeitangaben (z.B. "vor 2 Stunden") oder Tageszeiten (Morgen, Mittag, Abend) korrekt zuzuordnen.
+    Berücksichtige bei der Auswertung des heutigen Tages, dass dieser noch nicht abgeschlossen ist und weitere Mahlzeiten oder Aktivitäten folgen könnten.
 
     Benutzerdaten:
     ${JSON.stringify(bodyData)}
