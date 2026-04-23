@@ -606,7 +606,10 @@
     "refineGroupInfo": "Specify what should be changed in this dish (e.g., \"less oil\", \"more protein\").",
     "refineGroupPlaceholder": "Enter instruction...",
     "refineGroupButton": "Apply adjustment",
-    "groupName": "Name of the dish"
+    "groupName": "Name of the dish",
+    "history": {
+      "title": "Calories for the last 10 days"
+    }
   },
   "trainingPlans": {
     "title": "Training Plans",

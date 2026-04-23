@@ -35,13 +35,16 @@
                         <input type="file" accept="image/*" ref="fileInput" class="d-none" multiple
                             @change="handleFileInput" />
                     </p>
+                    <v-btn v-if="showSend && selectedImages.length > 0" color="primary" block class="mt-2" prepend-icon="mdi-send" @click="confirmSelection(true)">
+                        {{ languageStore.t('general.sendDirectly') }}
+                    </v-btn>
                 </div>
             </v-card-text>
 
             <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn text @click="closeDialog">{{ languageStore.t('general.cancel') }}</v-btn>
-                <v-btn color="primary" @click="confirmSelection">
+                <v-btn color="primary" variant="text" @click="confirmSelection(false)">
                     {{ languageStore.t('general.confirm') }}
                 </v-btn>
             </v-card-actions>
@@ -67,10 +70,14 @@ const props = defineProps({
     initialImages: {
         type: Array,
         default: () => []
+    },
+    showSend: {
+        type: Boolean,
+        default: false
     }
 });
 
-const emit = defineEmits(['images-selected']);
+const emit = defineEmits(['images-selected', 'send']);
 
 const dialogStore = useDialogStore();
 const languageStore = useLanguageStore();
@@ -148,9 +155,13 @@ const closeDialog = () => {
     resetState();
 };
 
-const confirmSelection = () => {
+const confirmSelection = (send = false) => {
     const imageFiles = selectedImages.value.map(img => img.file);
-    emit('images-selected', imageFiles);
+    if (send) {
+        emit('send', imageFiles);
+    } else {
+        emit('images-selected', imageFiles);
+    }
     closeDialog();
 };
 

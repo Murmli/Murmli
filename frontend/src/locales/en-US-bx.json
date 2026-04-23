@@ -606,7 +606,10 @@
     "refineGroupInfo": "Tell us how to tweak this chowa (like \"cut the oil\" or \"moah protein\").",
     "refineGroupPlaceholder": "Type ya orda...",
     "refineGroupButton": "Apply the fix",
-    "groupName": "Name of the wicked cou't case"
+    "groupName": "Name of the wicked cou't case",
+    "history": {
+      "title": "Calries from the last ten days, kid"
+    }
   },
   "trainingPlans": {
     "title": "Workout Plans",

@@ -606,7 +606,10 @@
     "refineGroupInfo": "Indica cosa vuoi modificare in questo piatto (ad es. \"meno olio\", \"più proteine\").",
     "refineGroupPlaceholder": "Inserisci istruzioni...",
     "refineGroupButton": "Applica personalizzazione",
-    "groupName": "Nome del piatto"
+    "groupName": "Nome del piatto",
+    "history": {
+      "title": "Calorie degli ultimi 10 giorni"
+    }
   },
   "trainingPlans": {
     "title": "Piani di allenamento",

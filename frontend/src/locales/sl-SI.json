@@ -606,7 +606,10 @@
     "refineGroupInfo": "Navedite, kaj želite spremeniti pri tej jedi (npr. \"manj olja\", \"več beljakovin\").",
     "refineGroupPlaceholder": "Vnesite navodila...",
     "refineGroupButton": "Uporabi prilagoditev",
-    "groupName": "Ime jedi"
+    "groupName": "Ime jedi",
+    "history": {
+      "title": "Kalorije v zadnjih 10 dneh"
+    }
   },
   "trainingPlans": {
     "title": "Načrti vadbe",

@@ -606,7 +606,10 @@
     "refineGroupInfo": "Gib doch eifach aa, was a däm Menü gänderet werde sött (z. B. \"weniger Öl\", \"meh Protein\").",
     "refineGroupPlaceholder": "Aawysig iigäh...",
     "refineGroupButton": "Aapassig aawände",
-    "groupName": "Name vom Grüchtli"
+    "groupName": "Name vom Grüchtli",
+    "history": {
+      "title": "Kalorien vo de letschte zäh Täg"
+    }
   },
   "trainingPlans": {
     "title": "Trainingsplän",

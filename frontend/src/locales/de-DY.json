@@ -606,7 +606,10 @@
     "refineGroupInfo": "Sag an, was an dem Food anders soll (z. B. \"weniger Öl\", \"mehr Protein\").",
     "refineGroupPlaceholder": "Anweisung droppen...",
     "refineGroupButton": "Anpassung regeln",
-    "groupName": "Name vom Food"
+    "groupName": "Name vom Food",
+    "history": {
+      "title": "Kalorien-History der letzten 10 Tage"
+    }
   },
   "trainingPlans": {
     "title": "Trainingspläne",

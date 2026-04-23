@@ -606,7 +606,10 @@
     "refineGroupInfo": "Określ, co należy zmienić w tym daniu (np. „mniej oleju”, „więcej białka”).",
     "refineGroupPlaceholder": "Wprowadź instrukcję...",
     "refineGroupButton": "Zastosuj modyfikację",
-    "groupName": "Nazwa dania"
+    "groupName": "Nazwa dania",
+    "history": {
+      "title": "Kalorie z ostatnich 10 dni"
+    }
   },
   "trainingPlans": {
     "title": "Plany treningowe",

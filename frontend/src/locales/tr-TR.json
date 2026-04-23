@@ -606,7 +606,10 @@
     "refineGroupInfo": "Bu yemekte neyin değiştirilmesini istediğinizi belirtin (örneğin \"daha az yağ\", \"daha fazla protein\").",
     "refineGroupPlaceholder": "Talimat girin...",
     "refineGroupButton": "Değişikliği Uygula",
-    "groupName": "Yemeğin Adı"
+    "groupName": "Yemeğin Adı",
+    "history": {
+      "title": "Son 10 günün kalorileri"
+    }
   },
   "trainingPlans": {
     "title": "Antrenman Planları",

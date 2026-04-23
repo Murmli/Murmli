@@ -1,6 +1,6 @@
 <template>
-        <VoiceInputDialog dialog-key="shoppingVoiceDialog" mode="audio"
-            @completed="handleVoiceRecording" />
+        <VoiceInputDialog dialog-key="shoppingVoiceDialog" mode="audio" show-send
+            @completed="handleVoiceRecording" @send="handleVoiceSend" />
     <div class="w-100 mx-5 mt-5">
         <v-form @submit.prevent="addItem()">
             <v-text-field v-model="newItem" :label="languageStore.t('shoppingList.newItemLabel')"
@@ -41,6 +41,12 @@ const openVoiceDialog = () => {
 };
 
 const handleVoiceRecording = ({ audioBlob }) => {
+    if (audioBlob) {
+        shoppingListStore.voiceToItem(audioBlob);
+    }
+};
+
+const handleVoiceSend = ({ audioBlob }) => {
     if (audioBlob) {
         shoppingListStore.voiceToItem(audioBlob);
     }

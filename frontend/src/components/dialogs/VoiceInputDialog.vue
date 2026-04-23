@@ -9,17 +9,23 @@
                     <v-progress-circular indeterminate color="primary"
                         v-if="isInitializing || isRecording || isProcessing" />
                     <p class="mt-4" v-if="isRecording" v-html="displayText"></p>
+                    
+                    <v-btn v-if="showSend && isRecording" color="primary" block class="mt-4" prepend-icon="mdi-send" @click="stopAndProcess(true)">
+                        {{ languageStore.t('general.sendDirectly') }}
+                    </v-btn>
+
                     <v-alert v-if="errorMessage" type="error" class="mt-3">
                         {{ errorMessage }}
                     </v-alert>
                 </div>
             </v-card-text>
             <v-card-actions>
-                <v-btn color="error" :disabled="isProcessing" @click="cancelRecording">
+                <v-btn color="error" variant="text" :disabled="isProcessing" @click="cancelRecording">
                     {{ languageStore.t('general.discard') }}
                 </v-btn>
-                <v-btn color="primary" :disabled="!isRecording" @click="stopAndProcess">
-                    {{ languageStore.t('general.send') }}
+                <v-spacer></v-spacer>
+                <v-btn color="primary" variant="text" :disabled="!isRecording" @click="stopAndProcess(false)">
+                    {{ languageStore.t('general.confirm') }}
                 </v-btn>
             </v-card-actions>
         </v-card>
@@ -50,9 +56,13 @@ const props = defineProps({
         type: Boolean,
         default: true,
     },
+    showSend: {
+        type: Boolean,
+        default: false,
+    },
 });
 
-const emit = defineEmits(['completed', 'cancelled', 'error']);
+const emit = defineEmits(['completed', 'send', 'cancelled', 'error']);
 
 const dialogStore = useDialogStore();
 const languageStore = useLanguageStore();
@@ -65,6 +75,7 @@ const errorMessage = ref('');
 const mediaRecorder = ref(null);
 const audioChunks = ref([]);
 const shouldProcessRecording = ref(false);
+const sendImmediately = ref(false);
 const displayText = computed(() => {
     if (props.infoText && props.infoText.trim().length > 0) {
         return props.infoText;
@@ -95,6 +106,7 @@ watch(
 const startRecording = async () => {
     errorMessage.value = '';
     shouldProcessRecording.value = false;
+    sendImmediately.value = false;
     isInitializing.value = true;
     try {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -143,7 +155,11 @@ const handleRecorderStop = async () => {
             payload.text = text;
         }
 
-        emit('completed', payload);
+        if (sendImmediately.value) {
+            emit('send', payload);
+        } else {
+            emit('completed', payload);
+        }
 
         if (props.autoCloseOnComplete) {
             dialogStore.closeDialog(props.dialogKey);
@@ -155,22 +171,25 @@ const handleRecorderStop = async () => {
     } finally {
         isProcessing.value = false;
         shouldProcessRecording.value = false;
+        sendImmediately.value = false;
         cleanupRecorder();
     }
 };
 
 const cancelRecording = () => {
     shouldProcessRecording.value = false;
+    sendImmediately.value = false;
     stopRecorder();
     dialogStore.closeDialog(props.dialogKey);
     emit('cancelled');
 };
 
-const stopAndProcess = () => {
+const stopAndProcess = (send = false) => {
     if (!mediaRecorder.value || !isRecording.value) {
         return;
     }
     shouldProcessRecording.value = true;
+    sendImmediately.value = send;
     stopRecorder();
 };
 

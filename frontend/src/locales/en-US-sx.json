@@ -606,7 +606,10 @@
     "refineGroupInfo": "Just tell us what needs a-changin' on this here plate (like \"easy on the oil\" or \"mo' protein, please\").",
     "refineGroupPlaceholder": "Go 'head and type it in...",
     "refineGroupButton": "Let's get it fixed",
-    "groupName": "Name of that there dish"
+    "groupName": "Name of that there dish",
+    "history": {
+      "title": "Calories from them last ten days, slow 'n steady"
+    }
   },
   "trainingPlans": {
     "title": "Workout Plans",

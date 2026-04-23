@@ -1,6 +1,6 @@
 <template>
-    <VoiceInputDialog dialog-key="recipeVoiceDialog" mode="audio" @completed="handleVoiceRecording" />
-    <TrackImageDialog :initial-images="selectedImages" @images-selected="handleImagesSelected" />
+    <VoiceInputDialog dialog-key="recipeVoiceDialog" mode="audio" show-send @completed="handleVoiceRecording" @send="handleVoiceSend" />
+    <TrackImageDialog :initial-images="selectedImages" show-send @images-selected="handleImagesSelected" @send="handleImageSend" />
     
     <v-dialog v-model="dialogStore.dialogs.userRecipeDialog">
         <v-card>
@@ -79,7 +79,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, nextTick } from 'vue';
 import { useLanguageStore } from '@/stores/languageStore';
 import { useRecipeStore } from '@/stores/recipeStore';
 import { useDialogStore } from '@/stores/dialogStore';
@@ -123,8 +123,22 @@ const handleVoiceRecording = ({ audioBlob }) => {
     }
 };
 
+const handleVoiceSend = async ({ audioBlob }) => {
+    if (audioBlob) {
+        selectedAudio.value = audioBlob;
+        await nextTick();
+        await createRecipe();
+    }
+};
+
 const handleImagesSelected = (images) => {
     selectedImages.value = images;
+};
+
+const handleImageSend = async (images) => {
+    selectedImages.value = images;
+    await nextTick();
+    await createRecipe();
 };
 
 const getImagePreview = (image) => {

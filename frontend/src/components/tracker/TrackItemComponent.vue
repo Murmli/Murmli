@@ -1,6 +1,6 @@
 <template>
-    <VoiceInputDialog dialog-key="trackVoiceDialog" mode="audio" @completed="handleVoiceRecording" />
-    <TrackImageDialog :initial-images="selectedImages" @images-selected="handleImagesSelected" />
+    <VoiceInputDialog dialog-key="trackVoiceDialog" mode="audio" show-send @completed="handleVoiceRecording" @send="handleVoiceSend" />
+    <TrackImageDialog :initial-images="selectedImages" show-send @images-selected="handleImagesSelected" @send="handleImageSend" />
     <div class="w-100 mx-5 mt-5">
         <v-form @submit.prevent="submitEntry()">
             <v-text-field v-model="newItem" :label="languageStore.t('tracker.trackNewItem')" outlined density="compact"
@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, nextTick } from 'vue';
 import { useTrackerStore } from '@/stores/trackerStore';
 import { useLanguageStore } from '@/stores/languageStore';
 import { useDialogStore } from '@/stores/dialogStore';
@@ -93,8 +93,22 @@ const handleVoiceRecording = async ({ audioBlob }) => {
     }
 };
 
+const handleVoiceSend = async ({ audioBlob }) => {
+    if (audioBlob) {
+        selectedAudio.value = audioBlob;
+        await nextTick();
+        await submitEntry();
+    }
+};
+
 const handleImagesSelected = (images) => {
     selectedImages.value = images;
+};
+
+const handleImageSend = async (images) => {
+    selectedImages.value = images;
+    await nextTick();
+    await submitEntry();
 };
 </script>
 

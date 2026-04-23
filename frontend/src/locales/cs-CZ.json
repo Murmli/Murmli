@@ -606,7 +606,10 @@
     "refineGroupInfo": "Uveďte, co se má na tomto pokrmu změnit (např. „méně oleje“, „více bílkovin“).",
     "refineGroupPlaceholder": "Zadejte pokyn...",
     "refineGroupButton": "Použít úpravu",
-    "groupName": "Název pokrmu"
+    "groupName": "Název pokrmu",
+    "history": {
+      "title": "Kalorie za posledních 10 dní"
+    }
   },
   "trainingPlans": {
     "title": "Tréninkové plány",

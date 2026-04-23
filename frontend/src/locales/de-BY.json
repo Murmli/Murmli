@@ -606,7 +606,10 @@
     "refineGroupInfo": "Schreib nei, was ma an dem Schmankerl anders macha soll (z.B. \"weniger Öl\", \"mehr Protein\").",
     "refineGroupPlaceholder": "Anweisung neischreibn...",
     "refineGroupButton": "Anpassung hernehma",
-    "groupName": "Nam vo dera Speis"
+    "groupName": "Nam vo dera Speis",
+    "history": {
+      "title": "Kalorien vo de letzn 10 Tog"
+    }
   },
   "trainingPlans": {
     "title": "Trainingspläne",
