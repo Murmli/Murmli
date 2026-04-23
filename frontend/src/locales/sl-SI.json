@@ -147,7 +147,8 @@
     "moreInfo": "Več informacij",
     "reset": "Ponastavi",
     "cameraError": "Napaka kamere",
-    "cameraPermissionDenied": "Dostop do kamere je zavrnjen"
+    "cameraPermissionDenied": "Dostop do kamere je zavrnjen",
+    "sendDirectly": "Pošlji neposredno"
   },
   "shoppingList": {
     "newItemLabel": "Nov artikel",
@@ -586,7 +587,11 @@
     "captureImage": "Posnemi sliko",
     "dietLevelChange": {
       "dietLevelBefore": "Stopnja diete prej",
-      "lastChanged": "zadnja sprememba"
+      "lastChanged": "zadnja sprememba",
+      "resetTitle": "Ponastavim števec?",
+      "resetMessage": "Ali želite ponastaviti tudi števec trajanja vaše diete?",
+      "resetYes": "Da, ponastavi",
+      "resetNo": "Ne, obdrži"
     },
     "chat": {
       "title": "Pomočnik sledilnika",

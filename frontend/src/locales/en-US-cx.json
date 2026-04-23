@@ -147,7 +147,8 @@
     "moreInfo": "Deep dive for more deets",
     "reset": "Wipe it out, brah",
     "cameraError": "Bummer, lens wipeout! Camera's acting totally gnarly",
-    "cameraPermissionDenied": "Whoa there, access denied! The wave is closed"
+    "cameraPermissionDenied": "Whoa there, access denied! The wave is closed",
+    "sendDirectly": "Just send it, brah"
   },
   "shoppingList": {
     "newItemLabel": "New Gear",
@@ -586,7 +587,11 @@
     "captureImage": "Snap the Gear",
     "dietLevelChange": {
       "dietLevelBefore": "Last Grind",
-      "lastChanged": "Changed on"
+      "lastChanged": "Changed on",
+      "resetTitle": "Reset the counter, dude?",
+      "resetMessage": "Do you want to wipe the slate clean for your whole diet journey too, man?",
+      "resetYes": "Yeah, reset it",
+      "resetNo": "Nah, keep it rolling"
     },
     "chat": {
       "title": "Fuel Assistant",

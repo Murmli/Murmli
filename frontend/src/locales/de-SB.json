@@ -147,7 +147,8 @@
     "moreInfo": "Noch meh Informazione",
     "reset": "Z'rucksetza",
     "cameraError": "Kamera-Gschiss",
-    "cameraPermissionDenied": "D' Kamera derf net gnutzt werda"
+    "cameraPermissionDenied": "D' Kamera derf net gnutzt werda",
+    "sendDirectly": "Gleich rausschigge"
   },
   "shoppingList": {
     "newItemLabel": "Neier Artikel",
@@ -586,7 +587,11 @@
     "captureImage": "Bildle knipse",
     "dietLevelChange": {
       "dietLevelBefore": "Diätlevel davor",
-      "lastChanged": "z'letzt g'ändert"
+      "lastChanged": "z'letzt g'ändert",
+      "resetTitle": "Zähler uff Null stelle?",
+      "resetMessage": "Soll der Zähler für dei Diät au glei wieder uff Null gsetzt werre?",
+      "resetYes": "Jo, mach halt uff Null",
+      "resetNo": "Noi, lass des so"
     },
     "chat": {
       "title": "Tracker-Helfer",

@@ -147,7 +147,8 @@
     "moreInfo": "No mehra Infos",
     "reset": "Zrucksetzn",
     "cameraError": "Kamera-G'schlamper",
-    "cameraPermissionDenied": "Kamera-Zugriff werd net erlaubt"
+    "cameraPermissionDenied": "Kamera-Zugriff werd net erlaubt",
+    "sendDirectly": "Gleich amoi rousschicka"
   },
   "shoppingList": {
     "newItemLabel": "Neier Artikel",
@@ -586,7 +587,11 @@
     "captureImage": "Buidl macha",
     "dietLevelChange": {
       "dietLevelBefore": "Diätlevel vorher",
-      "lastChanged": "zuletzt geändert"
+      "lastChanged": "zuletzt geändert",
+      "resetTitle": "Zähler auf Null setzn?",
+      "resetMessage": "Soll ma den Zähler für dei ganze Diät-Dauer aa wieda zrucksetzn?",
+      "resetYes": "Ja, mach des auf Null",
+      "resetNo": "Na, lass des so steh"
     },
     "chat": {
       "title": "Tracker-Assistent",

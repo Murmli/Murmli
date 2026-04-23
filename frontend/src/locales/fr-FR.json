@@ -147,7 +147,8 @@
     "moreInfo": "Plus d'informations",
     "reset": "Réinitialiser",
     "cameraError": "Erreur de caméra",
-    "cameraPermissionDenied": "Accès à la caméra refusé"
+    "cameraPermissionDenied": "Accès à la caméra refusé",
+    "sendDirectly": "Envoyer directement"
   },
   "shoppingList": {
     "newItemLabel": "Nouvel article",
@@ -586,7 +587,11 @@
     "captureImage": "Prendre une photo",
     "dietLevelChange": {
       "dietLevelBefore": "Niveau de régime avant",
-      "lastChanged": "dernière modification"
+      "lastChanged": "dernière modification",
+      "resetTitle": "Réinitialiser le compteur ?",
+      "resetMessage": "Souhaitez-vous également réinitialiser le compteur de la durée de votre régime ?",
+      "resetYes": "Oui, réinitialiser",
+      "resetNo": "Non, conserver"
     },
     "chat": {
       "title": "Assistant Tracker",

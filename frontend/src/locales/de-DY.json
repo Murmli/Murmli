@@ -147,7 +147,8 @@
     "moreInfo": "Checken für mehr Infos",
     "reset": "Resetten",
     "cameraError": "Kamera-Fail",
-    "cameraPermissionDenied": "Kamera-Access wurde nicht gegönnt"
+    "cameraPermissionDenied": "Kamera-Access wurde nicht gegönnt",
+    "sendDirectly": "Direkt raushauen"
   },
   "shoppingList": {
     "newItemLabel": "Neues Item",
@@ -586,7 +587,11 @@
     "captureImage": "Foto machen",
     "dietLevelChange": {
       "dietLevelBefore": "Altes Level",
-      "lastChanged": "Zuletzt geändert"
+      "lastChanged": "Zuletzt geändert",
+      "resetTitle": "Counter resetten?",
+      "resetMessage": "Soll der Streak von deiner Diät auch komplett auf Null gesetzt werden?",
+      "resetYes": "Ja, resetten",
+      "resetNo": "Nein, lass mal"
     },
     "chat": {
       "title": "Tracker-Assistant",

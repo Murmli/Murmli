@@ -147,7 +147,8 @@
     "moreInfo": "Daha fazla bilgi",
     "reset": "Sıfırla",
     "cameraError": "Kamera hatası",
-    "cameraPermissionDenied": "Kamera erişimi reddedildi"
+    "cameraPermissionDenied": "Kamera erişimi reddedildi",
+    "sendDirectly": "Doğrudan gönder"
   },
   "shoppingList": {
     "newItemLabel": "Yeni Ürün",
@@ -586,7 +587,11 @@
     "captureImage": "Resim Çek",
     "dietLevelChange": {
       "dietLevelBefore": "Önceki diyet seviyesi",
-      "lastChanged": "son değiştirme"
+      "lastChanged": "son değiştirme",
+      "resetTitle": "Sayacı sıfırla?",
+      "resetMessage": "Diyet süreniz için tutulan sayaç da sıfırlansın mı?",
+      "resetYes": "Evet, sıfırla",
+      "resetNo": "Hayır, koru"
     },
     "chat": {
       "title": "Takip Asistanı",

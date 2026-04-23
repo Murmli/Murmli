@@ -147,7 +147,8 @@
     "moreInfo": "A bit more info for ya",
     "reset": "Start 'er all over again",
     "cameraError": "That there camera's acting up on us",
-    "cameraPermissionDenied": "Well now, you went and said no to lettin' us see through that lens"
+    "cameraPermissionDenied": "Well now, you went and said no to lettin' us see through that lens",
+    "sendDirectly": "Go 'head and send it right on over"
   },
   "shoppingList": {
     "newItemLabel": "New stuff",
@@ -583,7 +584,11 @@
     "captureImage": "Take a picture",
     "dietLevelChange": {
       "dietLevelBefore": "Diet stage before",
-      "lastChanged": "last fixed"
+      "lastChanged": "last fixed",
+      "resetTitle": "Wanna restart that there counter?",
+      "resetMessage": "Are y'all sure ya want the counter for your dietin' time to be startin' all over again?",
+      "resetYes": "Yes ma'am, set it back",
+      "resetNo": "No sir, just keep it be"
     },
     "chat": {
       "title": "Tracker Helper",

@@ -147,7 +147,8 @@
     "moreInfo": "Ä bitzeli meh Infos",
     "reset": "Zruggsetze",
     "cameraError": "Chamera-Fähler",
-    "cameraPermissionDenied": "Zuegriff uf d’Chamera isch abglehnt worde"
+    "cameraPermissionDenied": "Zuegriff uf d’Chamera isch abglehnt worde",
+    "sendDirectly": "Direkt schigge"
   },
   "shoppingList": {
     "newItemLabel": "Neu's Ding",
@@ -586,7 +587,11 @@
     "captureImage": "Bild mache",
     "dietLevelChange": {
       "dietLevelBefore": "Diätlevel vorher",
-      "lastChanged": "letschtmal gänderet"
+      "lastChanged": "letschtmal gänderet",
+      "resetTitle": "Zähler zruggsetze?",
+      "resetMessage": "Söll de Zähler für d'Duur vo dinere Diät au zruggsetzt werde?",
+      "resetYes": "Ja, zruggsetze",
+      "resetNo": "Nei, phalte"
     },
     "chat": {
       "title": "Tracker-Assischtänt",

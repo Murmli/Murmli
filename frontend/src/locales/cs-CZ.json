@@ -147,7 +147,8 @@
     "moreInfo": "Více informací",
     "reset": "Resetovat",
     "cameraError": "Chyba kamery",
-    "cameraPermissionDenied": "Přístup ke kameře byl zamítnut"
+    "cameraPermissionDenied": "Přístup ke kameře byl zamítnut",
+    "sendDirectly": "Odeslat přímo"
   },
   "shoppingList": {
     "newItemLabel": "Nová položka",
@@ -586,7 +587,11 @@
     "captureImage": "Pořídit obrázek",
     "dietLevelChange": {
       "dietLevelBefore": "Úroveň diety předtím",
-      "lastChanged": "naposledy změněno"
+      "lastChanged": "naposledy změněno",
+      "resetTitle": "Resetovat počítadlo?",
+      "resetMessage": "Má být resetováno i počítadlo délky trvání vaší diety?",
+      "resetYes": "Ano, resetovat",
+      "resetNo": "Ne, ponechat"
     },
     "chat": {
       "title": "Asistent sledování",

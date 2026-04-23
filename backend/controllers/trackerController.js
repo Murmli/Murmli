@@ -137,7 +137,9 @@ exports.updateBodyData = async (req, res) => {
 
     // Update dietStartedAt if dietLevel is changed
     if (req.body.dietLevel !== undefined && req.body.dietLevel !== user.dietLevel) {
-      user.dietStartedAt = new Date();
+      if (req.body.resetDietCounter !== false) {
+        user.dietStartedAt = new Date();
+      }
     }
 
     // Save the updated user data

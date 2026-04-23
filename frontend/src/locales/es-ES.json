@@ -147,7 +147,8 @@
     "moreInfo": "Más información",
     "reset": "Restablecer",
     "cameraError": "Error de cámara",
-    "cameraPermissionDenied": "Acceso a la cámara denegado"
+    "cameraPermissionDenied": "Acceso a la cámara denegado",
+    "sendDirectly": "Enviar directamente"
   },
   "shoppingList": {
     "newItemLabel": "Nuevo artículo",
@@ -586,7 +587,11 @@
     "captureImage": "Tomar imagen",
     "dietLevelChange": {
       "dietLevelBefore": "Nivel de dieta anterior",
-      "lastChanged": "último cambio"
+      "lastChanged": "último cambio",
+      "resetTitle": "¿Restablecer contador?",
+      "resetMessage": "¿Deseas restablecer también el contador de la duración de tu dieta?",
+      "resetYes": "Sí, restablecer",
+      "resetNo": "No, mantener"
     },
     "chat": {
       "title": "Asistente de registro",

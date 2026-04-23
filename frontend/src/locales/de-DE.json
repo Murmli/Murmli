@@ -600,7 +600,11 @@
     "captureImage": "Bild aufnehmen",
     "dietLevelChange": {
       "dietLevelBefore": "Diätlevel vor",
-      "lastChanged": "zuletzt geändert"
+      "lastChanged": "zuletzt geändert",
+      "resetTitle": "Zähler zurücksetzen?",
+      "resetMessage": "Soll der Zähler für die Dauer deiner Diät auch zurückgesetzt werden?",
+      "resetYes": "Ja, zurücksetzen",
+      "resetNo": "Nein, beibehalten"
     },
     "chat": {
       "title": "Tracker-Assistent",

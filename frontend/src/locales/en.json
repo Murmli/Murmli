@@ -147,7 +147,8 @@
     "moreInfo": "More information",
     "reset": "Reset",
     "cameraError": "Camera error",
-    "cameraPermissionDenied": "Camera access denied"
+    "cameraPermissionDenied": "Camera access denied",
+    "sendDirectly": "Send directly"
   },
   "shoppingList": {
     "newItemLabel": "New Item",
@@ -587,7 +588,11 @@
     "captureImage": "Take picture",
     "dietLevelChange": {
       "dietLevelBefore": "Diet level before",
-      "lastChanged": "last changed"
+      "lastChanged": "last changed",
+      "resetTitle": "Reset counter?",
+      "resetMessage": "Should the counter for your diet duration also be reset?",
+      "resetYes": "Yes, reset",
+      "resetNo": "No, keep it"
     },
     "chat": {
       "title": "Tracker Assistant",

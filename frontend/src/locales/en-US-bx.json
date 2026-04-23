@@ -147,7 +147,8 @@
     "moreInfo": "Moah info heah",
     "reset": "Staht it ovah",
     "cameraError": "Camm-rah's wicked messed up",
-    "cameraPermissionDenied": "No access to the camm-rah, ked"
+    "cameraPermissionDenied": "No access to the camm-rah, ked",
+    "sendDirectly": "Send it wicked fast"
   },
   "shoppingList": {
     "newItemLabel": "New Stuff",
@@ -586,7 +587,11 @@
     "captureImage": "Take pitcha",
     "dietLevelChange": {
       "dietLevelBefore": "Level before",
-      "lastChanged": "last fix"
+      "lastChanged": "last fix",
+      "resetTitle": "Reset the countah?",
+      "resetMessage": "Ya want the countah fa wicked long ya been on this diet to be wiped clean too?",
+      "resetYes": "Yeah, wipe it",
+      "resetNo": "Nah, keep it as is"
     },
     "chat": {
       "title": "Tracker Guy",

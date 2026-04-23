@@ -21,9 +21,8 @@
                         :label="languageStore.t('tracker.dietType.text')" class="mb-3"></v-select>
 
                     <v-select v-model="localBodyData.dietLevel" :items="trackerStore.dietLevelOptions"
+                        @update:model-value="onDietLevelChange"
                         :label="languageStore.t('tracker.dietLevel.text')" class="mb-3"></v-select>
-                    <v-btn class="mb-5" color="primary" @click="calculateCalories">{{
-                        languageStore.t('tracker.calculateCalories') }}</v-btn>
                 </div>
 
                 <v-card-actions>
@@ -31,6 +30,21 @@
                     <v-btn @click="closeDialog">{{ languageStore.t('general.close') }}</v-btn>
                 </v-card-actions>
             </v-card-text>
+        </v-card>
+    </v-dialog>
+
+    <!-- Bestätigungsdialog für Diät-Zähler-Reset -->
+    <v-dialog v-model="showResetDialog" max-width="400" persistent>
+        <v-card>
+            <v-card-title>{{ languageStore.t('tracker.dietLevelChange.resetTitle') }}</v-card-title>
+            <v-card-text>
+                {{ languageStore.t('tracker.dietLevelChange.resetMessage') }}
+            </v-card-text>
+            <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="secondary" @click="confirmReset(false)">{{ languageStore.t('tracker.dietLevelChange.resetNo') }}</v-btn>
+                <v-btn color="primary" @click="confirmReset(true)">{{ languageStore.t('tracker.dietLevelChange.resetYes') }}</v-btn>
+            </v-card-actions>
         </v-card>
     </v-dialog>
 </template>
@@ -44,6 +58,10 @@ import { useDialogStore } from '@/stores/dialogStore';
 const dialogStore = useDialogStore();
 const languageStore = useLanguageStore();
 const trackerStore = useTrackerStore();
+
+const showResetDialog = ref(false);
+const pendingDietLevel = ref(null);
+const isUpdatingFromReset = ref(false);
 
 // Lokale Kopie der Körperdaten
 const localBodyData = ref({
@@ -123,6 +141,29 @@ const closeDialog = () => {
     dialogStore.closeDialog('calorieGoalDialog');
 };
 
+const onDietLevelChange = (val) => {
+    pendingDietLevel.value = val;
+    showResetDialog.value = true;
+};
+
+const confirmReset = async (shouldReset) => {
+    showResetDialog.value = false;
+    isUpdatingFromReset.value = true;
+    try {
+        await trackerStore.updateBodyData({ 
+            dietLevel: pendingDietLevel.value,
+            resetDietCounter: shouldReset
+        });
+        // Automatische Berechnung nach Level-Änderung
+        await calculateCalories();
+    } catch (error) {
+        console.error('Fehler beim Aktualisieren der DietLevel:', error);
+    } finally {
+        isUpdatingFromReset.value = false;
+        pendingDietLevel.value = null;
+    }
+};
+
 watch(
     () => dialogStore.dialogs.calorieGoalDialog,
     (isOpen) => {
@@ -140,6 +181,8 @@ watch(
             try {
                 // Hier rufst du deine Store-Action auf, die die API aktualisiert
                 await trackerStore.updateBodyData({ dietType: newVal });
+                // Automatische Berechnung nach Typ-Änderung
+                await calculateCalories();
             } catch (error) {
                 console.error('Fehler beim Aktualisieren der DietType:', error);
             }
@@ -147,17 +190,6 @@ watch(
     }
 );
 
-// Watcher für dietLevel
-watch(
-    () => localBodyData.value.dietLevel,
-    async (newVal, oldVal) => {
-        if (newVal !== oldVal) {
-            try {
-                await trackerStore.updateBodyData({ dietLevel: newVal });
-            } catch (error) {
-                console.error('Fehler beim Aktualisieren der DietLevel:', error);
-            }
-        }
-    }
-);
+// Watcher für dietLevel entfernen oder anpassen
+// Wir entfernen ihn, da wir jetzt onDietLevelChange nutzen
 </script>

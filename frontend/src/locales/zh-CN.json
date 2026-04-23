@@ -147,7 +147,8 @@
     "moreInfo": "更多信息",
     "reset": "重置",
     "cameraError": "摄像头错误",
-    "cameraPermissionDenied": "摄像头访问权限被拒绝"
+    "cameraPermissionDenied": "摄像头访问权限被拒绝",
+    "sendDirectly": "直接发送"
   },
   "shoppingList": {
     "newItemLabel": "新项目",
@@ -586,7 +587,11 @@
     "captureImage": "拍摄图片",
     "dietLevelChange": {
       "dietLevelBefore": "之前的饮食阶段",
-      "lastChanged": "最后更改"
+      "lastChanged": "最后更改",
+      "resetTitle": "重置计数器？",
+      "resetMessage": "是否还要重置饮食时长计数器？",
+      "resetYes": "是，重置",
+      "resetNo": "不，保留"
     },
     "chat": {
       "title": "追踪器助手",

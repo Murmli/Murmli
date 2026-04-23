@@ -147,7 +147,8 @@
     "moreInfo": "Mehr Infos hoid",
     "reset": "Z'rucksetzn",
     "cameraError": "Kamera-G'schlamassel",
-    "cameraPermissionDenied": "Kamerazugriff is ned erlaubt"
+    "cameraPermissionDenied": "Kamerazugriff is ned erlaubt",
+    "sendDirectly": "Gleich amoi wegschicken"
   },
   "shoppingList": {
     "newItemLabel": "Neicher Artikl",
@@ -586,7 +587,11 @@
     "captureImage": "Bildl mochn",
     "dietLevelChange": {
       "dietLevelBefore": "Diät-Stufe davor",
-      "lastChanged": "zuletzt geändert"
+      "lastChanged": "zuletzt geändert",
+      "resetTitle": "Zähler auf Null setzen?",
+      "resetMessage": "Soll ma den Zähler für dei Diät-Dauer a gleich wieder auf Null setzen?",
+      "resetYes": "Jo, setz eam zurück",
+      "resetNo": "Na, lass eam so"
     },
     "chat": {
       "title": "Tracker-Assistent",

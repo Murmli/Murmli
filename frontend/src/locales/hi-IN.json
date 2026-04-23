@@ -147,7 +147,8 @@
     "moreInfo": "अधिक जानकारी",
     "reset": "रीसेट करें",
     "cameraError": "कैमरा त्रुटि",
-    "cameraPermissionDenied": "कैमरा एक्सेस अस्वीकार कर दिया गया"
+    "cameraPermissionDenied": "कैमरा एक्सेस अस्वीकार कर दिया गया",
+    "sendDirectly": "सीधे भेजें"
   },
   "shoppingList": {
     "newItemLabel": "नई वस्तु",
@@ -586,7 +587,11 @@
     "captureImage": "फोटो लें",
     "dietLevelChange": {
       "dietLevelBefore": "पहले का आहार स्तर",
-      "lastChanged": "पिछला बदलाव"
+      "lastChanged": "पिछला बदलाव",
+      "resetTitle": "क्या काउंटर रीसेट करें?",
+      "resetMessage": "क्या आपकी डाइट की अवधि का काउंटर भी रीसेट किया जाना चाहिए?",
+      "resetYes": "हाँ, रीसेट करें",
+      "resetNo": "नहीं, रहने दें"
     },
     "chat": {
       "title": "ट्रैकर सहायक",
