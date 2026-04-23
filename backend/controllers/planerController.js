@@ -6,6 +6,7 @@ const {
   generateRecipeFilter,
 } = require(`../utils/llm.js`);
 const { translateRecipes } = require(`../utils/translator.js`);
+const { generateSearchFilter } = require("../utils/planerUtils.js");
 
 async function generateSuggestions(user, count) {
   const recipeCount = count || user.suggestions.filter.recipes;
@@ -13,17 +14,19 @@ async function generateSuggestions(user, count) {
   const sampleSize = recipeCount;
 
   // Build a safe filter. If prompt is empty for new users, skip LLM and use an empty match.
-  const hasPrompt =
-    typeof user.suggestions.filter.prompt === "string" &&
-    user.suggestions.filter.prompt.trim() !== "";
+  const prompt = user.suggestions.filter.prompt || "";
+  const hasPrompt = prompt.trim() !== "";
 
-  let filter = { $match: {} };
+  // Always generate a base filter (e.g. for seasonality)
+  const baseFilter = generateSearchFilter(prompt);
+
+  let filter = { $match: baseFilter || {} };
   if (hasPrompt) {
-    const llmFilter = await generateRecipeFilter(
-      user.suggestions.filter.prompt,
-      recipeCount
-    );
-    filter = llmFilter || { $match: {} };
+    const llmFilter = await generateRecipeFilter(prompt, recipeCount);
+    if (llmFilter && llmFilter.$match) {
+      // Merge LLM filter with base filter
+      filter.$match = { ...filter.$match, ...llmFilter.$match };
+    }
   }
 
   // Sanitize $match to only allow known fields from the Recipe schema

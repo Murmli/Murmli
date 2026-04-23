@@ -4,10 +4,8 @@ exports.generateSearchFilter = (prompt) => {
     let searchFilters = {
       difficultyRating: { $lte: 11 },
       priceRating: { $lte: 11 },
-      season: null,
+      season: { $in: [0, null, getCurrentSeason()] },
     };
-
-    searchFilters.season = { $in: [null, getCurrentSeason()] };
 
     // Pre filter for mongoDB by userPrompt
     if (/\b(vegetarisc?h|veggie|vegetar\w+|fleischlos|pescetarier?|ohne? fleisch|ohne[nm]? tier\w* fleisch|ohne[nm]? tierische[nm]? zutaten|kein fleisch)\b/i.test(lowercasePrompt)) {
@@ -63,17 +61,19 @@ function getCurrentSeason() {
   let season;
 
   if (month >= 2 && month <= 4) {
-    season = "spring";
+    season = 1; // Spring
   } else if (month >= 5 && month <= 7) {
-    season = "summer";
+    season = 2; // Summer
   } else if (month >= 8 && month <= 10) {
-    season = "fall";
+    season = 3; // Autumn
   } else {
-    season = "winter";
+    season = 4; // Winter
   }
 
   return season;
 }
+
+exports.getCurrentSeason = getCurrentSeason;
 
 /**
  * Ergänzt einen aktiven Trainingsplan um die aktuelle Woche.
