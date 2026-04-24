@@ -4,9 +4,62 @@
             <v-card-title>{{ languageStore.t('tracker.calorieGoal') }}</v-card-title>
             <v-card-text class="justify-center text-center">
                 <v-text-field v-model="recommendations.kcal" :label="languageStore.t('tracker.calorieGoal')"
-                    clearable></v-text-field>
+                    type="number" clearable></v-text-field>
 
-                <v-btn class="mb-9" color="primary" @click="saveCalorieGoal">
+                <div class="mt-2 mb-6 px-2">
+                    <div class="d-flex justify-space-between align-center mb-1">
+                        <span class="text-caption">{{ languageStore.t('tracker.protein') }}</span>
+                        <span class="text-caption font-weight-bold">{{ recommendations.protein }}g ({{ calculatePercentage(recommendations.protein, 4) }}%)</span>
+                    </div>
+                    <v-slider
+                        v-model="recommendations.protein"
+                        min="0"
+                        :max="Math.floor(recommendations.kcal / 4)"
+                        step="1"
+                        color="blue"
+                        density="compact"
+                        hide-details
+                        @update:model-value="adjustMacros('protein')"
+                        class="mb-4"
+                    ></v-slider>
+
+                    <div class="d-flex justify-space-between align-center mb-1">
+                        <span class="text-caption">{{ languageStore.t('tracker.carbohydrates') }}</span>
+                        <span class="text-caption font-weight-bold">{{ recommendations.carbohydrates }}g ({{ calculatePercentage(recommendations.carbohydrates, 4) }}%)</span>
+                    </div>
+                    <v-slider
+                        v-model="recommendations.carbohydrates"
+                        min="0"
+                        :max="Math.floor(recommendations.kcal / 4)"
+                        step="1"
+                        color="green"
+                        density="compact"
+                        hide-details
+                        @update:model-value="adjustMacros('carbohydrates')"
+                        class="mb-4"
+                    ></v-slider>
+
+                    <div class="d-flex justify-space-between align-center mb-1">
+                        <span class="text-caption">{{ languageStore.t('tracker.fat') }}</span>
+                        <span class="text-caption font-weight-bold">{{ recommendations.fat }}g ({{ calculatePercentage(recommendations.fat, 9) }}%)</span>
+                    </div>
+                    <v-slider
+                        v-model="recommendations.fat"
+                        min="0"
+                        :max="Math.floor(recommendations.kcal / 9)"
+                        step="1"
+                        color="orange"
+                        density="compact"
+                        hide-details
+                        @update:model-value="adjustMacros('fat')"
+                    ></v-slider>
+
+                    <div class="mt-4 text-caption text-grey">
+                        Summe: {{ macroKcalSum }} kcal (Ziel: {{ recommendations.kcal }} kcal)
+                    </div>
+                </div>
+
+                <v-btn class="mb-9" color="primary" @click="saveCalorieGoal" :disabled="macroKcalDiff > 0">
                     {{ languageStore.t('tracker.calorieGoal') }} {{ languageStore.t('general.save') }}
                 </v-btn>
 
@@ -88,6 +141,62 @@ const syncRecommendationsFromStore = () => {
         ...(trackerStore.tracker.recommendations || {})
     };
 };
+
+const calculatePercentage = (grams, multiplier) => {
+    if (!recommendations.value.kcal || recommendations.value.kcal <= 0) return 0;
+    return Math.round(((grams * multiplier) / recommendations.value.kcal) * 100);
+};
+
+const macroKcalSum = computed(() => {
+    return Math.round(
+        (recommendations.value.protein || 0) * 4 +
+        (recommendations.value.carbohydrates || 0) * 4 +
+        (recommendations.value.fat || 0) * 9
+    );
+});
+
+const macroKcalDiff = computed(() => {
+    return macroKcalSum.value - (recommendations.value.kcal || 0);
+});
+
+const adjustMacros = (changedNutrient) => {
+    const targetKcal = recommendations.value.kcal || 0;
+    
+    while (macroKcalSum.value > targetKcal) {
+        if (changedNutrient === 'protein') {
+            // Wenn Protein erhöht wird, kürze zuerst Carbs, dann Fett
+            if (recommendations.value.carbohydrates > 0) recommendations.value.carbohydrates--;
+            else if (recommendations.value.fat > 0) recommendations.value.fat--;
+            else break;
+        } else if (changedNutrient === 'carbohydrates') {
+            // Wenn Carbs erhöht werden, kürze zuerst Fett, dann Protein
+            if (recommendations.value.fat > 0) recommendations.value.fat--;
+            else if (recommendations.value.protein > 0) recommendations.value.protein--;
+            else break;
+        } else if (changedNutrient === 'fat') {
+            // Wenn Fett erhöht wird, kürze zuerst Carbs, dann Protein
+            if (recommendations.value.carbohydrates > 0) recommendations.value.carbohydrates--;
+            else if (recommendations.value.protein > 0) recommendations.value.protein--;
+            else break;
+        } else {
+            break;
+        }
+    }
+};
+
+// Watcher für kcal um Makros bei Bedarf zu deckeln
+watch(() => recommendations.value.kcal, (newKcal) => {
+    if (macroKcalSum.value > newKcal) {
+        // Einfaches Deckeln: Wenn die Summe zu hoch ist, werden alle Werte proportional oder nacheinander gekürzt.
+        // Hier: Wir kürzen nacheinander, bis es passt
+        while (macroKcalSum.value > newKcal) {
+            if (recommendations.value.carbohydrates > 0) recommendations.value.carbohydrates--;
+            else if (recommendations.value.fat > 0) recommendations.value.fat--;
+            else if (recommendations.value.protein > 0) recommendations.value.protein--;
+            else break;
+        }
+    }
+});
 
 
 // Check if required fields are missing
