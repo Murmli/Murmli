@@ -599,7 +599,7 @@
     },
     "chat": {
       "title": "Asistente de registro",
-      "placeholder": "Haz una pregunta sobre tus calorías...",
+      "placeholder": "¡Vamos!",
       "emptyState": "¡Pregúntame algo sobre tu nutrición!",
       "welcomeMessage": "¡Hola! Soy tu asistente de seguimiento. Puedo responder preguntas sobre tus calorías, valores nutricionales y hábitos alimenticios.",
       "openButton": "Abrir asistente"

@@ -599,7 +599,7 @@
     },
     "chat": {
       "title": "Asystent śledzenia",
-      "placeholder": "Zadaj pytanie o swoje kalorie...",
+      "placeholder": "Zaczynamy!",
       "emptyState": "Zapytaj mnie o coś na temat swojej diety!",
       "welcomeMessage": "Cześć! Jestem Twoim asystentem śledzenia. Mogę odpowiedzieć na Twoje pytania dotyczące kalorii, wartości odżywczych i nawyków żywieniowych.",
       "openButton": "Otwórz asystenta"

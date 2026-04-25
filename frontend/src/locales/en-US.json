@@ -599,7 +599,7 @@
     },
     "chat": {
       "title": "Tracker Assistant",
-      "placeholder": "Ask a question about your calories...",
+      "placeholder": "Let's go...",
       "emptyState": "Ask me something about your nutrition!",
       "welcomeMessage": "Hello! I'm your tracker assistant. I can answer questions about your calories, nutritional values, and eating habits.",
       "openButton": "Open Assistant"

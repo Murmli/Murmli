@@ -599,7 +599,7 @@
     },
     "chat": {
       "title": "Tracker-Assischtänt",
-      "placeholder": "Stell e Frag zu dine Kalorie...",
+      "placeholder": "Loos goht's...",
       "emptyState": "Fräg mi öppis über dini Ernährig!",
       "welcomeMessage": "Sali! Ich bin din Tracker-Assischtänt. Ich cha der Frage zu dine Kalorie, Nährwärte und Ernährigsgwohnheite beantworte.",
       "openButton": "Assischtänt öffne"

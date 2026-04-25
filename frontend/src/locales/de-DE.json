@@ -613,7 +613,7 @@
     },
     "chat": {
       "title": "Tracker-Assistent",
-      "placeholder": "Stelle eine Frage zu deinen Kalorien...",
+      "placeholder": "Legen wir los...",
       "emptyState": "Frag mich etwas über deine Ernährung!",
       "welcomeMessage": "Hallo! Ich bin dein Tracker-Assistent. Ich kann dir Fragen zu deinen Kalorien, Nährwerten und Ernährungsgewohnheiten beantworten.",
       "openButton": "Assistent öffnen"

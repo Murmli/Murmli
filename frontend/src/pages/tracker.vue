@@ -21,7 +21,7 @@
     <ChatDialog 
       v-model="showChatDialog" 
       :title="languageStore.t('tracker.chat.title') || 'Tracker Assistant'"
-      :placeholder="languageStore.t('tracker.chat.placeholder') || 'Ask about your calories...'"
+      :placeholder="languageStore.t('tracker.chat.placeholder') || 'Legen wir los...'"
       :empty-state="languageStore.t('tracker.chat.emptyState') || 'How many calories do I have left?'"
       :welcome-message="languageStore.t('tracker.chat.welcomeMessage')"
       :on-send="handleChatSend"
@@ -35,7 +35,7 @@
 </route>
 
 <script setup>
-import { onMounted, computed, ref } from 'vue';
+import { onMounted, computed, ref, watch } from 'vue';
 import { useTrackerStore } from '@/stores/trackerStore';
 import { useLanguageStore } from '@/stores/languageStore';
 import ModernTrackerProgress from '@/components/tracker/ModernTrackerProgress.vue';
@@ -53,6 +53,14 @@ const languageStore = useLanguageStore();
 const favorites = computed(() => trackerStore.getFavorites());
 
 const showChatDialog = ref(false);
+
+watch(showChatDialog, (val) => {
+  if (!val) {
+    trackerStore.fetchTracker();
+    trackerStore.fetchBodyData();
+    trackerStore.fetchHistory();
+  }
+});
 
 const handleChatSend = async (message, history) => {
   return await trackerStore.chatWithTracker(history);

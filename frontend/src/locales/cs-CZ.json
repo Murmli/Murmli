@@ -599,7 +599,7 @@
     },
     "chat": {
       "title": "Asistent sledování",
-      "placeholder": "Položte otázku k vašim kaloriím...",
+      "placeholder": "Pojďme na to...",
       "emptyState": "Zeptejte se mě na cokoli o vaší výživě!",
       "welcomeMessage": "Ahoj! Jsem tvůj asistent pro sledování. Mohu ti odpovědět na otázky k tvým kaloriím, nutričním hodnotám a stravovacím návykům.",
       "openButton": "Otevřít asistenta"

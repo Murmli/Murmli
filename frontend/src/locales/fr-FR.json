@@ -599,7 +599,7 @@
     },
     "chat": {
       "title": "Assistant Tracker",
-      "placeholder": "Pose une question sur tes calories...",
+      "placeholder": "C'est parti...",
       "emptyState": "Pose-moi une question sur ton alimentation !",
       "welcomeMessage": "Bonjour ! Je suis ton assistant de suivi. Je peux répondre à tes questions sur tes calories, tes valeurs nutritionnelles et tes habitudes alimentaires.",
       "openButton": "Ouvrir l'assistant"

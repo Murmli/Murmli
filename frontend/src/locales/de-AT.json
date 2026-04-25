@@ -599,7 +599,7 @@
     },
     "chat": {
       "title": "Tracker-Assistent",
-      "placeholder": "Frog wos zu deine Kalorien...",
+      "placeholder": "Pack ma's...",
       "emptyState": "Frag mi wos über dei Ernährung!",
       "welcomeMessage": "Griaß di! I bin dei Tracker-Assistent. I konn da Frong zu deine Kalorien und Nährwerte beantworten.",
       "openButton": "Assistent aufmochn"

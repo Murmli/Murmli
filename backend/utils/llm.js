@@ -1075,6 +1075,22 @@ exports.chatWithTracker = async (messages, tracker, bodyData, language, userId) 
           },
         },
       },
+      {
+        type: "function",
+        function: {
+          name: "set_nutrition_goals",
+          description: "Passt die täglichen Ziele für Kalorien und Makronährstoffe (Protein, Kohlenhydrate, Fett) an.",
+          parameters: {
+            type: "object",
+            properties: {
+              kcal: { type: "number", description: "Tägliches Kalorienziel" },
+              protein: { type: "number", description: "Tägliches Proteinziel in g" },
+              carbohydrates: { type: "number", description: "Tägliches Kohlenhydrateziel in g" },
+              fat: { type: "number", description: "Tägliches Fettziel in g" },
+            },
+          },
+        },
+      },
     ];
 
     let currentMessages = [...messages];
@@ -1093,6 +1109,8 @@ exports.chatWithTracker = async (messages, tracker, bodyData, language, userId) 
     let maxIterations = 3;
     let toolContextHistory = [...history, { role: "user", content: lastMessageContent }];
     let latestTracker = null;
+
+    const User = require("../models/userModel.js");
 
     while (response && response.tool_calls && maxIterations > 0) {
       maxIterations--;
@@ -1203,6 +1221,31 @@ exports.chatWithTracker = async (messages, tracker, bodyData, language, userId) 
               latestTracker = targetTracker;
               result = `Lebensmittel erfolgreich entfernt. Aktueller Tracker: ${JSON.stringify(targetTracker)}`;
             }
+          }
+        } else if (functionName === "set_nutrition_goals") {
+          const user = await User.findById(userId);
+          if (user) {
+            if (args.kcal !== undefined) user.recommendations.kcal = args.kcal;
+            if (args.protein !== undefined) user.recommendations.protein = args.protein;
+            if (args.carbohydrates !== undefined) user.recommendations.carbohydrates = args.carbohydrates;
+            if (args.fat !== undefined) user.recommendations.fat = args.fat;
+            await user.save();
+
+            // Auch den aktuellen Tracker aktualisieren
+            const today = new Date();
+            today.setUTCHours(0, 0, 0, 0);
+            const targetTracker = await Tracker.findOne({ user: userId, date: today });
+            if (targetTracker) {
+              if (args.kcal !== undefined) targetTracker.recommendations.kcal = args.kcal;
+              if (args.protein !== undefined) targetTracker.recommendations.protein = args.protein;
+              if (args.carbohydrates !== undefined) targetTracker.recommendations.carbohydrates = args.carbohydrates;
+              if (args.fat !== undefined) targetTracker.recommendations.fat = args.fat;
+              await targetTracker.save();
+              latestTracker = targetTracker;
+            }
+            result = "Ziele erfolgreich aktualisiert.";
+          } else {
+            result = "Fehler: Benutzer nicht gefunden.";
           }
         }
 

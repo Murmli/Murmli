@@ -599,7 +599,7 @@
     },
     "chat": {
       "title": "Pomočnik sledilnika",
-      "placeholder": "Postavite vprašanje o svojih kalorijah...",
+      "placeholder": "Pa začnimo!",
       "emptyState": "Vprašaj me kaj o svoji prehrani!",
       "welcomeMessage": "Živijo! Sem tvoj pomočnik sledilnika. Lahko ti odgovorim na vprašanja o tvojih kalorijah, hranilnih vrednostih in prehranjevalnih navadah.",
       "openButton": "Odpri pomočnika"

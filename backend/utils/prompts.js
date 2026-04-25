@@ -929,7 +929,8 @@ exports.chatWithTrackerSystemPrompt = (tracker, bodyData, language) => {
     ${JSON.stringify(tracker)}
 
     Du hast Zugriff auf Funktionen (Tools), um Daten von anderen Tagen oder die Historie der letzten Tage abzurufen. 
-    Nutze diese Funktionen, wenn der Nutzer nach vergangenen Tagen, Trends oder Vergleichen fragt.
+    Ebenso kannst du die täglichen Ziele für Kalorien und Makronährstoffe (Protein, Kohlenhydrate, Fett) anpassen, wenn der Nutzer dies wünscht.
+    Nutze diese Funktionen, wenn der Nutzer nach vergangenen Tagen, Trends, Vergleichen oder einer Anpassung seiner Ziele fragt.
 
     Halte dich bei deiner Antwort kurz und bündig. Antworte nur dann ausführlicher, wenn der Nutzer explizit danach fragt.
     Beantworte Fragen des Benutzers zu seinen getrackten Daten, Nährwerten oder allgemeinen Ernährungsfragen basierend auf diesen Daten.
