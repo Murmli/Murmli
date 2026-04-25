@@ -604,8 +604,8 @@
       "lastChanged": "zuletzt geändert",
       "resetTitle": "Zähler zurücksetzen?",
       "resetMessage": "Soll der Zähler für die Dauer deiner Diät auch zurückgesetzt werden?",
-      "resetYes": "Ja, zurücksetzen",
-      "resetNo": "Nein, beibehalten"
+      "resetYes": "Ja",
+      "resetNo": "Nein"
     },
     "chat": {
       "title": "Tracker-Assistent",
