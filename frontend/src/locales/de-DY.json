@@ -482,7 +482,8 @@
       "addToShoppingList": "Auf die Liste",
       "addToToday": "Für heute adden",
       "remove": "Kicken",
-      "duplicate": "Copy-pasten"
+      "duplicate": "Copy-pasten",
+      "editIcon": "Icon gönnen"
     },
     "dailyTracked": "(daily)",
     "calorieGoal": "Kalorien-Goal",

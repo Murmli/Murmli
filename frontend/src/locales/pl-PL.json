@@ -482,7 +482,8 @@
       "addToShoppingList": "Dodaj do listy zakupów",
       "addToToday": "Dodaj na dziś",
       "remove": "Usuń",
-      "duplicate": "Duplikuj"
+      "duplicate": "Duplikuj",
+      "editIcon": "Wybierz ikonę"
     },
     "dailyTracked": "(codziennie)",
     "calorieGoal": "Cel kaloryczny",

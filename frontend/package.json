@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "node ../backend/scripts/buildLang.js && npm run buildLang && vite build",
+    "build": "node ../backend/scripts/buildLang.js && npm run buildLang && npm run generate-icons && vite build",
     "preview": "vite preview",
     "lint": "eslint . --fix --ignore-path .gitignore",
+    "generate-icons": "node scripts/generateIconList.js",
     "ionic:build": "npm run build",
     "ionic:serve": "npm run dev",
     "apprun": "npx npm run ionic:build && npx cap copy && npx cap run android --target=Pixel_8_API_35  --no-sync",

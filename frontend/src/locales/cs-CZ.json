@@ -482,7 +482,8 @@
       "addToShoppingList": "Přidat do nákupního seznamu",
       "addToToday": "Přidat na dnešek",
       "remove": "Odstranit",
-      "duplicate": "Duplikovat"
+      "duplicate": "Duplikovat",
+      "editIcon": "Vybrat ikonu"
     },
     "dailyTracked": "(denně)",
     "calorieGoal": "Kalorický cíl",

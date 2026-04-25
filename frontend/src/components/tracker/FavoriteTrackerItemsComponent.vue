@@ -58,10 +58,9 @@
                                 />
                             </v-col>
                             <v-col cols="12">
-                                <v-text-field 
+                                <IconPicker 
                                     v-model="editingFavorite.item.icon" 
-                                    label="MDI Icon (e.g. mdi-apple)" 
-                                    prepend-inner-icon="mdi-image-search"
+                                    :label="languageStore.t('tracker.menu.editIcon') || 'Icon'" 
                                 />
                             </v-col>
                         </v-row>
@@ -102,7 +101,6 @@
                         {{ languageStore.t('tracker.menu.remove') }}
                     </v-btn>
                     <v-spacer></v-spacer>
-                    <v-btn text @click="editDialog = false">{{ languageStore.t('general.close') }}</v-btn>
                     <v-btn color="primary" @click="saveFavorite">{{ languageStore.t('general.save') }}</v-btn>
                 </v-card-actions>
             </v-card>

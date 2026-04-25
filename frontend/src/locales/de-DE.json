@@ -481,6 +481,7 @@
     "descriptionPlaceholder": "Beschreibe deine Mahlzeit oder Aktivität im Bezug auf das Bild",
     "menu": {
       "edit": "Bearbeiten",
+      "editIcon": "Icon wählen",
       "daily": "Täglich",
       "addToShoppingList": "Zur Einkaufsliste hinzufügen",
       "addToToday": "Für heute hinzufügen",

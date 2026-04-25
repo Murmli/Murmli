@@ -482,7 +482,8 @@
       "addToShoppingList": "Alışveriş Listesine Ekle",
       "addToToday": "Bugün için ekle",
       "remove": "Kaldır",
-      "duplicate": "Kopyasını oluştur"
+      "duplicate": "Kopyasını oluştur",
+      "editIcon": "Simge Seç"
     },
     "dailyTracked": "(günlük)",
     "calorieGoal": "Kalori Hedefi",

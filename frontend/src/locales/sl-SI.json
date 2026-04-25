@@ -482,7 +482,8 @@
       "addToShoppingList": "Dodaj na nakupovalni seznam",
       "addToToday": "Dodaj za danes",
       "remove": "Odstrani",
-      "duplicate": "Podvoji"
+      "duplicate": "Podvoji",
+      "editIcon": "Izberi ikono"
     },
     "dailyTracked": "(dnevno)",
     "calorieGoal": "Cilj kalorij",

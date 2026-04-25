@@ -482,7 +482,8 @@
       "addToShoppingList": "खरीदारी सूची में जोड़ें",
       "addToToday": "आज के लिए जोड़ें",
       "remove": "हटाएं",
-      "duplicate": "प्रतिलिपि बनाएँ"
+      "duplicate": "प्रतिलिपि बनाएँ",
+      "editIcon": "आइकन चुनें"
     },
     "dailyTracked": "(दैनिक)",
     "calorieGoal": "कैलोरी लक्ष्य",

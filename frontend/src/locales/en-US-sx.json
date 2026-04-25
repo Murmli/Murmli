@@ -482,7 +482,8 @@
       "addToShoppingList": "Put on shoppin' list",
       "addToToday": "For today",
       "remove": "Take it off",
-      "duplicate": "Make a double of that there"
+      "duplicate": "Make a double of that there",
+      "editIcon": "Pick y'all an icon"
     },
     "dailyTracked": "(daily-like)",
     "calorieGoal": "Calorie Aim",

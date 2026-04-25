@@ -482,7 +482,8 @@
       "addToShoppingList": "添加到购物清单",
       "addToToday": "添加至今天",
       "remove": "移除",
-      "duplicate": "复刻"
+      "duplicate": "复刻",
+      "editIcon": "选择图标"
     },
     "dailyTracked": "(每日)",
     "calorieGoal": "卡路里目标",
