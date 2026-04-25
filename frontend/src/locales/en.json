@@ -148,7 +148,9 @@
     "reset": "Reset",
     "cameraError": "Camera error",
     "cameraPermissionDenied": "Camera access denied",
-    "sendDirectly": "Send directly"
+    "sendDirectly": "Send directly",
+    "yes": "Yes",
+    "no": "No"
   },
   "shoppingList": {
     "newItemLabel": "New Item",
@@ -614,7 +616,8 @@
     "groupName": "Name of the dish",
     "history": {
       "title": "Calories of the last 10 days"
-    }
+    },
+    "macros": "Macros"
   },
   "trainingPlans": {
     "title": "Training Plans",

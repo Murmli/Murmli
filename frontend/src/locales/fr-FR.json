@@ -148,7 +148,9 @@
     "reset": "Réinitialiser",
     "cameraError": "Erreur de caméra",
     "cameraPermissionDenied": "Accès à la caméra refusé",
-    "sendDirectly": "Envoyer directement"
+    "sendDirectly": "Envoyer directement",
+    "yes": "Oui",
+    "no": "Non"
   },
   "shoppingList": {
     "newItemLabel": "Nouvel article",
@@ -614,7 +616,8 @@
     "groupName": "Nom du plat",
     "history": {
       "title": "Calories des 10 derniers jours"
-    }
+    },
+    "macros": "Macros"
   },
   "trainingPlans": {
     "title": "Plans d'entraînement",

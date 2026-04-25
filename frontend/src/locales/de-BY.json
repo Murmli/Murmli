@@ -148,7 +148,9 @@
     "reset": "Zrucksetzn",
     "cameraError": "Kamera-G'schlamper",
     "cameraPermissionDenied": "Kamera-Zugriff werd net erlaubt",
-    "sendDirectly": "Gleich amoi rousschicka"
+    "sendDirectly": "Gleich amoi rousschicka",
+    "yes": "Freile",
+    "no": "Naa"
   },
   "shoppingList": {
     "newItemLabel": "Neier Artikel",
@@ -614,7 +616,8 @@
     "groupName": "Nam vo dera Speis",
     "history": {
       "title": "Kalorien vo de letzn 10 Tog"
-    }
+    },
+    "macros": "Nährwert-Zeigl"
   },
   "trainingPlans": {
     "title": "Trainingspläne",

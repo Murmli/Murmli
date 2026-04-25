@@ -148,7 +148,9 @@
     "reset": "Staht it ovah",
     "cameraError": "Camm-rah's wicked messed up",
     "cameraPermissionDenied": "No access to the camm-rah, ked",
-    "sendDirectly": "Send it wicked fast"
+    "sendDirectly": "Send it wicked fast",
+    "yes": "Yeah, ked",
+    "no": "No way, kid"
   },
   "shoppingList": {
     "newItemLabel": "New Stuff",
@@ -614,7 +616,8 @@
     "groupName": "Name of the wicked cou't case",
     "history": {
       "title": "Calries from the last ten days, kid"
-    }
+    },
+    "macros": "Macros"
   },
   "trainingPlans": {
     "title": "Workout Plans",

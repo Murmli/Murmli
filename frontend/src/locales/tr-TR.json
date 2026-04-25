@@ -148,7 +148,9 @@
     "reset": "Sıfırla",
     "cameraError": "Kamera hatası",
     "cameraPermissionDenied": "Kamera erişimi reddedildi",
-    "sendDirectly": "Doğrudan gönder"
+    "sendDirectly": "Doğrudan gönder",
+    "yes": "Evet",
+    "no": "Hayır"
   },
   "shoppingList": {
     "newItemLabel": "Yeni Ürün",
@@ -614,7 +616,8 @@
     "groupName": "Yemeğin Adı",
     "history": {
       "title": "Son 10 günün kalorileri"
-    }
+    },
+    "macros": "Makrolar"
   },
   "trainingPlans": {
     "title": "Antrenman Planları",

@@ -148,7 +148,9 @@
     "reset": "重置",
     "cameraError": "摄像头错误",
     "cameraPermissionDenied": "摄像头访问权限被拒绝",
-    "sendDirectly": "直接发送"
+    "sendDirectly": "直接发送",
+    "yes": "是",
+    "no": "否"
   },
   "shoppingList": {
     "newItemLabel": "新项目",
@@ -614,7 +616,8 @@
     "groupName": "菜品名称",
     "history": {
       "title": "最近10天的卡路里摄入情况"
-    }
+    },
+    "macros": "宏量营养素"
   },
   "trainingPlans": {
     "title": "训练计划",

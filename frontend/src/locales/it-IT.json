@@ -148,7 +148,9 @@
     "reset": "Reimposta",
     "cameraError": "Errore della fotocamera",
     "cameraPermissionDenied": "Accesso alla fotocamera negato",
-    "sendDirectly": "Invia direttamente"
+    "sendDirectly": "Invia direttamente",
+    "yes": "Sì",
+    "no": "No"
   },
   "shoppingList": {
     "newItemLabel": "Nuovo articolo",
@@ -614,7 +616,8 @@
     "groupName": "Nome del piatto",
     "history": {
       "title": "Calorie degli ultimi 10 giorni"
-    }
+    },
+    "macros": "Macronutrienti"
   },
   "trainingPlans": {
     "title": "Piani di allenamento",

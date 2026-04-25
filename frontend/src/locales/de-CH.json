@@ -148,7 +148,9 @@
     "reset": "Zruggsetze",
     "cameraError": "Chamera-Fähler",
     "cameraPermissionDenied": "Zuegriff uf d’Chamera isch abglehnt worde",
-    "sendDirectly": "Direkt schigge"
+    "sendDirectly": "Direkt schigge",
+    "yes": "Ja-woll",
+    "no": "Nai"
   },
   "shoppingList": {
     "newItemLabel": "Neu's Ding",
@@ -614,7 +616,8 @@
     "groupName": "Name vom Grüchtli",
     "history": {
       "title": "Kalorien vo de letschte zäh Täg"
-    }
+    },
+    "macros": "Makros"
   },
   "trainingPlans": {
     "title": "Trainingsplän",

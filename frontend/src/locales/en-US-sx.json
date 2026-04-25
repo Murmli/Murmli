@@ -148,7 +148,9 @@
     "reset": "Start 'er all over again",
     "cameraError": "That there camera's acting up on us",
     "cameraPermissionDenied": "Well now, you went and said no to lettin' us see through that lens",
-    "sendDirectly": "Go 'head and send it right on over"
+    "sendDirectly": "Go 'head and send it right on over",
+    "yes": "Yes, sirree",
+    "no": "No, ma'am"
   },
   "shoppingList": {
     "newItemLabel": "New stuff",
@@ -614,7 +616,8 @@
     "groupName": "Name of that there dish",
     "history": {
       "title": "Calories from them last ten days, slow 'n steady"
-    }
+    },
+    "macros": "Them there macros"
   },
   "trainingPlans": {
     "title": "Workout Plans",

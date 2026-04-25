@@ -148,7 +148,9 @@
     "reset": "Z'rucksetza",
     "cameraError": "Kamera-Gschiss",
     "cameraPermissionDenied": "D' Kamera derf net gnutzt werda",
-    "sendDirectly": "Gleich rausschigge"
+    "sendDirectly": "Gleich rausschigge",
+    "yes": "Ha jo",
+    "no": "Noi"
   },
   "shoppingList": {
     "newItemLabel": "Neier Artikel",
@@ -614,7 +616,8 @@
     "groupName": "Nama vom Gricht",
     "history": {
       "title": "Kaloria von de ledschda zeha Däg"
-    }
+    },
+    "macros": "Makros, gell"
   },
   "trainingPlans": {
     "title": "Sportpläne",

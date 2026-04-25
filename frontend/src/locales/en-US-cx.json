@@ -148,7 +148,9 @@
     "reset": "Wipe it out, brah",
     "cameraError": "Bummer, lens wipeout! Camera's acting totally gnarly",
     "cameraPermissionDenied": "Whoa there, access denied! The wave is closed",
-    "sendDirectly": "Just send it, brah"
+    "sendDirectly": "Just send it, brah",
+    "yes": "Yeah, for sure, dude!",
+    "no": "Nah, total wipeout, man."
   },
   "shoppingList": {
     "newItemLabel": "New Gear",
@@ -614,7 +616,8 @@
     "groupName": "The name of your epic meal, bro",
     "history": {
       "title": "Last 10 days of fuel levels, bro"
-    }
+    },
+    "macros": "fuel for the waves"
   },
   "trainingPlans": {
     "title": "Training Sets",

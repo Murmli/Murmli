@@ -95,6 +95,8 @@
     "confirm": "Bestätigen",
     "ok": "OK",
     "retry": "Wiederholen",
+    "yes": "Ja",
+    "no": "Nein",
     "notifications": {
       "recipeReady": "Rezept fertig",
       "recipeReadyMessage": "Dein Rezept wurde erstellt.",

@@ -148,7 +148,9 @@
     "reset": "Resetovat",
     "cameraError": "Chyba kamery",
     "cameraPermissionDenied": "Přístup ke kameře byl zamítnut",
-    "sendDirectly": "Odeslat přímo"
+    "sendDirectly": "Odeslat přímo",
+    "yes": "Ano",
+    "no": "Ne"
   },
   "shoppingList": {
     "newItemLabel": "Nová položka",
@@ -614,7 +616,8 @@
     "groupName": "Název pokrmu",
     "history": {
       "title": "Kalorie za posledních 10 dní"
-    }
+    },
+    "macros": "Makra"
   },
   "trainingPlans": {
     "title": "Tréninkové plány",

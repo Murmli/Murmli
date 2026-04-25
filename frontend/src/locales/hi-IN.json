@@ -148,7 +148,9 @@
     "reset": "रीसेट करें",
     "cameraError": "कैमरा त्रुटि",
     "cameraPermissionDenied": "कैमरा एक्सेस अस्वीकार कर दिया गया",
-    "sendDirectly": "सीधे भेजें"
+    "sendDirectly": "सीधे भेजें",
+    "yes": "हाँ",
+    "no": "नहीं"
   },
   "shoppingList": {
     "newItemLabel": "नई वस्तु",
@@ -614,7 +616,8 @@
     "groupName": "पकवान का नाम",
     "history": {
       "title": "पिछले 10 दिनों की कैलोरी"
-    }
+    },
+    "macros": "मैक्रोज़"
   },
   "trainingPlans": {
     "title": "प्रशिक्षण योजनाएं",

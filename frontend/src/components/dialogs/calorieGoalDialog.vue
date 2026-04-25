@@ -162,8 +162,8 @@
             </v-card-text>
             <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn variant="text" @click="confirmReset(false)">{{ languageStore.t('tracker.dietLevelChange.resetNo') }}</v-btn>
-                <v-btn variant="text" color="primary" @click="confirmReset(true)">{{ languageStore.t('tracker.dietLevelChange.resetYes') }}</v-btn>
+                <v-btn variant="text" @click="confirmReset(false)">{{ languageStore.t('general.no') }}</v-btn>
+                <v-btn variant="text" color="primary" @click="confirmReset(true)">{{ languageStore.t('general.yes') }}</v-btn>
             </v-card-actions>
         </v-card>
     </v-dialog>

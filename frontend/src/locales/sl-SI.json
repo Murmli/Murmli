@@ -148,7 +148,9 @@
     "reset": "Ponastavi",
     "cameraError": "Napaka kamere",
     "cameraPermissionDenied": "Dostop do kamere je zavrnjen",
-    "sendDirectly": "Pošlji neposredno"
+    "sendDirectly": "Pošlji neposredno",
+    "yes": "Da",
+    "no": "Ne"
   },
   "shoppingList": {
     "newItemLabel": "Nov artikel",
@@ -614,7 +616,8 @@
     "groupName": "Ime jedi",
     "history": {
       "title": "Kalorije v zadnjih 10 dneh"
-    }
+    },
+    "macros": "Makri"
   },
   "trainingPlans": {
     "title": "Načrti vadbe",

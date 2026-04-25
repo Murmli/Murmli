@@ -148,7 +148,9 @@
     "reset": "Resetten",
     "cameraError": "Kamera-Fail",
     "cameraPermissionDenied": "Kamera-Access wurde nicht gegönnt",
-    "sendDirectly": "Direkt raushauen"
+    "sendDirectly": "Direkt raushauen",
+    "yes": "Safe",
+    "no": "Lowkey nein"
   },
   "shoppingList": {
     "newItemLabel": "Neues Item",
@@ -614,7 +616,8 @@
     "groupName": "Name vom Food",
     "history": {
       "title": "Kalorien-History der letzten 10 Tage"
-    }
+    },
+    "macros": "Gains-Werte"
   },
   "trainingPlans": {
     "title": "Trainingspläne",

@@ -148,7 +148,9 @@
     "reset": "Z'rucksetzn",
     "cameraError": "Kamera-G'schlamassel",
     "cameraPermissionDenied": "Kamerazugriff is ned erlaubt",
-    "sendDirectly": "Gleich amoi wegschicken"
+    "sendDirectly": "Gleich amoi wegschicken",
+    "yes": "Jo freilich",
+    "no": "Na geh"
   },
   "shoppingList": {
     "newItemLabel": "Neicher Artikl",
@@ -614,7 +616,8 @@
     "groupName": "Naman von dera Speis",
     "history": {
       "title": "Kalorien von de letzn zeh' Tog"
-    }
+    },
+    "macros": "Makros"
   },
   "trainingPlans": {
     "title": "Trainingspläne",
