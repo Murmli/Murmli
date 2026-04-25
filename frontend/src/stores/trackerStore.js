@@ -96,15 +96,17 @@ export const useTrackerStore = defineStore("trackerStore", {
       return null;
     },
 
-    async fetchHistory() {
+    async fetchBodyData() {
       const apiStore = useApiStore();
       try {
         const response = await apiStore.apiRequest(
-          "post",
-          "/calorietracker/history"
+          "get",
+          "/calorietracker/bodydata/get",
+          null,
+          false // Background request
         );
         if (response && response.status === 200) {
-          this.history = response.data.history;
+          this.bodyData = response.data;
           return true;
         }
       } catch (error) {
@@ -112,6 +114,7 @@ export const useTrackerStore = defineStore("trackerStore", {
       }
       return null;
     },
+
 
     // Ask a question to the calorie tracker
     async askTrackerQuestion(question) {
