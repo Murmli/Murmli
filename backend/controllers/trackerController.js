@@ -605,7 +605,9 @@ exports.askQuestion = async (req, res) => {
       gender: user.gender,
     };
 
-    const response = await askCalorieTracker(question, trackers, bodyData, user.language);
+    const plannerPrompt = user.suggestions?.filter?.prompt || "";
+
+    const response = await askCalorieTracker(question, trackers, bodyData, user.language, plannerPrompt);
 
     return res.status(200).json({ answer: response });
   } catch (error) {
@@ -1122,7 +1124,9 @@ exports.chat = async (req, res) => {
       recommendations: user.recommendations
     };
 
-    const chatResponse = await chatWithTracker(messages, tracker, bodyData, user.language, user._id);
+    const plannerPrompt = user.suggestions?.filter?.prompt || "";
+
+    const chatResponse = await chatWithTracker(messages, tracker, bodyData, user.language, user._id, plannerPrompt);
 
     if (chatResponse) {
       return res.status(200).json({ 

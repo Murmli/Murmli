@@ -374,10 +374,21 @@ exports.textToActivityPrompt = (text, gender, height, weight) => {
   return `Ich bin ${gender}, ${height} cm groß und wiege ${weight} kg, Berechne die Aktivität für: ${text}`;
 };
 
-exports.askCalorieTrackerSystemPrompt = (tracker, bodydata, outputLang) => {
+exports.askCalorieTrackerSystemPrompt = (tracker, bodydata, outputLang, plannerPrompt) => {
   const age = calculateAge(bodydata.birthyear);
   const now = new Date();
   const currentDateTime = now.toLocaleString('de-DE', { timeZone: 'Europe/Berlin' });
+
+  let plannerInfo = "";
+  if (plannerPrompt && plannerPrompt.trim().length > 0) {
+    plannerInfo = `
+    Diese Informationen stammen aus den Einstellungen des Essensplaners (Ernährungspräferenzen und Filter):
+    """
+    ${plannerPrompt}
+    """
+    Berücksichtige diese Vorgaben aus dem Essensplaner (z.B. Allergien, Abneigungen, Diätvorgaben) zwingend bei deinen Empfehlungen und Antworten.
+    `;
+  }
 
   // Return the formatted string
   return `
@@ -390,6 +401,8 @@ exports.askCalorieTrackerSystemPrompt = (tracker, bodydata, outputLang) => {
     Berücksichtige bei der Auswertung des heutigen Tages, dass dieser noch nicht abgeschlossen ist und weitere Mahlzeiten oder Aktivitäten folgen könnten.
     
     Der Nutzer ist ${bodydata.height} cm groß, ${bodydata.weight} kg schwer und ${age} Jahre alt.
+    ${plannerInfo}
+
     Halte dich bei deiner Antwort kurz und bündig. Antworte nur dann ausführlicher, wenn der Nutzer explizit danach fragt.
     Zähle nicht die Trackings auf, nur wenn du spezifisch auf eines eingeben möchtest.
     Schreibe deine Antwort als Markdown formatiert (ohne Tabellen) in folgender Sprache: ${outputLang}.
@@ -911,9 +924,20 @@ exports.chatWithRecipeSystemPrompt = (recipe, language) => {
   `;
 };
 
-exports.chatWithTrackerSystemPrompt = (tracker, bodyData, language) => {
+exports.chatWithTrackerSystemPrompt = (tracker, bodyData, language, plannerPrompt) => {
   const now = new Date();
   const currentDateTime = now.toLocaleString('de-DE', { timeZone: 'Europe/Berlin' });
+
+  let plannerInfo = "";
+  if (plannerPrompt && plannerPrompt.trim().length > 0) {
+    plannerInfo = `
+    Diese Informationen stammen aus den Einstellungen des Essensplaners (Ernährungspräferenzen und Filter):
+    """
+    ${plannerPrompt}
+    """
+    Berücksichtige diese Vorgaben aus dem Essensplaner (z.B. Allergien, Abneigungen, Diätvorgaben) zwingend bei deinen Empfehlungen und Antworten.
+    `;
+  }
 
   return `
     Du bist ein hilfreicher Ernährungsberater und Assistent für einen Kalorien-Tracker.
@@ -927,6 +951,8 @@ exports.chatWithTrackerSystemPrompt = (tracker, bodyData, language) => {
 
     Tracker-Daten für heute:
     ${JSON.stringify(tracker)}
+
+    ${plannerInfo}
 
     Du hast Zugriff auf Funktionen (Tools), um Daten von anderen Tagen oder die Historie der letzten Tage abzurufen. 
     Ebenso kannst du die täglichen Ziele für Kalorien und Makronährstoffe (Protein, Kohlenhydrate, Fett) anpassen, wenn der Nutzer dies wünscht.

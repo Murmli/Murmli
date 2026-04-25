@@ -607,11 +607,11 @@ exports.textToActivity = async (text, gender, height, weight) => {
   }
 };
 
-exports.askCalorieTracker = async (question, tracker, bodydata, outputLang) => {
+exports.askCalorieTracker = async (question, tracker, bodydata, outputLang, plannerPrompt) => {
   try {
     const { askCalorieTrackerSystemPrompt } = require("./prompts.js");
 
-    const systemPrompt = askCalorieTrackerSystemPrompt(tracker, bodydata, outputLang);
+    const systemPrompt = askCalorieTrackerSystemPrompt(tracker, bodydata, outputLang, plannerPrompt);
 
     const prompt = question;
 
@@ -958,10 +958,10 @@ exports.chatWithRecipe = async (messages, recipe, language) => {
   }
 };
 
-exports.chatWithTracker = async (messages, tracker, bodyData, language, userId) => {
+exports.chatWithTracker = async (messages, tracker, bodyData, language, userId, plannerPrompt) => {
   try {
     const { chatWithTrackerSystemPrompt } = require("./prompts.js");
-    const systemPrompt = chatWithTrackerSystemPrompt(tracker, bodyData, language);
+    const systemPrompt = chatWithTrackerSystemPrompt(tracker, bodyData, language, plannerPrompt);
 
     const tools = [
       {
