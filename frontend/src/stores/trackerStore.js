@@ -101,7 +101,7 @@ export const useTrackerStore = defineStore("trackerStore", {
       try {
         const response = await apiStore.apiRequest(
           "post",
-          "/calorietracker/history"
+          "/calorietracker/history", data, false
         );
         if (response && response.status === 200) {
           this.history = response.data.history;
@@ -301,17 +301,17 @@ export const useTrackerStore = defineStore("trackerStore", {
       const apiStore = useApiStore();
       const formData = new FormData();
       formData.append("trackerId", this.tracker._id);
-      
+
       if (text) {
         formData.append("text", text);
       }
-      
+
       if (images && images.length > 0) {
         images.forEach((image, index) => {
           formData.append(`images`, image);
         });
       }
-      
+
       if (audio) {
         formData.append("audio", audio);
       }
@@ -603,7 +603,7 @@ export const useTrackerStore = defineStore("trackerStore", {
       try {
         const response = await apiStore.apiRequest(
           "post",
-          "/calorietracker/bodydata/get"
+          "/calorietracker/bodydata/get", null, false
         );
         if (response && response.status === 200) {
           this.bodyData = response.data.bodyData;
@@ -663,7 +663,7 @@ export const useTrackerStore = defineStore("trackerStore", {
     async fetchFavorites() {
       const apiStore = useApiStore();
       try {
-        const response = await apiStore.apiRequest("get", "/calorietracker/favorites");
+        const response = await apiStore.apiRequest("get", "/calorietracker/favorites", null, false);
         if (response && response.status === 200) {
           this.favorites = response.data;
           return this.favorites;
