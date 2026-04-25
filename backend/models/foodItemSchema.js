@@ -62,6 +62,10 @@ const foodItemSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  icon: {
+    type: String,
+    default: "mdi-food",
+  },
   order: {
     type: Number,
     default: 0,

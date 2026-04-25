@@ -50,7 +50,7 @@ import ChatDialog from '@/components/dialogs/ChatDialog.vue';
 
 const trackerStore = useTrackerStore();
 const languageStore = useLanguageStore();
-const favorites = computed(() => trackerStore.getFavorites());
+const favorites = computed(() => trackerStore.favorites);
 
 const showChatDialog = ref(false);
 
@@ -59,6 +59,7 @@ watch(showChatDialog, (val) => {
     trackerStore.fetchTracker();
     trackerStore.fetchBodyData();
     trackerStore.fetchHistory();
+    trackerStore.fetchFavorites();
   }
 });
 
@@ -71,5 +72,6 @@ onMounted(async () => {
   trackerStore.fetchTracker();
   trackerStore.fetchBodyData();
   trackerStore.fetchHistory();
+  trackerStore.fetchFavorites();
 });
 </script>

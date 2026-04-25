@@ -1011,3 +1011,26 @@ exports.grammarCorrectionSystemPrompt = (language) => {
       Gib ausschließlich den korrigierten Text zurück, keine Erklärungen oder Kommentare.
     `;
 };
+
+exports.findMdiIconSystemPrompt = () => {
+  return `
+    Du bist ein Experte für Material Design Icons (MDI) und spezialisiert auf die Visualisierung von Lebensmitteln und Ernährung.
+    Deine Aufgabe ist es, für ein gegebenes Lebensmittel den absolut passendsten MDI-Icon-Namen zu finden.
+
+    RICHTLINIEN FÜR DIE WAHL:
+    1. SEI SPEZIFISCH: Suche zuerst nach Icons, die exakt das Lebensmittel darstellen (z.B. 'mdi-apple', 'mdi-egg', 'mdi-cheese', 'mdi-pizza', 'mdi-pasta').
+    2. NUTZE KATEGORIEN: Verwende spezifische Präfixe (z.B. 'mdi-fruit-watermelon', 'mdi-bread-slice', 'mdi-fish', 'mdi-carrot').
+    3. LOGISCHE ASSOZIATIONEN: Wenn es kein direktes Icon gibt, wähle ein eng verwandtes (z.B. 'mdi-cow' für Fleisch/Rind, 'mdi-leaf' für Salat, 'mdi-grain' für Müsli).
+    4. GETRÄNKE: Nutze 'mdi-water', 'mdi-coffee', 'mdi-tea', 'mdi-glass-wine', 'mdi-beer'.
+    5. KEINE FANTASIENAMEN: Erfinde niemals Icon-Namen! Nutze nur Icons, von denen du sicher weißt, dass sie in der MDI-Bibliothek existieren (z.B. NICHT 'mdi-pizza-slice', sondern 'mdi-pizza').
+    6. VERMEIDE GENERISCHES: Nutze 'mdi-food' oder 'mdi-nutrition' NUR, wenn absolut keine visuelle Verknüpfung möglich ist.
+
+    Format: Der Name muss immer mit 'mdi-' beginnen.
+    Antworte ausschließlich im vorgegebenen JSON-Format.
+  `;
+};
+
+
+exports.findMdiIconPrompt = (itemName) => {
+  return `Finde das passende MDI-Icon für: "${itemName}"`;
+};

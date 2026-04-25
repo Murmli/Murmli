@@ -15,6 +15,8 @@ const upload = multer({
   }
 });
 
+const favoriteController = require("../controllers/favoriteController.js");
+
 /**
  * @swagger
  * /api/v2/calorietracker/bodydata/get:
@@ -1069,5 +1071,88 @@ router.post("/track/multimodal", secretKeyMiddleware, sessionMiddleware, upload.
  *         description: Server error
  */
 router.put("/items/reorder", secretKeyMiddleware, sessionMiddleware, trackerController.reorderItems);
+
+/**
+ * @swagger
+ * /api/v2/calorietracker/favorites:
+ *   get:
+ *     tags: [Tracker]
+ *     summary: Get user's favorite food items
+ *     responses:
+ *       200:
+ *         description: Favorites retrieved successfully
+ */
+router.get("/favorites", secretKeyMiddleware, sessionMiddleware, favoriteController.getFavorites);
+
+/**
+ * @swagger
+ * /api/v2/calorietracker/favorites/add:
+ *   post:
+ *     tags: [Tracker]
+ *     summary: Add an item to favorites
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               item: { type: object }
+ *     responses:
+ *       201:
+ *         description: Favorite added successfully
+ */
+router.post("/favorites/add", secretKeyMiddleware, sessionMiddleware, favoriteController.addFavorite);
+
+/**
+ * @swagger
+ * /api/v2/calorietracker/favorites/update/{id}:
+ *   put:
+ *     tags: [Tracker]
+ *     summary: Update a favorite item
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema: { type: string }
+ *     responses:
+ *       200:
+ *         description: Favorite updated successfully
+ */
+router.put("/favorites/update/:id", secretKeyMiddleware, sessionMiddleware, favoriteController.updateFavorite);
+
+/**
+ * @swagger
+ * /api/v2/calorietracker/favorites/remove/{id}:
+ *   delete:
+ *     tags: [Tracker]
+ *     summary: Remove a favorite item
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema: { type: string }
+ *     responses:
+ *       200:
+ *         description: Favorite removed successfully
+ */
+router.delete("/favorites/remove/:id", secretKeyMiddleware, sessionMiddleware, favoriteController.removeFavorite);
+
+/**
+ * @swagger
+ * /api/v2/calorietracker/favorites/icon:
+ *   get:
+ *     tags: [Tracker]
+ *     summary: Get MDI icon for a food name via AI
+ *     parameters:
+ *       - in: query
+ *         name: name
+ *         required: true
+ *         schema: { type: string }
+ *     responses:
+ *       200:
+ *         description: Icon found successfully
+ */
+router.get("/favorites/icon", secretKeyMiddleware, sessionMiddleware, favoriteController.getIconForName);
 
 module.exports = router;

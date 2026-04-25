@@ -659,44 +659,65 @@ export const useTrackerStore = defineStore("trackerStore", {
       this.error = null;
     },
 
-    // Favoriten-Management für Tracker
-    addFavorite(item) {
-      if (!item || !item.name) return;
-      const exists = this.favorites.some(fav => fav.name === item.name);
-      if (!exists) {
-        // Speichere das gesamte Item-Objekt als Favorit (Kopie)
-        this.favorites.push({ ...item });
-        this.saveFavoritesToLocalStorage();
-      }
-    },
-
-    removeFavorite(itemName) {
-      this.favorites = this.favorites.filter(fav => fav.name !== itemName);
-      this.saveFavoritesToLocalStorage();
-    },
-
-    getFavorites() {
-      this.loadFavoritesFromLocalStorage();
-      return this.favorites.slice().sort((a, b) => a.name.localeCompare(b.name));
-    },
-
-    saveFavoritesToLocalStorage() {
+    // Favoriten-Management für Tracker (Backend-gestützt)
+    async fetchFavorites() {
+      const apiStore = useApiStore();
       try {
-        localStorage.setItem('trackerFavorites', JSON.stringify(this.favorites));
-      } catch (e) {
-        console.error('Error saving tracker favorites:', e);
-      }
-    },
-
-    loadFavoritesFromLocalStorage() {
-      try {
-        const data = localStorage.getItem('trackerFavorites');
-        if (data) {
-          this.favorites = JSON.parse(data);
+        const response = await apiStore.apiRequest("get", "/calorietracker/favorites");
+        if (response && response.status === 200) {
+          this.favorites = response.data;
+          return this.favorites;
         }
-      } catch (e) {
-        console.error('Error loading tracker favorites:', e);
+      } catch (error) {
+        this.error = error;
       }
+      return [];
+    },
+
+    async addFavorite(item) {
+      if (!item || !item.name) return;
+      const apiStore = useApiStore();
+      try {
+        const response = await apiStore.apiRequest("post", "/calorietracker/favorites/add", { item });
+        if (response && response.status === 201) {
+          this.favorites.push(response.data);
+          return true;
+        }
+      } catch (error) {
+        this.error = error;
+      }
+      return false;
+    },
+
+    async updateFavorite(id, item) {
+      const apiStore = useApiStore();
+      try {
+        const response = await apiStore.apiRequest("put", `/calorietracker/favorites/update/${id}`, { item });
+        if (response && response.status === 200) {
+          const index = this.favorites.findIndex(fav => fav._id === id);
+          if (index !== -1) {
+            this.favorites[index] = response.data;
+          }
+          return true;
+        }
+      } catch (error) {
+        this.error = error;
+      }
+      return false;
+    },
+
+    async removeFavorite(id) {
+      const apiStore = useApiStore();
+      try {
+        const response = await apiStore.apiRequest("delete", `/calorietracker/favorites/remove/${id}`);
+        if (response && response.status === 200) {
+          this.favorites = this.favorites.filter(fav => fav._id !== id);
+          return true;
+        }
+      } catch (error) {
+        this.error = error;
+      }
+      return false;
     },
 
     // Indicator settings management

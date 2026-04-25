@@ -773,14 +773,17 @@ const saveEditedItem = async () => {
 };
 
 const isFavorite = () => {
-    return trackerStore.favorites.some(fav => fav.name === trackerStore.selectedItem.name);
+    return trackerStore.favorites.some(fav => fav.item.name === trackerStore.selectedItem.name);
 };
 
-const toggleFavoriteInStore = () => {
+const toggleFavoriteInStore = async () => {
     if (isFavorite()) {
-        trackerStore.removeFavorite(trackerStore.selectedItem.name);
+        const favorite = trackerStore.favorites.find(fav => fav.item.name === trackerStore.selectedItem.name);
+        if (favorite) {
+            await trackerStore.removeFavorite(favorite._id);
+        }
     } else {
-        trackerStore.addFavorite(trackerStore.selectedItem);
+        await trackerStore.addFavorite(trackerStore.selectedItem);
     }
     dropdownMenu.value = false;
 };

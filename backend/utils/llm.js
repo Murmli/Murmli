@@ -24,6 +24,7 @@ const nutritionItemsSchema = require("./schemas/nutritionItems.schema.js");
 const activitySchema = require("./schemas/activity.schema.js");
 const imageVisionSchema = require("./schemas/imageVision.schema.js");
 const createRecipeSchema = require("./schemas/createRecipe.schema.js");
+const mdiIconSchema = require("./schemas/mdiIcon.schema.js");
 
 const provider = process.env.LLM_PROVIDER || "openai";
 if (!process.env.LLM_PROVIDER) {
@@ -1288,5 +1289,28 @@ exports.correctGrammar = async (text, language) => {
   } catch (error) {
     console.error("Error in correctGrammar:", error.message);
     return false;
+  }
+};
+
+exports.findMdiIconForFood = async (itemName) => {
+  try {
+    const { findMdiIconSystemPrompt, findMdiIconPrompt } = require("./prompts.js");
+    const systemPrompt = findMdiIconSystemPrompt();
+    const prompt = findMdiIconPrompt(itemName);
+
+    const answer = await apiCall(prompt, {
+      systemPrompt,
+      jsonSchema: mdiIconSchema,
+      cache: true,
+    });
+
+    if (!answer || !answer.icon) {
+      return "mdi-food"; // Default icon
+    }
+
+    return answer.icon;
+  } catch (error) {
+    console.error("Error in findMdiIconForFood:", error.message);
+    return "mdi-food";
   }
 };
