@@ -150,7 +150,9 @@
     "cameraPermissionDenied": "Whoa there, access denied! The wave is closed",
     "sendDirectly": "Just send it, brah",
     "yes": "Yeah, for sure, dude!",
-    "no": "Nah, total wipeout, man."
+    "no": "Nah, total wipeout, man.",
+    "unsavedChangesTitle": "Stoke not saved yet",
+    "unsavedChangesMessage": "Whoa there! You've got some gnarly tweaks that aren't locked in yet. You sure you want to bail and let those changes wash away, man?"
   },
   "shoppingList": {
     "newItemLabel": "New Gear",

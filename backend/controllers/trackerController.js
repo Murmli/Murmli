@@ -154,8 +154,26 @@ exports.updateBodyData = async (req, res) => {
 
 exports.calculateCalories = async (req, res) => {
   try {
-    const { height, birthyear, gender, dietType, dietLevel, workHoursWeek, workDaysPAL } = req.user;
-    const { saveCalculation = false } = req.body;
+    const { 
+      height: userHeight, 
+      birthyear: userBirthyear, 
+      gender: userGender, 
+      dietType: userDietType, 
+      dietLevel: userDietLevel, 
+      workHoursWeek: userWorkHoursWeek, 
+      workDaysPAL: userWorkDaysPAL 
+    } = req.user;
+    
+    const { 
+      saveCalculation = false,
+      height = userHeight,
+      birthyear = userBirthyear,
+      gender = userGender,
+      dietType = userDietType,
+      dietLevel = userDietLevel,
+      workHoursWeek = userWorkHoursWeek,
+      workDaysPAL = userWorkDaysPAL
+    } = req.body;
 
     // Überprüfen, ob ein Gewichtseintrag vorhanden ist
     if (!req.user.weightTracking || req.user.weightTracking.length === 0) {
@@ -177,7 +195,7 @@ exports.calculateCalories = async (req, res) => {
     const calculationDetails = calculateCalories(gender, latestWeight, height, age, workHoursWeek, workDaysPAL);
 
     if (!calculationDetails) {
-      throw new Error("Error calculating calories. Please check the input data.", gender, latestWeight, height, age, workHoursWeek, workDaysPAL);
+      throw new Error("Error calculating calories. Please check the input data.");
     }
 
     const baseCalories = calculationDetails.totalDailyCalories;
@@ -185,20 +203,22 @@ exports.calculateCalories = async (req, res) => {
     const dietNutrient = calculateNutrientDistribution(dietCalories, dietType);
     const targetCalories = dietType ? dietCalories : baseCalories;
 
-    // Benutzerinformationen aktualisieren
-    req.user.recommendations = dietNutrient;
-    req.user.recommendations.kcal = targetCalories;
-    req.user.baseCalories = baseCalories;
+    // Lokale Empfehlungen für die Antwort vorbereiten
+    const recommendations = { ...dietNutrient, kcal: targetCalories };
 
     let message = "Calorie calculation successful";
     if (saveCalculation) {
+      req.user.recommendations = recommendations;
+      req.user.baseCalories = baseCalories;
+      req.user.dietType = dietType;
+      req.user.dietLevel = dietLevel;
       await req.user.save();
       message = "Calorie calculation successful and saved";
     }
 
     return res.status(200).json({
       baseCalories,
-      recommendations: req.user.recommendations,
+      recommendations,
       calculationDetails,
       message,
     });

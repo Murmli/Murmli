@@ -150,7 +150,9 @@
     "cameraPermissionDenied": "Well now, you went and said no to lettin' us see through that lens",
     "sendDirectly": "Go 'head and send it right on over",
     "yes": "Yes, sirree",
-    "no": "No, ma'am"
+    "no": "No, ma'am",
+    "unsavedChangesTitle": "Unsaved fixin's",
+    "unsavedChangesMessage": "Now hold on a minute, you've gone and made some changes but ain't saved 'em yet. You sure you wanna just close this up and let 'em all go to waste?"
   },
   "shoppingList": {
     "newItemLabel": "New stuff",

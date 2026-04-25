@@ -150,7 +150,9 @@
     "cameraPermissionDenied": "No access to the camm-rah, ked",
     "sendDirectly": "Send it wicked fast",
     "yes": "Yeah, ked",
-    "no": "No way, kid"
+    "no": "No way, kid",
+    "unsavedChangesTitle": "Unsaved Stuff",
+    "unsavedChangesMessage": "Listen heah, you made some changes but you ain't saved 'em yet. You really wanna pack it in and wicked lose all that wicked hahd work?"
   },
   "shoppingList": {
     "newItemLabel": "New Stuff",

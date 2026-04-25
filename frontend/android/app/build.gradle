@@ -7,7 +7,7 @@ android {
         applicationId "de.murmli.twa"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionName "1.089"
+        versionName "1.090"
         versionCode project.hasProperty('customVersionCode') ? project.customVersionCode.toInteger() : 92
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {

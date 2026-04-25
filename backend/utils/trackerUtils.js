@@ -71,6 +71,21 @@ exports.calculateNutrientDistribution = (calories, nutritionType) => {
   nutrientDistribution.protein = Math.round(nutrientDistribution.protein);
   nutrientDistribution.fat = Math.round(nutrientDistribution.fat);
 
+  // Ensure the sum of macros does not exceed the total calories due to rounding
+  let currentKcal = nutrientDistribution.carbohydrates * 4 + nutrientDistribution.protein * 4 + nutrientDistribution.fat * 9;
+  let attempts = 0;
+  while (currentKcal > calories && attempts < 10) {
+    if (nutrientDistribution.carbohydrates > 0) {
+      nutrientDistribution.carbohydrates--;
+    } else if (nutrientDistribution.fat > 0) {
+      nutrientDistribution.fat--;
+    } else if (nutrientDistribution.protein > 0) {
+      nutrientDistribution.protein--;
+    }
+    currentKcal = nutrientDistribution.carbohydrates * 4 + nutrientDistribution.protein * 4 + nutrientDistribution.fat * 9;
+    attempts++;
+  }
+
   return nutrientDistribution;
 };
 

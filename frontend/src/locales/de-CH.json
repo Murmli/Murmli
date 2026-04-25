@@ -150,7 +150,9 @@
     "cameraPermissionDenied": "Zuegriff uf d’Chamera isch abglehnt worde",
     "sendDirectly": "Direkt schigge",
     "yes": "Ja-woll",
-    "no": "Nai"
+    "no": "Nai",
+    "unsavedChangesTitle": "Nig nöd gspichereti Änderige",
+    "unsavedChangesMessage": "Du häsch öppis gänderet, aber nonig gspicheret. Wotsch würkli zue mache und d'Änderige eifach so verschüüsse?"
   },
   "shoppingList": {
     "newItemLabel": "Neu's Ding",

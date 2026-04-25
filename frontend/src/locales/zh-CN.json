@@ -150,7 +150,9 @@
     "cameraPermissionDenied": "摄像头访问权限被拒绝",
     "sendDirectly": "直接发送",
     "yes": "是",
-    "no": "否"
+    "no": "否",
+    "unsavedChangesTitle": "未保存的更改",
+    "unsavedChangesMessage": "您已做出更改但尚未保存。确定要关闭并放弃这些更改吗？"
   },
   "shoppingList": {
     "newItemLabel": "新项目",

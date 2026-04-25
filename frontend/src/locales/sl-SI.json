@@ -150,7 +150,9 @@
     "cameraPermissionDenied": "Dostop do kamere je zavrnjen",
     "sendDirectly": "Pošlji neposredno",
     "yes": "Da",
-    "no": "Ne"
+    "no": "Ne",
+    "unsavedChangesTitle": "Neshranjene spremembe",
+    "unsavedChangesMessage": "Vnesli ste spremembe, ki še niso shranjene. Ali ste prepričani, da želite zapreti in zavreči spremembe?"
   },
   "shoppingList": {
     "newItemLabel": "Nov artikel",

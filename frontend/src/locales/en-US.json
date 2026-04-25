@@ -150,7 +150,9 @@
     "cameraPermissionDenied": "Camera access denied",
     "sendDirectly": "Send directly",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "unsavedChangesTitle": "Unsaved Changes",
+    "unsavedChangesMessage": "You have made changes that have not been saved yet. Do you really want to close and discard the changes?"
   },
   "shoppingList": {
     "newItemLabel": "New Item",

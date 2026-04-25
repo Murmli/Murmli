@@ -637,13 +637,13 @@ export const useTrackerStore = defineStore("trackerStore", {
     },
 
     // Calculate daily calorie needs based on body data and activity level
-    async calculateRecommendations(workDays = 0, workDaysPAL = 0) {
+    async calculateRecommendations(workDays = 0, workDaysPAL = 0, overrides = {}) {
       const apiStore = useApiStore();
       try {
         const response = await apiStore.apiRequest(
           "post",
           "/calorietracker/bodydata/calculate",
-          { workDays, workDaysPAL }
+          { workDays, workDaysPAL, ...overrides }
         );
 
         if (response && response.status === 200) {

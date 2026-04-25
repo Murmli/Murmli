@@ -97,6 +97,8 @@
     "retry": "Wiederholen",
     "yes": "Ja",
     "no": "Nein",
+    "unsavedChangesTitle": "Ungespeicherte Änderungen",
+    "unsavedChangesMessage": "Du hast Änderungen vorgenommen, aber noch nicht gespeichert. Möchtest du wirklich schließen und die Änderungen verwerfen?",
     "notifications": {
       "recipeReady": "Rezept fertig",
       "recipeReadyMessage": "Dein Rezept wurde erstellt.",

@@ -150,7 +150,9 @@
     "cameraPermissionDenied": "Kamera-Access wurde nicht gegönnt",
     "sendDirectly": "Direkt raushauen",
     "yes": "Safe",
-    "no": "Lowkey nein"
+    "no": "Lowkey nein",
+    "unsavedChangesTitle": "Nicht safe gespeichert",
+    "unsavedChangesMessage": "Du hast was geändert, aber noch nicht auf Save gedrückt. Willst du echt leaven und die Änderungen einfach wegwerfen?"
   },
   "shoppingList": {
     "newItemLabel": "Neues Item",

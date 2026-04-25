@@ -150,7 +150,9 @@
     "cameraPermissionDenied": "Kamera-Zugriff werd net erlaubt",
     "sendDirectly": "Gleich amoi rousschicka",
     "yes": "Freile",
-    "no": "Naa"
+    "no": "Naa",
+    "unsavedChangesTitle": "Ned g'speicherte Sachan",
+    "unsavedChangesMessage": "Du hast ebwas geändert, aber no ned auf d'Speichern-Taste druckt. Wuist jetzt echt scho aufhörn und des Ganze einfach wegwerfa?"
   },
   "shoppingList": {
     "newItemLabel": "Neier Artikel",

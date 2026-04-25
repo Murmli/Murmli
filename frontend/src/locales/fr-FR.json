@@ -150,7 +150,9 @@
     "cameraPermissionDenied": "Accès à la caméra refusé",
     "sendDirectly": "Envoyer directement",
     "yes": "Oui",
-    "no": "Non"
+    "no": "Non",
+    "unsavedChangesTitle": "Modifications non enregistrées",
+    "unsavedChangesMessage": "Vous avez effectué des modifications qui n'ont pas encore été enregistrées. Voulez-vous vraiment quitter et abandonner les modifications ?"
   },
   "shoppingList": {
     "newItemLabel": "Nouvel article",

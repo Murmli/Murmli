@@ -150,7 +150,9 @@
     "cameraPermissionDenied": "Kamera erişimi reddedildi",
     "sendDirectly": "Doğrudan gönder",
     "yes": "Evet",
-    "no": "Hayır"
+    "no": "Hayır",
+    "unsavedChangesTitle": "Kaydedilmemiş Değişiklikler",
+    "unsavedChangesMessage": "Bazı değişiklikler yaptınız ancak henüz kaydetmediniz. Kapatmak ve değişiklikleri geri almak istediğinizden emin misiniz?"
   },
   "shoppingList": {
     "newItemLabel": "Yeni Ürün",

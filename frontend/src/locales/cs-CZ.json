@@ -150,7 +150,9 @@
     "cameraPermissionDenied": "Přístup ke kameře byl zamítnut",
     "sendDirectly": "Odeslat přímo",
     "yes": "Ano",
-    "no": "Ne"
+    "no": "Ne",
+    "unsavedChangesTitle": "Neuložené změny",
+    "unsavedChangesMessage": "Provedli jste změny, které ale ještě nebyly uloženy. Opravdu chcete zavřít a tyto změny zahodit?"
   },
   "shoppingList": {
     "newItemLabel": "Nová položka",

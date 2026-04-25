@@ -150,7 +150,9 @@
     "cameraPermissionDenied": "D' Kamera derf net gnutzt werda",
     "sendDirectly": "Gleich rausschigge",
     "yes": "Ha jo",
-    "no": "Noi"
+    "no": "Noi",
+    "unsavedChangesTitle": "Ned g'speicherde Sacha",
+    "unsavedChangesMessage": "Du hosch ebbes g'ändert, abr no ned g'speicherd. Witt jetzt echt zuamacha ond dei G'schäft einfach so wegschmeißa?"
   },
   "shoppingList": {
     "newItemLabel": "Neier Artikel",

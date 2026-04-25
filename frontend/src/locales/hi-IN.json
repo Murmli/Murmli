@@ -150,7 +150,9 @@
     "cameraPermissionDenied": "कैमरा एक्सेस अस्वीकार कर दिया गया",
     "sendDirectly": "सीधे भेजें",
     "yes": "हाँ",
-    "no": "नहीं"
+    "no": "नहीं",
+    "unsavedChangesTitle": "सहेजे न गए परिवर्तन",
+    "unsavedChangesMessage": "आपने बदलाव किए हैं, लेकिन अभी तक उन्हें सहेजा नहीं गया है। क्या आप वाकई बंद करना चाहते हैं और बदलावों को छोड़ना चाहते हैं?"
   },
   "shoppingList": {
     "newItemLabel": "नई वस्तु",

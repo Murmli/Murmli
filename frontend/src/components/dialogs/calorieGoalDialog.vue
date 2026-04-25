@@ -1,5 +1,5 @@
 <template>
-    <v-dialog v-model="dialogStore.dialogs.calorieGoalDialog" max-width="600">
+    <v-dialog v-model="dialogStore.dialogs.calorieGoalDialog" :persistent="hasUnsavedChanges" max-width="600">
         <v-card>
             <v-card-title>{{ languageStore.t('tracker.calorieGoal') }}</v-card-title>
             <v-card-text class="justify-center text-center">
@@ -126,7 +126,7 @@
                     </v-expansion-panel>
                 </v-expansion-panels>
 
-                <v-btn class="mb-9" color="primary" @click="saveCalorieGoal" :disabled="macroKcalDiff > 0">
+                <v-btn class="mb-9" color="primary" @click="saveCalorieGoal" :disabled="macroKcalDiff > 5">
                     {{ languageStore.t('tracker.calorieGoal') }} {{ languageStore.t('general.save') }}
                 </v-btn>
 
@@ -167,6 +167,21 @@
             </v-card-actions>
         </v-card>
     </v-dialog>
+
+    <!-- Bestätigungsdialog für ungespeicherte Änderungen -->
+    <v-dialog v-model="showUnsavedChangesDialog" max-width="400" persistent>
+        <v-card>
+            <v-card-title>{{ languageStore.t('general.unsavedChangesTitle') || 'Ungespeicherte Änderungen' }}</v-card-title>
+            <v-card-text>
+                {{ languageStore.t('general.unsavedChangesMessage') || 'Du hast dein Kalorienziel oder deine Makros geändert, aber noch nicht gespeichert. Möchtest du wirklich schließen und die Änderungen verwerfen?' }}
+            </v-card-text>
+            <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn variant="text" @click="showUnsavedChangesDialog = false">{{ languageStore.t('general.no') }}</v-btn>
+                <v-btn variant="text" color="error" @click="confirmClose">{{ languageStore.t('general.yes') }}</v-btn>
+            </v-card-actions>
+        </v-card>
+    </v-dialog>
 </template>
 
 <script setup>
@@ -180,8 +195,9 @@ const languageStore = useLanguageStore();
 const trackerStore = useTrackerStore();
 
 const showResetDialog = ref(false);
+const showUnsavedChangesDialog = ref(false);
 const pendingDietLevel = ref(null);
-const isUpdatingFromReset = ref(false);
+const shouldResetCounter = ref(false);
 
 // Lokale Kopie der Körperdaten
 const localBodyData = ref({
@@ -210,9 +226,12 @@ const getMacroDistribution = (nutrient) => {
 };
 
 const syncRecommendationsFromStore = () => {
+    const saved = trackerStore.tracker.recommendations || {};
     recommendations.value = {
-        ...recommendations.value,
-        ...(trackerStore.tracker.recommendations || {})
+        kcal: saved.kcal || 0,
+        protein: saved.protein || 0,
+        carbohydrates: saved.carbohydrates || 0,
+        fat: saved.fat || 0
     };
 };
 
@@ -237,15 +256,19 @@ const adjustmentHistory = ref(['protein', 'carbohydrates', 'fat']);
 
 const adjustMacros = (changedNutrient) => {
     // Historie aktualisieren: Den aktuell geänderten Nährstoff ans Ende schieben
-    adjustmentHistory.value = adjustmentHistory.value.filter(n => n !== changedNutrient);
-    adjustmentHistory.value.push(changedNutrient);
+    if (changedNutrient) {
+        adjustmentHistory.value = adjustmentHistory.value.filter(n => n !== changedNutrient);
+        adjustmentHistory.value.push(changedNutrient);
+    }
 
     const targetKcal = recommendations.value.kcal || 0;
     
     while (macroKcalSum.value > targetKcal) {
         // Kandidaten für die Reduzierung finden (alle außer dem aktuell geänderten)
         // Wir reduzieren den, der in der Historie am weitesten vorne steht
-        const candidates = adjustmentHistory.value.filter(n => n !== changedNutrient);
+        const candidates = changedNutrient 
+            ? adjustmentHistory.value.filter(n => n !== changedNutrient)
+            : adjustmentHistory.value;
         
         let reduced = false;
         for (const nutrientToReduce of candidates) {
@@ -318,13 +341,19 @@ const calculateCalories = async () => {
     try {
         const response = await trackerStore.calculateRecommendations(
             localBodyData.value.workHoursWeek,
-            localBodyData.value.workDaysPAL
+            localBodyData.value.workDaysPAL,
+            {
+                dietType: localBodyData.value.dietType,
+                dietLevel: localBodyData.value.dietLevel
+            }
         );
         if (response) {
             recommendations.value = {
                 ...recommendations.value,
                 ...response
             };
+            // Sicherstellen, dass die Makros nach der Berechnung passen
+            adjustMacros();
         }
     } catch (error) {
         console.error('Fehler beim Berechnen:', error);
@@ -333,14 +362,51 @@ const calculateCalories = async () => {
 
 const saveCalorieGoal = async () => {
     try {
+        // Speichere die Ernährungsweise und das Level mit
+        await trackerStore.updateBodyData({ 
+            dietType: localBodyData.value.dietType,
+            dietLevel: localBodyData.value.dietLevel,
+            resetDietCounter: shouldResetCounter.value
+        });
+        
         await trackerStore.updateRecommendations(recommendations.value);
+        
+        // Zurücksetzen des Reset-Flags
+        shouldResetCounter.value = false;
+        
         syncRecommendationsFromStore();
     } catch (error) {
         console.error('Fehler beim Speichern:', error);
     }
 };
 
+const hasUnsavedChanges = computed(() => {
+    if (!trackerStore.tracker || !trackerStore.tracker.recommendations) return false;
+    const savedRec = trackerStore.tracker.recommendations;
+    const currentRec = recommendations.value;
+    
+    const savedBody = trackerStore.bodyData;
+    const currentBody = localBodyData.value;
+
+    return savedRec.kcal !== currentRec.kcal ||
+           savedRec.protein !== currentRec.protein ||
+           savedRec.carbohydrates !== currentRec.carbohydrates ||
+           savedRec.fat !== currentRec.fat ||
+           savedBody.dietType !== currentBody.dietType ||
+           savedBody.dietLevel !== currentBody.dietLevel;
+});
+
 const closeDialog = () => {
+    if (hasUnsavedChanges.value) {
+        showUnsavedChangesDialog.value = true;
+    } else {
+        dialogStore.closeDialog('calorieGoalDialog');
+    }
+};
+
+const confirmClose = () => {
+    showUnsavedChangesDialog.value = false;
+    syncRecommendationsFromStore();
     dialogStore.closeDialog('calorieGoalDialog');
 };
 
@@ -349,29 +415,31 @@ const onDietLevelChange = (val) => {
     showResetDialog.value = true;
 };
 
-const confirmReset = async (shouldReset) => {
+const confirmReset = (shouldReset) => {
     showResetDialog.value = false;
-    isUpdatingFromReset.value = true;
-    try {
-        await trackerStore.updateBodyData({ 
-            dietLevel: pendingDietLevel.value,
-            resetDietCounter: shouldReset
-        });
-        // Automatische Berechnung nach Level-Änderung
-        await calculateCalories();
-    } catch (error) {
-        console.error('Fehler beim Aktualisieren der DietLevel:', error);
-    } finally {
-        isUpdatingFromReset.value = false;
-        pendingDietLevel.value = null;
-    }
+    shouldResetCounter.value = shouldReset;
+    localBodyData.value.dietLevel = pendingDietLevel.value;
+    pendingDietLevel.value = null;
+    
+    // Automatische Berechnung nach Level-Änderung (lokal)
+    calculateCalories();
 };
 
 watch(
     () => dialogStore.dialogs.calorieGoalDialog,
-    (isOpen) => {
+    async (isOpen) => {
         if (isOpen) {
+            // Erst die Daten aus dem Store/DB frisch laden
+            await trackerStore.fetchBodyData();
+            
+            // Lokale Kopie der Körperdaten aktualisieren
+            Object.assign(localBodyData.value, trackerStore.bodyData);
+            
+            // Makros aus dem Tracker-Objekt synchronisieren
             syncRecommendationsFromStore();
+            
+            // Reset-Flag zurücksetzen
+            shouldResetCounter.value = false;
         }
     }
 );
@@ -379,22 +447,14 @@ watch(
 // Watcher für dietType
 watch(
     () => localBodyData.value.dietType,
-    async (newVal, oldVal) => {
-        if (newVal !== oldVal) {
-            try {
-                // Hier rufst du deine Store-Action auf, die die API aktualisiert
-                await trackerStore.updateBodyData({ dietType: newVal });
-                // Automatische Berechnung nach Typ-Änderung
-                await calculateCalories();
-            } catch (error) {
-                console.error('Fehler beim Aktualisieren der DietType:', error);
-            }
+    (newVal, oldVal) => {
+        if (newVal !== oldVal && oldVal !== null) {
+            // Nur lokale Berechnung auslösen, kein automatisches Speichern!
+            calculateCalories();
         }
     }
 );
 
-// Watcher für dietLevel entfernen oder anpassen
-// Wir entfernen ihn, da wir jetzt onDietLevelChange nutzen
 </script>
 
 <style scoped>
@@ -439,4 +499,3 @@ watch(
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 </style>
-

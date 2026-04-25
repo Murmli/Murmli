@@ -150,7 +150,9 @@
     "cameraPermissionDenied": "Kamerazugriff is ned erlaubt",
     "sendDirectly": "Gleich amoi wegschicken",
     "yes": "Jo freilich",
-    "no": "Na geh"
+    "no": "Na geh",
+    "unsavedChangesTitle": "Ned g'speicherte Sachen",
+    "unsavedChangesMessage": "Du hast do wos g'ändert, oba no ned g'speichert. Wüst jetzt wirklich zua mochn und auf des Gonze pfeifen?"
   },
   "shoppingList": {
     "newItemLabel": "Neicher Artikl",
