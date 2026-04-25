@@ -101,7 +101,7 @@ export const useTrackerStore = defineStore("trackerStore", {
       try {
         const response = await apiStore.apiRequest(
           "post",
-          "/calorietracker/history", data, false
+          "/calorietracker/history", null, false
         );
         if (response && response.status === 200) {
           this.history = response.data.history;
