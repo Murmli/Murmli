@@ -1,7 +1,9 @@
 const ExerciseImage = require('../models/exerciseImageModel');
-const { uploadBase64ImageToStorage } = require('./imageUtils');
-const { generateImage } = require('./llm/openai.js');
+const { generateImage, uploadImageToStorage } = require('./imageUtils');
 const { exerciseImagePrompt } = require('./prompts');
+
+// In-memory set to track currently generating images to prevent race conditions
+const generatingKeys = new Set();
 
 // Prefix for stored exercise images
 const EXERCISE_IMAGE_PREFIX = 'ei_';
@@ -32,33 +34,50 @@ function generateExerciseImageFilename(exerciseName = '') {
 async function createExerciseImage(exercise) {
   if (!exercise || !exercise.key || !exercise.name) return;
 
+  // Prevent multiple simultaneous generations for the same key
+  if (generatingKeys.has(exercise.key)) return;
+
   try {
     const existing = await ExerciseImage.findOne({ exerciseKey: exercise.key });
     if (existing) return;
 
+    generatingKeys.add(exercise.key);
+
     const prompt = exerciseImagePrompt(exercise.name, exercise.instructions);
-    const base64 = await generateImage(prompt);
-    if (!base64) {
+    const imageUrl = await generateImage(prompt);
+    if (!imageUrl) {
       console.error(`Failed to generate image for ${exercise.key}`);
+      generatingKeys.delete(exercise.key);
       return;
     }
 
     const filename = generateExerciseImageFilename(exercise.name);
-    const storedUrl = await uploadBase64ImageToStorage(base64, filename);
+    const storedUrl = await uploadImageToStorage(imageUrl, filename);
     if (!storedUrl) {
       console.error(`Failed to upload image for ${exercise.key}`);
+      generatingKeys.delete(exercise.key);
       return;
     }
 
-    const doc = await ExerciseImage.create({
-      exerciseKey: exercise.key,
-      imageUrl: storedUrl,
-      prompt,
-      model: process.env.OPENAI_IMAGE_MODEL || 'gpt-image-1-mini'
-    });
-    console.log('Created exercise image:', doc.imageUrl);
+    try {
+      const doc = await ExerciseImage.create({
+        exerciseKey: exercise.key,
+        imageUrl: storedUrl,
+        prompt,
+        model: process.env.OPENROUTER_RECIPE_IMAGE_MODEL || 'google/gemini-2.5-flash-image'
+      });
+      console.log('Created exercise image:', doc.imageUrl);
+    } catch (createErr) {
+      if (createErr.code === 11000) {
+        console.log(`Image for ${exercise.key} already created by another process.`);
+      } else {
+        throw createErr;
+      }
+    }
   } catch (err) {
     console.error('Error generating exercise image:', err.message);
+  } finally {
+    generatingKeys.delete(exercise.key);
   }
 }
 

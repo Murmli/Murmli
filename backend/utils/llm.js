@@ -31,7 +31,8 @@ if (!process.env.LLM_PROVIDER) {
   throw new Error("LLM_PROVIDER is not defined in environment variables");
 }
 
-const { apiCall, generateImage } = require(`./llm/${provider}.js`);
+const { apiCall } = require(`./llm/${provider}.js`);
+const { generateImage } = require("./imageUtils.js");
 
 /**
  * Converts text to an array of item objects with units and categories using Google Generative AI.

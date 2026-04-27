@@ -199,6 +199,9 @@ exports.deleteImageFromStorage = async (imageUrl) => {
 
     return true;
   } catch (error) {
+    if (error.statusCode === 404) {
+      return true; // Already deleted
+    }
     console.error("Error deleting image:", error.message);
     return false;
   }

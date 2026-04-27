@@ -897,15 +897,17 @@ exports.migrateRecipePrompt = (title, descriptionShort, ingredients) => {
 
 exports.exerciseImagePrompt = (name, instruction) => {
   return `
-  Erstelle ein Piktogramm-Bild ohne Text mit weißen Hintergrund, das die folgende Trainingsübung darstellt: "${name}".
-  Das Bild soll klar und eindeutig illustrieren, wie die Übung mit der korrekten Technik ausgeführt wird.
-  Wähle die Perspektive, die die Ausführung am verständlichsten macht, bevorzugt frontal oder seitlich.
-  Vermeide Fotorealismus, Verläufe, Schatten, Gesichtszüge und jeden Text.
-  Zentriere das Motiv, sorge für ausreichend Rand und scharfe Kanten. 
-  Nutze die folgende Beschreibung als verbindliche Quelle: "${instruction}"
+  Create a minimalist, consistent pictogram of a training exercise titled "${name}".
+  Style guidelines:
+  - Use a clean, black stick figure on a plain white background.
+  - The head must be a simple solid circle with NO face, no eyes, and no features.
+  - The figure should have realistic anatomical proportions to clearly show body positioning.
+  - Illustrate the correct technical execution of the exercise based on this instruction: "${instruction}".
+  - The perspective should be chosen to make the movement most understandable (usually side or front view).
+  - No text, no shadows, no gradients, and no background elements.
+  - High contrast, sharp edges, centered composition with balanced padding.
   `;
 };
-
 exports.chatWithRecipeSystemPrompt = (recipe, language) => {
   return `
     Du bist ein hilfreicher Koch-Assistent.

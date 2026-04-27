@@ -1,4 +1,6 @@
 const BaseLLMClient = require("./baseClient");
+const { generateImage } = require("../imageUtils");
+
 const config = {
   provider: "openrouter",
   apiKey: process.env.OPENROUTER_API_KEY,
@@ -14,4 +16,5 @@ const openrouterClient = new BaseLLMClient(config);
 
 module.exports = {
   apiCall: openrouterClient.apiCall.bind(openrouterClient),
+  generateImage: generateImage,
 };
