@@ -301,6 +301,62 @@ exports.getStatistics = async (req, res) => {
       };
     }
 
+    // Trend calculation for the last 10 days
+    const getTrendsForMetric = async (metricType, periodMs, days = 10) => {
+      const trends = [];
+      const models = [
+        { model: UserRecipe, field: "userId" },
+        { model: TrainingPlan, field: "user" },
+        { model: TrainingLog, field: "user" },
+        { model: ShoppingList, field: "user" },
+        { model: CalorieTracker, field: "user" },
+      ];
+
+      for (let i = days - 1; i >= 0; i--) {
+        const dayOffset = i * 24 * 60 * 60 * 1000;
+        const targetNow = new Date(now.getTime() - dayOffset);
+        const mid = new Date(targetNow.getTime() - periodMs);
+        const start = new Date(targetNow.getTime() - 2 * periodMs);
+
+        let current, previous;
+
+        if (metricType === "activeUsers") {
+          const getActiveCount = async (from, to) => {
+            const activeUsers = new Set();
+            for (const { model, field } of models) {
+              const ids = await model.distinct(field, { updatedAt: { $gte: from, $lt: to } });
+              ids.forEach((id) => activeUsers.add(String(id)));
+            }
+            return activeUsers.size;
+          };
+          current = await getActiveCount(mid, targetNow);
+          previous = await getActiveCount(start, mid);
+        } else if (metricType === "newUsers") {
+          current = await User.countDocuments({ createdAt: { $gte: mid, $lt: targetNow } });
+          previous = await User.countDocuments({ createdAt: { $gte: start, $lt: mid } });
+        }
+
+        trends.push({
+          date: targetNow,
+          diff: current - previous
+        });
+      }
+      return trends;
+    };
+
+    const trends = {
+      newUsers: {
+        "24h": await getTrendsForMetric("newUsers", periods["24h"]),
+        "7d": await getTrendsForMetric("newUsers", periods["7d"]),
+        "30d": await getTrendsForMetric("newUsers", periods["30d"]),
+      },
+      activeUsers: {
+        "24h": await getTrendsForMetric("activeUsers", periods["24h"]),
+        "7d": await getTrendsForMetric("activeUsers", periods["7d"]),
+        "30d": await getTrendsForMetric("activeUsers", periods["30d"]),
+      }
+    };
+
     const cacheSavedTotal = await LlmCache.countDocuments({});
     const unreadFeedback = await Feedback.countDocuments({ readed: false });
     const totalUsers = await User.countDocuments({});
@@ -312,6 +368,7 @@ exports.getStatistics = async (req, res) => {
 
     return res.status(200).json({
       metrics: results,
+      trends,
       global: {
         cacheSavedTotal,
         unreadFeedback,
