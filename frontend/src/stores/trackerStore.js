@@ -78,11 +78,12 @@ export const useTrackerStore = defineStore("trackerStore", {
     // Get the tracker for a specific date (or today if no date is provided)
     async fetchTracker(date = null) {
       const apiStore = useApiStore();
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
       try {
         const response = await apiStore.apiRequest(
           "post",
           "/calorietracker/get",
-          date ? { date } : {}
+          date ? { date, timezone } : { timezone }
         );
         if (response && response.status === 200) {
           this.tracker = response.data;

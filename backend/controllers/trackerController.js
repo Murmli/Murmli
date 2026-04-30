@@ -11,27 +11,27 @@ const fs = require("fs");
 
 const bodyDataFields = ["height", "weight", "birthyear", "gender", "dietType", "dietLevel", "dietStartedAt", "baseCalories", "recommendations", "workHoursWeek", "workDaysPAL"];
 
-async function getOrCreateTracker(userId, date, recommendations) {
+async function getOrCreateTracker(user, date, recommendations) {
   // Normalize date to midnight UTC
   const normalizedDate = new Date(date);
   normalizedDate.setUTCHours(0, 0, 0, 0);
 
-  // Fetch user data with daily items
-  const user = await User.findById(userId);
   if (!user) {
     throw new Error('User not found');
   }
 
-  let tracker = await Tracker.findOne({ user: userId, date: normalizedDate });
+  let tracker = await Tracker.findOne({ user: user._id, date: normalizedDate });
 
-  const today = new Date();
-  today.setUTCHours(0, 0, 0, 0);
+  // Use user's timezone to determine "today"
+  const userTimezone = user.timezone || "UTC";
+  const todayLocal = new Date(new Date().toLocaleString("en-US", { timeZone: userTimezone }));
+  const userTodayMidnightUTC = new Date(Date.UTC(todayLocal.getFullYear(), todayLocal.getMonth(), todayLocal.getDate()));
 
-  const isToday = today.getTime() === normalizedDate.getTime();
+  const isToday = userTodayMidnightUTC.getTime() === normalizedDate.getTime();
 
   if (!tracker) {
     tracker = new Tracker({
-      user: userId,
+      user: user._id,
       date: normalizedDate,
       foodItems: [],
       recommendations,
@@ -366,9 +366,25 @@ exports.trackRecipe = async (req, res) => {
 exports.getTrackerByDate = async (req, res) => {
   try {
     const user = req.user;
-    const requestedDate = req.body.date ? new Date(req.body.date) : new Date(new Date().setUTCHours(0, 0, 0, 0));
+    const { date, timezone } = req.body;
+
+    if (timezone && user.timezone !== timezone) {
+      user.timezone = timezone;
+      await user.save();
+    }
+
+    let requestedDate;
+    if (date) {
+      requestedDate = new Date(date);
+    } else {
+      const options = { timeZone: user.timezone || "UTC", year: 'numeric', month: '2-digit', day: '2-digit' };
+      const formatter = new Intl.DateTimeFormat('en-CA', options);
+      const localDateStr = formatter.format(new Date());
+      requestedDate = new Date(localDateStr);
+    }
+
     // Verwende die getOrCreateTracker Funktion
-    let tracker = await getOrCreateTracker(user._id, requestedDate, req.user.recommendations);
+    let tracker = await getOrCreateTracker(user, requestedDate, req.user.recommendations);
 
     return res.status(200).json(tracker);
   } catch (err) {
@@ -582,8 +598,10 @@ exports.askQuestion = async (req, res) => {
       return res.status(400).json({ error: "A question is required." });
     }
 
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
+    const options = { timeZone: user.timezone || "UTC", year: 'numeric', month: '2-digit', day: '2-digit' };
+    const formatter = new Intl.DateTimeFormat('en-CA', options);
+    const localDateStr = formatter.format(new Date());
+    const today = new Date(localDateStr);
 
     const fourteenDaysAgo = new Date(today);
     fourteenDaysAgo.setDate(today.getDate() - 14);
@@ -972,7 +990,7 @@ exports.addItemToToday = async (req, res) => {
     // Tracker für heute abrufen oder erstellen
     const today = new Date();
     // getOrCreateTracker erwartet ein Datum-Objekt oder String
-    let tracker = await getOrCreateTracker(user._id, today, user.recommendations);
+    let tracker = await getOrCreateTracker(user, today, user.recommendations);
 
     tracker.foodItems.push(newFoodItem);
 
@@ -1249,8 +1267,11 @@ exports.trackMultimodal = async (req, res) => {
 exports.getHistory = async (req, res) => {
   try {
     const user = req.user;
-    const today = new Date();
-    today.setUTCHours(0, 0, 0, 0);
+    
+    const options = { timeZone: user.timezone || "UTC", year: 'numeric', month: '2-digit', day: '2-digit' };
+    const formatter = new Intl.DateTimeFormat('en-CA', options);
+    const localDateStr = formatter.format(new Date());
+    const today = new Date(localDateStr);
 
     const tenDaysAgo = new Date(today);
     tenDaysAgo.setDate(today.getDate() - 9);

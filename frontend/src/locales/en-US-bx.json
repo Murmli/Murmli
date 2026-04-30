@@ -443,7 +443,11 @@
     "generatedRecipes": "Recipes we whipped up",
     "plannerUsage": "Recipe plannah usage",
     "trainingPlans": "New trainin' plans",
-    "trainingLogs": "New trainin' logs"
+    "trainingLogs": "New trainin' logs",
+    "trendsTitle": "Trends (Last ten days, ked)",
+    "trend24h": "24h Trend, wicked smaht",
+    "trend7d": "7 Day Trend, ova heah",
+    "trend30d": "30 Day Trend, pahn the hahbah"
   },
   "adminTools": {
     "title": "Admin Stuff",

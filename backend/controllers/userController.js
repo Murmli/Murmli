@@ -105,6 +105,9 @@ exports.setLanguage = async (req, res) => {
     const user = req.user;
 
     user.language = normalizeLanguage(language);
+    if (timezone) {
+      user.timezone = timezone;
+    }
 
     if (await user.save()) {
       return res.status(200).json({ message: "Language updated successfully" });

@@ -443,7 +443,11 @@
     "generatedRecipes": "Gemachte Rezepte",
     "plannerUsage": "Rezeptplaner-Nutzung",
     "trainingPlans": "Neie Trainingsplän",
-    "trainingLogs": "Neie Trainingslogs"
+    "trainingLogs": "Neie Trainingslogs",
+    "trendsTitle": "Wia's grod lafft (De letnd 10 Tog)",
+    "trend24h": "24h G'schau",
+    "trend7d": "7 Tog G'schau",
+    "trend30d": "30 Tog G'schau"
   },
   "adminTools": {
     "title": "Admin-Werkzeug",

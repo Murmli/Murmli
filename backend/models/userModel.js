@@ -12,6 +12,10 @@ const userSchema = new Schema(
       type: String,
       default: "en",
     },
+    timezone: {
+      type: String,
+      default: "UTC",
+    },
     role: {
       type: String,
       enum: ["freeuser", "administrator", "premium"],

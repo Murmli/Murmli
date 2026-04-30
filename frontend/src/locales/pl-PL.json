@@ -443,7 +443,11 @@
     "generatedRecipes": "Wygenerowane przepisy",
     "plannerUsage": "Użycie planera przepisów",
     "trainingPlans": "Nowe plany treningowe",
-    "trainingLogs": "Nowe logi treningowe"
+    "trainingLogs": "Nowe logi treningowe",
+    "trendsTitle": "Trendy (ostatnie 10 dni)",
+    "trend24h": "Trend 24h",
+    "trend7d": "Trend 7-dniowy",
+    "trend30d": "Trend 30-dniowy"
   },
   "adminTools": {
     "title": "Narzędzia administratora",

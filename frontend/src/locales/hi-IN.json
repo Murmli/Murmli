@@ -443,7 +443,11 @@
     "generatedRecipes": "जनरेट किए गए व्यंजन",
     "plannerUsage": "प्लानर का उपयोग",
     "trainingPlans": "नई प्रशिक्षण योजनाएँ",
-    "trainingLogs": "नई प्रशिक्षण लॉग"
+    "trainingLogs": "नई प्रशिक्षण लॉग",
+    "trendsTitle": "रुझान (पिछले 10 दिन)",
+    "trend24h": "24 घंटे का रुझान",
+    "trend7d": "7 दिनों का रुझान",
+    "trend30d": "30 दिनों का रुझान"
   },
   "adminTools": {
     "title": "एडमिन टूल्स",
