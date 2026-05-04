@@ -476,9 +476,9 @@ export const useTrackerStore = defineStore("trackerStore", {
           "/calorietracker/set/recommendations",
           { recommendations, trackerId: this.tracker._id }
         );
-        if (response.status) {
-          this.tracker.recommendations = response.data.recommendations;
-          this.saveCache();
+        if (response && response.status === 200) {
+          // Refresh tracker to ensure all UI components are updated with the latest data
+          await this.refreshTracker();
           return true;
         }
       } catch (error) {
@@ -629,6 +629,8 @@ export const useTrackerStore = defineStore("trackerStore", {
         if (response) {
           this.bodyData = { ...this.bodyData, ...bodyData };
           this.saveCache();
+          // Also refresh tracker to ensure everything is consistent
+          await this.refreshTracker();
           return response.message;
         }
       } catch (error) {
