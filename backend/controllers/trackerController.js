@@ -118,28 +118,23 @@ exports.updateBodyData = async (req, res) => {
 
     bodyDataFields.forEach((field) => {
       if (req.body[field] !== undefined && field !== "weight") {
-        updateFields[field] = req.body[field];
+        if (field === "recommendations") {
+          // Deep merge recommendations
+          Object.assign(user.recommendations, req.body.recommendations);
+          user.markModified("recommendations");
+        } else {
+          user[field] = req.body[field];
+        }
       }
     });
 
-    if (req.body.recommendations) {
-      updateFields.recommendations = {};
-      ["kcal", "protein", "carbohydrates", "fat"].forEach((nutrient) => {
-        if (req.body.recommendations[nutrient] !== undefined) {
-          updateFields.recommendations[nutrient] = req.body.recommendations[nutrient];
-        }
-      });
-    }
-
-    if (Object.keys(updateFields).length > 0) {
-      await user.updateOne(updateFields, { new: true, runValidators: true });
-    }
-
-    // Update dietStartedAt if dietLevel is changed
+    // Update dietStartedAt if dietLevel is changed or explicit reset is requested
     if (req.body.dietLevel !== undefined && req.body.dietLevel !== user.dietLevel) {
       if (req.body.resetDietCounter !== false) {
         user.dietStartedAt = new Date();
       }
+    } else if (req.body.resetDietCounter === true) {
+      user.dietStartedAt = new Date();
     }
 
     // Save the updated user data

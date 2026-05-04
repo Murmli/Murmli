@@ -477,8 +477,12 @@ export const useTrackerStore = defineStore("trackerStore", {
           { recommendations, trackerId: this.tracker._id }
         );
         if (response && response.status === 200) {
-          // Refresh tracker to ensure all UI components are updated with the latest data
-          await this.refreshTracker();
+          // Refresh everything to ensure UI is in sync
+          await Promise.all([
+            this.fetchBodyData(),
+            this.refreshTracker(),
+            this.fetchHistory()
+          ]);
           return true;
         }
       } catch (error) {
@@ -627,10 +631,12 @@ export const useTrackerStore = defineStore("trackerStore", {
           bodyData
         );
         if (response) {
-          this.bodyData = { ...this.bodyData, ...bodyData };
-          this.saveCache();
-          // Also refresh tracker to ensure everything is consistent
-          await this.refreshTracker();
+          // Refresh everything to ensure UI is in sync
+          await Promise.all([
+            this.fetchBodyData(),
+            this.refreshTracker(),
+            this.fetchHistory()
+          ]);
           return response.message;
         }
       } catch (error) {
