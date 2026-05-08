@@ -54,43 +54,6 @@
       
       <v-divider></v-divider>
 
-      <!-- Trends Section -->
-      <v-card-text class="pa-4" v-if="!loading && stats.trends">
-        <!-- New Users Trends -->
-        <div class="mb-6">
-          <div class="text-subtitle-2 font-weight-bold mb-3 d-flex align-center">
-            <v-icon start size="small" color="success">mdi-account-plus</v-icon>
-            {{ languageStore.t('adminStats.newUsers') }} - {{ languageStore.t('adminStats.trendsTitle') }}
-          </div>
-          
-          <v-row>
-            <v-col cols="12" sm="4" v-for="period in ['24h', '7d', '30d']" :key="'new-'+period">
-              <div class="text-caption text-medium-emphasis mb-1">{{ languageStore.t('adminStats.trend' + period) }}</div>
-              <TrendChart :data="stats.trends.newUsers[period]" :height="60" />
-            </v-col>
-          </v-row>
-        </div>
-
-        <v-divider class="mb-4"></v-divider>
-
-        <!-- Active Users Trends -->
-        <div>
-          <div class="text-subtitle-2 font-weight-bold mb-3 d-flex align-center">
-            <v-icon start size="small" color="primary">mdi-account-check</v-icon>
-            {{ languageStore.t('adminStats.activeUsers') }} - {{ languageStore.t('adminStats.trendsTitle') }}
-          </div>
-          
-          <v-row>
-            <v-col cols="12" sm="4" v-for="period in ['24h', '7d', '30d']" :key="'active-'+period">
-              <div class="text-caption text-medium-emphasis mb-1">{{ languageStore.t('adminStats.trend' + period) }}</div>
-              <TrendChart :data="stats.trends.activeUsers[period]" :height="60" />
-            </v-col>
-          </v-row>
-        </div>
-      </v-card-text>
-
-      <v-divider></v-divider>
-
       <!-- Global / Smart Insights - Compact -->
       <v-card-text class="pa-3 bg-grey-lighten-4">
         <v-row dense>
@@ -143,7 +106,6 @@ import { ref, onMounted } from 'vue';
 import { useApiStore } from '@/stores/apiStore';
 import { useLanguageStore } from '@/stores/languageStore';
 import AdminFeedbackDialog from './AdminFeedbackDialog.vue';
-import TrendChart from './TrendChart.vue';
 
 const apiStore = useApiStore();
 const languageStore = useLanguageStore();

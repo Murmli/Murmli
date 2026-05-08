@@ -443,11 +443,7 @@
     "generatedRecipes": "Generated recipes",
     "plannerUsage": "Recipe planner usage",
     "trainingPlans": "New training plans",
-    "trainingLogs": "New training logs",
-    "trendsTitle": "Trends (Last 10 days)",
-    "trend24h": "24h trend",
-    "trend7d": "7 day trend",
-    "trend30d": "30 day trend"
+    "trainingLogs": "New training logs"
   },
   "adminTools": {
     "title": "Admin Tools",

@@ -443,11 +443,7 @@
     "generatedRecipes": "Recipes cooked up right",
     "plannerUsage": "Makin' a plan for supper",
     "trainingPlans": "New ways to get strong",
-    "trainingLogs": "Keepin' track of all that work",
-    "trendsTitle": "How things been a-movin' (Last 10 days)",
-    "trend24h": "The 24-hour leanin'",
-    "trend7d": "The 7-day stretch",
-    "trend30d": "That there 30-day drift"
+    "trainingLogs": "Keepin' track of all that work"
   },
   "adminTools": {
     "title": "Admin Tools",

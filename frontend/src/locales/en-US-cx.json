@@ -443,11 +443,7 @@
     "generatedRecipes": "Tasty grubs cooked up",
     "plannerUsage": "Meal flow sessions",
     "trainingPlans": "New workout sets",
-    "trainingLogs": "Recent shred logs",
-    "trendsTitle": "Sick Vibes (Last 10 Days)",
-    "trend24h": "24h Flow",
-    "trend7d": "7 Day Swell",
-    "trend30d": "30 Day Tides"
+    "trainingLogs": "Recent shred logs"
   },
   "adminTools": {
     "title": "Admin Deck",
