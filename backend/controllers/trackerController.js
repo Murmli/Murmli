@@ -6,6 +6,29 @@ const User = require("../models/userModel.js");
 const UserRecipe = require("../models/userRecipeModel.js");
 const { calculateAge, calculateCalories, calculateNutrientDistribution, calculateDietCalories, calculateFoodItemsTotals } = require(`../utils/trackerUtils.js`);
 
+// Normalizes timezone strings to valid IANA timezone identifiers
+function normalizeTimezone(tz) {
+  if (!tz || tz === "UTC" || tz === "Z") return "UTC";
+  
+  // Handle offset formats like +00:00, -05:00, etc.
+  const offsetMatch = tz.match(/^([+-])(\d{2}):(\d{2})$/);
+  if (offsetMatch) {
+    const sign = offsetMatch[1];
+    const hours = parseInt(offsetMatch[2]);
+    const minutes = parseInt(offsetMatch[3]);
+    
+    // Only handle common UTC offsets - for +00:00 return UTC
+    if (sign === '+' && hours === 0 && minutes === 0) return "UTC";
+    if (sign === '-' && hours === 0 && minutes === 0) return "UTC";
+    
+    // For other offsets, we can't reliably map to IANA - return UTC
+    console.warn(`Unsupported timezone offset: ${tz}, falling back to UTC`);
+    return "UTC";
+  }
+  
+  return tz; // Assume it's already a valid IANA timezone
+}
+
 const { textToTrack, audioToTrack, imageToTrack, multimodalToTrack, textToActivity, askCalorieTracker, chatWithTracker } = require(`../utils/llm.js`);
 const fs = require("fs");
 
@@ -23,7 +46,7 @@ async function getOrCreateTracker(user, date, recommendations) {
   let tracker = await Tracker.findOne({ user: user._id, date: normalizedDate });
 
   // Use user's timezone to determine "today"
-  const userTimezone = user.timezone || "UTC";
+  const userTimezone = normalizeTimezone(user.timezone);
   const todayLocal = new Date(new Date().toLocaleString("en-US", { timeZone: userTimezone }));
   const userTodayMidnightUTC = new Date(Date.UTC(todayLocal.getFullYear(), todayLocal.getMonth(), todayLocal.getDate()));
 
@@ -364,7 +387,7 @@ exports.getTrackerByDate = async (req, res) => {
     const { date, timezone } = req.body;
 
     if (timezone && user.timezone !== timezone) {
-      user.timezone = timezone;
+      user.timezone = normalizeTimezone(timezone);
       await user.save();
     }
 
@@ -373,7 +396,7 @@ exports.getTrackerByDate = async (req, res) => {
       requestedDate = new Date(date);
     } else {
       // Use user's timezone to determine "today"
-      const userTimezone = user.timezone || "UTC";
+      const userTimezone = normalizeTimezone(user.timezone);
       const todayLocal = new Date(new Date().toLocaleString("en-US", { timeZone: userTimezone }));
       requestedDate = new Date(Date.UTC(todayLocal.getFullYear(), todayLocal.getMonth(), todayLocal.getDate()));
     }
@@ -594,7 +617,7 @@ exports.askQuestion = async (req, res) => {
     }
 
     // Use user's timezone to determine "today"
-    const userTimezone = user.timezone || "UTC";
+    const userTimezone = normalizeTimezone(user.timezone);
     const todayLocal = new Date(new Date().toLocaleString("en-US", { timeZone: userTimezone }));
     const today = new Date(Date.UTC(todayLocal.getFullYear(), todayLocal.getMonth(), todayLocal.getDate()));
 
@@ -1263,9 +1286,22 @@ exports.getHistory = async (req, res) => {
   try {
     const user = req.user;
     
+    if (!user || !user._id) {
+      console.error("getHistory: User not found or invalid", { user: !!user, userId: user?._id });
+      return res.status(401).json({ error: "User not authenticated" });
+    }
+
     // Use user's timezone to determine "today"
-    const userTimezone = user.timezone || "UTC";
-    const todayLocal = new Date(new Date().toLocaleString("en-US", { timeZone: userTimezone }));
+    const userTimezone = normalizeTimezone(user.timezone);
+    
+    let todayLocal;
+    try {
+      todayLocal = new Date(new Date().toLocaleString("en-US", { timeZone: userTimezone }));
+    } catch (tzError) {
+      console.error("getHistory: Invalid timezone", { timezone: userTimezone, error: tzError.message });
+      return res.status(400).json({ error: "Invalid timezone setting" });
+    }
+    
     const today = new Date(Date.UTC(todayLocal.getFullYear(), todayLocal.getMonth(), todayLocal.getDate()));
 
     const tenDaysAgo = new Date(today);
@@ -1285,7 +1321,7 @@ exports.getHistory = async (req, res) => {
 
     return res.status(200).json({ history });
   } catch (err) {
-    console.error(err);
+    console.error("getHistory error:", err.message, err.stack);
     return res.status(500).json({ error: "Server Error" });
   }
 };
