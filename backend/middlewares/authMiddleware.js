@@ -23,8 +23,6 @@ exports.sessionMiddleware = async (req, res, next) => {
     if (!user) {
       return res.status(404).json({ error: "Token not Found" });
     } else {
-      user.updatedAt = new Date();
-      await user.save();
       req.user = user;
       next();
     }

@@ -372,10 +372,10 @@ exports.getTrackerByDate = async (req, res) => {
     if (date) {
       requestedDate = new Date(date);
     } else {
-      const options = { timeZone: user.timezone || "UTC", year: 'numeric', month: '2-digit', day: '2-digit' };
-      const formatter = new Intl.DateTimeFormat('en-CA', options);
-      const localDateStr = formatter.format(new Date());
-      requestedDate = new Date(localDateStr);
+      // Use user's timezone to determine "today"
+      const userTimezone = user.timezone || "UTC";
+      const todayLocal = new Date(new Date().toLocaleString("en-US", { timeZone: userTimezone }));
+      requestedDate = new Date(Date.UTC(todayLocal.getFullYear(), todayLocal.getMonth(), todayLocal.getDate()));
     }
 
     // Verwende die getOrCreateTracker Funktion
@@ -593,10 +593,10 @@ exports.askQuestion = async (req, res) => {
       return res.status(400).json({ error: "A question is required." });
     }
 
-    const options = { timeZone: user.timezone || "UTC", year: 'numeric', month: '2-digit', day: '2-digit' };
-    const formatter = new Intl.DateTimeFormat('en-CA', options);
-    const localDateStr = formatter.format(new Date());
-    const today = new Date(localDateStr);
+    // Use user's timezone to determine "today"
+    const userTimezone = user.timezone || "UTC";
+    const todayLocal = new Date(new Date().toLocaleString("en-US", { timeZone: userTimezone }));
+    const today = new Date(Date.UTC(todayLocal.getFullYear(), todayLocal.getMonth(), todayLocal.getDate()));
 
     const fourteenDaysAgo = new Date(today);
     fourteenDaysAgo.setDate(today.getDate() - 14);
@@ -1263,10 +1263,10 @@ exports.getHistory = async (req, res) => {
   try {
     const user = req.user;
     
-    const options = { timeZone: user.timezone || "UTC", year: 'numeric', month: '2-digit', day: '2-digit' };
-    const formatter = new Intl.DateTimeFormat('en-CA', options);
-    const localDateStr = formatter.format(new Date());
-    const today = new Date(localDateStr);
+    // Use user's timezone to determine "today"
+    const userTimezone = user.timezone || "UTC";
+    const todayLocal = new Date(new Date().toLocaleString("en-US", { timeZone: userTimezone }));
+    const today = new Date(Date.UTC(todayLocal.getFullYear(), todayLocal.getMonth(), todayLocal.getDate()));
 
     const tenDaysAgo = new Date(today);
     tenDaysAgo.setDate(today.getDate() - 9);
