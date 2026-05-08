@@ -443,11 +443,7 @@
     "generatedRecipes": "Zammgstöllte Rezepte",
     "plannerUsage": "Nutzung vom Rezeptplaner",
     "trainingPlans": "Neiche Trainingsplän",
-    "trainingLogs": "Neiche Trainingslogs",
-    "trendsTitle": "Wos grod so geht (de letzn 10 Tog’)",
-    "trend24h": "24h-Trend",
-    "trend7d": "7-Toge-Trend",
-    "trend30d": "30-Toge-Trend"
+    "trainingLogs": "Neiche Trainingslogs"
   },
   "adminTools": {
     "title": "Admin-Werkzuig",

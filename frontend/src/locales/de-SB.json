@@ -443,11 +443,7 @@
     "generatedRecipes": "Rezepte, wo gmacht worde send",
     "plannerUsage": "Rezeptplaner-Nutzong",
     "trainingPlans": "Neie Trainingsplän",
-    "trainingLogs": "Neie Trainingslogs",
-    "trendsTitle": "Was grad so goht (Die letschte 10 Täg)",
-    "trend24h": "24h Trend",
-    "trend7d": "7 Täg Trend",
-    "trend30d": "30 Täg Trend"
+    "trainingLogs": "Neie Trainingslogs"
   },
   "adminTools": {
     "title": "Admin-Werkzaig",

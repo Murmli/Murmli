@@ -443,11 +443,7 @@
     "generatedRecipes": "Vygenerované recepty",
     "plannerUsage": "Využití plánovače receptů",
     "trainingPlans": "Nové tréninkové plány",
-    "trainingLogs": "Nové tréninkové deníky",
-    "trendsTitle": "Trendy (Posledních 10 dní)",
-    "trend24h": "Trend za 24 h",
-    "trend7d": "7denní trend",
-    "trend30d": "30denní trend"
+    "trainingLogs": "Nové tréninkové deníky"
   },
   "adminTools": {
     "title": "Admin nástroje",

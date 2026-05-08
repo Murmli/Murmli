@@ -443,11 +443,7 @@
     "generatedRecipes": "Oluşturulan Tarifler",
     "plannerUsage": "Tarif Planlayıcı Kullanımı",
     "trainingPlans": "Yeni Antrenman Planları",
-    "trainingLogs": "Yeni Antrenman Kayıtları",
-    "trendsTitle": "Trendler (Son 10 Gün)",
-    "trend24h": "24s Trendi",
-    "trend7d": "7 Günlük Trend",
-    "trend30d": "30 Günlük Trend"
+    "trainingLogs": "Yeni Antrenman Kayıtları"
   },
   "adminTools": {
     "title": "Yönetici Araçları",

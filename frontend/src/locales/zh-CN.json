@@ -443,11 +443,7 @@
     "generatedRecipes": "生成的食谱",
     "plannerUsage": "饮食计划使用情况",
     "trainingPlans": "新训练计划",
-    "trainingLogs": "新训练日志",
-    "trendsTitle": "趋势（最近 10 天）",
-    "trend24h": "24小时趋势",
-    "trend7d": "7天趋势",
-    "trend30d": "30天趋势"
+    "trainingLogs": "新训练日志"
   },
   "adminTools": {
     "title": "管理员工具",

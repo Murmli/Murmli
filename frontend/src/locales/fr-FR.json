@@ -443,11 +443,7 @@
     "generatedRecipes": "Recettes générées",
     "plannerUsage": "Utilisation du planificateur de recettes",
     "trainingPlans": "Nouveaux programmes d'entraînement",
-    "trainingLogs": "Nouveaux journaux d'entraînement",
-    "trendsTitle": "Tendances (10 derniers jours)",
-    "trend24h": "Tendance 24h",
-    "trend7d": "Tendance 7 jours",
-    "trend30d": "Tendance 30 jours"
+    "trainingLogs": "Nouveaux journaux d'entraînement"
   },
   "adminTools": {
     "title": "Outils Admin",

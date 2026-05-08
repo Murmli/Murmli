@@ -443,11 +443,7 @@
     "generatedRecipes": "Rezepte gegönnt",
     "plannerUsage": "Planer-Action",
     "trainingPlans": "Frische Trainingspläne",
-    "trainingLogs": "Neue Workout-Logs",
-    "trendsTitle": "Hypes (Letzte 10 Tage)",
-    "trend24h": "24h Grind",
-    "trend7d": "7 Tage Streak",
-    "trend30d": "30 Tage Era"
+    "trainingLogs": "Neue Workout-Logs"
   },
   "adminTools": {
     "title": "Admin-Tools",
