@@ -134,7 +134,7 @@ exports.generateRecipeIngredients = async (name, description, descriptionShort, 
       systemPrompt,
       jsonSchema: recipeIngredientsSchema,
       cache: false,
-      modelType: "low",
+      modelType: "high",
     };
 
     if (image) {
@@ -183,12 +183,12 @@ exports.createRecipe = async (text, { inputImage, inputImages, inputAudio, exclu
       systemPrompt,
       jsonSchema: createRecipeSchema,
       cache: false,
-      modelType: "low"
+      modelType: "high"
     };
 
     // Sammle alle Dateien (Bilder und Audio) in einem Array
     const files = [];
-    
+
     // Mehrere Bilder
     if (inputImages && inputImages.length > 0) {
       files.push(...inputImages);
@@ -196,12 +196,12 @@ exports.createRecipe = async (text, { inputImage, inputImages, inputAudio, exclu
       // Einzelnes Bild (Legacy)
       files.push(inputImage);
     }
-    
+
     // Audio-Datei
     if (inputAudio) {
       files.push(inputAudio);
     }
-    
+
     if (files.length > 0) {
       apiOptions.files = files;
     }
@@ -250,7 +250,7 @@ exports.generateTrainingPlanFromText = async (
     const answer = await apiCall(text, {
       jsonSchema: trainingPlanSchema,
       cache: false,
-      modelType: "low",
+      modelType: "high",
       systemPrompt,
     });
 
@@ -290,7 +290,7 @@ exports.generateTrainingPlanContinuation = async (
     const answer = await apiCall(promptText, {
       jsonSchema: trainingPlanSchema,
       cache: false,
-      modelType: "low",
+      modelType: "high",
       systemPrompt,
     });
 
@@ -313,7 +313,7 @@ exports.migrateRecipe = async (recipe) => {
       ingredientNames
     );
 
-    const recipeCall = await apiCall(createRecipePrompt, { jsonSchema: migrateRecipeSchema, systemPrompt, modelType: "low" });
+    const recipeCall = await apiCall(createRecipePrompt, { jsonSchema: migrateRecipeSchema, systemPrompt, modelType: "high" });
     return recipeCall;
   } catch (error) {
     console.error("Error migrating recipe:", error.message);
@@ -502,7 +502,7 @@ exports.generateUserRecipe = async (text, file, outputLang) => {
     const apiOptions = {
       cache: false,
       jsonSchema: userRecipeSchema,
-      modelType: "low",
+      modelType: "high",
     };
 
     if (file) {
@@ -843,9 +843,9 @@ exports.multimodalToTrack = async (files, text, outputLang) => {
   try {
     const { imageToTrackerItemsSystemPrompt } = require("./prompts.js");
     const systemPrompt = imageToTrackerItemsSystemPrompt(outputLang);
-    
+
     let prompt = "Analysiere die bereitgestellten Medien und extrahiere die Nährwerte der abgebildeten/beschriebenen Lebensmittel.";
-    
+
     if (text && text.trim().length > 0) {
       prompt += `\n\nZusätzlicher Text vom Nutzer: "${text}"`;
     }
@@ -876,7 +876,7 @@ exports.multimodalToTrack = async (files, text, outputLang) => {
 exports.multimodalToTrainingPlan = async (files, text, user, existingExerciseNames, bodySummary, historySummary) => {
   try {
     const { generateTrainingPlanSystemPrompt } = require("./prompts.js");
-    
+
     const systemPrompt = generateTrainingPlanSystemPrompt(
       user.language,
       user,
@@ -884,9 +884,9 @@ exports.multimodalToTrainingPlan = async (files, text, user, existingExerciseNam
       bodySummary,
       historySummary
     );
-    
+
     let prompt = "Erstelle einen Trainingsplan basierend auf den bereitgestellten Medien und dem Text.";
-    
+
     if (text && text.trim().length > 0) {
       prompt += `\n\nZusätzlicher Text vom Nutzer: "${text}"`;
     }
@@ -896,7 +896,7 @@ exports.multimodalToTrainingPlan = async (files, text, user, existingExerciseNam
       jsonSchema: trainingPlanSchema,
       files: files,
       systemPrompt,
-      modelType: "low",
+      modelType: "high",
     };
 
     const answer = await apiCall(prompt, apiOptions);
@@ -1125,7 +1125,7 @@ exports.chatWithTracker = async (messages, tracker, bodyData, language, userId, 
     while (response && response.tool_calls && maxIterations > 0) {
       maxIterations--;
       const toolCalls = response.tool_calls;
-      
+
       // Add the assistant message with tool calls to history
       toolContextHistory.push(response.message);
 
@@ -1155,7 +1155,7 @@ exports.chatWithTracker = async (messages, tracker, bodyData, language, userId, 
         } else if (functionName === "add_food_item") {
           const date = args.date ? new Date(args.date) : new Date();
           date.setUTCHours(0, 0, 0, 0);
-          
+
           let targetTracker = await Tracker.findOne({ user: userId, date: date });
           if (!targetTracker) {
             targetTracker = new Tracker({
@@ -1187,7 +1187,7 @@ exports.chatWithTracker = async (messages, tracker, bodyData, language, userId, 
         } else if (functionName === "update_food_item") {
           const date = new Date(args.date);
           date.setUTCHours(0, 0, 0, 0);
-          
+
           const targetTracker = await Tracker.findOne({ user: userId, date: date });
           if (!targetTracker) {
             result = "Fehler: Kein Tracker für dieses Datum gefunden.";
@@ -1216,7 +1216,7 @@ exports.chatWithTracker = async (messages, tracker, bodyData, language, userId, 
         } else if (functionName === "remove_food_item") {
           const date = new Date(args.date);
           date.setUTCHours(0, 0, 0, 0);
-          
+
           const targetTracker = await Tracker.findOne({ user: userId, date: date });
           if (!targetTracker) {
             result = "Fehler: Kein Tracker für dieses Datum gefunden.";
