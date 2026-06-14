@@ -634,6 +634,30 @@ exports.askQuestion = async (req, res) => {
       return res.status(404).json({ error: "No trackers found for the last 14 days." });
     }
 
+    const trackersDto = trackers.map(t => ({
+      date: t.date,
+      totals: {
+        kcal: t.totals?.kcal || 0,
+        protein: t.totals?.protein || 0,
+        carbohydrates: t.totals?.carbohydrates || 0,
+        fat: t.totals?.fat || 0
+      },
+      foodItems: t.foodItems.map(item => ({
+        name: item.name,
+        amount: item.amount,
+        unit: item.unit,
+        kcal: item.kcal,
+        protein: item.protein,
+        carbohydrates: item.carbohydrates,
+        fat: item.fat
+      })),
+      activities: t.activities.map(activity => ({
+        name: activity.name,
+        duration: activity.duration,
+        caloriesBurned: activity.caloriesBurned
+      }))
+    }));
+
     const bodyData = {
       height: user.height,
       weight: user.weight,
@@ -643,7 +667,7 @@ exports.askQuestion = async (req, res) => {
 
     const plannerPrompt = user.suggestions?.filter?.prompt || "";
 
-    const response = await askCalorieTracker(question, trackers, bodyData, user.language, plannerPrompt);
+    const response = await askCalorieTracker(question, trackersDto, bodyData, user.language, plannerPrompt);
 
     return res.status(200).json({ answer: response });
   } catch (error) {

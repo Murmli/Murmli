@@ -114,7 +114,7 @@ exports.generateRecipeInstructions = async (name, description, descriptionShort,
       systemPrompt,
       jsonSchema: recipeInstructionsSchema,
       cache: false,
-      modelType: "high",
+      modelType: "low",
     });
 
     return response;
@@ -134,7 +134,7 @@ exports.generateRecipeIngredients = async (name, description, descriptionShort, 
       systemPrompt,
       jsonSchema: recipeIngredientsSchema,
       cache: false,
-      modelType: "high",
+      modelType: "low",
     };
 
     if (image) {
@@ -183,7 +183,7 @@ exports.createRecipe = async (text, { inputImage, inputImages, inputAudio, exclu
       systemPrompt,
       jsonSchema: createRecipeSchema,
       cache: false,
-      modelType: "high"
+      modelType: "low"
     };
 
     // Sammle alle Dateien (Bilder und Audio) in einem Array
@@ -250,7 +250,7 @@ exports.generateTrainingPlanFromText = async (
     const answer = await apiCall(text, {
       jsonSchema: trainingPlanSchema,
       cache: false,
-      modelType: "high",
+      modelType: "low",
       systemPrompt,
     });
 
@@ -290,7 +290,7 @@ exports.generateTrainingPlanContinuation = async (
     const answer = await apiCall(promptText, {
       jsonSchema: trainingPlanSchema,
       cache: false,
-      modelType: "high",
+      modelType: "low",
       systemPrompt,
     });
 
@@ -313,7 +313,7 @@ exports.migrateRecipe = async (recipe) => {
       ingredientNames
     );
 
-    const recipeCall = await apiCall(createRecipePrompt, { jsonSchema: migrateRecipeSchema, systemPrompt, modelType: "high" });
+    const recipeCall = await apiCall(createRecipePrompt, { jsonSchema: migrateRecipeSchema, systemPrompt, modelType: "low" });
     return recipeCall;
   } catch (error) {
     console.error("Error migrating recipe:", error.message);
@@ -502,7 +502,7 @@ exports.generateUserRecipe = async (text, file, outputLang) => {
     const apiOptions = {
       cache: false,
       jsonSchema: userRecipeSchema,
-      modelType: "high",
+      modelType: "low",
     };
 
     if (file) {
@@ -776,14 +776,22 @@ exports.trainingLogToActivity = async ({ currentLog, user }) => {
 
 exports.audioToItemArray = async (file) => {
   try {
+    const AudioTranscriber = require("./audioTranscriber.js");
+    const transcriber = new AudioTranscriber();
+    const transcribedText = await transcriber.transcribeFromBuffer(file);
+
+    if (!transcribedText) {
+      console.error("Audio transcription failed.");
+      return false;
+    }
+
     const { itemToArraySystemPrompt } = require("./prompts.js");
     const systemPrompt = itemToArraySystemPrompt();
-    const prompt = "Listen to the audio and extract the shopping list items.";
+    const prompt = `Extrahiere die Einkaufsliste aus folgendem transkribiertem Audio: "${transcribedText}"`;
 
     const answer = await apiCall(prompt, {
       jsonSchema: shoppingListItemsSchema,
       systemPrompt,
-      files: [file],
       cache: false
     });
 
@@ -888,7 +896,7 @@ exports.multimodalToTrainingPlan = async (files, text, user, existingExerciseNam
       jsonSchema: trainingPlanSchema,
       files: files,
       systemPrompt,
-      modelType: "high",
+      modelType: "low",
     };
 
     const answer = await apiCall(prompt, apiOptions);

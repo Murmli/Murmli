@@ -2,6 +2,7 @@ const OpenAI = require("openai");
 const { toFile } = OpenAI;
 const { llmGetHash, llmReadCache, llmWriteCache } = require("./../llmCache.js");
 const fs = require("fs").promises;
+const sharp = require("sharp");
 
 class BaseLLMClient {
   constructor({ provider, apiKey, baseURL, lowModel, highModel, imageModel = false }) {
@@ -13,9 +14,20 @@ class BaseLLMClient {
     process.env.DEBUG = false; // Disable OpenAI library debug logs
   }
 
-  async encodeFileToBase64(filePath) {
-    const fileData = await fs.readFile(filePath);
-    return fileData.toString("base64");
+  async processAndEncodeFile(file) {
+    if (file.mimetype && file.mimetype.startsWith("image/")) {
+      try {
+        const processedBuffer = await sharp(file.path)
+          .resize({ width: 1024, height: 1024, fit: 'inside', withoutEnlargement: true })
+          .jpeg({ quality: 80 })
+          .toBuffer();
+        return { base64Data: processedBuffer.toString("base64"), mimetype: "image/jpeg" };
+      } catch (err) {
+        console.error("Error compressing image, falling back to original:", err);
+      }
+    }
+    const fileData = await fs.readFile(file.path);
+    return { base64Data: fileData.toString("base64"), mimetype: file.mimetype };
   }
 
   /**
@@ -88,7 +100,7 @@ class BaseLLMClient {
     if (files.length > 0) {
       const fileContent = await Promise.all(
         files.map(async (file) => {
-          const base64Data = await this.encodeFileToBase64(file.path);
+          const { base64Data, mimetype } = await this.processAndEncodeFile(file);
 
           if (file.mimetype.startsWith("audio/")) {
             // Determine format from mimetype or filename extension
@@ -133,7 +145,7 @@ class BaseLLMClient {
             // Default to image handling
             return {
               type: "image_url",
-              image_url: { url: `data:${file.mimetype};base64,${base64Data}` },
+              image_url: { url: `data:${mimetype};base64,${base64Data}` },
             };
           }
         })
@@ -153,97 +165,106 @@ class BaseLLMClient {
       }
     }
 
-    try {
-      if (debug) {
-        const hash = llmGetHash(hashPrompt, this.provider);
-        console.log("\x1b[31m%s\x1b[0m", "System Prompt:", cleanedSystemPrompt);
-        console.log("\x1b[32m%s\x1b[0m", "Prompt:", cleanedPrompt);
-        console.log("\x1b[33m%s\x1b[0m", "LLM Cache Hash: ", hash);
-        console.log("\x1b[36m%s\x1b[0m", "Messages:", JSON.stringify(messages, null, 2));
-        if (tools) console.log("\x1b[35m%s\x1b[0m", "Tools:", JSON.stringify(tools, null, 2));
-      }
+    let attempt = 0;
+    const maxAttempts = (json || jsonSchema) && modelType === "low" ? 2 : 1;
 
-      const completionOptions = {
-        model: selectedModel,
-        messages,
-      };
-
-      if (jsonSchema) {
-        completionOptions.response_format = { type: "json_schema", json_schema: jsonSchema };
-      } else if (json) {
-        completionOptions.response_format = { type: "json_object" };
-      }
-
-      if (tools && tools.length > 0) {
-        completionOptions.tools = tools;
-        completionOptions.tool_choice = toolChoice;
-      }
-
-      const response = await this.llm.chat.completions.create(completionOptions);
-
-      // Validate response structure
-      if (!response || !response.choices || !Array.isArray(response.choices) || response.choices.length === 0) {
-        console.error(`Invalid response structure from ${this.provider} API:`, response);
-        return false;
-      }
-
-      const message = response.choices[0].message;
-
-      // Check for tool calls
-      if (message.tool_calls && message.tool_calls.length > 0) {
+    while (attempt < maxAttempts) {
+      attempt++;
+      try {
         if (debug) {
-          console.log("\x1b[35m%s\x1b[0m", "Tool Calls:", JSON.stringify(message.tool_calls, null, 2));
+          const hash = llmGetHash(hashPrompt, this.provider);
+          console.log("\x1b[31m%s\x1b[0m", "System Prompt:", cleanedSystemPrompt);
+          console.log("\x1b[32m%s\x1b[0m", "Prompt:", cleanedPrompt);
+          console.log("\x1b[33m%s\x1b[0m", "LLM Cache Hash: ", hash);
+          console.log("\x1b[36m%s\x1b[0m", "Messages:", JSON.stringify(messages, null, 2));
+          if (tools) console.log("\x1b[35m%s\x1b[0m", "Tools:", JSON.stringify(tools, null, 2));
+          console.log("\x1b[35m%s\x1b[0m", "Model:", selectedModel, "Attempt:", attempt);
         }
-        return {
-          tool_calls: message.tool_calls,
-          message: message // Include the full message for history
+
+        const completionOptions = {
+          model: selectedModel,
+          messages,
         };
-      }
 
-      if (!message.content) {
-        console.error(`Invalid message structure in response from ${this.provider} API:`, response.choices[0]);
-        return false;
-      }
+        if (jsonSchema) {
+          completionOptions.response_format = { type: "json_schema", json_schema: jsonSchema };
+        } else if (json) {
+          completionOptions.response_format = { type: "json_object" };
+        }
 
-      const answer = message.content;
+        if (tools && tools.length > 0) {
+          completionOptions.tools = tools;
+          completionOptions.tool_choice = toolChoice;
+        }
 
-      if (cache && !debug) {
-        llmWriteCache(hashPrompt, this.provider, selectedModel, answer);
-      }
+        const response = await this.llm.chat.completions.create(completionOptions);
 
-      if (debug) {
-        console.log("\x1b[33m%s\x1b[0m", "API Response:", answer);
-      }
-
-      let cleanAnswer = answer;
-      // Strip markdown code blocks if present
-      if (typeof cleanAnswer === 'string') {
-        cleanAnswer = cleanAnswer.replace(/^```json\s*/, "").replace(/^```\s*/, "").replace(/\s*```$/, "").trim();
-      }
-
-      // Parse JSON if required
-      if (json || jsonSchema) {
-        if (!cleanAnswer) {
-          console.error(`Empty response from ${this.provider} API when JSON was expected`);
+        // Validate response structure
+        if (!response || !response.choices || !Array.isArray(response.choices) || response.choices.length === 0) {
+          console.error(`Invalid response structure from ${this.provider} API:`, response);
+          if (attempt < maxAttempts) { selectedModel = this.highModel; continue; }
           return false;
+        }
+
+        const message = response.choices[0].message;
+
+        // Check for tool calls
+        if (message.tool_calls && message.tool_calls.length > 0) {
+          if (debug) console.log("\x1b[35m%s\x1b[0m", "Tool Calls:", JSON.stringify(message.tool_calls, null, 2));
+          return { tool_calls: message.tool_calls, message: message };
+        }
+
+        if (!message.content) {
+          console.error(`Invalid message structure in response from ${this.provider} API:`, response.choices[0]);
+          if (attempt < maxAttempts) { selectedModel = this.highModel; continue; }
+          return false;
+        }
+
+        const answer = message.content;
+
+        if (cache && !debug) {
+          llmWriteCache(hashPrompt, this.provider, selectedModel, answer);
+        }
+
+        if (debug) console.log("\x1b[33m%s\x1b[0m", "API Response:", answer);
+
+        let cleanAnswer = answer;
+        // Strip markdown code blocks if present
+        if (typeof cleanAnswer === 'string') {
+          cleanAnswer = cleanAnswer.replace(/^```json\s*/, "").replace(/^```\s*/, "").replace(/\s*```$/, "").trim();
+        }
+
+        // Parse JSON if required
+        if (json || jsonSchema) {
+          if (!cleanAnswer) {
+            console.error(`Empty response from ${this.provider} API when JSON was expected`);
+            if (attempt < maxAttempts) { selectedModel = this.highModel; continue; }
+            return false;
+          }
+          
+          try {
+            return JSON.parse(cleanAnswer);
+          } catch (parseError) {
+            console.error(`JSON parse error from ${this.provider} API:`, parseError.message);
+            if (attempt < maxAttempts) { 
+              console.log(`Fallback triggered: Switching from ${this.lowModel} to ${this.highModel}`);
+              selectedModel = this.highModel; 
+              continue; 
+            }
+            return false;
+          }
         }
         
-        try {
-          return JSON.parse(cleanAnswer);
-        } catch (parseError) {
-          console.error(`JSON parse error from ${this.provider} API:`, parseError.message);
-          console.error("Response content:", cleanAnswer.substring(0, 200) + (cleanAnswer.length > 200 ? '...' : ''));
-          return false;
+        return cleanAnswer;
+      } catch (error) {
+        console.error(`Error with ${this.provider} API:`, error.response ? error.response.data : error.message);
+        if (attempt < maxAttempts) {
+            console.log(`Fallback triggered due to error: Switching from ${this.lowModel} to ${this.highModel}`);
+            selectedModel = this.highModel;
+            continue;
         }
+        return false;
       }
-      
-      return cleanAnswer;
-    } catch (error) {
-      console.error(`Error with ${this.provider} API:`, error.response ? error.response.data : error.message);
-      if (error.response && error.response.data && error.response.data.error) {
-        console.error("API Error Details:", error.response.data.error);
-      }
-      return false;
     }
   }
 

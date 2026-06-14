@@ -377,6 +377,7 @@ exports.textToActivityPrompt = (text, gender, height, weight) => {
 exports.askCalorieTrackerSystemPrompt = (tracker, bodydata, outputLang, plannerPrompt) => {
   const age = calculateAge(bodydata.birthyear);
   const now = new Date();
+  now.setMinutes(0, 0, 0); // Round to hour to improve cache hit rate
   const currentDateTime = now.toLocaleString('de-DE', { timeZone: 'Europe/Berlin' });
 
   let plannerInfo = "";
@@ -629,6 +630,17 @@ exports.generateTrainingPlanSystemPrompt = (
   bodySummary,
   historySummary
 ) => {
+  const leanUserObj = {
+    height: userObj.height,
+    weight: userObj.weight,
+    gender: userObj.gender,
+    birthyear: userObj.birthyear,
+    language: userObj.language,
+    dietType: userObj.dietType,
+    fitnessLevel: userObj.fitnessLevel || null,
+    suggestions: userObj.suggestions || null
+  };
+
   return `
     Erstelle einen Trainingsplan als JSON-Objekt.
 
@@ -645,7 +657,7 @@ exports.generateTrainingPlanSystemPrompt = (
     Kontext, in dem du entscheiden sollst:
     - Sprache der Antwort: ${language}
     - Nutzerprofil (vereinfacht): ${JSON.stringify(bodySummary)}
-    - Nutzerobjekt (vollständig): ${JSON.stringify(userObj)}
+    - Nutzerobjekt (relevant): ${JSON.stringify(leanUserObj)}
     - Kürzlich verwendete Übungen (vermeiden, ähnliche Alternativen bevorzugen): ${JSON.stringify(existingExerciseNames)}
     - Trainingshistorie (kompakt): ${JSON.stringify(historySummary)}
 
