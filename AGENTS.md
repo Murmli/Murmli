@@ -1,7 +1,3 @@
-# GEMINI.md - Murmli Project Context
-
-Dieses Dokument dient als zentraler Kontext für die Arbeit mit der Murmli-Codebase. Es beschreibt die Architektur, Technologien und Konventionen des Projekts.
-
 ## Projektübersicht
 
 Murmli ist eine ganzheitliche Plattform für Fitness und Ernährung. Sie kombiniert Einkaufslisten, Rezepte, Mahlzeitenplanung, Kalorientracking und Trainingsprogramme in einer einheitlichen Anwendung. Die App nutzt intensiv Large Language Models (LLMs) für automatisierte Workflows und intelligente Empfehlungen.
@@ -87,13 +83,13 @@ npm run apprun
 
 ## Wichtige Befehle (Zusammenfassung)
 
-| Befehl | Beschreibung |
-| :--- | :--- |
-| `npm run install:all` | Installiert alle Abhängigkeiten im gesamten Monorepo. |
-| `npm run dev` | Startet Backend (nodemon) und Frontend (vite) im Dev-Modus. |
-| `npm run test:e2e` | Führt die Playwright E2E-Tests aus. |
-| `cd backend && npm test` | Führt Backend-Unit-Tests (Jest) aus. |
-| `cd frontend && npm run build` | Erstellt den Produktions-Build des Frontends. |
+| Befehl                         | Beschreibung                                                |
+| :----------------------------- | :---------------------------------------------------------- |
+| `npm run install:all`          | Installiert alle Abhängigkeiten im gesamten Monorepo.       |
+| `npm run dev`                  | Startet Backend (nodemon) und Frontend (vite) im Dev-Modus. |
+| `npm run test:e2e`             | Führt die Playwright E2E-Tests aus.                         |
+| `cd backend && npm test`       | Führt Backend-Unit-Tests (Jest) aus.                        |
+| `cd frontend && npm run build` | Erstellt den Produktions-Build des Frontends.               |
 
 ---
 
