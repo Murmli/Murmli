@@ -2,6 +2,16 @@
 
 Murmli ist eine ganzheitliche Plattform für Fitness und Ernährung. Sie kombiniert Einkaufslisten, Rezepte, Mahlzeitenplanung, Kalorientracking und Trainingsprogramme in einer einheitlichen Anwendung. Die App nutzt intensiv Large Language Models (LLMs) für automatisierte Workflows und intelligente Empfehlungen.
 
+### Projektmodule & Funktionen
+
+- **Rezepte & Ernährung (`recipeModel.js`, `recipeController.js`):** Erstellung, Verwaltung und KI-gestützte Generierung von Rezepten.
+- **Mahlzeitenplanung (`planerController.js`):** Planung von Mahlzeiten für Tage oder Wochen basierend auf den Rezepten.
+- **Einkaufslisten (`shoppingListModel.js`, `shoppingListController.js`):** Automatische und manuelle Aggregation von Zutaten für den Einkauf.
+- **Kalorientracking & Ernährungstagebuch (`trackerModel.js`, `trackerController.js`):** Aufzeichnung täglicher Kalorien- und Makronährstoffaufnahmen sowie Favoriten-Lebensmittel (`favoriteFoodModel.js`).
+- **Trainingsprogramme & Fitness (`trainingPlanModel.js`, `trainingLogModel.js`):** Erstellung strukturierter Trainingspläne und Protokollierung absolvierter Einheiten (`trainingLogController.js`).
+- **Benutzerverwaltung (`userModel.js`, `userController.js`):** Registrierung, Authentifizierung (JWT) und Profilverwaltung der Endnutzer.
+- **LLM-Caching & KI-Hilfen (`llmCacheModel.js`, `llm.js`):** Zentrales Caching und Routing aller LLM-Anfragen zur Effizienzsteigerung und Kostenreduktion.
+
 ### Kern-Technologien
 
 - **Monorepo:** Verwaltet Backend und Frontend in einem Repository.
@@ -78,6 +88,8 @@ npm run apprun
     - **iOS:** In `frontend/ios/App/App.xcodeproj/project.pbxproj` den Wert `MARKETING_VERSION` anpassen.
     - **Android:** In `frontend/android/app/build.gradle` den Wert `versionName` anpassen.
 - **Testing:** Bei Änderungen am Backend sollten bestehende Jest-Tests (`backend/tests`) ausgeführt werden. E2E-Tests befinden sich im Wurzelverzeichnis unter `tests/e2e`.
+- **Datenbank-Kompatibilität & Integrität:** Änderungen an Mongoose-Schemata, Modellen oder Datenbankkonfigurationen dürfen unter keinen Umständen dazu führen, dass die Datenbank oder die App nicht mehr funktioniert. Die Abwärtskompatibilität der Datenstrukturen muss gewahrt bleiben.
+- **Backend-Frontend Zusammenspiel:** Änderungen dürfen die Kommunikation und das Zusammenspiel zwischen Backend und Frontend nicht beeinträchtigen. Sollte eine Änderung potenziell zu Inkompatibilitäten führen (Breaking Changes), muss der Entwickler/Agent **zuvor explizit nachfragen** und die Freigabe des Nutzers einholen. Solche Ausfälle sollten jedoch grundsätzlich vermieden werden.
 
 ---
 
