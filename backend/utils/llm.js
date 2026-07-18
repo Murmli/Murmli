@@ -26,12 +26,7 @@ const imageVisionSchema = require("./schemas/imageVision.schema.js");
 const createRecipeSchema = require("./schemas/createRecipe.schema.js");
 const mdiIconSchema = require("./schemas/mdiIcon.schema.js");
 
-const provider = process.env.LLM_PROVIDER || "openai";
-if (!process.env.LLM_PROVIDER) {
-  throw new Error("LLM_PROVIDER is not defined in environment variables");
-}
-
-const { apiCall } = require(`./llm/${provider}.js`);
+const { apiCall } = require("./llm/openrouter.js");
 const { generateImage } = require("./imageUtils.js");
 
 /**
@@ -915,40 +910,7 @@ exports.chatWithRecipe = async (messages, recipe, language) => {
     const { chatWithRecipeSystemPrompt } = require("./prompts.js");
     const systemPrompt = chatWithRecipeSystemPrompt(recipe, language);
 
-    // Assuming apiCall handles array of messages appropriately or we need to pass the last message as prompt and others as history?
-    // Looking at other functions, apiCall takes (prompt, options).
-    // Usually 'messages' implies a history.
-    // If apiCall supports 'messages' in options or if the first argument can be messages array.
-    // Let's check apiCall usage in llm/openai.js or similar if possible.
-    // Since I cannot see llm/openai.js, I will assume standard usage where I construct the prompt or use a specific chat method.
-    // However, looking at the other functions, they seem to be single-turn or limited context.
-    // If 'messages' is an array of {role, content}, I might need to format it or use a specific option.
-    // The previous plan mentioned "Neu: chatWithRecipe(messages, ...)"
-    // Let's assume apiCall standard implementation:
-
-    // If apiCall primarily takes a string prompt, I might need to concatenate or send the messages array in options.
-    // Let's try sending the last message as prompt and the rest as history if supported, OR just pass the messages array if apiCall supports it.
-    // In `llm.js`, `apiCall` is imported.
-
-    // I'll assume for now `apiCall` can handle a conversation if I pass it correctly.
-    // If `apiCall` expects a string prompt, I will take the last message content as prompt.
-    // And if `apiCall` supports `messages` or `history` in options, I'll pass the previous ones.
-
-    // Given the lack of visibility into `llm/openai.js`, I'll check `llm.js` again for any conversation usage.
-    // `askTrainingPlan` takes `question` text.
-
-    // I'll assume `messages` is just the user's latest input text for now to be safe, OR I will pass the whole array to apiCall if my `apiCall` wrapper supports it.
-    // But since I don't know, I'll assume the user sends the chat history.
-
-    // Let's look at `llm/openai.js` (I can list dir to check if I can read it). 
-    // Actually, I can read `c:\Users\MGasc\Documents\Murmli\backend\utils\llm\llm.js` but the import says `require(./llm/${provider}.js)`.
-    // I should check `c:\Users\MGasc\Documents\Murmli\backend\utils\llm\openai.js` if it exists.
-
-    // For now, I will implement it assuming `messages` is an array and I'll pass it to apiCall.
-    // If apiCall expects a string, it might fail if I pass an array.
-
-    // Let's verify `apiCall` signature by reading `backend/utils/llm/openai.js`.
-
+    // The last message is the current question; everything before it is chat history.
     const lastMessage = messages[messages.length - 1].content;
     const history = messages.slice(0, -1);
 
@@ -1122,9 +1084,9 @@ exports.chatWithTracker = async (messages, tracker, bodyData, language, userId, 
 
     const User = require("../models/userModel.js");
 
-    while (response && response.tool_calls && maxIterations > 0) {
+    while (response && response.toolCalls && maxIterations > 0) {
       maxIterations--;
-      const toolCalls = response.tool_calls;
+      const toolCalls = response.toolCalls;
 
       // Add the assistant message with tool calls to history
       toolContextHistory.push(response.message);
@@ -1261,7 +1223,7 @@ exports.chatWithTracker = async (messages, tracker, bodyData, language, userId, 
 
         toolContextHistory.push({
           role: "tool",
-          tool_call_id: toolCall.id,
+          toolCallId: toolCall.id,
           content: result,
         });
       }

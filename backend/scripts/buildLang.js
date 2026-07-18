@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 require('dotenv').config();
-const OpenAI = require("openai");
+const { getOpenRouterClient } = require("../utils/llm/sdkClient.js");
 
 // Settings
 const maxParallelTranslations = 5; // Maximale Anzahl paralleler Übersetzungen
@@ -30,13 +30,8 @@ const { languageMapRaw, languageMap } = require("../languageMap.js");
 const localesDir = path.join(__dirname, '..', 'locales');
 
 // OpenRouter Configuration
-const openai = new OpenAI({
-    baseURL: "https://openrouter.ai/api/v1",
-    apiKey: process.env.OPENROUTER_API_KEY || process.env.OPENAI_API_KEY
-});
-
-if (!process.env.OPENROUTER_API_KEY && !process.env.OPENAI_API_KEY) {
-    console.error('API key is missing. Please set OPENROUTER_API_KEY or OPENAI_API_KEY in your .env file.');
+if (!process.env.OPENROUTER_API_KEY) {
+    console.error('API key is missing. Please set OPENROUTER_API_KEY in your .env file.');
     process.exit(1);
 }
 
@@ -141,10 +136,14 @@ Anforderungen:
     ];
 
     try {
-        const response = await openai.chat.completions.create({
-            model: process.env.OPENROUTER_MODEL || "google/gemini-3-flash-preview",
-            messages: messages,
-            response_format: { type: "json_object" },
+        const client = await getOpenRouterClient();
+        const response = await client.chat.send({
+            chatRequest: {
+                model: process.env.OPENROUTER_MODEL || "google/gemini-3-flash-preview",
+                messages: messages,
+                responseFormat: { type: "json_object" },
+                stream: false,
+            },
         });
         return response.choices[0].message.content;
     } catch (error) {

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { MongoMemoryServer } = require('mongodb-memory-server');
 jest.setTimeout(20000);
 
-jest.mock('../utils/llm/openai.js', () => ({
+jest.mock('../utils/llm/openrouter.js', () => ({
   apiCall: jest.fn().mockResolvedValue({
     name: 'Generated Plan',
     type: 'gym',
@@ -20,12 +20,11 @@ jest.mock('../utils/llm/openai.js', () => ({
     ],
     durationWeeks: 1
   }),
-  generateImage: jest.fn().mockResolvedValue('base64data'),
-  editImage: jest.fn(),
 }));
 
 jest.mock('../utils/imageUtils.js', () => ({
-  uploadBase64ImageToStorage: jest.fn().mockResolvedValue('http://stored/img.jpg'),
+  generateImage: jest.fn().mockResolvedValue('http://generated/img.jpg'),
+  uploadImageToStorage: jest.fn().mockResolvedValue('http://stored/img.jpg'),
   deleteImageFromStorage: jest.fn(),
 }));
 
@@ -41,7 +40,6 @@ let planId;
 beforeAll(async () => {
   process.env.JWT_SECRET = 'jwt';
   process.env.SECRET_KEY = userSecretKey;
-  process.env.LLM_PROVIDER = 'openai';
 
   mongoServer = await MongoMemoryServer.create();
   process.env.DB_STRING = mongoServer.getUri();
@@ -114,9 +112,9 @@ describe('Training workflow', () => {
     expect(img).not.toBeNull();
     expect(img.imageUrl).toBe('http://stored/img.jpg');
 
-    expect(imageUtils.uploadBase64ImageToStorage).toHaveBeenCalled();
-    const filenameArg = imageUtils.uploadBase64ImageToStorage.mock.calls[0][1];
-    expect(filenameArg).toMatch(/^ei_\d{5,6}$/);
+    expect(imageUtils.uploadImageToStorage).toHaveBeenCalled();
+    const filenameArg = imageUtils.uploadImageToStorage.mock.calls[0][1];
+    expect(filenameArg).toMatch(/^ei_push-up_\d{6}$/);
   }, 20000);
 
   test('update training plan exercise', async () => {

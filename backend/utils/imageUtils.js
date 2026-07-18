@@ -1,4 +1,5 @@
 const { BlobServiceClient } = require("@azure/storage-blob");
+const { getOpenRouterClient } = require("./llm/sdkClient.js");
 
 const OPENROUTER_IMAGE_MODEL = process.env.OPENROUTER_RECIPE_IMAGE_MODEL || "google/gemini-2.5-flash-image";
 const SUPPORTED_ASPECT_RATIOS = new Set([
@@ -73,6 +74,9 @@ const normalizeImageUrl = (entry) => {
   if (typeof entry.url === "string") {
     return entry.url;
   }
+  if (entry.imageUrl) {
+    return normalizeImageUrl(entry.imageUrl);
+  }
   if (entry.image_url) {
     return normalizeImageUrl(entry.image_url);
   }
@@ -110,21 +114,13 @@ const extractImageUrlFromMessage = (message) => {
   return normalizeImageUrl(message.image_url);
 };
 
-// Funktion zum Generieren eines Bildes über OpenRouter (Gemini 2.5 Flash Image)
+// Funktion zum Generieren eines Bildes über OpenRouter (Standard: Gemini 2.5 Flash Image)
 exports.generateImage = async (prompt) => {
   try {
-    const apiKey = process.env.OPENROUTER_API_KEY;
-    if (!apiKey) {
-      throw new Error("Missing OPENROUTER_API_KEY");
-    }
+    const client = await getOpenRouterClient();
 
-    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    const response = await client.chat.send({
+      chatRequest: {
         model: OPENROUTER_IMAGE_MODEL,
         messages: [
           {
@@ -133,19 +129,14 @@ exports.generateImage = async (prompt) => {
           },
         ],
         modalities: ["image", "text"],
-        image_config: {
+        imageConfig: {
           aspect_ratio: resolveAspectRatio(),
         },
-      }),
+        stream: false,
+      },
     });
 
-    if (!response.ok) {
-      const errorPayload = await response.text();
-      throw new Error(`OpenRouter image generation failed: ${response.status} ${response.statusText} - ${errorPayload}`);
-    }
-
-    const data = await response.json();
-    const message = data?.choices?.[0]?.message;
+    const message = response?.choices?.[0]?.message;
     const imageUrl = extractImageUrlFromMessage(message);
 
     if (!imageUrl) {

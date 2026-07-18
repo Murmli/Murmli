@@ -86,7 +86,7 @@ async function run() {
                 if (updatedData) {
                     const updatePayload = {
                         ...updatedData,
-                        provider: process.env.LLM_PROVIDER || "openai",
+                        provider: "openrouter",
                         ratings: recipe.ratings,
                         upvotes: recipe.upvotes,
                         downvotes: recipe.downvotes,

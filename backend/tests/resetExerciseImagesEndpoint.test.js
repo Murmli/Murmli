@@ -20,7 +20,6 @@ const userSecretKey = 'test-secret';
 beforeAll(async () => {
   process.env.JWT_SECRET = 'jwt';
   process.env.SECRET_KEY = userSecretKey;
-  process.env.LLM_PROVIDER = 'openai';
 
   mongoServer = await MongoMemoryServer.create();
   process.env.DB_STRING = mongoServer.getUri();

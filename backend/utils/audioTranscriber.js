@@ -1,16 +1,9 @@
-const OpenAI = require('openai');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
+const { getOpenRouterClient } = require('./llm/sdkClient.js');
 
 class AudioTranscriber {
-  constructor() {
-    this.openai = new OpenAI({
-      baseURL: 'https://openrouter.ai/api/v1',
-      apiKey: process.env.OPENROUTER_API_KEY,
-    });
-  }
-
   async transcribeFromBuffer(file) {
     // Bestimme die Dateierweiterung und erstelle einen temporären Pfad
     const fileExtension = this.getFileExtension(file.originalname || file.mimetype);
@@ -24,27 +17,31 @@ class AudioTranscriber {
       const fileBuffer = fs.readFileSync(tempFilePath);
       const base64Audio = fileBuffer.toString('base64');
 
-      // Transcribe with OpenRouter/Gemini Multimodal
-      const response = await this.openai.chat.completions.create({
-        model: process.env.OPENROUTER_LOW_MODEL,
-        messages: [
-          {
-            role: "user",
-            content: [
-              {
-                type: "text",
-                text: "Transcribe the audio explicitly and verbatim."
-              },
-              {
-                type: "input_audio",
-                input_audio: {
-                  data: base64Audio,
-                  format: fileExtension
+      // Transcribe with OpenRouter multimodal audio input
+      const client = await getOpenRouterClient();
+      const response = await client.chat.send({
+        chatRequest: {
+          model: process.env.OPENROUTER_LOW_MODEL,
+          messages: [
+            {
+              role: "user",
+              content: [
+                {
+                  type: "text",
+                  text: "Transcribe the audio explicitly and verbatim."
+                },
+                {
+                  type: "input_audio",
+                  inputAudio: {
+                    data: base64Audio,
+                    format: fileExtension
+                  }
                 }
-              }
-            ]
-          }
-        ]
+              ]
+            }
+          ],
+          stream: false
+        }
       });
 
       const transcription = response.choices[0].message.content;
@@ -52,10 +49,6 @@ class AudioTranscriber {
       return transcription;
     } catch (error) {
       console.error('Fehler beim Verarbeiten der Datei:', error);
-      // Fallback or detailed error logging
-      if (error.response) {
-        console.error(error.response.data);
-      }
       return false;
     } finally {
       // Clean up temp files

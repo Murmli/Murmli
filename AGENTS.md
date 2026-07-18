@@ -18,7 +18,7 @@ Murmli ist eine ganzheitliche Plattform für Fitness und Ernährung. Sie kombini
 - **Backend:** Node.js mit Express, MongoDB (Mongoose) als Datenbank.
 - **Frontend:** Vue 3 mit Vuetify 3, Vite als Build-Tool, Pinia für State Management.
 - **Mobile:** Capacitor für die Bereitstellung als Android- und iOS-App.
-- **KI/LLM:** Integration von OpenAI, Google Gemini, DeepSeek und OpenRouter. Unterstützt Text-, Bild- und Audio-Eingaben (Multimodal).
+- **KI/LLM:** Alle LLM-Anfragen laufen zentral über OpenRouter (offizielles `@openrouter/sdk`). Unterstützt Text-, Bild- und Audio-Eingaben (Multimodal).
 - **Testing:** Playwright für End-to-End-Tests, Jest für Unit-Tests im Backend.
 
 ---
@@ -31,7 +31,7 @@ Folgt dem Controller-Route-Model-Pattern:
 - **`routes/`**: Definiert die API-Endpunkte (v2 Präfix: `/api/v2/...`).
 - **`models/`**: Mongoose-Schemata für die MongoDB-Datenstrukturen.
 - **`utils/`**: Hilfsfunktionen, insbesondere:
-    - **`llm.js`**: Zentraler Hub für alle KI-Anfragen. Abstrahiert die Provider (OpenAI, Google, etc.).
+    - **`llm.js`**: Zentraler Hub für alle KI-Anfragen. Nutzt ausschließlich OpenRouter über das offizielle SDK (`utils/llm/openrouter.js` → `utils/llm/sdkClient.js`).
     - **`agents/`**: Spezialisierte KI-Agenten für komplexe Aufgaben wie Rezeptanalyse oder Trainingsplanerstellung.
     - **`schemas/`**: JSON-Schemata für strukturierte LLM-Antworten.
 
@@ -79,7 +79,7 @@ npm run apprun
 - **Sicherheit:** 
     - Secrets gehören in `.env`-Dateien (siehe `README.md` für erforderliche Variablen).
     - API-Anfragen erfordern oft einen `X-Header-Secret-Key` zusätzlich zur JWT-Authentifizierung.
-- **KI-Interaktion:** Neue KI-Features sollten über `backend/utils/llm.js` implementiert werden, um die Provider-Abstraktion beizubehalten. Strukturierte Antworten (JSON) sind bevorzugt.
+- **KI-Interaktion:** Neue KI-Features müssen über `backend/utils/llm.js` implementiert werden; sämtliche LLM-Aufrufe gehen über den zentralen OpenRouter-Client (`backend/utils/llm/openrouter.js`, basiert auf dem offiziellen `@openrouter/sdk`). Andere LLM-Provider oder direkte API-Clients (z.B. OpenAI SDK) dürfen nicht verwendet werden. Strukturierte Antworten (JSON) sind bevorzugt.
 - **Build & Sync bei Frontend-Änderungen:** Nach jeder Änderung im `frontend`-Verzeichnis **muss** zwingend ein Build und ein Capacitor-Sync durchgeführt werden, damit die Änderungen im Android Studio / Emulator sichtbar werden:
     1. `npm run build` (im Wurzelverzeichnis oder im `frontend` Ordner)
     2. `npx cap copy` oder `npx cap sync` (im `frontend` Ordner)

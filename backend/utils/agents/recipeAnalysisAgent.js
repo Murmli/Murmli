@@ -1,7 +1,7 @@
 const { seasonRules } = require("../rules.js");
 const seasons = seasonRules("json");
 const { generateRecipeAnalysis } = require("../llm.js");
-const provider = process.env.LLM_PROVIDER || "openai";
+const provider = "openrouter";
 
 /**
  * Validates the structure and types of the analysis data.
