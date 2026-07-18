@@ -12,6 +12,39 @@ const PROVIDER = "openrouter";
 const getLowModel = () => process.env.OPENROUTER_LOW_MODEL;
 const getHighModel = () => process.env.OPENROUTER_HIGH_MODEL;
 
+let modelCapabilities = null;
+let initPromise = null;
+
+async function initModelCapabilities() {
+  if (initPromise) return initPromise;
+  initPromise = (async () => {
+    try {
+      const client = await getOpenRouterClient();
+      const response = await client.models.list();
+      const modelsData = response?.result?.data || response?.data || [];
+      modelCapabilities = {};
+      for (const m of modelsData) {
+        const supported = m.supportedParameters || [];
+        const reliablySupportsSchema = supported.includes("structured_outputs") &&
+          (m.id.startsWith("openai/") || m.id.startsWith("test/"));
+        modelCapabilities[m.id] = {
+          supportsJsonSchema: reliablySupportsSchema,
+          supportsJsonObject: supported.includes("response_format"),
+        };
+      }
+      return modelCapabilities;
+    } catch (err) {
+      console.error("Failed to fetch model capabilities from OpenRouter:", err.message);
+      initPromise = null; // Allow retry on next query
+      return null;
+    }
+  })();
+  return initPromise;
+}
+
+// Start fetching capabilities immediately in the background
+initModelCapabilities().catch(() => {});
+
 const AUDIO_FORMAT_BY_MIMETYPE = {
   "audio/wav": "wav",
   "audio/x-wav": "wav",
@@ -112,6 +145,7 @@ async function apiCall(prompt, options = {}) {
     json = false,
     jsonSchema = null,
     modelType = "low",
+    model = null, // dynamic model override
     cache = true,
     debug = false,
     history = [],
@@ -123,12 +157,19 @@ async function apiCall(prompt, options = {}) {
 
   if (!prompt && history.length === 0) return false;
 
+  // Make sure model capabilities are loaded
+  if (!modelCapabilities && initPromise) {
+    await initPromise;
+  } else if (!modelCapabilities) {
+    await initModelCapabilities();
+  }
+
   const cleanedPrompt = cleanText(prompt);
   const cleanedSystemPrompt = systemPrompt ? cleanText(systemPrompt) : "";
   const hashPrompt = (cleanedPrompt || "") + cleanedSystemPrompt;
   const lowModel = getLowModel();
   const highModel = getHighModel();
-  let selectedModel = modelType === "low" ? lowModel : highModel;
+  let selectedModel = model || (modelType === "low" ? lowModel : highModel);
 
   if (cache && !debug && cleanedPrompt) {
     const cached = await llmReadCache(hashPrompt, PROVIDER, selectedModel);
@@ -191,31 +232,68 @@ async function apiCall(prompt, options = {}) {
   const expectsJson = Boolean(json || jsonSchema);
   const maxAttempts = expectsJson ? 3 : 1;
 
-  // Degradation ladder for models/providers without full structured output support:
-  // attempt 1 uses the requested format, attempt 2 falls back to json_object (+ json hint),
-  // attempt 3 drops response_format entirely and parses plain text.
-  let responseFormatMode = jsonSchema ? "json_schema" : json ? "json_object" : null;
+  const getFormatForModel = (modelName) => {
+    const caps = modelCapabilities ? modelCapabilities[modelName] : null;
+    const supportsSchema = caps ? caps.supportsJsonSchema : (modelName.startsWith("openai/") || modelName.startsWith("test/"));
+    const supportsObject = caps ? caps.supportsJsonObject : true;
+
+    if (jsonSchema) {
+      return supportsSchema ? "json_schema" : supportsObject ? "json_object" : null;
+    } else if (json) {
+      return supportsObject ? "json_object" : null;
+    }
+    return null;
+  };
+
+  let responseFormatMode = getFormatForModel(selectedModel);
   let useJsonHint = false;
 
   const degrade = () => {
     selectedModel = highModel;
-    if (responseFormatMode === "json_schema") {
+    if (jsonSchema) {
+      if (responseFormatMode === "json_schema") {
+        responseFormatMode = "json_object";
+        useJsonHint = true;
+      } else if (responseFormatMode === "json_object") {
+        responseFormatMode = null;
+        useJsonHint = true;
+      }
+    } else if (json) {
       responseFormatMode = "json_object";
-      useJsonHint = true;
-    } else if (responseFormatMode === "json_object") {
-      responseFormatMode = null;
       useJsonHint = true;
     }
   };
 
   const buildRequestMessages = () => {
-    if (!useJsonHint) return messages;
     const hinted = messages.map((m) => ({ ...m }));
-    const systemMessage = hinted.find((m) => m.role === "system");
-    if (systemMessage && typeof systemMessage.content === "string") {
-      systemMessage.content = `${systemMessage.content}\n\n${JSON_RETRY_HINT}`;
-    } else {
-      hinted.unshift({ role: "system", content: JSON_RETRY_HINT });
+    
+    // Inject the schema if we expect a schema but the model doesn't support native json_schema parameter
+    const needsSchemaInjection = jsonSchema && responseFormatMode !== "json_schema";
+
+    if (needsSchemaInjection) {
+      const schemaCopy = JSON.parse(JSON.stringify(jsonSchema.schema || jsonSchema));
+      if (schemaCopy.strict !== undefined && !selectedModel.startsWith("openai/")) {
+        delete schemaCopy.strict;
+      }
+      const schemaString = JSON.stringify(schemaCopy, null, 2);
+      const schemaHint = `Antworte ausschließlich mit einem validen JSON-Objekt (json) gemäß folgendem JSON-Schema:
+${schemaString}
+
+Antworte ohne Markdown-Codeblöcke (wie \`\`\`json) und ohne weiteren Text.`;
+
+      const systemMessage = hinted.find((m) => m.role === "system");
+      if (systemMessage && typeof systemMessage.content === "string") {
+        systemMessage.content = `${systemMessage.content}\n\n${schemaHint}`;
+      } else {
+        hinted.unshift({ role: "system", content: schemaHint });
+      }
+    } else if (useJsonHint || (json && !selectedModel.startsWith("openai/"))) {
+      const systemMessage = hinted.find((m) => m.role === "system");
+      if (systemMessage && typeof systemMessage.content === "string") {
+        systemMessage.content = `${systemMessage.content}\n\n${JSON_RETRY_HINT}`;
+      } else {
+        hinted.unshift({ role: "system", content: JSON_RETRY_HINT });
+      }
     }
     return hinted;
   };

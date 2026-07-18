@@ -70,9 +70,27 @@ afterAll(() => {
   if (fs.existsSync(audioFixturePath)) fs.unlinkSync(audioFixturePath);
 });
 
+const mockModelsList = jest.fn().mockResolvedValue({
+  result: {
+    data: [
+      {
+        id: "test/low-model",
+        supportedParameters: ["max_tokens", "temperature", "structured_outputs", "response_format"],
+      },
+      {
+        id: "test/high-model",
+        supportedParameters: ["max_tokens", "temperature", "structured_outputs", "response_format"],
+      },
+    ],
+  },
+});
+
 beforeEach(() => {
   jest.clearAllMocks();
-  getOpenRouterClient.mockResolvedValue({ chat: { send: sendMock } });
+  getOpenRouterClient.mockResolvedValue({
+    chat: { send: sendMock },
+    models: { list: mockModelsList },
+  });
   llmReadCache.mockResolvedValue(false);
   sendMock.mockResolvedValue(textResponse("Hello!"));
 });

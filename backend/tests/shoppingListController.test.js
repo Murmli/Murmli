@@ -1,5 +1,6 @@
 require("dotenv").config();
 jest.setTimeout(20000);
+
 jest.mock("../utils/llm.js", () => ({
   textToItemArray: jest.fn().mockResolvedValue([
     { name: "Äpfel", quantity: 2, unit: 0, category: 5 }
@@ -8,24 +9,26 @@ jest.mock("../utils/llm.js", () => ({
   generateJsonTranslation: jest.fn().mockResolvedValue({}),
   findAlternativeItems: jest.fn().mockResolvedValue([]),
 }));
+
 const request = require("supertest");
 const mongoose = require("mongoose");
 const { MongoMemoryServer } = require("mongodb-memory-server");
 const ShoppingList = require("../models/shoppingListModel");
+const app = require("../app");
 
 let mongoServer;
 let authToken;
-let server;
 let userSecretKey = process.env.SECRET_KEY; // Secret-Key aus der .env-Datei
 
 beforeAll(async () => {
   mongoServer = await MongoMemoryServer.create();
   process.env.DB_STRING = mongoServer.getUri();
-  const app = require("../app");
-  server = app.listen(4000, () => console.log("Test server running"));
 
   // Erstelle Benutzer und erhalte Authentifizierungstoken
-  const response = await request(server).post("/api/v2/session/create").send({ language: "de" }).set("X-Header-Secret-Key", userSecretKey);
+  const response = await request(app)
+    .post("/api/v2/session/create")
+    .send({ language: "de" })
+    .set("X-Header-Secret-Key", userSecretKey);
 
   if (response.status !== 201) {
     throw new Error("Failed to create user session");
@@ -37,7 +40,6 @@ beforeAll(async () => {
 afterAll(async () => {
   await mongoose.disconnect();
   await mongoServer.stop();
-  server.close(); // Beende den Test-Server
 });
 
 beforeEach(async () => {
@@ -46,7 +48,7 @@ beforeEach(async () => {
 
 describe("Shopping List Controller", () => {
   test("POST /api/v2/shoppingList/create - Should create a new shopping list", async () => {
-    const response = await request(server)
+    const response = await request(app)
       .get("/api/v2/shoppingList/create")
       .set("Authorization", `Bearer ${authToken}`)
       .set("X-Header-Secret-Key", userSecretKey);
@@ -56,7 +58,7 @@ describe("Shopping List Controller", () => {
 
   test("POST /api/v2/shoppingList/item/create/text - Should add an item to the shopping list", async () => {
     // Create a shopping list
-    const createResponse = await request(server)
+    const createResponse = await request(app)
       .get("/api/v2/shoppingList/create")
       .set("Authorization", `Bearer ${authToken}`)
       .set("X-Header-Secret-Key", userSecretKey);
@@ -65,7 +67,7 @@ describe("Shopping List Controller", () => {
     const listId = createResponse.body.list._id;
 
     // Add an item to the shopping list
-    const addItemResponse = await request(server)
+    const addItemResponse = await request(app)
       .post("/api/v2/shoppingList/item/create/text")
       .set("Authorization", `Bearer ${authToken}`)
       .set("X-Header-Secret-Key", userSecretKey)

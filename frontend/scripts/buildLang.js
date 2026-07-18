@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 require('dotenv').config();
-const OpenAI = require("openai");
+const { apiCall } = require("../../backend/utils/llm/openrouter.js");
 
 // Settings
 const maxParallelTranslations = 5; // Maximale Anzahl paralleler Übersetzungen
@@ -30,11 +30,6 @@ const { languageMapRaw, languageMap } = require("../../backend/languageMap.js");
 const localesDir = path.join(__dirname, '..', 'src', 'locales');
 
 // OpenRouter Configuration
-const openai = new OpenAI({
-    baseURL: "https://openrouter.ai/api/v1",
-    apiKey: process.env.OPENROUTER_API_KEY || process.env.OPENAI_API_KEY
-});
-
 if (!process.env.OPENROUTER_API_KEY && !process.env.OPENAI_API_KEY) {
     console.error('API key is missing. Please set OPENROUTER_API_KEY or OPENAI_API_KEY in your .env file.');
     process.exit(1);
@@ -119,11 +114,8 @@ const mergeTranslations = (target, translated) => {
 // Translation function
 const translateJSON = async (inputJson, targetLanguage) => {
     const actualTargetLanguage = languageMap[targetLanguage.toLowerCase()] || targetLanguage;
-    console.log("targetlanguage: ", actualTargetLanguage)
-    const messages = [
-        {
-            role: "system",
-            content: `
+    console.log("targetlanguage: ", actualTargetLanguage);
+    const systemPrompt = `
 Der Benutzer gibt dir eine JSON-Datei, die Texte in einer bestimmten Sprache enthält. 
 Deine Aufgabe ist es, alle Texte innerhalb der Datei in die vorgegebene Zielsprache "${actualTargetLanguage}" zu übersetzen.
 
@@ -132,21 +124,16 @@ Anforderungen:
 - Nur die Werte innerhalb der JSON-Datei werden übersetzt, nicht die Schlüssel.
 - Du gibst die vollständige, übersetzte JSON-Datei zurück, ohne zusätzliche Kommentare oder Erklärungen.
 - Achte darauf, dass die Übersetzung natürlich klingt und kulturelle Nuancen der Zielsprache berücksichtigt.
-            `
-        },
-        {
-            role: "user",
-            content: inputJson
-        }
-    ];
+    `.trim();
 
     try {
-        const response = await openai.chat.completions.create({
+        const response = await apiCall(inputJson, {
             model: process.env.OPENROUTER_MODEL || "google/gemini-3-flash-preview",
-            messages: messages,
-            response_format: { type: "json_object" },
+            systemPrompt: systemPrompt,
+            json: true,
+            cache: false,
         });
-        return response.choices[0].message.content;
+        return response;
     } catch (error) {
         console.error(`Error translating to "${targetLanguage}":`, error.message);
         throw error;
@@ -183,8 +170,7 @@ const processTranslation = async (referenceData, targetLanguage) => {
 
             // Translate only the missing keys
             const missingKeysJson = JSON.stringify(missingKeys, null, 2);
-            const translatedMissingKeysText = await translateJSON(missingKeysJson, targetLanguage);
-            const translatedMissingKeys = JSON.parse(translatedMissingKeysText);
+            const translatedMissingKeys = await translateJSON(missingKeysJson, targetLanguage);
 
             // Merge the translated missing keys back into the existing translation
             translatedData = mergeTranslations(existingTranslation, translatedMissingKeys);
@@ -192,8 +178,7 @@ const processTranslation = async (referenceData, targetLanguage) => {
             console.log(`No existing translation found for ${targetLanguage}, creating new translation...`);
 
             // Translate the entire reference data
-            const translatedJsonText = await translateJSON(JSON.stringify(referenceData, null, 2), targetLanguage);
-            translatedData = JSON.parse(translatedJsonText);
+            translatedData = await translateJSON(JSON.stringify(referenceData, null, 2), targetLanguage);
         }
 
         // Save the updated/new translation
