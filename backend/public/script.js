@@ -361,50 +361,6 @@ if (menuToggle && mainNav) {
   });
 }
 
-// Language Switcher Logic
-function initLanguageSwitchers() {
-  const selects = document.querySelectorAll('.language-select');
-  if (!selects.length) return;
-
-  selects.forEach(select => {
-    select.addEventListener('change', function () {
-      const chosenLang = this.value;
-      if (!chosenLang) return;
-
-      // Save preference
-      try {
-        localStorage.setItem('appLocale', chosenLang);
-        document.cookie = `appLocale=${encodeURIComponent(chosenLang)}; path=/; max-age=31536000; SameSite=Lax`;
-      } catch (e) {
-        console.error("Storage error:", e);
-      }
-
-      // Reload with new language query param
-      const url = new URL(window.location.href);
-      url.searchParams.set('lang', chosenLang);
-      window.location.href = url.toString();
-    });
-  });
-
-  // Sync client-side saved preference if not specified in URL and different from current page
-  try {
-    const savedLocale = localStorage.getItem('appLocale');
-    const urlParams = new URLSearchParams(window.location.search);
-    if (savedLocale && !urlParams.has('lang')) {
-      const cookieMatch = document.cookie.match(/(?:^|;\s*)appLocale=([^;]*)/);
-      const cookieVal = cookieMatch ? decodeURIComponent(cookieMatch[1]) : null;
-      if (cookieVal !== savedLocale) {
-        document.cookie = `appLocale=${encodeURIComponent(savedLocale)}; path=/; max-age=31536000; SameSite=Lax`;
-        const url = new URL(window.location.href);
-        url.searchParams.set('lang', savedLocale);
-        window.location.replace(url.toString());
-      }
-    }
-  } catch (e) {
-    // Ignore storage restrictions
-  }
-}
-
 // Prevent click on disabled store download buttons
 function initDisabledStoreButtons() {
   document.querySelectorAll('.store-link--disabled, .store-link[aria-disabled="true"]').forEach(el => {
@@ -417,7 +373,11 @@ function initDisabledStoreButtons() {
 
 // DOM Ready initialization
 document.addEventListener('DOMContentLoaded', function () {
-  initLanguageSwitchers();
+  // Clean up any stale appLocale cookie from previous versions
+  if (document.cookie.includes('appLocale=')) {
+    document.cookie = "appLocale=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Lax";
+  }
+
   initDisabledStoreButtons();
 
   // Loading-State für den Kalorienrechner

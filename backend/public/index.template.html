@@ -184,19 +184,11 @@
   <header class="main-header">
     <div class="container">
       <a class="site-logo" href="/" aria-label="{{nav.home_label}}">Murmli</a>
-      <div class="header-right">
-        <div class="language-switcher" title="{{nav.select_language}}">
-          <label for="language-select" class="sr-only">{{nav.select_language}}</label>
-          <select id="language-select" class="language-select" aria-label="{{nav.select_language}}">
-            {{language_options}}
-          </select>
-        </div>
-        <button class="menu-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="primary-navigation">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
+      <button class="menu-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="primary-navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <nav class="main-nav" id="primary-navigation" aria-label="Hauptnavigation">
         <ul>
           <li><a href="/#features">{{nav.features}}</a></li>
@@ -205,14 +197,6 @@
           <li><a href="/#faq">{{nav.faq}}</a></li>
           <li><a href="/#trailer">{{nav.trailer}}</a></li>
           <li><a href="/#about">{{nav.about}}</a></li>
-          <li class="nav-item-lang">
-            <div class="language-switcher-mobile">
-              <label for="language-select-mobile" class="lang-label">{{nav.select_language}}:</label>
-              <select id="language-select-mobile" class="language-select" aria-label="{{nav.select_language}}">
-                {{language_options}}
-              </select>
-            </div>
-          </li>
         </ul>
       </nav>
     </div>
@@ -226,35 +210,20 @@
           {{hero.p}}
         </p>
         <div class="store-links">
-          <div class="store-link-wrapper store-link-wrapper--disabled" title="{{hero.downloads_paused_button_tooltip}}">
-            <a class="store-link store-link--disabled" href="https://play.google.com/store/apps/details?id=de.murmli.twa" target="_blank"
-              rel="noopener noreferrer" tabindex="-1" aria-disabled="true">
-              <img class="store-badge" src="logos/play_store.svg" alt="{{hero.google_play_alt}}">
-            </a>
-          </div>
-          <div class="store-link-wrapper store-link-wrapper--disabled" title="{{hero.downloads_paused_button_tooltip}}">
-            <a class="store-link store-link--disabled" href="https://apps.apple.com/us/app/murmli/id6753867833" target="_blank"
-              rel="noopener noreferrer" tabindex="-1" aria-disabled="true">
-              <img class="store-badge" src="logos/app_store.svg" alt="{{hero.app_store_alt}}">
-            </a>
-          </div>
-          <div class="store-link-wrapper">
-            <a class="store-link" href="https://discord.gg/PhKEGkNkzE" target="_blank"
-              rel="noopener noreferrer">
-              <img class="store-badge" src="logos/discord.png" alt="{{hero.discord_alt}}">
-            </a>
-          </div>
+          <a class="store-link store-link--disabled" href="https://play.google.com/store/apps/details?id=de.murmli.twa" target="_blank"
+            rel="noopener noreferrer" tabindex="-1" aria-disabled="true">
+            <img class="store-badge" src="logos/play_store.svg" alt="{{hero.google_play_alt}}">
+          </a>
+          <a class="store-link store-link--disabled" href="https://apps.apple.com/us/app/murmli/id6753867833" target="_blank"
+            rel="noopener noreferrer" tabindex="-1" aria-disabled="true">
+            <img class="store-badge" src="logos/app_store.svg" alt="{{hero.app_store_alt}}">
+          </a>
+          <a class="store-link" href="https://discord.gg/PhKEGkNkzE" target="_blank"
+            rel="noopener noreferrer">
+            <img class="store-badge" src="logos/discord.png" alt="{{hero.discord_alt}}">
+          </a>
         </div>
-
-        <div class="paused-downloads-notice" role="alert">
-          <div class="paused-downloads-notice__badge">
-            <svg class="paused-downloads-notice__icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-            </svg>
-            <span>{{hero.downloads_paused_badge}}</span>
-          </div>
-          <p class="paused-downloads-notice__text">{{hero.downloads_paused_info}}</p>
-        </div>
+        <p class="store-paused-hint">{{hero.downloads_paused_info}}</p>
       </div>
     </section>
 

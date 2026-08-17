@@ -232,15 +232,7 @@ const resolveLocale = (req) => {
     if (matched) return matched;
   }
 
-  // 2. Cookie (appLocale or locale)
-  const cookies = parseCookieHeader(req.headers?.cookie);
-  const cookieLang = cookies.appLocale || cookies.locale;
-  if (cookieLang) {
-    const matched = findMatchingLocale(cookieLang);
-    if (matched) return matched;
-  }
-
-  // 3. Accept-Language header (weighted)
+  // 2. Accept-Language header (weighted)
   const acceptLangHeader = req.headers ? req.headers['accept-language'] : null;
   if (acceptLangHeader) {
     const parsed = parseAcceptLanguage(acceptLangHeader);
@@ -250,7 +242,7 @@ const resolveLocale = (req) => {
     }
   }
 
-  // 4. Default fallback to de-DE
+  // 3. Default fallback to de-DE
   return 'de-DE';
 };
 
@@ -286,12 +278,6 @@ const renderTemplate = (templatePath, locale) => {
   const fallbackTranslations = loadLocaleData('de-DE') || {};
   const translations = loadLocaleData(locale) || fallbackTranslations;
 
-  // Build language selector options
-  const languageOptionsHtml = AVAILABLE_LOCALES.map(lang => {
-    const isSelected = lang.code === locale ? ' selected' : '';
-    return `<option value="${lang.code}"${isSelected}>${lang.name} ${lang.flag}</option>`;
-  }).join('\n                ');
-
   // Calculator dynamic translations
   const calcTranslations = translations.calculator?.results || fallbackTranslations.calculator?.results || {};
 
@@ -299,7 +285,6 @@ const renderTemplate = (templatePath, locale) => {
   let rendered = template.replace(/\{\{([\w.]+)\}\}/g, (match, keyPath) => {
     if (keyPath === 'active_locale') return locale;
     if (keyPath === 'html_lang') return locale.split('-')[0];
-    if (keyPath === 'language_options') return languageOptionsHtml;
     if (keyPath === 'calculator_i18n_json') return JSON.stringify(calcTranslations);
 
     const val = getNestedValue(translations, keyPath);
@@ -323,8 +308,10 @@ const renderTemplate = (templatePath, locale) => {
 app.get("/", (req, res) => {
   const locale = resolveLocale(req);
 
-  // Set cookie so user preference is remembered across visits
-  res.setHeader('Set-Cookie', `appLocale=${locale}; Path=/; Max-Age=31536000; SameSite=Lax`);
+  // Clear any stale appLocale cookie from past sessions
+  if (req.headers?.cookie && req.headers.cookie.includes('appLocale=')) {
+    res.setHeader('Set-Cookie', 'appLocale=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Lax');
+  }
 
   try {
     const renderedHtml = renderTemplate(path.join(__dirname, "public", "index.template.html"), locale);

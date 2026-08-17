@@ -66,25 +66,13 @@ describe('Landing Page Multilingual Resolution & Rendering', () => {
       const req = {
         query: { lang: 'fr-FR' },
         headers: {
-          cookie: 'appLocale=es-ES',
           'accept-language': 'de-DE,de;q=0.9'
         }
       };
       expect(resolveLocale(req)).toBe('fr-FR');
     });
 
-    test('prioritizes cookie if no query parameter is given', () => {
-      const req = {
-        query: {},
-        headers: {
-          cookie: 'appLocale=it-IT; other=123',
-          'accept-language': 'de-DE,de;q=0.9'
-        }
-      };
-      expect(resolveLocale(req)).toBe('it-IT');
-    });
-
-    test('uses Accept-Language header if neither query nor cookie is given', () => {
+    test('uses Accept-Language header to automatically match browser language', () => {
       const reqGerman = {
         query: {},
         headers: {
@@ -126,11 +114,11 @@ describe('Landing Page Multilingual Resolution & Rendering', () => {
       const html = renderTemplate(templatePath, 'de-DE');
       expect(html).toContain('lang="de"');
       expect(html).toContain('Kostenloser KI Kalorienzähler');
-      expect(html).toContain('Neuinstallationen vorübergehend pausiert');
       expect(html).toContain('Aufgrund des hohen Ansturms und aus Kostengründen');
       expect(html).toContain('store-link--disabled');
       expect(html).toContain('aria-disabled="true"');
-      expect(html).toContain('id="language-select"');
+      expect(html).toContain('class="store-paused-hint"');
+      expect(html).not.toContain('id="language-select"');
       expect(html).toContain('id="i18n-calculator"');
     });
 
@@ -138,7 +126,7 @@ describe('Landing Page Multilingual Resolution & Rendering', () => {
       const html = renderTemplate(templatePath, 'en-US');
       expect(html).toContain('lang="en"');
       expect(html).toContain('Free AI Calorie Counter');
-      expect(html).toContain('New installations temporarily paused');
+      expect(html).toContain('Due to high demand and cost reasons');
       expect(html).toContain('store-link--disabled');
       expect(html).toContain('aria-disabled="true"');
     });
