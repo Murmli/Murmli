@@ -126,6 +126,45 @@ img {
   outline-offset: 4px;
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.language-switcher {
+  display: flex;
+  align-items: center;
+}
+
+.language-select {
+  background: rgba(255, 255, 255, 0.18);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.language-select option {
+  background: #ffffff;
+  color: #333333;
+}
+
+.language-select:hover,
+.language-select:focus {
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.nav-item-lang {
+  display: none;
+}
+
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -215,6 +254,33 @@ img {
     background: rgba(255, 255, 255, 0.2);
   }
 
+  .nav-item-lang {
+    display: block;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .language-switcher-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 16px;
+  }
+
+  .language-switcher-mobile .lang-label {
+    color: var(--white);
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+
+  .language-switcher-mobile .language-select {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
   /* Hamburger Animation */
   .menu-toggle.active span:nth-child(1) {
     transform: rotate(-45deg) translate(-5px, 6px);
@@ -291,6 +357,67 @@ img {
   margin: 0;
   border-radius: 0;
   box-shadow: none;
+}
+
+.store-link-wrapper {
+  display: inline-flex;
+}
+
+.store-link-wrapper--disabled {
+  cursor: not-allowed;
+}
+
+.store-link--disabled {
+  opacity: 0.45;
+  filter: grayscale(100%);
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none !important;
+}
+
+.store-link--disabled:hover,
+.store-link--disabled:focus,
+.store-link--disabled:focus-visible {
+  transform: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.paused-downloads-notice {
+  margin-top: 20px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #ffd599;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+  padding: 14px 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  text-align: left;
+}
+
+.paused-downloads-notice__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: #d96800;
+  margin-bottom: 4px;
+}
+
+.paused-downloads-notice__icon {
+  flex-shrink: 0;
+  color: #d96800;
+}
+
+.paused-downloads-notice__text {
+  margin: 0 !important;
+  font-size: 0.92rem !important;
+  line-height: 1.45;
+  color: #4a4a4a !important;
+  text-align: left !important;
 }
 
 /* Calorie Calculator Section */

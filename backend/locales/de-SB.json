@@ -54,14 +54,18 @@
     "faq": "Froga",
     "trailer": "Video",
     "about": "Über uns",
-    "home_label": "Zrugg zur Murmli Startseit"
+    "home_label": "Zrugg zur Murmli Startseit",
+    "select_language": "Schproch"
   },
   "hero": {
     "h1": "Koschdeloser KI Kalorienzähler mit’ra gscheite Einkaufsleischd",
     "p": "Witt au für lau dei Kaloria berechne, Rezepte plane ond automatisch a Einkaufsleischd kriege? Murmli macht des alles auf oimol: KI-berechneter Kaloriebedarf, a passender Wochenplan ond a sortierte Leischd für de Supermarkt.",
     "google_play_alt": "Glei bei Google Play runterlade",
     "app_store_alt": "Glei im Apple App Store hole",
-    "discord_alt": "Komm uf onsern Discord Server"
+    "discord_alt": "Komm uf onsern Discord Server",
+    "downloads_paused_badge": "Neuinschdallationa send grad kurz pausiert",
+    "downloads_paused_info": "Weil grad so viel los isch ond wega de Koschda, kennet neue Leit d'App grad net nei indalliera. Wer se scho hot, ka se aber ganz normal weiterbenutza.",
+    "downloads_paused_button_tooltip": "Downloads send grad gschperrt"
   },
   "trailer": {
     "h2": "Schau dir Murmli mol o!",
@@ -155,7 +159,28 @@
     "formula_women": "Fraue = 10 × G'wicht (kg) + 6,25 × Größe (cm) − 5 × Alter − 161",
     "formula_explanation": "Murmli nimmt des Ergebnis ond verrechnet des mit deine Arbeits- ond Ruhezeite (PAL-Werte), damit de genau siehsch, was Sach isch.",
     "formula_result_explanation": "Nach em Rechnen siehsch dei Grundumsatz, Arbeitsumsatz ond Gesamtumsatz samt de empfohlene Kaloriaziel’. So kasch glei gucke, ob dei Esse aktuell zu deim Ziel passt.",
-    "formula_tip": "Tipp: Speicher dei Werte in der Murmli App, damit dei Mahlzeite, Rezepte ond Trainingspläne automatisch ufeinander abgestimmt werde."
+    "formula_tip": "Tipp: Speicher dei Werte in der Murmli App, damit dei Mahlzeite, Rezepte ond Trainingspläne automatisch ufeinander abgestimmt werde.",
+    "results": {
+      "evaluation_title": "Dei Auswerdong",
+      "summary_text": "Dei täglicher Gsamtommsatz isch so ebbes bei <strong>{calories} Kilokaloria</strong>.",
+      "bmr": "Grundommsatz (BMR)",
+      "work_calories": "Arbeitsommsatz",
+      "rest_calories": "Freizeit ond d'Ruah",
+      "mobile_hint": "Nimm des do als Orientierong für dei Essa:",
+      "strong_loss": "Gscheid abspecka (-25%)",
+      "moderate_loss": "A bissle weniger (-15%)",
+      "maintain": "Gwicht halda",
+      "moderate_gain": "A bissle meh uff de Rippa (+10%)",
+      "strong_gain": "Ordentlich Masse uffbaua (+20%)",
+      "mobile_note": "Die Werte do send d'Basis für dei Essa, d'Einkaufsischt ond dei Training direkt bei uns in dr Murmli App.",
+      "table_target_header": "Was de reacha willsch",
+      "table_calories_header": "Kaloria-Empfehlong",
+      "table_intro": "Schau dir die Orientierong aus dr Murmli App a, damit dei Essa au zu deim Bedarf passt:",
+      "error_inputs": "Segg mal, gib bidde a G'wicht ond a G'röße über 0 cm a, wo au passt.",
+      "error_age": "Gugg no mal noch deim Geburtsjohr, damit mir dei Alder au richtig ausrechna kennet.",
+      "btn_calculating": "I reche grad...",
+      "btn_calculate": "Kaloria-Bedarf ausrechna"
+    }
   },
   "faq_section": {
     "h2": "Häufige Froga zum koschdelose Murmli Kalorienzähler",

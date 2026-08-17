@@ -54,14 +54,18 @@
     "faq": "Common Questions",
     "trailer": "Short Movie",
     "about": "About Us",
-    "home_label": "Back to Murmli Home"
+    "home_label": "Back to Murmli Home",
+    "select_language": "Tongue"
   },
   "hero": {
     "h1": "Free AI Calorie Counter with a Smart Shoppin' List",
     "p": "Lookin' to count calories for free, plan your meals, and get a shoppin' list made up automatic? Murmli does it all in one go: AI-calculated calorie needs, a weekly plan that fits, and a sorted list for the store.",
     "google_play_alt": "Fetch it now at Google Play",
     "app_store_alt": "Grab it now in the Apple App Store",
-    "discord_alt": "Come on over to our Discord server"
+    "discord_alt": "Come on over to our Discord server",
+    "downloads_paused_badge": "New folks gotta wait a spell",
+    "downloads_paused_info": "Well now, we're plumb overwhelmed and keepin' an eye on the purse strings, so we're fixin' to pause new sign-ups for a bit. If you're already settled in, you just keep on usin' it like you always do, sugar.",
+    "downloads_paused_button_tooltip": "Downloads are tuckered out right now"
   },
   "trailer": {
     "h2": "See Murmli in Action!",
@@ -155,7 +159,28 @@
     "formula_women": "Women = 10 × weight (kg) + 6.25 × height (cm) − 5 × age − 161",
     "formula_explanation": "Murmli mixes the result with your work and rest times (PAL values) to show your total energy use clear as day.",
     "formula_result_explanation": "After you calculate, you'll see your base rate, work rate, and total rate includin' recommended calorie goals. That way, you can see if your meal plan fits your goal.",
-    "formula_tip": "Tip: Save your values in the Murmli app to have meals, recipes, and workout plans automatically matched to your calorie budget."
+    "formula_tip": "Tip: Save your values in the Murmli app to have meals, recipes, and workout plans automatically matched to your calorie budget.",
+    "results": {
+      "evaluation_title": "Your reckonin'",
+      "summary_text": "Your total daily burn is sittin' right 'round <strong>{calories} calories</strong>.",
+      "bmr": "Base burnin' (BMR)",
+      "work_calories": "Workin' energy",
+      "rest_calories": "Restin' and rockin'",
+      "mobile_hint": "Use this here guide for fixin' your meals:",
+      "strong_loss": "A fair piece of a deficit (-25%)",
+      "moderate_loss": "A little trimmin' (-15%)",
+      "maintain": "Stayin' right where you are",
+      "moderate_gain": "A bit more to love (+10%)",
+      "strong_gain": "Gettin' real sturdy (+20%)",
+      "mobile_note": "These here numbers are the bedrock for your recipes, grocery lists, and workout plans right inside Murmli.",
+      "table_target_header": "What you're aimin' for",
+      "table_calories_header": "Recommended calories",
+      "table_intro": "Take a look at what Murmli says to help fix your meals just the way you need 'em:",
+      "error_inputs": "Honey, please put in a weight and height that makes some lick of sense.",
+      "error_age": "Be a dear and check that birth year so we can figure how long you've been 'round.",
+      "btn_calculating": "I'm a-reckonin'...",
+      "btn_calculate": "See what I need to eat"
+    }
   },
   "faq_section": {
     "h2": "Common questions about the free Murmli calorie counter",

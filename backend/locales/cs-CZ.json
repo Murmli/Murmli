@@ -54,14 +54,18 @@
     "faq": "Časté dotazy",
     "trailer": "Trailer",
     "about": "O nás",
-    "home_label": "Na úvodní stránku Murmli"
+    "home_label": "Na úvodní stránku Murmli",
+    "select_language": "Jazyk"
   },
   "hero": {
     "h1": "Bezplatné AI počítadlo kalorií s chytrým nákupním seznamem",
     "p": "Chcete zdarma počítat kalorie, plánovat recepty a automaticky získávat nákupní seznam? Murmli to zvládne v jednom kroku: AI výpočet kalorické potřeby, odpovídající týdenní plán a setříděný seznam do supermarketu.",
     "google_play_alt": "Stáhnout na Google Play",
     "app_store_alt": "Stáhnout v Apple App Store",
-    "discord_alt": "Připojte se k našemu Discord serveru"
+    "discord_alt": "Připojte se k našemu Discord serveru",
+    "downloads_paused_badge": "Nové instalace dočasně pozastaveny",
+    "downloads_paused_info": "Z důvodu vysokého náporu a z nákladových důvodů nejsou v současné době povoleny nové instalace. Stávající uživatelé mohou aplikaci nadále používat jako obvykle.",
+    "downloads_paused_button_tooltip": "Stahování je aktuálně zakázáno"
   },
   "trailer": {
     "h2": "Uvidíte Murmli v akci!",
@@ -155,7 +159,28 @@
     "formula_women": "Ženy = 10 × hmotnost (kg) + 6,25 × výška (cm) − 5 × věk − 161",
     "formula_explanation": "Murmli kombinuje výsledek s vašimi uvedenými časy práce a odpočinku (hodnoty PAL), aby transparentně vypočítal celkový výdej.",
     "formula_result_explanation": "Po výpočtu uvidíte bazální metabolismus, pracovní výdej a celkový výdej včetně doporučených kalorických cílů. Můžete tak přímo posoudit, zda váš aktuální stravovací plán odpovídá vašemu cíli.",
-    "formula_tip": "Tip: Uložte si své hodnoty v aplikaci Murmli, aby se jídla, recepty a tréninkové plány automaticky přizpůsobily vašemu kalorickému rozpočtu."
+    "formula_tip": "Tip: Uložte si své hodnoty v aplikaci Murmli, aby se jídla, recepty a tréninkové plány automaticky přizpůsobily vašemu kalorickému rozpočtu.",
+    "results": {
+      "evaluation_title": "Vaše vyhodnocení",
+      "summary_text": "Váš celkový denní energetický výdej je přibližně <strong>{calories} kilokalorií</strong>.",
+      "bmr": "Bazální metabolismus (BMR)",
+      "work_calories": "Pracovní výdej",
+      "rest_calories": "Volný čas a odpočinek",
+      "mobile_hint": "Tento přehled využijte při plánování jídel:",
+      "strong_loss": "Výrazný deficit (-25 %)",
+      "moderate_loss": "Mírný deficit (-15 %)",
+      "maintain": "Udržení váhy",
+      "moderate_gain": "Mírný nárůst (+10 %)",
+      "strong_gain": "Intenzivní nárůst (+20 %)",
+      "mobile_note": "Tyto hodnoty tvoří základ pro personalizované recepty, nákupní seznamy a tréninkové plány přímo v aplikaci Murmli.",
+      "table_target_header": "Cílová oblast",
+      "table_calories_header": "Doporučené kalorie",
+      "table_intro": "Využijte doporučení z aplikace Murmli k přizpůsobení plánování jídel vašim potřebám:",
+      "error_inputs": "Zadejte prosím reálnou hmotnost a výšku větší než 0 cm.",
+      "error_age": "Zkontrolujte prosím rok narození, abychom mohli správně vypočítat váš věk.",
+      "btn_calculating": "Počítám...",
+      "btn_calculate": "Vypočítat potřebu kalorií"
+    }
   },
   "faq_section": {
     "h2": "Časté dotazy k bezplatnému počítadlu kalorií Murmli",

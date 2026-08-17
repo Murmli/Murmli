@@ -54,14 +54,18 @@
     "faq": "Preguntas frecuentes",
     "trailer": "Tráiler",
     "about": "Acerca de",
-    "home_label": "Ir a la página de inicio de Murmli"
+    "home_label": "Ir a la página de inicio de Murmli",
+    "select_language": "Idioma"
   },
   "hero": {
     "h1": "Contador de calorías con IA gratuito con lista de la compra inteligente",
     "p": "¿Quieres calcular calorías gratis, planificar recetas y recibir automáticamente una lista de la compra? Murmli lo hace todo en un solo paso: necesidades calóricas calculadas por IA, plan semanal adaptado y lista organizada para el supermercado.",
     "google_play_alt": "Descárgalo ahora en Google Play",
     "app_store_alt": "Descárgalo ahora en el Apple App Store",
-    "discord_alt": "Únete a nuestro servidor de Discord"
+    "discord_alt": "Únete a nuestro servidor de Discord",
+    "downloads_paused_badge": "Nuevas instalaciones pausadas temporalmente",
+    "downloads_paused_info": "Debido a la alta demanda y por razones de costes, las nuevas instalaciones no están permitidas temporalmente. Los usuarios actuales pueden seguir utilizando la aplicación con normalidad.",
+    "downloads_paused_button_tooltip": "Descargas desactivadas actualmente"
   },
   "trailer": {
     "h2": "¡Mira a Murmli en acción!",
@@ -155,7 +159,28 @@
     "formula_women": "Mujeres = 10 × peso (kg) + 6,25 × altura (cm) − 5 × edad − 161",
     "formula_explanation": "Murmli combina el resultado con tus tiempos de trabajo y descanso indicados (valores PAL) para calcular el gasto total de forma transparente.",
     "formula_result_explanation": "Tras el cálculo, verás el metabolismo basal, el gasto por actividad y el gasto energético total, incluidos los objetivos calóricos recomendados. Así podrás evaluar directamente si tu plan nutricional actual se ajusta a tu meta.",
-    "formula_tip": "Consejo: Guarda tus valores en la app Murmli para que las comidas, recetas y planes de entrenamiento se ajusten automáticamente a tu balance calórico."
+    "formula_tip": "Consejo: Guarda tus valores en la app Murmli para que las comidas, recetas y planes de entrenamiento se ajusten automáticamente a tu balance calórico.",
+    "results": {
+      "evaluation_title": "Tu evaluación",
+      "summary_text": "Tu gasto energético total diario es de aproximadamente <strong>{calories} kilocalorías</strong>.",
+      "bmr": "Tasa metabólica basal (BMR)",
+      "work_calories": "Gasto por actividad laboral",
+      "rest_calories": "Ocio y descanso",
+      "mobile_hint": "Utiliza esta guía para planificar tus comidas:",
+      "strong_loss": "Déficit pronunciado (-25%)",
+      "moderate_loss": "Déficit moderado (-15%)",
+      "maintain": "Mantener peso",
+      "moderate_gain": "Ganancia moderada (+10%)",
+      "strong_gain": "Ganancia intensiva (+20%)",
+      "mobile_note": "Estos valores forman la base para recetas personalizadas, listas de la compra y planes de entrenamiento directamente en Murmli.",
+      "table_target_header": "Objetivo",
+      "table_calories_header": "Calorías recomendadas",
+      "table_intro": "Utiliza la guía de la aplicación Murmli para ajustar la planificación de tus comidas a tus necesidades:",
+      "error_inputs": "Por favor, introduce un peso plausible y una altura superior a 0 cm.",
+      "error_age": "Por favor, comprueba tu año de nacimiento para que podamos calcular tu edad correctamente.",
+      "btn_calculating": "Calculando...",
+      "btn_calculate": "Calcular requerimiento calórico"
+    }
   },
   "faq_section": {
     "h2": "Preguntas frecuentes sobre el contador gratuito de Murmli",

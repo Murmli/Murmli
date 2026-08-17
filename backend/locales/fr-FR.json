@@ -54,14 +54,18 @@
     "faq": "FAQ",
     "trailer": "Bande-annonce",
     "about": "À propos",
-    "home_label": "Vers la page d'accueil Murmli"
+    "home_label": "Vers la page d'accueil Murmli",
+    "select_language": "Langue"
   },
   "hero": {
     "h1": "Compteur de calories IA gratuit avec liste de courses intelligente",
     "p": "Vous voulez calculer vos calories gratuitement, planifier vos recettes et obtenir automatiquement une liste de courses ? Murmli s'occupe de tout en une seule étape : besoins caloriques calculés par l'IA, planning hebdomadaire adapté et liste triée pour le supermarché.",
     "google_play_alt": "Télécharger maintenant sur Google Play",
     "app_store_alt": "Télécharger maintenant sur l'App Store d'Apple",
-    "discord_alt": "Rejoignez notre serveur Discord"
+    "discord_alt": "Rejoignez notre serveur Discord",
+    "downloads_paused_badge": "Nouvelles installations temporairement suspendues",
+    "downloads_paused_info": "En raison d'une forte affluence et pour des raisons de coûts, les nouvelles installations ne sont actuellement pas autorisées. Les utilisateurs existants peuvent continuer à utiliser l'application normalement.",
+    "downloads_paused_button_tooltip": "Téléchargements actuellement désactivés"
   },
   "trailer": {
     "h2": "Découvrez Murmli en action !",
@@ -155,7 +159,28 @@
     "formula_women": "Femmes = 10 × poids (kg) + 6,25 × taille (cm) − 5 × âge − 161",
     "formula_explanation": "Murmli combine le résultat avec vos temps de travail et de repos indiqués (valeurs PAL) pour calculer le métabolisme total de manière transparente.",
     "formula_result_explanation": "Après le calcul, vous verrez votre métabolisme de base, votre métabolisme lié à l'activité et votre métabolisme total, incluant les objectifs caloriques recommandés. Vous pouvez ainsi évaluer directement si votre plan nutritionnel actuel correspond à votre objectif.",
-    "formula_tip": "Conseil : Enregistrez vos valeurs dans l'application Murmli pour adapter automatiquement vos repas, recettes et programmes d'entraînement à votre bilan calorique."
+    "formula_tip": "Conseil : Enregistrez vos valeurs dans l'application Murmli pour adapter automatiquement vos repas, recettes et programmes d'entraînement à votre bilan calorique.",
+    "results": {
+      "evaluation_title": "Votre évaluation",
+      "summary_text": "Votre métabolisme total quotidien est d'environ <strong>{calories} kilocalories</strong>.",
+      "bmr": "Métabolisme de base (BMR)",
+      "work_calories": "Dépense liée à l'activité professionnelle",
+      "rest_calories": "Loisirs et repos",
+      "mobile_hint": "Utilisez ces repères pour la planification de vos repas :",
+      "strong_loss": "Déficit important (-25 %)",
+      "moderate_loss": "Déficit modéré (-15 %)",
+      "maintain": "Maintenir le poids",
+      "moderate_gain": "Prise de masse modérée (+10 %)",
+      "strong_gain": "Prise de masse intensive (+20 %)",
+      "mobile_note": "Ces valeurs servent de base pour des recettes personnalisées, des listes de courses et des programmes d'entraînement directement dans Murmli.",
+      "table_target_header": "Objectif",
+      "table_calories_header": "Calories recommandées",
+      "table_intro": "Utilisez les repères de l'application Murmli pour adapter la planification de vos repas à vos besoins :",
+      "error_inputs": "Veuillez saisir un poids plausible et une taille supérieure à 0 cm.",
+      "error_age": "Veuillez vérifier votre année de naissance afin que nous puissions calculer votre âge correctement.",
+      "btn_calculating": "Calcul en cours...",
+      "btn_calculate": "Calculer le besoin calorique"
+    }
   },
   "faq_section": {
     "h2": "Questions fréquentes sur le compteur de calories gratuit Murmli",

@@ -54,14 +54,18 @@
     "faq": "FAQ",
     "trailer": "Trailer",
     "about": "About",
-    "home_label": "Go to Murmli Homepage"
+    "home_label": "Go to Murmli Homepage",
+    "select_language": "Language"
   },
   "hero": {
     "h1": "Free AI Calorie Counter with Smart Shopping List",
     "p": "Want to calculate calories for free, plan recipes, and get an automatic shopping list? Murmli does it in one step: AI-calculated calorie needs, matching weekly plans, and an organized list for the supermarket.",
     "google_play_alt": "Download now on Google Play",
     "app_store_alt": "Download now on the Apple App Store",
-    "discord_alt": "Join our Discord Server"
+    "discord_alt": "Join our Discord Server",
+    "downloads_paused_badge": "New installations temporarily paused",
+    "downloads_paused_info": "Due to high demand and cost considerations, new installations are currently temporarily disabled. Existing users can continue to use the app as usual.",
+    "downloads_paused_button_tooltip": "Downloads currently disabled"
   },
   "trailer": {
     "h2": "See Murmli in Action!",
@@ -155,7 +159,28 @@
     "formula_women": "Women = 10 × weight (kg) + 6.25 × height (cm) − 5 × age − 161",
     "formula_explanation": "Murmli combines the result with your specified working and resting times (PAL values) to calculate your total metabolic rate transparently.",
     "formula_result_explanation": "After calculation, you will see basal metabolic rate, occupational metabolic rate, and total metabolic rate including the recommended calorie goals. This allows you to directly assess whether your current nutrition plan fits your goal.",
-    "formula_tip": "Tip: Save your values in the Murmli app to automatically sync meals, recipes, and training plans with your calorie balance."
+    "formula_tip": "Tip: Save your values in the Murmli app to automatically sync meals, recipes, and training plans with your calorie balance.",
+    "results": {
+      "evaluation_title": "Your Evaluation",
+      "summary_text": "Your total daily energy expenditure is approximately <strong>{calories} kilocalories</strong>.",
+      "bmr": "Basal Metabolic Rate (BMR)",
+      "work_calories": "Active Calories (Work)",
+      "rest_calories": "Leisure and Rest",
+      "mobile_hint": "Use this guide for your meal planning:",
+      "strong_loss": "Significant Deficit (-25%)",
+      "moderate_loss": "Moderate Deficit (-15%)",
+      "maintain": "Maintain Weight",
+      "moderate_gain": "Moderate Bulking (+10%)",
+      "strong_gain": "Intensive Bulking (+20%)",
+      "mobile_note": "These values form the basis for personalized recipes, shopping lists, and training plans directly in Murmli.",
+      "table_target_header": "Target Range",
+      "table_calories_header": "Recommended Calories",
+      "table_intro": "Use the guidance from the Murmli app to align your meal planning with your needs:",
+      "error_inputs": "Please enter a plausible weight and a height greater than 0 cm.",
+      "error_age": "Please check your birth year so we can calculate your age correctly.",
+      "btn_calculating": "Calculating...",
+      "btn_calculate": "Calculate Calorie Needs"
+    }
   },
   "faq_section": {
     "h2": "Frequently asked questions about the free Murmli calorie counter",

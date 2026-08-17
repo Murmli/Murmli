@@ -113,113 +113,145 @@ function calculateDietCalories(totalCalories, level) {
   return Math.round(totalCalories * multiplier);
 }
 
+// Load embedded calculator translations if present
+let calcI18n = {};
+try {
+  const i18nElem = document.getElementById('i18n-calculator');
+  if (i18nElem && i18nElem.textContent.trim()) {
+    calcI18n = JSON.parse(i18nElem.textContent.trim());
+  }
+} catch (e) {
+  console.warn("Could not load calculator translations:", e);
+}
+
+function getCalcText(key, fallback) {
+  return (calcI18n && calcI18n[key]) ? calcI18n[key] : fallback;
+}
+
 function formatCalories(value) {
-  return Number.isFinite(value) ? Math.round(value).toLocaleString('de-DE') : '0';
+  const locale = document.documentElement.lang || 'de';
+  return Number.isFinite(value) ? Math.round(value).toLocaleString(locale) : '0';
 }
 
 function renderCalculatorResult(target, stats, recommendations) {
-  const summary = `Dein täglicher Gesamtumsatz beträgt etwa <strong>${formatCalories(stats.totalDailyCalories)} Kilokalorien</strong>.`;
+  const summaryTpl = getCalcText('summary_text', 'Dein täglicher Gesamtumsatz beträgt etwa <strong>{calories} Kilokalorien</strong>.');
+  const summary = summaryTpl.replace('{calories}', formatCalories(stats.totalDailyCalories));
   const isMobile = window.innerWidth <= 480;
+
+  const title = getCalcText('evaluation_title', 'Deine Auswertung');
+  const bmrLabel = getCalcText('bmr', 'Grundumsatz (BMR)');
+  const workLabel = getCalcText('work_calories', 'Arbeitsumsatz');
+  const restLabel = getCalcText('rest_calories', 'Freizeit und Ruhe');
+  const mobileHint = getCalcText('mobile_hint', 'Nutze diese Orientierung für deine Mahlzeitenplanung:');
+  const strongLossLabel = getCalcText('strong_loss', 'Deutliches Defizit (-25%)');
+  const moderateLossLabel = getCalcText('moderate_loss', 'Moderates Defizit (-15%)');
+  const maintainLabel = getCalcText('maintain', 'Gewicht halten');
+  const moderateGainLabel = getCalcText('moderate_gain', 'Moderater Aufbau (+10%)');
+  const strongGainLabel = getCalcText('strong_gain', 'Intensiver Aufbau (+20%)');
+  const note = getCalcText('mobile_note', 'Diese Werte bilden die Basis für personalisierte Rezepte, Einkaufslisten und Trainingspläne direkt in Murmli.');
+  const tableTargetHeader = getCalcText('table_target_header', 'Zielbereich');
+  const tableCaloriesHeader = getCalcText('table_calories_header', 'Empfohlene Kalorien');
+  const tableIntro = getCalcText('table_intro', 'Nutze die Orientierung aus der Murmli App, um deine Mahlzeitenplanung auf deinen Bedarf auszurichten:');
 
   if (isMobile) {
     // Mobile-optimierte Darstellung
     target.innerHTML = `
-      <h3>Deine Auswertung</h3>
+      <h3>${title}</h3>
       <p class="calorie-calculator__summary">${summary}</p>
       
       <div class="calorie-calculator__mobile-breakdown">
         <div class="breakdown-item">
-          <span class="breakdown-label">Grundumsatz (BMR)</span>
+          <span class="breakdown-label">${bmrLabel}</span>
           <span class="breakdown-value">${formatCalories(stats.bmr)} kcal</span>
         </div>
         <div class="breakdown-item">
-          <span class="breakdown-label">Arbeitsumsatz</span>
+          <span class="breakdown-label">${workLabel}</span>
           <span class="breakdown-value">${formatCalories(stats.workHoursCalories)} kcal</span>
         </div>
         <div class="breakdown-item">
-          <span class="breakdown-label">Freizeit und Ruhe</span>
+          <span class="breakdown-label">${restLabel}</span>
           <span class="breakdown-value">${formatCalories(stats.restHoursCalories)} kcal</span>
         </div>
       </div>
       
-      <p class="calorie-calculator__mobile-hint">Nutze diese Orientierung für deine Mahlzeitenplanung:</p>
+      <p class="calorie-calculator__mobile-hint">${mobileHint}</p>
       
       <div class="calorie-calculator__mobile-targets">
         <div class="target-card">
-          <h4>Deutliches Defizit (-25%)</h4>
+          <h4>${strongLossLabel}</h4>
           <div class="target-value">${formatCalories(recommendations.strongLose)} kcal</div>
         </div>
         <div class="target-card">
-          <h4>Moderates Defizit (-15%)</h4>
+          <h4>${moderateLossLabel}</h4>
           <div class="target-value">${formatCalories(recommendations.lose)} kcal</div>
         </div>
         <div class="target-card">
-          <h4>Gewicht halten</h4>
+          <h4>${maintainLabel}</h4>
           <div class="target-value">${formatCalories(recommendations.maintain)} kcal</div>
         </div>
         <div class="target-card">
-          <h4>Moderater Aufbau (+10%)</h4>
+          <h4>${moderateGainLabel}</h4>
           <div class="target-value">${formatCalories(recommendations.gain)} kcal</div>
         </div>
         <div class="target-card">
-          <h4>Intensiver Aufbau (+20%)</h4>
+          <h4>${strongGainLabel}</h4>
           <div class="target-value">${formatCalories(recommendations.strongGain)} kcal</div>
         </div>
       </div>
       
-      <p class="calorie-calculator__mobile-note">Diese Werte bilden die Basis für personalisierte Rezepte, Einkaufslisten und Trainingspläne direkt in Murmli.</p>
+      <p class="calorie-calculator__mobile-note">${note}</p>
     `;
   } else {
     // Desktop-Darstellung (original)
     target.innerHTML = `
-      <h3>Deine Auswertung</h3>
+      <h3>${title}</h3>
       <p class="calorie-calculator__summary">${summary}</p>
       <dl class="calorie-calculator__breakdown">
         <div>
-          <dt>Grundumsatz (BMR)</dt>
+          <dt>${bmrLabel}</dt>
           <dd>${formatCalories(stats.bmr)} kcal</dd>
         </div>
         <div>
-          <dt>Arbeitsumsatz</dt>
+          <dt>${workLabel}</dt>
           <dd>${formatCalories(stats.workHoursCalories)} kcal</dd>
         </div>
         <div>
-          <dt>Freizeit und Ruhe</dt>
+          <dt>${restLabel}</dt>
           <dd>${formatCalories(stats.restHoursCalories)} kcal</dd>
         </div>
       </dl>
-      <p>Nutze die Orientierung aus der Murmli App, um deine Mahlzeitenplanung auf deinen Bedarf auszurichten:</p>
+      <p>${tableIntro}</p>
       <table class="calorie-calculator__targets" aria-label="Kalorienempfehlungen">
         <thead>
           <tr>
-            <th>Zielbereich</th>
-            <th>Empfohlene Kalorien</th>
+            <th>${tableTargetHeader}</th>
+            <th>${tableCaloriesHeader}</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Deutliches Defizit (-25 %)</td>
+            <td>${strongLossLabel}</td>
             <td><strong>${formatCalories(recommendations.strongLose)} kcal</strong></td>
           </tr>
           <tr>
-            <td>Moderates Defizit (-15 %)</td>
+            <td>${moderateLossLabel}</td>
             <td><strong>${formatCalories(recommendations.lose)} kcal</strong></td>
           </tr>
           <tr>
-            <td>Gewicht halten</td>
+            <td>${maintainLabel}</td>
             <td><strong>${formatCalories(recommendations.maintain)} kcal</strong></td>
           </tr>
           <tr>
-            <td>Moderater Aufbau (+10 %)</td>
+            <td>${moderateGainLabel}</td>
             <td><strong>${formatCalories(recommendations.gain)} kcal</strong></td>
           </tr>
           <tr>
-            <td>Intensiver Aufbau (+20 %)</td>
+            <td>${strongGainLabel}</td>
             <td><strong>${formatCalories(recommendations.strongGain)} kcal</strong></td>
           </tr>
         </tbody>
       </table>
-      <p>Diese Werte bilden die Basis für personalisierte Rezepte, Einkaufslisten und Trainingspläne direkt in Murmli.</p>
+      <p>${note}</p>
     `;
   }
 }
@@ -254,12 +286,12 @@ if (calculatorForm && calculatorResult) {
     const restHoursPAL = parseNumber(formData.get('restHoursPAL'));
 
     if (!Number.isFinite(weight) || weight <= 0 || !Number.isFinite(height) || height <= 0) {
-      renderCalculatorError(calculatorResult, 'Bitte gib ein plausibles Gewicht und eine Größe größer als 0 cm an.');
+      renderCalculatorError(calculatorResult, getCalcText('error_inputs', 'Bitte gib ein plausibles Gewicht und eine Größe größer als 0 cm an.'));
       return;
     }
 
     if (!Number.isFinite(age) || age < 10 || age > 100) {
-      renderCalculatorError(calculatorResult, 'Bitte prüfe dein Geburtsjahr, damit wir dein Alter korrekt berechnen können.');
+      renderCalculatorError(calculatorResult, getCalcText('error_age', 'Bitte prüfe dein Geburtsjahr, damit wir dein Alter korrekt berechnen können.'));
       return;
     }
 
@@ -329,20 +361,77 @@ if (menuToggle && mainNav) {
   });
 }
 
-// Verbesserte Touch-Interaktionen
+// Language Switcher Logic
+function initLanguageSwitchers() {
+  const selects = document.querySelectorAll('.language-select');
+  if (!selects.length) return;
+
+  selects.forEach(select => {
+    select.addEventListener('change', function () {
+      const chosenLang = this.value;
+      if (!chosenLang) return;
+
+      // Save preference
+      try {
+        localStorage.setItem('appLocale', chosenLang);
+        document.cookie = `appLocale=${encodeURIComponent(chosenLang)}; path=/; max-age=31536000; SameSite=Lax`;
+      } catch (e) {
+        console.error("Storage error:", e);
+      }
+
+      // Reload with new language query param
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', chosenLang);
+      window.location.href = url.toString();
+    });
+  });
+
+  // Sync client-side saved preference if not specified in URL and different from current page
+  try {
+    const savedLocale = localStorage.getItem('appLocale');
+    const urlParams = new URLSearchParams(window.location.search);
+    if (savedLocale && !urlParams.has('lang')) {
+      const cookieMatch = document.cookie.match(/(?:^|;\s*)appLocale=([^;]*)/);
+      const cookieVal = cookieMatch ? decodeURIComponent(cookieMatch[1]) : null;
+      if (cookieVal !== savedLocale) {
+        document.cookie = `appLocale=${encodeURIComponent(savedLocale)}; path=/; max-age=31536000; SameSite=Lax`;
+        const url = new URL(window.location.href);
+        url.searchParams.set('lang', savedLocale);
+        window.location.replace(url.toString());
+      }
+    }
+  } catch (e) {
+    // Ignore storage restrictions
+  }
+}
+
+// Prevent click on disabled store download buttons
+function initDisabledStoreButtons() {
+  document.querySelectorAll('.store-link--disabled, .store-link[aria-disabled="true"]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    });
+  });
+}
+
+// DOM Ready initialization
 document.addEventListener('DOMContentLoaded', function () {
-  // Füge Loading-State für den Kalorienrechner hinzu
+  initLanguageSwitchers();
+  initDisabledStoreButtons();
+
+  // Loading-State für den Kalorienrechner
   const calorieForm = document.getElementById('calorie-calculator-form');
   if (calorieForm) {
     calorieForm.addEventListener('submit', function () {
       const submitBtn = this.querySelector('button[type="submit"]');
       if (submitBtn) {
-        submitBtn.innerHTML = 'Berechne...';
+        submitBtn.innerHTML = getCalcText('btn_calculating', 'Berechne...');
         submitBtn.disabled = true;
 
         // Reset nach kurzer Zeit (falls Berechnung sehr schnell)
         setTimeout(() => {
-          submitBtn.innerHTML = 'Kalorienbedarf berechnen';
+          submitBtn.innerHTML = getCalcText('btn_calculate', 'Kalorienbedarf berechnen');
           submitBtn.disabled = false;
         }, 2000);
       }

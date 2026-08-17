@@ -54,14 +54,18 @@
     "faq": "FAQ",
     "trailer": "Trailer",
     "about": "Über uns",
-    "home_label": "Back zur Murmli Main-Page"
+    "home_label": "Back zur Murmli Main-Page",
+    "select_language": "Sprache"
   },
   "hero": {
     "h1": "Free KI Kalorienzähler mit smarter Einkaufsliste",
     "p": "Du willst kostenlos Kalorien tracken, Rezepte planen und automatisch eine Einkaufsliste bekommen? Murmli regelt das in einem Rutsch: KI-berechneter Bedarf, passender Wochenplan und die Liste für den Supermarkt steht.",
     "google_play_alt": "Jetzt bei Google Play ziehen",
     "app_store_alt": "Jetzt im App Store gönnen",
-    "discord_alt": "Komm auf unseren Discord Server"
+    "discord_alt": "Komm auf unseren Discord Server",
+    "downloads_paused_badge": "Downloads gerade Pause, sorry",
+    "downloads_paused_info": "Wegen dem krassen Hype und um die Kosten nicht zu sprengen, gehen Neuinstallationen gerade nicht. Wer die App schon hat, kann aber ganz normal weiter flexen.",
+    "downloads_paused_button_tooltip": "Downloads sind gerade offline"
   },
   "trailer": {
     "h2": "Zieh dir Murmli in Action rein!",
@@ -155,7 +159,28 @@
     "formula_women": "Frauen = 10 × Gewicht (kg) + 6,25 × Größe (cm) − 5 × Alter − 161",
     "formula_explanation": "Murmli mixt das Ergebnis mit deinen Angaben zu Arbeit und Chill (PAL-Werte), um den Gesamtumsatz transparent zu berechnen.",
     "formula_result_explanation": "Nach dem Rechnen siehst du Grundumsatz, Arbeitsumsatz und Gesamtumsatz inklusive der empfohlenen Kalorienziele. So weißt du direkt, ob dein Food-Plan zu deinem Ziel passt.",
-    "formula_tip": "Tipp: Speicher deine Werte in der Murmli App, um Meals, Rezepte und Workouts automatisch auf deinen Haushalt abzustimmen."
+    "formula_tip": "Tipp: Speicher deine Werte in der Murmli App, um Meals, Rezepte und Workouts automatisch auf deinen Haushalt abzustimmen.",
+    "results": {
+      "evaluation_title": "Dein Check-up",
+      "summary_text": "Dein täglicher Gesamtumsatz liegt bei safe <strong>{calories} Kilokalorien</strong>.",
+      "bmr": "Grundumsatz (BMR)",
+      "work_calories": "Work-Energy",
+      "rest_calories": "Chillen & Freizeit",
+      "mobile_hint": "Check das hier für dein Meal-Prep ab:",
+      "strong_loss": "Hardcore Defizit (-25%)",
+      "moderate_loss": "Chilliges Defizit (-15%)",
+      "maintain": "Gewicht halten",
+      "moderate_gain": "Guter Aufbau (+10%)",
+      "strong_gain": "Massephase-Modus (+20%)",
+      "mobile_note": "Diese Werte sind die Basis für deine personalisierten Rezepte, Einkaufslisten und Trainingspläne direkt in Murmli.",
+      "table_target_header": "Dein Ziel",
+      "table_calories_header": "Kalorien-Empfehlung",
+      "table_intro": "Nutze die Murmli App Vibes, um deine Mahlzeiten perfekt auf deinen Bedarf zu trimmen:",
+      "error_inputs": "Digga, gib mal ein echtes Gewicht und 'ne Größe über 0 cm an.",
+      "error_age": "Check mal dein Geburtsjahr, damit wir dein Alter richtig berechnen können.",
+      "btn_calculating": "Bin am Rechnen...",
+      "btn_calculate": "Kalorienbedarf checken"
+    }
   },
   "faq_section": {
     "h2": "Häufige Fragen zum free Murmli Kalorienzähler",

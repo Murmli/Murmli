@@ -54,14 +54,18 @@
     "faq": "FAQ",
     "trailer": "Trail-ah",
     "about": "About",
-    "home_label": "Back to Murmli Home"
+    "home_label": "Back to Murmli Home",
+    "select_language": "Lingo"
   },
   "hero": {
     "h1": "Free AI Calorie Countah with a Smaht Grocery List",
     "p": "Wanna calculate calories for free, plan recipes, and get a grocery list automatic? Murmli does it all in one shot: AI-calculated calorie needs, a matchin' week plan, and an oah-dered list for the mah-ket.",
     "google_play_alt": "Download it now on Google Play",
     "app_store_alt": "Download it now on the Apple App Sto-ah",
-    "discord_alt": "Join ou-ah Discord serv-ah"
+    "discord_alt": "Join ou-ah Discord serv-ah",
+    "downloads_paused_badge": "No new installs kid, we're wicked busy",
+    "downloads_paused_info": "Listen heah, because everyone and their mothah is tryin' to jump on this, we had to pause new installs to save some wicked coin. If you're already in, you're golden. Keep usin' the app like always.",
+    "downloads_paused_button_tooltip": "Downloads are wicked busted right now"
   },
   "trailer": {
     "h2": "See Murmli in action!",
@@ -155,7 +159,28 @@
     "formula_women": "Women = 10 × weight (kg) + 6.25 × height (cm) − 5 × age − 161",
     "formula_explanation": "Murmli combines the result with ya woah-k and rest times (PAL values) to calculate the total energy use transparently.",
     "formula_result_explanation": "Aftah calculatin', you'll see ya basic rate, woah-k rate, and total energy use includin' the recommended goals. That way you can see if ya current diet fits ya goal.",
-    "formula_tip": "Tip: Save ya values in the Murmli app to automatic-ly match meals, recipes, and woah-kout plans to ya calorie needs."
+    "formula_tip": "Tip: Save ya values in the Murmli app to automatic-ly match meals, recipes, and woah-kout plans to ya calorie needs.",
+    "results": {
+      "evaluation_title": "Heah's the deal",
+      "summary_text": "Ya daily numbah is about <strong>{calories} calories</strong>. Not too shabby.",
+      "bmr": "Basal Metabolic Rate (BMR)",
+      "work_calories": "Calories from ya job",
+      "rest_calories": "Chillin' and sleepin'",
+      "mobile_hint": "Check out this stuff for plannin' ya chow:",
+      "strong_loss": "Wicked big deficit (-25%)",
+      "moderate_loss": "Tiny bit of a deficit (-15%)",
+      "maintain": "Keepin' it steady",
+      "moderate_gain": "Gettin' a bit biggah (+10%)",
+      "strong_gain": "Gettin' wicked huge (+20%)",
+      "mobile_note": "These numbahs are the wicked smaht way we do recipes and stuff in Murmli.",
+      "table_target_header": "What's ya goal?",
+      "table_calories_header": "Recommended chow",
+      "table_intro": "Use this wicked smaht Murmli info to figuah out what you're eatin':",
+      "error_inputs": "Don't be a chowdah-head. Put in a real weight and a height biggah than zero.",
+      "error_age": "Hey, fix ya birth yeah so we can figuah out how old you are, guy.",
+      "btn_calculating": "Figurin' it out...",
+      "btn_calculate": "Figuah out my calories"
+    }
   },
   "faq_section": {
     "h2": "Common questions about the free Murmli calorie countah",

@@ -54,14 +54,18 @@
     "faq": "FAQ",
     "trailer": "Trailer",
     "about": "Über",
-    "home_label": "Zur Murmli Startseite"
+    "home_label": "Zur Murmli Startseite",
+    "select_language": "Sprache"
   },
   "hero": {
     "h1": "Kostenloser KI Kalorienzähler mit smarter Einkaufsliste",
     "p": "Du willst kostenlos Kalorien berechnen, Rezepte planen und automatisch eine Einkaufsliste erhalten? Murmli erledigt das in einem Schritt: KI-berechneter Kalorienbedarf, passender Wochenplan und sortierte Liste für den Supermarkt.",
     "google_play_alt": "Jetzt bei Google Play herunterladen",
     "app_store_alt": "Jetzt im Apple App Store herunterladen",
-    "discord_alt": "Tritt unserem Discord Server bei"
+    "discord_alt": "Tritt unserem Discord Server bei",
+    "downloads_paused_badge": "Neuinstallationen vorübergehend pausiert",
+    "downloads_paused_info": "Aufgrund des hohen Ansturms und aus Kostengründen sind Neuinstallationen derzeit vorübergehend nicht zugelassen. Bestehende Nutzer können die App weiterhin wie gewohnt nutzen.",
+    "downloads_paused_button_tooltip": "Downloads derzeit deaktiviert"
   },
   "trailer": {
     "h2": "Sieh Murmli in Aktion!",
@@ -155,7 +159,28 @@
     "formula_women": "Frauen = 10 \u00d7 Gewicht (kg) + 6,25 \u00d7 Größe (cm) \u2212 5 \u00d7 Alter \u2212 161",
     "formula_explanation": "Murmli kombiniert das Ergebnis mit deinen angegebenen Arbeits- und Ruhezeiten (PAL-Werte), um den Gesamtumsatz transparent zu berechnen.",
     "formula_result_explanation": "Nach der Berechnung siehst du Grundumsatz, Arbeitsumsatz und Gesamtumsatz inklusive der empfohlenen Kalorienziele. So kannst du direkt einschätzen, ob dein aktueller Ernährungsplan zu deinem Ziel passt.",
-    "formula_tip": "Tipp: Speichere deine Werte in der Murmli App, um automatisch Mahlzeiten, Rezepte und Trainingspläne auf deinen Kalorienhaushalt abstimmen zu lassen."
+    "formula_tip": "Tipp: Speichere deine Werte in der Murmli App, um automatisch Mahlzeiten, Rezepte und Trainingspläne auf deinen Kalorienhaushalt abstimmen zu lassen.",
+    "results": {
+      "evaluation_title": "Deine Auswertung",
+      "summary_text": "Dein täglicher Gesamtumsatz beträgt etwa <strong>{calories} Kilokalorien</strong>.",
+      "bmr": "Grundumsatz (BMR)",
+      "work_calories": "Arbeitsumsatz",
+      "rest_calories": "Freizeit und Ruhe",
+      "mobile_hint": "Nutze diese Orientierung für deine Mahlzeitenplanung:",
+      "strong_loss": "Deutliches Defizit (-25%)",
+      "moderate_loss": "Moderates Defizit (-15%)",
+      "maintain": "Gewicht halten",
+      "moderate_gain": "Moderater Aufbau (+10%)",
+      "strong_gain": "Intensiver Aufbau (+20%)",
+      "mobile_note": "Diese Werte bilden die Basis für personalisierte Rezepte, Einkaufslisten und Trainingspläne direkt in Murmli.",
+      "table_target_header": "Zielbereich",
+      "table_calories_header": "Empfohlene Kalorien",
+      "table_intro": "Nutze die Orientierung aus der Murmli App, um deine Mahlzeitenplanung auf deinen Bedarf auszurichten:",
+      "error_inputs": "Bitte gib ein plausibles Gewicht und eine Größe größer als 0 cm an.",
+      "error_age": "Bitte prüfe dein Geburtsjahr, damit wir dein Alter korrekt berechnen können.",
+      "btn_calculating": "Berechne...",
+      "btn_calculate": "Kalorienbedarf berechnen"
+    }
   },
   "faq_section": {
     "h2": "Häufige Fragen zum kostenlosen Murmli Kalorienzähler",

@@ -54,14 +54,18 @@
     "faq": "FAQ",
     "trailer": "Trailer",
     "about": "Über eus",
-    "home_label": "Zrugg zur Murmli Startsiite"
+    "home_label": "Zrugg zur Murmli Startsiite",
+    "select_language": "Schpraach"
   },
   "hero": {
     "h1": "Gratis KI Kaloriäzähler mit ere smarte Ichaufsliste",
     "p": "Wotsch gratis Kaloriä berächne, Rezäpt plane und automatisch e Ichaufsliste übercho? Murmli erledigt das in eim Schritt: KI-berächnete Kaloriäbedarf, passende Wucheplan und e sortierti Liste für de Supermarkt.",
     "google_play_alt": "Jetz bi Google Play abelade",
     "app_store_alt": "Jetz im Apple App Store abelade",
-    "discord_alt": "Chum uf euse Discord Server"
+    "discord_alt": "Chum uf euse Discord Server",
+    "downloads_paused_badge": "Neuinschtaallatione sind grad pausiert",
+    "downloads_paused_info": "Wägem grosse Aaprang und de Choschte chönne mir im Momänt leider keini neue Inschtaallatione zuelaah. Wär d'App scho het, cha se aber ganz normal wyterbruuche.",
+    "downloads_paused_button_tooltip": "Downloads sind im Momänt deaktiviert"
   },
   "trailer": {
     "h2": "Lueg dir dr Murmli in Aktion a!",
@@ -155,7 +159,28 @@
     "formula_women": "Fraue = 10 × Gwicht (kg) + 6,25 × Grössi (cm) − 5 × Alter − 161",
     "formula_explanation": "Murmli kombiniert s'Ergebnis mit dine aagebene Arbets- und Ruehzyte (PAL-Wärt), zum de Gsamtumsatz transparent z'berächne.",
     "formula_result_explanation": "Nach dr Berächnig gsehsch de Grundumsatz, de Arbetsumsatz und de Gsamtumsatz inklusive de empfohlene Kaloriä-Ziel. So chasch du diräkt ischätze, ob din aktuelle Ernährigsplan zu dim Ziel passt.",
-    "formula_tip": "Tipp: Spicher dini Wärt in dr Murmli App, zum automatisch Mahlzyte, Rezäpt und Trainingsplän uf din Kaloriähuushalt abstimmet loo."
+    "formula_tip": "Tipp: Spicher dini Wärt in dr Murmli App, zum automatisch Mahlzyte, Rezäpt und Trainingsplän uf din Kaloriähuushalt abstimmet loo.",
+    "results": {
+      "evaluation_title": "Dyni Uswärtig",
+      "summary_text": "Dy täglichi Gsamtumsatz isch öppe <strong>{calories} Kilokalorie</strong>.",
+      "bmr": "Grundumsatz (BMR)",
+      "work_calories": "Arbeitsumsatz",
+      "rest_calories": "Freiziit und Rueh",
+      "mobile_hint": "Nimm das da als Oriäntierig für dyni Ässensplanig:",
+      "strong_loss": "Dütlichs Defizit (-25%)",
+      "moderate_loss": "Moderats Defizit (-15%)",
+      "maintain": "Gwicht bhalte",
+      "moderate_gain": "Moderate Ufbou (+10%)",
+      "strong_gain": "Intensive Ufbou (+20%)",
+      "mobile_note": "Die Wärt sind d'Basis für dyni Rezäpt, Ichaufsliischte und Trainingsplän direkt i de Murmli App.",
+      "table_target_header": "Zielberiich",
+      "table_calories_header": "Empfohlni Kalorie",
+      "table_intro": "Nutz die Oriäntierig us de Murmli App, zum dyni Mahlzyte uf dy Bedarf abzschtimme:",
+      "error_inputs": "Bitte gib es plausibels Gwicht und e Grössi über 0 cm a.",
+      "error_age": "Bitte lueg no mal dis Geburtsjahr aa, damit mir dis Alter richtig berächne chönne.",
+      "btn_calculating": "Am Berächne...",
+      "btn_calculate": "Kaloriebedarf berächne"
+    }
   },
   "faq_section": {
     "h2": "Häufigi Froge zum gratis Murmli Kaloriäzähler",

@@ -54,14 +54,18 @@
     "faq": "Common Vibes",
     "trailer": "The Movie",
     "about": "Our Story",
-    "home_label": "Back to Murmli Base"
+    "home_label": "Back to Murmli Base",
+    "select_language": "Lingo"
   },
   "hero": {
     "h1": "Free AI Calorie Counter with a Chilled Grocery List",
     "p": "Wanna calculate calories for free, plan recipes, and get an auto-grocery list? Murmli handles it all in one smooth ride: AI-calculated fuel needs, a matching weekly plan, and a sorted list for the shop.",
     "google_play_alt": "Catch it on Google Play",
     "app_store_alt": "Grab it on the Apple App Store",
-    "discord_alt": "Join our Discord Crew"
+    "discord_alt": "Join our Discord Crew",
+    "downloads_paused_badge": "New rides on hold for a bit",
+    "downloads_paused_info": "Whoa, the swell is too big right now! Due to the massive rush and some cost vibes, we've paused new installs. If you're already on the board, keep shredding as usual.",
+    "downloads_paused_button_tooltip": "Downloads are totally wiped out right now"
   },
   "trailer": {
     "h2": "See Murmli in Action!",
@@ -155,7 +159,28 @@
     "formula_women": "Dudettes = 10 × weight (kg) + 6.25 × height (cm) − 5 × age − 161",
     "formula_explanation": "Murmli combines the result with your work and rest times (PAL values) to calculate your total burn transparently.",
     "formula_result_explanation": "After the calculation, you'll see your base rate, work rate, and total energy plus your recommended calorie goals. This way you can see if your current food vibes match your goal.",
-    "formula_tip": "Pro Tip: Save your values in the Murmli app to automatically sync meals, recipes, and workouts to your calorie budget."
+    "formula_tip": "Pro Tip: Save your values in the Murmli app to automatically sync meals, recipes, and workouts to your calorie budget.",
+    "results": {
+      "evaluation_title": "Your Personal Break Down",
+      "summary_text": "Your total daily energy flow is around <strong>{calories} Kilocalories</strong>, dude.",
+      "bmr": "Base Energy Flow (BMR)",
+      "work_calories": "Hustle Energy",
+      "rest_calories": "Chill & Recovery",
+      "mobile_hint": "Check out this guide to fuel your sessions:",
+      "strong_loss": "Deep Cut (-25%)",
+      "moderate_loss": "Cruisy Cut (-15%)",
+      "maintain": "Staying Level",
+      "moderate_gain": "Mellow Bulk (+10%)",
+      "strong_gain": "Power Bulk (+20%)",
+      "mobile_note": "These numbers are the secret sauce for your custom recipes, grocery lists, and workouts right inside Murmli.",
+      "table_target_header": "Your Goal Zone",
+      "table_calories_header": "Recommended Fuel",
+      "table_intro": "Ride the Murmli wave to match your meal plan with what your body needs:",
+      "error_inputs": "Whoa, hold up! Give us a real weight and a height taller than 0 cm, man.",
+      "error_age": "Check your birth year again so we can catch your vibe and age correctly.",
+      "btn_calculating": "Catching the numbers...",
+      "btn_calculate": "Calculate my fuel needs"
+    }
   },
   "faq_section": {
     "h2": "Burning questions about the free Murmli Calorie Counter",

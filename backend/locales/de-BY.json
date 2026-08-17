@@ -54,14 +54,18 @@
     "faq": "FAQ",
     "trailer": "Vorschau",
     "about": "Über uns",
-    "home_label": "Zur Murmli Startseitn"
+    "home_label": "Zur Murmli Startseitn",
+    "select_language": "Sprach"
   },
   "hero": {
     "h1": "Gratis KI Kalorienzähler mit ana gscheidn Einkaufslistn",
     "p": "Wuist umsonst Kalorien ausrechnen, Rezepte planan und automatisch a Einkaufslistn kriagn? Murmli mocht des ois in oanam Aufwasch: KI-berechneter Kalorienbedarf, a passender Wochenplan und a sortierte Listn für'n Supermarkt.",
     "google_play_alt": "Iatzt bei Google Play nunterlodn",
     "app_store_alt": "Iatzt im Apple App Store nunterlodn",
-    "discord_alt": "Kimm auf unsern Discord Server"
+    "discord_alt": "Kimm auf unsern Discord Server",
+    "downloads_paused_badge": "Neuinstallationen san grod a bissal pausiert",
+    "downloads_paused_info": "Wengam ganzn Ansturm und weils as Geid kost, hamma d'Neuinstallationen grod amoi gstoppt. Wer d'App scho hod, ko de ganz normal weidanutzn.",
+    "downloads_paused_button_tooltip": "Downloads san grod deaktiviert"
   },
   "trailer": {
     "h2": "Schau dir Murmli amoi o!",
@@ -155,7 +159,28 @@
     "formula_women": "Frauen = 10 × Gwicht (kg) + 6,25 × Greaß (cm) − 5 × Alter − 161",
     "formula_explanation": "Murmli nimmt ois zam mit deine Arbeits- und Ruahzeiten (PAL-Werte), um den Gesamtumsatz ganz klor auszurechnen.",
     "formula_result_explanation": "Nach'm Ausrechnen siehst dein Grundumsatz, Arbeitsumsatz und Gesamtumsatz samt de empfohlenen Kalorienziele. So konnst glei sagn, ob dei Essensplan zu deinem Ziel passt.",
-    "formula_tip": "Tipp: Speicher dei Werte in der Murmli App, damit Mahlzeiten, Rezepte und Trainingsplän automatisch auf dein Kalorienhaushalt obgstimmt wern."
+    "formula_tip": "Tipp: Speicher dei Werte in der Murmli App, damit Mahlzeiten, Rezepte und Trainingsplän automatisch auf dein Kalorienhaushalt obgstimmt wern.",
+    "results": {
+      "evaluation_title": "Dei Auswertung",
+      "summary_text": "Dei täglicher Gsamtumsatz san so um de <strong>{calories} Kilokalorien</strong> herum.",
+      "bmr": "Grundumsatz (BMR)",
+      "work_calories": "Arbeitsumsatz",
+      "rest_calories": "Freizeit und d'Ruah",
+      "mobile_hint": "Nimm des her ois Orientierung für dei Brotzeit-Planung:",
+      "strong_loss": "Gscheid gwenig essen (-25%)",
+      "moderate_loss": "A bissal weniger essen (-15%)",
+      "maintain": "Gwicht hoidn",
+      "moderate_gain": "A bissal wos draufpacka (+10%)",
+      "strong_gain": "Gscheid wos auffitrainiern (+20%)",
+      "mobile_note": "De Werte san d'Basis für dei Essn, d'Einkaufslistn und dein Training direkt im Murmli.",
+      "table_target_header": "Wos d'arreichn mogst",
+      "table_calories_header": "Empfohlne Kalorien",
+      "table_intro": "Nutz de Orientierung aus da Murmli App, damit dei Essn zu dem passt, wos dei Körper braucht:",
+      "error_inputs": "Biddschee gib a Gwicht und a Greaß greaßer ois 0 cm o, de a Sinn machan.",
+      "error_age": "Schau biddschee nomoi noch deim Geburtsjoar, damit mia dei Oita richtig ausrechnen kenna.",
+      "btn_calculating": "I bin am Rechnen...",
+      "btn_calculate": "Kalorienbedarf ausrechnen"
+    }
   },
   "faq_section": {
     "h2": "Häufige Frogn zum gratis Murmli Kalorienzähler",

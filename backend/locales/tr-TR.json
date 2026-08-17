@@ -54,14 +54,18 @@
     "faq": "SSS",
     "trailer": "Tanıtım",
     "about": "Hakkında",
-    "home_label": "Murmli Ana Sayfasına Dön"
+    "home_label": "Murmli Ana Sayfasına Dön",
+    "select_language": "Dil"
   },
   "hero": {
     "h1": "Akıllı Alışveriş Listesi ile Ücretsiz Yapay Zeka Kalori Sayacı",
     "p": "Ücretsiz kalori hesaplamak, yemek tarifleri planlamak ve otomatik olarak bir alışveriş listesi almak mı istiyorsunuz? Murmli bunu tek adımda yapar: Yapay zeka tarafından hesaplanan kalori ihtiyacı, uygun haftalık plan ve süpermarket için sıralı liste.",
     "google_play_alt": "Şimdi Google Play'den indirin",
     "app_store_alt": "Şimdi Apple App Store'dan indirin",
-    "discord_alt": "Discord sunucumuza katılın"
+    "discord_alt": "Discord sunucumuza katılın",
+    "downloads_paused_badge": "Yeni kurulumlar geçici olarak durduruldu",
+    "downloads_paused_info": "Yoğun talep ve maliyet nedenleriyle yeni kurulumlara şu an için geçici olarak izin verilmemektedir. Mevcut kullanıcılar uygulamayı her zamanki gibi kullanmaya devam edebilirler.",
+    "downloads_paused_button_tooltip": "İndirmeler şu an devre dışı"
   },
   "trailer": {
     "h2": "Murmli'yi iş başında görün!",
@@ -155,7 +159,28 @@
     "formula_women": "Kadınlar = 10 × ağırlık (kg) + 6,25 × boy (cm) − 5 × yaş − 161",
     "formula_explanation": "Murmli, toplam metabolizma hızını şeffaf bir şekilde hesaplamak için sonucu belirttiğiniz iş ve dinlenme süreleriyle (PAL değerleri) birleştirir.",
     "formula_result_explanation": "Hesaplamadan sonra bazal metabolizma hızını, çalışma metabolizmasını ve önerilen kalori hedefleri dahil olmak üzere toplam metabolizma hızını görürsünüz. Böylece mevcut beslenme planınızın hedefinize uygun olup olmadığını doğrudan değerlendirebilirsiniz.",
-    "formula_tip": "İpucu: Öğünlerin, tariflerin ve antrenman planlarının kalori dengenize otomatik olarak göre uyarlanması için değerlerinizi Murmli uygulamasına kaydedin."
+    "formula_tip": "İpucu: Öğünlerin, tariflerin ve antrenman planlarının kalori dengenize otomatik olarak göre uyarlanması için değerlerinizi Murmli uygulamasına kaydedin.",
+    "results": {
+      "evaluation_title": "Değerlendirmeniz",
+      "summary_text": "Günlük toplam enerji tüketiminiz yaklaşık <strong>{calories} kilokaloridir</strong>.",
+      "bmr": "Bazal Metabolizma Hızı (BMR)",
+      "work_calories": "Çalışma Enerjisi",
+      "rest_calories": "Boş Zaman ve Dinlenme",
+      "mobile_hint": "Öğün planlamanız için bu kılavuzu kullanın:",
+      "strong_loss": "Belirgin Kalori Açığı (-%25)",
+      "moderate_loss": "Ilımlı Kalori Açığı (-%15)",
+      "maintain": "Kiloyu Koru",
+      "moderate_gain": "Ilımlı Kilo Alımı (+%10)",
+      "strong_gain": "Yoğun Kilo Alımı (+%20)",
+      "mobile_note": "Bu değerler; Murmli'deki kişiselleştirilmiş tarifler, alışveriş listeleri ve antrenman planları için temel oluşturur.",
+      "table_target_header": "Hedef Aralığı",
+      "table_calories_header": "Önerilen Kalori",
+      "table_intro": "Öğün planlamanızı ihtiyaçlarınıza göre ayarlamak için Murmli uygulamasındaki bu kılavuzu kullanın:",
+      "error_inputs": "Lütfen mantıklı bir ağırlık ve 0 cm'den büyük bir boy girin.",
+      "error_age": "Yaşınızı doğru hesaplayabilmemiz için lütfen doğum yılınızı kontrol edin.",
+      "btn_calculating": "Hesaplanıyor...",
+      "btn_calculate": "Kalori İhtiyacını Hesapla"
+    }
   },
   "faq_section": {
     "h2": "Ücretsiz Murmli Kalori Sayacı hakkında sıkça sorulan sorular",

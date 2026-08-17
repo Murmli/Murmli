@@ -54,14 +54,18 @@
     "faq": "FAQ",
     "trailer": "Trailer",
     "about": "O nas",
-    "home_label": "Do strony głównej Murmli"
+    "home_label": "Do strony głównej Murmli",
+    "select_language": "Język"
   },
   "hero": {
     "h1": "Darmowy licznik kalorii AI z inteligentną listą zakupów",
     "p": "Chcesz liczyć kalorie za darmo, planować przepisy i automatycznie otrzymywać listę zakupów? Murmli robi to w jednym kroku: obliczone przez AI zapotrzebowanie, dopasowany plan tygodniowy i posortowana lista do supermarketu.",
     "google_play_alt": "Pobierz teraz z Google Play",
     "app_store_alt": "Pobierz teraz z Apple App Store",
-    "discord_alt": "Dołącz do naszego serwera Discord"
+    "discord_alt": "Dołącz do naszego serwera Discord",
+    "downloads_paused_badge": "Nowe instalacje tymczasowo wstrzymane",
+    "downloads_paused_info": "Ze względu na duże zainteresowanie oraz koszty operacyjne, nowe instalacje są obecnie tymczasowo niedostępne. Dotychczasowi użytkownicy mogą nadal korzystać z aplikacji bez zmian.",
+    "downloads_paused_button_tooltip": "Pobieranie obecnie wyłączone"
   },
   "trailer": {
     "h2": "Zobacz Murmli w akcji!",
@@ -155,7 +159,28 @@
     "formula_women": "Kobiety = 10 × waga (kg) + 6,25 × wzrost (cm) − 5 × wiek − 161",
     "formula_explanation": "Murmli łączy wynik z podanymi przez Ciebie godzinami pracy i odpoczynku (wartości PAL), aby przejrzyście obliczyć całkowitą przemianę materii.",
     "formula_result_explanation": "Po obliczeniu zobaczysz podstawową przemianę materii, zapotrzebowanie związane z pracą oraz całkowite zapotrzebowanie wraz z zalecanymi celami kalorycznymi. Dzięki temu możesz od razu ocenić, czy Twój obecny plan żywieniowy pasuje do Twojego celu.",
-    "formula_tip": "Wskazówka: Zapisz swoje wartości w aplikacji Murmli, aby automatycznie dopasować posiłki, przepisy i plany treningowe do swojego bilansu kalorycznego."
+    "formula_tip": "Wskazówka: Zapisz swoje wartości w aplikacji Murmli, aby automatycznie dopasować posiłki, przepisy i plany treningowe do swojego bilansu kalorycznego.",
+    "results": {
+      "evaluation_title": "Twoja analiza",
+      "summary_text": "Twoje całkowite dzienne zapotrzebowanie wynosi około <strong>{calories} kilokalorii</strong>.",
+      "bmr": "Podstawowa przemiana materii (BMR)",
+      "work_calories": "Wydatki związane z pracą",
+      "rest_calories": "Czas wolny i odpoczynek",
+      "mobile_hint": "Wykorzystaj te wskazówki do planowania posiłków:",
+      "strong_loss": "Duży deficyt (-25%)",
+      "moderate_loss": "Umiarkowany deficyt (-15%)",
+      "maintain": "Utrzymanie wagi",
+      "moderate_gain": "Umiarkowana masa (+10%)",
+      "strong_gain": "Intensywna masa (+20%)",
+      "mobile_note": "Wartości te stanowią podstawę do spersonalizowanych przepisów, list zakupów i planów treningowych bezpośrednio w aplikacji Murmli.",
+      "table_target_header": "Cel",
+      "table_calories_header": "Zalecane kalorie",
+      "table_intro": "Skorzystaj z wytycznych w aplikacji Murmli, aby dostosować planowanie posiłków do swoich potrzeb:",
+      "error_inputs": "Proszę podać wiarygodną wagę oraz wzrost większy niż 0 cm.",
+      "error_age": "Proszę sprawdź rok urodzenia, abyśmy mogli poprawnie obliczyć Twój wiek.",
+      "btn_calculating": "Obliczanie...",
+      "btn_calculate": "Oblicz zapotrzebowanie kaloryczne"
+    }
   },
   "faq_section": {
     "h2": "Często zadawane pytania dotyczące darmowego licznika kalorii Murmli",

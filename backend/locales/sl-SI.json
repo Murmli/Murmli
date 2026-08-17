@@ -54,14 +54,18 @@
     "faq": "Pogosta vprašanja",
     "trailer": "Napovednik",
     "about": "O projektu",
-    "home_label": "Na začetno stran Murmli"
+    "home_label": "Na začetno stran Murmli",
+    "select_language": "Jezik"
   },
   "hero": {
     "h1": "Brezplačen števec kalorij z umetno inteligenco in pametnim nakupovalnim seznamom",
     "p": "Želite brezplačno izračunati kalorije, načrtovati recepte in samodejno dobiti nakupovalni seznam? Murmli to naredi v enem koraku: KI-izračunana potreba po kalorijah, ustrezen tedenski načrt in razvrščen seznam za trgovino.",
     "google_play_alt": "Prenesite zdaj v Google Play",
     "app_store_alt": "Prenesite zdaj v Apple App Store",
-    "discord_alt": "Pridružite se našemu Discord strežniku"
+    "discord_alt": "Pridružite se našemu Discord strežniku",
+    "downloads_paused_badge": "Nove namestitve so začasno onemogočene",
+    "downloads_paused_info": "Zaradi velikega povpraševanja in stroškovnih razlogov nove namestitve trenutno niso dovoljene. Obstoječi uporabniki lahko aplikacijo še naprej uporabljajo kot običajno.",
+    "downloads_paused_button_tooltip": "Prenosi so trenutno onemogočeni"
   },
   "trailer": {
     "h2": "Oglejte si Murmli v akciji!",
@@ -155,7 +159,28 @@
     "formula_women": "Ženske = 10 × teža (kg) + 6,25 × višina (cm) − 5 × starost − 161",
     "formula_explanation": "Murmli kombinira rezultat z vašimi navedenimi delovnimi in počitniškimi časi (PAL vrednosti), da transparentno izračuna skupno porabo energije.",
     "formula_result_explanation": "Po izračunu vidite bazalno porabo, delovno porabo in skupno porabo energije vključno s priporočenimi kaloričnimi cilji. Tako lahko takoj ocenite, ali vaš trenutni prehranski načrt ustreza vašemu cilju.",
-    "formula_tip": "Nasvet: Shranite svoje vrednosti v aplikaciji Murmli, da se obroki, recepti in načrti vadbe samodejno prilagodijo vaši kalorični bilanci."
+    "formula_tip": "Nasvet: Shranite svoje vrednosti v aplikaciji Murmli, da se obroki, recepti in načrti vadbe samodejno prilagodijo vaši kalorični bilanci.",
+    "results": {
+      "evaluation_title": "Vaša analiza",
+      "summary_text": "Vaša skupna dnevna poraba energije znaša približno <strong>{calories} kilokalorij</strong>.",
+      "bmr": "Bazalni metabolizem (BMR)",
+      "work_calories": "Poraba pri delu",
+      "rest_calories": "Prosti čas in počitek",
+      "mobile_hint": "Uporabite te smernice za načrtovanje obrokov:",
+      "strong_loss": "Znatno pomanjkanje (-25 %)",
+      "moderate_loss": "Zmerno pomanjkanje (-15 %)",
+      "maintain": "Vzdrževanje telesne teže",
+      "moderate_gain": "Zmerno pridobivanje (+10 %)",
+      "strong_gain": "Intenzivno pridobivanje (+20 %)",
+      "mobile_note": "Te vrednosti so osnova za prilagojene recepte, nakupovalne sezname in načrte vadbe neposredno v aplikaciji Murmli.",
+      "table_target_header": "Ciljno območje",
+      "table_calories_header": "Priporočene kalorije",
+      "table_intro": "Uporabite smernice iz aplikacije Murmli, da načrtovanje obrokov prilagodite svojim potrebam:",
+      "error_inputs": "Prosimo, vnesite verodostojno težo in višino, večjo od 0 cm.",
+      "error_age": "Prosimo, preverite leto rojstva, da bomo lahko pravilno izračunali vašo starost.",
+      "btn_calculating": "Izračunavanje...",
+      "btn_calculate": "Izračunaj potrebe po kalorijah"
+    }
   },
   "faq_section": {
     "h2": "Pogosta vprašanja o brezplačnem števcu kalorij Murmli",

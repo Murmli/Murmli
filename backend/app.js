@@ -143,103 +143,195 @@ app.get("/sitemap.xml", async (req, res) => {
 const fs = require('fs');
 const localesCache = {};
 
-const renderTemplate = (templatePath, locale) => {
-  let template = fs.readFileSync(templatePath, 'utf8');
-  
-  // Load locale data
-  if (!localesCache[locale]) {
-    const localePath = path.join(__dirname, 'locales', `${locale}.json`);
-    if (fs.existsSync(localePath)) {
-      localesCache[locale] = JSON.parse(fs.readFileSync(localePath, 'utf8'));
-    } else {
-      // Fallback to de-DE
-      const fallbackPath = path.join(__dirname, 'locales', 'de-DE.json');
-      localesCache[locale] = JSON.parse(fs.readFileSync(fallbackPath, 'utf8'));
+const AVAILABLE_LOCALES = [
+  { code: "de-DE", name: "Deutsch", flag: "🇩🇪" },
+  { code: "de-AT", name: "Österreich", flag: "🇦🇹" },
+  { code: "de-CH", name: "Schweiz", flag: "🇨🇭" },
+  { code: "de-BY", name: "Bayern", flag: "🥨" },
+  { code: "de-SB", name: "Schwaben", flag: "🥨" },
+  { code: "de-DY", name: "Jugendslang", flag: "🔥" },
+  { code: "en-US", name: "English (US)", flag: "🇺🇸" },
+  { code: "en", name: "English", flag: "🇬🇧" },
+  { code: "en-US-bx", name: "US (Boston)", flag: "🇺🇸" },
+  { code: "en-US-sx", name: "US (Southern)", flag: "🇺🇸" },
+  { code: "en-US-cx", name: "US (California)", flag: "🏄" },
+  { code: "fr-FR", name: "Français", flag: "🇫🇷" },
+  { code: "es-ES", name: "Español", flag: "🇪🇸" },
+  { code: "it-IT", name: "Italiano", flag: "🇮🇹" },
+  { code: "pl-PL", name: "Polski", flag: "🇵🇱" },
+  { code: "cs-CZ", name: "Čeština", flag: "🇨🇿" },
+  { code: "sl-SI", name: "Slovenščina", flag: "🇸🇮" },
+  { code: "tr-TR", name: "Türkçe", flag: "🇹🇷" },
+  { code: "zh-CN", name: "中文", flag: "🇨🇳" },
+  { code: "hi-IN", name: "हिन्दी", flag: "🇮🇳" }
+];
+
+const parseCookieHeader = (cookieHeader) => {
+  if (!cookieHeader) return {};
+  return cookieHeader.split(';').reduce((acc, part) => {
+    const [key, ...val] = part.trim().split('=');
+    if (key) acc[key] = decodeURIComponent(val.join('='));
+    return acc;
+  }, {});
+};
+
+const parseAcceptLanguage = (header) => {
+  if (!header) return [];
+  return header
+    .split(',')
+    .map(item => {
+      const [lang, qPart] = item.trim().split(';');
+      let q = 1.0;
+      if (qPart && qPart.trim().startsWith('q=')) {
+        const parsedQ = parseFloat(qPart.trim().substring(2));
+        if (!isNaN(parsedQ)) q = parsedQ;
+      }
+      return { lang: lang ? lang.trim() : '', q };
+    })
+    .filter(item => item.lang && item.lang !== '*')
+    .sort((a, b) => b.q - a.q);
+};
+
+const findMatchingLocale = (candidateCode) => {
+  if (!candidateCode || typeof candidateCode !== 'string') return null;
+  const clean = candidateCode.toLowerCase().trim();
+
+  // 1. Exact match
+  const exact = AVAILABLE_LOCALES.find(l => l.code.toLowerCase() === clean);
+  if (exact) return exact.code;
+
+  // 2. Primary subtag mapping
+  const primary = clean.split('-')[0];
+  const primaryMap = {
+    de: 'de-DE',
+    en: 'en-US',
+    fr: 'fr-FR',
+    es: 'es-ES',
+    it: 'it-IT',
+    pl: 'pl-PL',
+    cs: 'cs-CZ',
+    sl: 'sl-SI',
+    tr: 'tr-TR',
+    zh: 'zh-CN',
+    hi: 'hi-IN'
+  };
+  if (primaryMap[primary]) return primaryMap[primary];
+
+  // 3. Prefix match with any available locale
+  const prefixMatch = AVAILABLE_LOCALES.find(l => l.code.toLowerCase().startsWith(primary));
+  if (prefixMatch) return prefixMatch.code;
+
+  return null;
+};
+
+const resolveLocale = (req) => {
+  // 1. Query parameter (?lang=... or ?locale=...)
+  const queryLang = req.query?.lang || req.query?.locale;
+  if (queryLang) {
+    const matched = findMatchingLocale(queryLang);
+    if (matched) return matched;
+  }
+
+  // 2. Cookie (appLocale or locale)
+  const cookies = parseCookieHeader(req.headers?.cookie);
+  const cookieLang = cookies.appLocale || cookies.locale;
+  if (cookieLang) {
+    const matched = findMatchingLocale(cookieLang);
+    if (matched) return matched;
+  }
+
+  // 3. Accept-Language header (weighted)
+  const acceptLangHeader = req.headers ? req.headers['accept-language'] : null;
+  if (acceptLangHeader) {
+    const parsed = parseAcceptLanguage(acceptLangHeader);
+    for (const item of parsed) {
+      const matched = findMatchingLocale(item.lang);
+      if (matched) return matched;
     }
   }
 
-  const translations = localesCache[locale];
+  // 4. Default fallback to de-DE
+  return 'de-DE';
+};
 
-  // Simple recursive placeholder replacement
-  const replacePlaceholders = (text, data, prefix = '') => {
-    let result = text;
-    for (const key in data) {
-      const fullKey = prefix ? `${prefix}.${key}` : key;
-      if (typeof data[key] === 'object' && !Array.isArray(data[key])) {
-        result = replacePlaceholders(result, data[key], fullKey);
-      } else if (Array.isArray(data[key])) {
-        data[key].forEach((item, index) => {
-          if (typeof item === 'object') {
-            result = replacePlaceholders(result, item, `${fullKey}.${index}`);
-          } else {
-            const regex = new RegExp(`{{${fullKey}.${index}}}`, 'g');
-            result = result.replace(regex, item);
-          }
-        });
-      } else {
-        const regex = new RegExp(`{{${fullKey}}}`, 'g');
-        result = result.replace(regex, data[key]);
-      }
+const loadLocaleData = (localeCode) => {
+  if (!localesCache[localeCode]) {
+    const localePath = path.join(__dirname, 'locales', `${localeCode}.json`);
+    if (fs.existsSync(localePath)) {
+      localesCache[localeCode] = JSON.parse(fs.readFileSync(localePath, 'utf8'));
+    } else {
+      localesCache[localeCode] = null;
     }
-    return result;
-  };
+  }
+  return localesCache[localeCode];
+};
 
-  let rendered = replacePlaceholders(template, translations);
-  
-  // Replace <html lang="de"> with correct locale
-  rendered = rendered.replace('<html lang="de">', `<html lang="${locale.split('-')[0]}">`);
-  
+const getNestedValue = (obj, pathStr) => {
+  if (!obj || typeof obj !== 'object') return undefined;
+  const parts = pathStr.split('.');
+  let curr = obj;
+  for (const part of parts) {
+    if (curr && typeof curr === 'object' && part in curr) {
+      curr = curr[part];
+    } else {
+      return undefined;
+    }
+  }
+  return curr;
+};
+
+const renderTemplate = (templatePath, locale) => {
+  let template = fs.readFileSync(templatePath, 'utf8');
+
+  const fallbackTranslations = loadLocaleData('de-DE') || {};
+  const translations = loadLocaleData(locale) || fallbackTranslations;
+
+  // Build language selector options
+  const languageOptionsHtml = AVAILABLE_LOCALES.map(lang => {
+    const isSelected = lang.code === locale ? ' selected' : '';
+    return `<option value="${lang.code}"${isSelected}>${lang.name} ${lang.flag}</option>`;
+  }).join('\n                ');
+
+  // Calculator dynamic translations
+  const calcTranslations = translations.calculator?.results || fallbackTranslations.calculator?.results || {};
+
+  // Replace all {{placeholder}} occurrences
+  let rendered = template.replace(/\{\{([\w.]+)\}\}/g, (match, keyPath) => {
+    if (keyPath === 'active_locale') return locale;
+    if (keyPath === 'html_lang') return locale.split('-')[0];
+    if (keyPath === 'language_options') return languageOptionsHtml;
+    if (keyPath === 'calculator_i18n_json') return JSON.stringify(calcTranslations);
+
+    const val = getNestedValue(translations, keyPath);
+    if (val !== undefined && val !== null) {
+      return typeof val === 'object' ? JSON.stringify(val) : String(val);
+    }
+    const fallbackVal = getNestedValue(fallbackTranslations, keyPath);
+    if (fallbackVal !== undefined && fallbackVal !== null) {
+      return typeof fallbackVal === 'object' ? JSON.stringify(fallbackVal) : String(fallbackVal);
+    }
+    return match;
+  });
+
+  // Replace <html lang="..."> with correct locale
+  rendered = rendered.replace(/<html lang="[^"]*">/, `<html lang="${locale.split('-')[0]}">`);
+
   return rendered;
 };
 
 // Route to serve the landing page
 app.get("/", (req, res) => {
-  const host = req.headers.host;
-  
-  // Detect locale from query param or header
-  let locale = req.query.lang;
-  if (!locale) {
-    const acceptLang = req.headers['accept-language'];
-    if (acceptLang) {
-      // Simple parsing: take the first one
-      const preferred = acceptLang.split(',')[0].split(';')[0];
-      // Map to supported locales if possible, otherwise default to de-DE
-      // This is a simplified check, ideally we'd match against backend/locales/*.json
-      if (preferred.startsWith('en')) locale = 'en';
-      else if (preferred.startsWith('fr')) locale = 'fr-FR';
-      else if (preferred.startsWith('it')) locale = 'it-IT';
-      else if (preferred.startsWith('es')) locale = 'es-ES';
-      else if (preferred.startsWith('pl')) locale = 'pl-PL';
-      else if (preferred.startsWith('cs')) locale = 'cs-CZ';
-      else if (preferred.startsWith('sl')) locale = 'sl-SI';
-      else if (preferred.startsWith('tr')) locale = 'tr-TR';
-      else if (preferred.startsWith('zh')) locale = 'zh-CN';
-      else if (preferred.startsWith('hi')) locale = 'hi-IN';
-      else locale = 'de-DE';
-    } else {
-      locale = 'de-DE';
-    }
-  }
+  const locale = resolveLocale(req);
 
-  // Ensure it's a valid locale we have a file for
-  const localePath = path.join(__dirname, 'locales', `${locale}.json`);
-  if (!fs.existsSync(localePath)) {
-    // Check if we have a partial match like 'en' -> 'en.json' or 'en-US.json'
-    if (locale === 'en' && fs.existsSync(path.join(__dirname, 'locales', 'en-US.json'))) {
-      locale = 'en-US';
-    } else if (locale === 'en' && fs.existsSync(path.join(__dirname, 'locales', 'en.json'))) {
-        locale = 'en';
-    } else {
-      locale = 'de-DE';
-    }
-  }
+  // Set cookie so user preference is remembered across visits
+  res.setHeader('Set-Cookie', `appLocale=${locale}; Path=/; Max-Age=31536000; SameSite=Lax`);
 
   try {
     const renderedHtml = renderTemplate(path.join(__dirname, "public", "index.template.html"), locale);
     res.send(renderedHtml);
   } catch (error) {
     console.error("Error rendering landing page:", error);
-    res.sendFile(path.join(__dirname, "public", "index.html"));
+    res.sendFile(path.join(__dirname, "public", "index.bak.html"));
   }
 });
 
@@ -284,4 +376,10 @@ app.use("/api/v2/training-logs", trainingLogRoutes);
 app.use("/api/v2/visitor", visitorRoutes);
 app.use("/api/v2/messages", messageRoutes);
 
-module.exports = app; // Nur die App exportieren
+app.resolveLocale = resolveLocale;
+app.renderTemplate = renderTemplate;
+app.AVAILABLE_LOCALES = AVAILABLE_LOCALES;
+app.findMatchingLocale = findMatchingLocale;
+app.parseAcceptLanguage = parseAcceptLanguage;
+
+module.exports = app;

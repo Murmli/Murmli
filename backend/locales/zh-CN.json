@@ -54,14 +54,18 @@
     "faq": "常见问题",
     "trailer": "演示视频",
     "about": "关于",
-    "home_label": "回到 Murmli 首页"
+    "home_label": "回到 Murmli 首页",
+    "select_language": "语言"
   },
   "hero": {
     "h1": "带有智能购物清单的免费 AI 卡路里计数器",
     "p": "想要免费计算卡路里、规划食谱并自动获取购物清单吗？Murmli 一步到位：AI 计算的卡路里需求、匹配的周计划以及为超市准备的分类清单。",
     "google_play_alt": "立即在 Google Play 下载",
     "app_store_alt": "立即在 Apple App Store 下载",
-    "discord_alt": "加入我们的 Discord 服务器"
+    "discord_alt": "加入我们的 Discord 服务器",
+    "downloads_paused_badge": "新安装暂时暂停",
+    "downloads_paused_info": "由于访问量激增及成本考虑，目前暂时不允许新安装。现有用户可以继续照常使用该应用。",
+    "downloads_paused_button_tooltip": "下载目前已禁用"
   },
   "trailer": {
     "h2": "观看 Murmli 的实际操作！",
@@ -155,7 +159,28 @@
     "formula_women": "女性 = 10 × 体重 (kg) + 6.25 × 身高 (cm) − 5 × 年龄 − 161",
     "formula_explanation": "Murmli 将结果与您提供的工作和休息时间（PAL 值）相结合，以透明地计算总能量消耗。",
     "formula_result_explanation": "计算后，您将看到基础代谢率、工作代谢率和总能量消耗，包括推荐的卡路里目标。通过这种方式，您可以直接评估当前的饮食计划是否符合您的目标。",
-    "formula_tip": "提示：在 Murmli 应用中保存您的数值，以便自动根据您的卡路里预算调整餐食、食谱和训练计划。"
+    "formula_tip": "提示：在 Murmli 应用中保存您的数值，以便自动根据您的卡路里预算调整餐食、食谱和训练计划。",
+    "results": {
+      "evaluation_title": "您的评估结果",
+      "summary_text": "您的每日总消耗量约为 <strong>{calories} 千卡</strong>。",
+      "bmr": "基础代谢率 (BMR)",
+      "work_calories": "工作消耗量",
+      "rest_calories": "休闲与休息",
+      "mobile_hint": "参考以下指标进行您的饮食计划：",
+      "strong_loss": "显著缺口 (-25%)",
+      "moderate_loss": "适度缺口 (-15%)",
+      "maintain": "维持体重",
+      "moderate_gain": "适度增重 (+10%)",
+      "strong_gain": "强化增重 (+20%)",
+      "mobile_note": "这些数值是 Murmli 中个性化食谱、购物清单和训练计划的基础。",
+      "table_target_header": "目标范围",
+      "table_calories_header": "建议热量",
+      "table_intro": "利用 Murmli App 提供的指导，根据您的需求调整饮食计划：",
+      "error_inputs": "请输入合理的体重和大于 0 厘米的身高。",
+      "error_age": "请检查您的出生年份，以便我们正确计算您的年龄。",
+      "btn_calculating": "计算中...",
+      "btn_calculate": "计算热量需求"
+    }
   },
   "faq_section": {
     "h2": "关于免费 Murmli 卡路里计数器的常见问题",
