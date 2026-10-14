@@ -3,7 +3,6 @@
 // there are no other LLM providers anymore.
 
 const fs = require("fs").promises;
-const sharp = require("sharp");
 const { llmGetHash, llmReadCache, llmWriteCache } = require("../llmCache.js");
 const { getOpenRouterClient } = require("./sdkClient.js");
 
@@ -72,11 +71,19 @@ const JSON_RETRY_HINT =
 async function processAndEncodeFile(file) {
   if (file.mimetype && file.mimetype.startsWith("image/")) {
     try {
-      const processedBuffer = await sharp(file.path)
-        .resize({ width: 1024, height: 1024, fit: "inside", withoutEnlargement: true })
-        .jpeg({ quality: 80 })
-        .toBuffer();
-      return { base64Data: processedBuffer.toString("base64"), mimetype: "image/jpeg" };
+      let sharp;
+      try {
+        sharp = require("sharp");
+      } catch (e) {
+        // sharp is optional or not installed in this environment
+      }
+      if (sharp) {
+        const processedBuffer = await sharp(file.path)
+          .resize({ width: 1024, height: 1024, fit: "inside", withoutEnlargement: true })
+          .jpeg({ quality: 80 })
+          .toBuffer();
+        return { base64Data: processedBuffer.toString("base64"), mimetype: "image/jpeg" };
+      }
     } catch (err) {
       console.error("Error compressing image, falling back to original:", err);
     }

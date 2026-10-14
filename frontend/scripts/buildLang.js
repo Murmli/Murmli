@@ -2,7 +2,6 @@
 const fs = require('fs');
 const path = require('path');
 require('dotenv').config();
-const { apiCall } = require("../../backend/utils/llm/openrouter.js");
 
 // Settings
 const maxParallelTranslations = 5; // Maximale Anzahl paralleler Übersetzungen
@@ -28,12 +27,6 @@ const targetLanguages = languagesArray
 const { languageMapRaw, languageMap } = require("../../backend/languageMap.js");
 
 const localesDir = path.join(__dirname, '..', 'src', 'locales');
-
-// OpenRouter Configuration
-if (!process.env.OPENROUTER_API_KEY && !process.env.OPENAI_API_KEY) {
-    console.error('API key is missing. Please set OPENROUTER_API_KEY or OPENAI_API_KEY in your .env file.');
-    process.exit(1);
-}
 
 const loadJSON = (filePath) => {
     try {
@@ -113,6 +106,11 @@ const mergeTranslations = (target, translated) => {
 
 // Translation function
 const translateJSON = async (inputJson, targetLanguage) => {
+    if (!process.env.OPENROUTER_API_KEY && !process.env.OPENAI_API_KEY) {
+        console.error('API key is missing. Please set OPENROUTER_API_KEY or OPENAI_API_KEY in your .env file.');
+        process.exit(1);
+    }
+    const { apiCall } = require("../../backend/utils/llm/openrouter.js");
     const actualTargetLanguage = languageMap[targetLanguage.toLowerCase()] || targetLanguage;
     console.log("targetlanguage: ", actualTargetLanguage);
     const systemPrompt = `
